@@ -1,9 +1,9 @@
 #ifndef FVAVIEWER_H
 #define FVAVIEWER_H
 
-#include <QDialog>
-#include <QtCore>
-#include <QtGui>
+#include <QTGui/QDialog>
+#include <QTCore/QtCore>
+#include <QTGui/QTreeWidget>
 
 #include "ui_fvaviewer.h"
 

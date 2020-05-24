@@ -24,12 +24,12 @@
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{a91c6bab-ba1a-43ba-8c37-644e4f7a2e99}</UniqueIdentifier>
+      <UniqueIdentifier>{fd0582f9-02f5-49bd-ab0c-f37bc99cfa8d}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{0c0fe494-c28d-4287-a07c-3ebfd42696fa}</UniqueIdentifier>
+      <UniqueIdentifier>{4274fa78-c5fe-427a-bd79-a12b3066922f}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
@@ -50,18 +50,6 @@
     <ClCompile Include="GeneratedFiles\qrc_fvaviewer.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="CmdLineExecutor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="qexifimageheader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CmdLineTasks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RiffParser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fvaviewer.h">
@@ -77,18 +65,6 @@
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_fvaviewer.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CmdLineExecutor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="qexifimageheader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CmdLineTasks.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RiffParser.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
