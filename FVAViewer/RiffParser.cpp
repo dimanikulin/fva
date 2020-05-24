@@ -87,5 +87,13 @@ bool RiffParser::convertToDate ( const QString& strDate, QDateTime& value ) cons
 		QString newStr = strDate.mid(0,strDate.size() -1 ).remove( "\n" );
 		value = QDateTime::fromString( newStr, "yyyy:MM:dd hh:mm:ss" );
 	}
+
+	if ( !value.isValid() )
+	{
+		// try to use other format
+		QString newStr = strDate.mid( QString ( "UTC " ).size() ).remove( "\n" );
+		value = QDateTime::fromString( newStr, "yyyy-MM-dd hh:mm:ss" );
+	}
+
 	return value.isValid();
 }
