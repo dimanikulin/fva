@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FVAViewer", "FVAViewer\FVAViewer.vcxproj", "{7CBD7407-31F0-4E26-837B-58310A8C0874}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FVAOrganizer", "FVAOrganizer\FVAOrganizer.vcxproj", "{CB6DCEA7-4012-4BBC-9A41-C310D6B0FCBC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FVACommonLib", "FVACommonLib\FVACommonLib.vcxproj", "{C910792D-9FD1-4301-A941-29BF393BA379}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CBD7407-31F0-4E26-837B-58310A8C0874}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7CBD7407-31F0-4E26-837B-58310A8C0874}.Debug|Win32.Build.0 = Debug|Win32
+		{7CBD7407-31F0-4E26-837B-58310A8C0874}.Release|Win32.ActiveCfg = Release|Win32
+		{7CBD7407-31F0-4E26-837B-58310A8C0874}.Release|Win32.Build.0 = Release|Win32
+		{CB6DCEA7-4012-4BBC-9A41-C310D6B0FCBC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CB6DCEA7-4012-4BBC-9A41-C310D6B0FCBC}.Debug|Win32.Build.0 = Debug|Win32
+		{CB6DCEA7-4012-4BBC-9A41-C310D6B0FCBC}.Release|Win32.ActiveCfg = Release|Win32
+		{CB6DCEA7-4012-4BBC-9A41-C310D6B0FCBC}.Release|Win32.Build.0 = Release|Win32
+		{C910792D-9FD1-4301-A941-29BF393BA379}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C910792D-9FD1-4301-A941-29BF393BA379}.Debug|Win32.Build.0 = Debug|Win32
+		{C910792D-9FD1-4301-A941-29BF393BA379}.Release|Win32.ActiveCfg = Release|Win32
+		{C910792D-9FD1-4301-A941-29BF393BA379}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
