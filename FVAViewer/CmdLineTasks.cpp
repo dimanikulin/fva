@@ -7,6 +7,26 @@
 #include <QDateTime>
 
 
+#ifdef MEDIAINFO_LIBRARY
+    #include "MediaInfo/MediaInfo.h" //Staticly-loaded library (.lib or .a or .so)
+    #define MediaInfoNameSpace MediaInfoLib;
+#else //MEDIAINFO_LIBRARY
+    #include "MediaInfoDLL.h" //Dynamicly-loaded library (.dll or .so)
+    #define MediaInfoNameSpace MediaInfoDLL;
+#endif //MEDIAINFO_LIBRARY
+#include <iostream>
+#include <iomanip>
+using namespace MediaInfoNameSpace;
+
+#ifdef __MINGW32__
+    #ifdef _UNICODE
+        #define _itot _itow
+    #else //_UNICODE
+        #define _itot itoa
+    #endif //_UNICODE
+#endif //__MINGW32
+
+
 CmdLineBaseTask::CmdLineBaseTask( const QString& argument_ )
 	: argument ( argument_ )
 {
@@ -22,46 +42,198 @@ std::auto_ptr<CmdLineBaseTask> CmdLineBaseTask::createTaskByType( const QString&
 {
 	std::auto_ptr<CmdLineBaseTask> result( 0 );
 
-	if ( type == "folderStructCreate" )
-		result.reset( new CmdLineTask_FolderStructCreate				( arg ) );	
-	else if ( type == "filesRename" )
-		result.reset( new CmdLineTask_FilesRename						( arg ) );	
-	else if ( type == "recursiveFilesRename" )
-		result.reset( new CmdLineTask_FilesRenameRecursive				( arg ) );	 
-	else if ( type == "recursiveDeviceNameCheck" )
-		result.reset( new CmdLineTask_CheckDeviceNameRecursive			( arg ) );
-	else if ( type == "recursiveFilesRenameByFolder" )
-		result.reset( new CmdLineTask_RenameFileByFolderNameRecursive	( arg ) );
-	else if ( type == "recursiveVideoRenameBySequence" )
-		result.reset( new CmdLineTask_RenameVideoBySequenceRecursive	( arg ) );
+		 if ( type == CMD_FOLDER_STRUCT_CREATE_BY_FILE )			result.reset( new CmdLineTask_FolderStructCreateByFile				( arg ) );	
+	else if ( type == CMD_RECURSIVE_FOLDER_STRUCT_BY_FILE )			result.reset( new CmdLineTask_FolderStructCreateByFileRecursive		( arg ) );
+	else if ( type == CMD_RECURSIVE_FOLDER_STRUCT_BY_DEVICE_NAME )	result.reset( new CmdLineTask_FolderStructCreateByDeviceRecursive	( arg ) );
+	else if ( type == CMD_FILES_RENAME )							result.reset( new CmdLineTask_FilesRename							( arg ) );	
+	else if ( type == CMD_RECURSIVE_FILES_RENAME )					result.reset( new CmdLineTask_FilesRenameRecursive					( arg ) );	 
+	else if ( type == CMD_RECURSIVE_DEVICE_NAME_CHECK )				result.reset( new CmdLineTask_CheckDeviceNameRecursive				( arg ) );
+	else if ( type == CMD_RECURSIVE_FILES_RENAME_BY_FOLDER )		result.reset( new CmdLineTask_RenameFileByFolderNameRecursive		( arg ) );
+	else if ( type == CMD_RECURSIVE_VIDEO_RENAME_BY_SEQUENCE )		result.reset( new CmdLineTask_RenameVideoBySequenceRecursive		( arg ) );
+	else if ( type == CMD_FOLDER_NAME_CHANGE )						result.reset( new CmdLineTask_FolderNameChange						( arg ) );
 
 	return result;
 }
 
-FILE_TYPE CmdLineBaseTask::convertFileExt2FileType ( const QString& type )
+MM_FILE_TYPE CmdLineBaseTask::convertFileExt2FileType ( const QString& type )
 {
 	if ( type == "JPG" || type == "JPEG" || type == "PNG" || type == "BMP" || type == "GIF" )
-		return FILE_TYPE_IMG;
+		return MM_FILE_TYPE_IMG;
 	
-	if ( type == "AVI" ||	type == "MOV" || type == "MPG" )
-		return FILE_TYPE_VIDEO;
+	if ( type == "AVI" ||	type == "MOV" || type == "MPG" || type == "3GP" || type == "MP4" )
+		return MM_FILE_TYPE_VIDEO;
 
-	return FILE_TYPE_UNKNOWN;
+	return MM_FILE_TYPE_UNKNOWN;
 }
 
-CmdLineTask_FolderStructCreate::CmdLineTask_FolderStructCreate( const QString& argument )
+CmdLineTask_FolderStructCreateByFileRecursive::CmdLineTask_FolderStructCreateByFileRecursive ( const QString& argument )
 	: CmdLineBaseTask( argument )
 {
-	qDebug() << "[CMD_FOLDER_CREATE]cmd created, argument:" << argument;
+	qDebug() << "[CMD_FOLDER_CREATE_RECURSIVE]cmd created, argument:" << argument;
 }
 
-int CmdLineTask_FolderStructCreate::execute()
+int CmdLineTask_FolderStructCreateByFileRecursive::execute()
+{
+	QDir dir( argument );
+
+	if ( !dir.exists( argument ) )
+	{
+		qCritical() << "[CMD_FOLDER_CREATE_RECURSIVE]input folder does not exist";
+		return 1002;
+	}
+
+	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{
+		if ( info.isDir() )
+		{
+			std::auto_ptr<CmdLineBaseTask> folderTask = CmdLineBaseTask::createTaskByType( CMD_RECURSIVE_FOLDER_STRUCT_BY_FILE, info.filePath() );
+			folderTask->execute();
+			continue;
+		}
+	}
+	std::auto_ptr<CmdLineBaseTask> task = CmdLineBaseTask::createTaskByType( CMD_FOLDER_STRUCT_CREATE_BY_FILE, argument );
+	task->execute();
+
+	return 0;
+}
+
+CmdLineTask_FolderNameChange::CmdLineTask_FolderNameChange ( const QString& argument )
+	: CmdLineBaseTask( argument )
+{
+	qDebug() << "[CMD_FOLDER_NAME_CHANGE]cmd created, argument:" << argument;
+}
+
+int CmdLineTask_FolderNameChange::execute()
+{
+	QDir dir( argument );
+
+	if ( !dir.exists( argument ) )
+	{
+		qCritical() << "[CMD_FOLDER_NAME_CHANGE]input folder does not exist";
+		return 1002;
+	}
+
+	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{
+		if ( info.isDir() )
+		{
+			QString subFolderName		= info.baseName().mid(0,10);
+			info.absoluteDir();
+			QDir subdir ( info.absoluteDir() );
+
+			QString oldPath = info.absoluteFilePath();
+			QString newPath = info.absoluteFilePath().replace("-",".");
+			if ( subdir.rename( oldPath, newPath ) )
+				qWarning() << "[CMD_FOLDER_NAME_CHANGE]renamed folder from " << oldPath << " to " << newPath;
+			else
+				qCritical() << "[CMD_FOLDER_NAME_CHANGE]cannot rename folder from " << oldPath << " to " << newPath;			
+		}
+		else
+			continue;			
+	}
+
+	return 0;
+}
+
+CmdLineTask_FolderStructCreateByDeviceRecursive::CmdLineTask_FolderStructCreateByDeviceRecursive( const QString& argument )
+	: CmdLineBaseTask( argument )
+{
+	qDebug() << "[CMD_FOLDER_CREATE_BY_DEVICE_RECURSIVE]cmd created, argument:" << argument;
+}
+
+int CmdLineTask_FolderStructCreateByDeviceRecursive::execute()
+{
+	QDir dir( argument );
+
+	if ( !dir.exists( argument ) )
+	{
+		qCritical() << "[CMD_FOLDER_CREATE_BY_DEVICE_RECURSIVE]input folder does not exist";
+		return 1002;
+	}
+
+	QString deviceName;
+	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{
+		if ( info.isDir() )
+		{
+			std::auto_ptr<CmdLineBaseTask> folderTask = CmdLineBaseTask::createTaskByType( CMD_RECURSIVE_FOLDER_STRUCT_BY_DEVICE_NAME, info.filePath() );
+			folderTask->execute();
+			continue;
+		}
+		else
+		{
+			// if it is picture files
+			QString suffix = info.suffix().toUpper();
+			QString fullname = info.absoluteFilePath();
+			if(	MM_FILE_TYPE_IMG == convertFileExt2FileType ( suffix ) )
+			{
+				QString newDeviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
+										+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
+			
+				while(newDeviceName.endsWith( '\n' )) 
+					newDeviceName.chop( 1 );
+
+				while(newDeviceName.endsWith( '\r' ))
+					newDeviceName.chop( 1 );
+
+				while(newDeviceName.endsWith( QChar( '\0' )))
+					newDeviceName.chop( 1 );
+
+				newDeviceName = newDeviceName.trimmed();
+				
+				QString dirName;
+				if ( newDeviceName.isEmpty() )
+				{
+					qDebug() << "[CMD_FOLDER_CREATE_BY_DEVICE_RECURSIVE] no device name in picture:" << info.absoluteFilePath();
+					dirName = "EMPTY";
+				}
+				else
+				{
+					if ( deviceName.isEmpty() )
+						qDebug() << "[CMD_FOLDER_CREATE_BY_DEVICE_RECURSIVE] got first device name: "<< newDeviceName << "in picture:" << info.absoluteFilePath();
+					else if ( deviceName != newDeviceName )	
+						qWarning() << "[CMD_FOLDER_CREATE_BY_DEVICE_RECURSIVE] got new device name: "<< newDeviceName << "in picture:" << info.absoluteFilePath() << "old: " << deviceName;
+						
+					deviceName = newDeviceName;
+					dirName = deviceName;
+				}
+
+				QString fullSubFolderpath	=  argument + "/" + dirName;
+
+				if ( !dir.exists( dirName ) )
+				{
+					dir.mkdir( dirName );
+					qDebug() << "[CMD_FOLDER_CREATE_FILE]sub-folder:" << dirName << " created";
+				}
+				// move the file
+				if ( !dir.rename( info.absoluteFilePath(), fullSubFolderpath + "/" + info.fileName() ) )
+				{
+					qCritical() << "[CMD_FOLDER_CREATE_FILE]can not rename file:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
+					return 1003;
+				}
+				else
+					qDebug() <<  "[CMD_FOLDER_CREATE_FILE]file renamed:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
+			}
+			else
+				qDebug() << "[CMD_FOLDER_CREATE_BY_DEVICE_RECURSIVE] no device name in:" << info.absoluteFilePath();
+		}
+	}
+	return 0;
+}
+
+CmdLineTask_FolderStructCreateByFile::CmdLineTask_FolderStructCreateByFile( const QString& argument )
+	: CmdLineBaseTask( argument )
+{
+	qDebug() << "[CMD_FOLDER_CREATE_FILE]cmd created, argument:" << argument;
+}
+
+int CmdLineTask_FolderStructCreateByFile::execute()
 {
 	QDir folder ( argument );
 
 	if ( !folder.exists( argument ) )
 	{
-		qCritical() << "[CMD_FOLDER_CREATE]input folder does not exist";
+		qCritical() << "[CMD_FOLDER_CREATE_FILE]input folder does not exist";
 		return 1002;
 	}
 
@@ -75,24 +247,28 @@ int CmdLineTask_FolderStructCreate::execute()
 			continue;
 
 		QString subFolderName		= info.baseName().mid(0,10);
-		QString fullSubFolderpath	=  argument +  subFolderName;
+		QString fullSubFolderpath	=  argument + "/" + subFolderName;
+		fullSubFolderpath			= fullSubFolderpath.replace("-",".");
 			
 		if ( !folder.exists( subFolderName ) )
 		{
 			folder.mkdir( subFolderName );
-			qDebug() << "[CMD_FOLDER_CREATE]sub-folder:" << subFolderName << " created";
+			qDebug() << "[CMD_FOLDER_CREATE_FILE]sub-folder:" << subFolderName << " created";
 
 			// copy folder description
-			QFile::copy( argument + "folderDescription.json" ,  fullSubFolderpath + "/folderDescription.json" );
+			if ( QFile::copy( argument + "/folderDescription.json" ,  fullSubFolderpath + "/folderDescription.json" ) )
+				qDebug() << "[CMD_FOLDER_CREATE_FILE]folderDescription.json is copied to " << subFolderName ;
+			else
+				qDebug() << "[CMD_FOLDER_CREATE_FILE]folderDescription.json is NOT copied to " << subFolderName ;
 		}
 		// move the file
 		if ( !folder.rename( info.absoluteFilePath(), fullSubFolderpath + "/" + info.fileName() ) )
 		{
-			qCritical() << "[CMD_FOLDER_CREATE]can not rename file:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
+			qCritical() << "[CMD_FOLDER_CREATE_FILE]can not rename file:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
 			return 1003;
 		}
 		else
-			qDebug() <<  "[CMD_FOLDER_CREATE]file renamed:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
+			qDebug() <<  "[CMD_FOLDER_CREATE_FILE]file renamed:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
 	}
 
 	return 0;
@@ -160,7 +336,7 @@ int CmdLineTask_FilesRename::execute()
 
 		// if it is picture files
 		QString suffix = info.suffix().toUpper();
-		if(	FILE_TYPE_IMG == convertFileExt2FileType( suffix ) )
+		if(	MM_FILE_TYPE_IMG == convertFileExt2FileType( suffix ) )
 		{
 			if ( !checkIfParentFileExist( info, renameDateTime, prevRenameDateTime ) ) 
 			{
@@ -184,24 +360,33 @@ int CmdLineTask_FilesRename::execute()
 				2007.07.05 На квартире
 
 				I need to change it by
-				//renameDateTime = renameDateTime.addSecs( 58260 );
+				renameDateTime = renameDateTime.addSecs( 58260 );
 				*/
-				
 				QString _newName = renameDateTime.toString( "yyyy-MM-dd-hh-mm-ss" );
 				if ( _newName.isEmpty() )
 					fillRenameDateTimeFromLastModifiedIfValid( dir, info, renameDateTime );				
 			}
 		}
 		// if it video file
-		else if( FILE_TYPE_VIDEO == convertFileExt2FileType( suffix ) )
+		else if( MM_FILE_TYPE_VIDEO == convertFileExt2FileType( suffix ) )
 		{
 			RiffParser riffInfo;
 			QString createdDate, error;
 			if ( !riffInfo.open( info.absoluteFilePath(), error ) || !riffInfo.findTag( "IDIT", createdDate ) || !riffInfo.convertToDate( createdDate, renameDateTime ) )
 			{
-				qWarning() << "[CMD_FILES_RENAME]can not get created time from:" << info.absoluteFilePath() << ",error:" << error;
-				fillRenameDateTimeFromLastModifiedIfValid( dir, info, renameDateTime );			
-			}	
+				MediaInfo MI;	
+				MI.Open(  info.absoluteFilePath().toStdWString().c_str() );
+				String EncodedDate = MI.Get( Stream_General, 0, __T("Encoded_Date") );
+				if ( !EncodedDate.empty() )
+				{
+					if ( !riffInfo.convertToDate( QString::fromStdWString ( EncodedDate ), renameDateTime ) )
+					{
+						qWarning() << "[CMD_FILES_RENAME]can not get created time from:" << info.absoluteFilePath() << ",error:" << error;
+						fillRenameDateTimeFromLastModifiedIfValid( dir, info, renameDateTime );
+					}
+				}
+				
+			}
 		}
 		else if( suffix == "WAV" )		
 			fillRenameDateTimeFromLastModifiedIfValid( dir, info, renameDateTime );	
@@ -280,12 +465,12 @@ int CmdLineTask_FilesRenameRecursive::execute()
 	{
 		if ( info.isDir() )
 		{
-			std::auto_ptr<CmdLineBaseTask> folderTask = CmdLineBaseTask::createTaskByType( "recursiveFilesRename", info.filePath() );
+			std::auto_ptr<CmdLineBaseTask> folderTask = CmdLineBaseTask::createTaskByType( CMD_RECURSIVE_FILES_RENAME, info.filePath() );
 			folderTask->execute();
 			continue;
 		}
 	}
-	std::auto_ptr<CmdLineBaseTask> task = CmdLineBaseTask::createTaskByType( "filesRename", argument );
+	std::auto_ptr<CmdLineBaseTask> task = CmdLineBaseTask::createTaskByType( CMD_FILES_RENAME, argument );
 	task->execute();
 
 	return 0;
@@ -312,7 +497,7 @@ int CmdLineTask_CheckDeviceNameRecursive::execute()
 	{
 		if ( info.isDir() )
 		{
-			std::auto_ptr<CmdLineBaseTask> folderTask = CmdLineBaseTask::createTaskByType( "recursiveDeviceNameCheck", info.filePath() );
+			std::auto_ptr<CmdLineBaseTask> folderTask = CmdLineBaseTask::createTaskByType( CMD_RECURSIVE_DEVICE_NAME_CHECK, info.filePath() );
 			folderTask->execute();
 			continue;
 		}
@@ -321,7 +506,7 @@ int CmdLineTask_CheckDeviceNameRecursive::execute()
 			// if it is picture files
 			QString suffix = info.suffix().toUpper();
 			QString fullname = info.absoluteFilePath();
-			if(	FILE_TYPE_IMG == convertFileExt2FileType ( suffix ) )
+			if(	MM_FILE_TYPE_IMG == convertFileExt2FileType ( suffix ) )
 			{
 				QString newDeviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
 										+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
@@ -367,14 +552,14 @@ int CmdLineTask_RenameFileByFolderNameRecursive::execute()
 	{
 		if ( info.isDir() )
 		{
-			std::auto_ptr<CmdLineBaseTask> folderTask = CmdLineBaseTask::createTaskByType( "recursiveFilesRenameByFolder", info.filePath() );
+			std::auto_ptr<CmdLineBaseTask> folderTask = CmdLineBaseTask::createTaskByType( CMD_RECURSIVE_FILES_RENAME_BY_FOLDER, info.filePath() );
 			folderTask->execute();
 			continue;
 		}
 		else
 		{
 			QString suffix = info.suffix().toUpper();
-			if(	FILE_TYPE_IMG == convertFileExt2FileType ( suffix ) )
+			if(	MM_FILE_TYPE_IMG == convertFileExt2FileType ( suffix ) )
 			{				
 				QString newPath = dir.path() + "/" + dir.dirName().replace(".","-").mid(0,10) + "-##-##-" + QString::number( id ) + "." + info.suffix();
 				if ( !dir.rename( info.absoluteFilePath(), newPath ) )
@@ -415,13 +600,13 @@ int CmdLineTask_RenameVideoBySequenceRecursive::execute()
 	{
 		if ( info.isDir() )
 		{
-			std::auto_ptr<CmdLineBaseTask> folderTask = CmdLineBaseTask::createTaskByType( "recursiveVideoRenameBySequence", info.filePath() );
+			std::auto_ptr<CmdLineBaseTask> folderTask = CmdLineBaseTask::createTaskByType( CMD_RECURSIVE_VIDEO_RENAME_BY_SEQUENCE, info.filePath() );
 			folderTask->execute();
 			continue;
 		}
 
 		QString suffix = info.suffix().toUpper();
-		if(	FILE_TYPE_IMG == convertFileExt2FileType ( suffix ) && imageFilePrefix.isEmpty() )
+		if(	MM_FILE_TYPE_IMG == convertFileExt2FileType ( suffix ) && imageFilePrefix.isEmpty() )
 		{				
 			if ( !info.baseName().contains("_") )
 				continue;
@@ -429,7 +614,7 @@ int CmdLineTask_RenameVideoBySequenceRecursive::execute()
 			imageFilePrefix	= info.baseName().mid(0, index );
 			qDebug() << "[CMD_RENAME_VIDEO_BY_SEQUENCE_RECURSIVE]got new image prefix:" << imageFilePrefix;
 		}
-		else if( FILE_TYPE_VIDEO == convertFileExt2FileType ( suffix ) )
+		else if( MM_FILE_TYPE_VIDEO == convertFileExt2FileType ( suffix ) )
 		{	
 			if ( !info.baseName().contains("_") )
 			{
@@ -455,7 +640,7 @@ int CmdLineTask_RenameVideoBySequenceRecursive::execute()
 				qDebug() << "[CMD_RENAME_VIDEO_BY_SEQUENCE_RECURSIVE]renamed file:" << info.absoluteFilePath() << " to:" << newFilePath;
 
 		}
-		else if ( FILE_TYPE_UNKNOWN == convertFileExt2FileType ( suffix ) )
+		else if ( MM_FILE_TYPE_UNKNOWN == convertFileExt2FileType ( suffix ) )
 		{
 			qWarning() << "[CMD_RENAME_VIDEO_BY_SEQUENCE_RECURSIVE]unsupported file type:" << info.absoluteFilePath() ;
 			continue;
