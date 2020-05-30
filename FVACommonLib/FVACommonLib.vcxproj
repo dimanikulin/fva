@@ -74,10 +74,13 @@
     <ClCompile Include="..\lib\json\json.cpp" />
     <ClCompile Include="CSVFile.cpp" />
     <ClCompile Include="fvacommonlib.cpp" />
+    <ClCompile Include="FVADescriptionFile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\lib\json\json.h" />
     <ClInclude Include="CSVFile.h" />
     <ClInclude Include="fvacommonlib.h" />
+    <ClInclude Include="FVADescriptionFile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

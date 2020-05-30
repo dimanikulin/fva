@@ -34,12 +34,21 @@
     <ClCompile Include="..\lib\json\json.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FVADescriptionFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fvacommonlib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CSVFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\json\json.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FVADescriptionFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
