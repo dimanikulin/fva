@@ -12,7 +12,7 @@ FVADescriptionFile::~FVADescriptionFile( )
 
 FVA_ERROR_CODE FVADescriptionFile::load( QStringList& titles, DESCRIPTIONS_MAP& decsItems )
 {
-	if ( !open() )
+	if ( !openForRead() )
 		return FVA_ERROR_CANT_OPEN_FILE_DESC;
 	
 	int		indexOfFileNameColumn = -1;
@@ -52,4 +52,39 @@ int FVADescriptionFile::getColumnIdByName( const QStringList& titles, const QStr
 			return id;
 	}
 	return -1;
+}
+FVA_ERROR_CODE FVADescriptionFile::save( const QStringList& titles, const DESCRIPTIONS_MAP& decsItems )
+{
+	if ( !openForWrite() )
+		return FVA_ERROR_CANT_OPEN_FILE_DESC;
+	for ( auto i = decsItems.begin(); i !=decsItems.end(); ++i )
+		if ( i.value().size() != titles.size() )
+			return FVA_ERROR_INCORRECT_FORMAT;
+	QString oneStr = titles.join(",");
+	writeLine( oneStr );
+	oneStr = "";
+	for ( auto i = decsItems.begin(); i !=decsItems.end(); ++i )
+	{
+		for ( auto iv = i.value().begin(); iv != i.value().end(); ++iv )
+		{
+			if ( iv->contains(',') ) 
+			{
+				if ( oneStr.isEmpty() )
+					oneStr += "\"" + iv->trimmed() + "\"";
+					else
+						oneStr += ",\"" + iv->trimmed() + "\"";	
+			}
+			else
+			{
+				if ( oneStr.isEmpty() )
+					oneStr += iv->trimmed();
+				else
+					oneStr += "," + iv->trimmed();
+			}
+		}
+
+		writeLine( oneStr.remove("\t") );
+		oneStr = "";
+	}
+	return FVA_NO_ERROR;
 }

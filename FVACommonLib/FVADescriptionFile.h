@@ -28,7 +28,15 @@ class FVADescriptionFile : 	public CSVFile
 		FVA_ERROR_CODE load( QStringList& titles, DESCRIPTIONS_MAP& decsItems );
 
 		/*!
-		 * \brief it return id of colum by name 
+		 * \brief it saves data to file
+		 * \param titles it is first row of a set, and it keeps names of columns
+		 * \param decsItems it set of rows with structure according to titles
+		 * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
+		 */
+		FVA_ERROR_CODE save( const QStringList& titles, const DESCRIPTIONS_MAP& decsItems );
+
+		/*!
+		 * \brief it returns id of colum by name 
 		 */
 		static int getColumnIdByName( const QStringList& titles, const QString& columnName );
 
