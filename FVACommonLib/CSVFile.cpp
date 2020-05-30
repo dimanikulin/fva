@@ -13,14 +13,23 @@ CSVFile::~CSVFile(  )
 
 }
 
-bool CSVFile::open()
+bool CSVFile::openForRead()
 {
 	m_file.reset ( new QFile ( m_path ) );
 	if ( !m_file->open( QIODevice::ReadOnly ) )
 		return false;
 
 	m_stream.reset ( new QTextStream( m_file.get() ) );
+	return true;
+}
 
+bool CSVFile::openForWrite()
+{
+	m_file.reset ( new QFile ( m_path ) );
+	if ( !m_file->open( QIODevice::WriteOnly ) )
+		return false;
+
+	m_stream.reset ( new QTextStream( m_file.get() ) );
 	return true;
 }
 
@@ -75,3 +84,8 @@ bool CSVFile::parseLine( const QString& line, QStringList&	values, char delimite
 	return true;
 }
 
+bool CSVFile::writeLine ( const QString& line )
+{
+	*m_stream << line << "\n";
+	return true;
+}

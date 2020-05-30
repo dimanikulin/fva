@@ -22,10 +22,16 @@ class CSVFile
 	protected : // methods
 
 		/*!
-		 * \brief it open csv file 
+		 * \brief it open csv file for readnig 
 		 * \return it returns true if opening was successfull, otherwize it returns false 
 		 */
-		bool open ( );
+		bool openForRead ( );
+
+		/*!
+		 * \brief it open csv file for writing 
+		 * \return it returns true if opening was successfull, otherwize it returns false 
+		 */
+		bool openForWrite ( );
 
 		/*!
 		 * \brief it reads one string terminated OA or OAOD from file
@@ -45,7 +51,14 @@ class CSVFile
 		 * \param delimiter - delimiter of the fields to tokenize
 		 * \return it returns true if it parsed line succesfully, otherwise it returns false
 		 */
-		bool parseLine( const QString& line, QStringList& values, char delimiter = ',' ); 
+		bool parseLine( const QString& line, QStringList& values, char delimiter = ',' );
+
+		/*!
+		 * \brief it writes line to a file 
+		 * \param line - string to be written
+		 * \return it returns true if it has been written succesfully, otherwise it returns false
+		 */
+		bool writeLine ( const QString& line );
 
 	private: // data
 
