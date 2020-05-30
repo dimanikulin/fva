@@ -44,7 +44,9 @@ enum FVA_ERROR_CODE
 	FVA_ERROR_CANT_OPEN_FILE_DESC					= 1014,
 	FVA_ERROR_CANT_FIND_DIR_DESC					= 1015,
 	FVA_ERROR_EMPTY_DEV_ID							= 1016,
-
+	FVA_ERROR_CANT_FIND_DICTIONARIES				= 1017,
+	FVA_ERROR_CANT_OPEN_DICTIONARIES				= 1018,
+	FVA_ERROR_CANT_LOAD_DICTIONARIES				= 1019,
 };
 
 /*!
@@ -52,8 +54,8 @@ enum FVA_ERROR_CODE
  */
 const QString	DESCRIPTION_FILE_NAME				= "description.csv";
 const QString	OLD_DESCRIPTION_FILE_NAME			= "description_old.csv";
-const QString	OLD_DESCRIPTION_FOLDER_NAME			= "folderDescription.json_old";
-const QString	DESCRIPTION_FOLDER_NAME				= "folderDescription.json";
+const QString	OLD_DIR_DESCRIPTION_FILE_NAME		= "folderDescription.json_old";
+const QString	DIR_DESCRIPTION_FILE_NAME			= "folderDescription.json";
 const QString	BACKGROUND_MUSIC_FILE_NAME			= "bgmusic.mid";
 
 /*!
@@ -63,10 +65,29 @@ const unsigned int DEFAULT_MIN_COUNT_FILES_IN_DIR	= 3;
 
 /*!
  * \brief it loads folder description 
+ * \brief folder to load description from
  * \param outputJson output parameter to be filled up by json structure
  * \param error - human-readable description of error if any 
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
 FVA_ERROR_CODE getFolderDescription( const QString& folder, QVariantMap& outputJson, QString& error );
+
+/*!
+ * \brief it creates folder description file with content
+ * \param path - file path to create folder decsription
+ * \param content - json data to be written
+ * \param error - human-readable description of error if any to be filled up
+ * \returns it returns code of error if any or FVA_NO_ERROR if writing was successful
+ */
+FVA_ERROR_CODE createFolderDescription (const QString& path, const QString& content, QString& error);
+
+/*!
+ * \brief it loads FVA dictionaries from file 
+ * \param file to load dictionaries from 
+ * \param outputJson output parameter to be filled up by json structures
+ * \param error - human-readable description of error if any 
+ * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
+ */
+FVA_ERROR_CODE loadDictionary( const QString& file, QVariantMap& outputJson, QString& error );
 
 #endif // FVACOMMONLIB_H
