@@ -74,13 +74,4 @@ bool CSVFile::parseLine( const QString& line, QStringList&	values, char delimite
  	
 	return true;
 }
-int CSVFile::getColumnIdByName( const QStringList& titles, const QString& columnName )
-{
-	for ( int id = 0; id < titles.size(); ++id )
-	{
-		if ( columnName.toUpper() == titles[ id ].toUpper() )
-			return id;
-	}
-	return -1;
-}
 

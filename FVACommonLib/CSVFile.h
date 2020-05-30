@@ -11,15 +11,15 @@
  */
 class CSVFile
 {
-	public:
+	protected:
 
 		/*!
 		 * \brief ctors-dtors section
 		 */
 		CSVFile( const QString& path );
 		virtual ~CSVFile( );
-
-	public : // methods
+	
+	protected : // methods
 
 		/*!
 		 * \brief it open csv file 
@@ -46,11 +46,6 @@ class CSVFile
 		 * \return it returns true if it parsed line succesfully, otherwise it returns false
 		 */
 		bool parseLine( const QString& line, QStringList& values, char delimiter = ',' ); 
-
-		/*!
-		 * \brief it return id of colum by name 
-		 */
-		int getColumnIdByName( const QStringList& titles, const QString& columnName );
 
 	private: // data
 
