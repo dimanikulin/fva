@@ -46,7 +46,7 @@ int main( int argc, char *argv[] )
 {	
 	//install : set the callback
 	// TODO make output configurable
-	// qInstallMsgHandler( msghandler );
+	qInstallMsgHandler( msghandler );
 
 	QCoreApplication a(argc, argv);
 
