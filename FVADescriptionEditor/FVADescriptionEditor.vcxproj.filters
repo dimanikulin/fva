@@ -53,6 +53,15 @@
     <ClCompile Include="..\lib\qexifimageheader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fvapeoplelistdlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_fvapeoplelistdlg.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_fvapeoplelistdlg.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fvadescriptioneditor.h">
@@ -64,9 +73,18 @@
     <CustomBuild Include="fvadescriptioneditor.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="fvapeoplelistdlg.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="fvapeoplelistdlg.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_fvadescriptioneditor.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_fvapeoplelistdlg.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
