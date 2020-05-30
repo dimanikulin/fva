@@ -15,27 +15,7 @@ CmdLineBaseTask::~CmdLineBaseTask( )
 
 }
 
-bool CmdLineBaseTask::isInternalFileName( const QString& fileName )
-{
-	return (	fileName.toUpper() == DESCRIPTION_FILE_NAME.toUpper() 
-			||	fileName.toUpper() == DIR_DESCRIPTION_FILE_NAME.toUpper() 
-			||	fileName.toUpper() == BACKGROUND_MUSIC_FILE_NAME.toUpper() 
-			||	fileName.toUpper() == OLD_DIR_DESCRIPTION_FILE_NAME.toUpper() 
-			||	fileName.toUpper() == OLD_DESCRIPTION_FILE_NAME.toUpper() ) ;
-}
-FVA_FILE_TYPE CmdLineBaseTask::convertFileExt2FileType ( const QString& type )
-{
-	if ( type == "JPG" || type == "JPEG" || type == "PNG" || type == "BMP" || type == "GIF" )
-		return FVA_FILE_TYPE_IMG;
-	
-	if ( type == "AVI" ||	type == "MOV" || type == "MPG" || type == "MP4" || type == "3GP" )
-		return FVA_FILE_TYPE_VIDEO;
 
-	if ( type == "WAV" )
-		return FVA_FILE_TYPE_AUDIO;
-
-	return FVA_FILE_TYPE_UNKNOWN;
-}
 FVA_ERROR_CODE CmdLineBaseTask::processFolderRecursivly( const QString& folder )
 {
 	QDir recurDir(folder);

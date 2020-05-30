@@ -46,17 +46,7 @@ class CmdLineBaseTask
 		 * \param custom - customization flow support
 		 */
 		CmdLineBaseTask( const QString& folder, bool readOnly = false, const QString& custom = "" );
-
-		/*!
-		 * \brief it converts file extention to file type if it is possible
-		 */
-		FVA_FILE_TYPE convertFileExt2FileType ( const QString& type );
-
-		/*!
-		 * \brief it answers if file is for internal purpose
-		 */
-		bool isInternalFileName( const QString& fileName );
-
+	
 	protected: // data
 
 		/*!
