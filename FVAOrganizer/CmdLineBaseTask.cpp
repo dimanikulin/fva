@@ -18,9 +18,9 @@ CmdLineBaseTask::~CmdLineBaseTask( )
 bool CmdLineBaseTask::isInternalFileName( const QString& fileName )
 {
 	return (	fileName.toUpper() == DESCRIPTION_FILE_NAME.toUpper() 
-			||	fileName.toUpper() == DESCRIPTION_FOLDER_NAME.toUpper() 
+			||	fileName.toUpper() == DIR_DESCRIPTION_FILE_NAME.toUpper() 
 			||	fileName.toUpper() == BACKGROUND_MUSIC_FILE_NAME.toUpper() 
-			||	fileName.toUpper() == OLD_DESCRIPTION_FOLDER_NAME.toUpper() 
+			||	fileName.toUpper() == OLD_DIR_DESCRIPTION_FILE_NAME.toUpper() 
 			||	fileName.toUpper() == OLD_DESCRIPTION_FILE_NAME.toUpper() ) ;
 }
 FVA_FILE_TYPE CmdLineBaseTask::convertFileExt2FileType ( const QString& type )
