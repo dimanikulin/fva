@@ -5,10 +5,10 @@
 
 #include "../lib/json/json.h"
 
-FVA_ERROR_CODE getFolderDescription( const QString& folder, QVariantMap& outputJson, QString& error )
+FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outputJson, QString& error )
 {
 	QDir dir ( folder );
-	QString descFolderPath = folder + "/" + DIR_DESCRIPTION_FILE_NAME;
+	QString descFolderPath = folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME;
 	if ( !dir.exists( descFolderPath ) )
 	{
 		error = "description for folder does not exist in folder:" + folder;
@@ -35,7 +35,7 @@ FVA_ERROR_CODE getFolderDescription( const QString& folder, QVariantMap& outputJ
 	file.close();
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE createFolderDescription (const QString& path, const QString& content, QString& error)
+FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, const QString& content, QString& error)
 {
 	QFile fileNew ( path );	
 	if ( !fileNew.open( QIODevice::WriteOnly | QIODevice::Text ) )
@@ -50,7 +50,7 @@ FVA_ERROR_CODE createFolderDescription (const QString& path, const QString& cont
 
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE loadDictionary( const QString& file, QVariantMap& outputJson, QString& error )
+FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputJson, QString& error )
 {
 	QDir dir ( file );
 	if ( !dir.exists( file ) )
@@ -77,4 +77,33 @@ FVA_ERROR_CODE loadDictionary( const QString& file, QVariantMap& outputJson, QSt
 	}
 	_file.close();
 	return FVA_NO_ERROR;
+}
+bool fvaIsInternalFileName( const QString& fileName )
+{
+	return (	fileName.toUpper() == FVA_DESCRIPTION_FILE_NAME.toUpper() 
+			||	fileName.toUpper() == FVA_DIR_DESCRIPTION_FILE_NAME.toUpper() 
+			||	fileName.toUpper() == FVA_BACKGROUND_MUSIC_FILE_NAME.toUpper() 
+			||	fileName.toUpper() == FVA_OLD_DIR_DESCRIPTION_FILE_NAME.toUpper() 
+			||	fileName.toUpper() == FVA_OLD_DESCRIPTION_FILE_NAME.toUpper() ) ;
+}
+FVA_FILE_TYPE fvaConvertFileExt2FileType ( const QString& type )
+{	
+	if ( type.toUpper() == "JPG" 
+		|| type.toUpper() == "JPEG" 
+		|| type.toUpper() == "PNG" 
+		|| type.toUpper() == "BMP" 
+		|| type.toUpper() == "GIF" )
+		return FVA_FILE_TYPE_IMG;
+	
+	if ( type.toUpper() == "AVI" 
+		|| type.toUpper() == "MOV" 
+		|| type.toUpper() == "MPG" 
+		|| type.toUpper() == "MP4" 
+		|| type.toUpper() == "3GP" )
+		return FVA_FILE_TYPE_VIDEO;
+
+	if ( type.toUpper() == "WAV" )
+		return FVA_FILE_TYPE_AUDIO;
+
+	return FVA_FILE_TYPE_UNKNOWN;
 }

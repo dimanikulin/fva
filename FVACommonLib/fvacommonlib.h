@@ -52,16 +52,17 @@ enum FVA_ERROR_CODE
 /*!
  * \brief internal file names
  */
-const QString	DESCRIPTION_FILE_NAME				= "description.csv";
-const QString	OLD_DESCRIPTION_FILE_NAME			= "description_old.csv";
-const QString	OLD_DIR_DESCRIPTION_FILE_NAME		= "folderDescription.json_old";
-const QString	DIR_DESCRIPTION_FILE_NAME			= "folderDescription.json";
-const QString	BACKGROUND_MUSIC_FILE_NAME			= "bgmusic.mid";
+const QString	FVA_DESCRIPTION_FILE_NAME				= "description.csv";
+const QString	FVA_OLD_DESCRIPTION_FILE_NAME			= "description_old.csv";
+const QString	FVA_OLD_DIR_DESCRIPTION_FILE_NAME		= "folderDescription.json_old";
+const QString	FVA_DIR_DESCRIPTION_FILE_NAME			= "folderDescription.json";
+const QString	FVA_BACKGROUND_MUSIC_FILE_NAME			= "bgmusic.mid";
+const QString	FVA_DICTIONARY_NAME						= "data.json";
 
 /*!
  * \brief how many supported files should be in a folder
  */
-const unsigned int DEFAULT_MIN_COUNT_FILES_IN_DIR	= 3;
+const unsigned int FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR	= 3;
 
 /*!
  * \brief it loads folder description 
@@ -70,7 +71,7 @@ const unsigned int DEFAULT_MIN_COUNT_FILES_IN_DIR	= 3;
  * \param error - human-readable description of error if any 
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_ERROR_CODE getFolderDescription( const QString& folder, QVariantMap& outputJson, QString& error );
+FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outputJson, QString& error );
 
 /*!
  * \brief it creates folder description file with content
@@ -79,7 +80,7 @@ FVA_ERROR_CODE getFolderDescription( const QString& folder, QVariantMap& outputJ
  * \param error - human-readable description of error if any to be filled up
  * \returns it returns code of error if any or FVA_NO_ERROR if writing was successful
  */
-FVA_ERROR_CODE createFolderDescription (const QString& path, const QString& content, QString& error);
+FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, const QString& content, QString& error);
 
 /*!
  * \brief it loads FVA dictionaries from file 
@@ -88,6 +89,16 @@ FVA_ERROR_CODE createFolderDescription (const QString& path, const QString& cont
  * \param error - human-readable description of error if any 
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_ERROR_CODE loadDictionary( const QString& file, QVariantMap& outputJson, QString& error );
+FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputJson, QString& error );
+
+/*!
+* \brief it converts file extention to file type if it is possible
+*/
+FVA_FILE_TYPE fvaConvertFileExt2FileType ( const QString& type );
+
+/*!
+* \brief it answers if file is internal purpose for
+*/
+bool fvaIsInternalFileName( const QString& type );
 
 #endif // FVACOMMONLIB_H
