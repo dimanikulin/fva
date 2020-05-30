@@ -557,8 +557,8 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	}
 	m_fileCount[ m_folder ] = countSupportedFiles;
-	if ( countSupportedFiles < DEFAULT_MIN_COUNT_FILES_IN_DIR )
-		LOG_QCRIT << "too little supported found in:" << m_folder;
+	if ( countSupportedFiles < DEFAULT_MIN_COUNT_FILES_IN_DIR && countSupportedFiles )
+		LOG_QCRIT << "too little supported files found in:" << m_folder;
 
 	QVariantMap result;
 	QString error;
@@ -572,7 +572,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 		QString people	= 	result["people"].toString();
 		QString device	= 	result["deviceId"].toString();
 		if ( device.isEmpty() )
-			LOG_QCRIT << "device is empty in folder:" << m_folder;
+			LOG_QCRIT << "deviceID is empty in folder desc in:" << m_folder;
 		QString whoTook	= 	result["whoTookFotoId"].toString();
 		QString event	= 	result["event"].toString();
 		QString tags	= 	result["tags"].toString();
@@ -634,6 +634,12 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 			+ result["event"].toString()			+ ",,"
 			+ result["tags"].toString()				+ ",\n";
 
+	if ( result["deviceId"].toString().isEmpty() )
+	{
+		LOG_QCRIT << "deviceId is empty in:" << m_folder;
+		return FVA_ERROR_EMPTY_DEV_ID;
+	}
+
 	std::auto_ptr <QFile>	pFile (nullptr);
 	std::auto_ptr <QTextStream> pTextStream (nullptr); 
 	m_dir.cdUp();
@@ -648,8 +654,11 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 			return FVA_ERROR_CANT_OPEN_FILE_DESC;
 		}
 		pTextStream.reset ( new QTextStream(pFile.get()) );
-		// pTextStream->setCodec( "UTF-8" );
-		*pTextStream.get() << "Name,Place,People,Device,WhoTook,Description,Scaner,Comment,oldName";
+		if ( m_custom != "FIRST" )
+		{
+			*pTextStream.get() << "Name,Place,People,Device,WhoTook,Description,Scaner,Comment,oldName\n";
+			m_custom = "FIRST";
+		}
 	}
 	m_dir = QDir (m_folder);
 	
