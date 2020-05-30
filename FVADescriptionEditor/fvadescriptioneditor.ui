@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>703</width>
-    <height>479</height>
+    <height>411</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <widget class="QLabel" name="lbFoto">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>20</y>
       <width>351</width>
       <height>291</height>
@@ -27,24 +27,21 @@
      <string>TextLabel</string>
     </property>
    </widget>
-   <widget class="QDateTimeEdit" name="dateTimeEdit">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>360</y>
-      <width>241</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QComboBox" name="cmbBoxPlace">
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>30</y>
+      <y>20</y>
       <width>241</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="inputMethodHints">
      <set>Qt::ImhHiddenText</set>
@@ -53,11 +50,18 @@
    <widget class="QLabel" name="lbName">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>370</x>
       <y>0</y>
-      <width>281</width>
+      <width>321</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>TextLabel</string>
@@ -66,11 +70,18 @@
    <widget class="QLabel" name="lbPlace">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>30</y>
+      <x>370</x>
+      <y>20</y>
       <width>71</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Place</string>
@@ -79,11 +90,18 @@
    <widget class="QLabel" name="lbPeople">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>70</y>
+      <x>370</x>
+      <y>60</y>
       <width>71</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>People</string>
@@ -92,10 +110,10 @@
    <widget class="QCommandLinkButton" name="btnNext">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>350</y>
-      <width>91</width>
-      <height>41</height>
+      <x>10</x>
+      <y>340</y>
+      <width>111</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -105,11 +123,18 @@
    <widget class="QLabel" name="lbDevice">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>150</y>
+      <x>370</x>
+      <y>340</y>
       <width>46</width>
       <height>13</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Device</string>
@@ -119,10 +144,17 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>150</y>
+      <y>340</y>
       <width>241</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="inputMethodHints">
      <set>Qt::ImhHiddenText</set>
@@ -131,11 +163,18 @@
    <widget class="QLabel" name="lbWho">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>190</y>
-      <width>46</width>
-      <height>13</height>
+      <x>370</x>
+      <y>300</y>
+      <width>71</width>
+      <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Who took</string>
@@ -145,10 +184,17 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>190</y>
+      <y>300</y>
       <width>241</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="inputMethodHints">
      <set>Qt::ImhHiddenText</set>
@@ -157,10 +203,10 @@
    <widget class="QCommandLinkButton" name="btnPrev">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>350</y>
-      <width>101</width>
-      <height>41</height>
+      <x>130</x>
+      <y>340</y>
+      <width>111</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -171,20 +217,34 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>230</y>
+      <y>140</y>
       <width>241</width>
-      <height>20</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
    </widget>
    <widget class="QLabel" name="lbDesc">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>230</y>
+      <x>370</x>
+      <y>140</y>
       <width>71</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Description</string>
@@ -194,10 +254,17 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>270</y>
+      <y>260</y>
       <width>241</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="inputMethodHints">
      <set>Qt::ImhHiddenText</set>
@@ -206,11 +273,18 @@
    <widget class="QLabel" name="lbScaner">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>270</y>
+      <x>370</x>
+      <y>260</y>
       <width>51</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Scaner</string>
@@ -219,11 +293,18 @@
    <widget class="QLabel" name="lblComment">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>320</y>
-      <width>46</width>
-      <height>13</height>
+      <x>370</x>
+      <y>180</y>
+      <width>71</width>
+      <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Comment</string>
@@ -233,43 +314,64 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>320</y>
+      <y>180</y>
       <width>241</width>
-      <height>20</height>
+      <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
    </widget>
-   <widget class="QCommandLinkButton" name="btnSaveAndExit">
+   <widget class="QCommandLinkButton" name="btnSave">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>350</y>
-      <width>131</width>
-      <height>41</height>
+      <x>250</x>
+      <y>340</y>
+      <width>111</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Save and Exit</string>
+     <string>Save</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="editOldName">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>410</y>
-      <width>681</width>
-      <height>20</height>
+      <x>450</x>
+      <y>220</y>
+      <width>241</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
    </widget>
    <widget class="QToolButton" name="btnAdd">
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>90</y>
-      <width>25</width>
+      <y>80</y>
+      <width>61</width>
       <height>19</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>add</string>
@@ -279,10 +381,17 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>110</y>
-      <width>25</width>
+      <y>100</y>
+      <width>61</width>
       <height>19</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>del</string>
@@ -292,10 +401,37 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>70</y>
+      <y>60</y>
       <width>241</width>
       <height>71</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>230</y>
+      <width>46</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Date</string>
     </property>
    </widget>
   </widget>
@@ -321,5 +457,22 @@
  <resources>
   <include location="fvadescriptioneditor.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnNext</sender>
+   <signal>pressed()</signal>
+   <receiver>FVADescriptionEditorClass</receiver>
+   <slot>onNextPressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>65</x>
+     <y>390</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>351</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
