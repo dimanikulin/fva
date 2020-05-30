@@ -117,6 +117,32 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_Device_Name::execute()
 }
 FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File::execute()
 {
+	// check for existing folder description
+	if ( !m_dir.exists( m_folder + "/" + DIR_DESCRIPTION_FILE_NAME ))
+	{
+		if ( m_custom.isEmpty() )
+		{
+			LOG_QCRIT << DIR_DESCRIPTION_FILE_NAME << "does not exist in" << m_folder ;
+			return FVA_ERROR_CANT_FIND_DIR_DESC;
+		}
+		// create folder description
+		if ( !m_readOnly )
+		{
+			QString error;
+			// m_custom must be device id
+			QString jsonData = 
+				"{\"deviceId\":\"" 
+				+ m_custom 
+				+ "\",\n\"whoTookFotoId\":\"\",\n\"tags\":\"\",\n\"people\":\"\",\n\"place\":\"\",\n\"event\":\"\"}";
+			FVA_ERROR_CODE res = createFolderDescription( m_folder + "/" + DIR_DESCRIPTION_FILE_NAME, jsonData, error );
+			if ( FVA_NO_ERROR != res )
+			{
+				LOG_QCRIT << error;
+				return res;
+			}
+		}
+	}
+
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		if (info.isDir())
@@ -126,31 +152,41 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File::execute()
 		if ( isInternalFileName( info.fileName() ) )
 			continue;
 
-		QString subFolderName		= info.baseName().mid(0,10);
+		QString subFolderName		= info.baseName().mid(0,10).replace("-",".");
 		QString fullSubFolderpath	= m_folder + "/" + subFolderName;
 		fullSubFolderpath			= fullSubFolderpath.replace("-",".");
 			
 		if ( !m_dir.exists( subFolderName ) )
 		{
-			m_dir.mkdir( subFolderName );
+			if ( !m_readOnly )
+				m_dir.mkdir( subFolderName );
 			LOG_QDEB << "sub-folder:" << subFolderName << " created";
 
 			// copy folder description
-			if ( QFile::copy( m_folder + "/folderDescription.json" ,  fullSubFolderpath + "/folderDescription.json" ) )
-				LOG_QDEB << "folderDescription.json is copied to " << subFolderName ;
-			else
-				LOG_QCRIT << "folderDescription.json is NOT copied to " << subFolderName ;
+			if ( !m_readOnly )
+			{
+				if ( QFile::copy( m_folder + "\\" + DIR_DESCRIPTION_FILE_NAME , fullSubFolderpath + "\\"+ DIR_DESCRIPTION_FILE_NAME ) )
+					LOG_QDEB << DIR_DESCRIPTION_FILE_NAME << " is copied to " << subFolderName ;
+				else
+				{
+					LOG_QCRIT << DIR_DESCRIPTION_FILE_NAME << " is NOT copied to " << subFolderName ;
+					DWORD err = GetLastError();
+					return FVA_ERROR_CANT_FIND_DIR_DESC;
+				}
+			}
 		}
-		// move the file
-		if ( !m_dir.rename( info.absoluteFilePath(), fullSubFolderpath + "/" + info.fileName() ) )
+		if ( !m_readOnly ) 
 		{
-			LOG_QCRIT << "can not rename file:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
-			return FVA_ERROR_CANT_RENAME_FILE;
+			// move the file
+			if ( !m_dir.rename( info.absoluteFilePath(), fullSubFolderpath + "/" + info.fileName() ) )
+			{
+				LOG_QCRIT << "can not rename file:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
+				return FVA_ERROR_CANT_RENAME_FILE;
+			}
+			else
+				LOG_QDEB << "file renamed:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
 		}
-		else
-			LOG_QDEB << "file renamed:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
 	}
-
 	return FVA_NO_ERROR;
 }
 
@@ -691,7 +727,7 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 	if ( !m_readOnly )
 	{
 		pFile->close();
-		QString descFolderPath = m_folder + "/" + DESCRIPTION_FOLDER_NAME;
+		QString descFolderPath = m_folder + "/" + DIR_DESCRIPTION_FILE_NAME;
 		if ( !m_dir.remove( descFolderPath ) )
 		{
 			LOG_QCRIT << "can not remove description for folder in folder:" << m_folder;
@@ -700,7 +736,7 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 		if ( !m_dir.remove( descFolderPath + "_old" ) )
 		{
 			LOG_QCRIT << "can not remove old description for folder in folder:" << m_folder;
-			return FVA_ERROR_CANT_REMOVE_FILE_OR_DIR;
+			// return FVA_ERROR_CANT_REMOVE_FILE_OR_DIR;
 		}
 		m_dir.cdUp();
 		if ( !m_dir.rmdir( m_folder ) )
