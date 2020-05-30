@@ -43,12 +43,15 @@ enum FVA_ERROR_CODE
 	FVA_ERROR_CANT_REMOVE_FILE_OR_DIR				= 1013,
 	FVA_ERROR_CANT_OPEN_FILE_DESC					= 1014,
 	FVA_ERROR_CANT_FIND_DIR_DESC					= 1015,
+	FVA_ERROR_EMPTY_DEV_ID							= 1016,
+
 };
 
 /*!
  * \brief internal file names
  */
 const QString	DESCRIPTION_FILE_NAME				= "description.csv";
+const QString	OLD_DESCRIPTION_FILE_NAME			= "description_old.csv";
 const QString	OLD_DESCRIPTION_FOLDER_NAME			= "folderDescription.json_old";
 const QString	DESCRIPTION_FOLDER_NAME				= "folderDescription.json";
 const QString	BACKGROUND_MUSIC_FILE_NAME			= "bgmusic.mid";

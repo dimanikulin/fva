@@ -23,7 +23,7 @@ FVA_ERROR_CODE getFolderDescription( const QString& folder, QVariantMap& outputJ
 
 	bool res				= false;
 	QString		jsonData	= QString::fromLocal8Bit ( file.readAll() );
-	QVariantMap	result		= QtJson::Json::parse ( jsonData, res ).toMap();
+	outputJson				= QtJson::Json::parse ( jsonData, res ).toMap();
 	file.close();
 	return FVA_NO_ERROR;
 }
