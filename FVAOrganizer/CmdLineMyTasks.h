@@ -1,5 +1,5 @@
 #include "CmdLineTasks.h"
 
-_CLASS_TASK_DEFINITION(CLT_Xml_Convert,false)
-_CLASS_TASK_DEFINITION(CLT_Update_File_Description,false)
-_CLASS_TASK_DEFINITION(CLT_Convert_Dir_Desc,true)
+_CLASS_TASK_DECLARATION(CLT_Xml_Convert,false)
+_CLASS_TASK_DECLARATION(CLT_Update_File_Description,false)
+_CLASS_TASK_DECLARATION(CLT_Convert_Dir_Desc,true)

@@ -1,6 +1,6 @@
 #include "CmdLineMyTasks.h"
 #include <QXmlStreamReader>
-#include "CSVFile.h"
+#include "FVADescriptionFile.h"
 
 #include "../lib/json/json.h"
 #include "../lib/qexifimageheader.h"
@@ -57,48 +57,15 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 		return FVA_ERROR_CANT_OPEN_INPUT_FILE;
 	}
 
-	CSVFile descFile ( descPath );
+	FVADescriptionFile descFile ( descPath );
 
-	if ( !descFile.open() )
+	QStringList			titles; 
+	DESCRIPTIONS_MAP	decsItems;
+	FVA_ERROR_CODE res = descFile.load( titles, decsItems );
+	if ( FVA_NO_ERROR != res )
 	{
-		LOG_QCRIT << "description file can not be open";
-		return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;
-	}
-	QStringList						titles; 
-	QMap< QString, QStringList >	decsItems;
-	int								indexOfFileNameColumn = -1;
-	while ( !descFile.atEnd() )
-	{
-		QString	line = descFile.readLine();
-		if ( line.isEmpty() && descFile.atEnd() )
-			break;
-		QStringList	values;
-		if ( !descFile.parseLine( line, values ) )
-			continue;
-		else
-		{
-			if ( titles.isEmpty() )
-			{
-				indexOfFileNameColumn = descFile.getColumnIdByName( values, "name" );
-				if ( -1 == indexOfFileNameColumn )
-				{
-					LOG_QCRIT << "could not find mandatory column in description file";
-					return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-				}
-				titles = values;
-				qDebug() << values;
-				continue;
-			}
-			else
-			{
-				if ( values.size() != titles.size() )
-				{
-					LOG_QCRIT << "found (in description file) row with incorrect column length";
-					return FVA_ERROR_INCORRECT_FORMAT;
-				}
-				decsItems [ values[ indexOfFileNameColumn ].toUpper() ] = values;
-			}
-		}
+		LOG_QCRIT << "description file can not be loaded";
+		return res;
 	}
 
 	QString imageFilePrefix;
@@ -131,7 +98,7 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 		if ( it != decsItems.end() )
 		{
 			int indexColumn = descFile.getColumnIdByName( titles, "Description" );
-			if ( -1 == indexOfFileNameColumn )
+			if ( -1 == indexColumn )
 			{
 				LOG_QCRIT << "could not find Description column in description file";
 				return FVA_ERROR_INCORRECT_FORMAT;
@@ -139,7 +106,7 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 			description = it.value()[ indexColumn ];
 
 			indexColumn = descFile.getColumnIdByName( titles, "Comment" );
-			if ( -1 == indexOfFileNameColumn )
+			if ( -1 == indexColumn )
 			{
 				LOG_QCRIT << "could not find Comment column in description file";
 				return FVA_ERROR_INCORRECT_FORMAT;
@@ -162,7 +129,7 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 }
 FVA_ERROR_CODE CLT_Convert_Dir_Desc::execute()
 {
-	QString descFolderPath = m_folder + "/" + DESCRIPTION_FOLDER_NAME;
+	QString descFolderPath = m_folder + "/" + DIR_DESCRIPTION_FILE_NAME;
 	if ( !m_dir.exists( descFolderPath ) )
 	{
 		LOG_QWARN << "description does not exist in:" << m_folder;
@@ -197,17 +164,13 @@ FVA_ERROR_CODE CLT_Convert_Dir_Desc::execute()
 			LOG_QCRIT << "can not rename description in:" << m_folder;
 			return FVA_ERROR_CANT_RENAME_DIR_DESC;
 		}
-		QFile fileNew ( descFolderPath );	
-		if ( !fileNew.open( QIODevice::WriteOnly | QIODevice::Text ) )
+		QString error;
+		FVA_ERROR_CODE res = createFolderDescription( descFolderPath, jsonData, error );
+		if ( FVA_NO_ERROR != res )
 		{
-			LOG_QCRIT << "can not open new description in:" << m_folder;
-			return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;
+			LOG_QCRIT << error;
+			return res;
 		}
-		QByteArray data = jsonData.toAscii();
-		QTextStream writeStream( &fileNew );
-		writeStream << jsonData;	
-		writeStream.flush();
-		fileNew.close();
 
 		LOG_QWARN << "updated folder description:" << descFolderPath;
 	}	
