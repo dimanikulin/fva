@@ -61,7 +61,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_Device_Name::execute()
 		// if it is picture files
 		QString suffix = info.suffix().toUpper();
 		QString fullname = info.absoluteFilePath();
-		if(	FVA_FILE_TYPE_IMG == convertFileExt2FileType ( suffix ) )
+		if(	FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ) )
 		{
 			QString newDeviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
 									+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
@@ -118,11 +118,11 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_Device_Name::execute()
 FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File::execute()
 {
 	// check for existing folder description
-	if ( !m_dir.exists( m_folder + "/" + DIR_DESCRIPTION_FILE_NAME ))
+	if ( !m_dir.exists( m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME ))
 	{
 		if ( m_custom.isEmpty() )
 		{
-			LOG_QCRIT << DIR_DESCRIPTION_FILE_NAME << "does not exist in" << m_folder ;
+			LOG_QCRIT << FVA_DIR_DESCRIPTION_FILE_NAME << "does not exist in" << m_folder ;
 			return FVA_ERROR_CANT_FIND_DIR_DESC;
 		}
 		// create folder description
@@ -134,7 +134,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File::execute()
 				"{\"deviceId\":\"" 
 				+ m_custom 
 				+ "\",\n\"whoTookFotoId\":\"\",\n\"tags\":\"\",\n\"people\":\"\",\n\"place\":\"\",\n\"event\":\"\"}";
-			FVA_ERROR_CODE res = createFolderDescription( m_folder + "/" + DIR_DESCRIPTION_FILE_NAME, jsonData, error );
+			FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, jsonData, error );
 			if ( FVA_NO_ERROR != res )
 			{
 				LOG_QCRIT << error;
@@ -149,7 +149,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File::execute()
 			continue;
 
 		// skip meta files
-		if ( isInternalFileName( info.fileName() ) )
+		if ( fvaIsInternalFileName( info.fileName() ) )
 			continue;
 
 		QString subFolderName		= info.baseName().mid(0,10).replace("-",".");
@@ -165,11 +165,11 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File::execute()
 			// copy folder description
 			if ( !m_readOnly )
 			{
-				if ( QFile::copy( m_folder + "\\" + DIR_DESCRIPTION_FILE_NAME , fullSubFolderpath + "\\"+ DIR_DESCRIPTION_FILE_NAME ) )
-					LOG_QDEB << DIR_DESCRIPTION_FILE_NAME << " is copied to " << subFolderName ;
+				if ( QFile::copy( m_folder + "\\" + FVA_DIR_DESCRIPTION_FILE_NAME , fullSubFolderpath + "\\"+ FVA_DIR_DESCRIPTION_FILE_NAME ) )
+					LOG_QDEB << FVA_DIR_DESCRIPTION_FILE_NAME << " is copied to " << subFolderName ;
 				else
 				{
-					LOG_QCRIT << DIR_DESCRIPTION_FILE_NAME << " is NOT copied to " << subFolderName ;
+					LOG_QCRIT << FVA_DIR_DESCRIPTION_FILE_NAME << " is NOT copied to " << subFolderName ;
 					DWORD err = GetLastError();
 					return FVA_ERROR_CANT_FIND_DIR_DESC;
 				}
@@ -239,7 +239,7 @@ FVA_ERROR_CODE CLT_Files_Rename::execute()
 
 		// if it is picture files
 		QString suffix = info.suffix().toUpper();
-		if(	FVA_FILE_TYPE_IMG == convertFileExt2FileType( suffix ) )
+		if(	FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType( suffix ) )
 		{
 			if ( !checkIfParentFileExist( info, renameDateTime, prevRenameDateTime ) ) 
 			{
@@ -271,7 +271,7 @@ FVA_ERROR_CODE CLT_Files_Rename::execute()
 			}
 		}
 		// if it video file
-		else if( FVA_FILE_TYPE_VIDEO == convertFileExt2FileType( suffix ) )
+		else if( FVA_FILE_TYPE_VIDEO == fvaConvertFileExt2FileType( suffix ) )
 		{
 			RiffParser riffInfo;
 			QString createdDate, error;
@@ -363,7 +363,7 @@ FVA_ERROR_CODE CLT_Device_Name_Check::execute()
 		// if it is picture files
 		QString suffix		= info.suffix().toUpper();
 		QString fullname	= info.absoluteFilePath();
-		if(	FVA_FILE_TYPE_IMG == convertFileExt2FileType ( suffix ) )
+		if(	FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ) )
 		{
 			QString newDeviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
 									+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
@@ -394,7 +394,7 @@ FVA_ERROR_CODE CLT_Files_Rename_By_Dir::execute()
 		if ( info.isDir() )
 			continue;
 		QString suffix = info.suffix().toUpper();
-		if(	FVA_FILE_TYPE_IMG == convertFileExt2FileType ( suffix ) )
+		if(	FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ) )
 		{				
 			QString newPath = m_dir.path() + "/" + m_dir.dirName().replace(".","-").mid(0,10) + "-##-##-" + QString::number( id ) + "." + info.suffix();
 			if ( !m_dir.rename( info.absoluteFilePath(), newPath ) )
@@ -421,7 +421,7 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 			continue;
 
 		QString suffix = info.suffix().toUpper();
-		if(	FVA_FILE_TYPE_IMG == convertFileExt2FileType ( suffix ) && imageFilePrefix.isEmpty() )
+		if(	FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ) && imageFilePrefix.isEmpty() )
 		{				
 			if ( !info.baseName().contains("_") )
 				continue;
@@ -429,7 +429,7 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 			imageFilePrefix	= info.baseName().mid(0, index );
 			LOG_QDEB << "got new image prefix:" << imageFilePrefix;
 		}
-		else if( FVA_FILE_TYPE_VIDEO == convertFileExt2FileType ( suffix ) )
+		else if( FVA_FILE_TYPE_VIDEO == fvaConvertFileExt2FileType ( suffix ) )
 		{	
 			if ( !info.baseName().contains("_") )
 			{
@@ -455,7 +455,7 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 				LOG_QDEB << "renamed file:" << info.absoluteFilePath() << " to:" << newFilePath;
 
 		}
-		else if ( FVA_FILE_TYPE_UNKNOWN == convertFileExt2FileType ( suffix ) )
+		else if ( FVA_FILE_TYPE_UNKNOWN == fvaConvertFileExt2FileType ( suffix ) )
 		{
 			LOG_QWARN << "unsupported file type:" << info.absoluteFilePath() ;
 			continue;
@@ -532,7 +532,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 
 		//////////////////////////////////// 2. CHECK FOR PROPER FILE NAME AND SUPPORTED TYPE////////////////////////////////////////////////////
 		QString suffix = info.suffix().toUpper();
-		FVA_FILE_TYPE type = convertFileExt2FileType ( suffix );
+		FVA_FILE_TYPE type = fvaConvertFileExt2FileType ( suffix );
 		if ( FVA_FILE_TYPE_UNKNOWN != type )
 		{
 			QString baseFileName = info.baseName();
@@ -584,7 +584,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			}	
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		}
-		else if ( isInternalFileName ( info.fileName() ) ) 
+		else if ( fvaIsInternalFileName ( info.fileName() ) ) 
 		{
 			// nothing to do here
 		}
@@ -593,12 +593,12 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	}
 	m_fileCount[ m_folder ] = countSupportedFiles;
-	if ( countSupportedFiles < DEFAULT_MIN_COUNT_FILES_IN_DIR && countSupportedFiles )
+	if ( countSupportedFiles < FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR && countSupportedFiles )
 		LOG_QCRIT << "too little supported files found in:" << m_folder;
 
 	QVariantMap result;
 	QString error;
-	FVA_ERROR_CODE code = getFolderDescription( m_folder, result, error );
+	FVA_ERROR_CODE code = fvaGetFolderDescription( m_folder, result, error );
 	if ( FVA_NO_ERROR != code )
 		LOG_QCRIT << error;
 	else
@@ -638,15 +638,15 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 		if ( info.isDir() )
 			continue;
 		QString suffix = info.suffix().toUpper();
-		FVA_FILE_TYPE type = convertFileExt2FileType ( suffix );
+		FVA_FILE_TYPE type = fvaConvertFileExt2FileType ( suffix );
 		if ( FVA_FILE_TYPE_UNKNOWN != type )
 			countSupportedFiles++;
 	}
 	// no need to move these files
-	if ( countSupportedFiles >= DEFAULT_MIN_COUNT_FILES_IN_DIR || !countSupportedFiles )
+	if ( countSupportedFiles >= FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR || !countSupportedFiles )
 		return FVA_NO_ERROR;
 
-	QString descFilePath = m_folder + "/" + DESCRIPTION_FILE_NAME;
+	QString descFilePath = m_folder + "/" + FVA_DESCRIPTION_FILE_NAME;
 	if ( m_dir.exists( descFilePath ) )
 	{
 		LOG_QCRIT << "description for files exists, skipping folder:" << m_folder;
@@ -655,7 +655,7 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 
 	QVariantMap result;
 	QString error;
-	FVA_ERROR_CODE code = getFolderDescription( m_folder, result, error );
+	FVA_ERROR_CODE code = fvaGetFolderDescription( m_folder, result, error );
 	if ( FVA_NO_ERROR != code )
 	{
 		LOG_QCRIT << error;
@@ -682,11 +682,11 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 	QString folderUp = m_dir.absolutePath();
 	if ( !m_readOnly )
 	{
-		pFile.reset (new QFile( folderUp + "/" + DESCRIPTION_FILE_NAME ));
+		pFile.reset (new QFile( folderUp + "/" + FVA_DESCRIPTION_FILE_NAME ));
 		QFile::OpenMode mode = QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append;
 		if (!pFile->open(mode))
 		{
-			LOG_QCRIT << "cant open description file:" << folderUp + "/" + DESCRIPTION_FILE_NAME;
+			LOG_QCRIT << "cant open description file:" << folderUp + "/" + FVA_DESCRIPTION_FILE_NAME;
 			return FVA_ERROR_CANT_OPEN_FILE_DESC;
 		}
 		pTextStream.reset ( new QTextStream(pFile.get()) );
@@ -704,7 +704,7 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 			continue;
 
 		// skip meta files
-		if ( isInternalFileName( info.fileName() ) )
+		if ( fvaIsInternalFileName( info.fileName() ) )
 			continue;
 
 		LOG_QWARN << "descr:" << info.fileName() + oneFileDesc;
@@ -727,7 +727,7 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 	if ( !m_readOnly )
 	{
 		pFile->close();
-		QString descFolderPath = m_folder + "/" + DIR_DESCRIPTION_FILE_NAME;
+		QString descFolderPath = m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME;
 		if ( !m_dir.remove( descFolderPath ) )
 		{
 			LOG_QCRIT << "can not remove description for folder in folder:" << m_folder;
