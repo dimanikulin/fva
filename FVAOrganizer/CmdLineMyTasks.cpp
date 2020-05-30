@@ -50,7 +50,7 @@ FVA_ERROR_CODE CLT_Xml_Convert::execute()
 
 FVA_ERROR_CODE CLT_Update_File_Description::execute()
 {
-	QString descPath = m_folder + "/" + DESCRIPTION_FILE_NAME;
+	QString descPath = m_folder + "/" + FVA_DESCRIPTION_FILE_NAME;
 	if ( !m_dir.exists( descPath ) )
 	{
 		LOG_QCRIT << "description file does not exist";
@@ -76,7 +76,7 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 
 		QString suffix = info.suffix().toUpper();
 
-		if(	FVA_FILE_TYPE_IMG != convertFileExt2FileType ( suffix ) )
+		if(	FVA_FILE_TYPE_IMG != fvaConvertFileExt2FileType ( suffix ) )
 			continue;
 		
 		QString deviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
@@ -129,7 +129,7 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 }
 FVA_ERROR_CODE CLT_Convert_Dir_Desc::execute()
 {
-	QString descFolderPath = m_folder + "/" + DIR_DESCRIPTION_FILE_NAME;
+	QString descFolderPath = m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME;
 	if ( !m_dir.exists( descFolderPath ) )
 	{
 		LOG_QWARN << "description does not exist in:" << m_folder;
@@ -165,7 +165,7 @@ FVA_ERROR_CODE CLT_Convert_Dir_Desc::execute()
 			return FVA_ERROR_CANT_RENAME_DIR_DESC;
 		}
 		QString error;
-		FVA_ERROR_CODE res = createFolderDescription( descFolderPath, jsonData, error );
+		FVA_ERROR_CODE res = fvaCreateFolderDescription( descFolderPath, jsonData, error );
 		if ( FVA_NO_ERROR != res )
 		{
 			LOG_QCRIT << error;
