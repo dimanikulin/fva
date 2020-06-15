@@ -70,7 +70,6 @@ int main( int argc, char *argv[] )
   folder merging
 	*/
 	//install : set the callback
-	// TODO make output configurable
 	qInstallMsgHandler( msghandler );
 
 	QCoreApplication a(argc, argv);
