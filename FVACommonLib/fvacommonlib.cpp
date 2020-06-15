@@ -4,6 +4,7 @@
 #include <QTextStream>
 
 #include "../lib/json/json.h"
+#include "../lib/qexifimageheader.h"
 
 FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outputJson, QString& error )
 {
@@ -106,4 +107,131 @@ FVA_FILE_TYPE fvaConvertFileExt2FileType ( const QString& type )
 		return FVA_FILE_TYPE_AUDIO;
 
 	return FVA_FILE_TYPE_UNKNOWN;
+}
+FVA_ERROR_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel )
+{
+	if ( fileName.isEmpty() || !imgLabel )
+	{
+		return FVA_ERROR_WRONG_PARAMETERS;
+	}
+
+	/*QExifImageHeader img( fileName );
+	QImage image_thumb = img.thumbnail();
+	if ( !image_thumb.isNull() )
+	{
+		imgLabel->setPixmap(QPixmap::fromImage( image_thumb ));
+		return FVA_NO_ERROR;
+	}*/
+
+	QImage image( fileName );
+	if ( image.isNull() )
+	{
+		return FVA_ERROR_CANT_OPEN_INPUT_FILE;
+	}
+
+	QPixmap _qpSource = QPixmap::fromImage(image); 
+	QPixmap _qpCurrent = QPixmap::fromImage(image);
+
+    float cw = imgLabel->width(), ch = imgLabel->height();
+    float pw = _qpCurrent.width(), ph = _qpCurrent.height();
+
+    if (pw > cw && ph > ch && pw/cw > ph/ch || //both width and high are bigger, ratio at high is bigger or
+        pw > cw && ph <= ch || //only the width is bigger or
+        pw < cw && ph < ch && cw/pw < ch/ph //both width and height is smaller, ratio at width is smaller
+        )
+        _qpCurrent = _qpSource.scaledToWidth(cw, Qt::TransformationMode::FastTransformation);
+    else if (pw > cw && ph > ch && pw/cw <= ph/ch || //both width and high are bigger, ratio at width is bigger or
+        ph > ch && pw <= cw || //only the height is bigger or
+        pw < cw && ph < ch && cw/pw > ch/ph //both width and height is smaller, ratio at height is smaller
+        )
+        _qpCurrent = _qpSource.scaledToHeight(ch, Qt::TransformationMode::FastTransformation);
+
+	imgLabel->setPixmap(_qpCurrent);
+	return FVA_NO_ERROR;
+}
+FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTime& to )
+{	
+	switch( dirName.length() )
+	{
+		case 4: // one year folder
+		{
+			from = QDateTime::fromString( dirName, "yyyy");
+			if ( !from.isValid() )
+				return FVA_ERROR_WRONG_FOLDER_NAME;
+			to = from/*.addYears(1)*/;
+		}
+		break;
+		case 9: // year period
+		{
+			if ( dirName[ 4 ] != '-' )
+				return FVA_ERROR_WRONG_FOLDER_NAME;
+
+			from	= QDateTime::fromString( dirName.mid( 0, 4 ), "yyyy");
+			to	= QDateTime::fromString( dirName.mid( 5, 4 ), "yyyy");
+
+			if ( !from.isValid() || !to.isValid() )
+				return FVA_ERROR_WRONG_FOLDER_NAME;
+		}
+		break;
+		case 10 : // one-day event
+		{
+			from = QDateTime::fromString( dirName, "yyyy.MM.dd");
+			if ( !from.isValid() )
+				return FVA_ERROR_WRONG_FOLDER_NAME;
+			to = from.addDays(1); 
+		}
+		break;
+		case 13 :
+		{
+			from = QDateTime::fromString( dirName.mid( 0,10 ), "yyyy.MM.dd");
+			if ( !from.isValid() )
+				return FVA_ERROR_WRONG_FOLDER_NAME;
+			if ( dirName [ 10 ]  == ' ' ) // one day and several events
+			{
+				if ( dirName [ 11 ]  != '#' )
+					return FVA_ERROR_WRONG_FOLDER_NAME;
+				else
+				{
+					bool result = false;
+					int dEventNumber = dirName.mid( 12, 1 ).toInt( &result );
+					if ( !result || !dEventNumber )
+						return FVA_ERROR_WRONG_FOLDER_NAME;
+				}
+				to = from.addDays(1);
+			}
+			else if ( dirName [ 10 ] == '-' ) // period
+			{
+				QString sEndDate = dirName.mid( 11,2 );
+				bool result = false; 
+				int dEndDate = sEndDate.toInt( &result );
+				if ( !result || !dEndDate )
+					return FVA_ERROR_WRONG_FOLDER_NAME;
+				to = from.addDays(dEndDate);
+			}
+			else
+				return FVA_ERROR_WRONG_FOLDER_NAME;
+		}
+		break;
+		default:
+			return FVA_ERROR_WRONG_FOLDER_NAME;
+	}
+	return FVA_NO_ERROR;
+}
+FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date )
+{
+	if ( fileName.length() != 19 )
+	{
+		return FVA_ERROR_WRONG_FILE_NAME;
+	}
+	date = QDateTime::fromString( fileName, "yyyy-MM-dd-hh-mm-ss" );
+	if ( !date.isValid() )
+	{
+		QString newFileName = QString(fileName).replace( "#","0" );
+		date = QDateTime::fromString( newFileName, "yyyy-MM-dd-hh-mm-ss" );
+		if ( !date.isValid() )
+		{
+			return FVA_ERROR_WRONG_FILE_NAME;
+		}
+	}
+	return FVA_NO_ERROR;
 }
