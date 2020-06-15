@@ -2,8 +2,6 @@
 #include "FVADescriptionFile.h"
 #include "fvapeoplelistdlg.h"
 
-#include "../lib/qexifimageheader.h"
-
 #include <QFileInfo>
 #include <QListWidgetItem>
 #include <QDir>
@@ -27,10 +25,6 @@ FVADescriptionEditor::FVADescriptionEditor(
 	ui.setupUi(this);
 
 	QVariantList vlist;
-#define FILL_COMB_FROM_DICT(dict,combo) \
-	vlist = dictionaries[dict].toList();\
-	for ( auto i = vlist.begin(); i != vlist.end() ; ++i )\
-		combo->addItem ( i->toMap()["name"].toString(), i->toMap()["ID"].toString() );
 	FILL_COMB_FROM_DICT("places",ui.cmbBoxPlace);
 	FILL_COMB_FROM_DICT("people",ui.cmbBoxWho);
 	FILL_COMB_FROM_DICT("devices",ui.cmbBoxDevice);
@@ -57,29 +51,11 @@ void FVADescriptionEditor::updateGuiForFile( const QString& path )
 	if ( it == m_decsItems.end() )
 		return;
 
-	ui.lbName->setText( "Loading....." );
-	ui.lbFoto->setText( "Loading....." );
-
 	ui.lbName->setText( info.fileName() );
-	QExifImageHeader img( path );
 
-	ui.lbFoto->setBackgroundRole(QPalette::Base);
-	ui.lbFoto->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-
-	QImage image = img.thumbnail();
-	if ( !image.isNull() )
-		ui.lbFoto->setPixmap(QPixmap::fromImage( image ));
-	else
-	{
-		image = QImage( path );
-		if ( image.isNull() )
-			return;
-		ui.lbFoto->setScaledContents(true);
-		ui.lbFoto->setPixmap(QPixmap::fromImage( image ));
-	}
+	fvaShowImage( path, ui.lbFoto );
 
 	QStringList list = it.value(); 
-	ui.lbName->setText( info.fileName() );
 
 	int columnId = FVADescriptionFile::getColumnIdByName(m_titles,"oldName");
 	if ( -1 == columnId )

@@ -9,31 +9,26 @@
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-
-	/*QMessageBox mb( QMessageBox::Question, "deb",
-        "text",
-        QMessageBox::Yes | QMessageBox::Cancel, NULL, Qt::WindowStaysOnTopHint);
-	 int RetValue = mb.exec();*/
 	
 	QString dictPath, imagePath; 
 	QDir dir;
 	if ( a.arguments().size() >= 3 )
 	{
-		dictPath = a.arguments().at(1);
-		imagePath = a.arguments().at(2);
-		dir = QDir(imagePath);
+		dictPath	= a.arguments().at(1);
+		imagePath	= a.arguments().at(2);
+		dir			= QDir(imagePath);
 		if ( !dir.exists( imagePath ) )
 			return FVA_ERROR_CANT_OPEN_INPUT_FILE;
 	}
 	else if ( a.arguments().size() == 2 )
 	{
-		dictPath = a.arguments().at(1);
-		dir = QDir ( a.applicationDirPath() + "/" + FVA_DICTIONARY_NAME );
+		dictPath	= a.arguments().at(1);
+		dir			= QDir ( a.applicationDirPath() + "/" + FVA_DICTIONARY_NAME );
 	}
 	else if ( a.arguments().size() == 1 )
 	{
-		dictPath = a.applicationDirPath() + "/" + FVA_DICTIONARY_NAME;
-		dir = QDir ( a.applicationDirPath() + "/" + FVA_DICTIONARY_NAME );
+		dictPath	= a.applicationDirPath() + "/" + FVA_DICTIONARY_NAME;
+		dir			= QDir ( a.applicationDirPath() + "/" + FVA_DICTIONARY_NAME );
 	}
 
 	QString		error;
