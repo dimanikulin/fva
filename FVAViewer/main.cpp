@@ -48,8 +48,11 @@ int main(int argc, char *argv[])
 
 	QString logPath = QApplication::applicationDirPath() + "\\viewerlog.txt";  
 	g_logfile.open( logPath.toStdString(), std::ios::app );
-	
-	FVAViewer w;
+	 
+	QString rootDir (( a.arguments().size() >= 2 ) ? a.arguments() [1] : QApplication::applicationDirPath());
+	QString dictPath (( a.arguments().size() >= 3 ) ? a.arguments() [2] : QApplication::applicationDirPath());
+
+	FVAViewer w( rootDir, dictPath );
 	w.show();
 	int result = a.exec();
 	g_logfile.close();
