@@ -72,6 +72,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\lib\json\json.cpp" />
+    <ClCompile Include="..\lib\qexifimageheader.cpp" />
     <ClCompile Include="CSVFile.cpp" />
     <ClCompile Include="fvacommonlib.cpp" />
     <ClCompile Include="FVADescriptionFile.cpp" />
