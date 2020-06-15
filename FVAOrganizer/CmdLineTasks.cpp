@@ -469,88 +469,26 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 	unsigned int countSupportedFiles = 0; 
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{		
+		// 1.CHECK FOR PROPER FOLDER NAME (NO COPY FOLDER)
 		if ( info.isDir() )
-		{
-			//////////////////////////////////// 1. CHECK FOR PROPER FOLDER NAME (NO COPY FOLDER) ////////////////////////////////////////////////////
-			QString baseFolderName = info.fileName();
-			if ( baseFolderName.length() == 4 )
-			{
-				QDateTime year = QDateTime::fromString( baseFolderName, "yyyy");
-				if ( !year.isValid() )
-					LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-			}
-			else if ( baseFolderName.length() == 9 )
-			{
-				if ( baseFolderName[ 4 ] != '-' )
-					LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-
-				QDateTime fromYear	= QDateTime::fromString( baseFolderName.mid( 0, 4 ), "yyyy");
-				QDateTime toYear	= QDateTime::fromString( baseFolderName.mid( 5, 4 ), "yyyy");
-
-				if ( !fromYear.isValid() || !toYear.isValid() )
-					LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-			}
-			else if ( baseFolderName.length() == 10 )
-			{
-				QDateTime year = QDateTime::fromString( baseFolderName, "yyyy.MM.dd");
-				if ( !year.isValid() )
-					LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-			}
-			else if ( baseFolderName.length() == 13 )
-			{
-				QDateTime year = QDateTime::fromString( baseFolderName.mid( 0,10 ), "yyyy.MM.dd");
-				if ( !year.isValid() )
-					LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-				if ( baseFolderName [ 10 ]  == ' ' ) // one day and several events
-				{
-					if ( baseFolderName [ 11 ]  != '#' )
-						LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-					else
-					{
-						bool result = false;
-						int dEventNumber = baseFolderName.mid( 12, 1 ).toInt( &result );
-						if ( !result || !dEventNumber )
-							LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-					}
-				}
-				else if ( baseFolderName [ 10 ]  == '-' ) // period
-				{
-					QString sEndDate = baseFolderName.mid( 11,2 );
-					bool result = false; 
-					int dEndDate = sEndDate.toInt( &result );
-					if ( !result || !dEndDate )
-						LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-				}
-				else
-					LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-			}
-			else
+		{	
+			QDateTime from, to;
+			if ( FVA_NO_ERROR != fvaParseDirName(info.fileName(), from, to))
 				LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			continue;
 		}
 
-		//////////////////////////////////// 2. CHECK FOR PROPER FILE NAME AND SUPPORTED TYPE////////////////////////////////////////////////////
+		// 2.CHECK FOR PROPER FILE NAME AND SUPPORTED TYPE
 		QString suffix = info.suffix().toUpper();
 		FVA_FILE_TYPE type = fvaConvertFileExt2FileType ( suffix );
 		if ( FVA_FILE_TYPE_UNKNOWN != type )
 		{
+			QDateTime date;
 			QString baseFileName = info.baseName();
-			if ( baseFileName.length() != 19 )
+			if ( FVA_NO_ERROR != fvaParseFileName(info.baseName(), date))
 			{
 				LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath();
 				continue;
-			}
-			QDateTime dateTime = QDateTime::fromString( baseFileName , "yyyy-MM-dd-hh-mm-ss" );
-			if ( !dateTime.isValid() )
-			{
-				QString newFileName = baseFileName.replace( "#","1" );
-				dateTime = QDateTime::fromString( newFileName, "yyyy-MM-dd-hh-mm-ss" );
-				if ( !dateTime.isValid() )
-				{
-					LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath();
-					continue;
-				}
 			}
 			//////////////////////////////////// 2. MATCHING FILE NAME AND FOLDER NAME ////////////////////////////////////////////////////
 			QString dirDate = m_dir.dirName().mid(0,10);
