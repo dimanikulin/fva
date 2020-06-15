@@ -50,6 +50,15 @@
     <ClCompile Include="GeneratedFiles\qrc_fvaviewer.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="qpicturelabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_qpicturelabel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_qpicturelabel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fvaviewer.h">
@@ -61,9 +70,18 @@
     <CustomBuild Include="fvaviewer.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="qpicturelabel.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="qpicturelabel.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_fvaviewer.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_qpicturelabel.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
