@@ -5,6 +5,8 @@
 #include <QTCore/QtCore>
 #include <QTGui/QTreeWidget>
 
+#include "fvacommonlib.h"
+
 #include "ui_fvaviewer.h"
 
 /*!
@@ -20,24 +22,50 @@ class FVAViewer : public QDialog
 		/*!
 		 * \brief ctors-dtors section
 		 */
-		FVAViewer( QWidget *parent = 0, Qt::WFlags flags = 0 );
+		FVAViewer( const QString& rootDir, const QString& dictPath, QWidget *parent = 0, Qt::WFlags flags = 0 );
 		~FVAViewer();
 
 	private: // methods
 
 		/*!
-		 * \brief it expands GUI tree using file system tree
-		 * \param folder - file folder path to be populated
+		 * \brief it recursivly expands GUI tree using fva tree
+		 * \param fvaitem - fvaitem to populate from
 		 * \param item - GUI tree
 		 */
-		void populateTree( const QString& folder, QTreeWidgetItem* item );
+		void populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item );
+
+		/*!
+		 * \brief it recursivly expands FVA tree using file system tree
+		 * \param folder - folder path to be populated
+		 * \param item - fva tree item
+		 */
+		void populateFVATree( const QString& folder, fvaItem* fvaitem );
+
+		/*!
+		 * \brief it recursivly filters FVA tree
+		 * \param filter - filter condition set
+		 * \param fvaitem - fva tree item
+		 */
+		void filterFVATree( const fvaFilter& filter, fvaItem* fvaitem );
 
 	private: // data
 
 		Ui::FVAViewerClass *ui;
 
+		/*!
+		 * root item
+		 */
+		std::auto_ptr<fvaItem>		rootItem;
+
+		/*!
+		 * filter condition
+		 */
+		fvaFilter					filter;
+
 	private slots:
+
 		void showItem( QTreeWidgetItem* item );
+		void filterClicked(  );
 };
 
 #endif // FVAVIEWER_H
