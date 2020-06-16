@@ -55,6 +55,7 @@ enum FVA_ERROR_CODE
 	FVA_ERROR_WRONG_PARAMETERS					= 1020,
 	FVA_ERROR_WRONG_FOLDER_NAME					= 1021,
 	FVA_ERROR_WRONG_FILE_NAME					= 1022,
+	FVA_ERROR_CANT_SAVE_DICTIONARIES			= 1023,
 };
 
 /*!
@@ -98,6 +99,15 @@ FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, const QString& c
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
 FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputJson, QString& error );
+
+/*!
+ * \brief it saves FVA dictionaries to file 
+ * \param file to save dictionaries to 
+ * \param outputJson input parameter to be saved
+ * \param error - human-readable description of error if any 
+ * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
+ */
+FVA_ERROR_CODE fvaSaveDictionary( const QString& file, QVariantMap& inputJson, QString& error );
 
 /*!
 * \brief it converts file extention to file type if it is possible
@@ -146,25 +156,19 @@ class fvaItem
 {
 	public : 
 
-		fvaItem ()
-		{
-			isFolder			= false;
-			isFiltered			= true;
-			hasDescriptionData	= false;
-			deviceId			= 0;
-			personId			= 0;
-			scanerId			= 0;
-		}
-		virtual ~fvaItem ()
-		{
-			for (auto idChild = children.begin(); idChild != children.end(); ++idChild)
-			{
-				if (idChild == nullptr)
-					continue;
-				delete *idChild;
-				*idChild = nullptr;
-			}
-		}
+		fvaItem ();
+		virtual ~fvaItem ();
+
+		/*!
+		 * \brief it returns human-readable string as item name
+		 */
+		QString getGuiName();
+
+		/*!
+		 * \brief it returns human-readable string to show full name
+		 * \param dictionaries - global dictionary set
+		 */
+		QString getGuiFullName(const QVariantMap&	dictionaries);
 
 		/*!
 		 * is it folder or file
@@ -238,11 +242,6 @@ class fvaItem
 		 */
 		QString					linkedFolder;
 		
-		/*! 
-		 * TODO delete this field
-		 */
-		QString					fsName;
-
 		/*!
 		 * structure of description file 
 		 */
@@ -294,7 +293,8 @@ class fvaFilter
 };
 
 #define FILL_COMB_FROM_DICT(dict,combo) \
-	vlist = dictionaries[dict].toList();\
+	vlist = m_dictionaries[dict].toList();\
+	combo->clear(); \
 	for ( auto i = vlist.begin(); i != vlist.end() ; ++i )\
 		combo->addItem ( i->toMap()["name"].toString(), i->toMap()["ID"].toString() );
 

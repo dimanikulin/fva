@@ -79,6 +79,50 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputJson, 
 	_file.close();
 	return FVA_NO_ERROR;
 }
+
+FVA_ERROR_CODE fvaSaveDictionary( const QString& file, QVariantMap& inputJson, QString& error )
+{
+	QDir dir ( file );
+	if ( !dir.exists( file ) )
+	{
+		error = "dictionaries file does not exist" ;
+		return FVA_ERROR_CANT_FIND_DICTIONARIES;
+	}
+	else
+	{
+		QString newName = file + "_" + QDateTime::currentDateTime().toString( "yyyy-MM-dd-hh-mm-ss").toAscii().data();
+		if ( !dir.rename( file, newName ))
+		{
+			return FVA_ERROR_CANT_OPEN_DICTIONARIES;
+		}
+	}
+	// open it
+	QFile _file ( file );
+	if ( !_file.open( QIODevice::WriteOnly ) )
+	{
+		error =  "can not open dictionaries";
+		return FVA_ERROR_CANT_OPEN_DICTIONARIES;
+	}
+
+	bool res				= false;
+
+	QByteArray data = QtJson::Json::serialize( inputJson, res );
+	if ( !res )
+	{
+		error =  "can not save dictionaries";
+		_file.close();
+		return FVA_ERROR_CANT_SAVE_DICTIONARIES;
+	}
+	QString result = QString::fromLocal8Bit(data);
+
+	QTextStream writeStream( &_file );
+	writeStream << result;	
+	writeStream.flush();
+	_file.close();
+
+	return FVA_NO_ERROR;
+}
+
 bool fvaIsInternalFile( const QString& fileName )
 {
 	return (	fileName.toUpper() == FVA_DESCRIPTION_FILE_NAME.toUpper() 
@@ -239,4 +283,93 @@ FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date )
 		}
 	}
 	return FVA_NO_ERROR;
+}
+
+fvaItem::fvaItem ()
+{
+	isFolder			= false;
+	isFiltered			= true;
+	hasDescriptionData	= false;
+	deviceId			= 0;
+	personId			= 0;
+	scanerId			= 0;
+}
+
+fvaItem::~fvaItem ()
+{
+	for (auto idChild = children.begin(); idChild != children.end(); ++idChild)
+	{
+		if (idChild == nullptr)
+			continue;
+		delete *idChild;
+		*idChild = nullptr;
+	}
+}
+QString fvaItem::getGuiName()
+{
+	if (isFolder)
+	{
+		QString desc; // = QString("(%1)").arg(children.size());
+		if (hasDescriptionData && !eventOrDesc.isEmpty())
+			desc = " (" + eventOrDesc + ")";
+		
+		if (dateTo.isValid())
+			return dateFrom.toString( "yyyy/MM/dd") + dateTo.toString( "-yyyy/MM/dd") + desc;
+		else 
+			return dateFrom.toString( "yyyy/MM/dd") + desc;
+	}
+	else
+	{
+		return dateFrom.toString( "yyyy-MM-dd (hh:mm:ss)");
+	}
+	return "";
+}
+void fillNameByOneId(int ident, const QString& dict, const QVariantMap&	dictionaries, QString& fullName)
+{
+	QVariantList vlist; 
+
+	if (ident)
+	{
+		vlist = dictionaries[dict].toList();
+		for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
+		{
+			if ( i->toMap()["ID"].toInt() == ident )
+			{
+				if (fullName.isEmpty())
+					fullName = i->toMap()["name"].toString();
+				else 
+					fullName += " [" + i->toMap()["name"].toString() + "]"; 
+				break;
+			}
+		}
+	}
+}
+QString fvaItem::getGuiFullName(const QVariantMap&	dictionaries)
+{
+	QString fullName;
+	if (!hasDescriptionData)
+		return "";
+	if (!isFolder)
+	{
+		if (!eventOrDesc.isEmpty())
+			fullName = eventOrDesc;
+	}
+
+	if (!tagsOrComment.isEmpty())
+	{
+		if (fullName.isEmpty())
+			fullName = tagsOrComment;
+		else
+			fullName += ", " + tagsOrComment;
+	}
+
+	fillNameByOneId(deviceId,"devices",dictionaries,fullName);
+	fillNameByOneId(personId,"people",dictionaries,fullName);
+	fillNameByOneId(scanerId,"scaners",dictionaries,fullName);
+
+	//this->peopleIds;
+
+	//this->placeIds;
+
+	return fullName;
 }
