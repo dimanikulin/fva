@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 	g_logfile.open( logPath.toStdString(), std::ios::app );
 	 
 	QString rootDir (( a.arguments().size() >= 2 ) ? a.arguments() [1] : QApplication::applicationDirPath());
-	QString dictPath (( a.arguments().size() >= 3 ) ? a.arguments() [2] : QApplication::applicationDirPath());
+	QString dictPath (( a.arguments().size() >= 3 ) ? a.arguments() [2] : QApplication::applicationDirPath() + "/" + FVA_DICTIONARY_NAME );
 
 	FVAViewer w( rootDir, dictPath );
 	w.show();
