@@ -39,37 +39,62 @@ int main(int argc, char *argv[])
 
 	dir.cdUp();
 
-	std::auto_ptr<FVADescriptionFile> desc( new FVADescriptionFile( 
-		(( a.arguments().size() == 1 ) 
-		? a.applicationDirPath() 
-		: dir.absolutePath() )
-		+ "/" + FVA_DESCRIPTION_FILE_NAME ));
+	std::auto_ptr<FVADescriptionFile> desc( new FVADescriptionFile );
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
 
-	res = desc->load( titles, decsItems );
-	if ( FVA_NO_ERROR != res )
+	res = desc->load( ( 
+		(( a.arguments().size() == 1 ) 
+		? a.applicationDirPath() 
+		: dir.absolutePath() )
+		+ "/" + FVA_DESCRIPTION_FILE_NAME ),
+			titles, 
+			decsItems );
+	
+	bool emptyDescFile = false;
+	if ( FVA_ERROR_CANT_OPEN_FILE_DESC == res )
+		emptyDescFile = true;
+	else if ( FVA_NO_ERROR != res )
 		return res;
 
 	QStringList dirFiles;
+	QStringList emptyDescription;
 	int indexOfFile = -1;
+	if (emptyDescFile)
+	{
+		titles.append("Name");			
+		titles.append("Place");			
+		titles.append("People");		
+		titles.append("Device");		
+		titles.append("WhoTook");		
+		titles.append("Description");	
+		titles.append("Scaner");		
+		titles.append("Comment");		
+		titles.append("oldName");		
+	}
+
+	for (auto iTitles = 0; iTitles != titles.size(); ++iTitles)
+		emptyDescription.append("");
+
 	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::Files, QDir::DirsFirst))
 	{
 		if ( info.isDir() )
 			continue;
 
 		// skip meta files
-		if ( fvaIsInternalFileName( info.fileName() ) )
-			continue;
-
-		// if it is picture files
-		if(	FVA_FILE_TYPE_IMG != fvaConvertFileExt2FileType ( info.suffix() ) )
+		if ( !fvaIsFVAFile(info.suffix().toUpper()) || fvaIsInternalFile( info.fileName() ) )
 			continue;
 
 		if ( imagePath == info.absoluteFilePath() )
 			indexOfFile = dirFiles.size();
 		
 		dirFiles.append(info.absoluteFilePath());
+
+		if (emptyDescFile)
+		{
+			emptyDescription[0]						= info.fileName().toUpper();
+			decsItems[info.fileName().toUpper()]	= emptyDescription;	
+		}
 	}
 	if ( -1 == indexOfFile && imagePath.isEmpty() )
 		indexOfFile = 0;
