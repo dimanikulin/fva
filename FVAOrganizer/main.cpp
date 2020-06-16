@@ -45,7 +45,9 @@ void msghandler( QtMsgType type, const char *msg )
 int main( int argc, char *argv[] )
 {
 
-/*#01.RenamedVideoInSequince
+
+/*#00.CheckedOrientation
+#01.RenamedVideoInSequince
 #02.AutoChecks1
 	#01.NotVideoFirst
 	#02.NotSTFiles
@@ -60,15 +62,14 @@ int main( int argc, char *argv[] )
 	#03.NoUnknownFileTypes
 	#04.NoFileAlone
 	#05.checkedNoFOLDERCopyInside
-	#06.FolderDecriptionValid
+	#06.FolderDecriptionValid(device is correct)
 	#07.ConvertedAMR
 	#08.Converted3GP
-	#09.decsriptionFileValid
+	#09.decsriptionFileValid(device is correct)
 	#10.ProperFolderName
-#07.CheckedOrientation
-#08.SetReadOnly
-  folder merging
-	*/
+#07.folder merging
+#08.SetReadOnly*/
+
 	//install : set the callback
 	qInstallMsgHandler( msghandler );
 
