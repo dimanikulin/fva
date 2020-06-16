@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1009</width>
-    <height>541</height>
+    <width>1024</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -89,7 +89,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>20</y>
+         <y>30</y>
          <width>121</width>
          <height>22</height>
         </rect>
@@ -100,12 +100,12 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>46</width>
-         <height>13</height>
+         <width>121</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="text">
-        <string>From:</string>
+        <string>С:</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_2">
@@ -113,19 +113,19 @@
         <rect>
          <x>130</x>
          <y>0</y>
-         <width>31</width>
-         <height>16</height>
+         <width>121</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="text">
-        <string>To:</string>
+        <string>До:</string>
        </property>
       </widget>
       <widget class="QDateTimeEdit" name="dateTimeTo">
        <property name="geometry">
         <rect>
          <x>130</x>
-         <y>20</y>
+         <y>30</y>
          <width>121</width>
          <height>22</height>
         </rect>
@@ -135,7 +135,7 @@
        <property name="geometry">
         <rect>
          <x>260</x>
-         <y>20</y>
+         <y>30</y>
          <width>161</width>
          <height>22</height>
         </rect>
@@ -148,7 +148,7 @@
        <property name="geometry">
         <rect>
          <x>430</x>
-         <y>20</y>
+         <y>30</y>
          <width>161</width>
          <height>22</height>
         </rect>
@@ -161,7 +161,7 @@
        <property name="geometry">
         <rect>
          <x>600</x>
-         <y>20</y>
+         <y>30</y>
          <width>161</width>
          <height>22</height>
         </rect>
@@ -171,7 +171,7 @@
        <property name="geometry">
         <rect>
          <x>770</x>
-         <y>20</y>
+         <y>30</y>
          <width>151</width>
          <height>20</height>
         </rect>
@@ -182,12 +182,12 @@
         <rect>
          <x>770</x>
          <y>0</y>
-         <width>51</width>
-         <height>16</height>
+         <width>151</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="text">
-        <string>Event:</string>
+        <string>Событие:</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_4">
@@ -195,12 +195,12 @@
         <rect>
          <x>260</x>
          <y>0</y>
-         <width>46</width>
-         <height>13</height>
+         <width>161</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="text">
-        <string>Place:</string>
+        <string>Место:</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_5">
@@ -208,12 +208,12 @@
         <rect>
          <x>430</x>
          <y>0</y>
-         <width>46</width>
-         <height>13</height>
+         <width>151</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="text">
-        <string>People:</string>
+        <string>Люди:</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_6">
@@ -221,12 +221,12 @@
         <rect>
          <x>600</x>
          <y>0</y>
-         <width>46</width>
-         <height>13</height>
+         <width>151</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="text">
-        <string>Device:</string>
+        <string>Устройство:</string>
        </property>
       </widget>
       <widget class="QPushButton" name="btnFilter">
@@ -234,12 +234,12 @@
         <rect>
          <x>930</x>
          <y>10</y>
-         <width>51</width>
-         <height>31</height>
+         <width>71</width>
+         <height>41</height>
         </rect>
        </property>
        <property name="text">
-        <string>Filter</string>
+        <string>Фильтр</string>
        </property>
       </widget>
      </widget>

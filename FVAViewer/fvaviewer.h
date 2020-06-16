@@ -73,9 +73,23 @@ class FVAViewer : public QDialog
 		 */
 		QDateTime					m_defFilterDataTime;
 
+		/*!
+		 * global dictionaries
+		 */
+		QVariantMap					m_dictionaries;
+
+
+		/*!
+		 * dictionaries path
+		 */
+		QString						m_dictionaryPath;
+
 	private slots:
 
 		void showItem( QTreeWidgetItem* item );
+
+		void editFileItem( QTreeWidgetItem* item );
+		
 		void filterClicked(  );
 };
 

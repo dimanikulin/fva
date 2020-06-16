@@ -4,14 +4,26 @@
 #include "fvacommonlib.h"
 
 FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *parent, Qt::WFlags flags)
-	:QDialog(parent),
-	m_ui(new Ui::FVAViewerClass)
+	:QDialog			(parent),
+	m_ui				(new Ui::FVAViewerClass),
+	m_dictionaryPath	(dictPath)
 {
 	m_ui->setupUi(this);
 
 	QDir dir ( rootDir );
 	if (!dir.exists( rootDir ))
 		return;
+
+	QString		error;
+	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, m_dictionaries, error );
+	if ( FVA_NO_ERROR != res )
+	{
+		return;
+	}
+	QVariantList vlist;
+	FILL_COMB_FROM_DICT("places", m_ui->cbPlace);
+	FILL_COMB_FROM_DICT("people", m_ui->cbPeople);
+	FILL_COMB_FROM_DICT("devices",m_ui->cbDevice);
 
 	m_rootItem.reset (new fvaItem); 
 	populateFVATree( rootDir, m_rootItem.get() );
@@ -24,19 +36,8 @@ FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *p
 	m_ui->contentArea->setBackgroundRole(QPalette::Dark);
 
 	connect(m_ui->treeWidget,SIGNAL(itemClicked(QTreeWidgetItem* ,int)),this,SLOT(showItem(QTreeWidgetItem*)));
+	connect(m_ui->treeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem* ,int)),this,SLOT(editFileItem(QTreeWidgetItem*)));
 	connect(m_ui->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
-
-	QString		error;
-	QVariantMap	dictionaries;
-	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
-	if ( FVA_NO_ERROR != res )
-	{
-	
-	}
-	QVariantList vlist;
-	FILL_COMB_FROM_DICT("places", m_ui->cbPlace);
-	FILL_COMB_FROM_DICT("people", m_ui->cbPeople);
-	FILL_COMB_FROM_DICT("devices",m_ui->cbDevice);
 
 	m_defFilterDataTime	= QDateTime::currentDateTime();	
 	m_ui->dateTimeFrom->setDateTime ( m_defFilterDataTime );
@@ -52,6 +53,21 @@ void FVAViewer::showItem( QTreeWidgetItem* item )
 {
 	fvaShowImage( item->data( 1, 1 ).toString(), m_ui->imageLbl );
 }
+
+void FVAViewer::editFileItem( QTreeWidgetItem* item )
+{
+	QProcess myProcess(this);    
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	QStringList params;
+	params.append(m_dictionaryPath);
+	params.append(item->data( 1, 1 ).toString());
+	myProcess.start("FVADescriptionEditor.exe", params);
+
+	if ( !myProcess.waitForFinished( -1 ) )
+	{
+	}
+}
+
 void FVAViewer::filterClicked(  )
 {
 	m_filter.dateFrom	= m_ui->dateTimeFrom->dateTime();
@@ -166,7 +182,6 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 				continue;
 			}
 			fvaItem* dirItem	= new fvaItem;
-			dirItem->fsName		= info.fileName();
 			dirItem->isFolder	= true;
 
 			if ( FVA_NO_ERROR != fvaParseDirName(info.fileName(), dirItem->dateFrom, dirItem->dateTo))
@@ -213,7 +228,6 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 			if(	!fvaIsFVAFile ( info.suffix().toUpper() ) )
 				continue;
 			fvaItem* fileItem		= new fvaItem;
-			fileItem->fsName			= info.baseName();
 			fileItem->isFolder		= false;
 			fileItem->fsFullPath		= info.absoluteFilePath();
 			if ( FVA_NO_ERROR != fvaParseFileName(info.baseName(), fileItem->dateFrom))
@@ -274,12 +288,12 @@ void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item )
 		if ( !(*idChild)->isFiltered )
 			continue;
 		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
-		treeWidgetItem->setText ( 0, (*idChild)->fsName );
+		treeWidgetItem->setText		( 0, (*idChild)->getGuiName() );
+		treeWidgetItem->setToolTip	( 0, (*idChild)->getGuiFullName(m_dictionaries) );
+
 		if (!(*idChild)->isFolder)
-		{
 			treeWidgetItem->setData( 1, 1, (*idChild)->fsFullPath );
-			treeWidgetItem->setToolTip(0, "SOME VERY LONG!!!! HINT!!!!!!!!!!!!!!!!!!!!!!!!!!" );
-		}
+
 		if ( item )
 			item->addChild( treeWidgetItem );
 		else
