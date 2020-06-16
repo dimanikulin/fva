@@ -6,6 +6,7 @@
 #include <QTGui/QTreeWidget>
 
 #include "fvacommonlib.h"
+#include "FVADescriptionFile.h"
 
 #include "ui_fvaviewer.h"
 
@@ -50,17 +51,27 @@ class FVAViewer : public QDialog
 
 	private: // data
 
-		Ui::FVAViewerClass *ui;
+		Ui::FVAViewerClass *		m_ui;
 
 		/*!
 		 * root item
 		 */
-		std::auto_ptr<fvaItem>		rootItem;
+		std::auto_ptr<fvaItem>		m_rootItem;
 
 		/*!
 		 * filter condition
 		 */
-		fvaFilter					filter;
+		fvaFilter					m_filter;
+
+		/*!
+		 * file with descriptions for FVA items in a folder
+		 */
+		FVADescriptionFile			m_descriptionFile;
+
+		/*!
+		 * default date-time of filter date-time fields
+		 */
+		QDateTime					m_defFilterDataTime;
 
 	private slots:
 

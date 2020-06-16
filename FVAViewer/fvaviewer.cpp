@@ -5,26 +5,26 @@
 
 FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *parent, Qt::WFlags flags)
 	:QDialog(parent),
-	ui(new Ui::FVAViewerClass)
+	m_ui(new Ui::FVAViewerClass)
 {
-	ui->setupUi(this);
+	m_ui->setupUi(this);
 
 	QDir dir ( rootDir );
 	if (!dir.exists( rootDir ))
 		return;
 
-	rootItem.reset (new fvaItem); 
-	populateFVATree( rootDir, rootItem.get() );
-	populateGUITree( rootItem.get(), nullptr );
+	m_rootItem.reset (new fvaItem); 
+	populateFVATree( rootDir, m_rootItem.get() );
+	populateGUITree( m_rootItem.get(), nullptr );
 
-	ui->treeWidget->setMaximumWidth(300);
-	ui->treeWidget->setMinimumWidth(50);
+	m_ui->treeWidget->setMaximumWidth(300);
+	m_ui->treeWidget->setMinimumWidth(50);
 
-	ui->imageLbl->setBackgroundRole(QPalette::Base);
-	ui->contentArea->setBackgroundRole(QPalette::Dark);
+	m_ui->imageLbl->setBackgroundRole(QPalette::Base);
+	m_ui->contentArea->setBackgroundRole(QPalette::Dark);
 
-	connect(ui->treeWidget,SIGNAL(itemClicked(QTreeWidgetItem* ,int)),this,SLOT(showItem(QTreeWidgetItem*)));
-	connect(ui->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
+	connect(m_ui->treeWidget,SIGNAL(itemClicked(QTreeWidgetItem* ,int)),this,SLOT(showItem(QTreeWidgetItem*)));
+	connect(m_ui->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
 
 	QString		error;
 	QVariantMap	dictionaries;
@@ -34,76 +34,121 @@ FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *p
 	
 	}
 	QVariantList vlist;
-	FILL_COMB_FROM_DICT("places",ui->cbPlace);
-	FILL_COMB_FROM_DICT("people",ui->cbPeople);
-	FILL_COMB_FROM_DICT("devices",ui->cbDevice);
+	FILL_COMB_FROM_DICT("places", m_ui->cbPlace);
+	FILL_COMB_FROM_DICT("people", m_ui->cbPeople);
+	FILL_COMB_FROM_DICT("devices",m_ui->cbDevice);
+
+	m_defFilterDataTime	= QDateTime::currentDateTime();	
+	m_ui->dateTimeFrom->setDateTime ( m_defFilterDataTime );
+	m_ui->dateTimeTo->setDateTime ( m_defFilterDataTime );
 }
 
 FVAViewer::~FVAViewer()
 {
-	delete ui;
+	delete m_ui;
 }
 
 void FVAViewer::showItem( QTreeWidgetItem* item )
 {
-	fvaShowImage( item->data( 1, 1 ).toString(), ui->imageLbl );
+	fvaShowImage( item->data( 1, 1 ).toString(), m_ui->imageLbl );
 }
 void FVAViewer::filterClicked(  )
 {
-	filter.dateFrom	= ui->dateTimeFrom->dateTime();
-	filter.dateTo	= ui->dateTimeTo->dateTime();
+	m_filter.dateFrom	= m_ui->dateTimeFrom->dateTime();
+	m_filter.dateTo		= m_ui->dateTimeTo->dateTime();
 
-	filter.deviceIds.clear();
-	filter.peopleIds.clear();
-	filter.placeIds.clear();
+	m_filter.deviceIds.clear();
+	m_filter.peopleIds.clear();
+	m_filter.placeIds.clear();
 	
-	int index = ui->cbDevice->currentIndex();
+	int index = m_ui->cbDevice->currentIndex();
 	if ( 1 <= index ) 
 	{
-		int ID = ui->cbDevice->itemData( index ).toInt();
-		filter.deviceIds.push_back(ID);
+		int ID = m_ui->cbDevice->itemData( index ).toInt();
+		m_filter.deviceIds.push_back(ID);
 	}
 
-	index = ui->cbPeople->currentIndex();
+	index = m_ui->cbPeople->currentIndex();
 	if ( 1 <= index ) 
 	{
-		int ID = ui->cbPeople->itemData( index ).toInt();
-		filter.peopleIds.push_back(ID);
+		int ID = m_ui->cbPeople->itemData( index ).toInt();
+		m_filter.peopleIds.push_back(ID);
 	}
 
-	index = ui->cbPlace->currentIndex();
+	index = m_ui->cbPlace->currentIndex();
 	if ( 1 <= index ) 
 	{
-		int ID = ui->cbPlace->itemData( index ).toInt();
-		filter.placeIds.push_back(ID);
+		int ID = m_ui->cbPlace->itemData( index ).toInt();
+		m_filter.placeIds.push_back(ID);
 	}
-	filter.eventOrDesc = ui->editEvent->text();
+	m_filter.eventOrDesc = m_ui->editEvent->text();
 
-	filterFVATree( filter, rootItem.get() );
-	ui->treeWidget->clear();
-	populateGUITree( rootItem.get(), nullptr );
+	filterFVATree( m_filter, m_rootItem.get() );
+	m_ui->treeWidget->clear();
+	populateGUITree( m_rootItem.get(), nullptr );
 }
 
 void FVAViewer::filterFVATree( const fvaFilter& filter, fvaItem* fvaitem )
 {
 	for ( auto idChild = fvaitem->children.begin(); idChild != fvaitem->children.end(); ++idChild)
 	{
-		// filtration by time
-		if ( (*idChild)->isFolder )
+		// reset previous filtration result
+		(*idChild)->isFiltered = true;
+
+		// 1. filtration by time
+		if (m_defFilterDataTime		!= filter.dateFrom 
+			&& m_defFilterDataTime	!= filter.dateTo)
 		{
-			(*idChild)->isFiltered = ((*idChild)->dateFrom >= filter.dateFrom)
+			if ( (*idChild)->isFolder )
+			{
+				if ((*idChild)->dateFrom != (*idChild)->dateTo)
+					(*idChild)->isFiltered = ((*idChild)->dateFrom >= filter.dateFrom)
 									&& ((*idChild)->dateTo <= filter.dateTo);
-		}
-		else
-		{
-			(*idChild)->isFiltered = ((*idChild)->dateFrom >= filter.dateFrom) 
+				/*qDebug() << "((*idChild)->dateFrom="		<< (*idChild)->dateFrom
+						<< "filter.dateFrom="			<< filter.dateFrom
+						<< "((*idChild)->dateTo="		<< (*idChild)->dateTo
+						<< "filter.dateTo="				<< filter.dateTo;*/
+			}
+			else
+			{
+				(*idChild)->isFiltered = ((*idChild)->dateFrom >= filter.dateFrom) 
 									&& ((*idChild)->dateFrom <= filter.dateTo);
+			}
 		}
-		// filter by device is
-		// filter.deviceIds
+		
+		// 2. filtration by device id
+		if ((*idChild)->isFiltered && !filter.deviceIds.empty() && (*idChild)->hasDescriptionData)
+			(*idChild)->isFiltered = ((*idChild)->deviceId == filter.deviceIds[0]);
+
+		// 3. filtration by person took	id
+		// TODO	
+
+		// 4. filtration by scaner id
+		// TODO	
+
+		// 5. filtration by place ids
+		if ((*idChild)->isFiltered && !filter.placeIds.empty() && (*idChild)->hasDescriptionData)
+			(*idChild)->isFiltered = ((*idChild)->placeIds == filter.placeIds);
+
+		// 6. filtration by people ids
+		if ((*idChild)->isFiltered && !filter.peopleIds.empty() && (*idChild)->hasDescriptionData)
+			(*idChild)->isFiltered = ((*idChild)->peopleIds == filter.peopleIds);
+
+		// 7. filtration by event, desciption or comment
+		if ((*idChild)->isFiltered && !filter.eventOrDesc.isEmpty() && (*idChild)->hasDescriptionData)
+		{
+			if ( (*idChild)->isFolder )
+			{
+				(*idChild)->isFiltered = ((*idChild)->eventOrDesc == filter.eventOrDesc);
+				if (!(*idChild)->isFiltered)
+					(*idChild)->isFiltered = ((*idChild)->tagsOrComment == filter.eventOrDesc);
+			}
+		}
+		/*if ((*idChild)->isFiltered)
+			qDebug() << "filtered name = " << (*idChild)->fsName << " hasDescriptionData=" << (*idChild)->hasDescriptionData;
+		*/
 		filterFVATree( filter, *idChild );
 	}							
-
 }
 
 void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
@@ -126,9 +171,38 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 
 			if ( FVA_NO_ERROR != fvaParseDirName(info.fileName(), dirItem->dateFrom, dirItem->dateTo))
 			{
-				qDebug() << "ERROR!, incorrect folder name " << info.fileName();
+				qCritical() << "incorrect folder name " << info.fileName();
 				delete dirItem;
 				continue;
+			}
+			QVariantMap result;
+			QString error;
+
+			FVA_ERROR_CODE code = fvaGetFolderDescription( info.absoluteFilePath(), result, error );
+			if ( FVA_NO_ERROR != code )
+			{
+				qWarning() << error;
+				
+				// delete dirItem;
+				// continue;
+			}
+			else
+			{
+				dirItem->placeIds.append(	result["place"]			.toUInt());
+				dirItem->peopleIds.append(	result["people"]		.toUInt());
+				dirItem->deviceId		=	result["deviceId"]		.toUInt();
+				dirItem->personId		=	result["whoTookFotoId"]	.toUInt();
+				dirItem->eventOrDesc		=	result["event"]			.toString();
+				dirItem->tagsOrComment	=	result["tags"]			.toString();
+				dirItem->linkedFolder	=	result["linkedFolder"]	.toString();
+				dirItem->hasDescriptionData	= true;
+			}
+
+			QString descFilePath = info.absoluteFilePath() + "/" + FVA_DESCRIPTION_FILE_NAME;
+			FVA_ERROR_CODE res = m_descriptionFile.load( descFilePath,dirItem->descTitles, dirItem->decsItems );
+			if ( FVA_NO_ERROR != res )
+			{
+				// it is not a big problem
 			}
 
 			fvaitem->children.append( dirItem );
@@ -136,8 +210,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 		}
 		else
 		{
-			// now only images are supported
-			if(	FVA_FILE_TYPE_IMG != fvaConvertFileExt2FileType ( info.suffix().toUpper() ) )
+			if(	!fvaIsFVAFile ( info.suffix().toUpper() ) )
 				continue;
 			fvaItem* fileItem		= new fvaItem;
 			fileItem->fsName			= info.baseName();
@@ -149,6 +222,46 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 				delete fileItem;
 				continue;
 			}
+			if (!fvaitem->decsItems.isEmpty() && !fvaitem->descTitles.isEmpty())
+			{
+				auto it = fvaitem->decsItems.find( info.fileName().toUpper() );
+				if ( it != fvaitem->decsItems.end() )
+				{
+					auto list = it.value();
+					fileItem->hasDescriptionData	= true;
+					int columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"Comment");
+					if ( -1 != columnId )
+						fileItem->tagsOrComment	= list[columnId].remove("\t");
+					
+					columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"Scaner");
+					if ( -1 != columnId )
+						fileItem->scanerId	= list[columnId].remove("\t").toUInt();
+					
+					columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"Description");
+					if ( -1 != columnId )
+						fileItem->eventOrDesc	= list[columnId].remove("\t");
+
+					columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"WhoTook");
+					if ( -1 != columnId )
+						fileItem->personId	= list[columnId].remove("\t").toUInt();
+
+					columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"Device");
+					if ( -1 != columnId )
+						fileItem->deviceId	= list[columnId].remove("\t").toUInt();
+
+					columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"Place");
+					if ( -1 != columnId )
+						fileItem->placeIds.append(list[columnId].remove("\t").toUInt());
+
+					columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"People");
+					if ( -1 != columnId )
+					{
+						QStringList people = list[columnId].split(',');
+						for ( auto iter = people.begin(); iter != people.end(); ++iter )
+							fileItem->peopleIds.append(iter->toUInt());							
+					}
+				}
+			}			
 			fvaitem->children.append( fileItem );
 		}
 	}
@@ -156,8 +269,6 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 
 void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item )
 {
-	if ( !fvaitem->isFiltered )
-		return;
 	for ( auto idChild = fvaitem->children.begin(); idChild != fvaitem->children.end(); ++idChild)
 	{
 		if ( !(*idChild)->isFiltered )
@@ -172,7 +283,7 @@ void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item )
 		if ( item )
 			item->addChild( treeWidgetItem );
 		else
-			ui->treeWidget->addTopLevelItem ( treeWidgetItem );
+			m_ui->treeWidget->addTopLevelItem ( treeWidgetItem );
 
 		populateGUITree( *idChild, treeWidgetItem );
 	}							
