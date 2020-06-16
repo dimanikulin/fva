@@ -1,16 +1,19 @@
 #ifndef FVACOMMONLIB_H
 #define FVACOMMONLIB_H
 
+////////////////////////////////TODOTODOTODOTODOTODOTODOTODOTODOTODO/////////////////////////////////////////////
+// 1. make warning level as 4 for all projects
+// 2. threat warning as errors for all projects
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include <QString>
+#include <QStringList>
 #include <QVector>
 #include <QDateTime>
 #include <QVariantMap>
 #include <QTGui/QLabel>
 
-////////////////////////////////TODOTODOTODOTODOTODOTODOTODOTODOTODO/////////////////////////////////////////////
-// 1. make warning level as 4 for all projects
-// 2. threat warning as errors for all projects
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+typedef QMap< QString, QStringList > DESCRIPTIONS_MAP;
 
 /*!
  * \brief it enumerates internal valuable file types
@@ -104,7 +107,12 @@ FVA_FILE_TYPE fvaConvertFileExt2FileType ( const QString& type );
 /*!
 * \brief it answers if file is internal purpose for
 */
-bool fvaIsInternalFileName( const QString& fileName );
+bool fvaIsInternalFile( const QString& fileName );
+
+/*!
+* \brief it answers if file is supported type of  (by its file extention)
+*/
+bool fvaIsFVAFile( const QString& extention );
 
 /*!
  * \brief it makes showing images in the most common way
@@ -140,14 +148,14 @@ class fvaItem
 
 		fvaItem ()
 		{
-			pParent		= nullptr;
-			isFolder	= false;
-			isFiltered	= true;
-			deviceId	= 0;
-			personId	= 0;
-			scanerId	= 0;
+			isFolder			= false;
+			isFiltered			= true;
+			hasDescriptionData	= false;
+			deviceId			= 0;
+			personId			= 0;
+			scanerId			= 0;
 		}
-		~fvaItem ()
+		virtual ~fvaItem ()
 		{
 			for (auto idChild = children.begin(); idChild != children.end(); ++idChild)
 			{
@@ -169,6 +177,11 @@ class fvaItem
 		 */
 		QDateTime				dateFrom;
 		QDateTime				dateTo;
+
+		/*!
+		 * does this item have any description data
+		 */
+		bool					hasDescriptionData;
 
 		/*!
 		 * set of place id 
@@ -206,11 +219,6 @@ class fvaItem
 		QString					tagsOrComment;
 
 		/*!
-		 * parent item or NULL if it is root
-		 */
-		fvaItem*				pParent;
-
-		/*!
 		 * children
 		 */
 		QVector<fvaItem*>		children;
@@ -225,10 +233,25 @@ class fvaItem
 		 */
 		bool					isFiltered;
 
+		/*!
+		 * folder to show together with this folder
+		 */
+		QString					linkedFolder;
+		
 		/*! 
 		 * TODO delete this field
 		 */
 		QString					fsName;
+
+		/*!
+		 * structure of description file 
+		 */
+		QStringList				descTitles; 
+
+		/*!
+		 * content of description file 
+		 */
+		DESCRIPTIONS_MAP		decsItems;
 
 };
 /*!

@@ -79,7 +79,7 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputJson, 
 	_file.close();
 	return FVA_NO_ERROR;
 }
-bool fvaIsInternalFileName( const QString& fileName )
+bool fvaIsInternalFile( const QString& fileName )
 {
 	return (	fileName.toUpper() == FVA_DESCRIPTION_FILE_NAME.toUpper() 
 			||	fileName.toUpper() == FVA_DIR_DESCRIPTION_FILE_NAME.toUpper() 
@@ -87,23 +87,28 @@ bool fvaIsInternalFileName( const QString& fileName )
 			||	fileName.toUpper() == FVA_OLD_DIR_DESCRIPTION_FILE_NAME.toUpper() 
 			||	fileName.toUpper() == FVA_OLD_DESCRIPTION_FILE_NAME.toUpper() ) ;
 }
-FVA_FILE_TYPE fvaConvertFileExt2FileType ( const QString& type )
+bool fvaIsFVAFile( const QString& extention )
+{
+	return FVA_FILE_TYPE_UNKNOWN != fvaConvertFileExt2FileType ( extention );
+}
+
+FVA_FILE_TYPE fvaConvertFileExt2FileType ( const QString& extention )
 {	
-	if ( type.toUpper() == "JPG" 
-		|| type.toUpper() == "JPEG" 
-		|| type.toUpper() == "PNG" 
-		|| type.toUpper() == "BMP" 
-		|| type.toUpper() == "GIF" )
+	if (	extention.toUpper()	== "JPG" 
+		|| extention.toUpper()	== "JPEG" 
+		|| extention.toUpper()	== "PNG" 
+		|| extention.toUpper()	== "BMP" 
+		|| extention.toUpper()	== "GIF" )
 		return FVA_FILE_TYPE_IMG;
 	
-	if ( type.toUpper() == "AVI" 
-		|| type.toUpper() == "MOV" 
-		|| type.toUpper() == "MPG" 
-		|| type.toUpper() == "MP4" 
-		|| type.toUpper() == "3GP" )
+	if ( extention.toUpper()	== "AVI" 
+		|| extention.toUpper()	== "MOV" 
+		|| extention.toUpper()	== "MPG" 
+		|| extention.toUpper()	== "MP4" 
+		|| extention.toUpper()	== "3GP" )
 		return FVA_FILE_TYPE_VIDEO;
 
-	if ( type.toUpper() == "WAV" )
+	if ( extention.toUpper()	== "WAV" )
 		return FVA_FILE_TYPE_AUDIO;
 
 	return FVA_FILE_TYPE_UNKNOWN;
