@@ -1,8 +1,7 @@
 #include "CSVFile.h"
 
 
-CSVFile::CSVFile( const QString& path )
-	: m_path ( path )
+CSVFile::CSVFile(  )
 {
 
 }
@@ -13,9 +12,9 @@ CSVFile::~CSVFile(  )
 
 }
 
-bool CSVFile::openForRead()
+bool CSVFile::openForRead( const QString& path )
 {
-	m_file.reset ( new QFile ( m_path ) );
+	m_file.reset ( new QFile ( path ) );
 	if ( !m_file->open( QIODevice::ReadOnly ) )
 		return false;
 
@@ -23,9 +22,9 @@ bool CSVFile::openForRead()
 	return true;
 }
 
-bool CSVFile::openForWrite()
+bool CSVFile::openForWrite( const QString& path )
 {
-	m_file.reset ( new QFile ( m_path ) );
+	m_file.reset ( new QFile ( path ) );
 	if ( !m_file->open( QIODevice::WriteOnly ) )
 		return false;
 

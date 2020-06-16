@@ -16,7 +16,7 @@ class CSVFile
 		/*!
 		 * \brief ctors-dtors section
 		 */
-		CSVFile( const QString& path );
+		CSVFile( );
 		virtual ~CSVFile( );
 	
 	protected : // methods
@@ -25,13 +25,13 @@ class CSVFile
 		 * \brief it open csv file for readnig 
 		 * \return it returns true if opening was successfull, otherwize it returns false 
 		 */
-		bool openForRead ( );
+		bool openForRead ( const QString& path );
 
 		/*!
 		 * \brief it open csv file for writing 
 		 * \return it returns true if opening was successfull, otherwize it returns false 
 		 */
-		bool openForWrite ( );
+		bool openForWrite ( const QString& path );
 
 		/*!
 		 * \brief it reads one string terminated OA or OAOD from file
@@ -61,11 +61,6 @@ class CSVFile
 		bool writeLine ( const QString& line );
 
 	private: // data
-
-		/*!
-		 * path to csv file
-		 */
-		QString							m_path; 
 
 		/*!
 		 * file system object
