@@ -195,8 +195,10 @@ void FVADescriptionEditor::saveCurrentDescription()
 		}
 	}
 	
-	FVADescriptionFile desc ( dir.absolutePath() + "/" + FVA_DESCRIPTION_FILE_NAME );
-	FVA_ERROR_CODE res = desc.save( m_titles, m_decsItems );
+	FVADescriptionFile desc;
+	FVA_ERROR_CODE res = desc.save( dir.absolutePath() + "/" + FVA_DESCRIPTION_FILE_NAME, 
+									m_titles, 
+									m_decsItems );
 	//if ( FVA_NO_ERROR != res )
 		// return res;
 }
