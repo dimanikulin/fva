@@ -149,7 +149,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File::execute()
 			continue;
 
 		// skip meta files
-		if ( fvaIsInternalFileName( info.fileName() ) )
+		if ( fvaIsInternalFile( info.fileName() ) )
 			continue;
 
 		QString subFolderName		= info.baseName().mid(0,10).replace("-",".");
@@ -522,7 +522,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			}	
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		}
-		else if ( fvaIsInternalFileName ( info.fileName() ) ) 
+		else if ( fvaIsInternalFile ( info.fileName() ) ) 
 		{
 			// nothing to do here
 		}
@@ -642,7 +642,7 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 			continue;
 
 		// skip meta files
-		if ( fvaIsInternalFileName( info.fileName() ) )
+		if ( fvaIsInternalFile( info.fileName() ) )
 			continue;
 
 		LOG_QWARN << "descr:" << info.fileName() + oneFileDesc;
