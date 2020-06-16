@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
 
 	desc.reset( 0 );
 
-	FVADescriptionEditor w( titles, decsItems, dictionaries, indexOfFile, dirFiles );
+	FVADescriptionEditor w( titles, decsItems, dictionaries, indexOfFile, dirFiles, dictPath );
 	w.show();
 	return a.exec();
 }
