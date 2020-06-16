@@ -2,12 +2,21 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FVAViewer", "FVAViewer\FVAViewer.vcxproj", "{7CBD7407-31F0-4E26-837B-58310A8C0874}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C910792D-9FD1-4301-A941-29BF393BA379} = {C910792D-9FD1-4301-A941-29BF393BA379}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FVAOrganizer", "FVAOrganizer\FVAOrganizer.vcxproj", "{CB6DCEA7-4012-4BBC-9A41-C310D6B0FCBC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C910792D-9FD1-4301-A941-29BF393BA379} = {C910792D-9FD1-4301-A941-29BF393BA379}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FVACommonLib", "FVACommonLib\FVACommonLib.vcxproj", "{C910792D-9FD1-4301-A941-29BF393BA379}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FVADescriptionEditor", "FVADescriptionEditor\FVADescriptionEditor.vcxproj", "{F35C7EBB-1A63-41F6-9EDD-89D3FDB94D06}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C910792D-9FD1-4301-A941-29BF393BA379} = {C910792D-9FD1-4301-A941-29BF393BA379}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
