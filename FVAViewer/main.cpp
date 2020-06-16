@@ -42,7 +42,7 @@ void msghandler( QtMsgType type, const char *msg )
 int main(int argc, char *argv[])
 {
 	//install : set the callback
-	qInstallMsgHandler( msghandler ); 
+	// qInstallMsgHandler( msghandler ); 
 
 	QApplication a(argc, argv);
 
