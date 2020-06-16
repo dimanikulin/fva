@@ -6,35 +6,44 @@
 #include <QListWidgetItem>
 #include <QDir>
 #include <QDateTime>
+#include <QProcess>
 
+void FVADescriptionEditor::updateDictionaryGUI()
+{
+	QVariantList vlist;
+
+	FILL_COMB_FROM_DICT("places",ui.cmbBoxPlace);
+	FILL_COMB_FROM_DICT("people",ui.cmbBoxWho);
+	FILL_COMB_FROM_DICT("devices",ui.cmbBoxDevice);
+	FILL_COMB_FROM_DICT("scaners",ui.cmbBoxScaner);
+}
 FVADescriptionEditor::FVADescriptionEditor(
 						const QStringList&					titles, 
 							QMap< QString, QStringList >&	decsItems, 
 						const QVariantMap&					dictionaries,
 						int									indexOfFile,
 						const QStringList&					files,
+						const QString&						dictPath,
 						QWidget *							parent)
 	: QMainWindow	(parent),
 	m_titles		(titles), 
 	m_decsItems		(decsItems), 
 	m_dictionaries	(dictionaries),
 	m_indexOfFile	(indexOfFile),
-	m_files			(files)
+	m_files			(files),
+	m_dictPath		(dictPath)
 
 {
 	ui.setupUi(this);
 
-	QVariantList vlist;
-	FILL_COMB_FROM_DICT("places",ui.cmbBoxPlace);
-	FILL_COMB_FROM_DICT("people",ui.cmbBoxWho);
-	FILL_COMB_FROM_DICT("devices",ui.cmbBoxDevice);
-	FILL_COMB_FROM_DICT("scaners",ui.cmbBoxScaner)
-
+	updateDictionaryGUI();
+	
 	connect (ui.btnAdd,SIGNAL(clicked()),this,SLOT(OnAddBtnPressed()) );
 	connect (ui.btnDel,SIGNAL(clicked()),this,SLOT(OnRemoveBtnPressed()) );
 	connect (ui.btnNext,SIGNAL(clicked()),this,SLOT(OnNextBtnPressed()) );
 	connect (ui.btnPrev,SIGNAL(clicked()),this,SLOT(OnPrevBtnPressed()) );
 	connect (ui.btnSave,SIGNAL(clicked()),this,SLOT(OnSaveBtnPressed()) );
+	connect (ui.btnDict,SIGNAL(clicked()),this,SLOT(OnChangeDictPressed()));
 
 	updateGuiForFile( m_files[m_indexOfFile] );
 }
@@ -43,6 +52,26 @@ FVADescriptionEditor::~FVADescriptionEditor()
 {
 
 }
+
+void FVADescriptionEditor::OnChangeDictPressed()
+{
+	QProcess myProcess(this);    
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	QStringList params;
+	params.append(m_dictPath);
+	myProcess.start("FVADictionaryEditor.exe", params);
+
+	if ( !myProcess.waitForFinished( -1 ) )
+	{
+	}
+	QString		error;
+	FVA_ERROR_CODE res = fvaLoadDictionary( m_dictPath, m_dictionaries, error );
+	if ( FVA_NO_ERROR != res )
+		return ;
+
+	updateDictionaryGUI();
+}
+
 
 void FVADescriptionEditor::updateGuiForFile( const QString& path )
 {

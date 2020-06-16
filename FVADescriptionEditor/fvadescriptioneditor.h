@@ -15,6 +15,7 @@ public:
 						const QVariantMap&					dictionaries,
 						int									indexOfFile,
 						const QStringList&					files,
+						const QString&						dictPath,
 						QWidget *							parent = 0);
 	~FVADescriptionEditor();
 
@@ -24,6 +25,7 @@ protected slots:
 	void OnNextBtnPressed();
 	void OnPrevBtnPressed();
 	void OnSaveBtnPressed();
+	void OnChangeDictPressed();
 
 private: // methods
 
@@ -31,15 +33,18 @@ private: // methods
 
 	void saveCurrentDescription();
 
+	void updateDictionaryGUI();
+
 private: // data
 
 	Ui::FVADescriptionEditorClass ui;
 
 	const QStringList&					m_titles; 
 		QMap< QString, QStringList >&	m_decsItems; 
-	const QVariantMap&					m_dictionaries;
+	QVariantMap							m_dictionaries;
 	int									m_indexOfFile;
 	const QStringList&					m_files;
+	const QString&						m_dictPath;
 };
 
 #endif // FVADESCRIPTIONEDITOR_H
