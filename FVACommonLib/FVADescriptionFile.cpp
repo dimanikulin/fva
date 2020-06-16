@@ -1,7 +1,6 @@
 #include "FVADescriptionFile.h"
 
-FVADescriptionFile::FVADescriptionFile( const QString& path )
-	: CSVFile ( path ) 
+FVADescriptionFile::FVADescriptionFile(  ) 
 {
 }
 
@@ -10,9 +9,9 @@ FVADescriptionFile::~FVADescriptionFile( )
 
 }
 
-FVA_ERROR_CODE FVADescriptionFile::load( QStringList& titles, DESCRIPTIONS_MAP& decsItems )
+FVA_ERROR_CODE FVADescriptionFile::load( const QString& path, QStringList& titles, DESCRIPTIONS_MAP& decsItems )
 {
-	if ( !openForRead() )
+	if ( !openForRead( path ) )
 		return FVA_ERROR_CANT_OPEN_FILE_DESC;
 	
 	int		indexOfFileNameColumn = -1;
@@ -53,9 +52,9 @@ int FVADescriptionFile::getColumnIdByName( const QStringList& titles, const QStr
 	}
 	return -1;
 }
-FVA_ERROR_CODE FVADescriptionFile::save( const QStringList& titles, const DESCRIPTIONS_MAP& decsItems )
+FVA_ERROR_CODE FVADescriptionFile::save( const QString& path, const QStringList& titles, const DESCRIPTIONS_MAP& decsItems )
 {
-	if ( !openForWrite() )
+	if ( !openForWrite( path ) )
 		return FVA_ERROR_CANT_OPEN_FILE_DESC;
 	for ( auto i = decsItems.begin(); i !=decsItems.end(); ++i )
 		if ( i.value().size() != titles.size() )
