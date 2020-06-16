@@ -57,11 +57,11 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 		return FVA_ERROR_CANT_OPEN_INPUT_FILE;
 	}
 
-	FVADescriptionFile descFile ( descPath );
+	FVADescriptionFile descFile;
 
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_ERROR_CODE res = descFile.load( titles, decsItems );
+	FVA_ERROR_CODE res = descFile.load( descPath, titles, decsItems );
 	if ( FVA_NO_ERROR != res )
 	{
 		LOG_QCRIT << "description file can not be loaded";
