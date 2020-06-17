@@ -10,25 +10,30 @@ int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 	
-	QString dictPath, imagePath; 
+	QString dictPath, fvaPath; 
 	QDir dir;
+	bool folderMode = false;
 	if ( a.arguments().size() >= 3 )
 	{
 		dictPath	= a.arguments().at(1);
-		imagePath	= a.arguments().at(2);
-		dir			= QDir(imagePath);
-		if ( !dir.exists( imagePath ) )
+		fvaPath		= a.arguments().at(2);
+		dir			= QDir(fvaPath);
+		if ( !dir.exists( fvaPath ) )
 			return FVA_ERROR_CANT_OPEN_INPUT_FILE;
+		QFileInfo info(fvaPath);
+		folderMode = info.isDir();
 	}
 	else if ( a.arguments().size() == 2 )
 	{
 		dictPath	= a.arguments().at(1);
 		dir			= QDir ( a.applicationDirPath() + "/" + FVA_DICTIONARY_NAME );
+		folderMode	= true;
 	}
 	else if ( a.arguments().size() == 1 )
 	{
 		dictPath	= a.applicationDirPath() + "/" + FVA_DICTIONARY_NAME;
 		dir			= QDir ( a.applicationDirPath() + "/" + FVA_DICTIONARY_NAME );
+		folderMode	= true;
 	}
 
 	QString		error;
@@ -36,72 +41,100 @@ int main(int argc, char *argv[])
 	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
 	if ( FVA_NO_ERROR != res )
 		return res;
-
-	dir.cdUp();
-
-	std::auto_ptr<FVADescriptionFile> desc( new FVADescriptionFile );
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
-
-	res = desc->load( ( 
-		(( a.arguments().size() == 1 ) 
-		? a.applicationDirPath() 
-		: dir.absolutePath() )
-		+ "/" + FVA_DESCRIPTION_FILE_NAME ),
-			titles, 
-			decsItems );
-	
 	bool emptyDescFile = false;
-	if ( FVA_ERROR_CANT_OPEN_FILE_DESC == res )
-		emptyDescFile = true;
-	else if ( FVA_NO_ERROR != res )
-		return res;
+
+	if (!folderMode)
+	{
+		dir.cdUp();
+ 
+		std::auto_ptr<FVADescriptionFile> desc( new FVADescriptionFile );
+
+		res = desc->load( ( 
+			(( a.arguments().size() == 1 ) 
+				? a.applicationDirPath() 
+				: dir.absolutePath() )
+				+ "/" + FVA_DESCRIPTION_FILE_NAME ),
+				titles, 
+				decsItems );
+	
+		if ( FVA_ERROR_CANT_OPEN_FILE_DESC == res )
+			emptyDescFile = true;
+		else if ( FVA_NO_ERROR != res )
+			return res;
+
+		desc.reset( 0 );
+	}
 
 	QStringList dirFiles;
 	QStringList emptyDescription;
 	int indexOfFile = -1;
-	if (emptyDescFile)
+	if (emptyDescFile || folderMode)
 	{
-		titles.append("Name");			
+		titles.append("Name");	
 		titles.append("Place");			
 		titles.append("People");		
 		titles.append("Device");		
-		titles.append("WhoTook");		
 		titles.append("Description");	
 		titles.append("Scaner");		
 		titles.append("Comment");		
 		titles.append("oldName");		
 	}
 
-	for (auto iTitles = 0; iTitles != titles.size(); ++iTitles)
-		emptyDescription.append("");
-
-	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::Files, QDir::DirsFirst))
+	if (!folderMode)
 	{
-		if ( info.isDir() )
-			continue;
+		for (auto iTitles = 0; iTitles != titles.size(); ++iTitles)
+			emptyDescription.append("");
 
-		// skip meta files
-		if ( !fvaIsFVAFile(info.suffix().toUpper()) || fvaIsInternalFile( info.fileName() ) )
-			continue;
-
-		if ( imagePath == info.absoluteFilePath() )
-			indexOfFile = dirFiles.size();
-		
-		dirFiles.append(info.absoluteFilePath());
-
-		if (emptyDescFile)
+		Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::Files, QDir::DirsFirst))
 		{
-			emptyDescription[0]						= info.fileName().toUpper();
-			decsItems[info.fileName().toUpper()]	= emptyDescription;	
+			if ( info.isDir() )
+				continue;
+
+			// skip meta files
+			if ( !fvaIsFVAFile(info.suffix().toUpper()) || fvaIsInternalFile( info.fileName() ) )
+				continue;
+
+			if ( fvaPath == info.absoluteFilePath() )
+				indexOfFile = dirFiles.size();
+		
+			dirFiles.append(info.absoluteFilePath());
+
+			if (emptyDescFile)
+			{
+				emptyDescription[0]						= info.fileName().toUpper();
+				decsItems[info.fileName().toUpper()]	= emptyDescription;	
+			}
 		}
+		if ( -1 == indexOfFile && fvaPath.isEmpty())
+			indexOfFile = 0;
+		FVADescriptionEditor w( folderMode, titles, decsItems, dictionaries, indexOfFile, dirFiles, dictPath, "" );
+		w.show();
+		return a.exec();
 	}
-	if ( -1 == indexOfFile && imagePath.isEmpty() )
-		indexOfFile = 0;
+	else
+	{
+		QVariantMap		result;
+		QString			error;
+		FVA_ERROR_CODE	code = fvaGetFolderDescription( fvaPath, result, error );
+		if ( FVA_NO_ERROR != code )
+			return code;
+		// "Name","Place","People","Device","Description","Scaner","Comment","oldName"
+		QFileInfo info(fvaPath);
+		emptyDescription.append(info.fileName().toUpper());
+		emptyDescription.append(result["place"].toString());
+		emptyDescription.append(result["people"].toString());
+		emptyDescription.append(result["deviceId"].toString());
+		emptyDescription.append(result["event"].toString());
+		emptyDescription.append(result["scaner"].toString());
+		emptyDescription.append(result["tags"].toString());
+		emptyDescription.append(result["linkedFolder"].toString());
 
-	desc.reset( 0 );
-
-	FVADescriptionEditor w( titles, decsItems, dictionaries, indexOfFile, dirFiles, dictPath );
-	w.show();
-	return a.exec();
+		decsItems[info.fileName().toUpper()]	= emptyDescription;	
+		
+		FVADescriptionEditor w( folderMode, titles, decsItems, dictionaries, 0, dirFiles, dictPath, fvaPath );
+		w.show();
+		return a.exec();
+	}
 }

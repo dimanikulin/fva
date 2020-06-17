@@ -8,16 +8,20 @@ class FVADescriptionEditor : public QMainWindow
 {
 	Q_OBJECT
 
-public:
+	public:
 
-	FVADescriptionEditor( const QStringList&				titles, 
-							QMap< QString, QStringList >&	decsItems, 
-						const QVariantMap&					dictionaries,
-						int									indexOfFile,
-						const QStringList&					files,
-						const QString&						dictPath,
-						QWidget *							parent = 0);
-	~FVADescriptionEditor();
+		FVADescriptionEditor( bool							forFolder,
+						const QStringList&				titles, 
+						QMap< QString, QStringList >&	decsItems, 
+						const QVariantMap&				dictionaries,
+						int								indexOfFile,
+						const QStringList&				files,
+						const QString&					dictPath,
+						const QString&					folderPath,
+						QWidget *						parent = 0);
+
+
+		~FVADescriptionEditor();
 
 protected slots:
 	void OnAddBtnPressed();
@@ -29,22 +33,27 @@ protected slots:
 
 private: // methods
 
-	void updateGuiForFile( const QString& path );
+	void updateGuiForItem( const QString& path );
 
 	void saveCurrentDescription();
 
 	void updateDictionaryGUI();
 
+	void init();
+
 private: // data
 
 	Ui::FVADescriptionEditorClass ui;
 
-	const QStringList&					m_titles; 
-		QMap< QString, QStringList >&	m_decsItems; 
 	QVariantMap							m_dictionaries;
+	QString								m_dictPath;
+	bool								m_forFolder;
+	QStringList							m_titles; 
+	QMap< QString, QStringList >		m_decsItems; 
 	int									m_indexOfFile;
-	const QStringList&					m_files;
-	const QString&						m_dictPath;
+	QStringList							m_files;
+	QString								m_folderPath;
+
 };
 
 #endif // FVADESCRIPTIONEDITOR_H

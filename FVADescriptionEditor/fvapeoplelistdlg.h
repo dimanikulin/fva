@@ -9,12 +9,24 @@ class FVAPeopleListDlg : public QDialog
 	Q_OBJECT
 
 public:
-	FVAPeopleListDlg(const QVariantList& people, QWidget *parent = 0);
+	FVAPeopleListDlg( QVariantMap& dictionaries, const QString& dictPath, QWidget *parent = 0);
 	~FVAPeopleListDlg();
 
 	Ui::FVAPeopleListDlg& getUI() { return ui; };
+
+protected slots:
+
+	void OnAddPeopleBtnPressed();
+
 private:
+
+	void updateGui();
+
 	Ui::FVAPeopleListDlg ui;
+
+	QVariantMap&	m_dictionaries; 
+	QString			m_dictPath;
+
 };
 
 #endif // FVAPEOPLELISTDLG_H

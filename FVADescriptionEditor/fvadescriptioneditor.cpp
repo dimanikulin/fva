@@ -13,27 +13,11 @@ void FVADescriptionEditor::updateDictionaryGUI()
 	QVariantList vlist;
 
 	FILL_COMB_FROM_DICT("places",ui.cmbBoxPlace);
-	FILL_COMB_FROM_DICT("people",ui.cmbBoxWho);
 	FILL_COMB_FROM_DICT("devices",ui.cmbBoxDevice);
 	FILL_COMB_FROM_DICT("scaners",ui.cmbBoxScaner);
 }
-FVADescriptionEditor::FVADescriptionEditor(
-						const QStringList&					titles, 
-							QMap< QString, QStringList >&	decsItems, 
-						const QVariantMap&					dictionaries,
-						int									indexOfFile,
-						const QStringList&					files,
-						const QString&						dictPath,
-						QWidget *							parent)
-	: QMainWindow	(parent),
-	m_titles		(titles), 
-	m_decsItems		(decsItems), 
-	m_dictionaries	(dictionaries),
-	m_indexOfFile	(indexOfFile),
-	m_files			(files),
-	m_dictPath		(dictPath)
-
-{
+void FVADescriptionEditor::init()
+{	
 	ui.setupUi(this);
 
 	updateDictionaryGUI();
@@ -44,8 +28,35 @@ FVADescriptionEditor::FVADescriptionEditor(
 	connect (ui.btnPrev,SIGNAL(clicked()),this,SLOT(OnPrevBtnPressed()) );
 	connect (ui.btnSave,SIGNAL(clicked()),this,SLOT(OnSaveBtnPressed()) );
 	connect (ui.btnDict,SIGNAL(clicked()),this,SLOT(OnChangeDictPressed()));
+}
 
-	updateGuiForFile( m_files[m_indexOfFile] );
+FVADescriptionEditor::FVADescriptionEditor(
+						bool							forFolder,
+						const QStringList&				titles, 
+						QMap< QString, QStringList >&	decsItems, 
+						const QVariantMap&				dictionaries,
+						int								indexOfFile,
+						const QStringList&				files,
+						const QString&					dictPath,
+						const QString&					folderPath,
+						QWidget *						parent)
+	:
+	 QMainWindow	(parent),
+	m_dictionaries	(dictionaries),
+	m_dictPath		(dictPath),
+	m_forFolder		(forFolder),
+	m_titles		(titles), 
+	m_decsItems		(decsItems), 
+	m_indexOfFile	(indexOfFile),
+	m_files			(files),
+	m_folderPath	(folderPath)
+{
+	init();
+
+	if (forFolder)
+		updateGuiForItem( folderPath );
+	else
+		updateGuiForItem( m_files[m_indexOfFile] );	
 }
 
 FVADescriptionEditor::~FVADescriptionEditor()
@@ -72,8 +83,7 @@ void FVADescriptionEditor::OnChangeDictPressed()
 	updateDictionaryGUI();
 }
 
-
-void FVADescriptionEditor::updateGuiForFile( const QString& path )
+void FVADescriptionEditor::updateGuiForItem( const QString& path )
 {
 	QFileInfo info( path );
 	auto it = m_decsItems.find( info.fileName().toUpper() );
@@ -82,8 +92,17 @@ void FVADescriptionEditor::updateGuiForFile( const QString& path )
 
 	ui.lbName->setText( info.fileName() );
 
-	fvaShowImage( path, ui.lbFoto );
-
+	if (m_forFolder)
+	{
+		setFixedHeight( size().height()	);
+		setFixedWidth( ui.groupBox->size().width() + 20 );
+		ui.btnNext->setVisible(false);
+		ui.btnPrev->setVisible(false);
+	}
+	else
+	{
+		fvaShowImage( path, ui.lbFoto );
+	}
 	QStringList list = it.value(); 
 
 	int columnId = FVADescriptionFile::getColumnIdByName(m_titles,"oldName");
@@ -116,7 +135,6 @@ void FVADescriptionEditor::updateGuiForFile( const QString& path )
 
 	SET_SELECTED_IN_COMBO("place",ui.cmbBoxPlace)
 	SET_SELECTED_IN_COMBO("device",ui.cmbBoxDevice)
-	SET_SELECTED_IN_COMBO("WhoTook",ui.cmbBoxWho)
 	SET_SELECTED_IN_COMBO("scaner",ui.cmbBoxScaner)
 
 	columnId = FVADescriptionFile::getColumnIdByName(m_titles,"people");
@@ -143,7 +161,7 @@ void FVADescriptionEditor::updateGuiForFile( const QString& path )
 
 void FVADescriptionEditor::OnAddBtnPressed()
 {
-	FVAPeopleListDlg dlg( m_dictionaries["people"].toList());
+	FVAPeopleListDlg dlg( m_dictionaries,m_dictPath );
 	int res = dlg.exec( );
 	if ( 1 == res )	
 	{
@@ -152,6 +170,8 @@ void FVADescriptionEditor::OnAddBtnPressed()
 		if ( selList.size() )
 			ui.lstPeople->addItem( selList.at(0)->clone() );
 	}
+
+	updateDictionaryGUI();
 }
 void FVADescriptionEditor::OnRemoveBtnPressed()
 {
@@ -165,7 +185,7 @@ void FVADescriptionEditor::OnNextBtnPressed()
 	if ( m_files.size() < m_indexOfFile + 1 )
 		return;
 	m_indexOfFile++;
-	updateGuiForFile(m_files[m_indexOfFile]);
+	updateGuiForItem(m_files[m_indexOfFile]);
 }
 void FVADescriptionEditor::OnPrevBtnPressed()
 {
@@ -173,32 +193,10 @@ void FVADescriptionEditor::OnPrevBtnPressed()
 	if ( 0 > m_indexOfFile - 1 )
 		return;
 	m_indexOfFile--;
-	updateGuiForFile(m_files[m_indexOfFile]);
+	updateGuiForItem(m_files[m_indexOfFile]);
 }
 void FVADescriptionEditor::saveCurrentDescription()
 {
-	QFileInfo info( m_files[m_indexOfFile] );
-	auto it = m_decsItems.find( info.fileName().toUpper() );
-	if ( it == m_decsItems.end() )
-		return;
-
-	QStringList& list = it.value();
-	list[FVADescriptionFile::getColumnIdByName(m_titles,"oldName")]		= ui.editOldName->text().remove("\t");
-	list[FVADescriptionFile::getColumnIdByName(m_titles,"Description")] = ui.editDescription->text().remove("\t");
-	list[FVADescriptionFile::getColumnIdByName(m_titles,"Comment")]		= ui.editComment->text().remove("\t");
-	int index = -1;
-#define GET_SELECTED_FROM_COMBO(col,combo) \
-	index = combo->currentIndex(); \
-	if ( 1 <= index ) \
-	{\
-		QString ID = combo->itemData( index ).toString();\
-		list[FVADescriptionFile::getColumnIdByName(m_titles,col)] = ID;\
-	}
-	GET_SELECTED_FROM_COMBO("place",ui.cmbBoxPlace)
-	GET_SELECTED_FROM_COMBO("device",ui.cmbBoxDevice)
-	GET_SELECTED_FROM_COMBO("WhoTook",ui.cmbBoxWho)
-	GET_SELECTED_FROM_COMBO("scaner",ui.cmbBoxScaner)
-
 	QString peopleIDs;
 	for ( auto iP = 0; iP < ui.lstPeople->count(); ++iP )
 	{
@@ -208,28 +206,99 @@ void FVADescriptionEditor::saveCurrentDescription()
 			peopleIDs += "," + ui.lstPeople->item(iP)->data(1).toString();
 	}
 
-	list[FVADescriptionFile::getColumnIdByName(m_titles,"people")] = peopleIDs;
-
-	QDir dir(m_files[m_indexOfFile]);
-	dir.cdUp();
-	if ( dir.exists( dir.absolutePath() + "/" + FVA_DESCRIPTION_FILE_NAME ) )
+	if (m_forFolder)
 	{
-		QString newName = dir.absolutePath()
-			+ "/" + FVA_DESCRIPTION_FILE_NAME 
-			+ "_" + QDateTime::currentDateTime().toString( "yyyy-MM-dd-hh-mm-ss").toAscii().data();
-		QString oldName = dir.absolutePath()+ "/" + FVA_DESCRIPTION_FILE_NAME;
-		if ( !dir.rename( oldName, newName ))
+		QString place, device, scaner;
+		int index; 
+#define GET_SELECTED_FROM_COMBO_(str,combo) \
+		index = combo->currentIndex(); \
+		if ( 1 <= index ) \
+		{\
+			str = combo->itemData( index ).toString();\
+		}
+
+		GET_SELECTED_FROM_COMBO_(place,ui.cmbBoxPlace)
+		GET_SELECTED_FROM_COMBO_(device,ui.cmbBoxDevice)
+		GET_SELECTED_FROM_COMBO_(scaner,ui.cmbBoxScaner)
+
+		//ui.editOldName->text().remove("\t");
+
+		QString error;
+		QString jsonData = 
+		"{\"deviceId\":\""		+ device									+ "\",\n" 
+		+"\"tags\":\""			+ ui.editComment->text().remove("\t")		+ "\",\n"
+		+"\"people\":\""		+ peopleIDs									+ "\",\n"
+		+"\"place\":\""			+ place										+ "\",\n"
+		+"\"scaner\":\""		+ scaner									+ "\",\n"
+		+"\"event\":\""			+ ui.editDescription->text().remove("\t")	+ "\",\n"
+		+"\"linkedFolder\":\""	+ ui.editOldName->text().remove("\t")		+ "\"}";
+
+		QDir dir(m_folderPath);
+		if ( dir.exists( dir.absolutePath() + "/" + FVA_DIR_DESCRIPTION_FILE_NAME ) )
+		{
+			QString newName = dir.absolutePath()
+				+ "/" + FVA_DIR_DESCRIPTION_FILE_NAME 
+				+ "_" + QDateTime::currentDateTime().toString( "yyyy-MM-dd-hh-mm-ss").toAscii().data();
+			QString oldName = dir.absolutePath()+ "/" + FVA_DIR_DESCRIPTION_FILE_NAME;
+			if ( !dir.rename( oldName, newName ))
+			{
+				return;
+			}
+		}
+
+		FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folderPath + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, jsonData, error );
+		if ( FVA_NO_ERROR != res )
 		{
 			return;
 		}
 	}
+	else
+	{
+		QFileInfo info( m_files[m_indexOfFile] );
+		auto it = m_decsItems.find(info.fileName().toUpper() );
+		if ( it == m_decsItems.end() )
+			return;
+
+		QStringList& list = it.value();
+		list[FVADescriptionFile::getColumnIdByName(m_titles,"oldName")]		= ui.editOldName->text().remove("\t");
+		list[FVADescriptionFile::getColumnIdByName(m_titles,"Description")] = ui.editDescription->text().remove("\t");
+		list[FVADescriptionFile::getColumnIdByName(m_titles,"Comment")]		= ui.editComment->text().remove("\t");
+		int index = -1;
+#define GET_SELECTED_FROM_COMBO(col,combo) \
+		index = combo->currentIndex(); \
+		if ( 1 <= index ) \
+		{\
+			QString ID = combo->itemData( index ).toString();\
+			list[FVADescriptionFile::getColumnIdByName(m_titles,col)] = ID;\
+		}
+		GET_SELECTED_FROM_COMBO("place",ui.cmbBoxPlace)
+		GET_SELECTED_FROM_COMBO("device",ui.cmbBoxDevice)
+		GET_SELECTED_FROM_COMBO("scaner",ui.cmbBoxScaner)
+
+		list[FVADescriptionFile::getColumnIdByName(m_titles,"people")] = peopleIDs;
+
+		QDir dir(m_files[m_indexOfFile]);
+		dir.cdUp();
+		if ( dir.exists( dir.absolutePath() + "/" + FVA_DESCRIPTION_FILE_NAME ) )
+		{
+			QString newName = dir.absolutePath()
+				+ "/" + FVA_DESCRIPTION_FILE_NAME 
+				+ "_" + QDateTime::currentDateTime().toString( "yyyy-MM-dd-hh-mm-ss").toAscii().data();
+			QString oldName = dir.absolutePath()+ "/" + FVA_DESCRIPTION_FILE_NAME;
+			if ( !dir.rename( oldName, newName ))
+			{
+				return;
+			}
+		}
 	
-	FVADescriptionFile desc;
-	FVA_ERROR_CODE res = desc.save( dir.absolutePath() + "/" + FVA_DESCRIPTION_FILE_NAME, 
-									m_titles, 
-									m_decsItems );
-	//if ( FVA_NO_ERROR != res )
-		// return res;
+		FVADescriptionFile desc;
+		FVA_ERROR_CODE res = desc.save( dir.absolutePath() + "/" + FVA_DESCRIPTION_FILE_NAME, 
+										m_titles, 
+										m_decsItems );
+		//if ( FVA_NO_ERROR != res )
+			// return res;
+
+	}
 }
 void FVADescriptionEditor::OnSaveBtnPressed()
 {

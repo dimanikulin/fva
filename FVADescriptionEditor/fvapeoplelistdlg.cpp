@@ -1,9 +1,27 @@
 #include "fvapeoplelistdlg.h"
+#include "fvacommonlib.h"
+#include <QProcess>
 
-FVAPeopleListDlg::FVAPeopleListDlg(const QVariantList& people,QWidget *parent)
-	: QDialog(parent)
+FVAPeopleListDlg::FVAPeopleListDlg(QVariantMap& dictionaries, const QString& dictPath, QWidget *parent)
+	: QDialog		(parent),
+	m_dictionaries	(dictionaries),
+	m_dictPath		(dictPath)
 {
 	ui.setupUi(this);
+
+	updateGui();
+
+	connect (ui.btnAddPeople,SIGNAL(clicked()),this,SLOT(OnAddPeopleBtnPressed()) );
+}
+
+FVAPeopleListDlg::~FVAPeopleListDlg()
+{
+
+}
+void FVAPeopleListDlg::updateGui()
+{
+	ui.listWidget->clear();
+	QVariantList people = m_dictionaries["people"].toList();
 	for ( auto i = people.begin(); i != people.end() ; ++i )
 	{
 		QListWidgetItem *itm = new QListWidgetItem;
@@ -12,8 +30,22 @@ FVAPeopleListDlg::FVAPeopleListDlg(const QVariantList& people,QWidget *parent)
 		ui.listWidget->addItem(itm);
 	}
 }
-
-FVAPeopleListDlg::~FVAPeopleListDlg()
+void FVAPeopleListDlg::OnAddPeopleBtnPressed()
 {
+	QProcess myProcess(this);    
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	QStringList params;
+	params.append(m_dictPath);
+	myProcess.start("FVADictionaryEditor.exe", params);
 
+	if ( !myProcess.waitForFinished( -1 ) )
+	{
+		return;
+	}
+	QString		error;
+	FVA_ERROR_CODE res = fvaLoadDictionary( m_dictPath, m_dictionaries, error );
+	if ( FVA_NO_ERROR != res )
+		return ;
+
+	updateGui();
 }

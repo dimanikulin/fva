@@ -33,7 +33,7 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>140</x>
      <y>360</y>
      <width>156</width>
      <height>23</height>
@@ -48,6 +48,19 @@
    </property>
    <property name="standardButtons">
     <set>QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnAddPeople">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>360</y>
+     <width>151</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Новая личность</string>
    </property>
   </widget>
  </widget>
