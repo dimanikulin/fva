@@ -128,8 +128,7 @@ bool fvaIsInternalFile( const QString& fileName )
 	return (	fileName.toUpper() == FVA_DESCRIPTION_FILE_NAME.toUpper() 
 			||	fileName.toUpper() == FVA_DIR_DESCRIPTION_FILE_NAME.toUpper() 
 			||	fileName.toUpper() == FVA_BACKGROUND_MUSIC_FILE_NAME.toUpper() 
-			||	fileName.toUpper() == FVA_OLD_DIR_DESCRIPTION_FILE_NAME.toUpper() 
-			||	fileName.toUpper() == FVA_OLD_DESCRIPTION_FILE_NAME.toUpper() ) ;
+			||	fileName.toUpper() == FVA_DICTIONARY_NAME  );
 }
 bool fvaIsFVAFile( const QString& extention )
 {
@@ -251,11 +250,13 @@ FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTi
 			else if ( dirName [ 10 ] == '-' ) // period
 			{
 				QString sEndDate = dirName.mid( 11,2 );
-				bool result = false; 
-				int dEndDate = sEndDate.toInt( &result );
-				if ( !result || !dEndDate )
+				QString sStartDate = dirName.mid( 8,2 );
+				bool res, res1 = false; 
+				int dEndDate = sEndDate.toInt( &res );
+				int dStartDate = sStartDate.toInt( &res1 );
+				if ( !res || !res1 || !dEndDate || !dStartDate)
 					return FVA_ERROR_WRONG_FOLDER_NAME;
-				to = from.addDays(dEndDate);
+				to = from.addDays(dEndDate-dStartDate);
 			}
 			else
 				return FVA_ERROR_WRONG_FOLDER_NAME;
@@ -275,7 +276,7 @@ FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date )
 	date = QDateTime::fromString( fileName, "yyyy-MM-dd-hh-mm-ss" );
 	if ( !date.isValid() )
 	{
-		QString newFileName = QString(fileName).replace( "#","0" );
+		QString newFileName = QString(fileName).replace( "##","01" );
 		date = QDateTime::fromString( newFileName, "yyyy-MM-dd-hh-mm-ss" );
 		if ( !date.isValid() )
 		{
@@ -311,10 +312,17 @@ QString fvaItem::getGuiName()
 	{
 		QString desc; // = QString("(%1)").arg(children.size());
 		if (hasDescriptionData && !eventOrDesc.isEmpty())
-			desc = " (" + eventOrDesc + ")";
+			desc = " (" + eventOrDesc.trimmed() + ")";
 		
 		if (dateTo.isValid())
-			return dateFrom.toString( "yyyy/MM/dd") + dateTo.toString( "-yyyy/MM/dd") + desc;
+		{
+			if (dateFrom == dateTo) // one year
+				return dateFrom.toString( "yyyy") + desc;
+			else if (dateFrom.addDays(1) == dateTo)
+				return dateFrom.toString( "yyyy/MM/dd") + desc;
+			else
+				return dateFrom.toString( "yyyy/MM/dd") + dateTo.toString( "-yyyy/MM/dd") + desc;
+		}
 		else 
 			return dateFrom.toString( "yyyy/MM/dd") + desc;
 	}
@@ -338,7 +346,7 @@ void fillNameByOneId(int ident, const QString& dict, const QVariantMap&	dictiona
 				if (fullName.isEmpty())
 					fullName = i->toMap()["name"].toString();
 				else 
-					fullName += " [" + i->toMap()["name"].toString() + "]"; 
+					fullName += "\n[" + i->toMap()["name"].toString() + "]"; 
 				break;
 			}
 		}

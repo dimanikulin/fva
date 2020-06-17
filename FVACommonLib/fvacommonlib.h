@@ -62,8 +62,6 @@ enum FVA_ERROR_CODE
  * \brief internal file names
  */
 const QString	FVA_DESCRIPTION_FILE_NAME			= "description.csv";
-const QString	FVA_OLD_DESCRIPTION_FILE_NAME		= "description_old.csv";
-const QString	FVA_OLD_DIR_DESCRIPTION_FILE_NAME	= "folderDescription.json_old";
 const QString	FVA_DIR_DESCRIPTION_FILE_NAME		= "folderDescription.json";
 const QString	FVA_BACKGROUND_MUSIC_FILE_NAME		= "bgmusic.mid";
 const QString	FVA_DICTIONARY_NAME					= "data.json";
