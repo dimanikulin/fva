@@ -1,4 +1,5 @@
 #include "FVAOrganizerPages.h"
+#include "fvaorganizerwizard.h"
 
 #include <QVBoxLayout>
 #include <QFileDialog>
@@ -11,7 +12,7 @@ FVAOrganizerStartPage::FVAOrganizerStartPage()
 {
 	helloWords		= new QTextBrowser;
 
-	helloWords->setText(tr("Добрый пожаловать в систему организации медиа-контента!"));
+	helloWords->setText(tr("Добро пожаловать в систему организации медиа-контента!"));
 
 	QVBoxLayout * layout = new QVBoxLayout;
 
@@ -20,35 +21,9 @@ FVAOrganizerStartPage::FVAOrganizerStartPage()
 	setLayout(layout);
 }
 
-FVAOrganizerOrientPage::FVAOrganizerOrientPage()
-{
-	// to suggest user to run /#BIN#/jpegr_portable32/jpegr.exe
-	rotateLabel		= new QLabel(tr("Советуем Вам проверить орентацию контента перед началом работы:"));
-	rotateLabel->setAlignment(Qt::AlignLeft);
-	rotateButton	= new QPushButton;
-	rotateButton->setText(tr("Проверить"));
-
-	QVBoxLayout * layout = new QVBoxLayout;
-	layout->addWidget(rotateLabel);
-	layout->addWidget(rotateButton);
-
-	connect( rotateButton, SIGNAL( clicked() ), this, SLOT( OnOrientationButtonClicked() ) );
-
-	setLayout(layout);
-}
-
-void FVAOrganizerOrientPage::OnOrientationButtonClicked()
-{
-	QProcess myProcess(this);    
-	myProcess.setProcessChannelMode(QProcess::MergedChannels);
-	myProcess.start("#BIN#/jpegr/jpegr.exe");
-
-	myProcess.waitForFinished( -1 );
-}
-
 FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 {
-    inputDirLabel	= new QLabel(tr("Укажите входную директорию с контентом:"));
+	inputDirLabel	= new QLabel(tr("Укажите входную папку с контентом\n (Внимание! Папка должна начинаться с символа '#'):"));
     inputDirLabel->setAlignment(Qt::AlignLeft);
     
 	inputDirLineEdit = new QLineEdit;
@@ -86,21 +61,23 @@ void FVAOrganizerInputDirPage::OnDirButtonClicked()
 bool	FVAOrganizerInputDirPage::validatePage ()
 {
 	QString dir = inputDirLineEdit->text();
-	int deviceId = -1;
 	if ( dir.isEmpty() )
 	{
 		// TODO make button be disabled if dir.isEmpty()
 		return false;
 	}
+	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
+
 	QDir _dir(dir); 
 
-	QMap<QString, int> deviceIds;
-	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(deviceIds, QCoreApplication::applicationDirPath() + "\\data.json");
+	DEVICE_MAP fullDeviceMap;
+	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, QCoreApplication::applicationDirPath() + "\\data.json");
 	if ( FVA_NO_ERROR != res )
 	{
 		// TODO make suggestion
 		return false;
 	}
+	DEVICE_MAP deviceMap;
 	Q_FOREACH(QFileInfo info, _dir.entryInfoList(QDir::System | QDir::Hidden  | QDir::Files, QDir::DirsLast))
 	{		
 		if (info.isDir())
@@ -110,34 +87,196 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 		if ( FVA_FILE_TYPE_IMG != type )
 			continue;
 
-		QString deviceName;
-		deviceId = fvaGetDeviceIdForImg(deviceIds, info.filePath(), deviceName);
-		if ( -1 == deviceId ) 
-			continue;
+		QString deviceName;		
+		deviceMap = fvaGetDeviceMapForImg(fullDeviceMap, info.filePath(), deviceName);
+		
+		if (deviceName.isEmpty())
+			continue;		
 		else
+		{
+			((FVAOrganizerWizard*)wizard())->matchedDeviceName(deviceName);
 			break;
+		}
 	}
-	if (-1 == deviceId)
+	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
+	((FVAOrganizerWizard*)wizard())->fullDeviceMap(fullDeviceMap);		
+	((FVAOrganizerWizard*)wizard())->matchedDeviceMap(deviceMap);
+
+	// to run change orintation in auto mode
+	QProcess myProcess(this);    
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/jpegr/jpegr.exe -auto " + dir);
+
+	myProcess.waitForFinished( -1 );
+	return true;
+}
+
+FVAOrganizerOrientPage::FVAOrganizerOrientPage()
+{
+	// to suggest user to run /#BIN#/jpegr_portable32/jpegr.exe
+	rotateLabel		= new QLabel(tr("Советуем Вам проверить ориентацию контента перед началом работы:"));
+	rotateLabel->setAlignment(Qt::AlignLeft);
+	rotateButton	= new QPushButton;
+	rotateButton->setText(tr("Проверить"));
+
+	QVBoxLayout * layout = new QVBoxLayout;
+	layout->addWidget(rotateLabel);
+	layout->addWidget(rotateButton);
+
+	connect( rotateButton, SIGNAL( clicked() ), this, SLOT( OnOrientationButtonClicked() ) );
+
+	setLayout(layout);
+}
+
+void FVAOrganizerOrientPage::OnOrientationButtonClicked()
+{
+	QProcess myProcess(this);    
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/jpegr/jpegr.exe");
+
+	myProcess.waitForFinished( -1 );
+}
+FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
+	: deviceId (-1)
+{
+	QLabel * titleLabel	= new QLabel(tr("Убедитесь, что устройство, которым делались снимки, верно определилось!"));
+    titleLabel->setAlignment(Qt::AlignLeft);
+
+	deviceLbl	= new QLabel(tr("Название:"));
+    deviceLbl->setAlignment(Qt::AlignLeft);
+
+	deviceName	= new QLineEdit;
+	deviceName->setAlignment(Qt::AlignLeft);
+	deviceName->setMaxLength(25);
+
+	matchLbl	= new QLabel(tr("Линковочное имя:"));
+    matchLbl->setAlignment(Qt::AlignLeft);
+
+	matchName	= new QLineEdit;
+    matchName->setAlignment(Qt::AlignLeft);
+	matchName->setMaxLength(25);
+
+	ownerLbl	= new QLabel(tr("Владелец:"));
+    ownerLbl->setAlignment(Qt::AlignLeft);
+	
+	ownerName	= new QLineEdit;
+	ownerName->setAlignment(Qt::AlignLeft);
+
+	cbDevice	= new QComboBox;
+
+	btnDct		= new QPushButton;
+	btnDct->setText(tr("Справочники"));
+
+	QGridLayout * tableLayout = new QGridLayout;
+
+	tableLayout->addWidget(deviceLbl,0,0);
+	tableLayout->addWidget(deviceName,0,1);	
+	tableLayout->addWidget(btnDct,0,2);
+
+	tableLayout->addWidget(matchLbl,1,0);
+	tableLayout->addWidget(matchName,1,1);
+
+	tableLayout->addWidget(ownerLbl,2,0);
+	tableLayout->addWidget(ownerName,2,1);
+	tableLayout->addWidget(cbDevice,2,2);
+	
+	logOutput	= new QTextBrowser;
+	QVBoxLayout * layout = new QVBoxLayout;
+
+	layout->addWidget(titleLabel);
+	layout->addLayout(tableLayout);
+	layout->addWidget(logOutput);
+
+	setLayout(layout);
+
+	connect (btnDct,SIGNAL(clicked()),this,SLOT(OnChangeDictPressed()));
+}
+void FVAOrganizerDevicePage::setVisible( bool visible )
+{	
+	DEVICE_MAP	deviceMap		= ((FVAOrganizerWizard*)wizard())->matchedDeviceMap();
+	QString		deviceName_		= ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
+
+	if (visible)
 	{
-		//TODO make error with suggestion
+		matchName->setText(deviceName_);
+		matchName->setReadOnly(true);
+		cbDevice->setVisible(false);
+		if ( deviceMap.size() > 1 )
+		{
+			cbDevice->setVisible(true);
+			cbDevice->clear();
+			cbDevice->addItem ( tr("Выбирете владельца"), 0 );
+			for ( auto i = deviceMap.begin(); i != deviceMap.end() ; ++i )
+				cbDevice->addItem ( i->ownerName, i->deviceId );
+
+			deviceName->setText(tr("НЕОПРЕДЕЛЕННО!"));
+			ownerName->setText(tr("НЕОПРЕДЕЛЕН!"));
+		}
+		else if (deviceMap.size() ==1 )
+		{	
+			deviceName->setText(deviceMap.begin().value().guiName);
+			ownerName->setText(deviceMap.begin().value().ownerName);
+			deviceId = deviceMap.begin().value().deviceId;
+		}
+		else
+		{
+			deviceName->setText(tr("НЕОПРЕДЕЛЕННО!"));
+			ownerName->setText(tr("НЕОПРЕДЕЛЕН!"));
+		}
+	}
+	return QWizardPage::setVisible(visible);
+}
+void FVAOrganizerDevicePage::OnChangeDictPressed()
+{
+	QProcess myProcess(this);    
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	QStringList params;
+	params.append(QCoreApplication::applicationDirPath() + "/data.json");
+	QString		deviceName_		= ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
+	params.append(deviceName_);
+	myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/FVADictionaryEditor.exe", params);
+	myProcess.waitForFinished( -1 );
+}
+
+bool FVAOrganizerDevicePage::validatePage()
+{
+	DEVICE_MAP deviceMap = ((FVAOrganizerWizard*)wizard())->matchedDeviceMap();
+	if ( deviceMap.size() > 1 )
+	{
+		int index = cbDevice->currentIndex();
+		if ( 1 <= index ) 
+		{
+			int ID = cbDevice->itemData( index ).toInt();
+			if ( ID >= 1)
+				deviceId = ID; 
+		}
+	}
+
+	if (deviceId == -1)
+	{
+		// TODO make button next ne disabled
 		return false;
 	}
 	QStringList cmdList;
-	// TODO to run change orintation in auto mode
+	// TODO check on one time several photo
 	cmdList.append("CLT_Video_Rename_By_Sequence");
 	cmdList.append("CLT_Convert_Amr");
 	cmdList.append("CLT_Device_Name_Check");
 	cmdList.append("CLT_Auto_Checks_1");
 	cmdList.append("CLT_Files_Rename");
 	cmdList.append("CLT_Dir_Struct_Create_By_File");
+	cmdList.append("CLT_Alone_Files_Move");
 	cmdList.append("CLT_Auto_Checks_2");
-	// cmdList.append("CLT_Folder_Merging");
-	// cmdList.append("CLT_Folder_Merging");
 
-	/*		
-	TODO#07.folder merging
-	TODO#08.SetReadOnly 09 setDescfiles system 10 setarchive
-	*/
+	QString logPath = QCoreApplication::applicationDirPath() + "/#BIN#/LOGS/organizerlog"  
+					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toAscii().data()
+					+ ".txt"; 
+	QFile fileLog(logPath);
+	if (!fileLog.open(QIODevice::Append | QIODevice::Text))
+	{
+		//TODO show error
+		return false;	
+	}
 
 	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
 	{
@@ -145,7 +284,7 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 		myProcess.setProcessChannelMode(QProcess::MergedChannels);
 		QStringList params;
 		params.append(*it);
-		params.append(dir);
+		params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
 		params.append("recursive=yes");
 		params.append("logvel=4");
 		params.append("readonly=no");
@@ -153,13 +292,12 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 			params.append("custom=" + QString::number(deviceId));
 
 		myProcess.start("FVAOrganizer.exe",params);
-
-		// Continue reading the data until EOF reached
-		QByteArray data;
-
 		while(myProcess.waitForReadyRead())
-			logOutput->append(myProcess.readAll());
-
+		{
+			QString output = myProcess.readAll();
+			logOutput->append(output);
+			fileLog.write(output.toStdString().c_str());
+		}
 		myProcess.waitForFinished( -1 );
 
 		int exitCode = myProcess.exitCode();
@@ -170,10 +308,101 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 			return false;
 		}
 	}
-	// TODO save logs 
 	return true;
 }
 
+FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
+{
+    outputDirLabel	= new QLabel(tr("Укажите выходную корневую папку с контентом:"));
+    outputDirLabel->setAlignment(Qt::AlignLeft);
+    
+	outputDirLineEdit = new QLineEdit;
+    outputDirLineEdit->setText("");
+
+	dirButton		= new QPushButton;
+	dirButton->setText(tr("Указать папку"));		
+
+	QGridLayout * dirLayout = new QGridLayout;
+	dirLayout->addWidget(outputDirLineEdit,0,0);
+	dirLayout->addWidget(dirButton,0,1);
+
+	logOutput		= new QTextBrowser;
+	
+	QVBoxLayout * layout = new QVBoxLayout;
+
+	layout->addWidget(outputDirLabel);
+	layout->addLayout(dirLayout);
+	layout->addWidget(logOutput);
+
+	setLayout(layout);
+
+	connect( dirButton, SIGNAL( clicked() ), this, SLOT( OnDirButtonClicked() ) );
+}
+void FVAOrganizerOutputDirPage::OnDirButtonClicked()
+{
+	QFileDialog dirDialog;
+
+	QString path = dirDialog.getExistingDirectory();
+
+	if (!path.isEmpty())
+		outputDirLineEdit->setText(path);
+}
+
+bool	FVAOrganizerOutputDirPage::validatePage ()
+{
+	QString dir = outputDirLineEdit->text();
+	if ( dir.isEmpty() )
+	{
+		// TODO make button be disabled if dir.isEmpty()
+		return false;
+	}
+
+	QString logPath = QCoreApplication::applicationDirPath() + "/#BIN#/LOGS/organizerlog"  
+					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toAscii().data()
+					+ ".txt"; 
+	QFile fileLog(logPath);
+	if (!fileLog.open(QIODevice::Append | QIODevice::Text))
+	{
+		//TODO show error
+		return false;	
+	}
+	QStringList cmdList;
+	cmdList.append("CLT_Folder_Merging");
+	cmdList.append("CLT_Set_File_Atts");
+	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
+	{
+		QProcess myProcess(this);
+		myProcess.setProcessChannelMode(QProcess::MergedChannels);
+		QStringList params;
+		params.append(*it);
+		if (*it == "CLT_Folder_Merging")	
+			params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
+		else
+			params.append(dir);
+		params.append("recursive=yes");
+		params.append("logvel=4");
+		params.append("readonly=no");
+		if (*it == "CLT_Folder_Merging")
+			params.append("custom=" + dir);
+
+		myProcess.start("FVAOrganizer.exe",params);
+		while(myProcess.waitForReadyRead())
+		{
+			QString output = myProcess.readAll();
+			logOutput->append(output);
+			fileLog.write(output.toStdString().c_str());
+		}
+		myProcess.waitForFinished( -1 );
+
+		int exitCode = myProcess.exitCode();
+		if (exitCode != FVA_NO_ERROR)
+		{
+			//TODO show error
+			return false;
+		}
+	}	
+	return true;
+}
 FVAOrganizerDonePage::FVAOrganizerDonePage(void)
 {
 	finishWords		= new QTextBrowser;

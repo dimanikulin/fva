@@ -6,7 +6,7 @@
 #include <QLineEdit>
 #include <QTextBrowser>
 #include <QPushButton>
-
+#include <QComboBox>
 
 /*!
  * \brief keeps all organizer pages functionality
@@ -68,6 +68,29 @@ class FVAOrganizerInputDirPage : public QWizardPage
 		QPushButton*	dirButton;
 };
 
+class FVAOrganizerOutputDirPage : public QWizardPage
+{
+	Q_OBJECT
+	public:
+
+		FVAOrganizerOutputDirPage();
+		virtual ~FVAOrganizerOutputDirPage(){};
+
+	protected:
+
+		virtual bool	validatePage ();
+
+	private slots:
+		void OnDirButtonClicked();
+
+	private:
+
+		QLabel*			outputDirLabel;
+		QLineEdit*		outputDirLineEdit;
+		QTextBrowser*	logOutput;
+		QPushButton*	dirButton;
+};
+
 class FVAOrganizerDonePage : public QWizardPage
 {
 	Q_OBJECT
@@ -80,6 +103,37 @@ class FVAOrganizerDonePage : public QWizardPage
 
 		QTextBrowser*	finishWords;
 
+};
+
+class FVAOrganizerDevicePage : public QWizardPage
+{
+	Q_OBJECT
+	public:
+
+		FVAOrganizerDevicePage();
+		virtual ~FVAOrganizerDevicePage(){};
+
+	protected:
+
+		virtual bool	validatePage ();
+		virtual void	setVisible( bool visible );
+
+	protected slots:
+		void OnChangeDictPressed();
+
+	private:
+
+		int deviceId;
+
+		QTextBrowser*	logOutput;
+		QLabel*			deviceLbl;
+		QLineEdit*		deviceName;
+		QLabel*			matchLbl;
+		QLineEdit*		matchName;
+		QLabel*			ownerLbl;
+		QLineEdit*		ownerName;
+		QComboBox*		cbDevice;
+		QPushButton*	btnDct;		
 };
 
 #endif // _FVA_ORGANIZER_PAGES_H_
