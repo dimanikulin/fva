@@ -44,33 +44,8 @@ void msghandler( QtMsgType type, const char *msg )
 
 int main( int argc, char *argv[] )
 {
-
-/*00. to suggest user to run /FVA/#BIN#/jpegr_portable32/jpegr.exe  
-#01.RenamedVideoInSequince
-#01.1.ConvertedAMR
-#01.2.Converted3GP
-#02.AutoChecks1
-	#01.NotVideoFirst
-	#02.NotSTFiles
-	#03.NotEmptyDeviceName	
-	#04.UniqueDeviceName
-#03.RenamedFilesByDate
-#04.AddedFolderDescription
-#05.CreatedFolderStructure
-#06.AutoChecks2
-	+#01.ProperFileName
-	+#02.MatchingFileNameAndFolder
-	+#03.NoUnknownFileTypes
-	+#04.NoFileAlone
-	+#05.checkedNoFOLDERCopyInside
-	+#06.ProperFolderName
-	#07.FolderDecriptionValid
-	#08.decsriptionFileValid	
-#07.folder merging
-#08.SetReadOnly*/
-
 	//install : set the callback
-	qInstallMsgHandler( msghandler );
+	// qInstallMsgHandler( msghandler );
 
 	QCoreApplication a(argc, argv);
 
@@ -96,6 +71,8 @@ int main( int argc, char *argv[] )
 		case 7:
 		{
 			custom = a.arguments()[6];
+			if ( custom.contains("custom=") )
+				custom = custom.remove( "custom=" );
 		}
 
 		case 6:
