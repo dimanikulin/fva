@@ -37,6 +37,9 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
+     <property name="opaqueResize">
+      <bool>false</bool>
+     </property>
      <property name="childrenCollapsible">
       <bool>false</bool>
      </property>
@@ -67,6 +70,7 @@
         <bool>false</bool>
        </property>
       </widget>
+      <zorder>dockWidget</zorder>
      </widget>
     </widget>
    </item>
@@ -80,9 +84,12 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>79</width>
-       <height>41</height>
+       <width>921</width>
+       <height>78</height>
       </size>
+     </property>
+     <property name="floating">
+      <bool>false</bool>
      </property>
      <widget class="QWidget" name="dockWidgetContents_2">
       <widget class="QDateTimeEdit" name="dateTimeFrom">
