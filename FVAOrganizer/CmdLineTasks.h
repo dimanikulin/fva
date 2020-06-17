@@ -18,7 +18,7 @@ const QString OLD_FILE_NAME_PARAM = "OLD_NAME";
 public:\
 	name(const QString& dir_,bool readOnly_=false,const QString& custom_="")\
 	:CmdLineBaseTask( dir_,readOnly_,custom_){qDebug()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_;}\
-	~name() {qDebug()<<"["<<Name().toUpper()<<"]cmd deleted, dir:"<<m_folder;}\
+	virtual ~name() {qDebug()<<"["<<Name().toUpper()<<"]cmd deleted, dir:"<<m_folder;}\
 	virtual FVA_ERROR_CODE execute();\
 	static QString Name(){return #name;}\
 	virtual bool supportReadOnly () {return supReadOnly;}\
@@ -38,12 +38,15 @@ _CLASS_TASK_DECLARATION(CLT_Device_Name_Check,false)
 _CLASS_TASK_DECLARATION(CLT_Files_Rename_By_Dir,false)
 _CLASS_TASK_DECLARATION(CLT_Video_Rename_By_Sequence,false)
 _CLASS_TASK_DECLARATION(CLT_Auto_Checks_1, false)
-_CLASS_TASK_DECLARATION(CLT_Convert_Amr, true)
+_CLASS_TASK_DECLARATION(CLT_Convert_Amr, false)
+_CLASS_TASK_DECLARATION(CLT_Folder_Merging, false)
+_CLASS_TASK_DECLARATION(CLT_Set_File_Atts, false)
 
 /*!
  * \brief it renames folders with replacing "-" to "."
  */
 _CLASS_TASK_DECLARATION(CLT_Dir_Name_Change,false)
+
 /*!
  * \brief it moves alone (or twins) files to parent folder, with adding their description into parent folder DESCRIPTION_FILE_NAME
  */
@@ -54,7 +57,7 @@ class CLT_Auto_Checks_2 : public CmdLineBaseTask
 public:
 	CLT_Auto_Checks_2(const QString& dir_,bool readOnly_=false,const QString& custom_="")
 	:CmdLineBaseTask( dir_,readOnly_,custom_){qDebug()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_;}
-	~CLT_Auto_Checks_2();
+	virtual ~CLT_Auto_Checks_2();
 	virtual FVA_ERROR_CODE execute();
 	static QString Name(){return "CLT_Auto_Checks_2";}
 	virtual bool supportReadOnly () {return false;}
@@ -67,9 +70,8 @@ private: // data
 	QMap<QString, unsigned int>		m_fileCount;
 };
 
-#define LOG_QWARN qWarning()<<"["<<Name().toUpper()<<"]"
-#define LOG_QCRIT qCritical()<<"["<<Name().toUpper()<<"]"
-#define LOG_QDEB qDebug()<<"["<<Name().toUpper()<<"]"
-
+#define LOG_QWARN qWarning()<<"[WRN]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]"
+#define LOG_QCRIT qCritical()<<"[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]"
+#define LOG_QDEB qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]"
 
 #endif // _CMD_LINE_TASKS_H_

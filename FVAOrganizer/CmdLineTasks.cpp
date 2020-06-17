@@ -170,8 +170,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File::execute()
 					LOG_QDEB << FVA_DIR_DESCRIPTION_FILE_NAME << " is copied to " << subFolderName ;
 				else
 				{
-					LOG_QCRIT << FVA_DIR_DESCRIPTION_FILE_NAME << " is NOT copied to " << subFolderName ;
-					DWORD err = GetLastError();
+					LOG_QCRIT << FVA_DIR_DESCRIPTION_FILE_NAME << " is NOT copied to " << subFolderName << ", error =" << GetLastError();
 					return FVA_ERROR_CANT_FIND_DIR_DESC;
 				}
 			}
@@ -188,6 +187,14 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File::execute()
 				LOG_QDEB << "file renamed:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
 		}
 	}
+	// check for existing folder description
+	if ( m_dir.exists(m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME))
+	{
+		if (!QFile::remove(m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME))
+			// it is not critical error
+			LOG_QDEB << "file could not be removed:" << m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME;
+	}
+
 	return FVA_NO_ERROR;
 }
 
@@ -329,12 +336,12 @@ FVA_ERROR_CODE CLT_Files_Rename::execute()
 		if ( m_dir.exists( newPath ) )
 		{
 			LOG_QWARN << "file already exists:" << newPath << ",old path:" << info.absoluteFilePath();
-			if ( !m_dir.exists( m_dir.path() + "/copy" ) )
+			if ( !m_dir.exists( m_dir.path() + "/#copy" ) )
 			{
-				LOG_QWARN << "created COPY folder:" << m_dir.path() + "/copy";
-				m_dir.mkdir( m_dir.path() + "/copy" );
+				LOG_QWARN << "created COPY folder:" << m_dir.path() + "/#copy";
+				m_dir.mkdir( m_dir.path() + "/#copy" );
 			}
-			QString newCopyPath = m_dir.path() + "/copy/" + newName + "." + info.suffix();
+			QString newCopyPath = m_dir.path() + "/#copy/" + newName + "." + info.suffix();
 			if ( !m_dir.rename( info.absoluteFilePath(), newCopyPath ) )
 			{
 				LOG_QCRIT << "can not rename file:" << info.absoluteFilePath() << " to:" << newCopyPath;
@@ -371,8 +378,9 @@ FVA_ERROR_CODE CLT_Device_Name_Check::execute()
 								+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
 		if ( newDeviceName.isEmpty() )
 		{
-			LOG_QCRIT << "no device name in picture:" << info.absoluteFilePath();
-			return FVA_ERROR_EMPTY_DEVICE_NAME;
+			LOG_QWARN << "no device name in picture:" << info.absoluteFilePath();
+			continue; // not so crirical
+			// return FVA_ERROR_EMPTY_DEVICE_NAME;
 		}
 		else
 		{
@@ -437,15 +445,15 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 		{	
 			if ( !info.baseName().contains("_") )
 			{
-				LOG_QWARN << "video file does not contain _:" << info.absoluteFilePath();
-				continue;
+				LOG_QCRIT << "video file does not contain _:" << info.absoluteFilePath();
+				return FVA_ERROR_SEQUENCE;
 			}
 			int index				= info.baseName().indexOf("_");
 			QString videoFilePrefix	= info.baseName().mid(0, index );
 			if ( imageFilePrefix.isEmpty() )
 			{
-				LOG_QWARN << "still empty image prefix for path:" << info.absoluteFilePath();
-				continue;
+				LOG_QCRIT << "still empty image prefix for path:" << info.absoluteFilePath();
+				return FVA_ERROR_SEQUENCE;
 			}
 
 			QString newFilePath	= info.absoluteFilePath().replace( videoFilePrefix, imageFilePrefix ) ;
@@ -469,8 +477,8 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 }
 FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 {
-	QMap<QString, int> deviceIds;
-	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(deviceIds, QCoreApplication::applicationDirPath() + "\\data.json");
+	DEVICE_MAP deviceMap;
+	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(deviceMap, QCoreApplication::applicationDirPath() + "\\data.json");
 	if ( FVA_NO_ERROR != res )
 		return res;
 
@@ -483,7 +491,17 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 		{	
 			QDateTime from, to;
 			if ( FVA_NO_ERROR != fvaParseDirName(info.fileName(), from, to))
+			{
+				// skip internal folder 
+				if (m_dir.dirName()[0] == '#')
+					continue;
+
 				LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
+				if (m_readOnly)
+					continue;
+				else
+					return FVA_ERROR_WRONG_FOLDER_NAME;
+			}
 			continue;
 		}
 
@@ -497,15 +515,28 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			if ( FVA_NO_ERROR != fvaParseFileName(info.baseName(), date))
 			{
 				LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath();
-				continue;
+				if (m_readOnly)
+					continue;
+				else
+					return FVA_ERROR_WRONG_FILE_NAME;
 			}
 			//////////////////////////////////// check for exsiting device in dictionary by device name in pictire 
 			if (FVA_FILE_TYPE_IMG == type)
 			{
 				QString deviceName;
-				if ( -1 == fvaGetDeviceIdForImg(deviceIds, info.filePath(),deviceName)) 
+				if ( !fvaGetDeviceMapForImg(deviceMap, info.filePath(),deviceName).size()) 
 				{
+					if(deviceName.isEmpty())
+					{
+						LOG_QWARN << "empty device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
+						countSupportedFiles++;	// it is our file
+						continue;
+					}
 					LOG_QWARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
+					if (m_readOnly)
+						continue;
+					else
+						return FVA_ERROR_UKNOWN_DEVICE;
 				}
 			}
 
@@ -513,8 +544,15 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			QDateTime dateStart, dateEnd;
 			if ( FVA_NO_ERROR != fvaParseDirName( m_dir.dirName(), dateStart, dateEnd))
 			{
-				LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-				continue;
+				// skip internal folder 
+				if (m_dir.dirName()[0] == '#')
+					continue;
+
+				LOG_QCRIT << "wrong matchig folder name:" << info.absoluteFilePath();
+				if (m_readOnly)
+					continue;
+				else
+					return FVA_ERROR_WRONG_FOLDER_NAME;
 			}
 			if (dateStart == dateEnd)
 				dateEnd = dateEnd.addYears(1);
@@ -525,10 +563,12 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			if ( ( fileDateTime < dateStart ) ||( fileDateTime > dateEnd ) )
 			{
 				LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath() << " data period=" << dateStart << ";" << dateEnd;
-				continue;
+				if (m_readOnly)
+					continue;
+				else
+					return FVA_ERROR_NOT_SUPPORTED_FILE;
 			}
-			countSupportedFiles++;
-				
+			countSupportedFiles++;				
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		}
 		else if ( fvaIsInternalFile ( info.fileName() ) ) 
@@ -536,15 +576,24 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			// nothing to do here
 		}
 		else
+		{
 			LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath();
+			if (!m_readOnly)
+				return FVA_ERROR_NOT_SUPPORTED_FILE;
+		}
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	}
 	m_fileCount[ m_folder ] = countSupportedFiles;
 	if ( countSupportedFiles < FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR && countSupportedFiles )
+	{
 		LOG_QCRIT << "too little supported files found in:" << m_folder;
-	// TODO #07.FolderDecriptionValid
-	// TODO #08.decsriptionFileValid	
+		if (!m_readOnly)
+			return FVA_ERROR_TOO_LITTLE_FILES;
+	}
 
+	// TODO #07.FolderDecriptionValid
+	// TODO #08.decsriptionFileValid
+	// TODO compare filetime, internal time and modification
 	return FVA_NO_ERROR;
 }
 QMap< unsigned int , unsigned int > sizes;
@@ -659,11 +708,6 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 			LOG_QCRIT << "can not remove description for folder in folder:" << m_folder;
 			return FVA_ERROR_CANT_REMOVE_FILE_OR_DIR;
 		}
-		if ( !m_dir.remove( descFolderPath + "_old" ) )
-		{
-			LOG_QCRIT << "can not remove old description for folder in folder:" << m_folder;
-			return FVA_ERROR_CANT_REMOVE_FILE_OR_DIR;
-		}
 		m_dir.cdUp();
 		if ( !m_dir.rmdir( m_folder ) )
 		{
@@ -692,8 +736,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_1::execute()
 			first = true;
 			if (FVA_FILE_TYPE_VIDEO == type || FVA_FILE_TYPE_AUDIO == type)
 			{
-				// TODO rename to next number
-				LOG_QCRIT << "found first video file:" << info.absoluteFilePath();
+				LOG_QWARN << "found first video file:" << info.absoluteFilePath();
 				return FVA_ERROR_VIDEO_FIRST;
 			}
 		}
@@ -724,5 +767,141 @@ FVA_ERROR_CODE CLT_Convert_Amr::execute()
 			return FVA_ERROR_NOT_SUPPORTED_FILE;
 		}
 	}
+	return FVA_NO_ERROR;
+}
+FVA_ERROR_CODE CLT_Folder_Merging::execute()
+{
+	// create folder structure the same as in source folder
+	QString subFolder	= m_folder;
+	subFolder.remove(m_baseFolder);
+
+	if (!m_dir.exists(m_custom + subFolder + "/"))
+		m_dir.mkpath(m_custom + subFolder + "/");
+	else
+	{
+		if (!subFolder.isEmpty())
+		{
+			if( !m_dir.rename( m_custom + subFolder, m_custom + subFolder + " #1/" ) )
+				LOG_QWARN << "could not rename source :" << m_custom + subFolder << " into " << m_custom + subFolder + " #1/";
+			else
+				LOG_QWARN << "renamed source :" << m_custom + subFolder << " into " << m_custom + subFolder + " #1/";
+			m_dir.mkpath(m_custom + subFolder + "/");
+		}
+	}
+
+	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{				
+		QString original	= m_folder  + "/" + info.fileName();
+		QString dest		= m_custom + subFolder + "/" + info.fileName();
+
+		// skip internal folder 
+		if (original.contains("#copy") || dest.contains("#copy"))
+			continue;	
+		
+		if (FVA_DESCRIPTION_FILE_NAME == info.fileName())
+		{
+			QFile fileInput(info.absoluteFilePath()); // this is a name of a file text1.txt sent from main method
+			if (!fileInput.open(QIODevice::ReadOnly | QIODevice::Text))
+			{
+				LOG_QCRIT << "could not open source file desc:" << original;
+				return FVA_ERROR_CANT_OPEN_FILE_DESC;
+			}
+
+			if (!SetFileAttributes(dest.toStdWString().c_str(), FILE_ATTRIBUTE_NORMAL ))
+			{	
+				LOG_QCRIT << "can not set attr for dest desc file:" << dest;
+				return FVA_ERROR_CANT_OPEN_FILE_DESC;
+			}
+			QFile fileOutput(dest);
+			if (!fileOutput.open(QIODevice::Append | QIODevice::Text))
+			{
+				LOG_QCRIT << "could not open dest file desc:" << original;
+				return FVA_ERROR_CANT_OPEN_FILE_DESC;
+			}
+			{
+				QTextStream in(&fileInput);
+				QString line = in.readLine();
+				bool isFirst = true;
+				while (!line.isNull())
+				{
+					if (!isFirst)
+					{
+						fileOutput.write("\n");
+						fileOutput.write(line.toStdString().c_str());
+					}
+					else
+						isFirst = false;
+					line = in.readLine();
+				}
+				in.flush();
+			}
+			fileOutput.close();
+			fileInput.close();
+			if (!SetFileAttributes(dest.toStdWString().c_str(), FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_READONLY ))
+			{	
+				LOG_QCRIT << "can not set attr for dest desc file:" << dest;
+				return FVA_ERROR_CANT_OPEN_FILE_DESC;
+			}
+			if (!QFile::remove(original))
+			{
+				LOG_QCRIT << "could not remove source file desc:" << original;
+				return FVA_ERROR_CANT_MOVE_DIR;
+			}
+			LOG_QCRIT << "merged desc file:" << original << " into " << dest;
+			continue;
+		}
+		if( !m_dir.rename( original, dest ) )
+		{
+			// TODO check if there is already file exists with the same check-sum
+			
+			if(QDir(original).entryInfoList(QDir::NoDotAndDotDot|QDir::AllEntries).count() == 0)
+			{
+				// empty folder now - no need in it to keep
+				if (!m_dir.rmdir(original))
+				{
+					LOG_QCRIT << "could not remove empty source:" << original;
+					return FVA_ERROR_CANT_MOVE_DIR;
+				}
+				else
+					continue;
+			}
+			
+			LOG_QCRIT << "could not move:" << original << " into " << dest;
+			return FVA_ERROR_CANT_MOVE_DIR;
+		}
+		LOG_QDEB << "merged:" << original << " into " << dest;
+		continue;
+	}
+	return FVA_NO_ERROR;
+}
+
+FVA_ERROR_CODE CLT_Set_File_Atts::execute()
+{
+	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{
+		if ( info.isDir() )
+			continue;
+		QString suffix = info.suffix().toUpper();
+		FVA_FILE_TYPE type = fvaConvertFileExt2FileType ( suffix );
+		if (FVA_FILE_TYPE_UNKNOWN != type)
+		{
+			if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), FILE_ATTRIBUTE_READONLY))
+				LOG_QCRIT << "can not set attr for fva file:" << info.absoluteFilePath();
+		}
+		else
+		{
+			if ( fvaIsInternalFile( info.fileName() ) )
+			{
+				if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_READONLY))
+					LOG_QCRIT << "can not set attr for internal file:" << info.absoluteFilePath();
+			}
+			else
+			{
+				LOG_QCRIT << "found not supported file:" << info.absoluteFilePath();
+				return FVA_ERROR_NOT_SUPPORTED_FILE;
+			}
+		}
+	}
+	
 	return FVA_NO_ERROR;
 }
