@@ -50,6 +50,11 @@ class CmdLineBaseTask
 	protected: // data
 
 		/*!
+		 * base folder it started from
+		 */
+		QString		m_baseFolder;
+
+		/*!
 		 * it keeps folder name to work with
 		 */
 		QString		m_folder;

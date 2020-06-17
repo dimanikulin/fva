@@ -3,9 +3,10 @@
 #include <qdebug>
 
 CmdLineBaseTask::CmdLineBaseTask( const QString& folder_, bool readOnly, const QString& custom_ )
-	:	m_folder	( folder_ ),
-		m_custom	( custom_ ),
-		m_readOnly	( readOnly )
+	:	m_folder		( folder_ ),
+		m_custom		( custom_ ),
+		m_readOnly		( readOnly ),
+		m_baseFolder	( folder_ )
 {
 	m_dir = QDir ( m_folder );
 }
