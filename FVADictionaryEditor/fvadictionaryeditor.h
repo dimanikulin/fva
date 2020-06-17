@@ -9,17 +9,19 @@ class FVADictionaryEditor : public QDialog
 	Q_OBJECT
 
 public:
-	FVADictionaryEditor(const QString&  dictPath ,QWidget *parent = 0);
+	FVADictionaryEditor(const QString&  dictPath, const QString& device ,QWidget *parent = 0);
 	~FVADictionaryEditor();
 
-protected slots:
-	void OnAddPersonBtnPressed();
-	void OnAddPlaceBtnPressed();
+	protected slots:
+		void OnAddPersonBtnPressed();
+		void OnAddPlaceBtnPressed();
+		void OnAddDeviceBtnPressed();
 
 	private:
 
 		Ui::FVADictionaryEditorClass	ui;
 		const QString					m_dictPath;
+		const QString					m_device;
 };
 
 #endif // FVADICTIONARYEDITOR_H
