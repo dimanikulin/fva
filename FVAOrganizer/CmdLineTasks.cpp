@@ -1,5 +1,6 @@
 #include "CmdLineTasks.h"
 
+#include <QtCore/QCoreApplication>
 #include "RiffParser.h"
 
 #include "../lib/qexifimageheader.h"
@@ -465,6 +466,20 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 }
 FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 {
+	QString		error;
+	QVariantMap	dictionaries;
+	FVA_ERROR_CODE res = fvaLoadDictionary( QCoreApplication::applicationDirPath() + "\\data.json", dictionaries, error );
+	if ( FVA_NO_ERROR != res )
+		return res;
+
+	QVariantList vlist = dictionaries["devices"].toList();
+	QMap<QString, int> deviceIds;
+	for ( auto it = vlist.begin(); vlist.end() != it; ++it)
+		deviceIds[it->toMap()["LinkedName"].toString().toUpper().trimmed()] = it->toMap()["ID"].toInt();
+	vlist = dictionaries["scaners"].toList();
+	for ( auto it = vlist.begin(); vlist.end() != it; ++it)
+		deviceIds[it->toMap()["name"].toString().toUpper().trimmed()] = it->toMap()["ID"].toInt();
+
 	QMap<QString, unsigned int> fileCount;
 	unsigned int countSupportedFiles = 0; 
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
@@ -490,6 +505,23 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 				LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath();
 				continue;
 			}
+			//////////////////////////////////// check for exsiting device in dictionary by device name in pictire 
+			if (FVA_FILE_TYPE_IMG == type)
+			{
+				QString deviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
+									+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
+				if (!deviceName.isEmpty() && deviceIds.end() == deviceIds.find(deviceName.toUpper()))
+				{
+					deviceName = deviceName.remove("  ");
+					deviceName = deviceName.remove(QChar('\0'));
+					
+					if (!deviceName.isEmpty() && deviceIds.end() == deviceIds.find(deviceName.toUpper().trimmed()))
+					{
+						LOG_QWARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
+					}
+				}
+			}
+
 			//////////////////////////////////// 2. MATCHING FILE NAME AND FOLDER NAME ////////////////////////////////////////////////////
 			QString dirDate = m_dir.dirName().mid(0,10);
 			QDateTime dateStart = QDateTime::fromString( dirDate, "yyyy.MM.dd" );		
@@ -534,28 +566,6 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 	if ( countSupportedFiles < FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR && countSupportedFiles )
 		LOG_QCRIT << "too little supported files found in:" << m_folder;
 
-	QVariantMap result;
-	QString error;
-	FVA_ERROR_CODE code = fvaGetFolderDescription( m_folder, result, error );
-	if ( FVA_NO_ERROR != code )
-		LOG_QCRIT << error;
-	else
-	{
-		// TODO check for existing deviceid, place, people, whoTookFotoId, in dictionary
-		QString place	=	result["place"].toString();
-		QString people	= 	result["people"].toString();
-		QString device	= 	result["deviceId"].toString();
-		if ( device.isEmpty() )
-			LOG_QCRIT << "deviceID is empty in folder desc in:" << m_folder;
-		QString whoTook	= 	result["whoTookFotoId"].toString();
-		QString event	= 	result["event"].toString();
-		QString tags	= 	result["tags"].toString();
-	}
-/*
-#06.FolderDecriptionValid
-#09.decsriptionFileValid
-# check for exsiting device in dictionary by device name in pictire 
-*/
 	return FVA_NO_ERROR;
 }
 QMap< unsigned int , unsigned int > sizes;
