@@ -4,6 +4,7 @@
 ////////////////////////////////TODOTODOTODOTODOTODOTODOTODOTODOTODO/////////////////////////////////////////////
 // 1. make warning level as 4 for all projects
 // 2. threat warning as errors for all projects
+// 3. https://www.projectoxford.ai/demo/face#detection
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <QString>
@@ -56,6 +57,11 @@ enum FVA_ERROR_CODE
 	FVA_ERROR_WRONG_FOLDER_NAME					= 1021,
 	FVA_ERROR_WRONG_FILE_NAME					= 1022,
 	FVA_ERROR_CANT_SAVE_DICTIONARIES			= 1023,
+	FVA_ERROR_NOT_SUPPORTED_FILE				= 1024,
+	FVA_ERROR_VIDEO_FIRST						= 1025,
+	FVA_ERROR_PANORAM_FILE						= 1026,
+	FVA_ERROR_EMPTY_DEVICE_NAME					= 1027,
+	FVA_ERROR_NON_UNIQUE_DEVICE_NAME			= 1028,
 };
 
 /*!
@@ -148,6 +154,23 @@ FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTi
 FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date );
 
 /*!
+ * \brief it tries to load device id map from dictionary
+ * \param deviceIds a map to be filled up
+ * \param dictPath path to dictionary to load map from
+ * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
+ */
+FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(QMap<QString, int>& deviceIds, const QString& dictPath); 
+
+/*!
+ * \brief it returns device id from map loaded
+ * \param deviceIds a map to be find in
+ * \param pathToFile path to file to get device name from
+ * \param deviceName contains device link name
+ * \returns it returns id of device found ot -1 if not
+ */
+int fvaGetDeviceIdForImg(const QMap<QString, int>& deviceIds, const QString& pathToFile, QString& deviceName); 
+
+/*!
  * \brief it keeps whole information about a foto-video-audio element
  */
 class fvaItem
@@ -199,11 +222,6 @@ class fvaItem
 		 * id of foto device 
 		 */
 		unsigned int			deviceId;
-
-		/*!
-		 * id of person who took this foto/video/audio item
-		 */
-		unsigned int			personId;
 
 		/*!
 		 * id of scaner

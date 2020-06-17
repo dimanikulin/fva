@@ -257,9 +257,25 @@ FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTi
 				if ( !res || !res1 || !dEndDate || !dStartDate)
 					return FVA_ERROR_WRONG_FOLDER_NAME;
 				to = from.addDays(dEndDate-dStartDate);
+				to = to.addDays(1);
 			}
 			else
 				return FVA_ERROR_WRONG_FOLDER_NAME;
+		}
+		break;
+		case 16: //months-day period
+		{
+			from = QDateTime::fromString( dirName.mid( 0,10 ), "yyyy.MM.dd");
+			if ( !from.isValid() )
+				return FVA_ERROR_WRONG_FOLDER_NAME;
+			if ( dirName [ 10 ] != '-' ) // not a period
+				return FVA_ERROR_WRONG_FOLDER_NAME;
+
+			QString sTo = dirName.mid( 0, 4 ) + "." + dirName.mid( 11,5 );
+			to = QDateTime::fromString( sTo, "yyyy.MM.dd");
+			if ( !to.isValid() )
+				return FVA_ERROR_WRONG_FOLDER_NAME;
+			to = to.addDays(1);
 		}
 		break;
 		default:
@@ -292,7 +308,6 @@ fvaItem::fvaItem ()
 	isFiltered			= true;
 	hasDescriptionData	= false;
 	deviceId			= 0;
-	personId			= 0;
 	scanerId			= 0;
 }
 
@@ -372,7 +387,6 @@ QString fvaItem::getGuiFullName(const QVariantMap&	dictionaries)
 	}
 
 	fillNameByOneId(deviceId,"devices",dictionaries,fullName);
-	fillNameByOneId(personId,"people",dictionaries,fullName);
 	fillNameByOneId(scanerId,"scaners",dictionaries,fullName);
 
 	//this->peopleIds;
@@ -380,4 +394,44 @@ QString fvaItem::getGuiFullName(const QVariantMap&	dictionaries)
 	//this->placeIds;
 
 	return fullName;
+}
+FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(QMap<QString, int>& deviceIds, const QString& dictPath)
+{
+	QString		error;
+	QVariantMap	dictionaries;
+	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
+	if ( FVA_NO_ERROR != res )
+		return res;
+
+	QVariantList vlist = dictionaries["devices"].toList();
+
+	for ( auto it = vlist.begin(); vlist.end() != it; ++it)
+		deviceIds[it->toMap()["LinkedName"].toString().toUpper().trimmed()] = it->toMap()["ID"].toInt();
+	vlist = dictionaries["scaners"].toList();
+	for ( auto it = vlist.begin(); vlist.end() != it; ++it)
+		deviceIds[it->toMap()["name"].toString().toUpper().trimmed()] = it->toMap()["ID"].toInt();
+	
+	return FVA_NO_ERROR;
+}
+int fvaGetDeviceIdForImg(const QMap<QString, int>& deviceIds, const QString& pathToFile, QString& deviceName)
+{
+	deviceName = QExifImageHeader(pathToFile).value(QExifImageHeader::Make).toString()
+						+ QExifImageHeader(pathToFile).value(QExifImageHeader::Model).toString();
+
+	if (deviceName.isEmpty())
+		return -1;
+
+	auto it = deviceIds.find(deviceName.toUpper().trimmed());
+	if (it != deviceIds.end())
+		return it.value();
+
+	deviceName = deviceName.remove("  ");
+	deviceName = deviceName.remove(QChar('\0'));					
+	if (!deviceName.isEmpty())
+	{
+		auto it = deviceIds.find(deviceName.toUpper().trimmed());
+		if (it != deviceIds.end())
+			return it.value();
+	}
+	return -1;
 }
