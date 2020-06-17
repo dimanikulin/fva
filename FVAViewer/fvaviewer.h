@@ -13,7 +13,6 @@
 /*!
  * \brief keeps main dilaog functionality
  */
-
 class FVAViewer : public QDialog
 {
 	Q_OBJECT

@@ -162,7 +162,7 @@ void FVAViewer::filterFVATree( const fvaFilter& filter, fvaItem* fvaitem )
 		*/
 		filterFVATree( filter, *idChild );
 
-		// TODO make dir filtered if any child filtered
+		// TODO make dir filtered if any child filtered and wiseversa
 	}							
 }
 
@@ -255,10 +255,6 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 					columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"Description");
 					if ( -1 != columnId )
 						fileItem->eventOrDesc	= list[columnId].remove("\t");
-
-					columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"WhoTook");
-					if ( -1 != columnId )
-						fileItem->personId	= list[columnId].remove("\t").toUInt();
 
 					columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"Device");
 					if ( -1 != columnId )
