@@ -37,6 +37,9 @@ _CLASS_TASK_DECLARATION(CLT_Files_Rename,false)
 _CLASS_TASK_DECLARATION(CLT_Device_Name_Check,false)
 _CLASS_TASK_DECLARATION(CLT_Files_Rename_By_Dir,false)
 _CLASS_TASK_DECLARATION(CLT_Video_Rename_By_Sequence,false)
+_CLASS_TASK_DECLARATION(CLT_Auto_Checks_1, false)
+_CLASS_TASK_DECLARATION(CLT_Convert_Amr, true)
+
 /*!
  * \brief it renames folders with replacing "-" to "."
  */
@@ -45,7 +48,6 @@ _CLASS_TASK_DECLARATION(CLT_Dir_Name_Change,false)
  * \brief it moves alone (or twins) files to parent folder, with adding their description into parent folder DESCRIPTION_FILE_NAME
  */
 _CLASS_TASK_DECLARATION(CLT_Alone_Files_Move,true)
-
 
 class CLT_Auto_Checks_2 : public CmdLineBaseTask
 {

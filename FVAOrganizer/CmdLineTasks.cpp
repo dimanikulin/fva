@@ -134,7 +134,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File::execute()
 			QString jsonData = 
 				"{\"deviceId\":\"" 
 				+ m_custom 
-				+ "\",\n\"whoTookFotoId\":\"\",\n\"tags\":\"\",\n\"people\":\"\",\n\"place\":\"\",\n\"event\":\"\"}";
+				+ "\",\n\"tags\":\"\",\n\"people\":\"\",\n\"place\":\"\",\n\"event\":\"\"}";
 			FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, jsonData, error );
 			if ( FVA_NO_ERROR != res )
 			{
@@ -364,24 +364,27 @@ FVA_ERROR_CODE CLT_Device_Name_Check::execute()
 		// if it is picture files
 		QString suffix		= info.suffix().toUpper();
 		QString fullname	= info.absoluteFilePath();
-		if(	FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ) )
+		if(	FVA_FILE_TYPE_IMG != fvaConvertFileExt2FileType ( suffix ) )
+			continue;
+		
+		QString newDeviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
+								+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
+		if ( newDeviceName.isEmpty() )
 		{
-			QString newDeviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
-									+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
-			if ( newDeviceName.isEmpty() )
-				LOG_QDEB << "no device name in picture:" << info.absoluteFilePath();
-			else
-			{
-				if ( deviceName.isEmpty() )
-					LOG_QDEB << "got first device name: "<< newDeviceName << "in picture:" << info.absoluteFilePath();
-				else if ( deviceName != newDeviceName )	
-					LOG_QWARN << "got new device name: "<< newDeviceName << "in picture:" << info.absoluteFilePath() << "old: " << deviceName;
-						
-				deviceName = newDeviceName; 
-			}
+			LOG_QCRIT << "no device name in picture:" << info.absoluteFilePath();
+			return FVA_ERROR_EMPTY_DEVICE_NAME;
 		}
 		else
-			LOG_QDEB << "no device name in:" << info.absoluteFilePath();
+		{
+			if ( deviceName.isEmpty() )
+				LOG_QDEB << "got first device name: "<< newDeviceName << "in picture:" << info.absoluteFilePath();
+			else if ( deviceName != newDeviceName )	
+			{
+				LOG_QCRIT << "got new device name: "<< newDeviceName << "in picture:" << info.absoluteFilePath() << "old: " << deviceName;
+				return FVA_ERROR_NON_UNIQUE_DEVICE_NAME;
+			}			
+			deviceName = newDeviceName; 
+		}		
 	}
 
 	return FVA_NO_ERROR;
@@ -466,19 +469,10 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 }
 FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 {
-	QString		error;
-	QVariantMap	dictionaries;
-	FVA_ERROR_CODE res = fvaLoadDictionary( QCoreApplication::applicationDirPath() + "\\data.json", dictionaries, error );
+	QMap<QString, int> deviceIds;
+	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(deviceIds, QCoreApplication::applicationDirPath() + "\\data.json");
 	if ( FVA_NO_ERROR != res )
 		return res;
-
-	QVariantList vlist = dictionaries["devices"].toList();
-	QMap<QString, int> deviceIds;
-	for ( auto it = vlist.begin(); vlist.end() != it; ++it)
-		deviceIds[it->toMap()["LinkedName"].toString().toUpper().trimmed()] = it->toMap()["ID"].toInt();
-	vlist = dictionaries["scaners"].toList();
-	for ( auto it = vlist.begin(); vlist.end() != it; ++it)
-		deviceIds[it->toMap()["name"].toString().toUpper().trimmed()] = it->toMap()["ID"].toInt();
 
 	QMap<QString, unsigned int> fileCount;
 	unsigned int countSupportedFiles = 0; 
@@ -508,50 +502,33 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			//////////////////////////////////// check for exsiting device in dictionary by device name in pictire 
 			if (FVA_FILE_TYPE_IMG == type)
 			{
-				QString deviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
-									+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
-				if (!deviceName.isEmpty() && deviceIds.end() == deviceIds.find(deviceName.toUpper()))
+				QString deviceName;
+				if ( -1 == fvaGetDeviceIdForImg(deviceIds, info.filePath(),deviceName)) 
 				{
-					deviceName = deviceName.remove("  ");
-					deviceName = deviceName.remove(QChar('\0'));
-					
-					if (!deviceName.isEmpty() && deviceIds.end() == deviceIds.find(deviceName.toUpper().trimmed()))
-					{
-						LOG_QWARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
-					}
+					LOG_QWARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
 				}
 			}
 
 			//////////////////////////////////// 2. MATCHING FILE NAME AND FOLDER NAME ////////////////////////////////////////////////////
-			QString dirDate = m_dir.dirName().mid(0,10);
-			QDateTime dateStart = QDateTime::fromString( dirDate, "yyyy.MM.dd" );		
-			if ( dateStart.isValid() )
+			QDateTime dateStart, dateEnd;
+			if ( FVA_NO_ERROR != fvaParseDirName( m_dir.dirName(), dateStart, dateEnd))
 			{
-				QDateTime dateEnd = dateStart.addDays( 1 );
-				if ( m_dir.dirName().size() > 11 && ( m_dir.dirName() [ 10 ]  == '-' ) ) // period
-				{
-					QString sEndDate = m_dir.dirName().mid( 11, m_dir.dirName().size() - 11 );
-					bool result = false; 
-					int dEndDate = sEndDate.toInt( &result );
-					if ( !result || !dEndDate )
-					{
-						LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-						continue;
-					}
-					dateEnd = dateStart.addDays( dEndDate - dateStart.date().day() + 1 );
-				}
+				LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
+				continue;
+			}
+			if (dateStart == dateEnd)
+				dateEnd = dateEnd.addYears(1);
+			QDateTime fileDateTime = QDateTime::fromString( baseFileName , "yyyy-MM-dd-hh-mm-ss" );
+			QString newFileName = baseFileName.replace( "##","01" );
+			if ( !fileDateTime.isValid() )
+				fileDateTime = QDateTime::fromString( newFileName , "yyyy-MM-dd-hh-mm-ss" );
+			if ( ( fileDateTime < dateStart ) ||( fileDateTime > dateEnd ) )
+			{
+				LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath() << " data period=" << dateStart << ";" << dateEnd;
+				continue;
+			}
+			countSupportedFiles++;
 				
-				QDateTime fileDateTime = QDateTime::fromString( baseFileName , "yyyy-MM-dd-hh-mm-ss" );
-				QString newFileName = baseFileName.replace( "#","0" );
-				if ( !fileDateTime.isValid() )
-					fileDateTime = QDateTime::fromString( newFileName , "yyyy-MM-dd-hh-mm-ss" );
-				if ( ( fileDateTime < dateStart ) ||( fileDateTime > dateEnd ) )
-				{
-					LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath() << " data period=" << dateStart << ";" << dateEnd;
-					continue;
-				}
-				countSupportedFiles++;
-			}	
 			/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		}
 		else if ( fvaIsInternalFile ( info.fileName() ) ) 
@@ -565,6 +542,8 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 	m_fileCount[ m_folder ] = countSupportedFiles;
 	if ( countSupportedFiles < FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR && countSupportedFiles )
 		LOG_QCRIT << "too little supported files found in:" << m_folder;
+	// TODO #07.FolderDecriptionValid
+	// TODO #08.decsriptionFileValid	
 
 	return FVA_NO_ERROR;
 }
@@ -609,12 +588,11 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 		LOG_QCRIT << error;
 		return code;
 	}
-	// Name,Place,People,Device,WhoTook,Description,Scaner,Comment,oldName
+	// Name,Place,People,Device,Description,Scaner,Comment,oldName
 	QString oneFileDesc =  "," 
 			+ result["place"].toString()			+ ","
 			+ result["people"].toString()			+ ","
 			+ result["deviceId"].toString()			+ ","
-			+ result["whoTookFotoId"].toString()	+ ","
 			+ result["event"].toString()			+ ",,"
 			+ result["tags"].toString()				+ ",\n";
 
@@ -640,7 +618,7 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 		pTextStream.reset ( new QTextStream(pFile.get()) );
 		if ( m_custom != "FIRST" )
 		{
-			*pTextStream.get() << "Name,Place,People,Device,WhoTook,Description,Scaner,Comment,oldName\n";
+			*pTextStream.get() << "Name,Place,People,Device,Description,Scaner,Comment,oldName\n";
 			m_custom = "FIRST";
 		}
 	}
@@ -684,7 +662,7 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 		if ( !m_dir.remove( descFolderPath + "_old" ) )
 		{
 			LOG_QCRIT << "can not remove old description for folder in folder:" << m_folder;
-			// return FVA_ERROR_CANT_REMOVE_FILE_OR_DIR;
+			return FVA_ERROR_CANT_REMOVE_FILE_OR_DIR;
 		}
 		m_dir.cdUp();
 		if ( !m_dir.rmdir( m_folder ) )
@@ -693,6 +671,58 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 			return FVA_ERROR_CANT_REMOVE_FILE_OR_DIR;
 		}
 		LOG_QDEB << "removed folder:" << m_folder;
+	}
+	return FVA_NO_ERROR;
+}
+FVA_ERROR_CODE CLT_Auto_Checks_1::execute()
+{
+	m_dir.setSorting(QDir::LocaleAware);
+	bool first = false;
+	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{
+		if ( info.isDir() )
+			continue;
+
+		QString suffix = info.suffix().toUpper();
+		FVA_FILE_TYPE type = fvaConvertFileExt2FileType ( suffix );
+
+		//	#01.NotVideoFirst
+		if (!first)
+		{
+			first = true;
+			if (FVA_FILE_TYPE_VIDEO == type || FVA_FILE_TYPE_AUDIO == type)
+			{
+				// TODO rename to next number
+				LOG_QCRIT << "found first video file:" << info.absoluteFilePath();
+				return FVA_ERROR_VIDEO_FIRST;
+			}
+		}
+
+		//#02.NotSTFiles
+		QString st = info.fileName().mid(0,2).toUpper();
+		if (st == "ST")
+		{
+			// TODO rename to next number
+			LOG_QCRIT << "found panoram file:" << info.absoluteFilePath();
+			return FVA_ERROR_PANORAM_FILE;
+		}
+	}
+
+	return FVA_NO_ERROR;
+}
+FVA_ERROR_CODE CLT_Convert_Amr::execute()
+{
+	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{
+		if ( info.isDir() )
+			continue;
+		QString suffix = info.suffix().toUpper();
+		if ( suffix == "AMR" )
+		{
+			// TODO make conversion
+			LOG_QCRIT << "found not supported file:" << info.absoluteFilePath();
+			return FVA_ERROR_NOT_SUPPORTED_FILE;
+		}
 	}
 	return FVA_NO_ERROR;
 }
