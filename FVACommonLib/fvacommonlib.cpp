@@ -395,7 +395,7 @@ QString fvaItem::getGuiFullName(const QVariantMap&	dictionaries)
 
 	return fullName;
 }
-FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(QMap<QString, int>& deviceIds, const QString& dictPath)
+FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QString& dictPath)
 {
 	QString		error;
 	QVariantMap	dictionaries;
@@ -404,34 +404,53 @@ FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(QMap<QString, int>& deviceIds, con
 		return res;
 
 	QVariantList vlist = dictionaries["devices"].toList();
+	QVariantList people = dictionaries["people"].toList();
 
 	for ( auto it = vlist.begin(); vlist.end() != it; ++it)
-		deviceIds[it->toMap()["LinkedName"].toString().toUpper().trimmed()] = it->toMap()["ID"].toInt();
-	vlist = dictionaries["scaners"].toList();
-	for ( auto it = vlist.begin(); vlist.end() != it; ++it)
-		deviceIds[it->toMap()["name"].toString().toUpper().trimmed()] = it->toMap()["ID"].toInt();
+	{
+		fvaDevice device;
+		device.linkedName			= it->toMap()["LinkedName"].toString().toUpper().trimmed();
+		device.deviceId				= it->toMap()["ID"].toInt();
+		device.guiName				= it->toMap()["name"].toString().toUpper().trimmed();
+		for (auto itP = people.begin(); people.end() != itP; ++itP )
+		{
+			if ( it->toMap()["OwnerId"].toInt() == itP->toMap()["ID"].toInt())
+			{
+				device.ownerName	= itP->toMap()["name"].toString();
+				break;
+			}
+		}
+		deviceMap[device.deviceId]	= device;
+	}
+	// TODO add scaners here
 	
 	return FVA_NO_ERROR;
 }
-int fvaGetDeviceIdForImg(const QMap<QString, int>& deviceIds, const QString& pathToFile, QString& deviceName)
+DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pathToFile, QString& deviceName)
 {
 	deviceName = QExifImageHeader(pathToFile).value(QExifImageHeader::Make).toString()
 						+ QExifImageHeader(pathToFile).value(QExifImageHeader::Model).toString();
 
+	DEVICE_MAP result;
 	if (deviceName.isEmpty())
-		return -1;
-
-	auto it = deviceIds.find(deviceName.toUpper().trimmed());
-	if (it != deviceIds.end())
-		return it.value();
+		return DEVICE_MAP();
+	QString fixedDevName = deviceName.toUpper().trimmed();
+	for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it)
+	{
+		QString name = it.value().linkedName; 
+		if (name == fixedDevName)
+			result[it.key()] = it.value(); 
+	}
 
 	deviceName = deviceName.remove("  ");
 	deviceName = deviceName.remove(QChar('\0'));					
 	if (!deviceName.isEmpty())
 	{
-		auto it = deviceIds.find(deviceName.toUpper().trimmed());
-		if (it != deviceIds.end())
-			return it.value();
+		for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it)
+		{
+			if (it.value().linkedName == deviceName.toUpper().trimmed())
+				result[it.key()] = it.value(); 
+		}
 	}
-	return -1;
+	return result;
 }

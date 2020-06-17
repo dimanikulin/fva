@@ -80,6 +80,7 @@
   <ItemGroup>
     <ClInclude Include="..\lib\json\json.h" />
     <ClInclude Include="CSVFile.h" />
+    <ClInclude Include="fvacommondata.h" />
     <ClInclude Include="fvacommonlib.h" />
     <ClInclude Include="FVADescriptionFile.h" />
   </ItemGroup>

@@ -16,6 +16,8 @@
 
 typedef QMap< QString, QStringList > DESCRIPTIONS_MAP;
 
+#include "fvacommondata.h"
+
 /*!
  * \brief it enumerates internal valuable file types
  */
@@ -62,6 +64,9 @@ enum FVA_ERROR_CODE
 	FVA_ERROR_PANORAM_FILE						= 1026,
 	FVA_ERROR_EMPTY_DEVICE_NAME					= 1027,
 	FVA_ERROR_NON_UNIQUE_DEVICE_NAME			= 1028,
+	FVA_ERROR_UKNOWN_DEVICE						= 1029,
+	FVA_ERROR_TOO_LITTLE_FILES					= 1030,
+	FVA_ERROR_CANT_MOVE_DIR						= 1031,
 };
 
 /*!
@@ -159,154 +164,16 @@ FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date );
  * \param dictPath path to dictionary to load map from
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(QMap<QString, int>& deviceIds, const QString& dictPath); 
+FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QString& dictPath); 
 
 /*!
  * \brief it returns device id from map loaded
  * \param deviceIds a map to be find in
  * \param pathToFile path to file to get device name from
  * \param deviceName contains device link name
- * \returns it returns id of device found ot -1 if not
+ * \returns it returns map of devices found or empty map if not
  */
-int fvaGetDeviceIdForImg(const QMap<QString, int>& deviceIds, const QString& pathToFile, QString& deviceName); 
-
-/*!
- * \brief it keeps whole information about a foto-video-audio element
- */
-class fvaItem
-{
-	public : 
-
-		fvaItem ();
-		virtual ~fvaItem ();
-
-		/*!
-		 * \brief it returns human-readable string as item name
-		 */
-		QString getGuiName();
-
-		/*!
-		 * \brief it returns human-readable string to show full name
-		 * \param dictionaries - global dictionary set
-		 */
-		QString getGuiFullName(const QVariantMap&	dictionaries);
-
-		/*!
-		 * is it folder or file
-		 */
-		bool					isFolder;
-
-		/*!
-		 * for folder it is event date period, for file it is date taken(dateFrom only)
-		 * both are filesystem names
-		 */
-		QDateTime				dateFrom;
-		QDateTime				dateTo;
-
-		/*!
-		 * does this item have any description data
-		 */
-		bool					hasDescriptionData;
-
-		/*!
-		 * set of place id 
-		 */
-		QVector<unsigned int>	placeIds;
-
-		/*!
-		 * people list ids 
-		 */
-		QVector<unsigned int>	peopleIds;
-
-		/*!
-		 * id of foto device 
-		 */
-		unsigned int			deviceId;
-
-		/*!
-		 * id of scaner
-		 */
-		unsigned int			scanerId;
-
-		/*!
-		 * folder event or file decsription
-		 */
-		QString					eventOrDesc;
-
-		/*!
-		 * folder tags or file comment
-		 */
-		QString					tagsOrComment;
-
-		/*!
-		 * children
-		 */
-		QVector<fvaItem*>		children;
-
-		/*!
-		 * absolute path to item
-		 */
-		QString					fsFullPath;
-
-		/*!
-		 * does this item fit filtration conditions
-		 */
-		bool					isFiltered;
-
-		/*!
-		 * folder to show together with this folder
-		 */
-		QString					linkedFolder;
-		
-		/*!
-		 * structure of description file 
-		 */
-		QStringList				descTitles; 
-
-		/*!
-		 * content of description file 
-		 */
-		DESCRIPTIONS_MAP		decsItems;
-
-};
-/*!
- * it keeps data to perform filtration
- */
-class fvaFilter
-{
-	public :
-	
-		/*!
-		 * date to filter from
-		 */
-		QDateTime				dateFrom;
-
-		/*!
-		 * date to filter to
-		 */
-		QDateTime				dateTo;
-
-		/*!
-		 * places to be filtered
-		 */
-		QVector<unsigned int>	placeIds;
-
-		/*!
-		 * people to be entered
-		 */
-		QVector<unsigned int>	peopleIds;
-
-		/*!
-		 * list of id of foto devices
-		 */
-		QVector<unsigned int>	deviceIds;
-
-		/*!
-		 * folder event or file decsription
-		 */
-		QString					eventOrDesc;
-
-};
+DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pathToFile, QString& deviceName); 
 
 #define FILL_COMB_FROM_DICT(dict,combo) \
 	vlist = m_dictionaries[dict].toList();\
