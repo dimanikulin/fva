@@ -27,19 +27,19 @@
     <ClCompile Include="CmdLineExecutor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RiffParser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CmdLineBaseTask.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CmdLineTasks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\qexifimageheader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CmdLineMyTasks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CmdLineTasks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RiffParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
