@@ -15,8 +15,8 @@ FVA_ERROR_CODE CLT_Xml_Convert::execute()
 		return FVA_ERROR_CANT_OPEN_INPUT_FILE;
 	}
 
-	// Name,Place,People,Device,WhoTook,Description,Scaner
-	// Name,Place,People,Device,WhoTook,Description,Scaner,Comment
+	// Name,Place,People,Device,Description,Scaner
+	// Name,Place,People,Device,Description,Scaner,Comment
 
 	QXmlStreamReader xmlData( xmlFile.get() );
 	while ( !xmlData.atEnd() )
@@ -40,9 +40,9 @@ FVA_ERROR_CODE CLT_Xml_Convert::execute()
 		if ( attributes.hasAttribute( "comment" ) )
 			comment	= attributes.value ( "comment" ).toString();
 
-		// Name,Place,People,Device,WhoTook,Description,Scaner,Comment
+		// Name,Place,People,Device,Description,Scaner,Comment
 		if ( !name.isEmpty() )
-			qDebug() << file << ",,,,," << name << ",," << comment; 
+			qDebug() << file << ",,,," << name << ",," << comment; 
 	}
 
 	return FVA_NO_ERROR;
@@ -113,8 +113,8 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 			}
 			comment = it.value()[ indexColumn ];
 		}
-		//Name,Place,People,Device,WhoTook,Description,Scaner,Comment,oldName
-		qDebug() <<  info.baseName().mid( 0, 19 ) + "." + suffix << ",,," << deviceId << ",," << description << ",," << comment << "," << oldName + "." + suffix;
+		//Name,Place,People,Device,Description,Scaner,Comment,oldName
+		qDebug() <<  info.baseName().mid( 0, 19 ) + "." + suffix << ",,," << deviceId << "," << description << ",," << comment << "," << oldName + "." + suffix;
 		QString newFileName = m_folder + "/" + info.baseName().mid( 0, 19 ) + "." + suffix;
 		if ( !m_dir.rename( info.absoluteFilePath(), newFileName ) )
 		{
