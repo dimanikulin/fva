@@ -61,7 +61,7 @@ void FVAViewer::editFileItem( QTreeWidgetItem* item )
 	QStringList params;
 	params.append(m_dictionaryPath);
 	params.append(item->data( 1, 1 ).toString());
-	myProcess.start("FVADescriptionEditor.exe", params);
+	myProcess.start("#BIN#/FVADescriptionEditor.exe", params);
 
 	if ( !myProcess.waitForFinished( -1 ) )
 	{
@@ -136,17 +136,14 @@ void FVAViewer::filterFVATree( const fvaFilter& filter, fvaItem* fvaitem )
 		if ((*idChild)->isFiltered && !filter.deviceIds.empty() && (*idChild)->hasDescriptionData)
 			(*idChild)->isFiltered = ((*idChild)->deviceId == filter.deviceIds[0]);
 
-		// 3. filtration by person took	id
+		// 3. filtration by scaner id
 		// TODO	
 
-		// 4. filtration by scaner id
-		// TODO	
-
-		// 5. filtration by place ids
+		// 4. filtration by place ids
 		if ((*idChild)->isFiltered && !filter.placeIds.empty() && (*idChild)->hasDescriptionData)
 			(*idChild)->isFiltered = ((*idChild)->placeIds == filter.placeIds);
 
-		// 6. filtration by people ids
+		// 5. filtration by people ids
 		if ((*idChild)->isFiltered && !filter.peopleIds.empty() && (*idChild)->hasDescriptionData)
 			(*idChild)->isFiltered = ((*idChild)->peopleIds == filter.peopleIds);
 
@@ -164,6 +161,8 @@ void FVAViewer::filterFVATree( const fvaFilter& filter, fvaItem* fvaitem )
 			qDebug() << "filtered name = " << (*idChild)->fsName << " hasDescriptionData=" << (*idChild)->hasDescriptionData;
 		*/
 		filterFVATree( filter, *idChild );
+
+		// TODO make dir filtered if any child filtered
 	}							
 }
 
@@ -183,7 +182,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 			}
 			fvaItem* dirItem	= new fvaItem;
 			dirItem->isFolder	= true;
-
+			dirItem->fsFullPath	= info.absoluteFilePath();
 			if ( FVA_NO_ERROR != fvaParseDirName(info.fileName(), dirItem->dateFrom, dirItem->dateTo))
 			{
 				qCritical() << "incorrect folder name " << info.fileName();
@@ -204,13 +203,15 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 			else
 			{
 				dirItem->placeIds.append(	result["place"]			.toUInt());
-				dirItem->peopleIds.append(	result["people"]		.toUInt());
+				dirItem->peopleIds.append(	result["people"]		.toUInt()); // TODO bug with many people
 				dirItem->deviceId		=	result["deviceId"]		.toUInt();
-				dirItem->personId		=	result["whoTookFotoId"]	.toUInt();
 				dirItem->eventOrDesc		=	result["event"]			.toString();
 				dirItem->tagsOrComment	=	result["tags"]			.toString();
 				dirItem->linkedFolder	=	result["linkedFolder"]	.toString();
 				dirItem->hasDescriptionData	= true;
+
+				if (!dirItem->deviceId)
+					qCritical() << "0 device if for folder " << info.fileName();
 			}
 
 			QString descFilePath = info.absoluteFilePath() + "/" + FVA_DESCRIPTION_FILE_NAME;
@@ -290,9 +291,7 @@ void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item )
 		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
 		treeWidgetItem->setText		( 0, (*idChild)->getGuiName() );
 		treeWidgetItem->setToolTip	( 0, (*idChild)->getGuiFullName(m_dictionaries) );
-
-		if (!(*idChild)->isFolder)
-			treeWidgetItem->setData( 1, 1, (*idChild)->fsFullPath );
+		treeWidgetItem->setData( 1, 1, (*idChild)->fsFullPath );
 
 		if ( item )
 			item->addChild( treeWidgetItem );
