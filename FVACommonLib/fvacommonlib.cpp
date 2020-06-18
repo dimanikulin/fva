@@ -2,9 +2,32 @@
 
 #include <QDir>
 #include <QTextStream>
+#include <QProcess>
+#include <QCoreApplication>
+#include <QTGui/QMessageBox>
 
 #include "../lib/json/json.h"
 #include "../lib/qexifimageheader.h"
+#include "RiffParser.h"
+
+#ifdef MEDIAINFO_LIBRARY
+    #include "MediaInfo.h" //Staticly-loaded library (.lib or .a or .so)
+    #define MediaInfoNameSpace MediaInfoLib;
+#else //MEDIAINFO_LIBRARY
+    #include "MediaInfoDLL.h" //Dynamicly-loaded library (.dll or .so)
+    #define MediaInfoNameSpace MediaInfoDLL;
+#endif //MEDIAINFO_LIBRARY
+
+
+using namespace MediaInfoNameSpace;
+
+#ifdef __MINGW32__
+    #ifdef _UNICODE
+        #define _itot _itow
+    #else //_UNICODE
+        #define _itot itoa
+    #endif //_UNICODE
+#endif //__MINGW32
 
 FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outputJson, QString& error )
 {
@@ -289,6 +312,18 @@ FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date )
 	{
 		return FVA_ERROR_WRONG_FILE_NAME;
 	}
+	if (fileName.contains("IMG_"))
+	{
+		// it is also file name to extract name from "IMG_20150504_142546"
+		QString newFileName = fileName;
+		newFileName.remove("IMG_");
+		date = QDateTime::fromString( newFileName, "yyyyMMdd_hhmmss" );
+		if (!date.isValid())
+			return FVA_ERROR_WRONG_FILE_NAME;
+		else
+			return FVA_NO_ERROR;
+	}
+
 	date = QDateTime::fromString( fileName, "yyyy-MM-dd-hh-mm-ss" );
 	if ( !date.isValid() )
 	{
@@ -453,4 +488,52 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
 		}
 	}
 	return result;
+}
+
+QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error)
+{
+	QExifImageHeader header(pathToFile);
+	QDateTime renameDateTime = header.value(QExifImageHeader::DateTimeOriginal).toDateTime();
+	QString _newName = renameDateTime.toString( "yyyy-MM-dd-hh-mm-ss" );
+	if (_newName.isEmpty())
+	{
+		RiffParser riffInfo;
+		QString createdDate;
+		if ( !riffInfo.open( pathToFile, error ) || !riffInfo.findTag( "IDIT", createdDate ) || !riffInfo.convertToDate( createdDate, renameDateTime ) )
+		{
+			/*MediaInfo MI;	
+			MI.Open( pathToFile.toStdWString().c_str() );
+			String EncodedDate = MI.Get( Stream_General, 0, __T("Encoded_Date") );
+			if ( !EncodedDate.empty() )
+			{
+				riffInfo.convertToDate( QString::fromStdWString ( EncodedDate ), renameDateTime );
+			}
+			else*/
+			{
+				QProcess myProcess;    
+				myProcess.setProcessChannelMode(QProcess::MergedChannels);
+				QStringList params;
+				params.append(pathToFile);
+				myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/exiftool(-k).exe", params);
+				QString output;
+				while(myProcess.waitForReadyRead())
+				{
+					output = myProcess.readAll();
+					myProcess.putChar('\n');
+				}
+				myProcess.waitForFinished( -1 );
+				int index = output.indexOf("Date/Time Original");
+				if (index != -1)
+				{
+					index = output.indexOf(":", index);
+					if (index != 1)
+					{
+						QString time = output.mid(index+1,20 );
+						renameDateTime = QDateTime::fromString( time, " yyyy:MM:dd hh:mm:ss" );
+					}
+				}
+			}
+		}
+	}
+	return renameDateTime;
 }

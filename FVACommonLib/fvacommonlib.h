@@ -175,6 +175,14 @@ FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QStri
  */
 DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pathToFile, QString& deviceName); 
 
+/*!
+ * \brief it tries to get time a video taken at from header
+ * \param pathToFile a path to video file
+ * \param error error description
+ * \returns it returns time taken
+ */
+QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error);
+
 #define FILL_COMB_FROM_DICT(dict,combo) \
 	vlist = m_dictionaries[dict].toList();\
 	combo->clear(); \
