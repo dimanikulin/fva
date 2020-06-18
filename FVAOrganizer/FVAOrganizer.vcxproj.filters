@@ -39,15 +39,9 @@
     <ClCompile Include="CmdLineTasks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RiffParser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RiffParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CmdLineBaseTask.h">

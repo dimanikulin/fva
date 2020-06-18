@@ -89,14 +89,12 @@
     <ClCompile Include="CmdLineMyTasks.cpp" />
     <ClCompile Include="CmdLineTasks.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="RiffParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineBaseTask.h" />
     <ClInclude Include="CmdLineExecutor.h" />
     <ClInclude Include="CmdLineMyTasks.h" />
     <ClInclude Include="CmdLineTasks.h" />
-    <ClInclude Include="RiffParser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
