@@ -1397,9 +1397,35 @@ QByteArray QExifImageHeader::extractExif( QIODevice *device ) const
 
     stream.setByteOrder( QDataStream::BigEndian );
 
+	// let us read if as for usual image file header
     if( device->read( 2 ) != "\xFF\xD8" )
-        return QByteArray();
-
+	{
+		// try to find it in video file header with exif
+		int maxHeaderIteration = 128;
+		bool found = false;
+		while(maxHeaderIteration--)
+		{
+			if ( device->read( 2 ) != "\xFF\xD8")
+				continue;
+			else
+			{
+				if ( device->read( 2 ) == "\xFF\xE1")
+				{	
+					device->seek(device->pos()-2); // to return back foê future algorithm
+					found = true;
+					break;
+				}
+				else
+					continue;
+			}
+		}
+		if (!found)
+		{
+			return QByteArray();
+		}
+		
+	}
+	
     while( device->read( 2 ) != "\xFF\xE1" )
     {
         if( device->atEnd() )
