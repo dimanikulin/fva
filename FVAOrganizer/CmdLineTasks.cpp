@@ -1,33 +1,17 @@
 #include "CmdLineTasks.h"
 
 #include <QtCore/QCoreApplication>
-#include "RiffParser.h"
 
 #include "../lib/qexifimageheader.h"
-
-#ifdef MEDIAINFO_LIBRARY
-    #include "../lib/MediaInfo/MediaInfo.h" //Staticly-loaded library (.lib or .a or .so)
-    #define MediaInfoNameSpace MediaInfoLib;
-#else //MEDIAINFO_LIBRARY
-    #include "../lib/MediaInfo/MediaInfoDLL.h" //Dynamicly-loaded library (.dll or .so)
-    #define MediaInfoNameSpace MediaInfoDLL;
-#endif //MEDIAINFO_LIBRARY
 
 #include <iostream>
 #include <iomanip>
 
-using namespace MediaInfoNameSpace;
-
-#ifdef __MINGW32__
-    #ifdef _UNICODE
-        #define _itot _itow
-    #else //_UNICODE
-        #define _itot itoa
-    #endif //_UNICODE
-#endif //__MINGW32
-
 #include <QTextStream>
 #include <QDateTime>
+
+#include <windows.h>
+#include <winbase.h>
 
 FVA_ERROR_CODE CLT_Dir_Name_Change::execute()
 {
@@ -252,54 +236,29 @@ FVA_ERROR_CODE CLT_Files_Rename::execute()
 			if ( !checkIfParentFileExist( info, renameDateTime, prevRenameDateTime ) ) 
 			{
 				renameDateTime = QExifImageHeader( info.filePath()).value(QExifImageHeader::DateTimeOriginal).toDateTime();
-				/*
-				for this list time was not correct (was several hours before)
-				
-				2007.02.17 на квартире
-				2007.02.18 Аквариум в квартире
-				2007.02.24 день защитника отечества МИ
-				2007.02.25 Женя ДР
-				2007.03.01-04.07 Командировка на Мальту
-				2007.04.08 Пасха у Ромки
-				2007.04.09 Пасха у Димыных родителей
-				2007.04.09 Пасха у Оксаныных родителей
-				2007.05.27 Клебан-бык
-				2007.05.28 Майские на квартире
-				2007.06.03 Дима маленький ДР
-				2007.06.29 на квартире
-				2007.07.01 Ищенко ДР
-				2007.07.05 На квартире
-
-				I need to change it by
-				renameDateTime = renameDateTime.addSecs( 58260 );
-				*/
 				QString _newName = renameDateTime.toString( "yyyy-MM-dd-hh-mm-ss" );
 				if ( _newName.isEmpty() )
 					fillRenameDateTimeFromLastModifiedIfValid( m_dir, info, renameDateTime );				
 			}
 		}
-		// if it video file
+		// if it is video file
 		else if( FVA_FILE_TYPE_VIDEO == fvaConvertFileExt2FileType( suffix ) )
 		{
-			RiffParser riffInfo;
-			QString createdDate, error;
-			if ( !riffInfo.open( info.absoluteFilePath(), error ) || !riffInfo.findTag( "IDIT", createdDate ) || !riffInfo.convertToDate( createdDate, renameDateTime ) )
+			QString error;
+			renameDateTime = fvaGetVideoTakenTime(info.filePath(), error);
+			if (!renameDateTime.isValid())
 			{
-				MediaInfo MI;	
-				MI.Open(  info.absoluteFilePath().toStdWString().c_str() );
-				String EncodedDate = MI.Get( Stream_General, 0, __T("Encoded_Date") );
-				if ( !EncodedDate.empty() )
+				if ( FVA_NO_ERROR != fvaParseFileName(info.baseName(), renameDateTime))
 				{
-					if ( !riffInfo.convertToDate( QString::fromStdWString ( EncodedDate ), renameDateTime ) )
-					{
-						LOG_QWARN << "can not get created time from:" << info.absoluteFilePath() << ",error:" << error;
-						fillRenameDateTimeFromLastModifiedIfValid( m_dir, info, renameDateTime );
-					}
+					LOG_QWARN << "can not get taken time from:" << info.absoluteFilePath() << ",error:" << error;
+					fillRenameDateTimeFromLastModifiedIfValid( m_dir, info, renameDateTime );
 				}
 			}
 		}
-		else if( suffix == "WAV" )		
-			fillRenameDateTimeFromLastModifiedIfValid( m_dir, info, renameDateTime );	
+		else if( FVA_FILE_TYPE_AUDIO == fvaConvertFileExt2FileType( suffix ) )
+		{
+			fillRenameDateTimeFromLastModifiedIfValid( m_dir, info, renameDateTime );
+		}
 		else
 		{
 			LOG_QWARN << "unsupported file type:" << info.absoluteFilePath() ;
@@ -443,6 +402,13 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 		}
 		else if( FVA_FILE_TYPE_VIDEO == fvaConvertFileExt2FileType ( suffix ) )
 		{	
+			QString error;
+			QDateTime renameDateTime = fvaGetVideoTakenTime(info.filePath(), error);
+			if (renameDateTime.isValid())
+			{
+				continue;
+			}
+
 			if ( !info.baseName().contains("_") )
 			{
 				LOG_QCRIT << "video file does not contain _:" << info.absoluteFilePath();
@@ -736,8 +702,13 @@ FVA_ERROR_CODE CLT_Auto_Checks_1::execute()
 			first = true;
 			if (FVA_FILE_TYPE_VIDEO == type || FVA_FILE_TYPE_AUDIO == type)
 			{
-				LOG_QWARN << "found first video file:" << info.absoluteFilePath();
-				return FVA_ERROR_VIDEO_FIRST;
+				QString error;
+				QDateTime time = fvaGetVideoTakenTime(info.absoluteFilePath(),error);
+				if (!time.isValid())
+				{
+					LOG_QWARN << "found first video/audio file:" << info.absoluteFilePath();
+					return FVA_ERROR_VIDEO_FIRST;
+				}
 			}
 		}
 
@@ -776,16 +747,31 @@ FVA_ERROR_CODE CLT_Folder_Merging::execute()
 	subFolder.remove(m_baseFolder);
 
 	if (!m_dir.exists(m_custom + subFolder + "/"))
-		m_dir.mkpath(m_custom + subFolder + "/");
+	{
+		// skip internal folder 
+		if (!subFolder.contains("#copy"))
+			m_dir.mkpath(m_custom + subFolder + "/");
+	}
 	else
 	{
 		if (!subFolder.isEmpty())
 		{
+			if (m_dir.exists(m_custom + subFolder + " #1/"))
+			{
+				if( !m_dir.rename( m_custom + subFolder + " #1/", m_custom + subFolder + " #2/" ) )
+					LOG_QWARN << "could not rename source :" << m_custom + subFolder + " #1/" << " into " << m_custom + subFolder + " #2/";
+				else
+					LOG_QWARN << "renamed source :" << m_custom + subFolder + " #1/" << " into " << m_custom + subFolder + " #2";
+			}
+
 			if( !m_dir.rename( m_custom + subFolder, m_custom + subFolder + " #1/" ) )
 				LOG_QWARN << "could not rename source :" << m_custom + subFolder << " into " << m_custom + subFolder + " #1/";
 			else
 				LOG_QWARN << "renamed source :" << m_custom + subFolder << " into " << m_custom + subFolder + " #1/";
-			m_dir.mkpath(m_custom + subFolder + "/");
+			
+			// skip internal folder 
+			if (!subFolder.contains("#copy"))	
+				m_dir.mkpath(m_custom + subFolder + "/");
 		}
 	}
 
@@ -806,11 +792,13 @@ FVA_ERROR_CODE CLT_Folder_Merging::execute()
 				LOG_QCRIT << "could not open source file desc:" << original;
 				return FVA_ERROR_CANT_OPEN_FILE_DESC;
 			}
-
-			if (!SetFileAttributes(dest.toStdWString().c_str(), FILE_ATTRIBUTE_NORMAL ))
-			{	
-				LOG_QCRIT << "can not set attr for dest desc file:" << dest;
-				return FVA_ERROR_CANT_OPEN_FILE_DESC;
+			if (m_dir.exists(dest))
+			{
+				if (!SetFileAttributes(dest.toStdWString().c_str(), FILE_ATTRIBUTE_NORMAL ))
+				{	
+					LOG_QCRIT << "can not set attr for dest desc file:" << dest;
+					return FVA_ERROR_CANT_OPEN_FILE_DESC;
+				}
 			}
 			QFile fileOutput(dest);
 			if (!fileOutput.open(QIODevice::Append | QIODevice::Text))
