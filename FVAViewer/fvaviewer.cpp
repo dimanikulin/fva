@@ -3,6 +3,8 @@
 #include <QString>
 #include "fvacommonlib.h"
 
+#include <Phonon/VideoPlayer>
+
 FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *parent, Qt::WFlags flags)
 	:QDialog			(parent),
 	m_ui				(new Ui::FVAViewerClass),
@@ -51,7 +53,28 @@ FVAViewer::~FVAViewer()
 
 void FVAViewer::showItem( QTreeWidgetItem* item )
 {
-	fvaShowImage( item->data( 1, 1 ).toString(), m_ui->imageLbl );
+	QFileInfo info(item->data( 1, 1 ).toString());
+	QString suffix = info.suffix().toUpper();
+	if(	FVA_FILE_TYPE_VIDEO == fvaConvertFileExt2FileType ( suffix ))
+	{
+		QStringList libs = QCoreApplication::libraryPaths();
+		Phonon::VideoPlayer *player = new Phonon::VideoPlayer(Phonon::VideoCategory, m_ui->contentArea->widget());
+		connect(player, SIGNAL(finished()), player, SLOT(deleteLater()));
+		QUrl url(item->data( 1, 1 ).toString());
+		player->play(url);
+
+		/*QMediaPlayer* media = new QMediaPlayer(this);
+		QVideoWidget* video = new QVideoWidget(this);
+		media->setVideoOutput(video);
+		QUrl url(item->data( 1, 1 ).toString());
+		media->setMedia(url);
+		media->play();
+		m_ui->contentArea->setWidget(video);*/
+	} 
+	else if (FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ))
+	{
+		fvaShowImage( item->data( 1, 1 ).toString(), m_ui->imageLbl );
+	}
 }
 
 void FVAViewer::editFileItem( QTreeWidgetItem* item )
