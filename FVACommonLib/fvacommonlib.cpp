@@ -10,25 +10,6 @@
 #include "../lib/qexifimageheader.h"
 #include "RiffParser.h"
 
-#ifdef MEDIAINFO_LIBRARY
-    #include "MediaInfo.h" //Staticly-loaded library (.lib or .a or .so)
-    #define MediaInfoNameSpace MediaInfoLib;
-#else //MEDIAINFO_LIBRARY
-    #include "MediaInfoDLL.h" //Dynamicly-loaded library (.dll or .so)
-    #define MediaInfoNameSpace MediaInfoDLL;
-#endif //MEDIAINFO_LIBRARY
-
-
-using namespace MediaInfoNameSpace;
-
-#ifdef __MINGW32__
-    #ifdef _UNICODE
-        #define _itot _itow
-    #else //_UNICODE
-        #define _itot itoa
-    #endif //_UNICODE
-#endif //__MINGW32
-
 FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outputJson, QString& error )
 {
 	QDir dir ( folder );
@@ -501,38 +482,30 @@ QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error)
 		QString createdDate;
 		if ( !riffInfo.open( pathToFile, error ) || !riffInfo.findTag( "IDIT", createdDate ) || !riffInfo.convertToDate( createdDate, renameDateTime ) )
 		{
-			/*MediaInfo MI;	
-			MI.Open( pathToFile.toStdWString().c_str() );
-			String EncodedDate = MI.Get( Stream_General, 0, __T("Encoded_Date") );
-			if ( !EncodedDate.empty() )
+			
+			QProcess myProcess;    
+			myProcess.setProcessChannelMode(QProcess::MergedChannels);
+			QStringList params;
+			params.append(pathToFile);
+			myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/exiftool(-k).exe", params);
+			QString output;
+			while(myProcess.waitForReadyRead())
 			{
-				riffInfo.convertToDate( QString::fromStdWString ( EncodedDate ), renameDateTime );
+				output = myProcess.readAll();
+				myProcess.putChar('\n');
 			}
-			else*/
+			myProcess.waitForFinished( -1 );
+			int index = output.indexOf("Date/Time Original");
+			if (index != -1)
 			{
-				QProcess myProcess;    
-				myProcess.setProcessChannelMode(QProcess::MergedChannels);
-				QStringList params;
-				params.append(pathToFile);
-				myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/exiftool(-k).exe", params);
-				QString output;
-				while(myProcess.waitForReadyRead())
+				index = output.indexOf(":", index);
+				if (index != 1)
 				{
-					output = myProcess.readAll();
-					myProcess.putChar('\n');
-				}
-				myProcess.waitForFinished( -1 );
-				int index = output.indexOf("Date/Time Original");
-				if (index != -1)
-				{
-					index = output.indexOf(":", index);
-					if (index != 1)
-					{
-						QString time = output.mid(index+1,20 );
-						renameDateTime = QDateTime::fromString( time, " yyyy:MM:dd hh:mm:ss" );
-					}
+					QString time = output.mid(index+1,20 );
+					renameDateTime = QDateTime::fromString( time, " yyyy:MM:dd hh:mm:ss" );
 				}
 			}
+			
 		}
 	}
 	return renameDateTime;
