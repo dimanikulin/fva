@@ -76,6 +76,7 @@
     <ClCompile Include="CSVFile.cpp" />
     <ClCompile Include="fvacommonlib.cpp" />
     <ClCompile Include="FVADescriptionFile.cpp" />
+    <ClCompile Include="RiffParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\json\json.h" />
