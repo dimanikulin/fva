@@ -28,6 +28,8 @@
                 <File Id="photo" Name="photo.png"  Source="#BIN#\Icons\photo.png"  Vital="yes" KeyPath="no"/>
                 <File Id="video" Name="video.png"  Source="#BIN#\Icons\video.png"  Vital="yes" KeyPath="no"/>
                 <File Id="main" Name="main.png"  Source="#BIN#\Icons\main.png"  Vital="yes" KeyPath="no"/>
+                <File Id="people" Name="people.png"  Source="#BIN#\Icons\people.png"  Vital="yes" KeyPath="no"/>
+                <File Id="person" Name="person.png"  Source="#BIN#\Icons\person.png"  Vital="yes" KeyPath="no"/>
               </Component>
             </Directory>
             <Directory Id="Jpegr" Name='Jpegr'>
