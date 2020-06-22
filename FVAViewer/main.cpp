@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 	// qInstallMsgHandler( msghandler ); 
 
 	QApplication a(argc, argv);
-
+	QTextCodec::setCodecForTr(QTextCodec::codecForName("Windows-1251"));
 	QString logPath = QApplication::applicationDirPath() + "\\viewerlog.txt";  
 	g_logfile.open( logPath.toStdString(), std::ios::app );
 	 
