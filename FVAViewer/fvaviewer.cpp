@@ -2,9 +2,9 @@
 #include "QPictureLabel.h"
 #include <QString>
 #include <QtGui/QListWidget>
+#include <QtGui/QProgressDialog>
 #include <QtUiTools/QtUiTools>
 #include "fvacommonlib.h"
-
 
 FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *parent, Qt::WFlags flags)
 	:QDialog 			(parent),
@@ -17,14 +17,21 @@ FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *p
 	m_audioIcon		= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/audio.png");
 	m_photoIcon		= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/photo.png");
 	m_folderIcon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/folder.png");
+	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/main.png");
+	setWindowIcon(icon);
 
 	QDir dir ( rootDir );
 	if (!dir.exists( rootDir ))
 		return;
-	
+	int number = 0;
+	evaluateFSTree (rootDir, number);
+	QProgressDialog progress("Loading...", "Abort", 0, number * 2, this);
+	progress.setWindowModality(Qt::ApplicationModal);
 	m_rootItem.reset (new fvaItem); 
-	populateFVATree( rootDir, m_rootItem.get() );
-	populateGUITree( m_rootItem.get(), nullptr );
+	int itemNumber = 0;
+	populateFVATree( rootDir, m_rootItem.get(), itemNumber, &progress );
+	populateGUITree( m_rootItem.get(), nullptr, itemNumber, &progress );
+    progress.setValue(number *2);
 
 	m_ui->treeWidget->setMaximumWidth(200);
 
@@ -65,6 +72,7 @@ FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *p
 	FILL_COMB_FROM_DICT("places", m_uiFilters->cbPlace);
 	FILL_COMB_FROM_DICT("people", m_uiFilters->cbPeople);
 	FILL_COMB_FROM_DICT("devices",m_uiFilters->cbDevice);
+	FILL_COMB_FROM_DICT("people",m_uiFilters->cbDevOwner);
 }
 
 FVAViewer::~FVAViewer()
@@ -135,6 +143,17 @@ void FVAViewer::filterClicked(  )
 		m_filter.deviceIds.push_back(ID);
 	}
 
+	index = m_uiFilters->cbDevOwner->currentIndex();
+	if ( 1 <= index ) 
+	{
+		int ID = m_uiFilters->cbDevOwner->itemData( index ).toInt();
+		QVariantList vlist = m_dictionaries["devices"].toList();
+		m_filter.deviceIds.push_back(-1); // as not existing device
+		for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
+			if (i->toMap()["OwnerId"].toInt() == ID) // owner of this device
+				m_filter.deviceIds.push_back(i->toMap()["ID"].toInt());
+	}
+
 	index = m_uiFilters->cbPeople->currentIndex();
 	if ( 1 <= index ) 
 	{
@@ -152,7 +171,8 @@ void FVAViewer::filterClicked(  )
 
 	filterFVATree( m_filter, m_rootItem.get() );
 	m_ui->treeWidget->clear();
-	populateGUITree( m_rootItem.get(), nullptr );
+	int number = 0;
+	populateGUITree( m_rootItem.get(), nullptr, number, nullptr );
 }
 
 void FVAViewer::filterFVATree( const fvaFilter& filter, fvaItem* fvaitem )
@@ -185,8 +205,18 @@ void FVAViewer::filterFVATree( const fvaFilter& filter, fvaItem* fvaitem )
 		
 		// 2. filtration by device id
 		if ((*idChild)->isFiltered && !filter.deviceIds.empty() && (*idChild)->hasDescriptionData)
-			(*idChild)->isFiltered = ((*idChild)->deviceId == filter.deviceIds[0]);
-
+		{
+			bool filt = false;
+			for (auto it = filter.deviceIds.begin(); it != filter.deviceIds.end();++it)
+			{
+				if ((*idChild)->deviceId == *it)
+				{
+					filt = true;	
+					break;
+				}
+			}
+			(*idChild)->isFiltered = filt;
+		}
 		// 3. filtration by scaner id
 		// TODO	
 
@@ -216,8 +246,7 @@ void FVAViewer::filterFVATree( const fvaFilter& filter, fvaItem* fvaitem )
 		// TODO make dir filtered if any child filtered and wiseversa
 	}							
 }
-
-void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
+void FVAViewer::evaluateFSTree (const QString& folder, int& number)
 {
 	QDir dir( folder );
 
@@ -231,7 +260,41 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 			{
 				continue;
 			}
+			evaluateFSTree( info.absoluteFilePath(), number );
+			number++;
+		}
+		else
+		{
+			if(	!fvaIsFVAFile ( info.suffix().toUpper() ) )
+				continue;
+			number++;
+		}
+	}
+}
+
+void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& number, QProgressDialog* progress )
+{	
+	/*if (progress.wasCanceled())
+		return;
+	*/
+	QDir dir( folder );
+
+	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{			
+		if ( info.isDir() )
+		{
+			// just skip internal folder
+			if ( info.fileName()[0] == '#' 
+				&& info.fileName()[info.fileName().size()-1] == '#' )
+			{
+				continue;
+			}
 			fvaItem* dirItem	= new fvaItem;
+			if (progress)
+			{
+				progress->setValue(number++);
+				//progress->setLabelText(info.absoluteFilePath()); 
+			}
 			dirItem->isFolder	= true;
 			dirItem->fsFullPath	= info.absoluteFilePath();
 			if ( FVA_NO_ERROR != fvaParseDirName(info.fileName(), dirItem->dateFrom, dirItem->dateTo))
@@ -267,13 +330,17 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 
 			QString descFilePath = info.absoluteFilePath() + "/" + FVA_DESCRIPTION_FILE_NAME;
 			FVA_ERROR_CODE res = m_descriptionFile.load( descFilePath,dirItem->descTitles, dirItem->decsItems );
-			if ( FVA_NO_ERROR != res )
+			if ( FVA_ERROR_CANT_OPEN_FILE_DESC == res || FVA_NO_ERROR == res)
 			{
-				// it is not a big problem
+				// it is not an error
+			}
+			else
+			{
+				qCritical() << "descFile failed to be loaded:" << descFilePath;
 			}
 
 			fvaitem->children.append( dirItem );
-			populateFVATree( info.absoluteFilePath(), dirItem );
+			populateFVATree( info.absoluteFilePath(), dirItem, number, progress );
 		}
 		else
 		{
@@ -283,6 +350,11 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 			fileItem->isFolder		= false;
 			fileItem->fsFullPath		= info.absoluteFilePath();
 			fileItem->type			= fvaConvertFileExt2FileType(info.suffix().toUpper());
+			if (progress)
+			{
+				progress->setValue(number++);
+				//progress->setLabelText(info.absoluteFilePath()); 
+			}
 			if ( FVA_NO_ERROR != fvaParseFileName(info.baseName(), fileItem->dateFrom))
 			{
 				qDebug() << "ERROR!, incorrect file name " << info.fileName();
@@ -330,10 +402,15 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 	}
 }
 
-void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item )
+void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item,int& number, QProgressDialog* progress )
 {
 	for ( auto idChild = fvaitem->children.begin(); idChild != fvaitem->children.end(); ++idChild)
-	{
+	{ 
+		if (progress) 
+		{
+			progress->setValue(number++);
+			// progress->setLabelText((*idChild)->getGuiName()); 
+		}
 		if ( !(*idChild)->isFiltered )
 			continue;
 		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
@@ -361,6 +438,6 @@ void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item )
 		else
 			m_ui->treeWidget->addTopLevelItem ( treeWidgetItem );
 
-		populateGUITree( *idChild, treeWidgetItem );
+		populateGUITree( *idChild, treeWidgetItem, number, progress );
 	}							
 } 

@@ -12,6 +12,8 @@
 #include "ui_fvaviewer.h"
 #include "ui_filters.h"
 
+class QProgressDialog;
+
 /*!
  * \brief keeps main dilaog functionality
  */
@@ -34,14 +36,14 @@ class FVAViewer : public QDialog
 		 * \param fvaitem - fvaitem to populate from
 		 * \param item - GUI tree
 		 */
-		void populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item );
+		void populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item, int& number, QProgressDialog* progress );
 
 		/*!
 		 * \brief it recursivly expands FVA tree using file system tree
 		 * \param folder - folder path to be populated
 		 * \param item - fva tree item
 		 */
-		void populateFVATree( const QString& folder, fvaItem* fvaitem );
+		void populateFVATree( const QString& folder, fvaItem* fvaitem, int& number, QProgressDialog* progress );
 
 		/*!
 		 * \brief it recursivly filters FVA tree
@@ -49,6 +51,13 @@ class FVAViewer : public QDialog
 		 * \param fvaitem - fva tree item
 		 */
 		void filterFVATree( const fvaFilter& filter, fvaItem* fvaitem );
+
+		/*!
+		 * \brief it recursivly calculates numbers of filesystem tree items
+		 * \param folder - folder path to be populated
+		 * \param number - number of items
+		 */
+		void evaluateFSTree (const QString& folder, int& number);
 
 	private: // data
 
