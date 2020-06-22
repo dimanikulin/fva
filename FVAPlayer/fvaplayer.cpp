@@ -90,6 +90,9 @@ FVAPlayer::FVAPlayer(QWidget *parent)
 	playlist->addMedia(url);
 
 	emit controls->play();
+
+	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/main.png");
+	setWindowIcon(icon);
 }
 
 FVAPlayer::~FVAPlayer()
