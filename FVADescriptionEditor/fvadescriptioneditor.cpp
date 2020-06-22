@@ -101,7 +101,7 @@ void FVADescriptionEditor::updateGuiForItem( const QString& path )
 	}
 	else
 	{
-		fvaShowImage( path, ui.lbFoto );
+		fvaShowImage( path, ui.lbFoto,"" );
 	}
 	QStringList list = it.value(); 
 
