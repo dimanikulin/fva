@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="FVA Software" Language="1033" Version="1.0.0.0" Manufacturer="FVA Software" UpgradeCode="358e1852-6d77-4aa5-a180-ff0f96c691e0">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <Media Id='1' Cabinet='cab1.cab' EmbedCab='yes'/>
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <Property Id="WIXUI_INSTALLDIR" Value="PRODUCTDIR" />
+    <UIRef Id="WixUI_InstallDir" />
+    <Feature Id="ProductFeature" Title="FVASetupWin" Level="1">
+			<ComponentRef Id="binFilesComponents" />
+      <ComponentRef Id="binIconsFilesComponents" />
+      <ComponentRef Id="binJpegrFilesComponents" />
+      <ComponentRef Id="binMediaserviceFilesComponents" />
+      <ComponentRef Id="binLogsFilesComponents" />
+      <ComponentRef Id="rootFilesComponents" />
+		</Feature>
+  </Product>
+
+	<Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="PRODUCTDIR">
+        <!--Directory Id="INSTALLFOLDER" Name="FVA"-->
+          <Directory Id="bin" Name='#BIN#'>
+            <Directory Id="Icons" Name='Icons'>
+              <Component Id="binIconsFilesComponents" Guid="1af1fda7-a0f8-41f3-979f-07cf8ca5a411">
+                <File Id="audio" Name="audio.png"  Source="#BIN#\Icons\audio.png"  Vital="yes" KeyPath="no"/>
+                <File Id="folder" Name="folder.png" Source="#BIN#\Icons\folder.png"  Vital="yes" KeyPath="no"/>
+                <File Id="photo" Name="photo.png"  Source="#BIN#\Icons\photo.png"  Vital="yes" KeyPath="no"/>
+                <File Id="video" Name="video.png"  Source="#BIN#\Icons\video.png"  Vital="yes" KeyPath="no"/>
+                <File Id="main" Name="main.png"  Source="#BIN#\Icons\main.png"  Vital="yes" KeyPath="no"/>
+              </Component>
+            </Directory>
+            <Directory Id="Jpegr" Name='Jpegr'>
+              <Component Id="binJpegrFilesComponents" Guid="0e134b5c-8d08-4059-bc73-ba96d6080990">
+                <File Id="jpegr" Name="jpegr.exe"  Source="#BIN#\Jpegr\jpegr.exe"  Vital="yes" KeyPath="no"/>
+                <File Id="jpegrotate" Name="jpegrotate.dll"  Source="#BIN#\Jpegr\jpegrotate.dll"  Vital="yes" KeyPath="no"/>
+                <File Id="jpgrotate" Name="jpgrotate.dll"  Source="#BIN#\Jpegr\jpgrotate.dll"  Vital="yes" KeyPath="no"/>
+                <CreateFolder />
+              </Component>
+            </Directory>
+            <Directory Id="mediaservice" Name='mediaservice'>
+              <Component Id="binMediaserviceFilesComponents" Guid="1ea80614-bc07-4675-96a5-d418a1d67060">
+                <CreateFolder />
+                <File Id="dsengine" Name="dsengine.dll"  Source="#BIN#\mediaservice\dsengine.dll"  Vital="yes" KeyPath="no"/>
+                <File Id="qtmedia_audioengine" Name="qtmedia_audioengine.dll"  Source="#BIN#\mediaservice\qtmedia_audioengine.dll"  Vital="yes" KeyPath="no"/>
+                <File Id="wmfengine" Name="wmfengine.dll"  Source="#BIN#\mediaservice\wmfengine.dll"  Vital="yes" KeyPath="no"/>
+              </Component>
+            </Directory>
+            <Directory Id="LOGS" Name='LOGS'>
+              <Component Id="binLogsFilesComponents" Guid="588f28ef-11e5-4b70-a3cb-88d2573a415a">
+                <CreateFolder />
+              </Component>
+            </Directory>
+            <Component Id="binFilesComponents" Guid="99f7d041-c3ff-4b1d-8b85-5e08dd5acec4">
+              <File Id="descEditor" Name="FVADescriptionEditor.exe" Source="..\fvabin\win32\release\#BIN#\FVADescriptionEditor.exe" Vital="yes" KeyPath="no"/>
+              <File Id="dictEditor" Name="FVADictionaryEditor.exe" Source="..\fvabin\win32\release\#BIN#\FVADictionaryEditor.exe" Vital="yes" KeyPath="no"/>
+              <File Id="player" Name="FVAPlayer.exe" Source="..\fvabin\win32\release\#BIN#\FVAPlayer.exe" Vital="yes" KeyPath="no"/>
+              <File Id="CLT1" Name="CLT_Auto_Checks_2_all.bat" Source="#BIN#\CLT_Auto_Checks_2_all.bat"  Vital="yes" KeyPath="no"/>
+              <File Id="CLT2" Name="CLT_Set_Attr_all.bat"  Source="#BIN#\CLT_Set_Attr_all.bat"  Vital="yes" KeyPath="no"/>
+              <File Id="conv" Name="Converter.exe" Source="#BIN#\Converter.exe"  Vital="yes" KeyPath="no"/>
+              <File Id="exif" Name="exiftool(-k).exe"  Source="#BIN#\exiftool(-k).exe"  Vital="yes" KeyPath="no"/>
+ 
+              <File Id="Qt5Core" Name="Qt5Core.dll"  Source="#BIN#\Qt5Core.dll"  Vital="yes" KeyPath="no"/>
+              <File Id="Qt5Gui" Name="Qt5Gui.dll"  Source="#BIN#\Qt5Gui.dll"  Vital="yes" KeyPath="no"/>
+              <File Id="Qt5Multimedia" Name="Qt5Multimedia.dll"  Source="#BIN#\Qt5Multimedia.dll"  Vital="yes" KeyPath="no"/>
+              <File Id="Qt5MultimediaWidgets" Name="Qt5MultimediaWidgets.dll"  Source="#BIN#\Qt5MultimediaWidgets.dll"  Vital="yes" KeyPath="no"/>
+              <File Id="Qt5Network" Name="Qt5Network.dll"  Source="#BIN#\Qt5Network.dll"  Vital="yes" KeyPath="no"/>
+              <File Id="Qt5OpenGL" Name="Qt5OpenGL.dll"  Source="#BIN#\Qt5OpenGL.dll"  Vital="yes" KeyPath="no"/>
+              <File Id="Qt5Widgets" Name="Qt5Widgets.dll"  Source="#BIN#\Qt5Widgets.dll"  Vital="yes" KeyPath="no"/>
+
+            </Component>
+          </Directory>
+          <Component Id="rootFilesComponents" Guid="af4356ff-56aa-4c7c-baca-cd1af6e51267">
+            <File Id="viewer" Name="FVAViewer.exe" Source="..\fvabin\win32\release\FVAViewer.exe" Vital="yes" KeyPath="no"/>
+            <File Id="FVAOrganizer" Name="FVAOrganizer.exe" Source="..\fvabin\win32\release\FVAOrganizer.exe" Vital="yes" KeyPath="no"/>
+            <File Id="FVAOrganizerWizard" Name="FVAOrganizerWizard.exe" Source="..\fvabin\win32\release\FVAOrganizerWizard.exe" Vital="yes" KeyPath="no"/>
+          </Component>
+        <!--/Directory-->
+      </Directory>
+    </Directory>
+	</Fragment>
+</Wix>
