@@ -20,6 +20,8 @@ FVA_ERROR_CODE FVADescriptionFile::load( const QString& path, QStringList& title
 		QString	line = readLine();
 		if ( line.isEmpty() && atEnd() )
 			break;
+		if ( line.trimmed().isEmpty() )
+			continue;
 		QStringList	values;
 		if ( !parseLine( line, values ) )
 			continue;
