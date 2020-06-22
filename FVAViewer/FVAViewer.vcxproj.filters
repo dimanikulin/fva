@@ -76,12 +76,18 @@
     <CustomBuild Include="qpicturelabel.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="filters.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_fvaviewer.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_qpicturelabel.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_filters.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
