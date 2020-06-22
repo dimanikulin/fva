@@ -2,6 +2,16 @@
 #define FVACOMMONDATA_H
 
 /*!
+ * \brief it enumerates internal valuable file types
+ */
+enum FVA_FILE_TYPE
+{
+	FVA_FILE_TYPE_UNKNOWN,
+	FVA_FILE_TYPE_IMG,
+	FVA_FILE_TYPE_VIDEO,
+	FVA_FILE_TYPE_AUDIO
+};
+/*!
  * \brief it describes whole information about device 
  */
 class fvaDevice
@@ -52,6 +62,13 @@ class fvaItem
 		 * \param dictionaries - global dictionary set
 		 */
 		QString getGuiFullName(const QVariantMap&	dictionaries);
+
+	public : // data
+
+		/*!
+		 * file type
+		 */		
+		FVA_FILE_TYPE			type;
 
 		/*!
 		 * is it folder or file
