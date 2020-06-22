@@ -26,6 +26,9 @@ FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& 
 
 	ui.editName->setText(m_device);
 	ui.editLinkName->setText(m_device);
+
+	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/main.png");
+	setWindowIcon(icon);
 }
 
 FVADictionaryEditor::~FVADictionaryEditor()
