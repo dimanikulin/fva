@@ -1,6 +1,7 @@
 #include "CmdLineTasks.h"
 
 #include <QtCore/QCoreApplication>
+#include <QtCore/QCryptographicHash>
 
 #include "../lib/qexifimageheader.h"
 
@@ -46,7 +47,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_Device_Name::execute()
 		// if it is picture files
 		QString suffix = info.suffix().toUpper();
 		QString fullname = info.absoluteFilePath();
-		if(	FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ) )
+		if(	FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ) )
 		{
 			QString newDeviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
 									+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
@@ -231,7 +232,7 @@ FVA_ERROR_CODE CLT_Files_Rename::execute()
 
 		// if it is picture files
 		QString suffix = info.suffix().toUpper();
-		if(	FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType( suffix ) )
+		if(	FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType( suffix ) )
 		{
 			if ( !checkIfParentFileExist( info, renameDateTime, prevRenameDateTime ) ) 
 			{
@@ -242,7 +243,7 @@ FVA_ERROR_CODE CLT_Files_Rename::execute()
 			}
 		}
 		// if it is video file
-		else if( FVA_FILE_TYPE_VIDEO == fvaConvertFileExt2FileType( suffix ) )
+		else if( FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType( suffix ) )
 		{
 			QString error;
 			renameDateTime = fvaGetVideoTakenTime(info.filePath(), error);
@@ -255,7 +256,7 @@ FVA_ERROR_CODE CLT_Files_Rename::execute()
 				}
 			}
 		}
-		else if( FVA_FILE_TYPE_AUDIO == fvaConvertFileExt2FileType( suffix ) )
+		else if( FVA_FS_TYPE_AUDIO == fvaConvertFileExt2FileType( suffix ) )
 		{
 			fillRenameDateTimeFromLastModifiedIfValid( m_dir, info, renameDateTime );
 		}
@@ -330,7 +331,7 @@ FVA_ERROR_CODE CLT_Device_Name_Check::execute()
 		// if it is picture files
 		QString suffix		= info.suffix().toUpper();
 		QString fullname	= info.absoluteFilePath();
-		if(	FVA_FILE_TYPE_IMG != fvaConvertFileExt2FileType ( suffix ) )
+		if(	FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType ( suffix ) )
 			continue;
 		
 		QString newDeviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
@@ -365,7 +366,7 @@ FVA_ERROR_CODE CLT_Files_Rename_By_Dir::execute()
 		if ( info.isDir() )
 			continue;
 		QString suffix = info.suffix().toUpper();
-		if(	FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ) )
+		if(	FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ) )
 		{				
 			QString newPath = m_dir.path() + "/" + m_dir.dirName().replace(".","-").mid(0,10) + "-##-##-" + QString::number( id ) + "." + info.suffix();
 			if ( !m_dir.rename( info.absoluteFilePath(), newPath ) )
@@ -392,7 +393,7 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 			continue;
 
 		QString suffix = info.suffix().toUpper();
-		if(	FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ) && imageFilePrefix.isEmpty() )
+		if(	FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ) && imageFilePrefix.isEmpty() )
 		{				
 			if ( !info.baseName().contains("_") )
 				continue;
@@ -400,7 +401,7 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 			imageFilePrefix	= info.baseName().mid(0, index );
 			LOG_QDEB << "got new image prefix:" << imageFilePrefix;
 		}
-		else if( FVA_FILE_TYPE_VIDEO == fvaConvertFileExt2FileType ( suffix ) )
+		else if( FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType ( suffix ) )
 		{	
 			QString error;
 			QDateTime renameDateTime = fvaGetVideoTakenTime(info.filePath(), error);
@@ -433,7 +434,7 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 				LOG_QDEB << "renamed file:" << info.absoluteFilePath() << " to:" << newFilePath;
 
 		}
-		else if ( FVA_FILE_TYPE_UNKNOWN == fvaConvertFileExt2FileType ( suffix ) )
+		else if ( FVA_FS_TYPE_UNKNOWN == fvaConvertFileExt2FileType ( suffix ) )
 		{
 			LOG_QWARN << "unsupported file type:" << info.absoluteFilePath() ;
 			continue;
@@ -444,7 +445,7 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 {
 	DEVICE_MAP deviceMap;
-	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(deviceMap, QCoreApplication::applicationDirPath() + "\\data.json");
+	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(deviceMap, QCoreApplication::applicationDirPath() + "/" + FVA_DICTIONARY_NAME);
 	if ( FVA_NO_ERROR != res )
 		return res;
 
@@ -473,8 +474,8 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 
 		// 2.CHECK FOR PROPER FILE NAME AND SUPPORTED TYPE
 		QString suffix = info.suffix().toUpper();
-		FVA_FILE_TYPE type = fvaConvertFileExt2FileType ( suffix );
-		if ( FVA_FILE_TYPE_UNKNOWN != type )
+		FVA_FS_TYPE type = fvaConvertFileExt2FileType ( suffix );
+		if ( FVA_FS_TYPE_UNKNOWN != type )
 		{
 			QDateTime date;
 			QString baseFileName = info.baseName();
@@ -487,7 +488,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 					return FVA_ERROR_WRONG_FILE_NAME;
 			}
 			//////////////////////////////////// check for exsiting device in dictionary by device name in pictire 
-			if (FVA_FILE_TYPE_IMG == type)
+			if (FVA_FS_TYPE_IMG == type)
 			{
 				QString deviceName;
 				if ( !fvaGetDeviceMapForImg(deviceMap, info.filePath(),deviceName).size()) 
@@ -580,8 +581,8 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 		if ( info.isDir() )
 			continue;
 		QString suffix = info.suffix().toUpper();
-		FVA_FILE_TYPE type = fvaConvertFileExt2FileType ( suffix );
-		if ( FVA_FILE_TYPE_UNKNOWN != type )
+		FVA_FS_TYPE type = fvaConvertFileExt2FileType ( suffix );
+		if ( FVA_FS_TYPE_UNKNOWN != type )
 			countSupportedFiles++;
 	}
 	// no need to move these files
@@ -694,13 +695,13 @@ FVA_ERROR_CODE CLT_Auto_Checks_1::execute()
 			continue;
 
 		QString suffix = info.suffix().toUpper();
-		FVA_FILE_TYPE type = fvaConvertFileExt2FileType ( suffix );
+		FVA_FS_TYPE type = fvaConvertFileExt2FileType ( suffix );
 
 		//	#01.NotVideoFirst
 		if (!first)
 		{
 			first = true;
-			if (FVA_FILE_TYPE_VIDEO == type || FVA_FILE_TYPE_AUDIO == type)
+			if (FVA_FS_TYPE_VIDEO == type || FVA_FS_TYPE_AUDIO == type)
 			{
 				QString error;
 				QDateTime time = fvaGetVideoTakenTime(info.absoluteFilePath(),error);
@@ -786,7 +787,7 @@ FVA_ERROR_CODE CLT_Folder_Merging::execute()
 		
 		if (FVA_DESCRIPTION_FILE_NAME == info.fileName())
 		{
-			QFile fileInput(info.absoluteFilePath()); // this is a name of a file text1.txt sent from main method
+			QFile fileInput(info.absoluteFilePath()); 
 			if (!fileInput.open(QIODevice::ReadOnly | QIODevice::Text))
 			{
 				LOG_QCRIT << "could not open source file desc:" << original;
@@ -870,8 +871,8 @@ FVA_ERROR_CODE CLT_Set_File_Atts::execute()
 		if ( info.isDir() )
 			continue;
 		QString suffix = info.suffix().toUpper();
-		FVA_FILE_TYPE type = fvaConvertFileExt2FileType ( suffix );
-		if (FVA_FILE_TYPE_UNKNOWN != type)
+		FVA_FS_TYPE type = fvaConvertFileExt2FileType ( suffix );
+		if (FVA_FS_TYPE_UNKNOWN != type)
 		{
 			if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), FILE_ATTRIBUTE_READONLY))
 				LOG_QCRIT << "can not set attr for fva file:" << info.absoluteFilePath();
@@ -891,5 +892,52 @@ FVA_ERROR_CODE CLT_Set_File_Atts::execute()
 		}
 	}
 	
+	return FVA_NO_ERROR;
+}
+CLT_Print_FS_Structure::CLT_Print_FS_Structure(const QString& dir_,bool readOnly_,const QString& custom_)
+	:CmdLineBaseTask( dir_,readOnly_,custom_)
+{
+	qDebug()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_;
+	m_file.setFileName(QCoreApplication::applicationDirPath() + "\\fsoutput.txt");
+	m_file.open( QIODevice::WriteOnly );
+}
+
+CLT_Print_FS_Structure::~CLT_Print_FS_Structure()
+{
+	m_file.close();
+}
+
+FVA_ERROR_CODE CLT_Print_FS_Structure::execute()
+{
+	char		buffer [ 64* 1024 ];
+	qint64		size = 0;
+	QCryptographicHash hash( QCryptographicHash::Sha1 );
+	QString		result;
+
+	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{
+		if ( info.isDir() )
+			continue;
+
+		QFile file( info.absoluteFilePath() );
+
+		if ( !file.open( QIODevice::ReadOnly ) ) 
+		{
+			LOG_QCRIT << "failed to open file:" << info.absoluteFilePath();
+			continue;
+		}
+		while (!file.atEnd())
+		{
+			size	= file.read(buffer, 64 * 1024);
+			if (size)
+				hash.addData( buffer, size);
+		}
+		QFileInfo f(info);
+		result =	info.filePath()										+ "," 
+					+	hash.result().toBase64()						+ ","
+					+	f.lastModified().toString("yyyy-MM-dd-hh-mm-ss")	+ ","
+					+	QString::number(info.size())					+ "\n";
+		m_file.write(result.toLocal8Bit());
+	}
 	return FVA_NO_ERROR;
 }

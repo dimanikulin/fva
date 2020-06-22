@@ -52,6 +52,23 @@ _CLASS_TASK_DECLARATION(CLT_Dir_Name_Change,false)
  */
 _CLASS_TASK_DECLARATION(CLT_Alone_Files_Move,true)
 
+/*!
+ * \brief it prints file system structure with adding info to compare with fs structure on remote PC 
+ */
+class CLT_Print_FS_Structure : public CmdLineBaseTask
+{
+public:
+	CLT_Print_FS_Structure(const QString& dir_,bool readOnly_=false,const QString& custom_="");
+	virtual ~CLT_Print_FS_Structure();
+	virtual FVA_ERROR_CODE execute();
+	static QString Name(){return "CLT_Print_FS_Structure";}
+	virtual bool supportReadOnly () {return false;}
+
+private: // data
+
+		QFile m_file;
+};
+
 class CLT_Auto_Checks_2 : public CmdLineBaseTask
 {
 public:
