@@ -71,7 +71,7 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 	QDir _dir(dir); 
 
 	DEVICE_MAP fullDeviceMap;
-	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, QCoreApplication::applicationDirPath() + "\\data.json");
+	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, QCoreApplication::applicationDirPath() + "/" + FVA_DICTIONARY_NAME);
 	if ( FVA_NO_ERROR != res )
 	{
 		// TODO make suggestion
@@ -83,8 +83,8 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 		if (info.isDir())
 			continue;
 		QString suffix = info.suffix().toUpper();
-		FVA_FILE_TYPE type = fvaConvertFileExt2FileType ( suffix );
-		if ( FVA_FILE_TYPE_IMG != type )
+		FVA_FS_TYPE type = fvaConvertFileExt2FileType ( suffix );
+		if ( FVA_FS_TYPE_IMG != type )
 			continue;
 
 		QString deviceName;		
@@ -231,7 +231,7 @@ void FVAOrganizerDevicePage::OnChangeDictPressed()
 	QProcess myProcess(this);    
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	QStringList params;
-	params.append(QCoreApplication::applicationDirPath() + "/data.json");
+	params.append(QCoreApplication::applicationDirPath() + "/" + FVA_DICTIONARY_NAME);
 	QString		deviceName_		= ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
 	params.append(deviceName_);
 	myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/FVADictionaryEditor.exe", params);
