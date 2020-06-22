@@ -2,6 +2,7 @@
 #define FVAVIEWER_H
 
 #include <QTGui/QDialog>
+#include <QTGui/QMainWindow>
 #include <QTCore/QtCore>
 #include <QTGui/QTreeWidget>
 
@@ -9,11 +10,12 @@
 #include "FVADescriptionFile.h"
 
 #include "ui_fvaviewer.h"
+#include "ui_filters.h"
 
 /*!
  * \brief keeps main dilaog functionality
  */
-class FVAViewer : public QDialog
+class FVAViewer : public QDialog 
 {
 	Q_OBJECT
 
@@ -52,6 +54,7 @@ class FVAViewer : public QDialog
 
 		Ui::FVAViewerClass *		m_ui;
 
+		Ui_Filters*					m_uiFilters;
 		/*!
 		 * root item
 		 */
@@ -77,11 +80,18 @@ class FVAViewer : public QDialog
 		 */
 		QVariantMap					m_dictionaries;
 
-
 		/*!
 		 * dictionaries path
 		 */
 		QString						m_dictionaryPath;
+
+		/*!
+		 * icon set to improve performance 
+		 */		
+		QIcon						m_videoIcon;
+		QIcon						m_audioIcon;
+		QIcon						m_photoIcon;
+		QIcon						m_folderIcon;
 
 	private slots:
 
@@ -90,6 +100,8 @@ class FVAViewer : public QDialog
 		void editFileItem( QTreeWidgetItem* item );
 		
 		void filterClicked(  );
+
+		void ShowContextMenu(const QPoint & point);
 };
 
 #endif // FVAVIEWER_H

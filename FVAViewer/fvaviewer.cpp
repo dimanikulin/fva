@@ -1,20 +1,59 @@
 #include "fvaviewer.h"
 #include "QPictureLabel.h"
 #include <QString>
+#include <QtGui/QListWidget>
+#include <QtUiTools/QtUiTools>
 #include "fvacommonlib.h"
 
-#include <Phonon/VideoPlayer>
 
 FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *parent, Qt::WFlags flags)
-	:QDialog			(parent),
+	:QDialog 			(parent),
 	m_ui				(new Ui::FVAViewerClass),
 	m_dictionaryPath	(dictPath)
 {
 	m_ui->setupUi(this);
 
+	m_videoIcon		= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/video.png");
+	m_audioIcon		= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/audio.png");
+	m_photoIcon		= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/photo.png");
+	m_folderIcon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/folder.png");
+
 	QDir dir ( rootDir );
 	if (!dir.exists( rootDir ))
 		return;
+	
+	m_rootItem.reset (new fvaItem); 
+	populateFVATree( rootDir, m_rootItem.get() );
+	populateGUITree( m_rootItem.get(), nullptr );
+
+	m_ui->treeWidget->setMaximumWidth(200);
+
+	m_ui->imageLbl->setBackgroundRole(QPalette::Base);
+	m_ui->contentArea->setBackgroundRole(QPalette::Dark);
+
+	connect(m_ui->treeWidget,SIGNAL(itemClicked(QTreeWidgetItem* ,int)),this,SLOT(showItem(QTreeWidgetItem*)));
+	connect(m_ui->treeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem* ,int)),this,SLOT(editFileItem(QTreeWidgetItem*)));
+	
+	setContextMenuPolicy(Qt::CustomContextMenu);
+
+	connect(this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(ShowContextMenu(const QPoint &)));
+
+	m_ui->dockWidget->hide();
+	m_ui->dockWidget->setFloating(true);
+	QTabWidget* tabs = new QTabWidget(m_ui->dockWidget);
+	tabs->setFixedSize(400, 300);
+	m_ui->dockWidget->setFixedSize(400, 300);
+	m_uiFilters	= new Ui_Filters;
+	QDialog *tabFilters = new QDialog ();
+	m_uiFilters->setupUi(tabFilters);
+  	tabs->addTab(tabFilters,tr("Фильтрация"));  
+	tabs->addTab(new QWidget(),tr("Свойства элемента"));
+
+	connect(m_uiFilters->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
+
+	m_defFilterDataTime	= QDateTime::currentDateTime();	
+	m_uiFilters->dateTimeFrom->setDateTime ( m_defFilterDataTime );
+	m_uiFilters->dateTimeTo->setDateTime ( m_defFilterDataTime );
 
 	QString		error;
 	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, m_dictionaries, error );
@@ -23,57 +62,46 @@ FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *p
 		return;
 	}
 	QVariantList vlist;
-	FILL_COMB_FROM_DICT("places", m_ui->cbPlace);
-	FILL_COMB_FROM_DICT("people", m_ui->cbPeople);
-	FILL_COMB_FROM_DICT("devices",m_ui->cbDevice);
-
-	m_rootItem.reset (new fvaItem); 
-	populateFVATree( rootDir, m_rootItem.get() );
-	populateGUITree( m_rootItem.get(), nullptr );
-
-	m_ui->treeWidget->setMaximumWidth(300);
-	m_ui->treeWidget->setMinimumWidth(50);
-
-	m_ui->imageLbl->setBackgroundRole(QPalette::Base);
-	m_ui->contentArea->setBackgroundRole(QPalette::Dark);
-
-	connect(m_ui->treeWidget,SIGNAL(itemClicked(QTreeWidgetItem* ,int)),this,SLOT(showItem(QTreeWidgetItem*)));
-	connect(m_ui->treeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem* ,int)),this,SLOT(editFileItem(QTreeWidgetItem*)));
-	connect(m_ui->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
-
-	m_defFilterDataTime	= QDateTime::currentDateTime();	
-	m_ui->dateTimeFrom->setDateTime ( m_defFilterDataTime );
-	m_ui->dateTimeTo->setDateTime ( m_defFilterDataTime );
+	FILL_COMB_FROM_DICT("places", m_uiFilters->cbPlace);
+	FILL_COMB_FROM_DICT("people", m_uiFilters->cbPeople);
+	FILL_COMB_FROM_DICT("devices",m_uiFilters->cbDevice);
 }
 
 FVAViewer::~FVAViewer()
 {
 	delete m_ui;
+	delete m_uiFilters;
 }
 
+void FVAViewer::ShowContextMenu(const QPoint &)
+{
+	m_ui->dockWidget->show();
+}
 void FVAViewer::showItem( QTreeWidgetItem* item )
 {
-	QFileInfo info(item->data( 1, 1 ).toString());
+	fvaItem* fvaitem = (fvaItem*) item->data( 1, 1 ).toInt() ;
+	if (!fvaitem)
+		return;
+	setWindowTitle(fvaitem->getGuiName() 
+		+" [" 
+		+ fvaitem->getGuiFullName(m_dictionaries) 
+		+ "] (" + fvaitem->fsFullPath + ")");
+	QFileInfo info(fvaitem->fsFullPath);
 	QString suffix = info.suffix().toUpper();
-	if(	FVA_FILE_TYPE_VIDEO == fvaConvertFileExt2FileType ( suffix ))
+	if(	FVA_FILE_TYPE_VIDEO == fvaConvertFileExt2FileType ( suffix )
+		|| FVA_FILE_TYPE_AUDIO == fvaConvertFileExt2FileType ( suffix ))
 	{
-		QStringList libs = QCoreApplication::libraryPaths();
-		Phonon::VideoPlayer *player = new Phonon::VideoPlayer(Phonon::VideoCategory, m_ui->contentArea->widget());
-		connect(player, SIGNAL(finished()), player, SLOT(deleteLater()));
-		QUrl url(item->data( 1, 1 ).toString());
-		player->play(url);
-
-		/*QMediaPlayer* media = new QMediaPlayer(this);
-		QVideoWidget* video = new QVideoWidget(this);
-		media->setVideoOutput(video);
-		QUrl url(item->data( 1, 1 ).toString());
-		media->setMedia(url);
-		media->play();
-		m_ui->contentArea->setWidget(video);*/
+		QProcess myProcess(this);    
+		myProcess.setProcessChannelMode(QProcess::MergedChannels);
+		QStringList params;
+		params.append(fvaitem->fsFullPath);
+		QString path = QCoreApplication::applicationDirPath() + "/#BIN#/FVAPlayer.exe";
+		myProcess.start(path, params);
+		myProcess.waitForFinished( -1 );
 	} 
 	else if (FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ))
 	{
-		fvaShowImage( item->data( 1, 1 ).toString(), m_ui->imageLbl );
+		fvaShowImage( fvaitem->fsFullPath, m_ui->imageLbl, fvaitem->getGuiName() );
 	}
 }
 
@@ -83,44 +111,44 @@ void FVAViewer::editFileItem( QTreeWidgetItem* item )
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	QStringList params;
 	params.append(m_dictionaryPath);
-	params.append(item->data( 1, 1 ).toString());
-	myProcess.start("#BIN#/FVADescriptionEditor.exe", params);
-
-	if ( !myProcess.waitForFinished( -1 ) )
-	{
-	}
+	fvaItem* fvaitem = (fvaItem*) item->data( 1, 1 ).toInt() ;
+	if (!fvaitem)
+		return;
+	params.append(fvaitem->fsFullPath);
+	myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/FVADescriptionEditor.exe", params);
+	myProcess.waitForFinished( -1 );
 }
 
 void FVAViewer::filterClicked(  )
 {
-	m_filter.dateFrom	= m_ui->dateTimeFrom->dateTime();
-	m_filter.dateTo		= m_ui->dateTimeTo->dateTime();
-
+	m_filter.dateFrom	= m_uiFilters->dateTimeFrom->dateTime();
+	m_filter.dateTo		= m_uiFilters->dateTimeTo->dateTime();
+	
 	m_filter.deviceIds.clear();
 	m_filter.peopleIds.clear();
 	m_filter.placeIds.clear();
 	
-	int index = m_ui->cbDevice->currentIndex();
+	int index = m_uiFilters->cbDevice->currentIndex();
 	if ( 1 <= index ) 
 	{
-		int ID = m_ui->cbDevice->itemData( index ).toInt();
+		int ID = m_uiFilters->cbDevice->itemData( index ).toInt();
 		m_filter.deviceIds.push_back(ID);
 	}
 
-	index = m_ui->cbPeople->currentIndex();
+	index = m_uiFilters->cbPeople->currentIndex();
 	if ( 1 <= index ) 
 	{
-		int ID = m_ui->cbPeople->itemData( index ).toInt();
+		int ID = m_uiFilters->cbPeople->itemData( index ).toInt();
 		m_filter.peopleIds.push_back(ID);
 	}
 
-	index = m_ui->cbPlace->currentIndex();
+	index = m_uiFilters->cbPlace->currentIndex();
 	if ( 1 <= index ) 
 	{
-		int ID = m_ui->cbPlace->itemData( index ).toInt();
+		int ID = m_uiFilters->cbPlace->itemData( index ).toInt();
 		m_filter.placeIds.push_back(ID);
 	}
-	m_filter.eventOrDesc = m_ui->editEvent->text();
+	m_filter.eventOrDesc = m_uiFilters->editEvent->text();
 
 	filterFVATree( m_filter, m_rootItem.get() );
 	m_ui->treeWidget->clear();
@@ -254,6 +282,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem )
 			fvaItem* fileItem		= new fvaItem;
 			fileItem->isFolder		= false;
 			fileItem->fsFullPath		= info.absoluteFilePath();
+			fileItem->type			= fvaConvertFileExt2FileType(info.suffix().toUpper());
 			if ( FVA_NO_ERROR != fvaParseFileName(info.baseName(), fileItem->dateFrom))
 			{
 				qDebug() << "ERROR!, incorrect file name " << info.fileName();
@@ -309,9 +338,24 @@ void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item )
 			continue;
 		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
 		treeWidgetItem->setText		( 0, (*idChild)->getGuiName() );
-		treeWidgetItem->setToolTip	( 0, (*idChild)->getGuiFullName(m_dictionaries) );
-		treeWidgetItem->setData( 1, 1, (*idChild)->fsFullPath );
-
+		treeWidgetItem->setData( 1, 1, (int)(*idChild) );
+		if ((*idChild)->isFolder)
+			treeWidgetItem->setIcon(0, m_folderIcon);
+		else
+		{
+			switch ((*idChild)->type)
+			{
+				case FVA_FILE_TYPE_IMG: 
+					treeWidgetItem->setIcon(0, m_photoIcon);
+				break;
+				case FVA_FILE_TYPE_VIDEO: 
+					treeWidgetItem->setIcon(0, m_videoIcon);
+				break;
+				case FVA_FILE_TYPE_AUDIO: 
+					treeWidgetItem->setIcon(0, m_audioIcon);
+				break;
+			}
+		}
 		if ( item )
 			item->addChild( treeWidgetItem );
 		else
@@ -320,4 +364,3 @@ void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item )
 		populateGUITree( *idChild, treeWidgetItem );
 	}							
 } 
-
