@@ -76,7 +76,7 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 
 		QString suffix = info.suffix().toUpper();
 
-		if(	FVA_FILE_TYPE_IMG != fvaConvertFileExt2FileType ( suffix ) )
+		if(	FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType ( suffix ) )
 			continue;
 		
 		QString deviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
