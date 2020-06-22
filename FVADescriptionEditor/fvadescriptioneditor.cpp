@@ -57,6 +57,9 @@ FVADescriptionEditor::FVADescriptionEditor(
 		updateGuiForItem( folderPath );
 	else
 		updateGuiForItem( m_files[m_indexOfFile] );	
+
+	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/main.png");
+	setWindowIcon(icon);
 }
 
 FVADescriptionEditor::~FVADescriptionEditor()
