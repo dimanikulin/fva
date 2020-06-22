@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>600</height>
+    <height>552</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -70,7 +70,6 @@
         <bool>false</bool>
        </property>
       </widget>
-      <zorder>dockWidget</zorder>
      </widget>
     </widget>
    </item>
@@ -82,174 +81,10 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="minimumSize">
-      <size>
-       <width>921</width>
-       <height>78</height>
-      </size>
-     </property>
      <property name="floating">
       <bool>false</bool>
      </property>
-     <widget class="QWidget" name="dockWidgetContents_2">
-      <widget class="QDateTimeEdit" name="dateTimeFrom">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>30</y>
-         <width>121</width>
-         <height>22</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>121</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>С:</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_2">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>0</y>
-         <width>121</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>До:</string>
-       </property>
-      </widget>
-      <widget class="QDateTimeEdit" name="dateTimeTo">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>30</y>
-         <width>121</width>
-         <height>22</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="cbPlace">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>30</y>
-         <width>161</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="minimumContentsLength">
-        <number>30</number>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="cbPeople">
-       <property name="geometry">
-        <rect>
-         <x>430</x>
-         <y>30</y>
-         <width>161</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="minimumContentsLength">
-        <number>30</number>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="cbDevice">
-       <property name="geometry">
-        <rect>
-         <x>600</x>
-         <y>30</y>
-         <width>161</width>
-         <height>22</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="editEvent">
-       <property name="geometry">
-        <rect>
-         <x>770</x>
-         <y>30</y>
-         <width>151</width>
-         <height>20</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>770</x>
-         <y>0</y>
-         <width>151</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Событие:</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_4">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>0</y>
-         <width>161</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Место:</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_5">
-       <property name="geometry">
-        <rect>
-         <x>430</x>
-         <y>0</y>
-         <width>151</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Люди:</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_6">
-       <property name="geometry">
-        <rect>
-         <x>600</x>
-         <y>0</y>
-         <width>151</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Устройство:</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnFilter">
-       <property name="geometry">
-        <rect>
-         <x>930</x>
-         <y>10</y>
-         <width>71</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Фильтр</string>
-       </property>
-      </widget>
-     </widget>
+     <widget class="QWidget" name="dockWidgetContents_2"/>
     </widget>
    </item>
   </layout>
