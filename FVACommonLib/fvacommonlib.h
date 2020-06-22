@@ -19,17 +19,6 @@ typedef QMap< QString, QStringList > DESCRIPTIONS_MAP;
 #include "fvacommondata.h"
 
 /*!
- * \brief it enumerates internal valuable file types
- */
-enum FVA_FILE_TYPE
-{
-	FVA_FILE_TYPE_UNKNOWN,
-	FVA_FILE_TYPE_IMG,
-	FVA_FILE_TYPE_VIDEO,
-	FVA_FILE_TYPE_AUDIO
-};
-
-/*!
  * code errors enumeration
  */
 enum FVA_ERROR_CODE
@@ -137,9 +126,10 @@ bool fvaIsFVAFile( const QString& extention );
  * \brief it makes showing images in the most common way
  * \param fileName - path to file
  * \param imgLabel to show image at
+ * \param text - text to draw over an image
  * \returns it returns code of error if any or FVA_NO_ERROR if showing was successful
  */
-FVA_ERROR_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel );
+FVA_ERROR_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QString& text);
 
 /*!
  * \brief it tries to parse dir name into period of date

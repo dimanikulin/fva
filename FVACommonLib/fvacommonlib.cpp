@@ -5,6 +5,7 @@
 #include <QProcess>
 #include <QCoreApplication>
 #include <QTGui/QMessageBox>
+#include <QTGui/QPainter>
 
 #include "../lib/json/json.h"
 #include "../lib/qexifimageheader.h"
@@ -160,7 +161,7 @@ FVA_FILE_TYPE fvaConvertFileExt2FileType ( const QString& extention )
 
 	return FVA_FILE_TYPE_UNKNOWN;
 }
-FVA_ERROR_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel )
+FVA_ERROR_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QString& text )
 {
 	if ( fileName.isEmpty() || !imgLabel )
 	{
@@ -181,6 +182,17 @@ FVA_ERROR_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel )
 		return FVA_ERROR_CANT_OPEN_INPUT_FILE;
 	}
 
+	if (!text.isEmpty())
+	{
+		// tell the painter to draw on the QImage
+		QPainter* painter = new QPainter(&image); 
+		painter->setPen(Qt::white);
+		painter->setFont(QFont("Arial", 30));
+
+		//you probably want the to draw the text to the rect of the image
+		painter->drawText(image.rect(), Qt::AlignTop, text);
+	}
+
 	QPixmap _qpSource = QPixmap::fromImage(image); 
 	QPixmap _qpCurrent = QPixmap::fromImage(image);
 
@@ -199,6 +211,7 @@ FVA_ERROR_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel )
         _qpCurrent = _qpSource.scaledToHeight(ch, Qt::TransformationMode::FastTransformation);
 
 	imgLabel->setPixmap(_qpCurrent);
+
 	return FVA_NO_ERROR;
 }
 FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTime& to )
@@ -325,6 +338,7 @@ fvaItem::fvaItem ()
 	hasDescriptionData	= false;
 	deviceId			= 0;
 	scanerId			= 0;
+	type				= FVA_FILE_TYPE_UNKNOWN;
 }
 
 fvaItem::~fvaItem ()
@@ -341,9 +355,9 @@ QString fvaItem::getGuiName()
 {
 	if (isFolder)
 	{
-		QString desc; // = QString("(%1)").arg(children.size());
+		QString desc;
 		if (hasDescriptionData && !eventOrDesc.isEmpty())
-			desc = " (" + eventOrDesc.trimmed() + ")";
+			desc =  " - " + eventOrDesc.trimmed();
 		
 		if (dateTo.isValid())
 		{
