@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Filters</class>
- <widget class="QDialog" name="Filters">
+ <class>commonFilter</class>
+ <widget class="QDialog" name="commonFilter">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>399</width>
+    <width>401</width>
     <height>275</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Общие фильтры</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>121</width>
+     <width>141</width>
      <height>21</height>
     </rect>
    </property>
@@ -41,7 +41,7 @@
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>121</width>
+     <width>141</width>
      <height>21</height>
     </rect>
    </property>
@@ -59,99 +59,24 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>70</y>
-     <width>161</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Место:</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="cbPlace">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>70</y>
-     <width>231</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="minimumContentsLength">
-    <number>30</number>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>100</y>
-     <width>151</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Люди:</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="cbPeople">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>100</y>
-     <width>231</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="minimumContentsLength">
-    <number>30</number>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>130</y>
-     <width>151</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Устройство:</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="cbDevice">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>130</y>
-     <width>231</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>190</y>
-     <width>151</width>
+     <y>70</y>
+     <width>141</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>Событие:</string>
+    <string>Событие/описание:</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="editEvent">
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>190</y>
+     <y>70</y>
      <width>231</width>
      <height>20</height>
     </rect>
@@ -160,37 +85,37 @@
   <widget class="QPushButton" name="btnFilter">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>220</y>
+     <x>150</x>
+     <y>250</y>
      <width>71</width>
-     <height>41</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
     <string>Фильтр</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="cbDevOwner">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>160</y>
-     <width>231</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>160</y>
-     <width>151</width>
+     <y>100</y>
+     <width>141</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>Владелец устройства:</string>
+    <string>Таг/коментарий:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="editComment">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>100</y>
+     <width>231</width>
+     <height>20</height>
+    </rect>
    </property>
   </widget>
  </widget>
