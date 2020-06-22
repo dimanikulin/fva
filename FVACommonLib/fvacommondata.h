@@ -2,14 +2,16 @@
 #define FVACOMMONDATA_H
 
 /*!
- * \brief it enumerates internal valuable file types
+ * \brief it enumerates internal valuable file system types
  */
-enum FVA_FILE_TYPE
+enum FVA_FS_TYPE
 {
-	FVA_FILE_TYPE_UNKNOWN,
-	FVA_FILE_TYPE_IMG,
-	FVA_FILE_TYPE_VIDEO,
-	FVA_FILE_TYPE_AUDIO
+	FVA_FS_TYPE_UNKNOWN,
+	FVA_FS_TYPE_IMG,
+	FVA_FS_TYPE_VIDEO,
+	FVA_FS_TYPE_AUDIO,
+
+	FVA_FS_TYPE_DIR,
 };
 /*!
  * \brief it describes whole information about device 
@@ -66,14 +68,9 @@ class fvaItem
 	public : // data
 
 		/*!
-		 * file type
+		 * fs type
 		 */		
-		FVA_FILE_TYPE			type;
-
-		/*!
-		 * is it folder or file
-		 */
-		bool					isFolder;
+		FVA_FS_TYPE				type;
 
 		/*!
 		 * for folder it is event date period, for file it is date taken(dateFrom only)
@@ -88,14 +85,9 @@ class fvaItem
 		bool					hasDescriptionData;
 
 		/*!
-		 * set of place id 
+		 * place id 
 		 */
-		QVector<unsigned int>	placeIds;
-
-		/*!
-		 * people list ids 
-		 */
-		QVector<unsigned int>	peopleIds;
+		unsigned int			placeId;
 
 		/*!
 		 * id of foto device 
@@ -106,6 +98,11 @@ class fvaItem
 		 * id of scaner
 		 */
 		unsigned int			scanerId;
+
+		/*!
+		 * people list ids 
+		 */
+		QVector<unsigned int>	peopleIds;
 
 		/*!
 		 * folder event or file decsription
@@ -185,6 +182,10 @@ class fvaFilter
 		 */
 		QString					eventOrDesc;
 
+		/*
+		 * is ID matches to filtration
+		 */
+		bool isIDMatchesToFilter(unsigned int ID, const QVector<unsigned int>& Ids) const;
 };
 
 #endif // FVACOMMONDATA_H

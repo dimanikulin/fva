@@ -6,6 +6,7 @@
 #include <QCoreApplication>
 #include <QTGui/QMessageBox>
 #include <QTGui/QPainter>
+#include <QtSql/QtSql>
 
 #include "../lib/json/json.h"
 #include "../lib/qexifimageheader.h"
@@ -56,7 +57,25 @@ FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, const QString& c
 
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputJson, QString& error )
+FVA_ERROR_CODE fillOneDictFromDB(QVariantMap& outputData, const QString& dictName)
+{
+    QSqlQuery query;
+    if (!query.exec("SELECT * FROM " + dictName)) 
+		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
+
+	QSqlRecord		rec = query.record();
+	QVariantList	list;
+	QVariantMap		map;
+    while (query.next()) 
+	{
+		map["ID"]	= query.value(rec.indexOf("ID"));
+		map["name"]	= query.value(rec.indexOf("Name"));
+		list.append(map);
+    }
+    outputData[dictName] = list;
+	return FVA_NO_ERROR;
+}
+FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, QString& error )
 {
 	QDir dir ( file );
 	if ( !dir.exists( file ) )
@@ -64,6 +83,65 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputJson, 
 		error = "dictionaries file does not exist" ;
 		return FVA_ERROR_CANT_FIND_DICTIONARIES;
 	}
+#ifdef _NEW_DICTIONARY_
+	QSqlDatabase dbase = QSqlDatabase::addDatabase("QSQLITE");
+    dbase.setDatabaseName(file);
+    if (!dbase.open()) 
+	{
+		error =  "can not open dictionaries";
+		return FVA_ERROR_CANT_OPEN_DICTIONARIES;
+	}
+	fillOneDictFromDB(outputData,"relationTypes");
+	fillOneDictFromDB(outputData,"places");
+	
+	////////// RELATIONS///////////////////
+	QSqlQuery query;
+    if (!query.exec("SELECT * FROM relations")) 
+		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
+	QSqlRecord		rec = query.record();
+	QVariantList	list;
+	QVariantMap		map;
+    while (query.next()) 
+	{
+		map["ID"]			= query.value(rec.indexOf("ID"));
+		map["name"]			= query.value(rec.indexOf("Name"));
+		map["RelationType"]	= query.value(rec.indexOf("RelationType"));
+		list.append(map);
+    }
+    outputData["relations"] = list;
+	////////// DEVICES///////////////////
+    if (!query.exec("SELECT * FROM devices ")) 
+		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
+	rec = query.record();
+	list.clear();
+    while (query.next()) 
+	{
+		map["ID"]			= query.value(rec.indexOf("ID"));
+		map["name"]			= query.value(rec.indexOf("Name"));
+		map["OwnerID"]		= query.value(rec.indexOf("OwnerId"));
+		list.append(map);
+    }
+    outputData["devices"] = list;
+
+	/////////////////////PEOPLE///////////////////
+    if (!query.exec("select *, (select name from people p1 where p.RelPersonID = p1.ID  ) relname from people p ")) 
+		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
+	rec = query.record();
+	list.clear();
+    while (query.next()) 
+	{
+		map["ID"]			= query.value(rec.indexOf("ID"));
+		map["name"]			= query.value(rec.indexOf("Name"));
+		map["RelationId"]	= query.value(rec.indexOf("RelationId"));
+		map["fullName"]		= query.value(rec.indexOf("FullName")).toString() 
+							+ " -> " + query.value(rec.indexOf("relname")).toString();
+		map["RelPersonID"]	= query.value(rec.indexOf("RelPersonID"));
+		list.append(map);
+    }
+    outputData["people"] = list;
+
+	dbase.close();
+#else
 	// load it
 	QFile _file ( file );
 	if ( !_file.open( QIODevice::ReadOnly ) )
@@ -82,6 +160,7 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputJson, 
 		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
 	}
 	_file.close();
+#endif
 	return FVA_NO_ERROR;
 }
 
@@ -137,29 +216,29 @@ bool fvaIsInternalFile( const QString& fileName )
 }
 bool fvaIsFVAFile( const QString& extention )
 {
-	return FVA_FILE_TYPE_UNKNOWN != fvaConvertFileExt2FileType ( extention );
+	return FVA_FS_TYPE_UNKNOWN != fvaConvertFileExt2FileType ( extention );
 }
 
-FVA_FILE_TYPE fvaConvertFileExt2FileType ( const QString& extention )
+FVA_FS_TYPE fvaConvertFileExt2FileType ( const QString& extention )
 {	
 	if (	extention.toUpper()	== "JPG" 
 		|| extention.toUpper()	== "JPEG" 
 		|| extention.toUpper()	== "PNG" 
 		|| extention.toUpper()	== "BMP" 
 		|| extention.toUpper()	== "GIF" )
-		return FVA_FILE_TYPE_IMG;
+		return FVA_FS_TYPE_IMG;
 	
 	if ( extention.toUpper()	== "AVI" 
 		|| extention.toUpper()	== "MOV" 
 		|| extention.toUpper()	== "MPG" 
 		|| extention.toUpper()	== "MP4" 
 		|| extention.toUpper()	== "3GP" )
-		return FVA_FILE_TYPE_VIDEO;
+		return FVA_FS_TYPE_VIDEO;
 
 	if ( extention.toUpper()	== "WAV" )
-		return FVA_FILE_TYPE_AUDIO;
+		return FVA_FS_TYPE_AUDIO;
 
-	return FVA_FILE_TYPE_UNKNOWN;
+	return FVA_FS_TYPE_UNKNOWN;
 }
 FVA_ERROR_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QString& text )
 {
@@ -333,12 +412,11 @@ FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date )
 
 fvaItem::fvaItem ()
 {
-	isFolder			= false;
 	isFiltered			= true;
 	hasDescriptionData	= false;
 	deviceId			= 0;
 	scanerId			= 0;
-	type				= FVA_FILE_TYPE_UNKNOWN;
+	type				= FVA_FS_TYPE_UNKNOWN;
 }
 
 fvaItem::~fvaItem ()
@@ -353,7 +431,7 @@ fvaItem::~fvaItem ()
 }
 QString fvaItem::getGuiName()
 {
-	if (isFolder)
+	if (type == FVA_FS_TYPE_DIR)
 	{
 		QString desc;
 		if (hasDescriptionData && !eventOrDesc.isEmpty())
@@ -402,7 +480,7 @@ QString fvaItem::getGuiFullName(const QVariantMap&	dictionaries)
 	QString fullName;
 	if (!hasDescriptionData)
 		return "";
-	if (!isFolder)
+	if (type != FVA_FS_TYPE_DIR)
 	{
 		if (!eventOrDesc.isEmpty())
 			fullName = eventOrDesc;
@@ -425,6 +503,16 @@ QString fvaItem::getGuiFullName(const QVariantMap&	dictionaries)
 
 	return fullName;
 }
+bool fvaFilter::isIDMatchesToFilter(unsigned int ID, const QVector<unsigned int>& Ids) const
+{
+	for (auto it = Ids.begin(); it != Ids.end();++it)
+	{
+		if (ID == *it)
+			return  true;
+	}
+	return false;
+}
+
 FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QString& dictPath)
 {
 	QString		error;

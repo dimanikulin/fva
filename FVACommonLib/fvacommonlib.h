@@ -5,6 +5,7 @@
 // 1. make warning level as 4 for all projects
 // 2. threat warning as errors for all projects
 // 3. https://www.projectoxford.ai/demo/face#detection
+// 4. change solutin/projects name to AVF 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <QString>
@@ -16,6 +17,7 @@
 
 typedef QMap< QString, QStringList > DESCRIPTIONS_MAP;
 
+#define _NEW_DICTIONARY_
 #include "fvacommondata.h"
 
 /*!
@@ -64,8 +66,12 @@ enum FVA_ERROR_CODE
 const QString	FVA_DESCRIPTION_FILE_NAME			= "description.csv";
 const QString	FVA_DIR_DESCRIPTION_FILE_NAME		= "folderDescription.json";
 const QString	FVA_BACKGROUND_MUSIC_FILE_NAME		= "bgmusic.mid";
-const QString	FVA_DICTIONARY_NAME					= "data.json";
 
+#ifdef _NEW_DICTIONARY_
+const QString	FVA_DICTIONARY_NAME					= "dct.db";
+#else
+const QString	FVA_DICTIONARY_NAME					= "data.json";
+#endif
 /*!
  * \brief how many supported files should be in a folder
  */
@@ -110,7 +116,7 @@ FVA_ERROR_CODE fvaSaveDictionary( const QString& file, QVariantMap& inputJson, Q
 /*!
 * \brief it converts file extention to file type if it is possible
 */
-FVA_FILE_TYPE fvaConvertFileExt2FileType ( const QString& type );
+FVA_FS_TYPE fvaConvertFileExt2FileType ( const QString& type );
 
 /*!
 * \brief it answers if file is internal purpose for
