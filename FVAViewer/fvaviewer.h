@@ -11,6 +11,9 @@
 
 #include "ui_fvaviewer.h"
 #include "ui_filters.h"
+#include "ui_d-filter.h"
+#include "ui_geo-filter.h"
+#include "ui_h-filter.h"
 
 class QProgressDialog;
 
@@ -59,11 +62,35 @@ class FVAViewer : public QDialog
 		 */
 		void evaluateFSTree (const QString& folder, int& number);
 
+		/*!
+		 * \brief it starts showing progress for loading fs tree
+		 */
+		void showProgress(const QString& rootDir);
+
+		/*!
+		 * \brief it initializes gui widgets to show filters
+		 */
+		void prepareFilters();
+
+		/*!
+		 * \brief it created filter tree in gui widgets
+		 * \param pTreeWidget - widget to build tree in
+		 * \param devices - need to insert devices
+		 */
+		void buildFilterTree(QTreeWidget* pTreeWidget, bool devices);
+
 	private: // data
 
 		Ui::FVAViewerClass *		m_ui;
 
-		Ui_Filters*					m_uiFilters;
+		/*!
+		 * filters
+		 */
+		Ui_commonFilter*			m_uiFiltersCommon;
+		Ui_dfilter*					m_uiDeviceFilter;
+		Ui_placeFilter*				m_uiPlaceFilter;
+		Ui_hfilter*					m_uiPeopleFilter;
+
 		/*!
 		 * root item
 		 */
@@ -111,6 +138,8 @@ class FVAViewer : public QDialog
 		void filterClicked(  );
 
 		void ShowContextMenu(const QPoint & point);
+
+		void updateChecks(QTreeWidgetItem*, int);
 };
 
 #endif // FVAVIEWER_H

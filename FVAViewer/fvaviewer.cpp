@@ -6,6 +6,164 @@
 #include <QtUiTools/QtUiTools>
 #include "fvacommonlib.h"
 
+void FVAViewer::showProgress(const QString& rootDir)
+{
+	QDir dir ( rootDir );
+	if (!dir.exists( rootDir ))
+		return;
+
+	int number = 0;
+	evaluateFSTree (rootDir, number);
+	QProgressDialog progress("Loading...", "Abort", 0, number * 2, this);
+	progress.setWindowModality(Qt::ApplicationModal);
+	m_rootItem.reset (new fvaItem); 
+	int itemNumber = 0;
+	populateFVATree( rootDir, m_rootItem.get(), itemNumber, &progress );
+	populateGUITree( m_rootItem.get(), nullptr, itemNumber, &progress );
+    progress.setValue(number *2);
+}
+
+void FVAViewer::buildFilterTree(QTreeWidget* pTreeWidget, bool devicesNeed )
+{
+	connect(pTreeWidget, 
+			SIGNAL(itemChanged(QTreeWidgetItem*, int)), 
+			this,
+			SLOT(updateChecks(QTreeWidgetItem*, int)));
+
+	QIcon	personIcon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/person.png");
+	QIcon	peopleIcon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/people.png");
+
+	QVariantList	vlist	= m_dictionaries["relationTypes"].toList();
+	QVariantList	vlist1	= m_dictionaries["relations"].toList();
+	QVariantList	people	= m_dictionaries["people"].toList();
+	QVariantList	devices	= m_dictionaries["devices"].toList();
+	for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
+	{
+		int ID = i->toMap()["ID"].toInt();
+		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
+		treeWidgetItem->setText		( 0, i->toMap()["name"].toString() );
+		treeWidgetItem->setIcon		(0, peopleIcon);
+		treeWidgetItem->setFlags		(treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
+		treeWidgetItem->setCheckState(0,Qt::Unchecked);
+		pTreeWidget->addTopLevelItem ( treeWidgetItem );
+		for (auto index = vlist1.begin(); index != vlist1.end(); ++index)
+		{
+			int IDc = index->toMap()["ID"].toInt();
+			int IDrel = index->toMap()["RelationType"].toInt();
+			if (IDrel != ID)
+				continue;
+
+			QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
+			childWidgetItem->setText		( 0, index->toMap()["name"].toString() );
+			childWidgetItem->setIcon		(0, peopleIcon);
+			childWidgetItem->setFlags	(childWidgetItem->flags() | Qt::ItemIsUserCheckable);
+			childWidgetItem->setCheckState(0,Qt::Unchecked);
+			treeWidgetItem->addChild		( childWidgetItem );
+			for (auto indexp = people.begin(); indexp != people.end(); ++indexp)
+			{
+				int IDp = indexp->toMap()["ID"].toInt();
+				if (IDp == 0)
+					continue;
+
+				int IDrelp = indexp->toMap()["RelationId"].toInt();
+				if (IDrelp != IDc)
+					continue;
+
+				QTreeWidgetItem* personWidgetItem = new QTreeWidgetItem;
+				personWidgetItem->setText		( 0, indexp->toMap()["fullName"].toString() );
+				if (!devicesNeed)
+					personWidgetItem->setData( 1, 1, IDp );
+				personWidgetItem->setIcon(0, personIcon);
+				personWidgetItem->setFlags(personWidgetItem->flags() | Qt::ItemIsUserCheckable);
+				personWidgetItem->setCheckState(0,Qt::Unchecked);
+				
+				if (!devicesNeed)
+					continue;
+				for (auto inddev = devices.begin(); inddev != devices.end(); ++inddev)
+				{
+					int IDdev = inddev->toMap()["ID"].toInt();
+					if (IDdev == 0)
+						continue;
+
+					int IDOwner = inddev->toMap()["OwnerID"].toInt();
+					if (IDOwner != IDp)
+						continue;
+
+					QTreeWidgetItem* deviceWidgetItem = new QTreeWidgetItem;
+					deviceWidgetItem->setText		( 0, inddev->toMap()["name"].toString() );
+					deviceWidgetItem->setData( 1, 1, IDdev );
+					deviceWidgetItem->setIcon(0, personIcon);
+					deviceWidgetItem->setFlags(deviceWidgetItem->flags() | Qt::ItemIsUserCheckable);
+					deviceWidgetItem->setCheckState(0,Qt::Unchecked);
+					personWidgetItem->addChild ( deviceWidgetItem );
+				}
+				if (!devicesNeed)
+					childWidgetItem->addChild ( personWidgetItem );
+				else
+				{
+					if (personWidgetItem->childCount())
+						childWidgetItem->addChild ( personWidgetItem );
+					else
+						delete personWidgetItem;
+				}
+			}
+		}
+	}
+}
+
+void FVAViewer::prepareFilters()
+{
+	m_ui->dockWidget->hide();
+	m_ui->dockWidget->setFloating(true);
+	QTabWidget* tabs = new QTabWidget(m_ui->dockWidget);
+	tabs->setFixedSize(400, 300);
+	m_ui->dockWidget->setFixedSize(400, 300);
+	
+	m_uiPlaceFilter		= new Ui_placeFilter;
+	m_uiPeopleFilter	= new Ui_hfilter;
+
+	QDialog *tabCommonFilters	= new QDialog ();
+	m_uiFiltersCommon			= new Ui_commonFilter ;
+	m_uiFiltersCommon->setupUi(tabCommonFilters);
+  	tabs->addTab(tabCommonFilters,tr("Общие фильтры"));
+	connect(m_uiFiltersCommon->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
+	m_defFilterDataTime	= QDateTime::currentDateTime();	
+	m_uiFiltersCommon->dateTimeFrom->setDateTime ( m_defFilterDataTime );
+	m_uiFiltersCommon->dateTimeTo->setDateTime ( m_defFilterDataTime );
+
+	QDialog *tabDeviceFilters	= new QDialog ();
+	m_uiDeviceFilter			= new Ui_dfilter;
+	m_uiDeviceFilter->setupUi(tabDeviceFilters);
+  	tabs->addTab(tabDeviceFilters,tr("Устройства"));
+	connect(m_uiDeviceFilter->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
+
+	QDialog *tabPeopleFilters	= new QDialog ();
+	m_uiPeopleFilter			= new Ui_hfilter;
+	m_uiPeopleFilter->setupUi(tabPeopleFilters);
+  	tabs->addTab(tabPeopleFilters,tr("Люди"));
+	connect(m_uiPeopleFilter->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
+	
+	QDialog *tabGeoFilters		= new QDialog ();
+	m_uiPlaceFilter				= new Ui_placeFilter;
+	m_uiPlaceFilter->setupUi(tabGeoFilters);
+  	tabs->addTab(tabGeoFilters,tr("Места"));
+	connect(m_uiPlaceFilter->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
+
+	tabs->addTab(new QWidget(),tr("Свойства"));
+
+	QVariantList vlist = m_dictionaries["places"].toList();
+	for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
+	{
+		QListWidgetItem* item = new QListWidgetItem(i->toMap()["name"].toString(), m_uiPlaceFilter->lstPlace);
+		item->setFlags(item->flags() | Qt::ItemIsUserCheckable); // set checkable flag
+		item->setCheckState(Qt::Unchecked); // AND initialize check state
+		item->setData(1, i->toMap()["ID"].toString());
+	}
+	
+	buildFilterTree(m_uiPeopleFilter->treeWidget, false);
+	buildFilterTree(m_uiDeviceFilter->treeWidget, true);
+}
+
 FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *parent, Qt::WFlags flags)
 	:QDialog 			(parent),
 	m_ui				(new Ui::FVAViewerClass),
@@ -20,18 +178,12 @@ FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *p
 	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/main.png");
 	setWindowIcon(icon);
 
-	QDir dir ( rootDir );
-	if (!dir.exists( rootDir ))
+	QString		error;
+	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, m_dictionaries, error );
+	if ( FVA_NO_ERROR != res )
 		return;
-	int number = 0;
-	evaluateFSTree (rootDir, number);
-	QProgressDialog progress("Loading...", "Abort", 0, number * 2, this);
-	progress.setWindowModality(Qt::ApplicationModal);
-	m_rootItem.reset (new fvaItem); 
-	int itemNumber = 0;
-	populateFVATree( rootDir, m_rootItem.get(), itemNumber, &progress );
-	populateGUITree( m_rootItem.get(), nullptr, itemNumber, &progress );
-    progress.setValue(number *2);
+
+	showProgress(rootDir);
 
 	m_ui->treeWidget->setMaximumWidth(200);
 
@@ -44,41 +196,42 @@ FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *p
 	setContextMenuPolicy(Qt::CustomContextMenu);
 
 	connect(this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(ShowContextMenu(const QPoint &)));
-
-	m_ui->dockWidget->hide();
-	m_ui->dockWidget->setFloating(true);
-	QTabWidget* tabs = new QTabWidget(m_ui->dockWidget);
-	tabs->setFixedSize(400, 300);
-	m_ui->dockWidget->setFixedSize(400, 300);
-	m_uiFilters	= new Ui_Filters;
-	QDialog *tabFilters = new QDialog ();
-	m_uiFilters->setupUi(tabFilters);
-  	tabs->addTab(tabFilters,tr("Фильтрация"));  
-	tabs->addTab(new QWidget(),tr("Свойства элемента"));
-
-	connect(m_uiFilters->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
-
-	m_defFilterDataTime	= QDateTime::currentDateTime();	
-	m_uiFilters->dateTimeFrom->setDateTime ( m_defFilterDataTime );
-	m_uiFilters->dateTimeTo->setDateTime ( m_defFilterDataTime );
-
-	QString		error;
-	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, m_dictionaries, error );
-	if ( FVA_NO_ERROR != res )
-	{
-		return;
-	}
-	QVariantList vlist;
-	FILL_COMB_FROM_DICT("places", m_uiFilters->cbPlace);
-	FILL_COMB_FROM_DICT("people", m_uiFilters->cbPeople);
-	FILL_COMB_FROM_DICT("devices",m_uiFilters->cbDevice);
-	FILL_COMB_FROM_DICT("people",m_uiFilters->cbDevOwner);
+	
+	prepareFilters();
 }
-
+void FVAViewer::updateChecks(QTreeWidgetItem *item, int column)
+{
+    bool diff = false;
+    if(column != 0 && column!=-1)
+        return;
+    if(item->childCount()!=0 && item->checkState(0)!=Qt::PartiallyChecked && column!=-1){
+        Qt::CheckState checkState = item->checkState(0);
+        for (int i = 0; i < item->childCount(); ++i) {
+           item->child(i)->setCheckState(0, checkState);
+        }
+    } else if (item->childCount()==0 || column==-1) {
+        if(item->parent()==0)
+            return;
+        for (int j = 0; j < item->parent()->childCount(); ++j) {
+            if(j != item->parent()->indexOfChild(item) && item->checkState(0)!=item->parent()->child(j)->checkState(0)){
+                diff = true;
+            }
+        }
+        if(diff)
+            item->parent()->setCheckState(0,Qt::PartiallyChecked);
+        else
+            item->parent()->setCheckState(0,item->checkState(0));
+        if(item->parent()!=0)
+            updateChecks(item->parent(),-1);
+    }
+}
 FVAViewer::~FVAViewer()
 {
-	delete m_ui;
-	delete m_uiFilters;
+	delete	m_ui;
+	delete	m_uiFiltersCommon;
+	delete	m_uiDeviceFilter;
+	delete	m_uiPlaceFilter;
+	delete	m_uiPeopleFilter;
 }
 
 void FVAViewer::ShowContextMenu(const QPoint &)
@@ -96,8 +249,8 @@ void FVAViewer::showItem( QTreeWidgetItem* item )
 		+ "] (" + fvaitem->fsFullPath + ")");
 	QFileInfo info(fvaitem->fsFullPath);
 	QString suffix = info.suffix().toUpper();
-	if(	FVA_FILE_TYPE_VIDEO == fvaConvertFileExt2FileType ( suffix )
-		|| FVA_FILE_TYPE_AUDIO == fvaConvertFileExt2FileType ( suffix ))
+	if(	FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType ( suffix )
+		|| FVA_FS_TYPE_AUDIO == fvaConvertFileExt2FileType ( suffix ))
 	{
 		QProcess myProcess(this);    
 		myProcess.setProcessChannelMode(QProcess::MergedChannels);
@@ -107,7 +260,7 @@ void FVAViewer::showItem( QTreeWidgetItem* item )
 		myProcess.start(path, params);
 		myProcess.waitForFinished( -1 );
 	} 
-	else if (FVA_FILE_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ))
+	else if (FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ))
 	{
 		fvaShowImage( fvaitem->fsFullPath, m_ui->imageLbl, fvaitem->getGuiName() );
 	}
@@ -127,47 +280,44 @@ void FVAViewer::editFileItem( QTreeWidgetItem* item )
 	myProcess.waitForFinished( -1 );
 }
 
+void findCheckedItem(QTreeWidgetItem *item, QVector<unsigned int>& Ids)
+{
+	if (item->checkState(0) == Qt::CheckState::Checked)
+	{
+		int ID = item->data(1, 1).toInt();
+		if (ID)
+			Ids.push_back(ID);
+	}
+
+	for (auto id = 0 ; id < item->childCount(); ++id)
+		findCheckedItem(item->child(id), Ids);
+}
+
 void FVAViewer::filterClicked(  )
 {
-	m_filter.dateFrom	= m_uiFilters->dateTimeFrom->dateTime();
-	m_filter.dateTo		= m_uiFilters->dateTimeTo->dateTime();
+	m_filter.dateFrom	= m_uiFiltersCommon->dateTimeFrom->dateTime();
+	m_filter.dateTo		= m_uiFiltersCommon->dateTimeTo->dateTime();
 	
 	m_filter.deviceIds.clear();
 	m_filter.peopleIds.clear();
 	m_filter.placeIds.clear();
 	
-	int index = m_uiFilters->cbDevice->currentIndex();
-	if ( 1 <= index ) 
+	for (auto idTop = 0; idTop < m_uiPeopleFilter->treeWidget->topLevelItemCount();++idTop )
+		findCheckedItem(m_uiPeopleFilter->treeWidget->topLevelItem(idTop), m_filter.peopleIds);
+
+	for (auto idTop = 0; idTop < m_uiDeviceFilter->treeWidget->topLevelItemCount();++idTop )
+		findCheckedItem(m_uiDeviceFilter->treeWidget->topLevelItem(idTop), m_filter.deviceIds);
+
+	for (auto it = 0; it < m_uiPlaceFilter->lstPlace->count();++it)
 	{
-		int ID = m_uiFilters->cbDevice->itemData( index ).toInt();
-		m_filter.deviceIds.push_back(ID);
+		if (m_uiPlaceFilter->lstPlace->item( it )->checkState() == Qt::CheckState::Checked )
+		{
+			int ID = m_uiPlaceFilter->lstPlace->item( it )->data(1).toInt();
+			m_filter.placeIds.push_back(ID);
+		}
 	}
 
-	index = m_uiFilters->cbDevOwner->currentIndex();
-	if ( 1 <= index ) 
-	{
-		int ID = m_uiFilters->cbDevOwner->itemData( index ).toInt();
-		QVariantList vlist = m_dictionaries["devices"].toList();
-		m_filter.deviceIds.push_back(-1); // as not existing device
-		for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
-			if (i->toMap()["OwnerId"].toInt() == ID) // owner of this device
-				m_filter.deviceIds.push_back(i->toMap()["ID"].toInt());
-	}
-
-	index = m_uiFilters->cbPeople->currentIndex();
-	if ( 1 <= index ) 
-	{
-		int ID = m_uiFilters->cbPeople->itemData( index ).toInt();
-		m_filter.peopleIds.push_back(ID);
-	}
-
-	index = m_uiFilters->cbPlace->currentIndex();
-	if ( 1 <= index ) 
-	{
-		int ID = m_uiFilters->cbPlace->itemData( index ).toInt();
-		m_filter.placeIds.push_back(ID);
-	}
-	m_filter.eventOrDesc = m_uiFilters->editEvent->text();
+	m_filter.eventOrDesc = m_uiFiltersCommon->editEvent->text();
 
 	filterFVATree( m_filter, m_rootItem.get() );
 	m_ui->treeWidget->clear();
@@ -186,7 +336,7 @@ void FVAViewer::filterFVATree( const fvaFilter& filter, fvaItem* fvaitem )
 		if (m_defFilterDataTime		!= filter.dateFrom 
 			&& m_defFilterDataTime	!= filter.dateTo)
 		{
-			if ( (*idChild)->isFolder )
+			if ( (*idChild)->type == FVA_FS_TYPE_DIR )
 			{
 				if ((*idChild)->dateFrom != (*idChild)->dateTo)
 					(*idChild)->isFiltered = ((*idChild)->dateFrom >= filter.dateFrom)
@@ -205,33 +355,33 @@ void FVAViewer::filterFVATree( const fvaFilter& filter, fvaItem* fvaitem )
 		
 		// 2. filtration by device id
 		if ((*idChild)->isFiltered && !filter.deviceIds.empty() && (*idChild)->hasDescriptionData)
-		{
-			bool filt = false;
-			for (auto it = filter.deviceIds.begin(); it != filter.deviceIds.end();++it)
-			{
-				if ((*idChild)->deviceId == *it)
-				{
-					filt = true;	
-					break;
-				}
-			}
-			(*idChild)->isFiltered = filt;
-		}
+			(*idChild)->isFiltered = filter.isIDMatchesToFilter((*idChild)->deviceId,filter.deviceIds);
+
 		// 3. filtration by scaner id
 		// TODO	
 
 		// 4. filtration by place ids
 		if ((*idChild)->isFiltered && !filter.placeIds.empty() && (*idChild)->hasDescriptionData)
-			(*idChild)->isFiltered = ((*idChild)->placeIds == filter.placeIds);
+			(*idChild)->isFiltered = filter.isIDMatchesToFilter((*idChild)->placeId,filter.placeIds);
 
 		// 5. filtration by people ids
 		if ((*idChild)->isFiltered && !filter.peopleIds.empty() && (*idChild)->hasDescriptionData)
-			(*idChild)->isFiltered = ((*idChild)->peopleIds == filter.peopleIds);
-
-		// 7. filtration by event, desciption or comment
+		{
+			bool res = false;
+			for (auto it = (*idChild)->peopleIds.begin(); it != (*idChild)->peopleIds.end();++it)
+			{
+				if (filter.isIDMatchesToFilter(*it,filter.peopleIds))
+				{
+					res = true;	
+					break;
+				}
+			}
+			(*idChild)->isFiltered = res;
+		}
+		// 6. filtration by event, desciption or comment
 		if ((*idChild)->isFiltered && !filter.eventOrDesc.isEmpty() && (*idChild)->hasDescriptionData)
 		{
-			if ( (*idChild)->isFolder )
+			if ( (*idChild)->type == FVA_FS_TYPE_DIR )
 			{
 				(*idChild)->isFiltered = ((*idChild)->eventOrDesc == filter.eventOrDesc);
 				if (!(*idChild)->isFiltered)
@@ -295,7 +445,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 				progress->setValue(number++);
 				//progress->setLabelText(info.absoluteFilePath()); 
 			}
-			dirItem->isFolder	= true;
+			dirItem->type = FVA_FS_TYPE_DIR;
 			dirItem->fsFullPath	= info.absoluteFilePath();
 			if ( FVA_NO_ERROR != fvaParseDirName(info.fileName(), dirItem->dateFrom, dirItem->dateTo))
 			{
@@ -316,7 +466,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 			}
 			else
 			{
-				dirItem->placeIds.append(	result["place"]			.toUInt());
+				dirItem->placeId			=	result["place"]			.toUInt();
 				dirItem->peopleIds.append(	result["people"]		.toUInt()); // TODO bug with many people
 				dirItem->deviceId		=	result["deviceId"]		.toUInt();
 				dirItem->eventOrDesc		=	result["event"]			.toString();
@@ -335,9 +485,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 				// it is not an error
 			}
 			else
-			{
 				qCritical() << "descFile failed to be loaded:" << descFilePath;
-			}
 
 			fvaitem->children.append( dirItem );
 			populateFVATree( info.absoluteFilePath(), dirItem, number, progress );
@@ -347,7 +495,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 			if(	!fvaIsFVAFile ( info.suffix().toUpper() ) )
 				continue;
 			fvaItem* fileItem		= new fvaItem;
-			fileItem->isFolder		= false;
+			fileItem->type			= FVA_FS_TYPE_DIR;
 			fileItem->fsFullPath		= info.absoluteFilePath();
 			fileItem->type			= fvaConvertFileExt2FileType(info.suffix().toUpper());
 			if (progress)
@@ -386,7 +534,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 
 					columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"Place");
 					if ( -1 != columnId )
-						fileItem->placeIds.append(list[columnId].remove("\t").toUInt());
+						fileItem->placeId = list[columnId].remove("\t").toUInt();
 
 					columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"People");
 					if ( -1 != columnId )
@@ -416,21 +564,22 @@ void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item,i
 		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
 		treeWidgetItem->setText		( 0, (*idChild)->getGuiName() );
 		treeWidgetItem->setData( 1, 1, (int)(*idChild) );
-		if ((*idChild)->isFolder)
+		if ((*idChild)->type == FVA_FS_TYPE_DIR)
 			treeWidgetItem->setIcon(0, m_folderIcon);
 		else
 		{
 			switch ((*idChild)->type)
 			{
-				case FVA_FILE_TYPE_IMG: 
+				case FVA_FS_TYPE_IMG: 
 					treeWidgetItem->setIcon(0, m_photoIcon);
 				break;
-				case FVA_FILE_TYPE_VIDEO: 
+				case FVA_FS_TYPE_VIDEO: 
 					treeWidgetItem->setIcon(0, m_videoIcon);
 				break;
-				case FVA_FILE_TYPE_AUDIO: 
+				case FVA_FS_TYPE_AUDIO: 
 					treeWidgetItem->setIcon(0, m_audioIcon);
 				break;
+				
 			}
 		}
 		if ( item )
