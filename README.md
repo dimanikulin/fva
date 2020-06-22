@@ -1,7 +1,7 @@
 # FVA
 
 ## Version
-0.17
+0.18
  
 ## Creation date
-2016-04-24
+2016-05-14
