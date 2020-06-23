@@ -65,7 +65,7 @@ class CmdLineBaseTask
 		QString		m_custom;
 
 		/*!
-		 * it keeps folder name to work with
+		 * it keeps folder object to work with
 		 */		
 		QDir		m_dir;
 
