@@ -21,6 +21,7 @@
 typedef QMap< QString, QStringList > DESCRIPTIONS_MAP;
 
 #define _NEW_DICTIONARY_
+#define _NEW_DESC_
 #include "fvacommondata.h"
 
 /*!
@@ -62,6 +63,11 @@ enum FVA_ERROR_CODE
 	FVA_ERROR_TOO_LITTLE_FILES					= 1030,
 	FVA_ERROR_CANT_MOVE_DIR						= 1031,
 	FVA_ERROR_CANT_CREATE_DIR					= 1032,
+	FVA_ERROR_CANT_CREATE_FVA_SQL				= 1033,
+	FVA_ERROR_CANT_RENAME_FILE_DESC				= 1034,
+	FVA_ERROR_CANT_FIND_FVA_DB					= 1035,
+	FVA_ERROR_CANT_OPEN_FVA_DB					= 1036,
+	FVA_ERROR_CANT_LOAD_FVA_DB					= 1037,
 };
 
 /*!
@@ -76,6 +82,7 @@ const QString	FVA_DICTIONARY_NAME					= "dct.db";
 #else
 const QString	FVA_DICTIONARY_NAME					= "data.json";
 #endif
+
 /*!
  * \brief how many supported files should be in a folder
  */
@@ -225,6 +232,15 @@ void fvaUpdateChecks(QTreeWidgetItem *item, int column);
  * \brief it convert identifiers list from string to int vector
  */
 QVector<unsigned int> fvaStringToIds(const QString& strList);
+
+/*!
+ * \brief it loads fva items from DB
+ * \param fvaItemsMap map of fva items to be filled up
+ * \param DBPath path to fva DB
+ * \param error error description to be filled up
+ * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
+ */
+FVA_ERROR_CODE fvaLoadItems(FVA_ITEM_MAP& fvaItemsMap, const QString& DBPath, QString& error);
 
 #define FILL_COMB_FROM_DICT(dict,combo) \
 	vlist = m_dictionaries[dict].toList();\
