@@ -214,4 +214,6 @@ class fvaFilter
 		bool doIDsMatchToFilter(const QVector<unsigned int>& IDs, const QVector<unsigned int>& filterIds) const;
 };
 
+typedef QMap<QString, fvaItem> FVA_ITEM_MAP;
+
 #endif // FVACOMMONDATA_H
