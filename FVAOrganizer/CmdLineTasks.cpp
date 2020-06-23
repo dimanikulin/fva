@@ -116,10 +116,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File::execute()
 		{
 			QString error;
 			// m_custom must be device id
-			QString jsonData = 
-				"{\"deviceId\":\"" 
-				+ m_custom 
-				+ "\",\n\"tags\":\"\",\n\"people\":\"\",\n\"place\":\"\",\n\"event\":\"\"}";
+			QString jsonData = "{\"deviceId\":\"" + m_custom + "\"}";
 			FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, jsonData, error );
 			if ( FVA_NO_ERROR != res )
 			{
@@ -340,7 +337,7 @@ FVA_ERROR_CODE CLT_Device_Name_Check::execute()
 		{
 			LOG_QWARN << "no device name in picture:" << info.absoluteFilePath();
 			continue; // not so crirical
-			// return FVA_ERROR_EMPTY_DEVICE_NAME;
+			return FVA_ERROR_EMPTY_DEVICE_NAME;
 		}
 		else
 		{
@@ -359,7 +356,6 @@ FVA_ERROR_CODE CLT_Device_Name_Check::execute()
 };
 FVA_ERROR_CODE CLT_Files_Rename_By_Dir::execute()
 {
-	QString deviceName;
 	int id = 0;
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
@@ -588,7 +584,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 
 	// TODO #07.FolderDecriptionValid
 	// TODO #08.decsriptionFileValid
-	// TODO compare filetime, internal time and modification
+	// TODO empty PLACE ID
 	return FVA_NO_ERROR;
 }
 QMap< unsigned int , unsigned int > sizes;
