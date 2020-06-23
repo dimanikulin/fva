@@ -14,6 +14,7 @@
 #include "ui_d-filter.h"
 #include "ui_geo-filter.h"
 #include "ui_h-filter.h"
+#include "ui_e-filter.h"
 
 class QProgressDialog;
 
@@ -72,13 +73,6 @@ class FVAViewer : public QDialog
 		 */
 		void prepareFilters();
 
-		/*!
-		 * \brief it created filter tree in gui widgets
-		 * \param pTreeWidget - widget to build tree in
-		 * \param devices - need to insert devices
-		 */
-		void buildFilterTree(QTreeWidget* pTreeWidget, bool devices);
-
 	private: // data
 
 		Ui::FVAViewerClass *		m_ui;
@@ -90,6 +84,7 @@ class FVAViewer : public QDialog
 		Ui_dfilter*					m_uiDeviceFilter;
 		Ui_placeFilter*				m_uiPlaceFilter;
 		Ui_hfilter*					m_uiPeopleFilter;
+		Ui_eventFilter*				m_uiEventFilter;
 
 		/*!
 		 * root item
@@ -128,6 +123,7 @@ class FVAViewer : public QDialog
 		QIcon						m_audioIcon;
 		QIcon						m_photoIcon;
 		QIcon						m_folderIcon;
+		QIcon						m_locationIcon;
 
 	private slots:
 
