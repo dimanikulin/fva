@@ -382,16 +382,19 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 			else
 			{
 				dirItem->placeId			=	result["place"]			.toUInt();
-				dirItem->peopleIds.append(	result["people"]		.toUInt()); // TODO bug with many people
+				dirItem->peopleIds		=	fvaStringToIds(result["people"].toString());
 				dirItem->deviceId		=	result["deviceId"]		.toUInt();
 				dirItem->eventId			=	result["event"]			.toUInt();
-				dirItem->eventReasonPeopleIds.append(result["reasonPeople"].toUInt()); // TODO bug with many people
+				dirItem->eventReasonPeopleIds = fvaStringToIds(result["reasonPeople"].toString());
 				dirItem->tagsOrComment	=	result["tags"]			.toString();
 				dirItem->linkedFolder	=	result["linkedFolder"]	.toString();
 				dirItem->hasDescriptionData	= true;
 
 				if (!dirItem->deviceId)
 					qCritical() << "0 device if for folder " << info.fileName();
+				if (!dirItem->placeId)
+					qCritical() << "0 placeId if for folder " << info.fileName();
+
 				/*qDebug() << "FINFO" << info.fileName()
 					<<"place=" <<  result["place"].toString()
 					<<"people=" <<  result["people"].toString()
@@ -462,11 +465,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 
 					columnId = FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"People");
 					if ( -1 != columnId )
-					{
-						QStringList people = list[columnId].split(',');
-						for ( auto iter = people.begin(); iter != people.end(); ++iter )
-							fileItem->peopleIds.append(iter->toUInt());							
-					}
+						fileItem->peopleIds = fvaStringToIds(list[columnId]);							
 				}
 			}			
 			fvaitem->children.append( fileItem );
