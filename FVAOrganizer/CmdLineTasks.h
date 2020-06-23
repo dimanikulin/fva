@@ -1,9 +1,6 @@
 #ifndef _CMD_LINE_TASKS_H_
 #define _CMD_LINE_TASKS_H_
 
-#include <QString>
-#include <QDebug>
-
 #include "CmdLineBaseTask.h"
 
 extern QMap< unsigned int , unsigned int > sizes; 
