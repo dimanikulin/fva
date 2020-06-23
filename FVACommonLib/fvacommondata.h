@@ -56,8 +56,9 @@ class fvaItem
 
 		/*!
 		 * \brief it returns human-readable string as item name
+		 * \param dictionaries - global dictionary set
 		 */
-		QString getGuiName();
+		QString getGuiName(const QVariantMap&	dictionaries);
 
 		/*!
 		 * \brief it returns human-readable string to show full name
@@ -85,6 +86,11 @@ class fvaItem
 		bool					hasDescriptionData;
 
 		/*!
+		 * event id 
+		 */
+		unsigned int			eventId;
+
+		/*!
 		 * place id 
 		 */
 		unsigned int			placeId;
@@ -105,9 +111,14 @@ class fvaItem
 		QVector<unsigned int>	peopleIds;
 
 		/*!
-		 * folder event or file decsription
+		 * people that are reason of event
 		 */
-		QString					eventOrDesc;
+		QVector<unsigned int>	eventReasonPeopleIds;
+
+		/*!
+		 * file decsription
+		 */
+		QString					description;
 
 		/*!
 		 * folder tags or file comment
@@ -178,14 +189,29 @@ class fvaFilter
 		QVector<unsigned int>	deviceIds;
 
 		/*!
-		 * folder event or file decsription
+		 * folder events
 		 */
-		QString					eventOrDesc;
+		QVector<unsigned int>	eventIds;
+
+		/*!
+		 * people that are reason of event
+		 */
+		QVector<unsigned int>	eventReasonPeopleIds;
+
+		/*!
+		 * folder tags or file desciption/comment
+		 */
+		QString					text;
 
 		/*
-		 * is ID matches to filtration
+		 * does ID match to filtration
 		 */
-		bool isIDMatchesToFilter(unsigned int ID, const QVector<unsigned int>& Ids) const;
+		bool doesIDMatchToFilter(unsigned int ID, const QVector<unsigned int>& Ids) const;
+
+		/*
+		 * does list of ID matche to filtration
+		 */
+		bool doIDsMatchToFilter(const QVector<unsigned int>& IDs, const QVector<unsigned int>& filterIds) const;
 };
 
 #endif // FVACOMMONDATA_H
