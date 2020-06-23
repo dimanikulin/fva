@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
 		emptyDescription.append(result["people"].toString());
 		emptyDescription.append(result["deviceId"].toString());
 		emptyDescription.append(result["event"].toString());
-		emptyDescription.append(result["scaner"].toString());
+		emptyDescription.append(result["reasonPeople"].toString());
 		emptyDescription.append(result["tags"].toString());
 		emptyDescription.append(result["linkedFolder"].toString());
 
