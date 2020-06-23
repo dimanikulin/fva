@@ -405,7 +405,7 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 		{	
 			QString error;
 			QDateTime renameDateTime = fvaGetVideoTakenTime(info.filePath(), error);
-			if (renameDateTime.isValid())
+			if (renameDateTime.isValid() || info.baseName().at(0) == 'P' ) // P is first latter for panasonic cameras
 			{
 				continue;
 			}
@@ -504,6 +504,34 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 						continue;
 					else
 						return FVA_ERROR_UKNOWN_DEVICE;
+				}
+			}
+
+			////////////////////////////////// check for matching taken time and file name//////////////////////////
+			if (FVA_FS_TYPE_IMG == type)
+			{
+				QString error;
+				QDateTime dateTime = QExifImageHeader( info.filePath()).value(QExifImageHeader::DateTimeOriginal).toDateTime();
+
+				if (!dateTime.isValid())
+				{
+					LOG_QWARN << "empty image taken time found in:" << info.absoluteFilePath();
+				}
+				else
+				{
+					if (dateTime != date)
+					{
+						LOG_QWARN << "mismatching image taken time found in:" << info.absoluteFilePath();
+					}
+				}
+			}
+			if (FVA_FS_TYPE_VIDEO == type)
+			{
+				QString error;
+				QDateTime dateTime = QExifImageHeader( info.filePath()).value(QExifImageHeader::DateTimeOriginal).toDateTime();
+				if (!dateTime.isValid())
+				{
+					// LOG_QWARN << "empty video taken time found in:" << info.absoluteFilePath();
 				}
 			}
 
@@ -670,6 +698,9 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 	{
 		pFile->close();
 		QString descFolderPath = m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME;
+
+		SetFileAttributes(descFolderPath.toStdWString().c_str(), FILE_ATTRIBUTE_NORMAL);
+
 		if ( !m_dir.remove( descFolderPath ) )
 		{
 			LOG_QCRIT << "can not remove description for folder in folder:" << m_folder;
@@ -714,13 +745,14 @@ FVA_ERROR_CODE CLT_Auto_Checks_1::execute()
 		}
 
 		//#02.NotSTFiles
-		QString st = info.fileName().mid(0,2).toUpper();
+		// commented as not wanted yet
+		/*QString st = info.fileName().mid(0,2).toUpper();
 		if (st == "ST")
 		{
 			// TODO rename to next number
 			LOG_QCRIT << "found panoram file:" << info.absoluteFilePath();
 			return FVA_ERROR_PANORAM_FILE;
-		}
+		}*/
 	}
 
 	return FVA_NO_ERROR;
@@ -747,39 +779,46 @@ FVA_ERROR_CODE CLT_Folder_Merging::execute()
 	QString subFolder	= m_folder;
 	subFolder.remove(m_baseFolder);
 
-	if (!m_dir.exists(m_custom + subFolder + "/"))
+	if (!m_dir.exists(m_custom + subFolder + QDir::separator()))
 	{
 		// skip internal folder 
 		if (!subFolder.contains("#copy"))
-			m_dir.mkpath(m_custom + subFolder + "/");
+		{
+			if (!m_dir.mkpath(m_custom + subFolder + QDir::separator()))
+			{
+				LOG_QCRIT << "could not create dest folder:" << m_custom + subFolder + QDir::separator();
+				return FVA_ERROR_CANT_CREATE_DIR;
+			}
+		}
 	}
 	else
 	{
+		// TODO change folder renaming so it renamed new folder but not one to copy to 
 		if (!subFolder.isEmpty())
 		{
-			if (m_dir.exists(m_custom + subFolder + " #1/"))
+			if (m_dir.exists(m_custom + subFolder + " #1" + QDir::separator() ))
 			{
-				if( !m_dir.rename( m_custom + subFolder + " #1/", m_custom + subFolder + " #2/" ) )
-					LOG_QWARN << "could not rename source :" << m_custom + subFolder + " #1/" << " into " << m_custom + subFolder + " #2/";
+				if( !m_dir.rename( m_custom + subFolder + " #1" + QDir::separator(), m_custom + subFolder + " #2" + QDir::separator() ) )
+					LOG_QWARN << "could not rename source :" << m_custom + subFolder + " #1" + QDir::separator() << " into " << m_custom + subFolder + " #2" + QDir::separator();
 				else
 					LOG_QWARN << "renamed source :" << m_custom + subFolder + " #1/" << " into " << m_custom + subFolder + " #2";
 			}
 
-			if( !m_dir.rename( m_custom + subFolder, m_custom + subFolder + " #1/" ) )
+			if( !m_dir.rename( m_custom + subFolder, m_custom + subFolder + " #1" + QDir::separator() ) )
 				LOG_QWARN << "could not rename source :" << m_custom + subFolder << " into " << m_custom + subFolder + " #1/";
 			else
 				LOG_QWARN << "renamed source :" << m_custom + subFolder << " into " << m_custom + subFolder + " #1/";
 			
 			// skip internal folder 
 			if (!subFolder.contains("#copy"))	
-				m_dir.mkpath(m_custom + subFolder + "/");
+				m_dir.mkpath(m_custom + subFolder + QDir::separator());
 		}
 	}
 
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{				
-		QString original	= m_folder  + "/" + info.fileName();
-		QString dest		= m_custom + subFolder + "/" + info.fileName();
+		QString original	= m_folder  + QDir::separator() + info.fileName();
+		QString dest		= m_custom + subFolder + QDir::separator() + info.fileName();
 
 		// skip internal folder 
 		if (original.contains("#copy") || dest.contains("#copy"))
@@ -826,7 +865,7 @@ FVA_ERROR_CODE CLT_Folder_Merging::execute()
 			}
 			fileOutput.close();
 			fileInput.close();
-			if (!SetFileAttributes(dest.toStdWString().c_str(), FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_READONLY ))
+			if (!SetFileAttributes(dest.toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY ))
 			{	
 				LOG_QCRIT << "can not set attr for dest desc file:" << dest;
 				return FVA_ERROR_CANT_OPEN_FILE_DESC;
@@ -881,7 +920,7 @@ FVA_ERROR_CODE CLT_Set_File_Atts::execute()
 		{
 			if ( fvaIsInternalFile( info.fileName() ) )
 			{
-				if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_READONLY))
+				if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY))
 					LOG_QCRIT << "can not set attr for internal file:" << info.absoluteFilePath();
 			}
 			else
