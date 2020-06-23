@@ -35,7 +35,7 @@ class CmdLineBaseTask
 		/*!
 		 * \brief it answers if task supports read only mode
 		 */
-		virtual bool supportReadOnly () {return false; }; 
+		virtual bool supportReadOnly() {return false; }; 
 
 	protected:
 
