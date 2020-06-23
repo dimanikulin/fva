@@ -40,7 +40,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>40</y>
+     <y>60</y>
      <width>141</width>
      <height>21</height>
     </rect>
@@ -53,7 +53,7 @@
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>40</y>
+     <y>60</y>
      <width>231</width>
      <height>22</height>
     </rect>
@@ -63,20 +63,20 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>70</y>
+     <y>110</y>
      <width>141</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>Событие/описание:</string>
+    <string>Текст:</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="editEvent">
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>70</y>
+     <y>110</y>
      <width>231</width>
      <height>20</height>
     </rect>
@@ -93,29 +93,6 @@
    </property>
    <property name="text">
     <string>Фильтр</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>100</y>
-     <width>141</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Таг/коментарий:</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="editComment">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>100</y>
-     <width>231</width>
-     <height>20</height>
-    </rect>
    </property>
   </widget>
  </widget>
