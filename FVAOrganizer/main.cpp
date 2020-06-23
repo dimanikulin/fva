@@ -22,8 +22,8 @@ void msghandler( QtMsgType type, const char *msg )
 	if ( type < g_logLevel )
 		return;
 	
-	/* g_logfile << QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data();
-	/*switch ( type ) 
+	g_logfile << QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data();
+	switch ( type ) 
 	{
 		case QtDebugMsg:
 			g_logfile << "[DBG]" << msg << "\n";
@@ -39,16 +39,16 @@ void msghandler( QtMsgType type, const char *msg )
 			g_logfile << "[FAT]" << msg << "\n";
 			abort();
 		}
-	}*/	
-	g_logfile << msg << "\n";
+	}	
+	//g_logfile << msg << "\n";
 }
 
 int main( int argc, char *argv[] )
 {
 	//install : set the callback
-	/*qInstallMsgHandler( msghandler );
+	qInstallMsgHandler( msghandler );
 	QString logPath = QCoreApplication::applicationDirPath() + "\\organizerlog.txt";  
-	g_logfile.open( logPath.toStdString(), std::ios::app );*/
+	g_logfile.open( logPath.toStdString(), std::ios::app );
 
 	QCoreApplication a(argc, argv);
 
