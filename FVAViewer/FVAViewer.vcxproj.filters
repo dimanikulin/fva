@@ -88,6 +88,9 @@
     <CustomBuild Include="geo-filter.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="e-filter.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_fvaviewer.h">
@@ -106,6 +109,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_geo-filter.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_e-filter.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
