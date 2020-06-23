@@ -24,26 +24,26 @@ FVA_ERROR_CODE CmdLineExecutor::run( )
 
 	if ( !dir.exists( m_folder ) )
 	{
-		qCritical() << "[CMD_FOLDER_CREATE_RECURSIVE]input folder does not exist";
+		qCritical() << "[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"[CMD_FOLDER_CREATE_RECURSIVE]input folder does not exist";
 		return FVA_ERROR_INPUT_DIR_NOT_EXIST_ARG;
 	}
 
 	std::auto_ptr<CmdLineBaseTask> task ( createTaskByName( m_cmdName, m_folder, m_readOnly, m_custom ) );
 	if ( !task.get() )
 	{
-		qCritical() << "[CMD_LINE_EXECUTOR]uknown command:"<< m_cmdName;
+		qCritical() << "[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"[CMD_LINE_EXECUTOR]uknown command:"<< m_cmdName;
 		return FVA_ERROR_UKNOWN_CMD;
 	}
 	if ( m_readOnly && !task->supportReadOnly() )
 	{
-		qCritical() << "[CMD_LINE_EXECUTOR]command does not support readonly:"<< m_cmdName;
+		qCritical() << "[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"[CMD_LINE_EXECUTOR]command does not support readonly:"<< m_cmdName;
 		return FVA_ERROR_NOT_SUPPORTED_RO_MODE;
 	}
 	
 	// if it is recursive command
 	if ( m_recursive )
 	{
-		qWarning() << "[CMD_LINE_EXECUTOR] RECURSIVE mode for cmd:"<< m_cmdName;
+		qWarning() <<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"[CMD_LINE_EXECUTOR] RECURSIVE mode for cmd:"<< m_cmdName;
 		return task->processFolderRecursivly(m_folder);
 	}
 	else
@@ -71,5 +71,6 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName( const QString&
 	else if ( name == CLT_Set_File_Atts::Name() )						r.reset( new CLT_Set_File_Atts (dir, readOnly ) );	
 	else if ( name == CLT_Print_FS_Structure::Name() )					r.reset( new CLT_Print_FS_Structure (dir, readOnly ) );
 	else if ( name == CLT_Rename_File_By_Desc::Name() )					r.reset( new CLT_Rename_File_By_Desc (dir, readOnly ) );
+	else if ( name == CLT_Desc_To_SQL::Name() )							r.reset( new CLT_Desc_To_SQL (dir, readOnly ) );
 	return r;
 }
