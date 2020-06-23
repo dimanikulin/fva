@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>552</height>
+    <width>1430</width>
+    <height>781</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -62,7 +62,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>60</width>
+         <width>105</width>
          <height>448</height>
         </rect>
        </property>
