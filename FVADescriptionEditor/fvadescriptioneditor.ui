@@ -31,58 +31,21 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>0</y>
       <width>411</width>
-      <height>391</height>
+      <height>461</height>
      </rect>
     </property>
     <property name="title">
      <string>Редактировать поля</string>
     </property>
-    <widget class="QListWidget" name="lstPeople">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>170</y>
-       <width>261</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>9</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-    </widget>
-    <widget class="QToolButton" name="btnAdd">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>200</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>9</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>+</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="lbPlace">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>130</y>
+       <y>180</y>
        <width>121</width>
-       <height>31</height>
+       <height>41</height>
       </rect>
      </property>
      <property name="font">
@@ -96,33 +59,13 @@
       <string>Место</string>
      </property>
     </widget>
-    <widget class="QToolButton" name="btnDel">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>200</y>
-       <width>51</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>9</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>-</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="lbPeople">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>170</y>
+       <y>260</y>
        <width>121</width>
-       <height>21</height>
+       <height>51</height>
       </rect>
      </property>
      <property name="font">
@@ -133,34 +76,17 @@
       </font>
      </property>
      <property name="text">
-      <string>Люди</string>
+      <string>Люди, участники события</string>
      </property>
-    </widget>
-    <widget class="QComboBox" name="cmbBoxPlace">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>130</y>
-       <width>261</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>9</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="inputMethodHints">
-      <set>Qt::ImhHiddenText</set>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>250</y>
+       <y>430</y>
        <width>131</width>
        <height>21</height>
       </rect>
@@ -180,7 +106,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>50</y>
+       <y>20</y>
        <width>131</width>
        <height>31</height>
       </rect>
@@ -200,7 +126,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>90</y>
+       <y>380</y>
        <width>131</width>
        <height>31</height>
       </rect>
@@ -221,8 +147,8 @@
       <rect>
        <x>10</x>
        <y>340</y>
-       <width>131</width>
-       <height>21</height>
+       <width>121</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
@@ -236,31 +162,11 @@
       <string>Устройство</string>
      </property>
     </widget>
-    <widget class="QLabel" name="lbScaner">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>290</y>
-       <width>131</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>8</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Сканер</string>
-     </property>
-    </widget>
     <widget class="QLineEdit" name="editDescription">
      <property name="geometry">
       <rect>
        <x>140</x>
-       <y>50</y>
+       <y>20</y>
        <width>261</width>
        <height>31</height>
       </rect>
@@ -271,33 +177,13 @@
        <weight>50</weight>
        <bold>false</bold>
       </font>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="cmbBoxScaner">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>290</y>
-       <width>261</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>9</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="inputMethodHints">
-      <set>Qt::ImhHiddenText</set>
      </property>
     </widget>
     <widget class="QComboBox" name="cmbBoxDevice">
      <property name="geometry">
       <rect>
        <x>140</x>
-       <y>330</y>
+       <y>340</y>
        <width>261</width>
        <height>31</height>
       </rect>
@@ -317,7 +203,7 @@
      <property name="geometry">
       <rect>
        <x>140</x>
-       <y>90</y>
+       <y>380</y>
        <width>261</width>
        <height>31</height>
       </rect>
@@ -334,7 +220,7 @@
      <property name="geometry">
       <rect>
        <x>140</x>
-       <y>250</y>
+       <y>420</y>
        <width>261</width>
        <height>31</height>
       </rect>
@@ -347,89 +233,157 @@
       </font>
      </property>
     </widget>
-    <widget class="QLabel" name="lbName">
+    <widget class="QTreeWidget" name="treeEventWidget">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>20</y>
+       <width>261</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <attribute name="headerVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string notr="true">1</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
-       <width>381</width>
-       <height>31</height>
+       <y>100</y>
+       <width>121</width>
+       <height>51</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <pointsize>8</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string>Люди, виновники события</string>
      </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QTreeWidget" name="treePEventWidget">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>100</y>
+       <width>261</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <attribute name="headerVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string notr="true">1</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QTreeWidget" name="treePlaceWidget">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>180</y>
+       <width>261</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <attribute name="headerVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string notr="true">1</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QTreeWidget" name="treePeopleWidget">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>260</y>
+       <width>261</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <attribute name="headerVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string notr="true">1</string>
+      </property>
+     </column>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>410</y>
+      <y>460</y>
       <width>411</width>
-      <height>71</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="title">
      <string>Действие</string>
     </property>
-    <widget class="QCommandLinkButton" name="btnNext">
-     <property name="geometry">
-      <rect>
-       <x>320</x>
-       <y>10</y>
-       <width>81</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&gt;&gt;</string>
-     </property>
-    </widget>
-    <widget class="QCommandLinkButton" name="btnPrev">
+    <widget class="QPushButton" name="btnPrev">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
-       <width>81</width>
-       <height>51</height>
+       <y>20</y>
+       <width>61</width>
+       <height>23</height>
       </rect>
      </property>
      <property name="text">
       <string>&lt;&lt;</string>
      </property>
     </widget>
-    <widget class="QCommandLinkButton" name="btnSave">
+    <widget class="QPushButton" name="btnSave">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>10</y>
-       <width>101</width>
-       <height>51</height>
+       <x>80</x>
+       <y>20</y>
+       <width>121</width>
+       <height>23</height>
       </rect>
      </property>
      <property name="text">
-      <string>Сохр</string>
+      <string>Сохранить</string>
      </property>
     </widget>
-    <widget class="QCommandLinkButton" name="btnDict">
+    <widget class="QPushButton" name="btnDict">
      <property name="geometry">
       <rect>
        <x>210</x>
-       <y>10</y>
-       <width>101</width>
-       <height>51</height>
+       <y>20</y>
+       <width>121</width>
+       <height>23</height>
       </rect>
      </property>
      <property name="text">
-      <string>НСИ</string>
+      <string>Справочники</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnNext">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>20</y>
+       <width>61</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&gt;&gt;</string>
      </property>
     </widget>
    </widget>
@@ -440,22 +394,5 @@
  <resources>
   <include location="fvadescriptioneditor.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>btnNext</sender>
-   <signal>pressed()</signal>
-   <receiver>FVADescriptionEditorClass</receiver>
-   <slot>onNextPressed()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>65</x>
-     <y>390</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>351</x>
-     <y>239</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

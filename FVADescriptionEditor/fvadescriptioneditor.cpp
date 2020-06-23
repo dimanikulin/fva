@@ -10,11 +10,25 @@
 
 void FVADescriptionEditor::updateDictionaryGUI()
 {
-	QVariantList vlist;
+	fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false,m_dictionaries);
+	fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false, m_dictionaries);
 
-	FILL_COMB_FROM_DICT("places",ui.cmbBoxPlace);
+	fvaBuildFilterTree( this, 
+						ui.treePlaceWidget, 
+						m_dictionaries["placeTypes"].toList(), 
+						m_dictionaries["places"].toList(),
+						nullptr,
+						nullptr);
+
+	fvaBuildFilterTree( this, 
+						ui.treeEventWidget, 
+						m_dictionaries["eventTypes"].toList(), 
+						m_dictionaries["events"].toList(),
+						nullptr,
+						nullptr);
+
+	QVariantList vlist;
 	FILL_COMB_FROM_DICT("devices",ui.cmbBoxDevice);
-	FILL_COMB_FROM_DICT("scaners",ui.cmbBoxScaner);
 }
 void FVADescriptionEditor::init()
 {	
@@ -22,8 +36,6 @@ void FVADescriptionEditor::init()
 
 	updateDictionaryGUI();
 	
-	connect (ui.btnAdd,SIGNAL(clicked()),this,SLOT(OnAddBtnPressed()) );
-	connect (ui.btnDel,SIGNAL(clicked()),this,SLOT(OnRemoveBtnPressed()) );
 	connect (ui.btnNext,SIGNAL(clicked()),this,SLOT(OnNextBtnPressed()) );
 	connect (ui.btnPrev,SIGNAL(clicked()),this,SLOT(OnPrevBtnPressed()) );
 	connect (ui.btnSave,SIGNAL(clicked()),this,SLOT(OnSaveBtnPressed()) );
@@ -53,10 +65,7 @@ FVADescriptionEditor::FVADescriptionEditor(
 {
 	init();
 
-	if (forFolder)
-		updateGuiForItem( folderPath );
-	else
-		updateGuiForItem( m_files[m_indexOfFile] );	
+	updateGuiForItem( forFolder ? folderPath : m_files[m_indexOfFile] );
 
 	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/main.png");
 	setWindowIcon(icon);
@@ -67,121 +76,6 @@ FVADescriptionEditor::~FVADescriptionEditor()
 
 }
 
-void FVADescriptionEditor::OnChangeDictPressed()
-{
-	QProcess myProcess(this);    
-	myProcess.setProcessChannelMode(QProcess::MergedChannels);
-	QStringList params;
-	params.append(m_dictPath);
-	myProcess.start("FVADictionaryEditor.exe", params);
-
-	if ( !myProcess.waitForFinished( -1 ) )
-	{
-	}
-	QString		error;
-	FVA_ERROR_CODE res = fvaLoadDictionary( m_dictPath, m_dictionaries, error );
-	if ( FVA_NO_ERROR != res )
-		return ;
-
-	updateDictionaryGUI();
-}
-
-void FVADescriptionEditor::updateGuiForItem( const QString& path )
-{
-	QFileInfo info( path );
-	auto it = m_decsItems.find( info.fileName().toUpper() );
-	if ( it == m_decsItems.end() )
-		return;
-
-	ui.lbName->setText( info.fileName() );
-
-	if (m_forFolder)
-	{
-		setFixedHeight( size().height()	);
-		setFixedWidth( ui.groupBox->size().width() + 20 );
-		ui.btnNext->setVisible(false);
-		ui.btnPrev->setVisible(false);
-	}
-	else
-	{
-		fvaShowImage( path, ui.lbFoto,"" );
-	}
-	QStringList list = it.value(); 
-
-	int columnId = FVADescriptionFile::getColumnIdByName(m_titles,"oldName");
-	if ( -1 == columnId )
-		return;
-	ui.editOldName->setText(list[columnId].remove("\t"));
-
-	columnId = FVADescriptionFile::getColumnIdByName(m_titles,"Description");
-	if ( -1 == columnId )
-		return;
-	ui.editDescription->setText(list[columnId].remove("\t"));
-
-	columnId = FVADescriptionFile::getColumnIdByName(m_titles,"Comment");
-	if ( -1 == columnId )
-		return;
-	ui.editComment->setText(list[columnId].remove("\t"));
-
-	QString selID;
-	int index;
-#define SET_SELECTED_IN_COMBO(col,combo) \
-	columnId = FVADescriptionFile::getColumnIdByName(m_titles,col);\
-	if ( -1 == columnId )\
-		return;\
-	selID = list[columnId].remove("\t");\
-	index = combo->findData( selID );\
-	if ( index != -1 )\
-		combo->setCurrentIndex(index);\
-	else \
-		combo->setCurrentIndex(0);\
-
-	SET_SELECTED_IN_COMBO("place",ui.cmbBoxPlace)
-	SET_SELECTED_IN_COMBO("device",ui.cmbBoxDevice)
-	SET_SELECTED_IN_COMBO("scaner",ui.cmbBoxScaner)
-
-	columnId = FVADescriptionFile::getColumnIdByName(m_titles,"people");
-	if ( -1 == columnId )
-		return;
-	QStringList peopleList = list[columnId].split(',');
-	QVariantList vlist;
-	ui.lstPeople->clear();
-	for ( auto iter = peopleList.begin(); iter != peopleList.end(); ++iter )
-	{
-		vlist = m_dictionaries["people"].toList();
-		for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
-		{
-			if ( i->toMap()["ID"].toString() == *iter )
-			{
-				QListWidgetItem *itm = new QListWidgetItem;
-				itm->setText( i->toMap()["name"].toString() );
-				itm->setData( 1, i->toMap()["ID"].toString() );
-				ui.lstPeople->addItem(itm);
-			}
-		}
-	}
-}
-
-void FVADescriptionEditor::OnAddBtnPressed()
-{
-	FVAPeopleListDlg dlg( m_dictionaries,m_dictPath );
-	int res = dlg.exec( );
-	if ( 1 == res )	
-	{
-		Ui::FVAPeopleListDlg ui_ = dlg.getUI();
-		QList<QListWidgetItem*> selList = ui_.listWidget->selectedItems();
-		if ( selList.size() )
-			ui.lstPeople->addItem( selList.at(0)->clone() );
-	}
-
-	updateDictionaryGUI();
-}
-void FVADescriptionEditor::OnRemoveBtnPressed()
-{
-	QList<QListWidgetItem*> selList = ui.lstPeople->selectedItems();
-	if ( selList.size() )
-		delete selList.at(0);
-}
 void FVADescriptionEditor::OnNextBtnPressed()
 {
 	saveCurrentDescription();
@@ -198,20 +92,173 @@ void FVADescriptionEditor::OnPrevBtnPressed()
 	m_indexOfFile--;
 	updateGuiForItem(m_files[m_indexOfFile]);
 }
-void FVADescriptionEditor::saveCurrentDescription()
+void FVADescriptionEditor::OnSaveBtnPressed()
 {
-	QString peopleIDs;
-	for ( auto iP = 0; iP < ui.lstPeople->count(); ++iP )
+	saveCurrentDescription();
+}
+
+
+void setCheckedItem(QTreeWidgetItem *item, QVector<unsigned int>& Ids)
+{
+	for (auto it = Ids.begin(); it != Ids.end(); ++it)
 	{
-		if ( peopleIDs.isEmpty() )
-			peopleIDs = ui.lstPeople->item(iP)->data(1).toString();
-		else
-			peopleIDs += "," + ui.lstPeople->item(iP)->data(1).toString();
+		auto ID = item->data(1, 1).toInt();
+		auto Id = (*it);
+		if(ID == Id)
+			item->setCheckState(0, Qt::CheckState::Checked);
 	}
+
+	for (auto id = 0 ; id < item->childCount(); ++id)
+		setCheckedItem(item->child(id), Ids);
+}
+
+void FVADescriptionEditor::updateGuiForItem( const QString& path )
+{
+	QFileInfo info( path );
+	auto it = m_decsItems.find( info.fileName().toUpper() );
+	if ( it == m_decsItems.end() )
+		return;
+
+	setWindowTitle(info.fileName());
 
 	if (m_forFolder)
 	{
-		QString place, device, scaner;
+		ui.editDescription->setVisible(false);
+		setFixedHeight( size().height()	);
+		setFixedWidth( ui.groupBox->size().width() + 20 );
+		ui.btnNext->setVisible(false);
+		ui.btnPrev->setVisible(false);
+	}
+	else
+	{
+		ui.treeEventWidget->setVisible(false);
+		ui.treePEventWidget->setVisible(false);
+		fvaShowImage( path, ui.lbFoto,"" );
+	}
+	QStringList list = it.value(); 
+
+	int columnId = FVADescriptionFile::getColumnIdByName(m_titles,"oldName");
+	if ( -1 == columnId )
+		return;
+	ui.editOldName->setText(list[columnId].remove("\t"));
+
+	int decsColumnId = FVADescriptionFile::getColumnIdByName(m_titles,"Description");
+	if ( -1 == decsColumnId )
+		return;
+	ui.editDescription->setText(list[decsColumnId].remove("\t"));
+
+	columnId = FVADescriptionFile::getColumnIdByName(m_titles,"Comment");
+	if ( -1 == columnId )
+		return;
+	ui.editComment->setText(list[columnId].remove("\t"));
+
+	if (m_forFolder)
+	{
+		int eventID = list[decsColumnId].remove("\t").toInt();
+		if (eventID)
+			ui.editComment->setText( ui.editComment->text());
+		else
+			ui.editComment->setText( ui.editComment->text() +" " + list[decsColumnId].remove("\t") );
+	}
+	//////////////// DEVICE /////////////////////
+	columnId = FVADescriptionFile::getColumnIdByName(m_titles,"Device");
+	if ( -1 == columnId )
+		return;
+	QString selID = list[columnId].remove("\t");
+	int index = ui.cmbBoxDevice->findData( selID );
+	if ( index != -1 )
+		ui.cmbBoxDevice->setCurrentIndex(index);
+	else 
+		ui.cmbBoxDevice->setCurrentIndex(0);
+	
+	//////// PLACE/////////////////////
+	QVector<unsigned int> Ids;
+	columnId = FVADescriptionFile::getColumnIdByName(m_titles,"Place");
+	if ( -1 == columnId )
+		return;
+	selID = list[columnId].remove("\t");
+	Ids.push_back(selID.toInt());
+	if ( !selID.isEmpty() && !Ids.isEmpty())
+	{
+		for (auto idTop = 0; idTop < ui.treePlaceWidget->topLevelItemCount();++idTop )
+			setCheckedItem(ui.treePlaceWidget->topLevelItem(idTop), Ids);
+	}
+
+	//////// PEOPLE/////////////////////
+	columnId = FVADescriptionFile::getColumnIdByName(m_titles,"People");
+	if ( -1 == columnId )
+		return;
+	QStringList peopleList = list[columnId].split(',');
+	Ids.clear();
+	for (auto idP = peopleList.begin(); idP != peopleList.end(); ++idP)
+	{
+		if ((*idP).toInt() != 0)
+			Ids.push_back((*idP).toInt());
+	}
+	if (!Ids.isEmpty())
+	{
+		for (auto idTop = 0; idTop < ui.treePeopleWidget->topLevelItemCount();++idTop )
+			setCheckedItem(ui.treePeopleWidget->topLevelItem(idTop), Ids);
+	}
+	//////// EVENT/////////////////////
+	if (m_forFolder)
+	{
+		selID = list[decsColumnId].remove("\t");
+		if (selID.toInt())
+		{
+			Ids.clear();
+			Ids.push_back(selID.toInt());
+			for (auto idTop = 0; idTop < ui.treeEventWidget->topLevelItemCount();++idTop )
+				setCheckedItem(ui.treeEventWidget->topLevelItem(idTop), Ids);
+		}
+	}
+	//////// PEOPLE LINKED/////////////////////
+	if (m_forFolder)
+	{
+		columnId = FVADescriptionFile::getColumnIdByName(m_titles,"Scaner");
+		if ( -1 == columnId )
+			return;
+		peopleList = list[columnId].split(',');
+		Ids.clear();
+		for (auto idP = peopleList.begin(); idP != peopleList.end(); ++idP)
+		{
+			if ((*idP).toInt() != 0)
+				Ids.push_back((*idP).toInt());
+		}
+		if (!Ids.isEmpty())
+		{
+			for (auto idTop = 0; idTop < ui.treePEventWidget->topLevelItemCount();++idTop )
+				setCheckedItem(ui.treePEventWidget->topLevelItem(idTop), Ids);
+		}
+	}
+}
+
+void FVADescriptionEditor::saveCurrentDescription()
+{
+	////////// PEOPLE /////////////////////
+	QVector<unsigned int> Ids;
+	for (auto idTop = 0; idTop < ui.treePeopleWidget->topLevelItemCount();++idTop )
+		fvaFindCheckedItem(ui.treePeopleWidget->topLevelItem(idTop), Ids);
+
+	QString peopleIDs;
+	for ( auto iP = Ids.begin(); iP != Ids.end(); ++iP )
+	{
+		if ( peopleIDs.isEmpty() )
+			peopleIDs = QString::number (*iP);
+		else
+			peopleIDs += "," + QString::number (*iP);
+	}
+	QString place;
+	Ids.clear();
+	for (auto idTop = 0; idTop < ui.treePlaceWidget->topLevelItemCount();++idTop )
+		fvaFindCheckedItem(ui.treePlaceWidget->topLevelItem(idTop), Ids);
+
+	if (Ids.count() == 1)
+		place = QString::number(Ids.at(0));
+
+	if (m_forFolder)
+	{
+		QString device, event;
 		int index; 
 #define GET_SELECTED_FROM_COMBO_(str,combo) \
 		index = combo->currentIndex(); \
@@ -219,22 +266,44 @@ void FVADescriptionEditor::saveCurrentDescription()
 		{\
 			str = combo->itemData( index ).toString();\
 		}
-
-		GET_SELECTED_FROM_COMBO_(place,ui.cmbBoxPlace)
 		GET_SELECTED_FROM_COMBO_(device,ui.cmbBoxDevice)
-		GET_SELECTED_FROM_COMBO_(scaner,ui.cmbBoxScaner)
 
-		//ui.editOldName->text().remove("\t");
+		////////// LINKED PEOPLE /////////////////////
+		Ids.clear();
+		for (auto idTop = 0; idTop < ui.treePEventWidget->topLevelItemCount();++idTop )
+			fvaFindCheckedItem(ui.treePEventWidget->topLevelItem(idTop), Ids);
+
+		QString linkedPeopleIDs;
+		for ( auto iP = Ids.begin(); iP != Ids.end(); ++iP )
+		{
+			if ( linkedPeopleIDs.isEmpty() )
+				linkedPeopleIDs = QString::number (*iP);
+			else
+				linkedPeopleIDs += "," + QString::number (*iP);
+		}
+		////////// EVENT /////////////////////
+		Ids.clear();
+		for (auto idTop = 0; idTop < ui.treeEventWidget->topLevelItemCount();++idTop )
+			fvaFindCheckedItem(ui.treeEventWidget->topLevelItem(idTop), Ids);
+		if (Ids.count() == 1)
+			event = QString::number(Ids.at(0));
 
 		QString error;
 		QString jsonData = 
-		"{\"deviceId\":\""		+ device									+ "\",\n" 
-		+"\"tags\":\""			+ ui.editComment->text().remove("\t")		+ "\",\n"
-		+"\"people\":\""		+ peopleIDs									+ "\",\n"
-		+"\"place\":\""			+ place										+ "\",\n"
-		+"\"scaner\":\""		+ scaner									+ "\",\n"
-		+"\"event\":\""			+ ui.editDescription->text().remove("\t")	+ "\",\n"
-		+"\"linkedFolder\":\""	+ ui.editOldName->text().remove("\t")		+ "\"}";
+		"{\"deviceId\":\""				+ device									+ "\",\n";
+		if ( !ui.editComment->text().remove("\t").isEmpty())
+			jsonData += "\"tags\":\""	+ ui.editComment->text().remove("\t")		+ "\",\n";
+		if (!peopleIDs.isEmpty())
+			jsonData += "\"people\":\""	+ peopleIDs									+ "\",\n";
+		if (!place.isEmpty())
+			jsonData += "\"place\":\""	+ place										+ "\",\n";
+		if (!event.isEmpty())
+			jsonData += "\"event\":\""	+ event										+ "\",\n";
+		if (!linkedPeopleIDs.isEmpty())
+			jsonData += "\"reasonPeople\":\""	+ linkedPeopleIDs					+ "\",\n";
+		if (!ui.editOldName->text().remove("\t").isEmpty())
+			jsonData += "\"linkedFolder\":\""	+ ui.editOldName->text().remove("\t")	+ "\"";
+		jsonData += "}";
 
 		QDir dir(m_folderPath);
 		if ( dir.exists( dir.absolutePath() + "/" + FVA_DIR_DESCRIPTION_FILE_NAME ) )
@@ -274,9 +343,9 @@ void FVADescriptionEditor::saveCurrentDescription()
 			QString ID = combo->itemData( index ).toString();\
 			list[FVADescriptionFile::getColumnIdByName(m_titles,col)] = ID;\
 		}
-		GET_SELECTED_FROM_COMBO("place",ui.cmbBoxPlace)
+		//GET_SELECTED_FROM_COMBO("place",ui.cmbBoxPlace)
 		GET_SELECTED_FROM_COMBO("device",ui.cmbBoxDevice)
-		GET_SELECTED_FROM_COMBO("scaner",ui.cmbBoxScaner)
+		//GET_SELECTED_FROM_COMBO("scaner",ui.cmbBoxScaner)
 
 		list[FVADescriptionFile::getColumnIdByName(m_titles,"people")] = peopleIDs;
 
@@ -303,7 +372,25 @@ void FVADescriptionEditor::saveCurrentDescription()
 
 	}
 }
-void FVADescriptionEditor::OnSaveBtnPressed()
+void FVADescriptionEditor::updateChecks(QTreeWidgetItem *item, int column)
 {
-	saveCurrentDescription();
+	fvaUpdateChecks(item, column);
+}
+
+void FVADescriptionEditor::OnChangeDictPressed()
+{
+	QProcess myProcess(this);    
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	QStringList params;
+	params.append(m_dictPath);
+	myProcess.start("FVADictionaryEditor.exe", params);
+
+	myProcess.waitForFinished( -1 );
+
+	QString		error;
+	FVA_ERROR_CODE res = fvaLoadDictionary( m_dictPath, m_dictionaries, error );
+	if ( FVA_NO_ERROR != res )
+		return ;
+
+	updateDictionaryGUI();
 }

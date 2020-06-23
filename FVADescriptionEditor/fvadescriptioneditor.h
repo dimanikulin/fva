@@ -24,12 +24,12 @@ class FVADescriptionEditor : public QMainWindow
 		~FVADescriptionEditor();
 
 protected slots:
-	void OnAddBtnPressed();
-	void OnRemoveBtnPressed();
+
 	void OnNextBtnPressed();
 	void OnPrevBtnPressed();
 	void OnSaveBtnPressed();
 	void OnChangeDictPressed();
+	void updateChecks(QTreeWidgetItem*, int);
 
 private: // methods
 
@@ -43,7 +43,7 @@ private: // methods
 
 private: // data
 
-	Ui::FVADescriptionEditorClass ui;
+	Ui::FVADescriptionEditorClass		ui;
 
 	QVariantMap							m_dictionaries;
 	QString								m_dictPath;
