@@ -381,14 +381,14 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 			}
 			else
 			{
-				dirItem->placeId			=	result["place"]			.toUInt();
-				dirItem->peopleIds		=	fvaStringToIds(result["people"].toString());
-				dirItem->deviceId		=	result["deviceId"]		.toUInt();
-				dirItem->eventId			=	result["event"]			.toUInt();
-				dirItem->eventReasonPeopleIds = fvaStringToIds(result["reasonPeople"].toString());
-				dirItem->tagsOrComment	=	result["tags"]			.toString();
-				dirItem->linkedFolder	=	result["linkedFolder"]	.toString();
-				dirItem->hasDescriptionData	= true;
+				dirItem->placeId				=	result["place"]			.toUInt();
+				dirItem->peopleIds				=	fvaStringToIds(result["people"].toString());
+				dirItem->deviceId				=	result["deviceId"]		.toUInt();
+				dirItem->eventId				=	result["event"]			.toUInt();
+				dirItem->eventReasonPeopleIds	=	fvaStringToIds(result["reasonPeople"].toString());
+				dirItem->tagsOrComment			=	result["tags"]			.toString();
+				dirItem->linkedFolder			=	result["linkedFolder"]	.toString();
+				dirItem->hasDescriptionData		= true;
 
 				if (!dirItem->deviceId)
 					qCritical() << "0 device if for folder " << info.fileName();
@@ -423,7 +423,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 				continue;
 			fvaItem* fileItem		= new fvaItem;
 			fileItem->type			= FVA_FS_TYPE_DIR;
-			fileItem->fsFullPath		= info.absoluteFilePath();
+			fileItem->fsFullPath	= info.absoluteFilePath();
 			fileItem->type			= fvaConvertFileExt2FileType(info.suffix().toUpper());
 			if (progress)
 			{
