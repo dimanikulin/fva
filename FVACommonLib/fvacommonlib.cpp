@@ -6,6 +6,7 @@
 #include <QCoreApplication>
 #include <QTGui/QMessageBox>
 #include <QTGui/QPainter>
+#include <QTGui/QIcon>
 #include <QtSql/QtSql>
 
 #include "../lib/json/json.h"
@@ -92,11 +93,12 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 		return FVA_ERROR_CANT_OPEN_DICTIONARIES;
 	}
 	fillOneDictFromDB(outputData,"relationTypes");
-	fillOneDictFromDB(outputData,"places");
-	
+	fillOneDictFromDB(outputData,"placeTypes");
+	fillOneDictFromDB(outputData,"eventTypes");
+
 	////////// RELATIONS///////////////////
 	QSqlQuery query;
-    if (!query.exec("SELECT * FROM relations")) 
+    if (!query.exec("SELECT * FROM peoplerelations")) 
 		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
 	QSqlRecord		rec = query.record();
 	QVariantList	list;
@@ -134,12 +136,43 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 		map["name"]			= query.value(rec.indexOf("Name"));
 		map["RelationId"]	= query.value(rec.indexOf("RelationId"));
 		map["fullName"]		= query.value(rec.indexOf("FullName")).toString() 
-							+ " -> " + query.value(rec.indexOf("relname")).toString();
+							+ " [" + query.value(rec.indexOf("relname")).toString() + "]";
 		map["RelPersonID"]	= query.value(rec.indexOf("RelPersonID"));
 		list.append(map);
     }
     outputData["people"] = list;
 
+	/////////////////////PLACES///////////////////
+    if (!query.exec("select * from places ")) 
+		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
+	rec = query.record();
+	list.clear();
+    while (query.next()) 
+	{
+		map["ID"]			= query.value(rec.indexOf("ID"));
+		map["name"]			= query.value(rec.indexOf("Name"));
+		map["type"]			= query.value(rec.indexOf("Type"));
+		list.append(map);
+	}
+	outputData["places"] = list;
+
+	/////////////////////EVENTS///////////////////
+    if (!query.exec("select *, et.Name as etName from eventrelations er, eventTypes et where er.Type=et.ID")) 
+		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
+	rec = query.record();
+	list.clear();
+    while (query.next()) 
+	{
+		map["ID"]			= query.value(rec.indexOf("ID"));
+		map["name"]			= query.value(rec.indexOf("Name"));
+		map["type"]			= query.value(rec.indexOf("Type"));
+		map["fullName"]		= query.value(rec.indexOf("Name")).toString()
+							+ "(" +
+							query.value(rec.indexOf("etName")).toString() 
+							+ ")"; 
+		list.append(map);
+	}
+	outputData["events"] = list;
 	dbase.close();
 #else
 	// load it
@@ -416,6 +449,8 @@ fvaItem::fvaItem ()
 	hasDescriptionData	= false;
 	deviceId			= 0;
 	scanerId			= 0;
+	placeId				= 0;
+	eventId				= 0;
 	type				= FVA_FS_TYPE_UNKNOWN;
 }
 
@@ -429,14 +464,40 @@ fvaItem::~fvaItem ()
 		*idChild = nullptr;
 	}
 }
-QString fvaItem::getGuiName()
+QString fvaItem::getGuiName(const QVariantMap&	dictionaries)
 {
 	if (type == FVA_FS_TYPE_DIR)
 	{
 		QString desc;
-		if (hasDescriptionData && !eventOrDesc.isEmpty())
-			desc =  " - " + eventOrDesc.trimmed();
-		
+		if (eventId != 0)
+		{
+			QVariantList vlist = dictionaries["events"].toList();
+			for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
+			{
+				if ( i->toMap()["ID"].toInt() == eventId )
+				{
+					desc =	 " - " + i->toMap()["fullName"].toString();
+					break;
+				}
+			}
+
+			if (!eventReasonPeopleIds.isEmpty())
+			{
+				QVariantList vlist = dictionaries["people"].toList();
+				for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
+				{
+					if ( ( i->toMap()["ID"].toInt() == eventReasonPeopleIds[0])
+					&& eventReasonPeopleIds[0] )
+					{
+						desc +=	 "," + i->toMap()["name"].toString();
+						break;
+					}
+				}
+			}
+		}
+		else if (hasDescriptionData && !description.isEmpty())
+			desc =  " - " + description.trimmed();
+
 		if (dateTo.isValid())
 		{
 			if (dateFrom == dateTo) // one year
@@ -482,8 +543,8 @@ QString fvaItem::getGuiFullName(const QVariantMap&	dictionaries)
 		return "";
 	if (type != FVA_FS_TYPE_DIR)
 	{
-		if (!eventOrDesc.isEmpty())
-			fullName = eventOrDesc;
+		if (!description.isEmpty())
+			fullName = description;
 	}
 
 	if (!tagsOrComment.isEmpty())
@@ -495,15 +556,9 @@ QString fvaItem::getGuiFullName(const QVariantMap&	dictionaries)
 	}
 
 	fillNameByOneId(deviceId,"devices",dictionaries,fullName);
-	fillNameByOneId(scanerId,"scaners",dictionaries,fullName);
-
-	//this->peopleIds;
-
-	//this->placeIds;
-
 	return fullName;
 }
-bool fvaFilter::isIDMatchesToFilter(unsigned int ID, const QVector<unsigned int>& Ids) const
+bool fvaFilter::doesIDMatchToFilter(unsigned int ID, const QVector<unsigned int>& Ids) const
 {
 	for (auto it = Ids.begin(); it != Ids.end();++it)
 	{
@@ -513,6 +568,15 @@ bool fvaFilter::isIDMatchesToFilter(unsigned int ID, const QVector<unsigned int>
 	return false;
 }
 
+bool fvaFilter::doIDsMatchToFilter(const QVector<unsigned int>& IDs, const QVector<unsigned int>& filterIds) const
+{
+	for (auto it = IDs.begin(); it != IDs.end();++it)
+	{
+		if (doesIDMatchToFilter(*it,filterIds))
+			return  true;		
+	}
+	return false;
+}
 FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QString& dictPath)
 {
 	QString		error;
@@ -611,4 +675,178 @@ QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error)
 		}
 	}
 	return renameDateTime;
+}
+void fvaBuildFilterTree(QWidget* pMainWnd, 
+					QTreeWidget* pTreeWidget, 
+					const QVariantList& rootLevel, 
+					const QVariantList& level,
+					QIcon* rootIcon,
+					QIcon* icon)
+{
+	pMainWnd->connect(pTreeWidget, 
+			SIGNAL(itemChanged(QTreeWidgetItem*, int)), 
+			pMainWnd,
+			SLOT(updateChecks(QTreeWidgetItem*, int)));
+	for ( auto i = rootLevel.begin(); i != rootLevel.end() ; ++i )
+	{
+		int ID = i->toMap()["ID"].toInt();
+		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
+		treeWidgetItem->setText		( 0, i->toMap()["name"].toString() );
+		if (rootIcon)
+			treeWidgetItem->setIcon		( 0, *rootIcon);
+		treeWidgetItem->setFlags		( treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
+		treeWidgetItem->setCheckState(0,Qt::Unchecked);
+		for (auto index = level.begin(); index != level.end(); ++index)
+		{
+			int IDc = index->toMap()["ID"].toInt();
+			int type = index->toMap()["type"].toInt();
+
+			if (type != ID)
+				continue;
+
+			QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
+			childWidgetItem->setText		( 0, index->toMap()["name"].toString() );
+			childWidgetItem->setFlags	( childWidgetItem->flags() | Qt::ItemIsUserCheckable);
+			childWidgetItem->setCheckState(0,Qt::Unchecked);
+			if (icon)
+				childWidgetItem->setIcon		( 0, *icon);
+			childWidgetItem->setData( 1, 1, IDc );
+			treeWidgetItem->addChild ( childWidgetItem );
+		}
+		if (treeWidgetItem->childCount())
+			pTreeWidget->addTopLevelItem ( treeWidgetItem );
+		else
+			delete treeWidgetItem;
+	}
+}
+void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devicesNeed, const QVariantMap& dict )
+{
+	pMainWnd->connect(pTreeWidget, 
+			SIGNAL(itemChanged(QTreeWidgetItem*, int)), 
+			pMainWnd,
+			SLOT(updateChecks(QTreeWidgetItem*, int)));
+
+	QIcon	personIcon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/person.png");
+	QIcon	peopleIcon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/people.png");
+	QIcon	photoIcon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/photo.png");
+
+	QVariantList	vlist	= dict["relationTypes"].toList();
+	QVariantList	vlist1	= dict["relations"].toList();
+	QVariantList	people	= dict["people"].toList();
+	QVariantList	devices	= dict["devices"].toList();
+	for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
+	{
+		int ID = i->toMap()["ID"].toInt();
+		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
+		treeWidgetItem->setText		( 0, i->toMap()["name"].toString() );
+		treeWidgetItem->setIcon		(0, peopleIcon);
+		treeWidgetItem->setFlags		(treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
+		treeWidgetItem->setCheckState(0,Qt::Unchecked);
+		for (auto index = vlist1.begin(); index != vlist1.end(); ++index)
+		{
+			int IDc = index->toMap()["ID"].toInt();
+			int IDrel = index->toMap()["RelationType"].toInt();
+			if (IDrel != ID)
+				continue;
+
+			QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
+			childWidgetItem->setText		( 0, index->toMap()["name"].toString() );
+			childWidgetItem->setIcon		(0, peopleIcon);
+			childWidgetItem->setFlags	(childWidgetItem->flags() | Qt::ItemIsUserCheckable);
+			childWidgetItem->setCheckState(0,Qt::Unchecked);
+		
+			for (auto indexp = people.begin(); indexp != people.end(); ++indexp)
+			{
+				int IDp = indexp->toMap()["ID"].toInt();
+				if (IDp == 0)
+					continue;
+
+				int IDrelp = indexp->toMap()["RelationId"].toInt();
+				if (IDrelp != IDc)
+					continue;
+
+				QTreeWidgetItem* personWidgetItem = new QTreeWidgetItem;
+				personWidgetItem->setText		( 0, indexp->toMap()["fullName"].toString() );
+				if (!devicesNeed)
+					personWidgetItem->setData( 1, 1, IDp );
+				personWidgetItem->setIcon(0, personIcon);
+				personWidgetItem->setFlags(personWidgetItem->flags() | Qt::ItemIsUserCheckable);
+				personWidgetItem->setCheckState(0,Qt::Unchecked);
+				
+				if (!devicesNeed)
+				{
+					childWidgetItem->addChild ( personWidgetItem );
+					continue;
+				}
+				for (auto inddev = devices.begin(); inddev != devices.end(); ++inddev)
+				{
+					int IDdev = inddev->toMap()["ID"].toInt();
+					if (IDdev == 0)
+						continue;
+
+					int IDOwner = inddev->toMap()["OwnerID"].toInt();
+					if (IDOwner != IDp)
+						continue;
+
+					QTreeWidgetItem* deviceWidgetItem = new QTreeWidgetItem;
+					deviceWidgetItem->setText		( 0, inddev->toMap()["name"].toString() );
+					deviceWidgetItem->setData( 1, 1, IDdev );
+					deviceWidgetItem->setIcon(0, photoIcon);
+					deviceWidgetItem->setFlags(deviceWidgetItem->flags() | Qt::ItemIsUserCheckable);
+					deviceWidgetItem->setCheckState(0,Qt::Unchecked);
+					personWidgetItem->addChild ( deviceWidgetItem );
+				}
+				if (personWidgetItem->childCount())
+					childWidgetItem->addChild ( personWidgetItem );
+				else
+					delete personWidgetItem;
+			}// for (auto indexp = people.begin(); indexp != people.end(); ++indexp)
+			if (childWidgetItem->childCount())
+				treeWidgetItem->addChild ( childWidgetItem );
+			else
+				delete childWidgetItem;
+		} // for (auto index = vlist1.begin(); index != vlist1.end(); ++index)
+		if (treeWidgetItem->childCount())
+			pTreeWidget->addTopLevelItem ( treeWidgetItem );
+		else
+			delete treeWidgetItem;		
+	}
+}
+void fvaFindCheckedItem(QTreeWidgetItem *item, QVector<unsigned int>& Ids)
+{
+	if (item->checkState(0) == Qt::CheckState::Checked)
+	{
+		int ID = item->data(1, 1).toInt();
+		if (ID)
+			Ids.push_back(ID);
+	}
+
+	for (auto id = 0 ; id < item->childCount(); ++id)
+		fvaFindCheckedItem(item->child(id), Ids);
+}
+void fvaUpdateChecks(QTreeWidgetItem *item, int column)
+{
+    bool diff = false;
+    if(column != 0 && column!=-1)
+        return;
+    if(item->childCount()!=0 && item->checkState(0)!=Qt::PartiallyChecked && column!=-1){
+        Qt::CheckState checkState = item->checkState(0);
+        for (int i = 0; i < item->childCount(); ++i) {
+           item->child(i)->setCheckState(0, checkState);
+        }
+    } else if (item->childCount()==0 || column==-1) {
+        if(item->parent()==0)
+            return;
+        for (int j = 0; j < item->parent()->childCount(); ++j) {
+            if(j != item->parent()->indexOfChild(item) && item->checkState(0)!=item->parent()->child(j)->checkState(0)){
+                diff = true;
+            }
+        }
+        if(diff)
+            item->parent()->setCheckState(0,Qt::PartiallyChecked);
+        else
+            item->parent()->setCheckState(0,item->checkState(0));
+        if(item->parent()!=0)
+            fvaUpdateChecks(item->parent(),-1);
+    }
 }

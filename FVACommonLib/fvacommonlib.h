@@ -14,6 +14,7 @@
 #include <QDateTime>
 #include <QVariantMap>
 #include <QTGui/QLabel>
+#include <QTGui/QTreeWidget>
 
 typedef QMap< QString, QStringList > DESCRIPTIONS_MAP;
 
@@ -98,11 +99,11 @@ FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, const QString& c
 /*!
  * \brief it loads FVA dictionaries from file 
  * \param file to load dictionaries from 
- * \param outputJson output parameter to be filled up by json structures
+ * \param output output parameter to be filled up by json structures
  * \param error - human-readable description of error if any 
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputJson, QString& error );
+FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& output, QString& error );
 
 /*!
  * \brief it saves FVA dictionaries to file 
@@ -178,6 +179,44 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
  * \returns it returns time taken
  */
 QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error);
+
+/*!
+ * \brief it created filter tree in gui widgets with two levels
+ * \param pMainWnd - window keeping tree widget  
+ * \param pTreeWidget - widget to build tree in
+ * \param rootLevel - root level dictionary
+ * \param level - second level dictionary
+ */
+void fvaBuildFilterTree(QWidget* pMainWnd, 
+					QTreeWidget* pTreeWidget, 
+					const QVariantList& rootLevel, 
+					const QVariantList& level,
+					QIcon* rootIcon,
+					QIcon* icon);
+
+/*!
+ * \brief it created filter tree in gui widgets
+  * \param pMainWnd - window keeping tree widget  
+ * \param pTreeWidget - widget to build tree in
+ * \param devices - need to insert devices
+ */
+void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QVariantMap& dict);
+
+/*!
+ * \brief it finds all checked item ID in gui widget tree
+ * \param item - to search in
+ * \param Ids - arrau to fill by id of checked items
+ * \param devices - need to insert devices
+ */
+void fvaFindCheckedItem(QTreeWidgetItem *item, QVector<unsigned int>& Ids);
+
+
+/*!
+ * \brief it recursivle update checked 
+ * \param item - to update in
+ * \param column - column
+ */
+void fvaUpdateChecks(QTreeWidgetItem *item, int column);
 
 #define FILL_COMB_FROM_DICT(dict,combo) \
 	vlist = m_dictionaries[dict].toList();\
