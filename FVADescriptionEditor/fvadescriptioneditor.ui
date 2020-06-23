@@ -339,7 +339,7 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>61</width>
+       <width>51</width>
        <height>23</height>
       </rect>
      </property>
@@ -350,14 +350,14 @@
     <widget class="QPushButton" name="btnSave">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>70</x>
        <y>20</y>
-       <width>121</width>
+       <width>131</width>
        <height>23</height>
       </rect>
      </property>
      <property name="text">
-      <string>Сохранить</string>
+      <string>Сохранить и выйти</string>
      </property>
     </widget>
     <widget class="QPushButton" name="btnDict">
@@ -365,7 +365,7 @@
       <rect>
        <x>210</x>
        <y>20</y>
-       <width>121</width>
+       <width>131</width>
        <height>23</height>
       </rect>
      </property>
@@ -376,9 +376,9 @@
     <widget class="QPushButton" name="btnNext">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>350</x>
        <y>20</y>
-       <width>61</width>
+       <width>51</width>
        <height>23</height>
       </rect>
      </property>

@@ -95,8 +95,8 @@ void FVADescriptionEditor::OnPrevBtnPressed()
 void FVADescriptionEditor::OnSaveBtnPressed()
 {
 	saveCurrentDescription();
+	close();
 }
-
 
 void setCheckedItem(QTreeWidgetItem *item, QVector<unsigned int>& Ids)
 {
