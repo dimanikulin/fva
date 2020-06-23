@@ -26,7 +26,7 @@
     <string>Фильтр</string>
    </property>
   </widget>
-  <widget class="QListWidget" name="lstPlace">
+  <widget class="QTreeWidget" name="treeWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -35,6 +35,14 @@
      <height>231</height>
     </rect>
    </property>
+   <property name="headerHidden">
+    <bool>true</bool>
+   </property>
+   <column>
+    <property name="text">
+     <string notr="true">1</string>
+    </property>
+   </column>
   </widget>
  </widget>
  <resources/>
