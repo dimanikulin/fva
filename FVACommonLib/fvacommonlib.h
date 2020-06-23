@@ -5,7 +5,8 @@
 // 1. make warning level as 4 for all projects
 // 2. threat warning as errors for all projects
 // 3. https://www.projectoxford.ai/demo/face#detection
-// 4. change solutin/projects name to AVF 
+// 4. change solutin/projects name to AVF
+// 5 add cmd to merge common event folders 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <QString>
@@ -76,7 +77,7 @@ const QString	FVA_DICTIONARY_NAME					= "data.json";
 /*!
  * \brief how many supported files should be in a folder
  */
-const unsigned int FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR	= 3;
+const unsigned int FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR	= 2;
 
 /*!
  * \brief it loads folder description 
@@ -217,6 +218,11 @@ void fvaFindCheckedItem(QTreeWidgetItem *item, QVector<unsigned int>& Ids);
  * \param column - column
  */
 void fvaUpdateChecks(QTreeWidgetItem *item, int column);
+
+/*!
+ * \brief it convert identifiers list from string to int vector
+ */
+QVector<unsigned int> fvaStringToIds(const QString& strList);
 
 #define FILL_COMB_FROM_DICT(dict,combo) \
 	vlist = m_dictionaries[dict].toList();\

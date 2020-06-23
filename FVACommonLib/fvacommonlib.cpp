@@ -13,6 +13,9 @@
 #include "../lib/qexifimageheader.h"
 #include "RiffParser.h"
 
+#include <windows.h>
+#include <winbase.h>
+
 FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outputJson, QString& error )
 {
 	QDir dir ( folder );
@@ -55,6 +58,8 @@ FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, const QString& c
 	writeStream << content;	
 	writeStream.flush();
 	fileNew.close();
+
+	SetFileAttributes(path.toStdWString().c_str(), FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_READONLY );
 
 	return FVA_NO_ERROR;
 }
@@ -121,6 +126,7 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 		map["ID"]			= query.value(rec.indexOf("ID"));
 		map["name"]			= query.value(rec.indexOf("Name"));
 		map["OwnerID"]		= query.value(rec.indexOf("OwnerId"));
+		map["LinkedName"]	= query.value(rec.indexOf("LinkedName"));
 		list.append(map);
     }
     outputData["devices"] = list;
@@ -596,7 +602,7 @@ FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QStri
 		device.guiName				= it->toMap()["name"].toString().toUpper().trimmed();
 		for (auto itP = people.begin(); people.end() != itP; ++itP )
 		{
-			if ( it->toMap()["OwnerId"].toInt() == itP->toMap()["ID"].toInt())
+			if ( it->toMap()["OwnerID"].toInt() == itP->toMap()["ID"].toInt())
 			{
 				device.ownerName	= itP->toMap()["name"].toString();
 				break;
@@ -849,4 +855,14 @@ void fvaUpdateChecks(QTreeWidgetItem *item, int column)
         if(item->parent()!=0)
             fvaUpdateChecks(item->parent(),-1);
     }
+}
+
+QVector<unsigned int> fvaStringToIds(const QString& strList)
+{
+	QVector<unsigned int> result;
+	QStringList l = strList.split(',');
+	for ( auto iter = l.begin(); iter != l.end(); ++iter )
+		result.append(iter->toUInt());					
+
+	return result;
 }
