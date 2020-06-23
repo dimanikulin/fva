@@ -46,9 +46,9 @@ void msghandler( QtMsgType type, const char *msg )
 int main( int argc, char *argv[] )
 {
 	//install : set the callback
-	qInstallMsgHandler( msghandler );
-	QString logPath = QCoreApplication::applicationDirPath() + "\\organizerlog.txt";  
-	g_logfile.open( logPath.toStdString(), std::ios::app );
+	//qInstallMsgHandler( msghandler );
+	//QString logPath = QCoreApplication::applicationDirPath() + "\\organizerlog.txt";  
+	//g_logfile.open( logPath.toStdString(), std::ios::app );
 
 	QCoreApplication a(argc, argv);
 
