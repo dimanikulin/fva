@@ -290,17 +290,17 @@ void FVADescriptionEditor::saveCurrentDescription()
 
 		QString error;
 		QString jsonData = 
-		"{\"deviceId\":\""				+ device									+ "\",\n";
-		if ( !ui.editComment->text().remove("\t").isEmpty())
-			jsonData += "\"tags\":\""	+ ui.editComment->text().remove("\t")		+ "\",\n";
+		"{\"deviceId\":\""				+ device										+ "\",\n";
+		if ( !ui.editComment->text().remove("\t").trimmed().isEmpty())
+			jsonData += "\"tags\":\""	+ ui.editComment->text().remove("\t").trimmed()	+ "\",\n";
 		if (!peopleIDs.isEmpty())
-			jsonData += "\"people\":\""	+ peopleIDs									+ "\",\n";
+			jsonData += "\"people\":\""	+ peopleIDs										+ "\",\n";
 		if (!place.isEmpty())
-			jsonData += "\"place\":\""	+ place										+ "\",\n";
+			jsonData += "\"place\":\""	+ place											+ "\",\n";
 		if (!event.isEmpty())
-			jsonData += "\"event\":\""	+ event										+ "\",\n";
+			jsonData += "\"event\":\""	+ event											+ "\",\n";
 		if (!linkedPeopleIDs.isEmpty())
-			jsonData += "\"reasonPeople\":\""	+ linkedPeopleIDs					+ "\",\n";
+			jsonData += "\"reasonPeople\":\""	+ linkedPeopleIDs						+ "\",\n";
 		if (!ui.editOldName->text().remove("\t").isEmpty())
 			jsonData += "\"linkedFolder\":\""	+ ui.editOldName->text().remove("\t")	+ "\"";
 		jsonData += "}";
@@ -311,14 +311,14 @@ void FVADescriptionEditor::saveCurrentDescription()
 			QString newName = dir.absolutePath()
 				+ "/" + FVA_DIR_DESCRIPTION_FILE_NAME 
 				+ "_" + QDateTime::currentDateTime().toString( "yyyy-MM-dd-hh-mm-ss").toAscii().data();
-			QString oldName = dir.absolutePath()+ "/" + FVA_DIR_DESCRIPTION_FILE_NAME;
+			QString oldName = dir.absolutePath()+ QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME;
 			if ( !dir.rename( oldName, newName ))
 			{
 				return;
 			}
 		}
 
-		FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folderPath + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, jsonData, error );
+		FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folderPath + QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME, jsonData, error );
 		if ( FVA_NO_ERROR != res )
 		{
 			return;
