@@ -5,6 +5,8 @@
 #include "../lib/json/json.h"
 #include "../lib/qexifimageheader.h"
 
+#include "qdir.h"
+
 FVA_ERROR_CODE CLT_Xml_Convert::execute()
 {
 	std::auto_ptr< QFile > xmlFile ( new QFile ( m_folder/*it is path to file*/ ) );
@@ -230,5 +232,102 @@ FVA_ERROR_CODE CLT_Rename_File_By_Desc::execute()
 		}
 	}
 
+	return FVA_NO_ERROR;
+}
+FVA_ERROR_CODE CLT_Desc_To_SQL::execute()
+{
+	QVariantMap		result;
+	QString			error;
+	FVA_ERROR_CODE	code = fvaGetFolderDescription( m_folder, result, error );
+	if ( FVA_NO_ERROR == code )
+	{
+		QString insert =  "insert into fva values ((select max(ID)+1 from fva),\"" 
+			+ m_dir.dirName() 
+			+ "\",1," // 1 means type "folder"
+			+ ((result["deviceId"].isNull()) ? "0" : result["deviceId"].toString()) + ","
+			+ result["place"].toString()		+ ",\""
+			+ result["people"].toString()		+ "\","
+			+ "\"\""							+ ","
+			+ ((result["event"].isNull()) ? "0" :	result["event"].toString())		+ ",\""
+			+ result["tags"].toString()			+ "\",\""
+			+ result["reasonPeople"].toString()	+ "\",\""
+			+ result["linkedFolder"].toString()	
+			+ "\",\"\",0,\"\",\"\");";
+
+		QFile fileNew ( m_folder + QDir::separator() + "fvadir.sql" );	
+		if ( !fileNew.open( QIODevice::WriteOnly | QIODevice::Text ) )
+		{
+			error = "can not create new dir fva sql";
+			return FVA_ERROR_CANT_CREATE_FVA_SQL;
+		}
+		QTextStream writeStream( &fileNew );
+		writeStream << insert;	
+		writeStream.flush();
+		fileNew.close();
+
+		// rename dir description file for future backup purpose
+		QString fullDirDescPath = m_folder + QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME; 
+		m_dir.rename(fullDirDescPath, fullDirDescPath +"_"+ m_dir.dirName() + "(" + result["tags"].toString() +")");
+
+		LOG_QWARN << "converted folder description to SQL:" << m_folder;
+	}
+	std::auto_ptr<FVADescriptionFile> desc( new FVADescriptionFile );
+	QStringList			titles; 
+	DESCRIPTIONS_MAP	decsItems;
+
+	FVA_ERROR_CODE res = desc->load( m_folder + QDir::separator() + FVA_DESCRIPTION_FILE_NAME, titles, decsItems );
+	
+	if ( FVA_NO_ERROR == res )
+	{
+		QFile fileNew ( m_folder + QDir::separator() + "fvafile.sql" );	
+		if ( !fileNew.open( QIODevice::WriteOnly | QIODevice::Text ) )
+		{
+			error = "can not create new dir fva sql";
+			return FVA_ERROR_CANT_CREATE_FVA_SQL;
+		}
+
+		QTextStream writeStream( &fileNew );
+
+		for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
+		{
+			QString insert = "insert into fva values ((select max(ID)+1 from fva)," ;
+			int indexColumn = -1;
+#define FILL_SQL_INSERT(FIELD,LAST) \
+			indexColumn = desc->getColumnIdByName(titles, FIELD);\
+			if (-1==indexColumn)\
+			{\
+				LOG_QCRIT << "could not find" << FIELD << "column in description file";\
+				return FVA_ERROR_INCORRECT_FORMAT;\
+			}\
+			insert += "\"" + it.value()[ indexColumn ] + "\"" + ((LAST==true)?");":",");
+
+			FILL_SQL_INSERT("Name",false)
+			insert += "\"2\",";
+			FILL_SQL_INSERT("Device",false)
+			FILL_SQL_INSERT("Place",false)
+			FILL_SQL_INSERT("People",false)
+			insert += "\"\",\"\",\"\",\"\",\"\",";
+			FILL_SQL_INSERT("Description",false)
+			FILL_SQL_INSERT("Scaner",false)
+			FILL_SQL_INSERT("Comment",false)
+			FILL_SQL_INSERT("oldName",true)
+
+			writeStream << insert << "\n";
+		}
+		writeStream.flush();
+		fileNew.close();
+
+		// rename file description for future backup purpose
+		desc.reset(nullptr);
+		QString fullFileDescPath = m_folder + QDir::separator() + FVA_DESCRIPTION_FILE_NAME; 
+		if (!m_dir.rename(fullFileDescPath, fullFileDescPath +"_"+ m_dir.dirName()))
+		{
+			LOG_QCRIT << "can not rename file description in:" << m_folder;
+			return FVA_ERROR_CANT_RENAME_FILE_DESC;
+
+		}
+
+		LOG_QWARN << "converted file description to SQL:" << m_dir.dirName();
+	}
 	return FVA_NO_ERROR;
 }
