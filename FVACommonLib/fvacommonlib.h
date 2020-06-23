@@ -7,6 +7,7 @@
 // 3. https://www.projectoxford.ai/demo/face#detection
 // 4. change solutin/projects name to AVF
 // 5 add cmd to merge common event folders 
+// 6 change all hardcored separator to QDir::separator()
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <QString>
@@ -60,6 +61,7 @@ enum FVA_ERROR_CODE
 	FVA_ERROR_UKNOWN_DEVICE						= 1029,
 	FVA_ERROR_TOO_LITTLE_FILES					= 1030,
 	FVA_ERROR_CANT_MOVE_DIR						= 1031,
+	FVA_ERROR_CANT_CREATE_DIR					= 1032,
 };
 
 /*!
