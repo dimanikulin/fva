@@ -30,6 +30,7 @@
                 <File Id="main" Name="main.png"  Source="#BIN#\Icons\main.png"  Vital="yes" KeyPath="no"/>
                 <File Id="people" Name="people.png"  Source="#BIN#\Icons\people.png"  Vital="yes" KeyPath="no"/>
                 <File Id="person" Name="person.png"  Source="#BIN#\Icons\person.png"  Vital="yes" KeyPath="no"/>
+                <File Id="location" Name="location.png"  Source="#BIN#\Icons\location.PNG"  Vital="yes" KeyPath="no"/>
               </Component>
             </Directory>
             <Directory Id="Jpegr" Name='Jpegr'>
