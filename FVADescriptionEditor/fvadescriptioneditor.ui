@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1020</width>
-    <height>534</height>
+    <width>1193</width>
+    <height>637</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QLabel" name="lbFoto">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>-50</y>
-      <width>561</width>
-      <height>461</height>
+      <x>580</x>
+      <y>10</y>
+      <width>601</width>
+      <height>591</height>
      </rect>
     </property>
     <property name="text">
@@ -32,8 +32,8 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>411</width>
-      <height>461</height>
+      <width>571</width>
+      <height>551</height>
      </rect>
     </property>
     <property name="title">
@@ -43,7 +43,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>180</y>
+       <y>220</y>
        <width>121</width>
        <height>41</height>
       </rect>
@@ -63,9 +63,9 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>260</y>
-       <width>121</width>
-       <height>51</height>
+       <y>320</y>
+       <width>151</width>
+       <height>71</height>
       </rect>
      </property>
      <property name="font">
@@ -86,8 +86,8 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>430</y>
-       <width>131</width>
+       <y>510</y>
+       <width>151</width>
        <height>21</height>
       </rect>
      </property>
@@ -107,8 +107,8 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>131</width>
-       <height>31</height>
+       <width>151</width>
+       <height>51</height>
       </rect>
      </property>
      <property name="font">
@@ -126,8 +126,8 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>380</y>
-       <width>131</width>
+       <y>470</y>
+       <width>151</width>
        <height>31</height>
       </rect>
      </property>
@@ -146,8 +146,8 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>340</y>
-       <width>121</width>
+       <y>430</y>
+       <width>151</width>
        <height>31</height>
       </rect>
      </property>
@@ -165,7 +165,7 @@
     <widget class="QLineEdit" name="editDescription">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>170</x>
        <y>20</y>
        <width>261</width>
        <height>31</height>
@@ -182,9 +182,9 @@
     <widget class="QComboBox" name="cmbBoxDevice">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>340</y>
-       <width>261</width>
+       <x>170</x>
+       <y>430</y>
+       <width>391</width>
        <height>31</height>
       </rect>
      </property>
@@ -202,9 +202,9 @@
     <widget class="QLineEdit" name="editComment">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>380</y>
-       <width>261</width>
+       <x>170</x>
+       <y>470</y>
+       <width>391</width>
        <height>31</height>
       </rect>
      </property>
@@ -219,9 +219,9 @@
     <widget class="QLineEdit" name="editOldName">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>420</y>
-       <width>261</width>
+       <x>170</x>
+       <y>510</y>
+       <width>391</width>
        <height>31</height>
       </rect>
      </property>
@@ -236,10 +236,10 @@
     <widget class="QTreeWidget" name="treeEventWidget">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>170</x>
        <y>20</y>
-       <width>261</width>
-       <height>71</height>
+       <width>391</width>
+       <height>101</height>
       </rect>
      </property>
      <attribute name="headerVisible">
@@ -255,9 +255,9 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>100</y>
-       <width>121</width>
-       <height>51</height>
+       <y>140</y>
+       <width>141</width>
+       <height>71</height>
       </rect>
      </property>
      <property name="text">
@@ -270,10 +270,10 @@
     <widget class="QTreeWidget" name="treePEventWidget">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>100</y>
-       <width>261</width>
-       <height>71</height>
+       <x>170</x>
+       <y>130</y>
+       <width>391</width>
+       <height>91</height>
       </rect>
      </property>
      <attribute name="headerVisible">
@@ -288,10 +288,10 @@
     <widget class="QTreeWidget" name="treePlaceWidget">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>180</y>
-       <width>261</width>
-       <height>71</height>
+       <x>170</x>
+       <y>230</y>
+       <width>391</width>
+       <height>91</height>
       </rect>
      </property>
      <attribute name="headerVisible">
@@ -306,10 +306,10 @@
     <widget class="QTreeWidget" name="treePeopleWidget">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>260</y>
-       <width>261</width>
-       <height>71</height>
+       <x>170</x>
+       <y>330</y>
+       <width>391</width>
+       <height>91</height>
       </rect>
      </property>
      <attribute name="headerVisible">
@@ -326,8 +326,8 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>460</y>
-      <width>411</width>
+      <y>550</y>
+      <width>571</width>
       <height>51</height>
      </rect>
     </property>
@@ -350,9 +350,9 @@
     <widget class="QPushButton" name="btnSave">
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>90</x>
        <y>20</y>
-       <width>131</width>
+       <width>201</width>
        <height>23</height>
       </rect>
      </property>
@@ -363,9 +363,9 @@
     <widget class="QPushButton" name="btnDict">
      <property name="geometry">
       <rect>
-       <x>210</x>
+       <x>300</x>
        <y>20</y>
-       <width>131</width>
+       <width>181</width>
        <height>23</height>
       </rect>
      </property>
@@ -376,7 +376,7 @@
     <widget class="QPushButton" name="btnNext">
      <property name="geometry">
       <rect>
-       <x>350</x>
+       <x>510</x>
        <y>20</y>
        <width>51</width>
        <height>23</height>
