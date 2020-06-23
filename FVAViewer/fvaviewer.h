@@ -96,14 +96,15 @@ class FVAViewer : public QDialog
 		 */
 		fvaFilter					m_filter;
 
+#ifdef _NEW_DESC_
 		/*!
 		 * file with descriptions for FVA items in a folder
 		 */
 		FVADescriptionFile			m_descriptionFile;
-
+#endif
 		/*!
 		 * default date-time of filter date-time fields
-		 */
+		  */
 		QDateTime					m_defFilterDataTime;
 
 		/*!
@@ -112,9 +113,14 @@ class FVAViewer : public QDialog
 		QVariantMap					m_dictionaries;
 
 		/*!
-		 * dictionaries path
+		 * path to dictionaries
 		 */
 		QString						m_dictionaryPath;
+
+		/*!
+		 * path to dictionaries
+		 */
+		FVA_ITEM_MAP				m_fvaItems;
 
 		/*!
 		 * icon set to improve performance 

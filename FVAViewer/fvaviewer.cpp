@@ -23,8 +23,6 @@ void FVAViewer::showProgress(const QString& rootDir)
     progress.setValue(number *2);
 }
 
-
-
 void FVAViewer::prepareFilters()
 {
 	m_ui->dockWidget->hide();
@@ -86,7 +84,6 @@ void FVAViewer::prepareFilters()
 						m_dictionaries["events"].toList(),
 						&m_folderIcon,
 						&m_locationIcon);
-
 }
 
 FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *parent, Qt::WFlags flags)
@@ -184,7 +181,6 @@ void FVAViewer::editFileItem( QTreeWidgetItem* item )
 	myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/FVADescriptionEditor.exe", params);
 	myProcess.waitForFinished( -1 );
 }
-
 
 void FVAViewer::filterClicked(  )
 {
@@ -371,6 +367,13 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 			QVariantMap result;
 			QString error;
 
+#ifdef _NEW_DESC_
+			FVA_ITEM_MAP::Iterator it = m_fvaItems.find(info.absoluteFilePath()); 
+			if (m_fvaItems.end() != it)
+			{
+				dirItem = &it.value();
+			}
+#else
 			FVA_ERROR_CODE code = fvaGetFolderDescription( info.absoluteFilePath(), result, error );
 			if ( FVA_NO_ERROR != code )
 			{
@@ -404,7 +407,6 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 					<< "linDir= " << result["linkedFolder"].toString();
 					*/
 			}
-
 			QString descFilePath = info.absoluteFilePath() + "/" + FVA_DESCRIPTION_FILE_NAME;
 			FVA_ERROR_CODE res = m_descriptionFile.load( descFilePath,dirItem->descTitles, dirItem->decsItems );
 			if ( FVA_ERROR_CANT_OPEN_FILE_DESC == res || FVA_NO_ERROR == res)
@@ -413,7 +415,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 			}
 			else
 				qCritical() << "descFile failed to be loaded:" << descFilePath;
-
+#endif // _NEW_DESC_
 			fvaitem->children.append( dirItem );
 			populateFVATree( info.absoluteFilePath(), dirItem, number, progress );
 		}
@@ -436,6 +438,13 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 				delete fileItem;
 				continue;
 			}
+#ifdef _NEW_DESC_
+			FVA_ITEM_MAP::Iterator it = m_fvaItems.find(info.absoluteFilePath()); 
+			if (m_fvaItems.end() != it)
+			{
+				fvaitem = &it.value();
+			}
+#else
 			if (!fvaitem->decsItems.isEmpty() && !fvaitem->descTitles.isEmpty())
 			{
 				auto it = fvaitem->decsItems.find( info.fileName().toUpper() );
@@ -467,7 +476,8 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 					if ( -1 != columnId )
 						fileItem->peopleIds = fvaStringToIds(list[columnId]);							
 				}
-			}			
+			}
+#endif
 			fvaitem->children.append( fileItem );
 		}
 	}
