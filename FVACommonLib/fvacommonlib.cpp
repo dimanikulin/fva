@@ -59,7 +59,7 @@ FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, const QString& c
 	writeStream.flush();
 	fileNew.close();
 
-	SetFileAttributes(path.toStdWString().c_str(), FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_READONLY );
+	SetFileAttributes(path.toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY );
 
 	return FVA_NO_ERROR;
 }
@@ -865,4 +865,56 @@ QVector<unsigned int> fvaStringToIds(const QString& strList)
 		result.append(iter->toUInt());					
 
 	return result;
+}
+
+FVA_ERROR_CODE fvaLoadItems(FVA_ITEM_MAP& fvaItemsMap, const QString& DBPath, QString& error)
+{
+	fvaItemsMap.clear();
+	QDir dir ( DBPath );
+	if ( !dir.exists( DBPath ) )
+	{
+		error = "dictionaries file does not exist" ;
+		return FVA_ERROR_CANT_FIND_FVA_DB;
+	}
+
+	QSqlDatabase dbase = QSqlDatabase::addDatabase("QSQLITE");
+    dbase.setDatabaseName(DBPath);
+    if (!dbase.open()) 
+	{
+		error =  "can not open fva DB";
+		return FVA_ERROR_CANT_OPEN_FVA_DB;
+	}
+	QSqlQuery query;
+    if (!query.exec("SELECT * FROM fva")) 
+		return FVA_ERROR_CANT_LOAD_FVA_DB;
+	QSqlRecord		rec = query.record();
+	QVariantList	list;
+	QVariantMap		map;
+    while (query.next()) 
+	{
+		fvaItem item;
+		// fill up the item
+		item.type = (query.value(rec.indexOf("Type")) == "1") ? FVA_FS_TYPE_DIR : FVA_FS_TYPE_UNKNOWN;
+		item.dateFrom;
+		item.dateTo;
+		
+		item.fsFullPath = query.value(rec.indexOf("Name")).toString();
+		item.deviceId = query.value(rec.indexOf("device")).toInt();
+		item.peopleIds = fvaStringToIds(query.value(rec.indexOf("people")).toString());
+		item.placeId = query.value(rec.indexOf("place")).toInt();
+		
+		item.eventId = query.value(rec.indexOf("d_event")).toInt();
+		item.eventReasonPeopleIds = fvaStringToIds(query.value(rec.indexOf("d_reasonPeople")).toString());
+		item.linkedFolder = query.value(rec.indexOf("d_linkedFolder")).toString();
+
+		item.fsFullPath;
+		item.hasDescriptionData = true;
+		item.isFiltered = false;
+		item.scanerId = query.value(rec.indexOf("f_Scaner")).toInt();
+		item.tagsOrComment = query.value(rec.indexOf( (item.type == FVA_FS_TYPE_DIR) ? "d_tags": "f_Comment" )).toString();
+
+		// add item to a map
+		fvaItemsMap[item.fsFullPath] = item;
+    }
+	return FVA_NO_ERROR;
 }
