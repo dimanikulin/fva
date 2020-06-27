@@ -81,6 +81,11 @@ const QString	FVA_DB_NAME							= "fva.db";
 const unsigned int FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR	= 2;
 
 /*!
+ * \brief id for any object that is not defined
+ */
+const int FVA_UNDEFINED_ID	= -1;
+
+/*!
  * \brief it loads folder description 
  * \brief folder to load description from
  * \param outputJson output parameter to be filled up by json structure
