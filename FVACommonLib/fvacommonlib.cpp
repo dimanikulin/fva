@@ -420,15 +420,32 @@ FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTi
 }
 FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date )
 {
-	if ( fileName.length() != 19 )
-	{
-		return FVA_ERROR_WRONG_FILE_NAME;
-	}
-	if (fileName.contains("IMG_"))
+	if (fileName.contains("IMG_") && fileName.length() == 19 )
 	{
 		// it is also file name to extract name from "IMG_20150504_142546"
 		QString newFileName = fileName;
 		newFileName.remove("IMG_");
+		date = QDateTime::fromString( newFileName, "yyyyMMdd_hhmmss" );
+		if (!date.isValid())
+			return FVA_ERROR_WRONG_FILE_NAME;
+		else
+			return FVA_NO_ERROR;
+	}
+	else if (fileName.contains("WP_") && fileName.length() == 24)
+	{
+		// it is also file name to extract name from "WP_20151220_13_49_40_Pro"
+		QString newFileName = fileName;
+		newFileName.remove("WP_"); newFileName.remove("_Pro");
+		date = QDateTime::fromString( newFileName, "yyyyMMdd_hh_mm_ss" );
+		if (!date.isValid())
+			return FVA_ERROR_WRONG_FILE_NAME;
+		else
+			return FVA_NO_ERROR;
+	}
+	else if (fileName.contains("_") && fileName.length() == 15)
+	{
+		// it is also file name to extract name from "20150504_142546"
+		QString newFileName = fileName;
 		date = QDateTime::fromString( newFileName, "yyyyMMdd_hhmmss" );
 		if (!date.isValid())
 			return FVA_ERROR_WRONG_FILE_NAME;
