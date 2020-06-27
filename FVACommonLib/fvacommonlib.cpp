@@ -449,79 +449,6 @@ FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date )
 	return FVA_NO_ERROR;
 }
 
-fvaItem::fvaItem ()
-{
-	isFiltered			= true;
-	hasDescriptionData	= false;
-	deviceId			= 0;
-	scanerId			= 0;
-	placeId				= 0;
-	eventId				= 0;
-	type				= FVA_FS_TYPE_UNKNOWN;
-}
-
-fvaItem::~fvaItem ()
-{
-	for (auto idChild = children.begin(); idChild != children.end(); ++idChild)
-	{
-		if (*idChild == nullptr)
-			continue;
-		delete *idChild;
-		*idChild = nullptr;
-	}
-}
-QString fvaItem::getGuiName(const QVariantMap&	dictionaries)
-{
-	if (type == FVA_FS_TYPE_DIR)
-	{
-		QString desc;
-		if (eventId != 0)
-		{
-			QVariantList vlist = dictionaries["events"].toList();
-			for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
-			{
-				if ( i->toMap()["ID"].toInt() == eventId )
-				{
-					desc =	 " - " + i->toMap()["fullName"].toString();
-					break;
-				}
-			}
-
-			if (!eventReasonPeopleIds.isEmpty())
-			{
-				QVariantList vlist = dictionaries["people"].toList();
-				for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
-				{
-					if ( ( i->toMap()["ID"].toInt() == eventReasonPeopleIds[0])
-					&& eventReasonPeopleIds[0] )
-					{
-						desc +=	 "," + i->toMap()["name"].toString();
-						break;
-					}
-				}
-			}
-		}
-		else if (hasDescriptionData && !description.isEmpty())
-			desc =  " - " + description.trimmed();
-
-		if (dateTo.isValid())
-		{
-			if (dateFrom == dateTo) // one year
-				return dateFrom.toString( "yyyy") + desc;
-			else if (dateFrom.addDays(1) == dateTo)
-				return dateFrom.toString( "yyyy/MM/dd") + desc;
-			else
-				return dateFrom.toString( "yyyy/MM/dd") + dateTo.toString( "-yyyy/MM/dd") + desc;
-		}
-		else 
-			return dateFrom.toString( "yyyy/MM/dd") + desc;
-	}
-	else
-	{
-		return dateFrom.toString( "yyyy-MM-dd (hh:mm:ss)");
-	}
-	return "";
-}
 void fillNameByOneId(int ident, const QString& dict, const QVariantMap&	dictionaries, QString& fullName)
 {
 	QVariantList vlist; 
@@ -545,23 +472,33 @@ void fillNameByOneId(int ident, const QString& dict, const QVariantMap&	dictiona
 QString fvaItem::getGuiFullName(const QVariantMap&	dictionaries)
 {
 	QString fullName;
-	if (!hasDescriptionData)
+	if ( !fvaFolder && !fvaFile )
 		return "";
-	if (type != FVA_FS_TYPE_DIR)
+	if ( type != FVA_FS_TYPE_DIR && fvaFile )
 	{
-		if (!description.isEmpty())
-			fullName = description;
+		if ( !fvaFile->description.isEmpty() )
+			fullName = fvaFile->description;
 	}
 
-	if (!tagsOrComment.isEmpty())
+	if ( type != FVA_FS_TYPE_DIR && fvaFile)
 	{
 		if (fullName.isEmpty())
-			fullName = tagsOrComment;
+			fullName = fvaFile->comment;
 		else
-			fullName += ", " + tagsOrComment;
+			fullName += ", " + fvaFile->comment;
+	}
+	else if (type == FVA_FS_TYPE_DIR && fvaFolder)
+	{
+		if (fullName.isEmpty())
+			fullName = fvaFolder->tags;
+		else
+			fullName += ", " + fvaFolder->tags;		
 	}
 
-	fillNameByOneId(deviceId,"devices",dictionaries,fullName);
+	if ( type != FVA_FS_TYPE_DIR && fvaFile)
+	{
+		fillNameByOneId(fvaFile->deviceId,"devices",dictionaries,fullName);
+	}
 	return fullName;
 }
 bool fvaFilter::doesIDMatchToFilter(unsigned int ID, const QVector<unsigned int>& Ids) const
@@ -866,33 +803,96 @@ QVector<unsigned int> fvaStringToIds(const QString& strList)
 
 	return result;
 }
-
-FVA_ERROR_CODE fvaLoadItems(const QString& rootPath, fvaItem* rootItem, const QString& DBPath, QString& error, int& number)
+#define OPEN_DB \
+	QDir dir ( DBPath ); \
+	if ( !dir.exists( DBPath ) ) \
+	{ \
+		error = "DB file does not exist"; \
+		return FVA_ERROR_CANT_FIND_FVA_DB; \
+	}\
+	QSqlDatabase dbase = QSqlDatabase::addDatabase("QSQLITE"); \
+    dbase.setDatabaseName( DBPath ); \
+    if ( !dbase.open() ) \
+	{ \
+		error =  "can not open fva DB"; \
+		return FVA_ERROR_CANT_OPEN_FVA_DB; \
+	}
+FVA_ERROR_CODE fvaLoadFiles( fvaItem* rootItem, const QString& DBPath, QString& error )
 {
-	QDir dir ( DBPath );
-	if ( !dir.exists( DBPath ) )
+	OPEN_DB
+	QSqlQuery query;
+    if (!query.exec("SELECT * FROM fvaFile")) 
+		return FVA_ERROR_CANT_LOAD_FVA_DB;
+	QSqlRecord		rec = query.record();
+    while (query.next()) 
 	{
-		error = "DB file does not exist";
-		return FVA_ERROR_CANT_FIND_FVA_DB;
-	}
 
-	QSqlDatabase dbase = QSqlDatabase::addDatabase("QSQLITE");
-    dbase.setDatabaseName(DBPath);
-    if (!dbase.open()) 
-	{
-		error =  "can not open fva DB";
-		return FVA_ERROR_CANT_OPEN_FVA_DB;
 	}
+	return FVA_NO_ERROR;
+}
+typedef QMap<int, fvaFolder*> FVA_FOLDER_MAP; 
+FVA_ERROR_CODE fvaLoadFolders( FVA_FOLDER_MAP& folderMap, const QString& DBPath, QString& error )
+{
+	OPEN_DB
+	QSqlQuery query;
+    if (!query.exec("SELECT * FROM fvaFolder")) 
+		return FVA_ERROR_CANT_LOAD_FVA_DB;
+	QSqlRecord		rec = query.record();
+    while ( query.next() ) 
+	{
+		fvaFolder * pFolder				= new fvaFolder;
+		
+		pFolder->eventId				= query.value(rec.indexOf("EventId")).toInt();
+		pFolder->linkedFolder			= query.value(rec.indexOf("LinkedFolder")).toString();
+		pFolder->tags					= query.value(rec.indexOf("Tags")).toString();
+		pFolder->eventReasonPeopleIds	= fvaStringToIds(query.value(rec.indexOf("ReasonPeople")).toString());
+		
+		folderMap[ query.value(rec.indexOf("ID")).toInt() ] = pFolder; 
+	}
+	return FVA_NO_ERROR;
+}
+
+typedef QMap<int, fvaFile*> FVA_FILE_MAP; 
+FVA_ERROR_CODE fvaLoadFiles( FVA_FILE_MAP& fileMap, const QString& DBPath, QString& error )
+{
+	OPEN_DB
+	QSqlQuery query;
+    if (!query.exec("SELECT * FROM fvaFile")) 
+		return FVA_ERROR_CANT_LOAD_FVA_DB;
+	QSqlRecord		rec = query.record();
+    while ( query.next() ) 
+	{
+		fvaFile * pFile		= new fvaFile;
+		
+		pFile->deviceId		=	query.value(rec.indexOf("DevId")).toInt();
+		pFile->placeId		=	query.value(rec.indexOf("PlaceId")).toInt();
+		pFile->scanerId		=	 query.value(rec.indexOf("ScanerId")).toInt();
+		pFile->peopleIds	=	fvaStringToIds(query.value(rec.indexOf("People")).toString());
+		pFile->comment		=	query.value(rec.indexOf("Comment")).toString();
+		pFile->description	=	query.value(rec.indexOf("Description")).toString();
+		pFile->name			=	query.value(rec.indexOf("Name")).toString();
+
+		fileMap[ query.value(rec.indexOf("ID")).toInt() ] = pFile; 
+	}
+	return FVA_NO_ERROR;
+}
+
+FVA_ERROR_CODE fvaLoadItems( const QString& rootPath, fvaItem* rootItem, const QString& DBPath, QString& error, int& number )
+{
+	OPEN_DB	
+	FVA_FOLDER_MAP fvaFolderMap;
+	fvaLoadFolders( fvaFolderMap, DBPath, error );
+	FVA_FILE_MAP fvaFileMap;
+	fvaLoadFiles( fvaFileMap, DBPath, error );
 	QSqlQuery query;
     if (!query.exec("SELECT * FROM fva")) 
 		return FVA_ERROR_CANT_LOAD_FVA_DB;
 	QSqlRecord		rec = query.record();
-	std::map <QString, fvaItem*> fvaFolders;
-	std::map <QString, fvaItem*> fvaFiles;
-	fvaFolders.insert(std::pair<QString, fvaItem*>(rootPath, rootItem));
-	QString Name;
-	QString Path;
-    while (query.next()) 
+	std::map <QString, fvaItem*> fvaFolderItems;
+	std::map <QString, fvaItem*> fvaFileItems;
+	fvaFolderItems.insert(std::pair<QString, fvaItem*>( rootPath, rootItem ) );
+	QString Name, Path;
+    while ( query.next() ) 
 	{
 		fvaItem* pItem = new fvaItem;
 		++number;
@@ -910,7 +910,19 @@ FVA_ERROR_CODE fvaLoadItems(const QString& rootPath, fvaItem* rootItem, const QS
 				delete pItem;
 				continue;
 			}
-			fvaFolders.insert(std::pair<QString, fvaItem*>(pItem->fsFullPath, pItem));
+			fvaFolderItems.insert( std::pair<QString, fvaItem*>(pItem->fsFullPath, pItem ) );
+			int FvaFolderID = query.value(rec.indexOf("FvaFolderId")).toInt();
+			if ( FVA_UNDEFINED_ID != FvaFolderID )
+			{
+				auto it = fvaFolderMap.find( FvaFolderID );
+				if ( it == fvaFolderMap.end() )
+					qCritical() << "not found fva folder for ID " << FvaFolderID;
+				else
+				{
+					pItem->fvaFolder = it.value();
+					fvaFolderMap.erase( it );
+				}
+			}
 		}
 		else
 		{
@@ -920,49 +932,62 @@ FVA_ERROR_CODE fvaLoadItems(const QString& rootPath, fvaItem* rootItem, const QS
 				delete pItem;
 				continue;
 			}
-			auto it = fvaFolders.find(Path);
-			if (it != fvaFolders.end())
-			{
+			auto it = fvaFolderItems.find( Path );
+			if (it != fvaFolderItems.end())
 				it->second->children.push_front(pItem);
-			}
 			else
-				fvaFiles.insert(std::pair<QString, fvaItem*>(pItem->fsFullPath, pItem));
-		}
-		
-		/*item.deviceId = query.value(rec.indexOf("device")).toInt();
-		item.peopleIds = fvaStringToIds(query.value(rec.indexOf("people")).toString());
-		item.placeId = query.value(rec.indexOf("place")).toInt();	
-		item.eventId = query.value(rec.indexOf("d_event")).toInt();
-		item.eventReasonPeopleIds = fvaStringToIds(query.value(rec.indexOf("d_reasonPeople")).toString());
-		item.linkedFolder = query.value(rec.indexOf("d_linkedFolder")).toString();
-		item.scanerId = query.value(rec.indexOf("f_Scaner")).toInt();
-		item.tagsOrComment = query.value(rec.indexOf( (item.type == FVA_FS_TYPE_DIR) ? "d_tags": "f_Comment" )).toString();
-		item.hasDescriptionData = true;*/
-		
+				fvaFileItems.insert(std::pair<QString, fvaItem*>(pItem->fsFullPath, pItem));
+			
+			int FvaFileID = query.value(rec.indexOf("FvaFileId")).toInt();
+			if ( FVA_UNDEFINED_ID != FvaFileID )
+			{
+				auto it = fvaFileMap.find( FvaFileID );
+				if ( it == fvaFileMap.end() )
+					qCritical() << "not found fva file for ID " << FvaFileID;
+				else
+				{
+					pItem->fvaFile = it.value();
+					fvaFileMap.erase( it );
+				}
+			}
+		}			
 		pItem->isFiltered = true;
     }
 
-	if (fvaFiles.size())
-	{
-		qDebug() << "ERROR!, not empty fvaFiles";
-	}
-
 	QFileInfo fi;
-	for ( auto it = fvaFolders.begin(); it != fvaFolders.end(); ++it )
+	for ( auto it = fvaFolderItems.begin(); it != fvaFolderItems.end(); ++it )
 	{
 		fi = it->first;
-		/*qDebug() << fi.absolutePath() << " fn=" << fi.fileName() 
-									<< " ad=" << fi.absoluteDir() 
-									<< " bn=" << fi.baseName()
-									<< " bun=" << fi.bundleName();*/
-		auto itF = fvaFolders.find( fi.absolutePath() );
-		if (itF != fvaFolders.end())
-		{
+		auto itF = fvaFolderItems.find( fi.absolutePath() );
+		if ( itF != fvaFolderItems.end() )
 			itF->second->children.push_front(it->second);
-			// qDebug() << " linked folder to parent-" << fi.absolutePath();
-		}
+	}
+	// checks
+	if ( fvaFileItems.size() )
+	{
+		error = "ERROR!, not empty fvaFiles";
+		qDebug() << "ERROR!, not empty fvaFiles";
+		return FVA_ERROR_CANT_LOAD_FVA_DB;
 	}
 
+	if ( fvaFolderMap.size() )
+	{
+		error = "ERROR!, not empty fvaFolders";
+		qDebug() << "ERROR!, not empty fvaFolders";
+		return FVA_ERROR_CANT_LOAD_FVA_DB;
+	}
+
+	if ( fvaFileMap.size() )
+	{
+		for ( auto id = fvaFileMap.begin(); id != fvaFileMap.end(); ++id )
+		{
+			qDebug() << "name=" << id.value()->name;
+		}
+
+		error = " ERROR!, not empty fvaFiles";
+		qDebug() << "ERROR!, not empty fvaFiles";
+		return FVA_ERROR_CANT_LOAD_FVA_DB;
+	}
 	return FVA_NO_ERROR;
 }
 void fvaFilterTree( const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& defFilterDataTime )
@@ -994,56 +1019,58 @@ void fvaFilterTree( const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& 
 		}
 		
 		// 2. filtration by device id
-		if ((*idChild)->isFiltered && !filter.deviceIds.empty())
+		if ( (*idChild)->type != FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.deviceIds.empty())
 		{
-			if ((*idChild)->hasDescriptionData)
-				(*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->deviceId,filter.deviceIds);
+			if ((*idChild)->fvaFile)
+				(*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->fvaFile->deviceId,filter.deviceIds);
 			else
-				(*idChild)->isFiltered = filter.doesIDMatchToFilter(fvaitem->deviceId,filter.deviceIds);
+				(*idChild)->isFiltered = false/*filter.doesIDMatchToFilter(fvaitem->deviceId,filter.deviceIds)*/;
 		}
 		// 3. filtration by event id
-		if ((*idChild)->isFiltered && !filter.eventIds.empty())
+		if ( (*idChild)->type == FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.eventIds.empty())
 		{
-			if ((*idChild)->hasDescriptionData)
-				(*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->eventId,filter.eventIds);
-			else
-				(*idChild)->isFiltered = filter.doesIDMatchToFilter(fvaitem->eventId,filter.eventIds);
+			if ((*idChild)->fvaFolder)
+				(*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->fvaFolder->eventId,filter.eventIds);
+			else if ( fvaitem->type == FVA_FS_TYPE_DIR && fvaitem->fvaFolder )
+			{
+				(*idChild)->isFiltered = filter.doesIDMatchToFilter(fvaitem->fvaFolder->eventId,filter.eventIds);
+			}
 		}
 
 		// 4. filtration by place ids
-		if ((*idChild)->isFiltered && !filter.placeIds.empty())
+		if ( (*idChild)->type != FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.placeIds.empty())
 		{
-			if ((*idChild)->hasDescriptionData)
-				(*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->placeId,filter.placeIds);
+			if ((*idChild)->fvaFile)
+				(*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->fvaFile->placeId,filter.placeIds);
 			else
-				(*idChild)->isFiltered = filter.doesIDMatchToFilter(fvaitem->placeId,filter.placeIds);
+				(*idChild)->isFiltered = false/*filter.doesIDMatchToFilter(fvaitem->placeId,filter.placeIds)*/;
 		}
 		// 5. filtration by people ids
-		if ((*idChild)->isFiltered && !filter.peopleIds.empty()) 
+		if ( (*idChild)->type != FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.peopleIds.empty()) 
 		{	
-			if ((*idChild)->hasDescriptionData)
-				(*idChild)->isFiltered = filter.doIDsMatchToFilter((*idChild)->peopleIds,filter.peopleIds);
+			if ((*idChild)->fvaFile)
+				(*idChild)->isFiltered = filter.doIDsMatchToFilter((*idChild)->fvaFile->peopleIds,filter.peopleIds);
 			else
-				(*idChild)->isFiltered = filter.doIDsMatchToFilter(fvaitem->peopleIds,filter.peopleIds);
+				(*idChild)->isFiltered = false/*filter.doIDsMatchToFilter(fvaitem->peopleIds,filter.peopleIds)*/;
 		}
 		// 6. filtration by event, desciption or comment
-		if ((*idChild)->isFiltered && !filter.text.isEmpty() && (*idChild)->hasDescriptionData)
+		if ( (*idChild)->isFiltered && !filter.text.isEmpty() && ((*idChild)->fvaFile || (*idChild)->fvaFolder ) )
 		{
-			if ( (*idChild)->type == FVA_FS_TYPE_DIR )
+			if ( (*idChild)->type == FVA_FS_TYPE_DIR && (*idChild)->fvaFolder )
 			{
-				(*idChild)->isFiltered = ((*idChild)->description == filter.text);
-				if (!(*idChild)->isFiltered)
-					(*idChild)->isFiltered = ((*idChild)->tagsOrComment == filter.text);
+				(*idChild)->isFiltered = ((*idChild)->fvaFolder->tags == filter.text);
+				// if (!(*idChild)->isFiltered)
+					// (*idChild)->isFiltered = ((*idChild)->tagsOrComment == filter.text);
 			}
 		}
 
 		// 7. filtration by event reason people ids
-		if ((*idChild)->isFiltered && !filter.eventReasonPeopleIds.empty()) 
+		if ( (*idChild)->type == FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.eventReasonPeopleIds.empty()) 
 		{	
-			if ((*idChild)->hasDescriptionData)
-				(*idChild)->isFiltered = filter.doIDsMatchToFilter((*idChild)->eventReasonPeopleIds,filter.eventReasonPeopleIds);
+			if ( (*idChild)->fvaFolder )
+				(*idChild)->isFiltered = filter.doIDsMatchToFilter( (*idChild)->fvaFolder->eventReasonPeopleIds,filter.eventReasonPeopleIds);
 			else
-				(*idChild)->isFiltered = filter.doIDsMatchToFilter(fvaitem->eventReasonPeopleIds,filter.eventReasonPeopleIds);
+				(*idChild)->isFiltered = false/*filter.doIDsMatchToFilter(fvaitem->eventReasonPeopleIds,filter.eventReasonPeopleIds)*/;
 		}
 
 		/*if ((*idChild)->isFiltered)
@@ -1056,25 +1083,3 @@ void fvaFilterTree( const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& 
 			fvaitem->isFiltered = true;
 	}							
 }
-
-/*
-	// load it
-	QFile _file ( file );
-	if ( !_file.open( QIODevice::ReadOnly ) )
-	{
-		error =  "can not open dictionaries";
-		return FVA_ERROR_CANT_OPEN_DICTIONARIES;
-	}
-
-	bool res				= false;
-	QString		jsonData	= QString::fromLocal8Bit ( _file.readAll() );
-	outputJson				= QtJson::Json::parse ( jsonData, res ).toMap();
-	if ( !res )
-	{
-		error =  "can not load dictionaries";
-		_file.close();
-		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
-	}
-	_file.close();
-#endif
-*/

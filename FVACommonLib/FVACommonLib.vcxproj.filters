@@ -43,6 +43,9 @@
     <ClCompile Include="RiffParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fvacommondata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fvacommonlib.h">

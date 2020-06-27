@@ -1,6 +1,11 @@
 #ifndef FVACOMMONDATA_H
 #define FVACOMMONDATA_H
 
+#include <QString>
+#include <QVariantMap>
+#include <QVector> 
+#include <QDateTime>
+
 /*!
  * \brief it enumerates internal valuable file system types
  */
@@ -45,6 +50,84 @@ class fvaDevice
 typedef QMap<int, fvaDevice> DEVICE_MAP;
 
 /*!
+ * \brief it keeps fva specific information about a folder
+ */
+class fvaFolder
+{
+	public:
+
+		fvaFolder();
+		virtual ~fvaFolder();
+
+		/*!
+		 * event id 
+		 */
+		unsigned int			eventId;
+
+		/*!
+		 * people that are reason of event
+		 */
+		QVector<unsigned int>	eventReasonPeopleIds;
+
+		/*!
+		 * folder tags
+		 */
+		QString					tags;
+
+		/*!
+		 * folder to show together with this folder
+		 */
+		QString					linkedFolder;
+};
+
+/*!
+ * \brief it keeps fva specific information about a file
+ */
+class fvaFile
+{
+	public:
+
+		fvaFile();
+		virtual ~fvaFile();
+
+		/*!
+		 * place id 
+		 */
+		unsigned int			placeId;
+
+		/*!
+		 * id of device 
+		 */
+		unsigned int			deviceId;
+
+		/*!
+		 * id of scaner
+		 */
+		unsigned int			scanerId;
+
+		/*!
+		 * people list ids 
+		 */
+		QVector<unsigned int>	peopleIds;
+
+		/*!
+		 * decsription
+		 */
+		QString					description;
+
+		/*!
+		 * file comment
+		 */
+		QString					comment;
+
+		/*!
+		 * TODO - delete it
+		 */
+		QString					name;
+
+};
+
+/*!
  * \brief it keeps whole information about a foto-video-audio element
  */
 class fvaItem
@@ -81,51 +164,6 @@ class fvaItem
 		QDateTime				dateTo;
 
 		/*!
-		 * does this item have any description data
-		 */
-		bool					hasDescriptionData;
-
-		/*!
-		 * event id 
-		 */
-		unsigned int			eventId;
-
-		/*!
-		 * place id 
-		 */
-		unsigned int			placeId;
-
-		/*!
-		 * id of foto device 
-		 */
-		unsigned int			deviceId;
-
-		/*!
-		 * id of scaner
-		 */
-		unsigned int			scanerId;
-
-		/*!
-		 * people list ids 
-		 */
-		QVector<unsigned int>	peopleIds;
-
-		/*!
-		 * people that are reason of event
-		 */
-		QVector<unsigned int>	eventReasonPeopleIds;
-
-		/*!
-		 * file decsription
-		 */
-		QString					description;
-
-		/*!
-		 * folder tags or file comment
-		 */
-		QString					tagsOrComment;
-
-		/*!
 		 * children
 		 */
 		std::list<fvaItem*>		children;
@@ -139,22 +177,18 @@ class fvaItem
 		 * does this item fit filtration conditions
 		 */
 		bool					isFiltered;
-
-		/*!
-		 * folder to show together with this folder
-		 */
-		QString					linkedFolder;
 		
 		/*!
-		 * structure of description file 
+		 * folder fva specific info
 		 */
-		QStringList				descTitles; 
+		fvaFolder*				fvaFolder;
 
 		/*!
-		 * content of description file 
+		 * file fva specific info
 		 */
-		DESCRIPTIONS_MAP		decsItems;
+		fvaFile*				fvaFile;
 };
+
 /*!
  * it keeps data to perform filtration
  */
