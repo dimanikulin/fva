@@ -288,23 +288,32 @@ void FVADescriptionEditor::saveCurrentDescription()
 		if (Ids.count() == 1)
 			event = QString::number(Ids.at(0));
 
-		QString error;
-		QString jsonData = 
-		"{\"deviceId\":\""				+ device										+ "\",\n";
-		if ( !ui.editComment->text().remove("\t").trimmed().isEmpty())
-			jsonData += "\"tags\":\""	+ ui.editComment->text().remove("\t").trimmed()	+ "\",\n";
-		if (!peopleIDs.isEmpty())
-			jsonData += "\"people\":\""	+ peopleIDs										+ "\",\n";
-		if (!place.isEmpty())
-			jsonData += "\"place\":\""	+ place											+ "\",\n";
-		if (!event.isEmpty())
-			jsonData += "\"event\":\""	+ event											+ "\",\n";
-		if (!linkedPeopleIDs.isEmpty())
-			jsonData += "\"reasonPeople\":\""	+ linkedPeopleIDs						+ "\",\n";
-		if (!ui.editOldName->text().remove("\t").isEmpty())
-			jsonData += "\"linkedFolder\":\""	+ ui.editOldName->text().remove("\t")	+ "\"";
-		jsonData += "}";
+		QVariantMap content;
+		content["deviceId"] = device;
 
+		// TODO to clean up
+		//QString jsonData = 
+		//"{\"deviceId\":\""				+ device										+ "\",\n";
+		if ( !ui.editComment->text().remove("\t").trimmed().isEmpty())
+			//jsonData += "\"tags\":\""	+ ui.editComment->text().remove("\t").trimmed()	+ "\",\n";
+			content["tags"] = ui.editComment->text().remove("\t").trimmed();
+		if (!peopleIDs.isEmpty())
+			// jsonData += "\"people\":\""	+ peopleIDs										+ "\",\n";
+			content["people"] = peopleIDs;
+		if (!place.isEmpty())
+			// jsonData += "\"place\":\""	+ place											+ "\",\n";
+			content["place"] = place;
+		if (!event.isEmpty())
+			// jsonData += "\"event\":\""	+ event											+ "\",\n";
+			content["event"] = event;
+		if (!linkedPeopleIDs.isEmpty())
+			// jsonData += "\"reasonPeople\":\""	+ linkedPeopleIDs						+ "\",\n";
+			content["reasonPeople"] = linkedPeopleIDs;
+		if (!ui.editOldName->text().remove("\t").isEmpty())
+			// jsonData += "\"linkedFolder\":\""	+ ui.editOldName->text().remove("\t")	+ "\"";
+			content["linkedFolder"] = ui.editOldName->text().remove("\t");
+		//jsonData += "}";
+		
 		QDir dir(m_folderPath);
 		if ( dir.exists( dir.absolutePath() + "/" + FVA_DIR_DESCRIPTION_FILE_NAME ) )
 		{
@@ -317,8 +326,8 @@ void FVADescriptionEditor::saveCurrentDescription()
 				return;
 			}
 		}
-
-		FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folderPath + QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME, jsonData, error );
+		QString error;
+		FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folderPath + QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
 		if ( FVA_NO_ERROR != res )
 		{
 			return;
