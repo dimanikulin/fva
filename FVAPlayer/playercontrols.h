@@ -1,8 +1,8 @@
 #ifndef FVAPLAYERCONTROLS_H
 #define FVAPLAYERCONTROLS_H
 
-#include <QMediaPlayer>
-#include <QWidget>
+#include <QtMultimedia\QMediaPlayer>
+#include <QtWidgets\QWidget>
 
 QT_BEGIN_NAMESPACE
 class QAbstractButton;

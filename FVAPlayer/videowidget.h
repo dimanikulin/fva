@@ -1,9 +1,9 @@
 #ifndef FVAVIDEOWIDGET_H
 #define FVAVIDEOWIDGET_H
 
-#include <QVideoWidget>
-#include <QKeyEvent>
-#include <QMouseEvent>
+#include <QtMultimediaWidgets\QVideoWidget>
+#include <QtGui\QKeyEvent>
+#include <QtGui\QMouseEvent>
 
 class VideoWidget : public QVideoWidget
 {

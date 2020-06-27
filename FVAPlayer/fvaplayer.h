@@ -3,8 +3,8 @@
 
 #include "videowidget.h"
 
-#include <QWidget>
-#include <QMediaPlayer>
+#include <QtWidgets\QWidget>
+#include <QtMultimedia\QMediaPlayer>
 
 QT_BEGIN_NAMESPACE
 class QLabel;
