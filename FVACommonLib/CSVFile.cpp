@@ -1,5 +1,7 @@
 #include "CSVFile.h"
 
+#include <QTextStream>
+#include <QTextCodec>
 
 CSVFile::CSVFile(  )
 {
@@ -20,7 +22,6 @@ CSVFile::~CSVFile(  )
 		m_file->close();
 		m_file.release();
 	}
-
 }
 
 bool CSVFile::openForRead( const QString& path )
@@ -30,6 +31,7 @@ bool CSVFile::openForRead( const QString& path )
 		return false;
 
 	m_stream.reset ( new QTextStream( m_file.get() ) );
+	m_stream->setCodec( QTextCodec::codecForName("Windows-1251") );
 	return true;
 }
 
