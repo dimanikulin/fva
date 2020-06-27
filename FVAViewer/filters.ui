@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>401</width>
-    <height>275</height>
+    <width>600</width>
+    <height>450</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
+     <x>90</x>
+     <y>40</y>
      <width>141</width>
      <height>21</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QDateTimeEdit" name="dateTimeFrom">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>10</y>
+     <x>240</x>
+     <y>40</y>
      <width>231</width>
      <height>22</height>
     </rect>
@@ -39,8 +39,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>60</y>
+     <x>90</x>
+     <y>90</y>
      <width>141</width>
      <height>21</height>
     </rect>
@@ -52,8 +52,8 @@
   <widget class="QDateTimeEdit" name="dateTimeTo">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>60</y>
+     <x>240</x>
+     <y>90</y>
      <width>231</width>
      <height>22</height>
     </rect>
@@ -62,8 +62,8 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>110</y>
+     <x>90</x>
+     <y>140</y>
      <width>141</width>
      <height>21</height>
     </rect>
@@ -75,8 +75,8 @@
   <widget class="QLineEdit" name="editEvent">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>110</y>
+     <x>240</x>
+     <y>140</y>
      <width>231</width>
      <height>20</height>
     </rect>
@@ -85,8 +85,8 @@
   <widget class="QPushButton" name="btnFilter">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>250</y>
+     <x>250</x>
+     <y>420</y>
      <width>71</width>
      <height>21</height>
     </rect>
