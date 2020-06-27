@@ -43,27 +43,6 @@ class FVAViewer : public QDialog
 		void populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item, int& number, QProgressDialog* progress );
 
 		/*!
-		 * \brief it recursivly expands FVA tree using file system tree
-		 * \param folder - folder path to be populated
-		 * \param item - fva tree item
-		 */
-		void populateFVATree( const QString& folder, fvaItem* fvaitem, int& number, QProgressDialog* progress );
-
-		/*!
-		 * \brief it recursivly filters FVA tree
-		 * \param filter - filter condition set
-		 * \param fvaitem - fva tree item
-		 */
-		void filterFVATree( const fvaFilter& filter, fvaItem* fvaitem );
-
-		/*!
-		 * \brief it recursivly calculates numbers of filesystem tree items
-		 * \param folder - folder path to be populated
-		 * \param number - number of items
-		 */
-		void evaluateFSTree (const QString& folder, int& number);
-
-		/*!
 		 * \brief it starts showing progress for loading fs tree
 		 */
 		void showProgress(const QString& rootDir);
@@ -89,19 +68,13 @@ class FVAViewer : public QDialog
 		/*!
 		 * root item
 		 */
-		std::auto_ptr<fvaItem>		m_rootItem;
+		std::unique_ptr<fvaItem>	m_rootItem;
 
 		/*!
 		 * filter condition
 		 */
 		fvaFilter					m_filter;
 
-#ifdef _NEW_DESC_
-		/*!
-		 * file with descriptions for FVA items in a folder
-		 */
-		FVADescriptionFile			m_descriptionFile;
-#endif
 		/*!
 		 * default date-time of filter date-time fields
 		  */
@@ -116,11 +89,6 @@ class FVAViewer : public QDialog
 		 * path to dictionaries
 		 */
 		QString						m_dictionaryPath;
-
-		/*!
-		 * path to dictionaries
-		 */
-		FVA_ITEM_MAP				m_fvaItems;
 
 		/*!
 		 * icon set to improve performance 
