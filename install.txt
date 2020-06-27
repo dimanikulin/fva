@@ -1,0 +1,3 @@
+1. VS 2010
+2. wix36
+3. qt-vs-addin-1.2.1-opensource.exe
