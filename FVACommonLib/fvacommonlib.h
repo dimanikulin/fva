@@ -73,7 +73,7 @@ enum FVA_ERROR_CODE
 const QString	FVA_DESCRIPTION_FILE_NAME			= "description.csv";
 const QString	FVA_DIR_DESCRIPTION_FILE_NAME		= "folderDescription.json";
 const QString	FVA_BACKGROUND_MUSIC_FILE_NAME		= "bgmusic.mid";
-const QString	FVA_DB_NAME							= "fva.db";
+const QString	FVA_DB_NAME							= "digikam4.db";
 const QString	FVA_DEFAULT_ROOT_DIR				= "C:/FVA/";
 const QString	FVA_TARGET_FOLDER_NAME				= "TARGET_FOLDER_NAME"; 
 
