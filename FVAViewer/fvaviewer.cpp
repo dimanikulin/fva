@@ -257,32 +257,6 @@ void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item,i
 	}							
 }
 /*
-void FVAViewer::evaluateFSTree (const QString& folder, int& number)
-{
-	QDir dir( folder );
-
-	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
-	{			
-		if ( info.isDir() )
-		{
-			// just skip internal folder
-			if ( info.fileName()[0] == '#' 
-				&& info.fileName()[info.fileName().size()-1] == '#' )
-			{
-				continue;
-			}
-			evaluateFSTree( info.absoluteFilePath(), number );
-			number++;
-		}
-		else
-		{
-			if(	!fvaIsFVAFile ( info.suffix().toUpper() ) )
-				continue;
-			number++;
-		}
-	}
-}
-
 void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& number, QProgressDialog* progress )
 {	
 	if (progress.wasCanceled())
