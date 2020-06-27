@@ -491,7 +491,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 				else
 					return FVA_ERROR_WRONG_FILE_NAME;
 			}
-			//////////////////////////////////// check for exsiting device in dictionary by device name in pictire 
+			//////////////////////////////////// 3. check for exsiting device in dictionary by device name in pictire 
 			if (FVA_FS_TYPE_IMG == type)
 			{
 				QString deviceName;
@@ -511,7 +511,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 				}
 			}
 
-			////////////////////////////////// check for matching taken time and file name//////////////////////////
+			////////////////////////////////// 4. check for matching taken time and file name//////////////////////////
 			if (FVA_FS_TYPE_IMG == type)
 			{
 				QString error;
@@ -539,7 +539,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 				}
 			}
 
-			//////////////////////////////////// 2. MATCHING FILE NAME AND FOLDER NAME ////////////////////////////////////////////////////
+			//////////////////////////////////// 5. MATCHING FILE NAME AND FOLDER NAME ////////////////////////////////////////////////////
 			QDateTime dateStart, dateEnd;
 			if ( FVA_NO_ERROR != fvaParseDirName( m_dir.dirName(), dateStart, dateEnd))
 			{
@@ -585,6 +585,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 	m_fileCount[ m_folder ] = countSupportedFiles;
 	if ( countSupportedFiles < FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR && countSupportedFiles )
 	{
+		// check for to little supported 
 		LOG_QCRIT << "too little supported files found in:" << m_folder;
 		if (!m_readOnly)
 			return FVA_ERROR_TOO_LITTLE_FILES;
