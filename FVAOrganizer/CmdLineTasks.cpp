@@ -587,9 +587,6 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			return FVA_ERROR_TOO_LITTLE_FILES;
 	}
 
-	// TODO #07.FolderDecriptionValid
-	// TODO #08.decsriptionFileValid
-	// TODO empty PLACE ID
 	return FVA_NO_ERROR;
 }
 QMap< unsigned int , unsigned int > sizes;
