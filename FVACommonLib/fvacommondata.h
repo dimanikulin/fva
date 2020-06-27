@@ -6,12 +6,12 @@
  */
 enum FVA_FS_TYPE
 {
-	FVA_FS_TYPE_UNKNOWN,
-	FVA_FS_TYPE_IMG,
-	FVA_FS_TYPE_VIDEO,
-	FVA_FS_TYPE_AUDIO,
+	FVA_FS_TYPE_UNKNOWN = 0,
+	FVA_FS_TYPE_IMG		= 1,
+	FVA_FS_TYPE_VIDEO	= 2,
+	FVA_FS_TYPE_AUDIO	= 3,
 
-	FVA_FS_TYPE_DIR,
+	FVA_FS_TYPE_DIR		= 4,
 };
 /*!
  * \brief it describes whole information about device 
@@ -128,7 +128,7 @@ class fvaItem
 		/*!
 		 * children
 		 */
-		QVector<fvaItem*>		children;
+		std::list<fvaItem*>		children;
 
 		/*!
 		 * absolute path to item
@@ -154,7 +154,6 @@ class fvaItem
 		 * content of description file 
 		 */
 		DESCRIPTIONS_MAP		decsItems;
-
 };
 /*!
  * it keeps data to perform filtration
@@ -213,7 +212,5 @@ class fvaFilter
 		 */
 		bool doIDsMatchToFilter(const QVector<unsigned int>& IDs, const QVector<unsigned int>& filterIds) const;
 };
-
-typedef QMap<QString, fvaItem> FVA_ITEM_MAP;
 
 #endif // FVACOMMONDATA_H
