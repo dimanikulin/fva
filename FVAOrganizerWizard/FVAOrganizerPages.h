@@ -7,6 +7,7 @@
 #include <QTextBrowser>
 #include <QPushButton>
 #include <QComboBox>
+#include <QCheckBox>
 
 /*!
  * \brief keeps all organizer pages functionality
@@ -87,8 +88,13 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 
 		QLabel*			outputDirLabel;
 		QLineEdit*		outputDirLineEdit;
-		QTextBrowser*	logOutput;
 		QPushButton*	dirButton;
+
+		QTextBrowser*	logOutput;
+
+		QCheckBox*		mergeCheckBox;
+		QLineEdit*		mergeDirLineEdit;
+
 };
 
 class FVAOrganizerDonePage : public QWizardPage

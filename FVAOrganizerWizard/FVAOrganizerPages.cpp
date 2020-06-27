@@ -24,10 +24,10 @@ FVAOrganizerStartPage::FVAOrganizerStartPage()
 FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 {
 	inputDirLabel	= new QLabel(tr("Укажите входную папку с контентом\n (Внимание! Папка должна начинаться с символа '#'):"));
-    inputDirLabel->setAlignment(Qt::AlignLeft);
+	inputDirLabel->setAlignment(Qt::AlignLeft);
     
 	inputDirLineEdit = new QLineEdit;
-    inputDirLineEdit->setText("");
+	inputDirLineEdit->setText("");
 
 	dirButton		= new QPushButton;
 	dirButton->setText(tr("Указать папку"));		
@@ -326,12 +326,23 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	dirLayout->addWidget(outputDirLineEdit,0,0);
 	dirLayout->addWidget(dirButton,0,1);
 
+	mergeCheckBox		= new QCheckBox;
+	mergeCheckBox->setText(tr("Слить много подфолдеров в один:"));		
+    
+	mergeDirLineEdit = new QLineEdit;
+    mergeDirLineEdit->setText("");
+
+	QGridLayout * mergeLayout = new QGridLayout;
+	mergeLayout->addWidget(mergeCheckBox,0,0);
+	mergeLayout->addWidget(mergeDirLineEdit,0,1);
+
 	logOutput		= new QTextBrowser;
 	
 	QVBoxLayout * layout = new QVBoxLayout;
 
 	layout->addWidget(outputDirLabel);
 	layout->addLayout(dirLayout);
+	layout->addLayout(mergeLayout);
 	layout->addWidget(logOutput);
 
 	setLayout(layout);
