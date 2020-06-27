@@ -406,6 +406,11 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 				continue;
 			}
 
+			FVA_ERROR_CODE res = fvaParseFileName(info.baseName(), renameDateTime );
+			if (FVA_NO_ERROR == res)
+			{
+				continue;
+			}
 			if ( !info.baseName().contains("_") )
 			{
 				LOG_QCRIT << "video file does not contain _:" << info.absoluteFilePath();
@@ -741,14 +746,13 @@ FVA_ERROR_CODE CLT_Auto_Checks_1::execute()
 		}
 
 		//#02.NotSTFiles
-		// commented as not wanted yet
-		/*QString st = info.fileName().mid(0,2).toUpper();
+		QString st = info.fileName().mid(0,2).toUpper();
 		if (st == "ST")
 		{
 			// TODO rename to next number
 			LOG_QCRIT << "found panoram file:" << info.absoluteFilePath();
 			return FVA_ERROR_PANORAM_FILE;
-		}*/
+		}
 	}
 
 	return FVA_NO_ERROR;
