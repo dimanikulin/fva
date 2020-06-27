@@ -76,16 +76,7 @@ CLT_Fva_Folder_To_SQL::~CLT_Fva_Folder_To_SQL()
 
 	LOG_QWARN << "totally inserted - " << m_SQLs.size() / 2 << ", totally moved - " << m_movedFolders.size();	
 }
-QString DVget( const QString& fieldName, QVariantMap& result )
-{
-	QString fieldValue = "";
-	if ( result.contains( fieldName ) )
-	{
-		fieldValue = result[fieldName].toString();
-		result.remove(fieldName);
-	}
-	return fieldValue;
-}
+
 FVA_ERROR_CODE CLT_Fva_Folder_To_SQL::execute()
 {
 	QVariantMap		dirDesc;
@@ -96,16 +87,16 @@ FVA_ERROR_CODE CLT_Fva_Folder_To_SQL::execute()
 
 	//ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder
 	QString insert =  "insert into fvaFolder values ((select max(ID)+1 from fvaFolder),\"" 
-		+ m_dir.dirName()					+ "\"," 
-		+ DVget( "deviceId", dirDesc)		+ ",\""
-		+ DVget( "tags", dirDesc )			+ "\",\""
-		+ DVget( "people", dirDesc )		+ "\",\""
-		+ DVget( "place", dirDesc )			+ "\",\""
-		+ DVget( "event", dirDesc )			+ "\",\""
-		+ DVget( "reasonPeople", dirDesc )	+ "\",\""
-		+ DVget( "linkedFolder", dirDesc )	+ "\",\""
-		+ DVget( "whoTookFotoId", dirDesc )	+ "\",\""
-		+ DVget( "scaner", dirDesc)			+ "\");";
+		+ m_dir.dirName()						+ "\"," 
+		+ fvaDVget( "deviceId", dirDesc)		+ ",\""
+		+ fvaDVget( "tags", dirDesc )			+ "\",\""
+		+ fvaDVget( "people", dirDesc )			+ "\",\""
+		+ fvaDVget( "place", dirDesc )			+ "\",\""
+		+ fvaDVget( "event", dirDesc )			+ "\",\""
+		+ fvaDVget( "reasonPeople", dirDesc )	+ "\",\""
+		+ fvaDVget( "linkedFolder", dirDesc )	+ "\",\""
+		+ fvaDVget( "whoTookFotoId", dirDesc )	+ "\",\""
+		+ fvaDVget( "scaner", dirDesc)			+ "\");";
 	m_SQLs.push_back(insert);	
 	QString update;
 	QFileInfo info(m_folder);

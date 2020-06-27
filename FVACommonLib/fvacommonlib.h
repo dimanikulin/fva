@@ -74,6 +74,8 @@ const QString	FVA_DESCRIPTION_FILE_NAME			= "description.csv";
 const QString	FVA_DIR_DESCRIPTION_FILE_NAME		= "folderDescription.json";
 const QString	FVA_BACKGROUND_MUSIC_FILE_NAME		= "bgmusic.mid";
 const QString	FVA_DB_NAME							= "fva.db";
+const QString	FVA_DEFAULT_ROOT_DIR				= "C:/FVA/";
+const QString	FVA_TARGET_FOLDER_NAME				= "TARGET_FOLDER_NAME"; 
 
 /*!
  * \brief how many supported files should be in a folder
@@ -92,7 +94,6 @@ const int FVA_UNDEFINED_ID	= -1;
  * \param error - human-readable description of error if any 
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-// --------------------------OUTDATED----------------------------------------------
 FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outputJson, QString& error );
 
 /*!
@@ -102,8 +103,7 @@ FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outp
  * \param error - human-readable description of error if any to be filled up
  * \returns it returns code of error if any or FVA_NO_ERROR if writing was successful
  */
-// --------------------------OUTDATED----------------------------------------------
-FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, const QString& content, QString& error);
+FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, QVariantMap& content, QString& error);
 
 /*!
  * \brief it loads FVA dictionaries from file 
@@ -256,5 +256,13 @@ void fvaFilterTree( const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& 
 	combo->clear(); \
 	for ( auto i = vlist.begin(); i != vlist.end() ; ++i )\
 		combo->addItem ( i->toMap()["name"].toString(), i->toMap()["ID"].toString() );
+
+/*!
+ * \brief it returns a value by a name from resuls and deletes the name and the value after
+ * \param fieldName - name of field
+ * \param result - map to search in and to remove from
+ * \return it returns a value
+ */
+QString fvaDVget( const QString& fieldName, QVariantMap& result );
 
 #endif // FVACOMMONLIB_H

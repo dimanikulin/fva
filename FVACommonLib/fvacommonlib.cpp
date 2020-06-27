@@ -48,20 +48,49 @@ FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outp
 	file.close();
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, const QString& content, QString& error)
+FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, QVariantMap& content, QString& error)
 {
-	QFile fileNew ( path );	
+	//ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder
+	QFileInfo info(path);
+	QString insert =  "insert into fvaFolder values ((select max(ID)+1 from fvaFolder),\"" 
+		+ FVA_TARGET_FOLDER_NAME				+ "\"," 
+		+ fvaDVget( "deviceId", content)		+ ",\""
+		+ fvaDVget( "tags", content )			+ "\",\""
+		+ fvaDVget( "people", content )			+ "\",\""
+		+ fvaDVget( "place", content )			+ "\",\""
+		+ fvaDVget( "event", content )			+ "\",\""
+		+ fvaDVget( "reasonPeople", content )	+ "\",\""
+		+ fvaDVget( "linkedFolder", content )	+ "\",\""
+		+ fvaDVget( "whoTookFotoId", content )	+ "\",\""
+		+ fvaDVget( "scaner", content )			+ "\");";
+
+	QString update = "update fva set FvaFolderId = (select max(ID) from fvaFolder) where Path || \"/\" ||  Name = \"" + FVA_TARGET_FOLDER_NAME + "\";";
+	
+	if ( content.size() )
+	{
+		return FVA_ERROR_INCORRECT_FORMAT;
+	}
+
+	// TODO clean up writeStream << content;
+	// move dir description file for future backup purpose
+	// m_movedFolders.push_back( m_folder );
+	// LOG_QWARN << "converted folder description to SQL:" << m_folder;
+	// return FVA_NO_ERROR;
+
+	QFile fileNew ( FVA_DEFAULT_ROOT_DIR + "12.fvaFolder.sql" );	
 	if ( !fileNew.open( QIODevice::WriteOnly | QIODevice::Text ) )
 	{
 		error = "can not open new description, in " + path;
 		return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;
 	}
 	QTextStream writeStream( &fileNew );
-	writeStream << content;	
+	// TODO clean up writeStream << content;
+	writeStream << insert << "\n" << update;
 	writeStream.flush();
 	fileNew.close();
 
-	SetFileAttributes(path.toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY );
+	// TODO clean up
+	// SetFileAttributes(path.toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY );
 
 	return FVA_NO_ERROR;
 }
@@ -1082,4 +1111,14 @@ void fvaFilterTree( const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& 
 		if ((*idChild)->isFiltered && !fvaitem->isFiltered)
 			fvaitem->isFiltered = true;
 	}							
+}
+QString fvaDVget( const QString& fieldName, QVariantMap& result )
+{
+	QString fieldValue = "";
+	if ( result.contains( fieldName ) )
+	{
+		fieldValue = result[fieldName].toString();
+		result.remove(fieldName);
+	}
+	return fieldValue;
 }
