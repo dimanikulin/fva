@@ -35,7 +35,9 @@ FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outp
 	}
 
 	bool res				= false;
-	QString		jsonData	= QString::fromLocal8Bit ( file.readAll() );
+	QTextCodec* textCodec	= QTextCodec::codecForName("Windows-1251");
+	QTextDecoder* decoder	= new QTextDecoder( textCodec );
+	QString jsonData		= decoder->toUnicode( file.readAll() );	
 	outputJson				= QtJson::Json::parse ( jsonData, res ).toMap();
 	if ( !res )
 	{
@@ -89,7 +91,7 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 		error = "dictionaries file does not exist" ;
 		return FVA_ERROR_CANT_FIND_DICTIONARIES;
 	}
-#ifdef _NEW_DICTIONARY_
+
 	QSqlDatabase dbase = QSqlDatabase::addDatabase("QSQLITE");
     dbase.setDatabaseName(file);
     if (!dbase.open()) 
@@ -180,26 +182,6 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 	}
 	outputData["events"] = list;
 	dbase.close();
-#else
-	// load it
-	QFile _file ( file );
-	if ( !_file.open( QIODevice::ReadOnly ) )
-	{
-		error =  "can not open dictionaries";
-		return FVA_ERROR_CANT_OPEN_DICTIONARIES;
-	}
-
-	bool res				= false;
-	QString		jsonData	= QString::fromLocal8Bit ( _file.readAll() );
-	outputJson				= QtJson::Json::parse ( jsonData, res ).toMap();
-	if ( !res )
-	{
-		error =  "can not load dictionaries";
-		_file.close();
-		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
-	}
-	_file.close();
-#endif
 	return FVA_NO_ERROR;
 }
 
@@ -251,7 +233,7 @@ bool fvaIsInternalFile( const QString& fileName )
 	return (	fileName.toUpper() == FVA_DESCRIPTION_FILE_NAME.toUpper() 
 			||	fileName.toUpper() == FVA_DIR_DESCRIPTION_FILE_NAME.toUpper() 
 			||	fileName.toUpper() == FVA_BACKGROUND_MUSIC_FILE_NAME.toUpper() 
-			||	fileName.toUpper() == FVA_DICTIONARY_NAME  );
+			||	fileName.toUpper() == FVA_DB_NAME  );
 }
 bool fvaIsFVAFile( const QString& extention )
 {
@@ -271,7 +253,8 @@ FVA_FS_TYPE fvaConvertFileExt2FileType ( const QString& extention )
 		|| extention.toUpper()	== "MOV" 
 		|| extention.toUpper()	== "MPG" 
 		|| extention.toUpper()	== "MP4" 
-		|| extention.toUpper()	== "3GP" )
+		|| extention.toUpper()	== "3GP"
+		|| extention.toUpper()	== "MKV")
 		return FVA_FS_TYPE_VIDEO;
 
 	if ( extention.toUpper()	== "WAV" )
@@ -481,7 +464,7 @@ fvaItem::~fvaItem ()
 {
 	for (auto idChild = children.begin(); idChild != children.end(); ++idChild)
 	{
-		if (idChild == nullptr)
+		if (*idChild == nullptr)
 			continue;
 		delete *idChild;
 		*idChild = nullptr;
@@ -884,13 +867,12 @@ QVector<unsigned int> fvaStringToIds(const QString& strList)
 	return result;
 }
 
-FVA_ERROR_CODE fvaLoadItems(FVA_ITEM_MAP& fvaItemsMap, const QString& DBPath, QString& error)
+FVA_ERROR_CODE fvaLoadItems(const QString& rootPath, fvaItem* rootItem, const QString& DBPath, QString& error, int& number)
 {
-	fvaItemsMap.clear();
 	QDir dir ( DBPath );
 	if ( !dir.exists( DBPath ) )
 	{
-		error = "dictionaries file does not exist" ;
+		error = "DB file does not exist";
 		return FVA_ERROR_CANT_FIND_FVA_DB;
 	}
 
@@ -905,33 +887,194 @@ FVA_ERROR_CODE fvaLoadItems(FVA_ITEM_MAP& fvaItemsMap, const QString& DBPath, QS
     if (!query.exec("SELECT * FROM fva")) 
 		return FVA_ERROR_CANT_LOAD_FVA_DB;
 	QSqlRecord		rec = query.record();
-	QVariantList	list;
-	QVariantMap		map;
+	std::map <QString, fvaItem*> fvaFolders;
+	std::map <QString, fvaItem*> fvaFiles;
+	fvaFolders.insert(std::pair<QString, fvaItem*>(rootPath, rootItem));
+	QString Name;
+	QString Path;
     while (query.next()) 
 	{
-		fvaItem item;
+		fvaItem* pItem = new fvaItem;
+		++number;
 		// fill up the item
-		item.type = (query.value(rec.indexOf("Type")) == "1") ? FVA_FS_TYPE_DIR : FVA_FS_TYPE_UNKNOWN;
-		item.dateFrom;
-		item.dateTo;
+		pItem->type		= static_cast<FVA_FS_TYPE> (query.value(rec.indexOf("Type")).toInt());
+				Name	= query.value(rec.indexOf("Name")).toString();
+				Path	= query.value(rec.indexOf("Path")).toString();
+		pItem->fsFullPath = Path + "/" + Name;
 		
-		item.fsFullPath = query.value(rec.indexOf("Name")).toString();
-		item.deviceId = query.value(rec.indexOf("device")).toInt();
+		if ( FVA_FS_TYPE_DIR == pItem->type )
+		{
+			if ( FVA_NO_ERROR != fvaParseDirName( Name, pItem->dateFrom, pItem->dateTo ) )
+			{
+				qCritical() << "incorrect folder name " << Name;
+				delete pItem;
+				continue;
+			}
+			fvaFolders.insert(std::pair<QString, fvaItem*>(pItem->fsFullPath, pItem));
+		}
+		else
+		{
+			if ( FVA_NO_ERROR != fvaParseFileName( Name.split(".",QString::SkipEmptyParts).at(0), pItem->dateFrom ) )
+			{
+				qDebug() << "ERROR!, incorrect file name " << Name;
+				delete pItem;
+				continue;
+			}
+			auto it = fvaFolders.find(Path);
+			if (it != fvaFolders.end())
+			{
+				it->second->children.push_front(pItem);
+			}
+			else
+				fvaFiles.insert(std::pair<QString, fvaItem*>(pItem->fsFullPath, pItem));
+		}
+		
+		/*item.deviceId = query.value(rec.indexOf("device")).toInt();
 		item.peopleIds = fvaStringToIds(query.value(rec.indexOf("people")).toString());
-		item.placeId = query.value(rec.indexOf("place")).toInt();
-		
+		item.placeId = query.value(rec.indexOf("place")).toInt();	
 		item.eventId = query.value(rec.indexOf("d_event")).toInt();
 		item.eventReasonPeopleIds = fvaStringToIds(query.value(rec.indexOf("d_reasonPeople")).toString());
 		item.linkedFolder = query.value(rec.indexOf("d_linkedFolder")).toString();
-
-		item.fsFullPath;
-		item.hasDescriptionData = true;
-		item.isFiltered = false;
 		item.scanerId = query.value(rec.indexOf("f_Scaner")).toInt();
 		item.tagsOrComment = query.value(rec.indexOf( (item.type == FVA_FS_TYPE_DIR) ? "d_tags": "f_Comment" )).toString();
-
-		// add item to a map
-		fvaItemsMap[item.fsFullPath] = item;
+		item.hasDescriptionData = true;*/
+		
+		pItem->isFiltered = true;
     }
+
+	if (fvaFiles.size())
+	{
+		qDebug() << "ERROR!, not empty fvaFiles";
+	}
+
+	QFileInfo fi;
+	for ( auto it = fvaFolders.begin(); it != fvaFolders.end(); ++it )
+	{
+		fi = it->first;
+		/*qDebug() << fi.absolutePath() << " fn=" << fi.fileName() 
+									<< " ad=" << fi.absoluteDir() 
+									<< " bn=" << fi.baseName()
+									<< " bun=" << fi.bundleName();*/
+		auto itF = fvaFolders.find( fi.absolutePath() );
+		if (itF != fvaFolders.end())
+		{
+			itF->second->children.push_front(it->second);
+			// qDebug() << " linked folder to parent-" << fi.absolutePath();
+		}
+	}
+
 	return FVA_NO_ERROR;
 }
+void fvaFilterTree( const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& defFilterDataTime )
+{
+	for ( auto idChild = fvaitem->children.begin(); idChild != fvaitem->children.end(); ++idChild)
+	{
+		// reset previous filtration result
+		(*idChild)->isFiltered = true;
+
+		// 1. filtration by time
+		if (defFilterDataTime		!= filter.dateFrom 
+			&& defFilterDataTime	!= filter.dateTo)
+		{
+			if ( (*idChild)->type == FVA_FS_TYPE_DIR )
+			{
+				if ((*idChild)->dateFrom != (*idChild)->dateTo)
+					(*idChild)->isFiltered = ((*idChild)->dateFrom >= filter.dateFrom)
+									&& ((*idChild)->dateTo <= filter.dateTo);
+				/*qDebug() << "((*idChild)->dateFrom="		<< (*idChild)->dateFrom
+						<< "filter.dateFrom="			<< filter.dateFrom
+						<< "((*idChild)->dateTo="		<< (*idChild)->dateTo
+						<< "filter.dateTo="				<< filter.dateTo;*/
+			}
+			else
+			{
+				(*idChild)->isFiltered = ((*idChild)->dateFrom >= filter.dateFrom) 
+									&& ((*idChild)->dateFrom <= filter.dateTo);
+			}
+		}
+		
+		// 2. filtration by device id
+		if ((*idChild)->isFiltered && !filter.deviceIds.empty())
+		{
+			if ((*idChild)->hasDescriptionData)
+				(*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->deviceId,filter.deviceIds);
+			else
+				(*idChild)->isFiltered = filter.doesIDMatchToFilter(fvaitem->deviceId,filter.deviceIds);
+		}
+		// 3. filtration by event id
+		if ((*idChild)->isFiltered && !filter.eventIds.empty())
+		{
+			if ((*idChild)->hasDescriptionData)
+				(*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->eventId,filter.eventIds);
+			else
+				(*idChild)->isFiltered = filter.doesIDMatchToFilter(fvaitem->eventId,filter.eventIds);
+		}
+
+		// 4. filtration by place ids
+		if ((*idChild)->isFiltered && !filter.placeIds.empty())
+		{
+			if ((*idChild)->hasDescriptionData)
+				(*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->placeId,filter.placeIds);
+			else
+				(*idChild)->isFiltered = filter.doesIDMatchToFilter(fvaitem->placeId,filter.placeIds);
+		}
+		// 5. filtration by people ids
+		if ((*idChild)->isFiltered && !filter.peopleIds.empty()) 
+		{	
+			if ((*idChild)->hasDescriptionData)
+				(*idChild)->isFiltered = filter.doIDsMatchToFilter((*idChild)->peopleIds,filter.peopleIds);
+			else
+				(*idChild)->isFiltered = filter.doIDsMatchToFilter(fvaitem->peopleIds,filter.peopleIds);
+		}
+		// 6. filtration by event, desciption or comment
+		if ((*idChild)->isFiltered && !filter.text.isEmpty() && (*idChild)->hasDescriptionData)
+		{
+			if ( (*idChild)->type == FVA_FS_TYPE_DIR )
+			{
+				(*idChild)->isFiltered = ((*idChild)->description == filter.text);
+				if (!(*idChild)->isFiltered)
+					(*idChild)->isFiltered = ((*idChild)->tagsOrComment == filter.text);
+			}
+		}
+
+		// 7. filtration by event reason people ids
+		if ((*idChild)->isFiltered && !filter.eventReasonPeopleIds.empty()) 
+		{	
+			if ((*idChild)->hasDescriptionData)
+				(*idChild)->isFiltered = filter.doIDsMatchToFilter((*idChild)->eventReasonPeopleIds,filter.eventReasonPeopleIds);
+			else
+				(*idChild)->isFiltered = filter.doIDsMatchToFilter(fvaitem->eventReasonPeopleIds,filter.eventReasonPeopleIds);
+		}
+
+		/*if ((*idChild)->isFiltered)
+			qDebug() << "filtered name = " << (*idChild)->fsFullPath << " hasDescriptionData=" << (*idChild)->hasDescriptionData;
+		*/
+		fvaFilterTree( filter, *idChild, defFilterDataTime );
+
+		// TODO make dir filtered if any child filtered and wiseversa
+		if ((*idChild)->isFiltered && !fvaitem->isFiltered)
+			fvaitem->isFiltered = true;
+	}							
+}
+
+/*
+	// load it
+	QFile _file ( file );
+	if ( !_file.open( QIODevice::ReadOnly ) )
+	{
+		error =  "can not open dictionaries";
+		return FVA_ERROR_CANT_OPEN_DICTIONARIES;
+	}
+
+	bool res				= false;
+	QString		jsonData	= QString::fromLocal8Bit ( _file.readAll() );
+	outputJson				= QtJson::Json::parse ( jsonData, res ).toMap();
+	if ( !res )
+	{
+		error =  "can not load dictionaries";
+		_file.close();
+		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
+	}
+	_file.close();
+#endif
+*/

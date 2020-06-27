@@ -5,9 +5,8 @@
 // 1. make warning level as 4 for all projects
 // 2. threat warning as errors for all projects
 // 3. https://www.projectoxford.ai/demo/face#detection
-// 4. change solutin/projects name to AVF
-// 5 add cmd to merge common event folders 
-// 6 change all hardcored separator to QDir::separator()
+// 4 add cmd to merge common event folders 
+// 5 change all hardcored separator to QDir::separator()
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <QString>
@@ -20,8 +19,6 @@
 
 typedef QMap< QString, QStringList > DESCRIPTIONS_MAP;
 
-#define _NEW_DICTIONARY_
-#define _NEW_DESC_
 #include "fvacommondata.h"
 
 /*!
@@ -76,12 +73,7 @@ enum FVA_ERROR_CODE
 const QString	FVA_DESCRIPTION_FILE_NAME			= "description.csv";
 const QString	FVA_DIR_DESCRIPTION_FILE_NAME		= "folderDescription.json";
 const QString	FVA_BACKGROUND_MUSIC_FILE_NAME		= "bgmusic.mid";
-
-#ifdef _NEW_DICTIONARY_
-const QString	FVA_DICTIONARY_NAME					= "dct.db";
-#else
-const QString	FVA_DICTIONARY_NAME					= "data.json";
-#endif
+const QString	FVA_DB_NAME							= "fva.db";
 
 /*!
  * \brief how many supported files should be in a folder
@@ -95,6 +87,7 @@ const unsigned int FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR	= 2;
  * \param error - human-readable description of error if any 
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
+// --------------------------OUTDATED----------------------------------------------
 FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outputJson, QString& error );
 
 /*!
@@ -104,6 +97,7 @@ FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outp
  * \param error - human-readable description of error if any to be filled up
  * \returns it returns code of error if any or FVA_NO_ERROR if writing was successful
  */
+// --------------------------OUTDATED----------------------------------------------
 FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, const QString& content, QString& error);
 
 /*!
@@ -234,13 +228,23 @@ void fvaUpdateChecks(QTreeWidgetItem *item, int column);
 QVector<unsigned int> fvaStringToIds(const QString& strList);
 
 /*!
- * \brief it loads fva items from DB
- * \param fvaItemsMap map of fva items to be filled up
+ * \brief it loads fva items from DB as a tree 
+ * \param rootPath root folder of FVA structure
+ * \param rootItem root fva item to start loading from
  * \param DBPath path to fva DB
  * \param error error description to be filled up
+ * \param number count of items to be proceeded
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_ERROR_CODE fvaLoadItems(FVA_ITEM_MAP& fvaItemsMap, const QString& DBPath, QString& error);
+FVA_ERROR_CODE fvaLoadItems(const QString& rootPath, fvaItem* rootItem, const QString& DBPath, QString& error, int& number);
+
+/*!
+ * \brief it recursivly filters FVA tree
+ * \param filter - filter condition set
+ * \param fvaitem - fva tree item
+ * \param defFilterDataTime - data+time that is defined as default one
+ */
+void fvaFilterTree( const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& defFilterDataTime );
 
 #define FILL_COMB_FROM_DICT(dict,combo) \
 	vlist = m_dictionaries[dict].toList();\

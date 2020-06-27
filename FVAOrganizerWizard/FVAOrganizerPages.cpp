@@ -71,7 +71,7 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 	QDir _dir(dir); 
 
 	DEVICE_MAP fullDeviceMap;
-	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, QCoreApplication::applicationDirPath() + "/" + FVA_DICTIONARY_NAME);
+	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, QCoreApplication::applicationDirPath() + "/" + FVA_DB_NAME);
 	if ( FVA_NO_ERROR != res )
 	{
 		// TODO make suggestion
@@ -231,7 +231,7 @@ void FVAOrganizerDevicePage::OnChangeDictPressed()
 	QProcess myProcess(this);    
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	QStringList params;
-	params.append(QCoreApplication::applicationDirPath() + "/" + FVA_DICTIONARY_NAME);
+	params.append(QCoreApplication::applicationDirPath() + "/" + FVA_DB_NAME);
 	QString		deviceName_		= ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
 	params.append(deviceName_);
 	myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/FVADictionaryEditor.exe", params);

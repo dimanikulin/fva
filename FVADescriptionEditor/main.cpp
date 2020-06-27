@@ -26,13 +26,13 @@ int main(int argc, char *argv[])
 	else if ( a.arguments().size() == 2 )
 	{
 		dictPath	= a.arguments().at(1);
-		dir			= QDir ( a.applicationDirPath() + "/" + FVA_DICTIONARY_NAME );
+		dir			= QDir ( a.applicationDirPath() + "/" + FVA_DB_NAME );
 		folderMode	= true;
 	}
 	else if ( a.arguments().size() == 1 )
 	{
-		dictPath	= a.applicationDirPath() + "/" + FVA_DICTIONARY_NAME;
-		dir			= QDir ( a.applicationDirPath() + "/" + FVA_DICTIONARY_NAME );
+		dictPath	= a.applicationDirPath() + "/" + FVA_DB_NAME;
+		dir			= QDir ( a.applicationDirPath() + "/" + FVA_DB_NAME );
 		folderMode	= true;
 	}
 

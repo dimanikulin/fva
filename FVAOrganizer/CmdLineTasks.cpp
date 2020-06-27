@@ -446,7 +446,7 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 {
 	DEVICE_MAP deviceMap;
-	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(deviceMap, QCoreApplication::applicationDirPath() + "/" + FVA_DICTIONARY_NAME);
+	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(deviceMap, QCoreApplication::applicationDirPath() + "/" + FVA_DB_NAME);
 	if ( FVA_NO_ERROR != res )
 		return res;
 
