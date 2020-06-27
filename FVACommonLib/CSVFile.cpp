@@ -9,11 +9,18 @@ CSVFile::CSVFile(  )
 
 CSVFile::~CSVFile(  )
 {
-	m_stream->flush();
-	m_stream.release();
+	if ( m_stream.get() )
+	{
+		m_stream->flush();
+		m_stream.release();
+	}
 
-	m_file->close();
-	m_file.release();
+	if ( m_file.get() )
+	{
+		m_file->close();
+		m_file.release();
+	}
+
 }
 
 bool CSVFile::openForRead( const QString& path )
