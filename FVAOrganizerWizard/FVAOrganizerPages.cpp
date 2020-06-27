@@ -147,14 +147,14 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 
 	deviceName	= new QLineEdit;
 	deviceName->setAlignment(Qt::AlignLeft);
-	deviceName->setMaxLength(25);
+	deviceName->setMaxLength(40);
 
 	matchLbl	= new QLabel(tr("Линковочное имя:"));
     matchLbl->setAlignment(Qt::AlignLeft);
 
 	matchName	= new QLineEdit;
     matchName->setAlignment(Qt::AlignLeft);
-	matchName->setMaxLength(25);
+	matchName->setMaxLength(40);
 
 	ownerLbl	= new QLabel(tr("Владелец:"));
     ownerLbl->setAlignment(Qt::AlignLeft);
