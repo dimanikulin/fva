@@ -22,7 +22,14 @@ FVA_ERROR_CODE CmdLineBaseTask::processFolderRecursivly( const QString& folder )
 	QDir recurDir(folder);
 	// qDebug() << "[BASE_CMD]dir for rec:" << folder;
 	Q_FOREACH(QFileInfo info, recurDir.entryInfoList(QDir::NoDotAndDotDot|QDir::System|QDir::Hidden|QDir::AllDirs|QDir::Files,QDir::DirsFirst))
-	{		
+	{
+		// just skip internal folder
+		if ( info.isDir() && info.fileName()[0] == '#' && info.fileName()[info.fileName().size()-1] == '#' )
+		{
+			qDebug() << "skipped internal dir - " << info.absoluteFilePath() ;
+			continue;
+		}
+
 		if ( info.isDir() )
 		{
 			// change folder context on each iteration
