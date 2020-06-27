@@ -1,7 +1,7 @@
 # FVA
 
 ## Version
-0.24
+0.25
  
 ## Creation date
-2019-07-14
+2019-07-25
