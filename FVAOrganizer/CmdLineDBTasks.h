@@ -3,30 +3,51 @@
 
 #include "CmdLineTasks.h"
 
-_CLASS_TASK_DECLARATION(CLT_Fva_File_To_SQL,false)
 _CLASS_TASK_DECLARATION(CLT_Fsaudio_To_SQL,false)
 _CLASS_TASK_DECLARATION(CLT_Fsvideo_To_SQL,false)
 _CLASS_TASK_DECLARATION(CLT_Fsimage_To_SQL,false)
 
-class CLT_Fs_To_SQL : public CmdLineBaseTask
+class CLT_Base_SQL : public CmdLineBaseTask
 {
 public:
-	CLT_Fs_To_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
-	:CmdLineBaseTask( dir_,readOnly_,custom_), m_skippedFiles(0)
-	{
-		qWarning()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_<<",RO=" << (readOnly_?"yes":"no")<<",SRO=" << (supportReadOnly()?"yes":"no"); 
-	}
-	virtual ~CLT_Fs_To_SQL();
-	virtual FVA_ERROR_CODE execute();
-	static QString Name(){return "CLT_Fs_To_SQL";}
+	CLT_Base_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
+	:CmdLineBaseTask( dir_,readOnly_,custom_)
+	{	}
+	virtual ~CLT_Base_SQL()
+	{	}
 	virtual bool supportReadOnly() {return true;}
+	static QString Name(){return "CLT_Base_SQL";}
 
-private: // data
+protected:
 
 	/*!
 	 * SQL inserts
 	 */
-	QVector<QString>		m_inserts;
+	QVector<QString>		m_SQLs;
+
+	/*!
+	 * common work with output
+	 */
+	void SaveSQL( const QString& fileToSaveIn );
+};
+
+class CLT_Fs_To_SQL : public CLT_Base_SQL
+{
+public:
+	CLT_Fs_To_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
+	: CLT_Base_SQL( dir_,readOnly_,custom_), m_skippedFiles(0)
+	{
+		qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()
+						<<"["<< Name().toUpper()
+						<<"]cmd created,dir:" <<dir_
+						<<",RO=" << (readOnly_?"yes":"no")
+						<<",SRO=" << (supportReadOnly()?"yes":"no"); 
+	}
+	virtual ~CLT_Fs_To_SQL();
+	virtual FVA_ERROR_CODE execute();
+	static QString Name(){return "CLT_Fs_To_SQL";}
+	
+private: // data
 
 	/*!
 	 * skipped files number
@@ -34,30 +55,55 @@ private: // data
 	int						m_skippedFiles;
 };
 
-class CLT_Fva_Folder_To_SQL : public CmdLineBaseTask
+class CLT_Fva_Folder_To_SQL : public CLT_Base_SQL
 {
 public:
 	CLT_Fva_Folder_To_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
-	:CmdLineBaseTask( dir_,readOnly_,custom_), m_movedFolders(0)
+	:CLT_Base_SQL( dir_,readOnly_,custom_)
 	{
-		qWarning()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_<<",RO=" << (readOnly_?"yes":"no")<<",SRO=" << (supportReadOnly()?"yes":"no"); 
+		qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()
+					<<"["<< Name().toUpper()
+					<<"]cmd created,dir:" <<dir_
+					<<",RO=" << (readOnly_?"yes":"no")
+					<<",SRO=" << (supportReadOnly()?"yes":"no"); 
 	}
 	virtual ~CLT_Fva_Folder_To_SQL();
 	virtual FVA_ERROR_CODE execute();
 	static QString Name(){return "CLT_Fva_Folder_To_SQL";}
-	virtual bool supportReadOnly() {return true;}
 
 private: // data
 
 	/*!
-	 * SQL inserts
+	 * moved folder descriptions
 	 */
-	QVector<QString>		m_inserts;
+	QVector<QString>		m_movedFolders;
+};
+
+class CLT_Fva_File_To_SQL : public CLT_Base_SQL
+{
+	public:
+		CLT_Fva_File_To_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
+		:CLT_Base_SQL( dir_,readOnly_,custom_)
+		{
+			qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()
+						<<"["<< Name().toUpper()
+						<<"]cmd created,dir:" <<dir_
+						<<",RO=" << (readOnly_?"yes":"no")
+						<<",SRO=" << (supportReadOnly()?"yes":"no"); 
+		}
+		virtual ~CLT_Fva_File_To_SQL();
+		virtual FVA_ERROR_CODE execute();
+		static QString Name(){return "CLT_Fva_File_To_SQL";}
+	
+	private: // data
 
 	/*!
-	 * moved folder number
+	 * moved file descriptions
 	 */
-	int						m_movedFolders;
+	QVector<QString>		m_movedFiles;
+
+
 };
+
 
 #endif // _CMD_LINE_DB_TASKS_H_
