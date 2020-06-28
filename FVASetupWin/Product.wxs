@@ -77,6 +77,7 @@
             <File Id="viewer" Name="FVAViewer.exe" Source="..\fvabin\win32\release\FVAViewer.exe" Vital="yes" KeyPath="no"/>
             <File Id="FVAOrganizer" Name="FVAOrganizer.exe" Source="..\fvabin\win32\release\FVAOrganizer.exe" Vital="yes" KeyPath="no"/>
             <File Id="FVAOrganizerWizard" Name="FVAOrganizerWizard.exe" Source="..\fvabin\win32\release\FVAOrganizerWizard.exe" Vital="yes" KeyPath="no"/>
+            <File Id="FVAConfigurator" Name="FVAConfigurator.exe" Source="..\fvabin\win32\release\FVAConfigurator.exe" Vital="yes" KeyPath="no"/>
           </Component>
         <!--/Directory-->
       </Directory>
