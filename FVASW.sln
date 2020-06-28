@@ -47,6 +47,8 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "FVASetupWin", "FVASetupWin\
 		{F35C7EBB-1A63-41F6-9EDD-89D3FDB94D06} = {F35C7EBB-1A63-41F6-9EDD-89D3FDB94D06}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FVAConfigurator", "FVAConfigurator\FVAConfigurator.vcxproj", "{A5C1B377-1EE8-4ACB-B527-F2D3C7F7E1ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -137,6 +139,16 @@ Global
 		{A62FDC4F-0774-4B83-8072-B445B28EF8C8}.Release|Win32.ActiveCfg = Release|x86
 		{A62FDC4F-0774-4B83-8072-B445B28EF8C8}.Release|x86.ActiveCfg = Release|x86
 		{A62FDC4F-0774-4B83-8072-B445B28EF8C8}.Release|x86.Build.0 = Release|x86
+		{A5C1B377-1EE8-4ACB-B527-F2D3C7F7E1ED}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{A5C1B377-1EE8-4ACB-B527-F2D3C7F7E1ED}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{A5C1B377-1EE8-4ACB-B527-F2D3C7F7E1ED}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A5C1B377-1EE8-4ACB-B527-F2D3C7F7E1ED}.Debug|Win32.Build.0 = Debug|Win32
+		{A5C1B377-1EE8-4ACB-B527-F2D3C7F7E1ED}.Debug|x86.ActiveCfg = Debug|Win32
+		{A5C1B377-1EE8-4ACB-B527-F2D3C7F7E1ED}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{A5C1B377-1EE8-4ACB-B527-F2D3C7F7E1ED}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{A5C1B377-1EE8-4ACB-B527-F2D3C7F7E1ED}.Release|Win32.ActiveCfg = Release|Win32
+		{A5C1B377-1EE8-4ACB-B527-F2D3C7F7E1ED}.Release|Win32.Build.0 = Release|Win32
+		{A5C1B377-1EE8-4ACB-B527-F2D3C7F7E1ED}.Release|x86.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
