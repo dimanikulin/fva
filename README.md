@@ -8,7 +8,7 @@ into the IR multimedia systems like Google Photo, Apple Photo, Synology Photo St
 ## Creation date
 2020-06-27
 
-### what to install
+## what to install
 1. VS 2010
 2. wix36
 3. qt-vs-addin-1.2.1-opensource.exe
