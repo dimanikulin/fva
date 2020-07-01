@@ -78,5 +78,6 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName( const QString&
 	else if ( name == CLT_Fsaudio_To_SQL::Name() )						r.reset( new CLT_Fsaudio_To_SQL (dir, readOnly ) );
 	else if ( name == CLT_Fsvideo_To_SQL::Name() )						r.reset( new CLT_Fsvideo_To_SQL (dir, readOnly ) );
 	else if ( name == CLT_Fsimage_To_SQL::Name() )						r.reset( new CLT_Fsimage_To_SQL (dir, readOnly ) );
+	else if ( name == CLT_Create_FVA_SQL_Desc::Name() )					r.reset( new CLT_Fsimage_To_SQL (dir, readOnly, custom ) );
 	return r;
 }

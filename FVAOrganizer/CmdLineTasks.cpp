@@ -981,3 +981,7 @@ FVA_ERROR_CODE CLT_Print_FS_Structure::execute()
 	}
 	return FVA_NO_ERROR;
 }
+FVA_ERROR_CODE CLT_Create_FVA_SQL_Desc::execute()
+{
+	return FVA_NO_ERROR;
+}
