@@ -3,7 +3,7 @@
 
 void CLT_Base_SQL::SaveSQL( const QString& fileToSaveIn )
 {
-	QFile fileNew ( m_folder + QDir::separator() + fileToSaveIn );	
+	QFile fileNew ( fileToSaveIn );	
 	if ( !fileNew.open( QIODevice::Append | QIODevice::Text ) )
 	{
 		LOG_QCRIT << "can not create fva sql for " << m_folder;
@@ -21,7 +21,7 @@ void CLT_Base_SQL::SaveSQL( const QString& fileToSaveIn )
 
 CLT_Fs_To_SQL::~CLT_Fs_To_SQL()
 {
-	SaveSQL("11.fva.sql");
+	SaveSQL(FVA_DEFAULT_ROOT_DIR + "11.fva.sql");
 	qDebug() << "totally inserted - " << m_SQLs.size() << ", totally skipped - " << m_skippedFiles;
 }
 FVA_ERROR_CODE CLT_Fs_To_SQL::execute()
