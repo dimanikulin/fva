@@ -265,7 +265,7 @@ bool FVAOrganizerDevicePage::validatePage()
 	cmdList.append("CLT_Auto_Checks_1");
 	cmdList.append("CLT_Files_Rename");
 	cmdList.append("CLT_Fs_To_SQL");
-	cmdList.append("CLT_Create_FVA_SQL_Desc");
+	cmdList.append("CLT_Create_FVA_SQL");
 	cmdList.append("CLT_Dir_Struct_Create_By_File");
 	cmdList.append("CLT_Alone_Files_Move");
 	cmdList.append("CLT_Auto_Checks_2");
@@ -294,7 +294,7 @@ bool FVAOrganizerDevicePage::validatePage()
 		if (*it == "CLT_Dir_Struct_Create_By_File")		
 			params.append("custom=" + QString::number(deviceId));
 		
-		if (*it == "CLT_Create_FVA_SQL_Desc")		
+		if (*it == "CLT_Create_FVA_SQL")		
 			params.append("custom=" + QString::number(deviceId));
 
 		myProcess.start("FVAOrganizer.exe",params);
