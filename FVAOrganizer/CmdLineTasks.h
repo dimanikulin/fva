@@ -53,10 +53,6 @@ _CLASS_TASK_DECLARATION(CLT_Dir_Name_Change,false)
  */
 _CLASS_TASK_DECLARATION(CLT_Alone_Files_Move,true)
 
-/*!
- * \brief it creates the fva insert records to add into FVA DB for each file in this folder
- */
-_CLASS_TASK_DECLARATION(CLT_Create_FVA_SQL,true)
 
 /*!
  * \brief it prints file system structure with adding info to compare with fs structure on remote PC 
