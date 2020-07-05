@@ -193,17 +193,7 @@ FVA_ERROR_CODE CLT_Fva_File_To_SQL::execute()
 	return FVA_NO_ERROR;
 }
 
-FVA_ERROR_CODE CLT_Fsaudio_To_SQL::execute()
-{
-	return FVA_NO_ERROR;
-}
-
-FVA_ERROR_CODE CLT_Fsvideo_To_SQL::execute()
-{
-	return FVA_NO_ERROR;
-}
-
-FVA_ERROR_CODE CLT_Fsimage_To_SQL::execute()
+FVA_ERROR_CODE CLT_Create_FVA_SQL::execute()
 {
 	return FVA_NO_ERROR;
 }

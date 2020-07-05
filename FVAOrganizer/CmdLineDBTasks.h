@@ -3,10 +3,6 @@
 
 #include "CmdLineTasks.h"
 
-_CLASS_TASK_DECLARATION(CLT_Fsaudio_To_SQL,false)
-_CLASS_TASK_DECLARATION(CLT_Fsvideo_To_SQL,false)
-_CLASS_TASK_DECLARATION(CLT_Fsimage_To_SQL,false)
-
 class CLT_Base_SQL : public CmdLineBaseTask
 {
 public:
@@ -101,7 +97,6 @@ class CLT_Fva_File_To_SQL : public CLT_Base_SQL
 	 * moved file descriptions
 	 */
 	QVector<QString>		m_movedFiles;
-
 
 };
 
