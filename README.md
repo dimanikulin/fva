@@ -13,3 +13,4 @@ into the IR multimedia systems like Google Photo, Apple Photo, Synology Photo St
 2. wix36
 3. qt-vs-addin-1.2.1-opensource.exe
 4. add new QT version in vs-addin
+5. python-3.8.3-amd64.exe
