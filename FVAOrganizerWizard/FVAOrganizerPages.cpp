@@ -386,15 +386,9 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	}
 	QStringList cmdList;
 	cmdList.append("CLT_Folder_Merging");
-	
-	// change FVA_TARGET_FOLDER_NAME tag to actual folder name for sql files
-	QString pyScriptPath = QCoreApplication::applicationDirPath() + "/#BIN#/updateTargetDirName.py";
-	cmdList.append(QString ("python ") + pyScriptPath + " 11.fva.sql "		+ mergeDirLineEdit->text() );
-	cmdList.append(QString ("python ") + pyScriptPath + " 12.fvaFolder.sql "+ mergeDirLineEdit->text() );
-	cmdList.append(QString ("python ") + pyScriptPath + " 13.fvaFile.sql "	+ mergeDirLineEdit->text() );
-
 	cmdList.append("CLT_Set_File_Atts");
 	
+	// lets run FVA cmd list 
 	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
 	{
 		QProcess myProcess(this);
@@ -426,7 +420,41 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 			//TODO show error
 			return false;
 		}
-	}	
+	}
+	
+	QStringList pyCmdList;
+
+	// change FVA_TARGET_FOLDER_NAME tag to actual folder name for sql files
+	QString pyScriptPath = "python " 
+							+ QCoreApplication::applicationDirPath() 
+							+ "/#BIN#/updateTargetDirName.py " 
+							+ FVA_DEFAULT_ROOT_DIR + " ";
+	pyCmdList.append(pyScriptPath + "11.fva.sql "		+ mergeDirLineEdit->text() );
+	pyCmdList.append(pyScriptPath + "12.fvaFolder.sql "	+ mergeDirLineEdit->text() );
+	pyCmdList.append(pyScriptPath + "13.fvaFile.sql "	+ mergeDirLineEdit->text() );
+	
+	// lets run python cmd list 
+	for (auto it = pyCmdList.begin(); it != pyCmdList.end(); ++it)
+	{
+		QProcess myProcess(this);
+		myProcess.setProcessChannelMode(QProcess::MergedChannels);
+
+		myProcess.start(*it);
+		while(myProcess.waitForReadyRead())
+		{
+			QString output = myProcess.readAll();
+			logOutput->append(output);
+			fileLog.write(output.toStdString().c_str());
+		}
+		myProcess.waitForFinished( -1 );
+
+		int exitCode = myProcess.exitCode();
+		if (exitCode != 0)
+		{
+			//TODO show error
+			return false;
+		}
+	}
 	return true;
 }
 FVAOrganizerDonePage::FVAOrganizerDonePage(void)
