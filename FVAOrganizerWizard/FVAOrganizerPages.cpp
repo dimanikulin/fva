@@ -265,7 +265,7 @@ bool FVAOrganizerDevicePage::validatePage()
 	cmdList.append("CLT_Auto_Checks_1");
 	cmdList.append("CLT_Files_Rename");
 	cmdList.append("CLT_Fs_To_SQL");
-	cmdList.append("CLT_Create_FVA_SQL");
+	cmdList.append("CLT_Create_FVA_SQL"); 
 	cmdList.append("CLT_Dir_Struct_Create_By_File");
 	cmdList.append("CLT_Alone_Files_Move");
 	cmdList.append("CLT_Auto_Checks_2");
@@ -368,6 +368,7 @@ void FVAOrganizerOutputDirPage::OnDirButtonClicked()
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {
 	QString dir = outputDirLineEdit->text();
+	
 	if ( dir.isEmpty() )
 	{
 		// TODO make button be disabled if dir.isEmpty()
@@ -385,7 +386,15 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	}
 	QStringList cmdList;
 	cmdList.append("CLT_Folder_Merging");
+	
+	// change FVA_TARGET_FOLDER_NAME tag to actual folder name for sql files
+	QString pyScriptPath = QCoreApplication::applicationDirPath() + "/#BIN#/updateTargetDirName.py";
+	cmdList.append(QString ("python ") + pyScriptPath + " 11.fva.sql "		+ mergeDirLineEdit->text() );
+	cmdList.append(QString ("python ") + pyScriptPath + " 12.fvaFolder.sql "+ mergeDirLineEdit->text() );
+	cmdList.append(QString ("python ") + pyScriptPath + " 13.fvaFile.sql "	+ mergeDirLineEdit->text() );
+
 	cmdList.append("CLT_Set_File_Atts");
+	
 	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
 	{
 		QProcess myProcess(this);
