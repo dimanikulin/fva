@@ -428,7 +428,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	QString pyScriptPath = "python " 
 							+ QCoreApplication::applicationDirPath() 
 							+ "/#BIN#/updateTargetDirName.py " 
-							+ FVA_DEFAULT_ROOT_DIR + " ";
+							+ FVA_DEFAULT_ROOT_DIR;
 	pyCmdList.append(pyScriptPath + "11.fva.sql "		+ mergeDirLineEdit->text() );
 	pyCmdList.append(pyScriptPath + "12.fvaFolder.sql "	+ mergeDirLineEdit->text() );
 	pyCmdList.append(pyScriptPath + "13.fvaFile.sql "	+ mergeDirLineEdit->text() );
