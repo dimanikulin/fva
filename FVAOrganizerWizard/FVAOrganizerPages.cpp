@@ -335,12 +335,8 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	mergeCheckBox		= new QCheckBox;
 	mergeCheckBox->setText(tr("Слить много подфолдеров в один:"));		
     
-	mergeDirLineEdit = new QLineEdit;
-    mergeDirLineEdit->setText("");
-
 	QGridLayout * mergeLayout = new QGridLayout;
 	mergeLayout->addWidget(mergeCheckBox,0,0);
-	mergeLayout->addWidget(mergeDirLineEdit,0,1);
 
 	logOutput		= new QTextBrowser;
 	
@@ -429,9 +425,9 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 							+ QCoreApplication::applicationDirPath() 
 							+ "/#BIN#/updateTargetDirName.py " 
 							+ FVA_DEFAULT_ROOT_DIR;
-	pyCmdList.append(pyScriptPath + "11.fva.sql "		+ mergeDirLineEdit->text() );
-	pyCmdList.append(pyScriptPath + "12.fvaFolder.sql "	+ mergeDirLineEdit->text() );
-	pyCmdList.append(pyScriptPath + "13.fvaFile.sql "	+ mergeDirLineEdit->text() );
+	pyCmdList.append(pyScriptPath + "11.fva.sql "		+ outputDirLineEdit->text() );
+	pyCmdList.append(pyScriptPath + "12.fvaFolder.sql "	+ outputDirLineEdit->text() );
+	pyCmdList.append(pyScriptPath + "13.fvaFile.sql "	+ outputDirLineEdit->text() );
 	
 	// lets run python cmd list 
 	for (auto it = pyCmdList.begin(); it != pyCmdList.end(); ++it)

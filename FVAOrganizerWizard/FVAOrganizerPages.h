@@ -93,8 +93,6 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 		QTextBrowser*	logOutput;
 
 		QCheckBox*		mergeCheckBox;
-		QLineEdit*		mergeDirLineEdit;
-
 };
 
 class FVAOrganizerDonePage : public QWizardPage
