@@ -215,7 +215,7 @@ FVA_ERROR_CODE CLT_Create_FVA_SQL::execute()
 		update = "update fva set FvaFileId = (select max(ID) from fvaFile) where Path || \"/\" ||  Name = \"" 
 				+ FVA_TARGET_FOLDER_NAME
 				+ "/" 
-				+ info.baseName().toUpper() 
+				+ info.fileName().toUpper() 
 				+ "\";";
 		m_SQLs.push_back(update);
 	}
