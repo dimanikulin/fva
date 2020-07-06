@@ -71,6 +71,8 @@
               <File Id="Qt5OpenGL" Name="Qt5OpenGL.dll"  Source="#BIN#\Qt5OpenGL.dll"  Vital="yes" KeyPath="no"/>
               <File Id="Qt5Widgets" Name="Qt5Widgets.dll"  Source="#BIN#\Qt5Widgets.dll"  Vital="yes" KeyPath="no"/>
 
+              <File Id="updateTargetDirName" Name="updateTargetDirName.py"  Source="..\FVAScripts\updateTargetDirName.py"  Vital="yes" KeyPath="no"/>
+
             </Component>
           </Directory>
           <Component Id="rootFilesComponents" Guid="af4356ff-56aa-4c7c-baca-cd1af6e51267">
