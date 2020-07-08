@@ -1,3 +1,3 @@
-checkCLT2ForRootDir.cmd
-checkFvaDB.cmd
-checkDigiKamDB.cmd
+checkCLT2.cmd >> checkCLT2Results 
+checkFvaDB.cmd >> checkFvaDBResults
+checkDigiKamDB.cmd >> checkDigiKamDBResults
