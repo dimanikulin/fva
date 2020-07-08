@@ -83,6 +83,8 @@
               <File Id="Qt5Network" Name="Qt5Network.dll"  Source="#BIN#\Qt5Network.dll"  Vital="yes" KeyPath="no"/>
               <File Id="Qt5OpenGL" Name="Qt5OpenGL.dll"  Source="#BIN#\Qt5OpenGL.dll"  Vital="yes" KeyPath="no"/>
               <File Id="Qt5Widgets" Name="Qt5Widgets.dll"  Source="#BIN#\Qt5Widgets.dll"  Vital="yes" KeyPath="no"/>
+              <File Id="sqlite3" Name="sqlite3.exe"  Source="#BIN#\sqlite3.exe"  Vital="yes" KeyPath="no"/>
+              
 
             </Component>
           </Directory>
