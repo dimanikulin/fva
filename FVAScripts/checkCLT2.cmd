@@ -1,1 +1,1 @@
-c:/FVA/FVAOrganizer.exe CLT_Auto_Checks_2 "c:/FVA" recursive=yes logvel=4 readonly=yes
+c:/FVA/FVAOrganizer.exe CLT_Auto_Checks_2 "c:/FVA" recursive=yes logvel=4 readonly=yes >> checkCLT2Results
