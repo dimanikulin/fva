@@ -1,0 +1,11 @@
+BEGIN TRANSACTION;
+insert into relationTypes values (1  ,"Родня");
+insert into relationTypes values (2  ,"Друзья");
+insert into relationTypes values (3  ,"Коллеги");
+insert into relationTypes values (4  ,"Одноклассники/одногрупники");
+insert into relationTypes values (0  ,"Без категории");
+insert into peoplerelations values (1  ,"Ребенок", 1);
+insert into peoplerelations values (2  ,"Супруг/а", 1);
+insert into peoplerelations values (3  ,"Кумовство", 1);
+insert into peoplerelations values (10  ,"Друзья", 2);
+COMMIT;
