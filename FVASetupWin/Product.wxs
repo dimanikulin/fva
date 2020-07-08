@@ -12,6 +12,7 @@
       <ComponentRef Id="binJpegrFilesComponents" />
       <ComponentRef Id="binMediaserviceFilesComponents" />
       <ComponentRef Id="binLogsFilesComponents" />
+      <ComponentRef Id="binScripts" />
       <ComponentRef Id="rootFilesComponents" />
 		</Feature>
   </Product>
@@ -41,6 +42,20 @@
                 <CreateFolder />
               </Component>
             </Directory>
+
+            <Directory Id="scripts" Name='scripts'>
+              <Component Id="binScripts" Guid="D4AE1F4B-9CDC-424A-B757-1A970DF59665">
+                <File Id="checkAll" Name="checkAll.cmd" Source="..\FVAScripts\checkAll.cmd"  Vital="yes" KeyPath="no"/>
+                <File Id="checkCLT2" Name="checkCLT2.cmd" Source="..\FVAScripts\checkCLT2.cmd"  Vital="yes" KeyPath="no"/>
+                <File Id="checkDigiKamDB" Name="checkDigiKamDB.cmd" Source="..\FVAScripts\checkDigiKamDB.cmd"  Vital="yes" KeyPath="no"/>
+                <File Id="checkFvaDB" Name="checkFvaDB.cmd" Source="..\FVAScripts\checkFvaDB.cmd"  Vital="yes" KeyPath="no"/>
+                <File Id="createFvaDB.cmd" Name="createFvaDB.cmd" Source="..\FVAScripts\createFvaDB.cmd"  Vital="yes" KeyPath="no"/>
+                <File Id="setAttr" Name="setAttr.cmd" Source="..\FVAScripts\setAttr.cmd"  Vital="yes" KeyPath="no"/>
+                <File Id="updateTargetDirName" Name="updateTargetDirName.py"  Source="..\FVAScripts\updateTargetDirName.py"  Vital="yes" KeyPath="no"/>
+                <CreateFolder />
+              </Component>
+            </Directory>            
+            
             <Directory Id="mediaservice" Name='mediaservice'>
               <Component Id="binMediaserviceFilesComponents" Guid="1ea80614-bc07-4675-96a5-d418a1d67060">
                 <CreateFolder />
@@ -58,8 +73,6 @@
               <File Id="descEditor" Name="FVADescriptionEditor.exe" Source="..\fvabin\win32\release\#BIN#\FVADescriptionEditor.exe" Vital="yes" KeyPath="no"/>
               <File Id="dictEditor" Name="FVADictionaryEditor.exe" Source="..\fvabin\win32\release\#BIN#\FVADictionaryEditor.exe" Vital="yes" KeyPath="no"/>
               <File Id="player" Name="FVAPlayer.exe" Source="..\fvabin\win32\release\#BIN#\FVAPlayer.exe" Vital="yes" KeyPath="no"/>
-              <File Id="CLT1" Name="CLT_Auto_Checks_2_all.bat" Source="#BIN#\CLT_Auto_Checks_2_all.bat"  Vital="yes" KeyPath="no"/>
-              <File Id="CLT2" Name="CLT_Set_Attr_all.bat"  Source="#BIN#\CLT_Set_Attr_all.bat"  Vital="yes" KeyPath="no"/>
               <File Id="conv" Name="Converter.exe" Source="#BIN#\Converter.exe"  Vital="yes" KeyPath="no"/>
               <File Id="exif" Name="exiftool(-k).exe"  Source="#BIN#\exiftool(-k).exe"  Vital="yes" KeyPath="no"/>
  
@@ -70,8 +83,6 @@
               <File Id="Qt5Network" Name="Qt5Network.dll"  Source="#BIN#\Qt5Network.dll"  Vital="yes" KeyPath="no"/>
               <File Id="Qt5OpenGL" Name="Qt5OpenGL.dll"  Source="#BIN#\Qt5OpenGL.dll"  Vital="yes" KeyPath="no"/>
               <File Id="Qt5Widgets" Name="Qt5Widgets.dll"  Source="#BIN#\Qt5Widgets.dll"  Vital="yes" KeyPath="no"/>
-
-              <File Id="updateTargetDirName" Name="updateTargetDirName.py"  Source="..\FVAScripts\updateTargetDirName.py"  Vital="yes" KeyPath="no"/>
 
             </Component>
           </Directory>
