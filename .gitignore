@@ -361,4 +361,8 @@ GeneratedFiles
 
 # binaries
 FVASetupWin/#BIN# 
-FVASetupWin
+FVASetupWin/DebugQTLibs
+
+#ignore custom SQL data
+FVASQL/09.customData.sql
+DebugQTLibs
