@@ -1,2 +1,2 @@
-sqlite3.exe fva.db "select * from checkFvaFolderCount;"
-sqlite3.exe fva.db "select * from checkFvaFileCount;"
+"../sqlite3.exe" "../../digikam4.db" "select * from checkFvaFolderCount;" >> checkFvaDBResults
+"../sqlite3.exe" "../../digikam4.db" "select * from checkFvaFileCount;" >> checkFvaDBResults
