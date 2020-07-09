@@ -60,12 +60,12 @@ bool checkIfParentFileExist( const QFileInfo& fileToCheck, QDateTime& renameDate
 
 	if ( fileToCheck.baseName().contains("_1") )
 	{
-		qWarning() << "[ \"CLT_FILES_RENAME\" ]file cintains _1:" << fileToCheck.absoluteFilePath() << ", rename time to use:" << prevRenameDateTime.addSecs( 1 ).toString( "yyyy-MM-dd-hh-mm-ss" );
+		qWarning() << "[ \"CLT_FILES_RENAME\" ]file contains _1:" << fileToCheck.absoluteFilePath() << ", rename time to use:" << prevRenameDateTime.addSecs( 1 ).toString( "yyyy-MM-dd-hh-mm-ss" );
 		renameDateTime = prevRenameDateTime.addSecs ( 1 );
 	}
 	else if ( fileToCheck.baseName().contains("_2") )
 	{
-		qWarning() << "[ \"CLT_FILES_RENAME\" ]file cintains _2:" << fileToCheck.absoluteFilePath() << ", rename time to use:" << prevRenameDateTime.addSecs( 2 ).toString( "yyyy-MM-dd-hh-mm-ss" );
+		qWarning() << "[ \"CLT_FILES_RENAME\" ]file contains _2:" << fileToCheck.absoluteFilePath() << ", rename time to use:" << prevRenameDateTime.addSecs( 2 ).toString( "yyyy-MM-dd-hh-mm-ss" );
 		renameDateTime = prevRenameDateTime.addSecs ( 2 );	
 	}
 	return false;
