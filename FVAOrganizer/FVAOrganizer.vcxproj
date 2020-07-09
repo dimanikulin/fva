@@ -86,6 +86,7 @@
     <ClCompile Include="CmdLineDBTasks.cpp" />
     <ClCompile Include="CmdLineExecutor.cpp" />
     <ClCompile Include="CmdLineMyTasks.cpp" />
+    <ClCompile Include="CmdLineOldTasks.cpp" />
     <ClCompile Include="CmdLineTasks.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -94,6 +95,7 @@
     <ClInclude Include="CmdLineDBTasks.h" />
     <ClInclude Include="CmdLineExecutor.h" />
     <ClInclude Include="CmdLineMyTasks.h" />
+    <ClInclude Include="CmdLineOldTasks.h" />
     <ClInclude Include="CmdLineTasks.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
