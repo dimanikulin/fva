@@ -9,11 +9,6 @@ extern QMap< unsigned int , unsigned int > sizes;
 #define LOG_QCRIT qCritical()<<"[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]"
 #define LOG_QDEB qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]"
 
-/*!
- * \brief custom paramater value for renaming files with old names
- */
-const QString OLD_FILE_NAME_PARAM = "OLD_NAME";
-
 #define _CLASS_TASK_DECLARATION(name,supReadOnly) class name : public CmdLineBaseTask \
 {\
 public:\
@@ -30,10 +25,7 @@ public:\
  * \brief it creates folder structure by days folders, using file names in input folder
  */
 _CLASS_TASK_DECLARATION(CLT_Dir_Struct_Create_By_File,true)
-/*!
- * \brief it creates folder structure using device names in input folder
- */
-_CLASS_TASK_DECLARATION(CLT_Dir_Struct_Create_By_Device_Name,false)
+
 _CLASS_TASK_DECLARATION(CLT_Files_Rename,false)
 _CLASS_TASK_DECLARATION(CLT_Device_Name_Check,false)
 _CLASS_TASK_DECLARATION(CLT_Files_Rename_By_Dir,false)

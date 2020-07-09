@@ -2,6 +2,7 @@
 #include "CmdLineTasks.h"
 #include "CmdLineMyTasks.h"
 #include "CmdLineDBTasks.h"
+#include "CmdLineOldTasks.h"
 
 #include <qdebug>
 #include <qdir>
