@@ -1,14 +1,6 @@
 #ifndef FVACOMMONLIB_H
 #define FVACOMMONLIB_H
 
-////////////////////////////////TODOTODOTODOTODOTODOTODOTODOTODOTODO/////////////////////////////////////////////
-// 1. make warning level as 4 for all projects
-// 2. threat warning as errors for all projects
-// 3. https://www.projectoxford.ai/demo/face#detection
-// 4 add cmd to merge common event folders 
-// 5 change all hardcored separator to QDir::separator()
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 #include <QString>
 #include <QStringList>
 #include <QVector>

@@ -121,7 +121,7 @@ class fvaFile
 		QString					comment;
 
 		/*!
-		 * TODO - delete it
+		 * name of file
 		 */
 		QString					name;
 

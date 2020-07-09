@@ -521,7 +521,6 @@ FVA_ERROR_CODE CLT_Auto_Checks_1::execute()
 		QString st = info.fileName().mid(0,2).toUpper();
 		if (st == "ST")
 		{
-			// TODO rename to next number
 			LOG_QCRIT << "found panoram file:" << info.absoluteFilePath();
 			return FVA_ERROR_PANORAM_FILE;
 		}
@@ -538,7 +537,6 @@ FVA_ERROR_CODE CLT_Convert_Amr::execute()
 		QString suffix = info.suffix().toUpper();
 		if ( suffix == "AMR" )
 		{
-			// TODO make conversion
 			LOG_QCRIT << "found not supported file:" << info.absoluteFilePath();
 			return FVA_ERROR_NOT_SUPPORTED_FILE;
 		}
@@ -565,7 +563,6 @@ FVA_ERROR_CODE CLT_Folder_Merging::execute()
 	}
 	else
 	{
-		// TODO change folder renaming so it renamed new folder but not one to copy to 
 		if (!subFolder.isEmpty())
 		{
 			if (m_dir.exists(m_custom + subFolder + " #1" + QDir::separator() ))
@@ -597,9 +594,7 @@ FVA_ERROR_CODE CLT_Folder_Merging::execute()
 			continue;	
 		
 		if( !m_dir.rename( original, dest ) )
-		{
-			// TODO check if there is already file exists with the same check-sum
-			
+		{			
 			if(QDir(original).entryInfoList(QDir::NoDotAndDotDot|QDir::AllEntries).count() == 0)
 			{
 				// empty folder now - no need in it to keep

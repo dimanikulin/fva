@@ -183,7 +183,6 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File_Old::execute()
 		{
 			QString error;
 			
-			// TODO to remove QString jsonData = "{\"deviceId\":\"" + m_custom + "\"}";
 			QVariantMap content;
 			content["deviceId"] = m_custom; // m_custom must be device id
 			FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
@@ -383,7 +382,6 @@ FVA_ERROR_CODE CLT_Folder_Merging_Old::execute()
 	}
 	else
 	{
-		// TODO change folder renaming so it renamed new folder but not one to copy to 
 		if (!subFolder.isEmpty())
 		{
 			if (m_dir.exists(m_custom + subFolder + " #1" + QDir::separator() ))
@@ -469,9 +467,7 @@ FVA_ERROR_CODE CLT_Folder_Merging_Old::execute()
 			continue;
 		}
 		if( !m_dir.rename( original, dest ) )
-		{
-			// TODO check if there is already file exists with the same check-sum
-			
+		{			
 			if(QDir(original).entryInfoList(QDir::NoDotAndDotDot|QDir::AllEntries).count() == 0)
 			{
 				// empty folder now - no need in it to keep

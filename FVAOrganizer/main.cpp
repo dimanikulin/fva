@@ -55,7 +55,6 @@ int main( int argc, char *argv[] )
 	QString cmdType, path, recursive, logLevel, readOnly, custom;
 	if ( a.arguments().size() < 3 || a.arguments().size() > 7 )
 	{
-		// TODO print usage
 		// argList[0] /*path*/
 		// argList[1] /*cmdType*/, 
 		// argList[2] /*path to folder or file*/,
