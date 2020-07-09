@@ -21,6 +21,7 @@ public:\
 };\
 
 // name, support read only mode
+
 /*!
  * \brief it creates folder structure by days folders, using file names in input folder
  */
