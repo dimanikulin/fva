@@ -41,4 +41,9 @@ _CLASS_TASK_DECLARATION(CLT_Dir_Struct_Create_By_File_Old,true)
  */
 _CLASS_TASK_DECLARATION(CLT_Alone_Files_Move_Old,true)
 
+/*!
+ * \brief old impl of CLT_Folder_Merging
+ */
+_CLASS_TASK_DECLARATION(CLT_Folder_Merging_Old, false)
+
 #endif // _CMD_LINE_OLD_TASKS_H_
