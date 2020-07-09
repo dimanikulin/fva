@@ -35,16 +35,11 @@ _CLASS_TASK_DECLARATION(CLT_Convert_Amr, false)
 _CLASS_TASK_DECLARATION(CLT_Folder_Merging, false)
 _CLASS_TASK_DECLARATION(CLT_Set_File_Atts, false)
 
-/*!
- * \brief it renames folders with replacing "-" to "."
- */
-_CLASS_TASK_DECLARATION(CLT_Dir_Name_Change,false)
 
 /*!
  * \brief it moves alone (or twins) files to parent folder, with adding their description into parent folder DESCRIPTION_FILE_NAME
  */
 _CLASS_TASK_DECLARATION(CLT_Alone_Files_Move,true)
-
 
 /*!
  * \brief it prints file system structure with adding info to compare with fs structure on remote PC 
