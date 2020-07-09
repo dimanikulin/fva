@@ -28,7 +28,7 @@ _CLASS_TASK_DECLARATION(CLT_Dir_Struct_Create_By_File,true)
 
 _CLASS_TASK_DECLARATION(CLT_Files_Rename,false)
 _CLASS_TASK_DECLARATION(CLT_Device_Name_Check,false)
-_CLASS_TASK_DECLARATION(CLT_Files_Rename_By_Dir,false)
+
 _CLASS_TASK_DECLARATION(CLT_Video_Rename_By_Sequence,false)
 _CLASS_TASK_DECLARATION(CLT_Auto_Checks_1, false)
 _CLASS_TASK_DECLARATION(CLT_Convert_Amr, false)
