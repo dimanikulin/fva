@@ -50,6 +50,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
     </ClCompile>
     <Lib>
       <OutputFile>$(OutDir)\fva.lib</OutputFile>
@@ -66,6 +67,7 @@
       </DebugInformationFormat>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
     </ClCompile>
     <Lib>
       <OutputFile>$(OutDir)\fva.lib</OutputFile>
