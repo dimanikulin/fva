@@ -74,7 +74,7 @@ bool checkIfParentFileExist( const QFileInfo& fileToCheck, QDateTime& renameDate
 void fillRenameDateTimeFromLastModifiedIfValid( const QDir& dir, const QFileInfo& info, QDateTime& renameDateTime )
 {
 	QString dirDate = dir.dirName().mid(0,10);
-	QDateTime validDateStart = QDateTime::fromString( dirDate, "yyyy.MM.dd" );
+	QDateTime validDateStart = QDateTime::fromString( dirDate, FVA_DIR_NAME_FMT );
 				
 	if ( validDateStart.isValid() )
 	{
@@ -104,7 +104,7 @@ FVA_ERROR_CODE CLT_Files_Rename::execute()
 			if ( !checkIfParentFileExist( info, renameDateTime, prevRenameDateTime ) ) 
 			{
 				renameDateTime = QExifImageHeader( info.filePath()).value(QExifImageHeader::DateTimeOriginal).toDateTime();
-				QString _newName = renameDateTime.toString( "yyyy-MM-dd-hh-mm-ss" );
+				QString _newName = renameDateTime.toString( FVA_FILE_NAME_FMT );
 				if ( _newName.isEmpty() )
 					fillRenameDateTimeFromLastModifiedIfValid( m_dir, info, renameDateTime );				
 			}
@@ -132,12 +132,12 @@ FVA_ERROR_CODE CLT_Files_Rename::execute()
 			LOG_QWARN << "unsupported file type:" << info.absoluteFilePath() ;
 			continue;
 		}
-		QString newName = renameDateTime.toString( "yyyy-MM-dd-hh-mm-ss" );
+		QString newName = renameDateTime.toString( FVA_FILE_NAME_FMT );
 		if ( newName.isEmpty() )
 		{
 			LOG_QWARN << "no time in img file:" << info.absoluteFilePath() << ",prev time to use:" << prevRenameDateTime.addSecs( 1 ).toString("yyyy-MM-dd-hh-mm-ss");
 			prevRenameDateTime	= prevRenameDateTime.addSecs( 1 );
-			newName				= prevRenameDateTime.toString( "yyyy-MM-dd-hh-mm-ss" );
+			newName				= prevRenameDateTime.toString( FVA_FILE_NAME_FMT );
 		}
 		else			
 			prevRenameDateTime	= renameDateTime;
@@ -397,10 +397,10 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			}
 			if (dateStart == dateEnd)
 				dateEnd = dateEnd.addYears(1);
-			QDateTime fileDateTime = QDateTime::fromString( baseFileName , "yyyy-MM-dd-hh-mm-ss" );
+			QDateTime fileDateTime = QDateTime::fromString( baseFileName , FVA_FILE_NAME_FMT );
 			QString newFileName = baseFileName.replace( "##","01" );
 			if ( !fileDateTime.isValid() )
-				fileDateTime = QDateTime::fromString( newFileName , "yyyy-MM-dd-hh-mm-ss" );
+				fileDateTime = QDateTime::fromString( newFileName , FVA_FILE_NAME_FMT );
 			if ( ( fileDateTime < dateStart ) ||( fileDateTime > dateEnd ) )
 			{
 				LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath() << " data period=" << dateStart << ";" << dateEnd;

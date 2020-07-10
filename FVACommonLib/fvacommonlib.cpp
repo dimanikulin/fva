@@ -215,7 +215,7 @@ FVA_ERROR_CODE fvaSaveDictionary( const QString& file, QVariantMap& inputJson, Q
 	}
 	else
 	{
-		QString newName = file + "_" + QDateTime::currentDateTime().toString( "yyyy-MM-dd-hh-mm-ss").toAscii().data();
+		QString newName = file + "_" + QDateTime::currentDateTime().toString(FVA_FILE_NAME_FMT).toAscii().data();
 		if ( !dir.rename( file, newName ))
 		{
 			return FVA_ERROR_CANT_OPEN_DICTIONARIES;
@@ -341,7 +341,7 @@ FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTi
 	{
 		case 4: // one year folder
 		{
-			from = QDateTime::fromString( dirName, "yyyy");
+			from = QDateTime::fromString( dirName, FVA_DIR_NAME_YEAR_FMT);
 			if ( !from.isValid() )
 				return FVA_ERROR_WRONG_FOLDER_NAME;
 			to = from/*.addYears(1)*/;
@@ -352,8 +352,8 @@ FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTi
 			if ( dirName[ 4 ] != '-' )
 				return FVA_ERROR_WRONG_FOLDER_NAME;
 
-			from	= QDateTime::fromString( dirName.mid( 0, 4 ), "yyyy");
-			to	= QDateTime::fromString( dirName.mid( 5, 4 ), "yyyy");
+			from	= QDateTime::fromString( dirName.mid( 0, 4 ), FVA_DIR_NAME_YEAR_FMT);
+			to	= QDateTime::fromString( dirName.mid( 5, 4 ), FVA_DIR_NAME_YEAR_FMT);
 
 			if ( !from.isValid() || !to.isValid() )
 				return FVA_ERROR_WRONG_FOLDER_NAME;
@@ -361,7 +361,7 @@ FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTi
 		break;
 		case 10 : // one-day event
 		{
-			from = QDateTime::fromString( dirName, "yyyy.MM.dd");
+			from = QDateTime::fromString( dirName, FVA_DIR_NAME_FMT);
 			if ( !from.isValid() )
 				return FVA_ERROR_WRONG_FOLDER_NAME;
 			to = from.addDays(1); 
@@ -369,7 +369,7 @@ FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTi
 		break;
 		case 13 :
 		{
-			from = QDateTime::fromString( dirName.mid( 0,10 ), "yyyy.MM.dd");
+			from = QDateTime::fromString( dirName.mid( 0,10 ), FVA_DIR_NAME_FMT );
 			if ( !from.isValid() )
 				return FVA_ERROR_WRONG_FOLDER_NAME;
 			if ( dirName [ 10 ]  == ' ' ) // one day and several events
@@ -403,14 +403,14 @@ FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTi
 		break;
 		case 16: //months-day period
 		{
-			from = QDateTime::fromString( dirName.mid( 0,10 ), "yyyy.MM.dd");
+			from = QDateTime::fromString( dirName.mid( 0,10 ), FVA_DIR_NAME_FMT);
 			if ( !from.isValid() )
 				return FVA_ERROR_WRONG_FOLDER_NAME;
 			if ( dirName [ 10 ] != '-' ) // not a period
 				return FVA_ERROR_WRONG_FOLDER_NAME;
 
 			QString sTo = dirName.mid( 0, 4 ) + "." + dirName.mid( 11,5 );
-			to = QDateTime::fromString( sTo, "yyyy.MM.dd");
+			to = QDateTime::fromString( sTo, FVA_DIR_NAME_FMT);
 			if ( !to.isValid() )
 				return FVA_ERROR_WRONG_FOLDER_NAME;
 			to = to.addDays(1);
@@ -456,11 +456,11 @@ FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date )
 			return FVA_NO_ERROR;
 	}
 
-	date = QDateTime::fromString( fileName, "yyyy-MM-dd-hh-mm-ss" );
+	date = QDateTime::fromString( fileName, FVA_FILE_NAME_FMT );
 	if ( !date.isValid() )
 	{
 		QString newFileName = QString(fileName).replace( "##","01" );
-		date = QDateTime::fromString( newFileName, "yyyy-MM-dd-hh-mm-ss" );
+		date = QDateTime::fromString( newFileName, FVA_FILE_NAME_FMT );
 		if ( !date.isValid() )
 		{
 			return FVA_ERROR_WRONG_FILE_NAME;
@@ -603,7 +603,7 @@ QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error)
 {
 	QExifImageHeader header(pathToFile);
 	QDateTime renameDateTime = header.value(QExifImageHeader::DateTimeOriginal).toDateTime();
-	QString _newName = renameDateTime.toString( "yyyy-MM-dd-hh-mm-ss" );
+	QString _newName = renameDateTime.toString( FVA_FILE_NAME_FMT );
 	if (_newName.isEmpty())
 	{
 		RiffParser riffInfo;
