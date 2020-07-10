@@ -65,19 +65,9 @@ enum FVA_ERROR_CODE
 const QString	FVA_DESCRIPTION_FILE_NAME			= "description.csv";
 const QString	FVA_DIR_DESCRIPTION_FILE_NAME		= "folderDescription.json";
 const QString	FVA_BACKGROUND_MUSIC_FILE_NAME		= "bgmusic.mid";
-const QString	FVA_DB_NAME							= "digikam4.db";
-const QString	FVA_DEFAULT_ROOT_DIR				= "C:/FVA/";
+
+
 const QString	FVA_TARGET_FOLDER_NAME				= "TARGET_FOLDER_NAME"; 
-
-/*!
- * \brief custom paramater value for renaming files with old names
- */
-const QString OLD_FILE_NAME_PARAM					= "OLD_NAME";
-
-/*!
- * \brief how many supported files should be in a folder
- */
-const unsigned int FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR	= 2;
 
 /*!
  * \brief id for any object that is not defined
