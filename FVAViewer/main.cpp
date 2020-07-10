@@ -1,6 +1,6 @@
 #include "fvaviewer.h"
 #include <QtGui/QApplication>
-
+#include "fvadefaultcfg.h"
 #include <fstream>
 
 /*!

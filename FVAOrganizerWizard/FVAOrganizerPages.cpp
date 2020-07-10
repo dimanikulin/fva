@@ -7,6 +7,7 @@
 #include <QCoreApplication>
 
 #include "fvacommonlib.h"
+#include "fvadefaultcfg.h"
 
 FVAOrganizerStartPage::FVAOrganizerStartPage()
 {

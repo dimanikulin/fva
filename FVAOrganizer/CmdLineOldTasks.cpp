@@ -1,4 +1,5 @@
 #include "CmdLineOldTasks.h"
+#include "fvadefaultcfg.h"
 
 #include "../lib/qexifimageheader.h"
 

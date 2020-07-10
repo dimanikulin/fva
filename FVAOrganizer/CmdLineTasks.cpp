@@ -1,4 +1,5 @@
 #include "CmdLineTasks.h"
+#include "fvadefaultcfg.h"
 
 #include "../lib/qexifimageheader.h"
 
@@ -148,7 +149,7 @@ FVA_ERROR_CODE CLT_Files_Rename::execute()
 		}
 
 		QString newPath = "";
-		if ( OLD_FILE_NAME_PARAM == m_custom )
+		if ( "OLD_NAME" == m_custom )
 			newPath = m_dir.path() + "/" + newName + "__" + info.baseName() + "." + info.suffix();
 		else
 			newPath = m_dir.path() + "/" + newName + "." + info.suffix();

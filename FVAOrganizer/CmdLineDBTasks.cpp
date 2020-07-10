@@ -1,4 +1,5 @@
 #include "CmdLineDBTasks.h"
+#include "fvadefaultcfg.h"
 #include "FVADescriptionFile.h"
 
 void CLT_Base_SQL::SaveSQL( const QString& fileToSaveIn )

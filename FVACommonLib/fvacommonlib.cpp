@@ -1,4 +1,5 @@
 #include "fvacommonlib.h"
+#include "fvadefaultcfg.h"
 
 #include <QDir>
 #include <QTextStream>
