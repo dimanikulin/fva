@@ -63,5 +63,8 @@
     <ClInclude Include="fvacommondata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="fvadefaultcfg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

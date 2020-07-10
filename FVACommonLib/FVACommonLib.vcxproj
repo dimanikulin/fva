@@ -86,6 +86,7 @@
     <ClInclude Include="CSVFile.h" />
     <ClInclude Include="fvacommondata.h" />
     <ClInclude Include="fvacommonlib.h" />
+    <ClInclude Include="fvadefaultcfg.h" />
     <ClInclude Include="FVADescriptionFile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
