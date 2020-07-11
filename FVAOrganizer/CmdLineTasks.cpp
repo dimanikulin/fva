@@ -271,6 +271,12 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 
 			QString newFilePath	= info.absoluteFilePath().replace( videoFilePrefix, imageFilePrefix ) ;
 
+			// sometimes the file names are already in state as we need
+			if ( info.absoluteFilePath() == newFilePath )
+			{
+				LOG_QWARN << "file has already target name" << info.absoluteFilePath() << ", skipping";
+				continue;
+			}
 			if ( !m_dir.rename( info.absoluteFilePath(), newFilePath ) )
 			{
 				LOG_QCRIT << "can not rename file:" << info.absoluteFilePath() << " to:" << newFilePath;
@@ -278,7 +284,6 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 			}
 			else
 				LOG_QDEB << "renamed file:" << info.absoluteFilePath() << " to:" << newFilePath;
-
 		}
 		else if ( FVA_FS_TYPE_UNKNOWN == fvaConvertFileExt2FileType ( suffix ) )
 		{
@@ -546,7 +551,6 @@ FVA_ERROR_CODE CLT_Convert_Amr::execute()
 }
 FVA_ERROR_CODE CLT_Folder_Merging::execute()
 {
-	// create folder structure the same as in source folder
 	QString subFolder	= m_folder;
 	subFolder.remove(m_baseFolder);
 
@@ -585,6 +589,7 @@ FVA_ERROR_CODE CLT_Folder_Merging::execute()
 		}
 	}
 
+	// create folder structure the same as in source folder
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{				
 		QString original	= m_folder  + QDir::separator() + info.fileName();
@@ -612,7 +617,6 @@ FVA_ERROR_CODE CLT_Folder_Merging::execute()
 			return FVA_ERROR_CANT_MOVE_DIR;
 		}
 		LOG_QDEB << "merged:" << original << " into " << dest;
-		continue;
 	}
 	return FVA_NO_ERROR;
 }
@@ -649,5 +653,33 @@ FVA_ERROR_CODE CLT_Set_File_Atts::execute()
 }
 FVA_ERROR_CODE CLT_One_Event_Folder_Merging::execute()
 {
+	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{				
+		QString original	= m_folder + QDir::separator() + info.fileName();
+		QString dest		= m_custom + QDir::separator() + info.fileName();
+
+		// skip internal folder 
+		if (original.contains("#copy") || dest.contains("#copy"))
+			continue;
+		
+		if( !m_dir.rename( original, dest ) )
+		{			
+			if(QDir(original).entryInfoList(QDir::NoDotAndDotDot|QDir::AllEntries).count() == 0)
+			{
+				// empty folder now - no need in it to keep
+				if (!m_dir.rmdir(original))
+				{
+					LOG_QCRIT << "could not remove empty source:" << original;
+					return FVA_ERROR_CANT_MOVE_DIR;
+				}
+				else
+					continue;
+			}
+			
+			LOG_QCRIT << "could not move:" << original << " into " << dest;
+			return FVA_ERROR_CANT_MOVE_DIR;
+		}
+		LOG_QDEB << "moved:" << original << " into " << dest;
+	}
 	return FVA_NO_ERROR;
 }
