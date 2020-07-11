@@ -382,7 +382,10 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		return false;	
 	}
 	QStringList cmdList;
-	cmdList.append("CLT_Folder_Merging");
+	if (mergeCheckBox->isChecked())
+		cmdList.append("CLT_One_Event_Folder_Merging");
+	else
+		cmdList.append("CLT_Folder_Merging");
 	cmdList.append("CLT_Set_File_Atts");
 	
 	// lets run FVA cmd list 
@@ -392,14 +395,14 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		myProcess.setProcessChannelMode(QProcess::MergedChannels);
 		QStringList params;
 		params.append(*it);
-		if (*it == "CLT_Folder_Merging")	
+		if (*it == "CLT_Folder_Merging" || *it == "CLT_One_Event_Folder_Merging" )	
 			params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
 		else
 			params.append(dir);
 		params.append("recursive=yes");
 		params.append("logvel=4");
 		params.append("readonly=no");
-		if (*it == "CLT_Folder_Merging")
+		if (*it == "CLT_Folder_Merging" || *it == "CLT_One_Event_Folder_Merging")
 			params.append("custom=" + dir);
 
 		myProcess.start("FVAOrganizer.exe",params);
@@ -427,7 +430,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 							+ "/#BIN#/scripts/updateTargetDirName.py " 
 							+ FVA_DEFAULT_ROOT_DIR;
 	pyCmdList.append(pyScriptPath + "11.fva.sql "		+ outputDirLineEdit->text() );
-	pyCmdList.append(pyScriptPath + "12.fvaFolder.sql "	+ outputDirLineEdit->text() );
+	// pyCmdList.append(pyScriptPath + "12.fvaFolder.sql "	+ outputDirLineEdit->text() );
 	pyCmdList.append(pyScriptPath + "13.fvaFile.sql "	+ outputDirLineEdit->text() );
 	
 	// lets run python cmd list 
