@@ -60,6 +60,11 @@ private: // data
 	 * count of files in each subfolder
 	 */
 	QMap<QString, unsigned int>		m_fileCount;
+
+	/*!
+	 * issues found, divided by type (in string format)
+	 */	
+	QVector<QString>				m_Issues;
 };
 
 #endif // _CMD_LINE_TASKS_H_

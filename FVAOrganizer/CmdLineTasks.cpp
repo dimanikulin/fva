@@ -315,6 +315,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 					continue;
 
 				LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
+				m_Issues.push_back("FVA_ERROR_WRONG_FOLDER_NAME," + info.absoluteFilePath());
 				if (m_readOnly)
 					continue;
 				else
@@ -333,6 +334,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			if ( FVA_NO_ERROR != fvaParseFileName(info.baseName(), date))
 			{
 				LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath();
+				m_Issues.push_back("FVA_ERROR_WRONG_FILE_NAME," + info.absoluteFilePath());
 				if (m_readOnly)
 					continue;
 				else
@@ -348,9 +350,11 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 					{
 						LOG_QWARN << "empty device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
 						countSupportedFiles++;	// it is our file
+						m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + info.absoluteFilePath());
 						continue;
 					}
 					LOG_QWARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
+					m_Issues.push_back("FVA_ERROR_UKNOWN_DEVICE," + info.absoluteFilePath());
 					if (m_readOnly)
 						continue;
 					else
@@ -367,12 +371,14 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 				if (!dateTime.isValid())
 				{
 					LOG_QWARN << "empty image taken time found in:" << info.absoluteFilePath();
+					m_Issues.push_back("FVA_ERROR_NULL_TAKEN_TIME," + info.absoluteFilePath());
 				}
 				else
 				{
 					if (dateTime != date)
 					{
 						LOG_QWARN << "mismatching image taken time found in:" << info.absoluteFilePath();
+						m_Issues.push_back("FVA_ERROR_MISMATCH_TAKEN_TIME," + info.absoluteFilePath());
 					}
 				}
 			}
@@ -409,6 +415,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			if ( ( fileDateTime < dateStart ) ||( fileDateTime > dateEnd ) )
 			{
 				LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath() << " data period=" << dateStart << ";" << dateEnd;
+				m_Issues.push_back("FVA_ERROR_NOT_SUPPORTED_FILE," + info.absoluteFilePath());
 				if (m_readOnly)
 					continue;
 				else
@@ -424,6 +431,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 		else
 		{
 			LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath();
+			m_Issues.push_back("FVA_ERROR_NOT_SUPPORTED_FILE," + info.absoluteFilePath());
 			if (!m_readOnly)
 				return FVA_ERROR_NOT_SUPPORTED_FILE;
 		}
@@ -434,6 +442,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 	{
 		// check for to little supported 
 		LOG_QCRIT << "too little supported files found in:" << m_folder;
+		m_Issues.push_back("FVA_ERROR_TOO_LITTLE_FILES," + m_folder);
 		if (!m_readOnly)
 			return FVA_ERROR_TOO_LITTLE_FILES;
 	}
@@ -449,6 +458,14 @@ CLT_Auto_Checks_2::~CLT_Auto_Checks_2()
 	{
 		sizes[it.value()] = ++sizes[it.value()];
 	}
+	QFile fileNew ( FVA_DEFAULT_ROOT_DIR + "issues.csv" );	
+	fileNew.open( QIODevice::Append | QIODevice::Text );
+	QTextStream writeStream( &fileNew );
+	writeStream.setCodec("UTF-8");
+	for ( auto it = m_Issues.begin(); it != m_Issues.end(); ++it )
+		writeStream << *it << "\n";	
+	writeStream.flush();
+	fileNew.close();
 }
 FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 {
