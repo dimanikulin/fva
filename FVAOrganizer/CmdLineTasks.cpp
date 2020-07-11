@@ -647,3 +647,7 @@ FVA_ERROR_CODE CLT_Set_File_Atts::execute()
 	
 	return FVA_NO_ERROR;
 }
+FVA_ERROR_CODE CLT_One_Event_Folder_Merging::execute()
+{
+	return FVA_NO_ERROR;
+}

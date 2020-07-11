@@ -34,6 +34,7 @@ _CLASS_TASK_DECLARATION(CLT_Video_Rename_By_Sequence,false)
 _CLASS_TASK_DECLARATION(CLT_Auto_Checks_1, false)
 _CLASS_TASK_DECLARATION(CLT_Convert_Amr, false)
 _CLASS_TASK_DECLARATION(CLT_Folder_Merging, false)
+_CLASS_TASK_DECLARATION(CLT_One_Event_Folder_Merging, false)
 _CLASS_TASK_DECLARATION(CLT_Set_File_Atts, false)
 
 
