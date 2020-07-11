@@ -186,12 +186,12 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File_Old::execute()
 			
 			QVariantMap content;
 			content["deviceId"] = m_custom; // m_custom must be device id
-			FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
+			/* FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
 			if ( FVA_NO_ERROR != res )
 			{
 				LOG_QCRIT << error;
 				return res;
-			}
+			}*/
 		}
 	}
 
@@ -273,12 +273,12 @@ FVA_ERROR_CODE CLT_Alone_Files_Move_Old::execute()
 
 	QVariantMap result;
 	QString error;
-	FVA_ERROR_CODE code = fvaGetFolderDescription( m_folder, result, error );
+	/*FVA_ERROR_CODE code = fvaGetFolderDescription( m_folder, result, error );
 	if ( FVA_NO_ERROR != code )
 	{
 		LOG_QCRIT << error;
 		return code;
-	}
+	}*/
 	// Name,Place,People,Device,Description,Scaner,Comment,oldName
 	QString oneFileDesc =  "," 
 			+ result["place"].toString()			+ ","

@@ -118,9 +118,9 @@ int main(int argc, char *argv[])
 	{
 		QVariantMap		result;
 		QString			error;
-		FVA_ERROR_CODE	code = fvaGetFolderDescription( fvaPath, result, error );
-		if ( FVA_NO_ERROR != code )
-			return code;
+		//FVA_ERROR_CODE	code = fvaGetFolderDescription( fvaPath, result, error );
+		//if ( FVA_NO_ERROR != code )
+			//return code;
 		// "Name","Place","People","Device","Description","Scaner","Comment","oldName"
 		QFileInfo info(fvaPath);
 		emptyDescription.append(info.fileName().toUpper());

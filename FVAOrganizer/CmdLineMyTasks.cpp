@@ -167,12 +167,12 @@ FVA_ERROR_CODE CLT_Convert_Dir_Desc::execute()
 			return FVA_ERROR_CANT_RENAME_DIR_DESC;
 		}
 		QString error;
-		FVA_ERROR_CODE res = fvaCreateFolderDescription( descFolderPath, result, error );
+		/*FVA_ERROR_CODE res = fvaCreateFolderDescription( descFolderPath, result, error );
 		if ( FVA_NO_ERROR != res )
 		{
 			LOG_QCRIT << error;
 			return res;
-		}
+		}*/
 
 		LOG_QWARN << "updated folder description:" << descFolderPath;
 	}	

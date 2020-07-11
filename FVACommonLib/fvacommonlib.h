@@ -76,24 +76,6 @@ const QString	FVA_TARGET_FOLDER_NAME				= "TARGET_FOLDER_NAME";
 const int FVA_UNDEFINED_ID	= -1;
 
 /*!
- * \brief it loads folder description 
- * \brief folder to load description from
- * \param outputJson output parameter to be filled up by json structure
- * \param error - human-readable description of error if any 
- * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
- */
-FVA_ERROR_CODE fvaGetFolderDescription( const QString& folder, QVariantMap& outputJson, QString& error );
-
-/*!
- * \brief it creates folder description file with content
- * \param path - file path to create folder decsription
- * \param content - json data to be written
- * \param error - human-readable description of error if any to be filled up
- * \returns it returns code of error if any or FVA_NO_ERROR if writing was successful
- */
-FVA_ERROR_CODE fvaCreateFolderDescription (const QString& path, QVariantMap& content, QString& error);
-
-/*!
  * \brief it loads FVA dictionaries from file 
  * \param file to load dictionaries from 
  * \param output output parameter to be filled up by json structures

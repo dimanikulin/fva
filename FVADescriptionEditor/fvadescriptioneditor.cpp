@@ -327,11 +327,11 @@ void FVADescriptionEditor::saveCurrentDescription()
 			}
 		}
 		QString error;
-		FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folderPath + QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
+		/*FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folderPath + QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
 		if ( FVA_NO_ERROR != res )
 		{
 			return;
-		}
+		}*/
 	}
 	else
 	{

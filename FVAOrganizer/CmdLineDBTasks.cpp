@@ -82,10 +82,10 @@ FVA_ERROR_CODE CLT_Fva_Folder_To_SQL::execute()
 {
 	QVariantMap		dirDesc;
 	QString			error;
-	FVA_ERROR_CODE	code = fvaGetFolderDescription( m_folder, dirDesc, error );
+	/*FVA_ERROR_CODE	code = fvaGetFolderDescription( m_folder, dirDesc, error );
 	if ( FVA_NO_ERROR != code )
 		return FVA_NO_ERROR; // yes, it is NOT an error for this CLT
-
+		*/
 	//ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder
 	QString insert =  "insert into fvaFolder values ((select max(ID)+1 from fvaFolder),\"" 
 		+ m_dir.dirName()						+ "\"," 
