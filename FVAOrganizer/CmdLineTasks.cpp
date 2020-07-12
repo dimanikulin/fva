@@ -315,7 +315,6 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 					continue;
 
 				LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
-				m_Issues.push_back("FVA_ERROR_WRONG_FOLDER_NAME," + info.absoluteFilePath() + "," + info.fileName() );
 				if (m_readOnly)
 					continue;
 				else
@@ -442,7 +441,6 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 	{
 		// check for to little supported 
 		LOG_QCRIT << "too little supported files found in:" << m_folder;
-		m_Issues.push_back("FVA_ERROR_TOO_LITTLE_FILES," + m_folder + ", " );
 		if (!m_readOnly)
 			return FVA_ERROR_TOO_LITTLE_FILES;
 	}
