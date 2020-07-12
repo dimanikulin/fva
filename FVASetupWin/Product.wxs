@@ -53,6 +53,7 @@
                 <File Id="createFvaDB.cmd" Name="createFvaDB.cmd" Source="..\FVAScripts\createFvaDB.cmd"  Vital="yes" KeyPath="no"/>
                 <File Id="setAttr" Name="setAttr.cmd" Source="..\FVAScripts\setAttr.cmd"  Vital="yes" KeyPath="no"/>
                 <File Id="updateTargetDirName" Name="updateTargetDirName.py"  Source="..\FVAScripts\updateTargetDirName.py"  Vital="yes" KeyPath="no"/>
+                <File Id="fixCLT2Issues" Name="fixCLT2Issues.py"  Source="..\FVAScripts\fixCLT2Issues.py"  Vital="yes" KeyPath="no"/>
                 <CreateFolder />
               </Component>
             </Directory>
@@ -91,7 +92,8 @@
               <File Id="player" Name="FVAPlayer.exe" Source="..\fvabin\win32\release\#BIN#\FVAPlayer.exe" Vital="yes" KeyPath="no"/>
               <File Id="conv" Name="Converter.exe" Source="#BIN#\Converter.exe"  Vital="yes" KeyPath="no"/>
               <File Id="exif" Name="exiftool(-k).exe"  Source="#BIN#\exiftool(-k).exe"  Vital="yes" KeyPath="no"/>
- 
+              <File Id="jhead" Name="jhead.exe"  Source="#BIN#\jhead.exe"  Vital="yes" KeyPath="no"/>
+
               <File Id="Qt5Core" Name="Qt5Core.dll"  Source="#BIN#\Qt5Core.dll"  Vital="yes" KeyPath="no"/>
               <File Id="Qt5Gui" Name="Qt5Gui.dll"  Source="#BIN#\Qt5Gui.dll"  Vital="yes" KeyPath="no"/>
               <File Id="Qt5Multimedia" Name="Qt5Multimedia.dll"  Source="#BIN#\Qt5Multimedia.dll"  Vital="yes" KeyPath="no"/>
