@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
-insert into params values (1 ,"Version", "0.27");
-insert into params values (2 ,"LastUpdated", "06/28/2020");
-insert into params values (3 ,"isSearchByDateTimeEnabled", "TRUE");
-insert into params values (4 ,"isSearchByLocationEnabled", "TRUE");
+insert into fvaParams values (1 ,"Version", "0.27");
+insert into fvaParams values (2 ,"LastUpdated", "06/28/2020");
+insert into fvaParams values (3 ,"isSearchByDateTimeEnabled", "TRUE");
+insert into fvaParams values (4 ,"isSearchByLocationEnabled", "TRUE");
 
 COMMIT;
