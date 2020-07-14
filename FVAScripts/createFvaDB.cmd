@@ -7,7 +7,3 @@
 "../sqlite3.exe" "../../digikam4.db" < "../sql/07.relationTypes.sql"
 "../sqlite3.exe" "../../digikam4.db" < "../sql/08.params.sql"
 "../sqlite3.exe" "../../digikam4.db" < "../sql/09.customData.sql"
-
-"../sqlite3.exe" "../../digikam4.db" < "../../11.fva.sql"
-"../sqlite3.exe" "../../digikam4.db" < "../../12.fvaFolder.sql"
-"../sqlite3.exe" "../../digikam4.db" < "../../13.fvaFile.sql"
