@@ -84,6 +84,7 @@
   <ItemGroup>
     <ClCompile Include="..\lib\qexifimageheader.cpp" />
     <ClCompile Include="CmdLineBaseTask.cpp" />
+    <ClCompile Include="CmdLineCSVTasks.cpp" />
     <ClCompile Include="CmdLineDBTasks.cpp" />
     <ClCompile Include="CmdLineExecutor.cpp" />
     <ClCompile Include="CmdLineMyTasks.cpp" />
@@ -93,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineBaseTask.h" />
+    <ClInclude Include="CmdLineCSVTasks.h" />
     <ClInclude Include="CmdLineDBTasks.h" />
     <ClInclude Include="CmdLineExecutor.h" />
     <ClInclude Include="CmdLineMyTasks.h" />
