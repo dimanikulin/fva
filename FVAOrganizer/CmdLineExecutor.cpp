@@ -3,6 +3,7 @@
 #include "CmdLineMyTasks.h"
 #include "CmdLineDBTasks.h"
 #include "CmdLineOldTasks.h"
+#include "CmdLineCSVTasks.h"
 
 #include <qdebug>
 #include <qdir>
@@ -76,7 +77,9 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName( const QString&
 	else if ( name == CLT_Fs_To_SQL::Name() )							r.reset( new CLT_Fs_To_SQL (dir, readOnly ) );
 	else if ( name == CLT_Fva_File_To_SQL::Name() )						r.reset( new CLT_Fva_File_To_SQL (dir, readOnly ) );
 	else if ( name == CLT_Fva_Folder_To_SQL::Name() )					r.reset( new CLT_Fva_Folder_To_SQL (dir, readOnly ) );
-	else if ( name == CLT_Create_FVA_SQL::Name() )						r.reset( new CLT_Create_FVA_SQL (dir, readOnly, custom ) );
+	else if ( name == CLT_Create_FVA_SQL::Name() )						r.reset( new CLT_Create_FVA_SQL (dir, readOnly, custom) );
 	else if ( name == CLT_One_Event_Folder_Merging::Name() )			r.reset( new CLT_One_Event_Folder_Merging (dir, readOnly, custom ) );
+	else if ( name == CLT_Fva_Folder_2_CSV::Name() )					r.reset( new CLT_Fva_Folder_2_CSV(dir, readOnly, custom));
+	else if ( name == CLT_Fva_Files_2_CSV::Name() )						r.reset( new CLT_Fva_Files_2_CSV(dir, readOnly, custom));
 	return r;
 }

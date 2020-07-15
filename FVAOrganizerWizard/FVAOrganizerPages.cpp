@@ -265,8 +265,8 @@ bool FVAOrganizerDevicePage::validatePage()
 	cmdList.append("CLT_Device_Name_Check");
 	cmdList.append("CLT_Auto_Checks_1");
 	cmdList.append("CLT_Files_Rename");
-	cmdList.append("CLT_Fs_To_SQL");
-	cmdList.append("CLT_Create_FVA_SQL"); 
+	cmdList.append("CLT_Fva_Files_2_CSV");
+	cmdList.append("CLT_Fva_Folder_2_CSV"); 
 	cmdList.append("CLT_Dir_Struct_Create_By_File");
 	cmdList.append("CLT_Alone_Files_Move");
 	cmdList.append("CLT_Auto_Checks_2");
@@ -429,9 +429,8 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 							+ QCoreApplication::applicationDirPath() 
 							+ "/#BIN#/scripts/updateTargetDirName.py " 
 							+ FVA_DEFAULT_ROOT_DIR;
-	// pyCmdList.append(pyScriptPath + "11.fva.sql "		+ outputDirLineEdit->text() );
-	pyCmdList.append(pyScriptPath + "12.fvaFolder.sql "	+ outputDirLineEdit->text() );
-	pyCmdList.append(pyScriptPath + "13.fvaFile.sql "	+ outputDirLineEdit->text() );
+	pyCmdList.append(pyScriptPath + "fvaFolder.csv "	+ outputDirLineEdit->text() );
+	pyCmdList.append(pyScriptPath + "fvaFile.csv "	+ outputDirLineEdit->text() );
 	
 	// lets run python cmd list 
 	for (auto it = pyCmdList.begin(); it != pyCmdList.end(); ++it)
