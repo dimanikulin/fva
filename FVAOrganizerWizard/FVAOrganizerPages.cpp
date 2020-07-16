@@ -295,7 +295,10 @@ bool FVAOrganizerDevicePage::validatePage()
 		if (*it == "CLT_Dir_Struct_Create_By_File")		
 			params.append("custom=" + QString::number(deviceId));
 		
-		if (*it == "CLT_Create_FVA_SQL")		
+		if (*it == "CLT_Fva_Files_2_CSV")		
+			params.append("custom=" + QString::number(deviceId));
+
+		if (*it == "CLT_Fva_Folder_2_CSV")		
 			params.append("custom=" + QString::number(deviceId));
 
 		myProcess.start("FVAOrganizer.exe",params);
