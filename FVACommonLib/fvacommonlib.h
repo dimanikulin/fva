@@ -67,7 +67,6 @@ const QString	FVA_DESCRIPTION_FILE_NAME			= "description.csv";
 const QString	FVA_DIR_DESCRIPTION_FILE_NAME		= "folderDescription.json";
 const QString	FVA_BACKGROUND_MUSIC_FILE_NAME		= "bgmusic.mid";
 
-
 const QString	FVA_TARGET_FOLDER_NAME				= "TARGET_FOLDER_NAME"; 
 
 /*!
@@ -233,6 +232,23 @@ void fvaFilterTree( const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& 
  * \param result - map to search in and to remove from
  * \return it returns a value
  */
-QString fvaDVget( const QString& fieldName, QVariantMap& result );
+QString fvaDVget(const QString& fieldName, QVariantMap& result );
+
+/*!
+ * \brief it returns an ID value from file by file path provided
+ * \param file - path to file that contains the ID
+ * \param int& - variable to fill up by ID loaded from the file
+ * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
+ */
+FVA_ERROR_CODE fvaGetIDFromFile(const QString& file, int& ID);
+
+/*!
+ * \brief it saves an ID value in file by file path provided (it will delete old file if any!)
+ * \param file - path to file that will contain the ID
+ * \param int - ID to save
+ * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
+ */
+FVA_ERROR_CODE fvaSaveIDInFile(const QString& file, int ID);
 
 #endif // FVACOMMONLIB_H
+

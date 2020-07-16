@@ -1044,3 +1044,13 @@ QString fvaDVget( const QString& fieldName, QVariantMap& result )
 	}
 	return fieldValue;
 }
+
+FVA_ERROR_CODE fvaGetIDFromFile(const QString& file, int& ID)
+{
+	return FVA_NO_ERROR;
+}
+
+FVA_ERROR_CODE fvaSaveIDInFile(const QString& file, int ID)
+{
+	return FVA_NO_ERROR;
+}
