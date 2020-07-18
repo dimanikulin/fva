@@ -58,6 +58,7 @@ enum FVA_ERROR_CODE
 	FVA_ERROR_CANT_OPEN_FVA_DB					= 1036,
 	FVA_ERROR_CANT_LOAD_FVA_DB					= 1037,
 	FVA_ERROR_NOT_IMPLEMENTED					= 1038,
+	FVA_ERROR_CANT_OPEN_ID_FILE					= 1039,
 };
 
 /*!
@@ -243,7 +244,7 @@ QString fvaDVget(const QString& fieldName, QVariantMap& result );
 FVA_ERROR_CODE fvaGetIDFromFile(const QString& file, int& ID);
 
 /*!
- * \brief it saves an ID value in file by file path provided (it will delete old file if any!)
+ * \brief it saves an ID value in file by file path provided (it will delete previous content!)
  * \param file - path to file that will contain the ID
  * \param int - ID to save
  * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful

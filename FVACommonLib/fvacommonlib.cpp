@@ -1045,12 +1045,25 @@ QString fvaDVget( const QString& fieldName, QVariantMap& result )
 	return fieldValue;
 }
 
-FVA_ERROR_CODE fvaGetIDFromFile(const QString& file, int& ID)
+FVA_ERROR_CODE fvaGetIDFromFile(const QString& fileName, int& ID)
 {
+	QFile file( fileName );		
+	if ( !file.open( QIODevice::ReadOnly | QIODevice::Text ) )	
+		return FVA_ERROR_CANT_OPEN_ID_FILE;	
+	QTextStream readStream( &file );
+	readStream >> ID;		
+	file.close();	
 	return FVA_NO_ERROR;
 }
 
-FVA_ERROR_CODE fvaSaveIDInFile(const QString& file, int ID)
+FVA_ERROR_CODE fvaSaveIDInFile(const QString& fileName, int ID)
 {
+	QFile file ( fileName );		
+	if ( !file.open( QIODevice::WriteOnly | QIODevice::Text ) )	
+		return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;	
+	QTextStream writeStream( &file );	
+	writeStream << ID;	
+	writeStream.flush();	
+	file.close();	
 	return FVA_NO_ERROR;
 }
