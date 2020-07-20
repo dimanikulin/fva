@@ -1,5 +1,6 @@
 #include "fvadictionaryeditor.h"
 #include "fvacommonlib.h"
+#include "fvacommondb.h"
 
 FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& device, QWidget *parent)
 	: QDialog	(parent),

@@ -7,6 +7,7 @@
 #include <QTGui/QTreeWidget>
 
 #include "fvacommonlib.h"
+#include "fvacommondata.h"
 #include "FVADescriptionFile.h"
 
 #include "ui_fvaviewer.h"

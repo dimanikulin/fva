@@ -4,7 +4,7 @@
 #include <QtGui/QListWidget>
 #include <QtGui/QProgressDialog>
 #include <QtUiTools/QtUiTools>
-#include "fvacommonlib.h"
+#include "fvacommondb.h"
 
 void FVAViewer::showProgress(const QString& rootDir)
 {

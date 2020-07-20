@@ -8,6 +8,7 @@
 
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
+#include "fvacommondb.h"
 
 FVAOrganizerStartPage::FVAOrganizerStartPage()
 {

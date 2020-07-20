@@ -5,6 +5,7 @@
 #include "ui_fvaorganizerwizard.h"
 
 #include "fvacommonlib.h"
+#include "fvacommondata.h"
 
 class FVAOrganizerWizard : public QWizard
 {

@@ -1,5 +1,7 @@
 #include "CmdLineTasks.h"
 #include "fvadefaultcfg.h"
+#include "fvacommondb.h"
+#include "fvacommondata.h"
 
 #include "../lib/qexifimageheader.h"
 
