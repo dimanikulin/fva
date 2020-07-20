@@ -6,18 +6,8 @@
 #include <QVector> 
 #include <QDateTime>
 
-/*!
- * \brief it enumerates internal valuable file system types
- */
-enum FVA_FS_TYPE
-{
-	FVA_FS_TYPE_UNKNOWN = 0,
-	FVA_FS_TYPE_IMG		= 1,
-	FVA_FS_TYPE_VIDEO	= 2,
-	FVA_FS_TYPE_AUDIO	= 3,
+#include "fvaconstants.h"
 
-	FVA_FS_TYPE_DIR		= 4,
-};
 /*!
  * \brief it describes whole information about device 
  */
@@ -46,8 +36,6 @@ class fvaDevice
 		QString guiName;
 
 };
-
-typedef QMap<int, fvaDevice> DEVICE_MAP;
 
 /*!
  * \brief it keeps fva specific information about a folder
@@ -246,5 +234,14 @@ class fvaFilter
 		 */
 		bool doIDsMatchToFilter(const QVector<unsigned int>& IDs, const QVector<unsigned int>& filterIds) const;
 };
+
+/*!
+ * \brief it recursivly filters FVA tree
+ * \param filter - filter condition set
+ * \param fvaitem - fva tree item
+ * \param defFilterDataTime - data+time that is defined as default one
+ */
+void fvaFilterTree( const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& defFilterDataTime );
+
 
 #endif // FVACOMMONDATA_H
