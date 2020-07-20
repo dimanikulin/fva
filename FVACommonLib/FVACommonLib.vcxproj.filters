@@ -75,5 +75,8 @@
     <ClInclude Include="fvaerrors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="fvaconstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

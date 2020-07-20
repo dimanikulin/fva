@@ -90,6 +90,7 @@
     <ClInclude Include="fvacommondata.h" />
     <ClInclude Include="fvacommondb.h" />
     <ClInclude Include="fvacommonlib.h" />
+    <ClInclude Include="fvaconstants.h" />
     <ClInclude Include="fvadefaultcfg.h" />
     <ClInclude Include="FVADescriptionFile.h" />
     <ClInclude Include="fvaerrors.h" />
