@@ -41,13 +41,13 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 		error =  "can not open dictionaries";
 		return FVA_ERROR_CANT_OPEN_DICTIONARIES;
 	}
-	fillOneDictFromDB(outputData,"relationTypes");
-	fillOneDictFromDB(outputData,"placeTypes");
-	fillOneDictFromDB(outputData,"eventTypes");
+	fillOneDictFromDB(outputData,"fvaRelationTypes");
+	fillOneDictFromDB(outputData,"fvaPlaceTypes");
+	fillOneDictFromDB(outputData,"fvaEventTypes");
 
 	////////// RELATIONS///////////////////
 	QSqlQuery query;
-    if (!query.exec("SELECT * FROM peoplerelations")) 
+    if (!query.exec("SELECT * FROM fvaPeopleRelations")) 
 		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
 	QSqlRecord		rec = query.record();
 	QVariantList	list;
@@ -59,9 +59,9 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 		map["RelationType"]	= query.value(rec.indexOf("RelationType"));
 		list.append(map);
     }
-    outputData["relations"] = list;
+    outputData["fvaRelations"] = list;
 	////////// DEVICES///////////////////
-    if (!query.exec("SELECT * FROM devices ")) 
+    if (!query.exec("SELECT * FROM fvaDevices ")) 
 		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
 	rec = query.record();
 	list.clear();
@@ -73,10 +73,10 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 		map["LinkedName"]	= query.value(rec.indexOf("LinkedName"));
 		list.append(map);
     }
-    outputData["devices"] = list;
+    outputData["fvaDevices"] = list;
 
 	/////////////////////PEOPLE///////////////////
-    if (!query.exec("select *, (select name from people p1 where p.RelPersonID = p1.ID  ) relname from people p ")) 
+    if (!query.exec("select *, (select name from fvaPeople p1 where p.RelPersonID = p1.ID  ) relname from fvaPeople p ")) 
 		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
 	rec = query.record();
 	list.clear();
@@ -90,10 +90,10 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 		map["RelPersonID"]	= query.value(rec.indexOf("RelPersonID"));
 		list.append(map);
     }
-    outputData["people"] = list;
+    outputData["fvaPeople"] = list;
 
 	/////////////////////PLACES///////////////////
-    if (!query.exec("select * from places ")) 
+    if (!query.exec("select * from fvaPlaces ")) 
 		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
 	rec = query.record();
 	list.clear();
@@ -104,10 +104,10 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 		map["type"]			= query.value(rec.indexOf("Type"));
 		list.append(map);
 	}
-	outputData["places"] = list;
+	outputData["fvaPlaces"] = list;
 
 	/////////////////////EVENTS///////////////////
-    if (!query.exec("select *, et.Name as etName from eventrelations er, eventTypes et where er.Type=et.ID")) 
+    if (!query.exec("select *, et.Name as etName from fvaEventRelations er, fvaEventTypes et where er.Type=et.ID")) 
 		return FVA_ERROR_CANT_LOAD_DICTIONARIES;
 	rec = query.record();
 	list.clear();
@@ -122,7 +122,7 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 							+ ")"; 
 		list.append(map);
 	}
-	outputData["events"] = list;
+	outputData["fvaEvents"] = list;
 	dbase.close();
 	return FVA_NO_ERROR;
 }
@@ -178,8 +178,8 @@ FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QStri
 	if ( FVA_NO_ERROR != res )
 		return res;
 
-	QVariantList vlist = dictionaries["devices"].toList();
-	QVariantList people = dictionaries["people"].toList();
+	QVariantList vlist = dictionaries["fvaDevices"].toList();
+	QVariantList people = dictionaries["fvaPeople"].toList();
 
 	for ( auto it = vlist.begin(); vlist.end() != it; ++it)
 	{
