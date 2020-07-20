@@ -79,6 +79,7 @@
     <ClCompile Include="..\lib\qexifimageheader.cpp" />
     <ClCompile Include="CSVFile.cpp" />
     <ClCompile Include="fvacommondata.cpp" />
+    <ClCompile Include="fvacommondb.cpp" />
     <ClCompile Include="fvacommonlib.cpp" />
     <ClCompile Include="FVADescriptionFile.cpp" />
     <ClCompile Include="RiffParser.cpp" />
@@ -87,6 +88,7 @@
     <ClInclude Include="..\lib\json\json.h" />
     <ClInclude Include="CSVFile.h" />
     <ClInclude Include="fvacommondata.h" />
+    <ClInclude Include="fvacommondb.h" />
     <ClInclude Include="fvacommonlib.h" />
     <ClInclude Include="fvadefaultcfg.h" />
     <ClInclude Include="FVADescriptionFile.h" />

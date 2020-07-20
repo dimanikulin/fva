@@ -55,4 +55,3 @@ FVA_ERROR_CODE CLT_Fva_Files_2_CSV::execute()
 	fileNew.close();	
 	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"fvaFile.id", ID + 1);
 }
-
