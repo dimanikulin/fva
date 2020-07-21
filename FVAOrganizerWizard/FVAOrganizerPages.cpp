@@ -272,7 +272,7 @@ bool FVAOrganizerDevicePage::validatePage()
 	cmdList.append("CLT_Alone_Files_Move");
 	cmdList.append("CLT_Auto_Checks_2");
 
-	QString logPath = QCoreApplication::applicationDirPath() + "/#BIN#/LOGS/organizerlog"  
+	QString logPath = QCoreApplication::applicationDirPath() + "/organizerlog"  
 					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toAscii().data()
 					+ ".txt"; 
 	QFile fileLog(logPath);
@@ -376,7 +376,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		return false;
 	}
 
-	QString logPath = QCoreApplication::applicationDirPath() + "/#BIN#/LOGS/organizerlog"  
+	QString logPath = QCoreApplication::applicationDirPath() + "/organizerlog"  
 					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toAscii().data()
 					+ ".txt"; 
 	QFile fileLog(logPath);
