@@ -54,6 +54,7 @@
                 <File Id="setAttr" Name="setAttr.cmd" Source="..\FVAScripts\setAttr.cmd"  Vital="yes" KeyPath="no"/>
                 <File Id="updateTargetDirName" Name="updateTargetDirName.py"  Source="..\FVAScripts\updateTargetDirName.py"  Vital="yes" KeyPath="no"/>
                 <File Id="fixCLT2Issues" Name="fixCLT2Issues.py"  Source="..\FVAScripts\fixCLT2Issues.py"  Vital="yes" KeyPath="no"/>
+                <File Id="merge2csv" Name="merge2csv.py"  Source="..\FVAScripts\merge2csv.py"  Vital="yes" KeyPath="no"/>
                 <CreateFolder />
               </Component>
             </Directory>
