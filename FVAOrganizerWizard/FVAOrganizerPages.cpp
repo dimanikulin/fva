@@ -443,11 +443,11 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	pyCmdList.append(pyScriptPathMerge + "fvaFolder.csv " + FVA_DEFAULT_ROOT_DIR + "fvaFolderN.csv ");
 
 	// merge 2 csv into one: previpus and new ones - for file CSVs
-	QString pyScriptPathMerge = "python " 
+	QString pyScriptPathMerge2 = "python " 
 							+ QCoreApplication::applicationDirPath() 
 							+ "/#BIN#/scripts/merge2csv.py " 
 							+ FVA_DEFAULT_ROOT_DIR;
-	pyCmdList.append(pyScriptPathMerge + "fvaFile.csv " + FVA_DEFAULT_ROOT_DIR + "fvaFileN.csv " );
+	pyCmdList.append(pyScriptPathMerge2 + "fvaFile.csv " + FVA_DEFAULT_ROOT_DIR + "fvaFileN.csv " );
 
 	// lets run python cmd list 
 	for (auto it = pyCmdList.begin(); it != pyCmdList.end(); ++it)
