@@ -433,9 +433,22 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 							+ QCoreApplication::applicationDirPath() 
 							+ "/#BIN#/scripts/updateTargetDirName.py " 
 							+ FVA_DEFAULT_ROOT_DIR;
-	pyCmdList.append(pyScriptPath + "fvaFolder.csv "	+ outputDirLineEdit->text() );
-	pyCmdList.append(pyScriptPath + "fvaFile.csv "	+ outputDirLineEdit->text() );
-	
+	pyCmdList.append(pyScriptPath + "fvaFolderN.csv "	+ outputDirLineEdit->text() );
+
+	// merge 2 csv into one: previpus and new ones - for folder CSVs
+	QString pyScriptPathMerge = "python " 
+							+ QCoreApplication::applicationDirPath() 
+							+ "/#BIN#/scripts/merge2csv.py " 
+							+ FVA_DEFAULT_ROOT_DIR;
+	pyCmdList.append(pyScriptPathMerge + "fvaFolder.csv " + FVA_DEFAULT_ROOT_DIR + "fvaFolderN.csv ");
+
+	// merge 2 csv into one: previpus and new ones - for file CSVs
+	QString pyScriptPathMerge = "python " 
+							+ QCoreApplication::applicationDirPath() 
+							+ "/#BIN#/scripts/merge2csv.py " 
+							+ FVA_DEFAULT_ROOT_DIR;
+	pyCmdList.append(pyScriptPathMerge + "fvaFile.csv " + FVA_DEFAULT_ROOT_DIR + "fvaFileN.csv " );
+
 	// lets run python cmd list 
 	for (auto it = pyCmdList.begin(); it != pyCmdList.end(); ++it)
 	{
