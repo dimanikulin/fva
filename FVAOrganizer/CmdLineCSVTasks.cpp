@@ -8,7 +8,7 @@ FVA_ERROR_CODE CLT_Fva_Folder_2_CSV::execute()
 	FVA_ERROR_CODE error = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"fvaFolder.id", ID);
 	if (error != FVA_NO_ERROR)
 		return error;
-	QString csvRecord =  QString::number(ID++) + "," // ID
+	QString csvRecord =  QString::number(++ID) + "," // ID
 		+ FVA_TARGET_FOLDER_NAME		+ "," // Name	
 		+ m_custom						// DevId
 		+ ",,,,,,,,";	//Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,
@@ -46,12 +46,12 @@ FVA_ERROR_CODE CLT_Fva_Files_2_CSV::execute()
 			continue;
 		}
 		// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,OldName,WhoTook,OldName1
-		QString csvRecord =  QString::number(ID++) + "," // ID
+		QString csvRecord =  QString::number(++ID) + "," // ID
 			+ info.fileName() + ",,," // Name
 			+ m_custom	+ ",,,,,,"; // m_custom here is device id
 		writeStream << csvRecord << "\n";		
 	}
 	writeStream.flush();
 	fileNew.close();	
-	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"fvaFile.id", ID + 1);
+	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"fvaFile.id", ID);
 }
