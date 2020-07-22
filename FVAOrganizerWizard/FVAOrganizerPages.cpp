@@ -433,7 +433,10 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 							+ QCoreApplication::applicationDirPath() 
 							+ "/#BIN#/scripts/updateTargetDirName.py " 
 							+ FVA_DEFAULT_ROOT_DIR;
-	pyCmdList.append(pyScriptPath + "fvaFolderN.csv "	+ outputDirLineEdit->text() );
+	QString mergeDir = outputDirLineEdit->text();
+	mergeDir = mergeDir.replace("\\","/");  // replace slaches on backslashes
+	mergeDir = mergeDir.remove(FVA_DEFAULT_ROOT_DIR); // remove a prefix as root dir
+	pyCmdList.append(pyScriptPath + "fvaFolderN.csv "	+ mergeDir);
 
 	// merge 2 csv into one: previpus and new ones - for folder CSVs
 	QString pyScriptPathMerge = "python " 
