@@ -1,6 +1,7 @@
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
 #include "fvacommondata.h"
+#include "fvadescriptionfile.h"
 
 #include <QDir>
 #include <QTextStream>
@@ -684,5 +685,11 @@ FVA_ERROR_CODE fvaSaveIDInFile(const QString& fileName, int ID)
 	writeStream << ID;	
 	writeStream.flush();	
 	file.close();	
+	return FVA_NO_ERROR;
+}
+FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID)
+{
+	// firstly - try to get device if from fvaFile.csv as it has high priority 
+	FVADescriptionFile fvaFile;
 	return FVA_NO_ERROR;
 }

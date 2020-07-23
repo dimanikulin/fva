@@ -65,6 +65,14 @@ FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date );
 DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pathToFile, QString& deviceName); 
 
 /*!
+ * \brief it returns device ID by file name from fva information saved in CSV files
+ * \param fvaFile (not full path, just "1212.jpg")
+ * \param deviceID - output parameter to contain device ID
+ * \returns it returns code of error if any or FVA_NO_ERROR if device ID has been retrieved
+ */
+FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID);
+
+/*!
  * \brief it tries to get time a video taken at from header
  * \param pathToFile a path to video file
  * \param error error description
@@ -101,7 +109,6 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
  * \param devices - need to insert devices
  */
 void fvaFindCheckedItem(QTreeWidgetItem *item, QVector<unsigned int>& Ids);
-
 
 /*!
  * \brief it recursivle update checked 
