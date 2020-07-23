@@ -341,7 +341,15 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 				else
 					return FVA_ERROR_WRONG_FILE_NAME;
 			}
-			//////////////////////////////////// 3. check for exsiting device in dictionary by device name in pictire 
+			//////////////////////////////////// 3. check for exsiting device in fva info by fileName 
+			int deviceID = FVA_UNDEFINED_ID;
+			FVA_ERROR_CODE res = fvaGetDeviceIdFromFvaInfo(info.fileName(), deviceID);
+			if (FVA_NO_ERROR != res)
+			{
+				LOG_QWARN << "not fva file found: " << info.absoluteFilePath();
+				m_Issues.push_back("FVA_ERROR_NOT_REGISTERED_FVA_FILE," + info.absoluteFilePath() + "," + info.fileName() );
+			}
+			//////////////////////////////////// 4. check for exsiting device in dictionary by device name in pictire 
 			if (FVA_FS_TYPE_IMG == type)
 			{
 				QString deviceName;
@@ -363,7 +371,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 				}
 			}
 
-			////////////////////////////////// 4. check for matching taken time and file name//////////////////////////
+			////////////////////////////////// 5. check for matching taken time and file name//////////////////////////
 			if (FVA_FS_TYPE_IMG == type)
 			{
 				QString error;
@@ -393,7 +401,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 				}
 			}
 
-			//////////////////////////////////// 5. MATCHING FILE NAME AND FOLDER NAME ////////////////////////////////////////////////////
+			//////////////////////////////////// 6. MATCHING FILE NAME AND FOLDER NAME ////////////////////////////////////////////////////
 			QDateTime dateStart, dateEnd;
 			if ( FVA_NO_ERROR != fvaParseDirName( m_dir.dirName(), dateStart, dateEnd))
 			{
