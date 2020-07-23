@@ -690,6 +690,39 @@ FVA_ERROR_CODE fvaSaveIDInFile(const QString& fileName, int ID)
 FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID)
 {
 	// firstly - try to get device if from fvaFile.csv as it has high priority 
-	FVADescriptionFile fvaFile;
-	return FVA_NO_ERROR;
-}
+	FVADescriptionFile fvaFileCsv;
+	QStringList			titles; 
+	DESCRIPTIONS_MAP	decsItems;
+	FVA_ERROR_CODE error = fvaFileCsv.load( FVA_DEFAULT_ROOT_DIR + "fvaFile.csv", titles, decsItems); 
+	if (FVA_NO_ERROR != error)
+		return error;
+	
+	// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,OldName,WhoTook,OldName1
+	int columnDevId = FVADescriptionFile::getColumnIdByName(titles,"DevId");
+	if ( -1 != columnDevId )
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnName = FVADescriptionFile::getColumnIdByName(titles,"Name");
+	if ( -1 != columnName )
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	deviceID = FVA_UNDEFINED_ID;
+
+	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
+	{
+		QStringList list = it.value();
+		if (list[columnName] == fvaFile)
+		{
+			if (deviceID == FVA_UNDEFINED_ID)
+			{
+				deviceID = list[columnDevId].remove("\t").toUInt();
+				return FVA_NO_ERROR;
+			}
+			else
+				return FVA_ERROR_NON_UNIQUE_FVA_INFO;
+		}
+	}
+	// we did not find it on fvafile info, lets try to find it in folder fva info
+
+	return FVA_ERROR_NOT_REGISTERED_FVA_FILE;
+};
