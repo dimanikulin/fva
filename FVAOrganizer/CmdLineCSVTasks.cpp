@@ -11,7 +11,7 @@ FVA_ERROR_CODE CLT_Fva_Folder_2_CSV::execute()
 	QString csvRecord =  QString::number(++ID) + "," // ID
 		+ FVA_TARGET_FOLDER_NAME		+ "," // Name	
 		+ m_custom						// DevId
-		+ ",,,,,,,,";	//Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,
+		+ ",,,,,,,,";	//Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
 
 	QFile fileNew ( FVA_DEFAULT_ROOT_DIR + "fvaFolderN.csv" );		
 	if ( !fileNew.open( QIODevice::WriteOnly | QIODevice::Text ) )	
