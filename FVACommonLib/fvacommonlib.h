@@ -74,6 +74,14 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
 FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID, const QString& dir);
 
 /*!
+ * \brief it loads fva information saved in CSV files
+ * \param - titles fva file info of to fill up
+ * \param - decsItems - fva file info ti fill up
+ * \returns it returns code of error if any or FVA_NO_ERROR if info was loaded
+ */
+FVA_ERROR_CODE fvaLoadFvaFileInfo(QStringList& titles, DESCRIPTIONS_MAP& decsItems);
+
+/*!
  * \brief it tries to get time a video taken at from header
  * \param pathToFile a path to video file
  * \param error error description

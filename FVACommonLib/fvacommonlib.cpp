@@ -687,16 +687,17 @@ FVA_ERROR_CODE fvaSaveIDInFile(const QString& fileName, int ID)
 	file.close();	
 	return FVA_NO_ERROR;
 }
-
+FVA_ERROR_CODE fvaLoadFvaFileInfo(QStringList& titles, DESCRIPTIONS_MAP& decsItems)
+{
+	FVADescriptionFile fvaFileCsv;
+	return fvaFileCsv.load( FVA_DEFAULT_ROOT_DIR + "fvaFile.csv", titles, decsItems); 
+}
 FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID,const QString& dir)
 {
 	// firstly - try to get device if from fvaFile.csv as it has high priority 
-	FVADescriptionFile fvaFileCsv;
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_ERROR_CODE error = fvaFileCsv.load( FVA_DEFAULT_ROOT_DIR + "fvaFile.csv", titles, decsItems); 
-	if (FVA_NO_ERROR != error)
-		return error;
+	FVA_ERROR_CODE error = fvaLoadFvaFileInfo(titles, decsItems);
 	
 	// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,OldName,WhoTook,OldName1
 	int columnDevId = FVADescriptionFile::getColumnIdByName(titles,"DevId");
