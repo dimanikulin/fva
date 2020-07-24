@@ -68,9 +68,10 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
  * \brief it returns device ID by file name from fva information saved in CSV files
  * \param fvaFile (not full path, just "1212.jpg")
  * \param deviceID - output parameter to contain device ID
+ * \param dir - the directory where the file is located
  * \returns it returns code of error if any or FVA_NO_ERROR if device ID has been retrieved
  */
-FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID);
+FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID, const QString& dir);
 
 /*!
  * \brief it tries to get time a video taken at from header
