@@ -687,7 +687,8 @@ FVA_ERROR_CODE fvaSaveIDInFile(const QString& fileName, int ID)
 	file.close();	
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID)
+
+FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID,const QString& dir)
 {
 	// firstly - try to get device if from fvaFile.csv as it has high priority 
 	FVADescriptionFile fvaFileCsv;
@@ -699,11 +700,11 @@ FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID)
 	
 	// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,OldName,WhoTook,OldName1
 	int columnDevId = FVADescriptionFile::getColumnIdByName(titles,"DevId");
-	if ( -1 != columnDevId )
+	if ( -1 == columnDevId )
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
 	int columnName = FVADescriptionFile::getColumnIdByName(titles,"Name");
-	if ( -1 != columnName )
+	if ( -1 == columnName )
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
 	deviceID = FVA_UNDEFINED_ID;
@@ -722,7 +723,54 @@ FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID)
 				return FVA_ERROR_NON_UNIQUE_FVA_INFO;
 		}
 	}
-	// we did not find it on fvafile info, lets try to find it in folder fva info
 
-	return FVA_ERROR_NOT_REGISTERED_FVA_FILE;
+	// we did not find it on fvafile info, lets try to find it in folder fva info
+	FVADescriptionFile fvaFolderCsv;
+	QStringList			titlesD; 
+	DESCRIPTIONS_MAP	decsItemsD;
+	FVA_ERROR_CODE errorD = fvaFolderCsv.load(FVA_DEFAULT_ROOT_DIR + "fvaFolder.csv", titlesD, decsItemsD); 
+	if (FVA_NO_ERROR != error)
+		return error;
+
+	// ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
+	int columnDevIdD = FVADescriptionFile::getColumnIdByName(titlesD,"DevId");
+	if ( -1 == columnDevIdD )
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnNameD = FVADescriptionFile::getColumnIdByName(titlesD,"Name");
+	if ( -1 == columnNameD )
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	QString dirToMatch = dir;
+		dirToMatch = dirToMatch.replace("\\","/");  // replace slaches on backslashes
+		dirToMatch = dirToMatch.remove(FVA_DEFAULT_ROOT_DIR); // remove a prefix as root dir
+		dirToMatch = "/" + dirToMatch;
+
+	for (DESCRIPTIONS_MAP::Iterator it = decsItemsD.begin(); it != decsItemsD.end(); ++it)
+	{
+		QStringList list = it.value();
+		
+		if (list[columnNameD] == dirToMatch)
+		{
+			if (deviceID == FVA_UNDEFINED_ID)
+			{
+				deviceID = list[columnDevIdD].remove("\t").toUInt();
+				
+				QFile file ( FVA_DEFAULT_ROOT_DIR + "fvaFileNoDevId.csv" );		
+				file.open( QIODevice::WriteOnly | QIODevice::Append );	
+				int ID = FVA_UNDEFINED_ID;
+				fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"fvaFile.id", ID);
+				QTextStream writeStream( &file );
+				writeStream << QString::number(++ID) << "," << fvaFile << ",,," <<  QString::number(deviceID) << ",,,,,,\n" ;
+				fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"fvaFile.id", ID);
+				file.close();
+
+				return FVA_NO_ERROR;
+			}
+			else
+				return FVA_ERROR_NON_UNIQUE_FVA_INFO;
+		}
+	}
+
+	return FVA_ERROR_NO_DEV_ID;
 };
