@@ -343,11 +343,14 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			}
 			//////////////////////////////////// 3. check for exsiting device in fva info by fileName 
 			int deviceID = FVA_UNDEFINED_ID;
-			FVA_ERROR_CODE res = fvaGetDeviceIdFromFvaInfo(info.fileName(), deviceID);
+			FVA_ERROR_CODE res = fvaGetDeviceIdFromFvaInfo(info.fileName(), deviceID, info.absoluteDir().absolutePath());
 			if (FVA_NO_ERROR != res)
 			{
-				LOG_QWARN << "not fva file found: " << info.absoluteFilePath();
-				m_Issues.push_back("FVA_ERROR_NOT_REGISTERED_FVA_FILE," + info.absoluteFilePath() + "," + info.fileName() );
+				LOG_QWARN << "no dev id found for file: " << info.absoluteFilePath();
+				if (FVA_ERROR_NO_DEV_ID==res)
+					m_Issues.push_back("FVA_ERROR_NO_DEV_ID," + info.absoluteFilePath() + "," + info.fileName() );
+				if (FVA_ERROR_NON_UNIQUE_FVA_INFO==res)
+					m_Issues.push_back("FVA_ERROR_NON_UNIQUE_FVA_INFO," + info.absoluteFilePath() + "," + info.fileName() );
 			}
 			//////////////////////////////////// 4. check for exsiting device in dictionary by device name in pictire 
 			if (FVA_FS_TYPE_IMG == type)
