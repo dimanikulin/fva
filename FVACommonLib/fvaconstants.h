@@ -36,4 +36,7 @@ typedef QMap<int, fvaDevice> DEVICE_MAP;
 
 typedef QMap< QString, QStringList > DESCRIPTIONS_MAP;
 
+class fvaFile;
+typedef QMap<QString, fvaFile> FVA_FILE_INFO_MAP;
+
 #endif // FVACONSTS_H
