@@ -368,7 +368,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 					{
 						LOG_QWARN << "empty device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
 						countSupportedFiles++;	// it is our file
-						m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + info.absoluteFilePath() + "," + info.fileName() );
+						m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + deviceMap[deviceID].guiName + " " + deviceMap[deviceID].ownerName + "," + info.fileName() );
 						continue;
 					}
 					LOG_QWARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
