@@ -474,6 +474,12 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 			return false;
 		}
 	}
+
+	// clean up after processing
+	// QFile::remove(FVA_DEFAULT_ROOT_DIR + "fvaFileN.csv");
+	QFile::remove(FVA_DEFAULT_ROOT_DIR + "fvaFolderN.csv");
+	QFile::remove(FVA_DEFAULT_ROOT_DIR + "fvaFolderN.csv.bak");
+
 	return true;
 }
 FVAOrganizerDonePage::FVAOrganizerDonePage(void)
