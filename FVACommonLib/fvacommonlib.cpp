@@ -687,18 +687,18 @@ FVA_ERROR_CODE fvaSaveIDInFile(const QString& fileName, int ID)
 	file.close();	
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE fvaLoadFvaFileInfo(QStringList& titles, DESCRIPTIONS_MAP& decsItems)
+FVA_ERROR_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo)
 {
 	FVADescriptionFile fvaFileCsv;
-	return fvaFileCsv.load( FVA_DEFAULT_ROOT_DIR + "fvaFile.csv", titles, decsItems); 
-}
-FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID,const QString& dir)
-{
+
 	// firstly - try to get device if from fvaFile.csv as it has high priority 
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_ERROR_CODE error = fvaLoadFvaFileInfo(titles, decsItems);
-	
+
+	FVA_ERROR_CODE error = fvaFileCsv.load( FVA_DEFAULT_ROOT_DIR + "fvaFile.csv", titles, decsItems);
+	if (FVA_NO_ERROR != error)
+		return error;
+
 	// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,OldName,WhoTook,OldName1
 	int columnDevId = FVADescriptionFile::getColumnIdByName(titles,"DevId");
 	if ( -1 == columnDevId )
@@ -708,21 +708,28 @@ FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID,c
 	if ( -1 == columnName )
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
-	deviceID = FVA_UNDEFINED_ID;
-
 	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
 	{
 		QStringList list = it.value();
-		if (list[columnName] == fvaFile)
-		{
-			if (deviceID == FVA_UNDEFINED_ID)
-			{
-				deviceID = list[columnDevId].remove("\t").toUInt();
-				return FVA_NO_ERROR;
-			}
-			else
-				return FVA_ERROR_NON_UNIQUE_FVA_INFO;
-		}
+		
+		QString fileName = list[columnName].toUpper(); // == fvaFile.toUpper()
+		if (fvaFileInfo.find(fileName) != fvaFileInfo.end())
+			return FVA_ERROR_NON_UNIQUE_FVA_INFO;
+
+		fvaFile newFile;
+		newFile.deviceId = list[columnDevId].remove("\t").toUInt();
+		fvaFileInfo[fileName.toUpper()] = newFile; 
+	}
+	return FVA_NO_ERROR;
+}
+FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID,const QString& dir)
+{
+	deviceID = FVA_UNDEFINED_ID;
+
+	if (fvaFileInfo.find(fvaFile.toUpper()) != fvaFileInfo.end() )
+	{
+		deviceID = fvaFileInfo[fvaFile.toUpper()].deviceId; 
+		return FVA_NO_ERROR;
 	}
 
 	// we did not find it on fvafile info, lets try to find it in folder fva info
@@ -730,8 +737,8 @@ FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID,c
 	QStringList			titlesD; 
 	DESCRIPTIONS_MAP	decsItemsD;
 	FVA_ERROR_CODE errorD = fvaFolderCsv.load(FVA_DEFAULT_ROOT_DIR + "fvaFolder.csv", titlesD, decsItemsD); 
-	if (FVA_NO_ERROR != error)
-		return error;
+	if (FVA_NO_ERROR != errorD)
+		return errorD;
 
 	// ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
 	int columnDevIdD = FVADescriptionFile::getColumnIdByName(titlesD,"DevId");
@@ -751,7 +758,7 @@ FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID,c
 	{
 		QStringList list = it.value();
 		
-		if (list[columnNameD] == dirToMatch)
+		if (list[columnNameD].toUpper() == dirToMatch.toUpper())
 		{
 			if (deviceID == FVA_UNDEFINED_ID)
 			{

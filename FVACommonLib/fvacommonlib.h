@@ -12,7 +12,6 @@
 #include "fvaconstants.h"
 #include "fvaerrors.h"
 
-
 /*!
 * \brief it converts file extention to file type if it is possible
 */
@@ -54,7 +53,6 @@ FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTi
  */
 FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date );
 
-
 /*!
  * \brief it returns device id from map loaded
  * \param deviceIds a map to be find in
@@ -66,20 +64,20 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
 
 /*!
  * \brief it returns device ID by file name from fva information saved in CSV files
- * \param fvaFile (not full path, just "1212.jpg")
+ * \param fvaFileInfo - fva file information to search in
+ * \param fvaFile - file to look information for not full path, just "1212.jpg")
  * \param deviceID - output parameter to contain device ID
  * \param dir - the directory where the file is located
  * \returns it returns code of error if any or FVA_NO_ERROR if device ID has been retrieved
  */
-FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const QString& fvaFile, int& deviceID, const QString& dir);
+FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID, const QString& dir);
 
 /*!
  * \brief it loads fva information saved in CSV files
- * \param - titles fva file info of to fill up
- * \param - decsItems - fva file info ti fill up
+ * \param - fvaFileInfo - fva file info ti fill up
  * \returns it returns code of error if any or FVA_NO_ERROR if info was loaded
  */
-FVA_ERROR_CODE fvaLoadFvaFileInfo(QStringList& titles, DESCRIPTIONS_MAP& decsItems);
+FVA_ERROR_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo);
 
 /*!
  * \brief it tries to get time a video taken at from header
