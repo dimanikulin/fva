@@ -30,11 +30,7 @@ FVA_ERROR_CODE CLT_Fva_Files_2_CSV::execute()
 	if (error != FVA_NO_ERROR)
 		return error;
 
-	QFile fileNew ( FVA_DEFAULT_ROOT_DIR + "fvaFileN.csv" );		
-	if ( !fileNew.open( QIODevice::WriteOnly | QIODevice::Text ) )	
-		return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;	
-	QTextStream writeStream( &fileNew );
-
+	QVector<QString>		m_records;	
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		// just skip internal folder
@@ -49,8 +45,20 @@ FVA_ERROR_CODE CLT_Fva_Files_2_CSV::execute()
 		QString csvRecord =  QString::number(++ID) + "," // ID
 			+ info.fileName() + ",,," // Name
 			+ m_custom	+ ",,,,,,"; // m_custom here is device id
-		writeStream << csvRecord << "\n";		
+		m_records.append(csvRecord);
+				
 	}
+	QFile fileNew ( FVA_DEFAULT_ROOT_DIR + "fvaFileN.csv" );		
+	if ( !fileNew.open( QIODevice::WriteOnly | QIODevice::Text ) )	
+		return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;	
+	QTextStream writeStream( &fileNew );
+
+	for ( auto it = m_records.begin(); it != m_records.end(); ++it )
+		if (m_records.last() == *it) 
+			writeStream << *it;
+		else
+			writeStream << *it << "\n";
+
 	writeStream.flush();
 	fileNew.close();	
 	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"fvaFile.id", ID);
