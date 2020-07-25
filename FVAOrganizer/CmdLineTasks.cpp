@@ -302,6 +302,11 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 	if ( FVA_NO_ERROR != res )
 		return res;
 
+	FVA_FILE_INFO_MAP fvaFileInfo;
+	res = fvaLoadFvaFileInfoFromScv( fvaFileInfo );
+	if ( FVA_NO_ERROR != res )
+		return res;
+
 	QMap<QString, unsigned int> fileCount;
 	unsigned int countSupportedFiles = 0; 
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
@@ -317,6 +322,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 					continue;
 
 				LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
+				m_Issues.push_back("FVA_ERROR_WRONG_FOLDER_NAME," + info.absoluteFilePath() + "," + info.fileName() );
 				if (m_readOnly)
 					continue;
 				else
@@ -343,7 +349,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			}
 			//////////////////////////////////// 3. check for exsiting device in fva info by fileName 
 			int deviceID = FVA_UNDEFINED_ID;
-			FVA_ERROR_CODE res = fvaGetDeviceIdFromFvaInfo(info.fileName(), deviceID, info.absoluteDir().absolutePath());
+			FVA_ERROR_CODE res = fvaGetDeviceIdFromFvaInfo(fvaFileInfo, info.fileName(), deviceID, info.absoluteDir().absolutePath());
 			if (FVA_NO_ERROR != res)
 			{
 				LOG_QWARN << "no dev id found for file: " << info.absoluteFilePath();
@@ -400,7 +406,8 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 				QDateTime dateTime = QExifImageHeader( info.filePath()).value(QExifImageHeader::DateTimeOriginal).toDateTime();
 				if (!dateTime.isValid())
 				{
-					// LOG_QWARN << "empty video taken time found in:" << info.absoluteFilePath();
+					LOG_QWARN << "empty video taken time found in:" << info.absoluteFilePath();
+					m_Issues.push_back("FVA_ERROR_EMPTY_VIDEO_TIME," + info.absoluteFilePath()+ "," + info.fileName() );
 				}
 			}
 
@@ -413,6 +420,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 					continue;
 
 				LOG_QCRIT << "wrong matchig folder name:" << info.absoluteFilePath();
+				m_Issues.push_back("FVA_ERROR_WRONG_FOLDER_NAME," + info.absoluteFilePath()+ "," + info.fileName() );
 				if (m_readOnly)
 					continue;
 				else
@@ -439,6 +447,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 		else if ( fvaIsInternalFile ( info.fileName() ) ) 
 		{
 			// nothing to do here
+			m_Issues.push_back("FVA_ERROR_INTERNAL_FILE," + info.absoluteFilePath() + ","  + info.fileName());
 		}
 		else
 		{
@@ -454,6 +463,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 	{
 		// check for to little supported 
 		LOG_QCRIT << "too little supported files found in:" << m_folder;
+		m_Issues.push_back("FVA_ERROR_TOO_LITTLE_FILES," + m_folder + "," );
 		if (!m_readOnly)
 			return FVA_ERROR_TOO_LITTLE_FILES;
 	}
