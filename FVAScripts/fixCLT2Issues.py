@@ -22,11 +22,11 @@ with open(sys.argv[1], newline='') as csvfile:
             if tsParameter[11] == '#':
                 tsParameter[11] = '0'
             if tsParameter[12] == '#':
-                tsParameter[12] = '0'
+                tsParameter[12] = '1'
             if tsParameter[14] == '#':
                 tsParameter[14] = '0'
             if tsParameter[15] == '#':
-                tsParameter[15] = '0'  
+                tsParameter[15] = '1'  
 
             #print ('-ts' + ''.join(tsParameter))
             os.chmod(row[1], stat.S_IWRITE) # clear read only file attribute
@@ -57,7 +57,7 @@ with open(sys.argv[1], newline='') as csvfile:
         if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_NO_DEV_ID':
             print(', '.join(row))
 
-        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_EMPTY_DEVICE' and row[2] == '8':
+        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_EMPTY_DEVICE' and row[2] == '85':
             print(', '.join(row))
             os.chmod(row[1], stat.S_IWRITE) # clear read only file attribute
             subprocess.call(['../jhead.exe', "-te", "source.JPG" , row[1]])
