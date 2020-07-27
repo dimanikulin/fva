@@ -5,9 +5,8 @@
 FVA_ERROR_CODE CLT_Fva_Folder_2_CSV::execute()
 {
 	int ID = FVA_UNDEFINED_ID;
-	FVA_ERROR_CODE error = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"fvaFolder.id", ID);
-	if (error != FVA_NO_ERROR)
-		return error;
+	FVA_ERROR_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"fvaFolder.id", ID);
+	RET_RES_IF_RES_IS_ERROR
 	QString csvRecord =  QString::number(++ID) + "," // ID
 		+ FVA_TARGET_FOLDER_NAME		+ "," // Name	
 		+ m_custom						// DevId
@@ -26,9 +25,8 @@ FVA_ERROR_CODE CLT_Fva_Folder_2_CSV::execute()
 FVA_ERROR_CODE CLT_Fva_Files_2_CSV::execute()
 {	
 	int ID = FVA_UNDEFINED_ID;
-	FVA_ERROR_CODE error = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"fvaFile.id", ID);
-	if (error != FVA_NO_ERROR)
-		return error;
+	FVA_ERROR_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"fvaFile.id", ID);
+	RET_RES_IF_RES_IS_ERROR
 
 	QVector<QString>		m_records;	
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))

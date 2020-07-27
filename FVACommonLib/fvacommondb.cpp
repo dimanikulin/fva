@@ -175,8 +175,7 @@ FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QStri
 	QString		error;
 	QVariantMap	dictionaries;
 	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
-	if ( FVA_NO_ERROR != res )
-		return res;
+	RET_RES_IF_RES_IS_ERROR
 
 	QVariantList vlist = dictionaries["fvaDevices"].toList();
 	QVariantList people = dictionaries["fvaPeople"].toList();

@@ -83,8 +83,7 @@ FVA_ERROR_CODE CLT_Fva_Folder_To_SQL::execute()
 	QVariantMap		dirDesc;
 	QString			error;
 	/*FVA_ERROR_CODE	code = fvaGetFolderDescription( m_folder, dirDesc, error );
-	if ( FVA_NO_ERROR != code )
-		return FVA_NO_ERROR; // yes, it is NOT an error for this CLT
+	RET_IF_RES_NO_ERROR // yes, it is NOT an error for this CLT
 		*/
 	//ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder
 	QString insert =  "insert into fvaFolder values ((select max(ID)+1 from fvaFolder),\"" 
@@ -151,8 +150,7 @@ FVA_ERROR_CODE CLT_Fva_File_To_SQL::execute()
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
 	FVA_ERROR_CODE res = desc->load( m_folder + QDir::separator() + FVA_DESCRIPTION_FILE_NAME, titles, decsItems );
-	if ( FVA_NO_ERROR != res )
-		return FVA_NO_ERROR; // yes, it is NOT an error for this CLT
+	RET_RES_IF_RES_IS_ERROR // yes, it is NOT an error for this CLT
 	
 	QStringList			t2Check = titles; // titlesToCheck 
 	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)

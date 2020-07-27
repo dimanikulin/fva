@@ -695,9 +695,8 @@ FVA_ERROR_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo)
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
 
-	FVA_ERROR_CODE error = fvaFileCsv.load( FVA_DEFAULT_ROOT_DIR + "fvaFile.csv", titles, decsItems);
-	if (FVA_NO_ERROR != error)
-		return error;
+	FVA_ERROR_CODE res = fvaFileCsv.load( FVA_DEFAULT_ROOT_DIR + "fvaFile.csv", titles, decsItems);
+	RET_RES_IF_RES_IS_ERROR
 
 	// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,OldName,WhoTook,OldName1
 	int columnDevId = FVADescriptionFile::getColumnIdByName(titles,"DevId");
@@ -736,9 +735,8 @@ FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, c
 	FVADescriptionFile fvaFolderCsv;
 	QStringList			titlesD; 
 	DESCRIPTIONS_MAP	decsItemsD;
-	FVA_ERROR_CODE errorD = fvaFolderCsv.load(FVA_DEFAULT_ROOT_DIR + "fvaFolder.csv", titlesD, decsItemsD); 
-	if (FVA_NO_ERROR != errorD)
-		return errorD;
+	FVA_ERROR_CODE res = fvaFolderCsv.load(FVA_DEFAULT_ROOT_DIR + "fvaFolder.csv", titlesD, decsItemsD); 
+	RET_RES_IF_RES_IS_ERROR
 
 	// ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
 	int columnDevIdD = FVADescriptionFile::getColumnIdByName(titlesD,"DevId");

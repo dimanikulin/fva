@@ -41,8 +41,7 @@ int main(int argc, char *argv[])
 	QString		error;
 	QVariantMap	dictionaries;
 	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
-	if ( FVA_NO_ERROR != res )
-		return res;
+	RET_RES_IF_RES_IS_ERROR
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
 	bool emptyDescFile = false;
@@ -63,8 +62,7 @@ int main(int argc, char *argv[])
 	
 		if ( FVA_ERROR_CANT_OPEN_FILE_DESC == res )
 			emptyDescFile = true;
-		else if ( FVA_NO_ERROR != res )
-			return res;
+		else RET_RES_IF_RES_IS_ERROR
 
 		desc.reset( 0 );
 	}
@@ -120,8 +118,7 @@ int main(int argc, char *argv[])
 		QVariantMap		result;
 		QString			error;
 		//FVA_ERROR_CODE	code = fvaGetFolderDescription( fvaPath, result, error );
-		//if ( FVA_NO_ERROR != code )
-			//return code;
+		// RET_IF_RES_NO_ERROR
 		// "Name","Place","People","Device","Description","Scaner","Comment","oldName"
 		QFileInfo info(fvaPath);
 		emptyDescription.append(info.fileName().toUpper());

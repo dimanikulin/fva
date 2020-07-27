@@ -299,13 +299,11 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 {
 	DEVICE_MAP deviceMap;
 	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(deviceMap, QCoreApplication::applicationDirPath() + "/" + FVA_DB_NAME);
-	if ( FVA_NO_ERROR != res )
-		return res;
+	RET_RES_IF_RES_IS_ERROR
 
 	FVA_FILE_INFO_MAP fvaFileInfo;
 	res = fvaLoadFvaFileInfoFromScv( fvaFileInfo );
-	if ( FVA_NO_ERROR != res )
-		return res;
+	RET_RES_IF_RES_IS_ERROR
 
 	QMap<QString, unsigned int> fileCount;
 	unsigned int countSupportedFiles = 0; 

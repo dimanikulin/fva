@@ -36,8 +36,7 @@ FVA_ERROR_CODE CmdLineBaseTask::processFolderRecursivly( const QString& folder )
 			m_folder = QDir::toNativeSeparators(info.filePath());
 			m_dir = QDir( m_folder );
 			FVA_ERROR_CODE res = processFolderRecursivly( QDir::toNativeSeparators(info.filePath()) );
-			if ( res != FVA_NO_ERROR )
-				return res;
+			RET_RES_IF_RES_IS_ERROR
 			continue;
 		}
 	}

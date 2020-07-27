@@ -329,10 +329,7 @@ void FVADescriptionEditor::saveCurrentDescription()
 		}
 		QString error;
 		/*FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folderPath + QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
-		if ( FVA_NO_ERROR != res )
-		{
-			return;
-		}*/
+		RET_IF_RES_NO_ERROR*/
 	}
 	else
 	{
@@ -377,8 +374,7 @@ void FVADescriptionEditor::saveCurrentDescription()
 		FVA_ERROR_CODE res = desc.save( dir.absolutePath() + "/" + FVA_DESCRIPTION_FILE_NAME, 
 										m_titles, 
 										m_decsItems );
-		//if ( FVA_NO_ERROR != res )
-			// return res;
+		// RET_IF_RES_NO_ERROR
 
 	}
 }
@@ -399,8 +395,7 @@ void FVADescriptionEditor::OnChangeDictPressed()
 
 	QString		error;
 	FVA_ERROR_CODE res = fvaLoadDictionary( m_dictPath, m_dictionaries, error );
-	if ( FVA_NO_ERROR != res )
-		return ;
+	RET_IF_RES_IS_ERROR
 
 	updateDictionaryGUI();
 }

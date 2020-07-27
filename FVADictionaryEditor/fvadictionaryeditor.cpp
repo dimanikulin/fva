@@ -16,8 +16,7 @@ FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& 
 	QString		error;
 	QVariantMap	dictionaries;
 	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
-	if ( FVA_NO_ERROR != res )
-		return;
+	RET_IF_RES_IS_ERROR
 
 	ui.cbOwner->clear();
 	ui.cbOwner->addItem ( tr("Выбирете владельца"), 0 );
@@ -44,8 +43,7 @@ void addDictItem(const QString& dictPath, const QString& name, QDialog* dlg, con
 	QString		error;
 	QVariantMap	dictionaries;
 	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
-	if ( FVA_NO_ERROR != res )
-		return;
+	RET_IF_RES_IS_ERROR
 
 	QVariantList vlist = dictionaries[dictName].toList();
 	int maxID = -1;
@@ -64,8 +62,7 @@ void addDictItem(const QString& dictPath, const QString& name, QDialog* dlg, con
 	dictionaries[dictName] = vlist;
 
 	res = fvaSaveDictionary( dictPath, dictionaries, error );
-	if ( FVA_NO_ERROR != res )
-		return;
+	RET_IF_RES_IS_ERROR
 
 	dlg->close();
 }
@@ -79,8 +76,7 @@ void FVADictionaryEditor::OnAddDeviceBtnPressed()
 	QString		error;
 	QVariantMap	dictionaries;
 	FVA_ERROR_CODE res = fvaLoadDictionary( m_dictPath, dictionaries, error );
-	if ( FVA_NO_ERROR != res )
-		return;
+	RET_IF_RES_IS_ERROR
 
 	QVariantList vlist = dictionaries["devices"].toList();
 	int maxID = -1;
@@ -107,8 +103,7 @@ void FVADictionaryEditor::OnAddDeviceBtnPressed()
 	dictionaries["devices"] = vlist;
 
 	res = fvaSaveDictionary( m_dictPath, dictionaries, error );
-	if ( FVA_NO_ERROR != res )
-		return;
+	RET_IF_RES_IS_ERROR
 
 	close();
 }

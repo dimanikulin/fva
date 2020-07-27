@@ -103,8 +103,7 @@ FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *p
 
 	QString		error;
 	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, m_dictionaries, error );
-	if ( FVA_NO_ERROR != res )
-		return;
+	RET_IF_RES_IS_ERROR
 
 	showProgress(rootDir);
 
