@@ -78,5 +78,8 @@
     <ClInclude Include="fvaconstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RiffParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
