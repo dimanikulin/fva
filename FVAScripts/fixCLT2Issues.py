@@ -5,12 +5,14 @@ import os, stat
 
 #fixCLT2Issues.py issues.csv FVA_ERROR_MISMATCH_TAKEN_TIME > fixedMismatchTakenTime
 #fixCLT2Issues.py issues.csv FVA_ERROR_NULL_TAKEN_TIME > fixedEmptyTakenTime
+#fixCLT2Issues.py issues.csv FVA_ERROR_NO_DEV_ID > fixedNotLinkedDevId
+#fixCLT2Issues.py issues.csv FVA_ERROR_EMPTY_DEVICE > fixedEmptyDevice
 
 with open(sys.argv[1], newline='') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in spamreader:
         if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_MISMATCH_TAKEN_TIME':
-            #print(', '.join(row))
+            print(', '.join(row))
             # converting into yyyy:mm:dd-hh:mm:ss
             tsParameter = list(row[2])
             tsParameter[4] = ':'
@@ -51,3 +53,11 @@ with open(sys.argv[1], newline='') as csvfile:
             os.chmod(row[1], stat.S_IWRITE) # clear read only file attribute
             subprocess.call(['../jhead.exe', '-mkexif', row[1]])
             subprocess.call(['../jhead.exe', '-ts' + ''.join(tsParameter) , row[1]])
+
+        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_NO_DEV_ID':
+            print(', '.join(row))
+
+        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_EMPTY_DEVICE' and row[2] == '8':
+            print(', '.join(row))
+            os.chmod(row[1], stat.S_IWRITE) # clear read only file attribute
+            subprocess.call(['../jhead.exe', "-te", "source.JPG" , row[1]])
