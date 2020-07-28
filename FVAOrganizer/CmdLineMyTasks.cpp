@@ -3,7 +3,7 @@
 #include "FVADescriptionFile.h"
 
 #include "../FVACommonLib/json.h"
-#include "../lib/qexifimageheader.h"
+#include "../FVACommonLib/qexifimageheader.h"
 
 #include "qdir.h"
 

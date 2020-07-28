@@ -1,7 +1,7 @@
 #include "CmdLineOldTasks.h"
 #include "fvadefaultcfg.h"
 
-#include "../lib/qexifimageheader.h"
+#include "../FVACommonLib/qexifimageheader.h"
 
 #include <QtCore/QCoreApplication>
 #include <QtCore/QCryptographicHash>

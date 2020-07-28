@@ -3,7 +3,7 @@
 #include "fvacommondb.h"
 #include "fvacommondata.h"
 
-#include "../lib/qexifimageheader.h"
+#include "../FVACommonLib/qexifimageheader.h"
 
 #include <QtCore/QCoreApplication>
 

@@ -8,7 +8,7 @@
 #include <QProcess>
 #include <QCoreApplication>
 
-#include "../lib/qexifimageheader.h"
+#include "qexifimageheader.h"
 #include "fvariffparser.h"
 
 #include <windows.h>
