@@ -49,6 +49,9 @@
     <ClCompile Include="fvacommondb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fvacommonui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fvacommonlib.h">
@@ -79,6 +82,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RiffParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fvacommonui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

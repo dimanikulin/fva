@@ -1,5 +1,6 @@
 #ifndef FVAERRORS_H
 #define FVAERRORS_H
+
 /*!
  * code errors enumeration
  */
@@ -50,10 +51,13 @@ enum FVA_ERROR_CODE
 	FVA_ERROR_NON_UNIQUE_FVA_INFO				= 1041,
 	FVA_ERROR_EMPTY_VIDEO_TIME					= 1042,
 };
+
 #define RET_RES_IF_RES_IS_ERROR\
 	if ( FVA_NO_ERROR != res )\
 		return res;
+
 #define RET_IF_RES_IS_ERROR\
 	if ( FVA_NO_ERROR != res )\
 		return;
+
 #endif // FVAERRORS_H

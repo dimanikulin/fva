@@ -2,6 +2,7 @@
 #include "FVADescriptionFile.h"
 #include "fvapeoplelistdlg.h"
 #include "fvacommondb.h"
+#include "fvacommonui.h"
 
 #include <QFileInfo>
 #include <QListWidgetItem>
