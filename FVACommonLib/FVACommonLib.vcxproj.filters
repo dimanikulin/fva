@@ -28,9 +28,6 @@
     <ClCompile Include="fvacommonlib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CSVFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\json\json.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -38,9 +35,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\qexifimageheader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RiffParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="fvacommondata.cpp">
@@ -52,12 +46,15 @@
     <ClCompile Include="fvacommonui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fvacsvfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fvariffparser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fvacommonlib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CSVFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\json\json.h">
@@ -81,10 +78,13 @@
     <ClInclude Include="fvaconstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RiffParser.h">
+    <ClInclude Include="fvacommonui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fvacommonui.h">
+    <ClInclude Include="fvacsvfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fvariffparser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

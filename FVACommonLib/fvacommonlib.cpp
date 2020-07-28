@@ -9,7 +9,7 @@
 #include <QCoreApplication>
 
 #include "../lib/qexifimageheader.h"
-#include "RiffParser.h"
+#include "fvariffparser.h"
 
 #include <windows.h>
 #include <winbase.h>

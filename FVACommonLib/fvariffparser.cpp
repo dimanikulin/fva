@@ -1,4 +1,4 @@
-#include "RiffParser.h"
+#include "fvariffparser.h"
 
 RiffParser::RiffParser( )
 {

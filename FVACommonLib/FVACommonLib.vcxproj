@@ -77,17 +77,17 @@
   <ItemGroup>
     <ClCompile Include="..\lib\json\json.cpp" />
     <ClCompile Include="..\lib\qexifimageheader.cpp" />
-    <ClCompile Include="CSVFile.cpp" />
+    <ClCompile Include="fvacsvfile.cpp" />
     <ClCompile Include="fvacommondata.cpp" />
     <ClCompile Include="fvacommondb.cpp" />
     <ClCompile Include="fvacommonlib.cpp" />
     <ClCompile Include="fvacommonui.cpp" />
     <ClCompile Include="FVADescriptionFile.cpp" />
-    <ClCompile Include="RiffParser.cpp" />
+    <ClCompile Include="fvariffparser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\json\json.h" />
-    <ClInclude Include="CSVFile.h" />
+    <ClInclude Include="fvacsvfile.h" />
     <ClInclude Include="fvacommondata.h" />
     <ClInclude Include="fvacommondb.h" />
     <ClInclude Include="fvacommonlib.h" />
@@ -96,7 +96,7 @@
     <ClInclude Include="fvadefaultcfg.h" />
     <ClInclude Include="FVADescriptionFile.h" />
     <ClInclude Include="fvaerrors.h" />
-    <ClInclude Include="RiffParser.h" />
+    <ClInclude Include="fvariffparser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
