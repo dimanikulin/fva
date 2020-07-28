@@ -28,13 +28,7 @@
     <ClCompile Include="fvacommonlib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\json\json.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FVADescriptionFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\lib\qexifimageheader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="fvacommondata.cpp">
@@ -50,6 +44,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="fvariffparser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="qexifimageheader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -85,6 +85,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="fvariffparser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qexifimageheader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

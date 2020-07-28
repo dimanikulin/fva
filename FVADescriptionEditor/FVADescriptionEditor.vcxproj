@@ -83,7 +83,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\lib\qexifimageheader.cpp" />
     <ClCompile Include="fvadescriptioneditor.cpp" />
     <ClCompile Include="fvapeoplelistdlg.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_fvadescriptioneditor.cpp">

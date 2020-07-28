@@ -2,7 +2,7 @@
 #include <QXmlStreamReader>
 #include "FVADescriptionFile.h"
 
-#include "../lib/json/json.h"
+#include "../FVACommonLib/json.h"
 #include "../lib/qexifimageheader.h"
 
 #include "qdir.h"

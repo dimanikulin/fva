@@ -3,7 +3,7 @@
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
 
-#include "../lib/json/json.h"
+#include "json.h"
 
 #include <QtSql/QtSql>
 

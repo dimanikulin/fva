@@ -82,7 +82,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\lib\qexifimageheader.cpp" />
     <ClCompile Include="CmdLineBaseTask.cpp" />
     <ClCompile Include="CmdLineCSVTasks.cpp" />
     <ClCompile Include="CmdLineDBTasks.cpp" />

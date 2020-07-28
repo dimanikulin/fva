@@ -50,9 +50,6 @@
     <ClCompile Include="GeneratedFiles\qrc_fvadescriptioneditor.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\qexifimageheader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="fvapeoplelistdlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
