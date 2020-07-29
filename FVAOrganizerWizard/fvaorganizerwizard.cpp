@@ -20,7 +20,7 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	setOption(QWizard::IndependentPages);
 	setOption(QWizard::DisabledBackButtonOnLastPage);
 
-	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/main.png");
+	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/main.png");
 	setWindowIcon(icon);
 }
 

@@ -94,12 +94,12 @@ FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *p
 {
 	m_ui->setupUi(this);
 
-	m_videoIcon		= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/video.png");
-	m_audioIcon		= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/audio.png");
-	m_photoIcon		= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/photo.png");
-	m_folderIcon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/folder.png");
-	m_locationIcon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/location.png");
-	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/main.png");
+	m_videoIcon		= QIcon (QCoreApplication::applicationDirPath() + "/Icons/video.png");
+	m_audioIcon		= QIcon (QCoreApplication::applicationDirPath() + "/Icons/audio.png");
+	m_photoIcon		= QIcon (QCoreApplication::applicationDirPath() + "/Icons/photo.png");
+	m_folderIcon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/folder.png");
+	m_locationIcon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/location.png");
+	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/main.png");
 	setWindowIcon(icon);
 
 	QString		error;
@@ -158,7 +158,7 @@ void FVAViewer::showItem( QTreeWidgetItem* item )
 		myProcess.setProcessChannelMode(QProcess::MergedChannels);
 		QStringList params;
 		params.append(fvaitem->fsFullPath);
-		QString path = QCoreApplication::applicationDirPath() + "/#BIN#/FVAPlayer.exe";
+		QString path = QCoreApplication::applicationDirPath() + "/FVAPlayer.exe";
 		myProcess.start(path, params);
 		myProcess.waitForFinished( -1 );
 	} 
@@ -178,7 +178,7 @@ void FVAViewer::editFileItem( QTreeWidgetItem* item )
 	if (!fvaitem)
 		return;
 	params.append(fvaitem->fsFullPath);
-	myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/FVADescriptionEditor.exe", params);
+	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADescriptionEditor.exe", params);
 	myProcess.waitForFinished( -1 );
 }
 

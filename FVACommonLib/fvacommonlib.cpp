@@ -299,7 +299,7 @@ QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error)
 			myProcess.setProcessChannelMode(QProcess::MergedChannels);
 			QStringList params;
 			params.append(pathToFile);
-			myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/exiftool(-k).exe", params);
+			myProcess.start(QCoreApplication::applicationDirPath() + "/exiftool(-k).exe", params);
 			QString output;
 			while(myProcess.waitForReadyRead())
 			{

@@ -108,9 +108,9 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
 			pMainWnd,
 			SLOT(updateChecks(QTreeWidgetItem*, int)));
 
-	QIcon	personIcon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/person.png");
-	QIcon	peopleIcon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/people.png");
-	QIcon	photoIcon	= QIcon (QCoreApplication::applicationDirPath() + "/#BIN#/Icons/photo.png");
+	QIcon	personIcon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/person.png");
+	QIcon	peopleIcon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/people.png");
+	QIcon	photoIcon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/photo.png");
 
 	QVariantList	vlist	= dict["relationTypes"].toList();
 	QVariantList	vlist1	= dict["relations"].toList();
