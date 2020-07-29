@@ -1,1 +1,1 @@
-C:/FVA/FVAOrganizer.exe CLT_Set_File_Atts "C:/FVA" recursive=yes logvel=4 readonly=no                  
+"../FVAOrganizer.exe" CLT_Set_File_Atts "C:/FVA" recursive=yes logvel=4 readonly=no                  
