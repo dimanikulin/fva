@@ -1,9 +1,9 @@
 #ifndef FVACOMMONUI_H
 #define FVACOMMONUI_H
 
-#include <QString>
-#include <QTGui/QLabel>
-#include <QTGui/QTreeWidget>
+#include <QtCore/QString>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTreeWidget>
 
 #include "fvaerrors.h"
 

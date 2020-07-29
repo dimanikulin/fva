@@ -1,8 +1,8 @@
 #include "fvaviewer.h"
 #include "QPictureLabel.h"
-#include <QString>
-#include <QtGui/QListWidget>
-#include <QtGui/QProgressDialog>
+#include <QtCore/QString>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QProgressDialog>
 #include <QtUiTools/QtUiTools>
 #include "fvacommonui.h"
 #include "fvacommondb.h"
@@ -87,7 +87,7 @@ void FVAViewer::prepareFilters()
 						&m_locationIcon);
 }
 
-FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *parent, Qt::WFlags flags)
+FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *parent, Qt::WindowFlags flags)
 	:QDialog 			(parent),
 	m_ui				(new Ui::FVAViewerClass),
 	m_dictionaryPath	(dictPath)

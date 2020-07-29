@@ -1,10 +1,10 @@
 #ifndef FVAVIEWER_H
 #define FVAVIEWER_H
 
-#include <QTGui/QDialog>
-#include <QTGui/QMainWindow>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QMainWindow>
 #include <QTCore/QtCore>
-#include <QTGui/QTreeWidget>
+#include <QtWidgets/QTreeWidget>
 
 #include "fvacommonlib.h"
 #include "fvacommondata.h"
@@ -31,7 +31,7 @@ class FVAViewer : public QDialog
 		/*!
 		 * \brief ctors-dtors section
 		 */
-		FVAViewer( const QString& rootDir, const QString& dictPath, QWidget *parent = 0, Qt::WFlags flags = 0 );
+		FVAViewer( const QString& rootDir, const QString& dictPath, QWidget *parent = 0, Qt::WindowFlags flags = 0 );
 		~FVAViewer();
 
 	private: // methods

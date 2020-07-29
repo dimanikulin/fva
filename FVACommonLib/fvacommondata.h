@@ -1,10 +1,10 @@
 #ifndef FVACOMMONDATA_H
 #define FVACOMMONDATA_H
 
-#include <QString>
-#include <QVariantMap>
-#include <QVector> 
-#include <QDateTime>
+#include <QtCore/QString>
+#include <QtCore/QVariantMap>
+#include <QtCore/QVector> 
+#include <QtCore/QDateTime>
 
 #include "fvaconstants.h"
 

@@ -4,9 +4,9 @@
 #include "fvadefaultcfg.h"
 #include "fvacommondb.h"
 
-#include <QtGui/QApplication>
-#include <QDir>
-#include <QMessageBox>
+#include <QtWidgets/QApplication>
+#include <QtCore/QDir>
+#include <QtWidgets/QMessageBox>
 
 int main(int argc, char *argv[])
 {

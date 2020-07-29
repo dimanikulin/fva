@@ -1,7 +1,7 @@
 #ifndef FVAORGANIZERWIZARD_H
 #define FVAORGANIZERWIZARD_H
 
-#include <QtGui/QWizard>
+#include <QtWidgets/QWizard>
 #include "ui_fvaorganizerwizard.h"
 
 #include "fvacommonlib.h"

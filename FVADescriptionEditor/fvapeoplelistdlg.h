@@ -1,7 +1,7 @@
 #ifndef FVAPEOPLELISTDLG_H
 #define FVAPEOPLELISTDLG_H
 
-#include <QDialog>
+#include <QtWidgets/QDialog>
 #include "ui_fvapeoplelistdlg.h"
 
 class FVAPeopleListDlg : public QDialog

@@ -5,8 +5,8 @@
 #include "CmdLineOldTasks.h"
 #include "CmdLineCSVTasks.h"
 
-#include <qdebug>
-#include <qdir>
+#include <QtCore/qdebug>
+#include <QtCore/qdir>
 
 CmdLineExecutor::CmdLineExecutor( const QString& cmdName, const QString& folder, bool recursive, bool readOnly, const QString& custom )
 	:	m_cmdName	( cmdName ), 
@@ -27,26 +27,26 @@ FVA_ERROR_CODE CmdLineExecutor::run( )
 
 	if ( !dir.exists( m_folder ) )
 	{
-		qCritical() << "[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"[CMD_FOLDER_CREATE_RECURSIVE]input folder does not exist";
+		qCritical() << "[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"[CMD_FOLDER_CREATE_RECURSIVE]input folder does not exist";
 		return FVA_ERROR_INPUT_DIR_NOT_EXIST_ARG;
 	}
 
 	std::auto_ptr<CmdLineBaseTask> task ( createTaskByName( m_cmdName, m_folder, m_readOnly, m_custom ) );
 	if ( !task.get() )
 	{
-		qCritical() << "[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"[CMD_LINE_EXECUTOR]uknown command:"<< m_cmdName;
+		qCritical() << "[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"[CMD_LINE_EXECUTOR]uknown command:"<< m_cmdName;
 		return FVA_ERROR_UKNOWN_CMD;
 	}
 	if ( m_readOnly && !task->supportReadOnly() )
 	{
-		qCritical() << "[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"[CMD_LINE_EXECUTOR]command does not support readonly:"<< m_cmdName;
+		qCritical() << "[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"[CMD_LINE_EXECUTOR]command does not support readonly:"<< m_cmdName;
 		return FVA_ERROR_NOT_SUPPORTED_RO_MODE;
 	}
 	
 	// if it is recursive command
 	if ( m_recursive )
 	{
-		qWarning() <<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"[CMD_LINE_EXECUTOR] RECURSIVE mode for cmd:"<< m_cmdName;
+		qWarning() <<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"[CMD_LINE_EXECUTOR] RECURSIVE mode for cmd:"<< m_cmdName;
 		return task->processFolderRecursivly(m_folder);
 	}
 	else

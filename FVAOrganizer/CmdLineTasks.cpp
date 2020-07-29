@@ -10,8 +10,8 @@
 #include <iostream>
 #include <iomanip>
 
-#include <QTextStream>
-#include <QDateTime>
+#include <QtCore/QTextStream>
+#include <QtCore/QDateTime>
 
 #include <windows.h>
 #include <winbase.h>
@@ -298,7 +298,7 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 {
 	DEVICE_MAP deviceMap;
-	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(deviceMap, QCoreApplication::applicationDirPath() + "/" + FVA_DB_NAME);
+	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(deviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
 	RET_RES_IF_RES_IS_ERROR
 
 	FVA_FILE_INFO_MAP fvaFileInfo;

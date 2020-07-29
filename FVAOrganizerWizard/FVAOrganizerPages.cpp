@@ -1,10 +1,10 @@
 #include "FVAOrganizerPages.h"
 #include "fvaorganizerwizard.h"
 
-#include <QVBoxLayout>
-#include <QFileDialog>
-#include <QProcess>
-#include <QCoreApplication>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QProcess>
+#include <QtCore/QCoreApplication>
 
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
@@ -273,7 +273,7 @@ bool FVAOrganizerDevicePage::validatePage()
 	cmdList.append("CLT_Auto_Checks_2");
 
 	QString logPath = QCoreApplication::applicationDirPath() + "/organizerlog"  
-					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toAscii().data()
+					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toLatin1().data()
 					+ ".txt"; 
 	QFile fileLog(logPath);
 	if (!fileLog.open(QIODevice::Append | QIODevice::Text))
@@ -377,7 +377,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	}
 
 	QString logPath = QCoreApplication::applicationDirPath() + "/organizerlog"  
-					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toAscii().data()
+					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toLatin1().data()
 					+ ".txt"; 
 	QFile fileLog(logPath);
 	if (!fileLog.open(QIODevice::Append | QIODevice::Text))

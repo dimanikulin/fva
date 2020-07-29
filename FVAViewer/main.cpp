@@ -1,5 +1,5 @@
 #include "fvaviewer.h"
-#include <QtGui/QApplication>
+#include <QtWidgets/QApplication>
 #include "fvadefaultcfg.h"
 #include <fstream>
 
@@ -19,7 +19,7 @@ void msghandler( QtMsgType type, const char *msg )
 	if ( type < g_logLevel )
 		return;
 	
-	g_logfile << QDateTime::currentDateTime().toString( "[yyyy:MM:dd-hh:mm:ss]").toAscii().data();
+	g_logfile << QDateTime::currentDateTime().toString( "[yyyy:MM:dd-hh:mm:ss]").toLatin1().data();
 	switch ( type ) 
 	{
 		case QtDebugMsg:
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 	// qInstallMsgHandler( msghandler ); 
 
 	QApplication a(argc, argv);
-	QTextCodec::setCodecForTr(QTextCodec::codecForName("Windows-1251"));
+	// QTextCodec::setCodecForTr(QTextCodec::codecForName("Windows-1251"));
 	//QString logPath = QApplication::applicationDirPath() + "\\viewerlog.txt";  
 	//g_logfile.open( logPath.toStdString(), std::ios::app );
 	 

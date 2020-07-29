@@ -1,7 +1,7 @@
 #ifndef FVACONFIGURATOR_H
 #define FVACONFIGURATOR_H
 
-#include <QTGui/QMainWindow>
+#include <QTWidgets/QMainWindow>
 #include "ui_fvaconfigurator.h"
 
 class FVAConfigurator : public QMainWindow

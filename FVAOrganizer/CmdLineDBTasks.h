@@ -33,7 +33,7 @@ public:
 	CLT_Fs_To_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
 	: CLT_Base_SQL( dir_,readOnly_,custom_), m_skippedFiles(0)
 	{
-		qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()
+		qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()
 						<<"["<< Name().toUpper()
 						<<"]cmd created,dir:" <<dir_
 						<<",RO=" << (readOnly_?"yes":"no")
@@ -57,7 +57,7 @@ public:
 	CLT_Fva_Folder_To_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
 	:CLT_Base_SQL( dir_,readOnly_,custom_)
 	{
-		qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()
+		qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()
 					<<"["<< Name().toUpper()
 					<<"]cmd created,dir:" <<dir_
 					<<",RO=" << (readOnly_?"yes":"no")
@@ -81,7 +81,7 @@ class CLT_Fva_File_To_SQL : public CLT_Base_SQL
 		CLT_Fva_File_To_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
 		:CLT_Base_SQL( dir_,readOnly_,custom_)
 		{
-			qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()
+			qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()
 						<<"["<< Name().toUpper()
 						<<"]cmd created,dir:" <<dir_
 						<<",RO=" << (readOnly_?"yes":"no")
@@ -109,7 +109,7 @@ class CLT_Create_FVA_SQL : public CLT_Base_SQL
 		CLT_Create_FVA_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
 		:CLT_Base_SQL( dir_,readOnly_,custom_)
 		{
-			qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()
+			qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()
 						<<"["<< Name().toUpper()
 						<<"]cmd created,dir:" <<dir_
 						<<",RO=" << (readOnly_?"yes":"no")

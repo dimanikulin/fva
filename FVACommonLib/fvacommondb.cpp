@@ -38,7 +38,8 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
     dbase.setDatabaseName(file);
     if (!dbase.open()) 
 	{
-		error =  "can not open dictionaries";
+		QSqlError sqlerror = dbase.lastError();
+		error =  "can not open dictionaries" + sqlerror.text();
 		return FVA_ERROR_CANT_OPEN_DICTIONARIES;
 	}
 	fillOneDictFromDB(outputData,"fvaRelationTypes");
@@ -137,7 +138,7 @@ FVA_ERROR_CODE fvaSaveDictionary( const QString& file, QVariantMap& inputJson, Q
 	}
 	else
 	{
-		QString newName = file + "_" + QDateTime::currentDateTime().toString(FVA_FILE_NAME_FMT).toAscii().data();
+		QString newName = file + "_" + QDateTime::currentDateTime().toString(FVA_FILE_NAME_FMT).toLatin1().data();
 		if ( !dir.rename( file, newName ))
 		{
 			return FVA_ERROR_CANT_OPEN_DICTIONARIES;

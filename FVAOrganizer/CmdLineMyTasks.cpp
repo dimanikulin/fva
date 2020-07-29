@@ -1,11 +1,11 @@
 #include "CmdLineMyTasks.h"
-#include <QXmlStreamReader>
+#include <QtCore/QXmlStreamReader>
 #include "FVADescriptionFile.h"
 
 #include "../FVACommonLib/json.h"
 #include "../FVACommonLib/qexifimageheader.h"
 
-#include "qdir.h"
+#include <QtCore/qdir>
 
 FVA_ERROR_CODE CLT_Xml_Convert::execute()
 {

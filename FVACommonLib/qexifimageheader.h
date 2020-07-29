@@ -44,11 +44,12 @@
 #ifndef QEXIFIMAGEHEADER_H
 #define QEXIFIMAGEHEADER_H
 
-#include <QPair>
-#include <QVector>
-#include <QSharedData>
-#include <QVariant>
-#include <QSysInfo>
+#include <QtCore/QPair>
+#include <QtCore/QVector>
+#include <QtCore/QSharedData>
+#include <QtCore/QVariant>
+#include <QtCore/QSysInfo>
+#include <QtCore/QIODevice>
 
 typedef QPair< quint32, quint32 > QExifURational;
 typedef QPair< qint32, qint32 > QExifSRational;

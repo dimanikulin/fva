@@ -1,7 +1,7 @@
 #include "fvadictionaryeditor.h"
-#include <QtGui/QApplication>
+#include <QtWidgets/QApplication>
 #include "fvacommonlib.h"
-#include <qtextcodec>
+#include <QtCore/qtextcodec>
 
 int main(int argc, char *argv[])
 {
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	{
 		deviceMatchName = a.arguments().at(2);
 	}
-	QTextCodec::setCodecForTr(QTextCodec::codecForName("Windows-1251"));
+//	QTextCodec::setCodecForTr(QTextCodec::codecForName("Windows-1251"));
 	FVADictionaryEditor w(a.arguments().at(1), deviceMatchName);
 	w.show();
 	return a.exec();

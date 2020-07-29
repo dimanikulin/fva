@@ -1,11 +1,11 @@
 #ifndef FVACOMMONLIB_H
 #define FVACOMMONLIB_H
 
-#include <QString>
-#include <QStringList>
-#include <QVector>
-#include <QDateTime>
-#include <QVariantMap>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QVector>
+#include <QtCore/QDateTime>
+#include <QtCore/QVariantMap>
 
 #include "fvaconstants.h"
 #include "fvaerrors.h"

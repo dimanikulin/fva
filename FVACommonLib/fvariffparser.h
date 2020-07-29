@@ -1,10 +1,10 @@
 #ifndef _RIFF_PARSER_H_
 #define _RIFF_PARSER_H_
 
-#include <Qstring> 
-#include <QDateTime>
-#include <QDataStream>
-#include <QFile>
+#include <QtCore/Qstring> 
+#include <QtCore/QDateTime>
+#include <QtCore/QDataStream>
+#include <QtCore/QFile>
 
 
 /*!

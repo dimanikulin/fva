@@ -1,8 +1,8 @@
 #ifndef _CMD_LINE_BASE_TASK_H_
 #define _CMD_LINE_BASE_TASK_H_
 
-#include <QDir>
-#include <QDebug>
+#include <QtCore/QDir>
+#include <QtCore/QDebug>
 
 #include "fvacommonlib.h"
 

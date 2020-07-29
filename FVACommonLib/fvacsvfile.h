@@ -1,10 +1,10 @@
 #ifndef _CSV_FILE_HEADER_
 #define _CSV_FILE_HEADER_
 
-#include <QString>
-#include <QFile>
-#include <QTextStream>
-#include <QStringList>
+#include <QtCore/QString>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
+#include <QtCore/QStringList>
 
 /*!
  * \brief it keeps functionality to work with a csv file

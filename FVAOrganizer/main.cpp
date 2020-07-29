@@ -1,6 +1,6 @@
 #include <QtCore/QCoreApplication>
-#include <QDateTime>
-#include <QDebug>
+#include <QtCore/QDateTime>
+#include <QtCore/QDebug>
 
 #include "cmdlineexecutor.h"
 #include "fvacommonlib.h"
@@ -22,7 +22,7 @@ void msghandler( QtMsgType type, const char *msg )
 	if ( type < g_logLevel )
 		return;
 	
-	g_logfile << QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data();
+	g_logfile << QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data();
 	switch ( type ) 
 	{
 		case QtDebugMsg:

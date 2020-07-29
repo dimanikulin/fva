@@ -57,9 +57,6 @@
     <ClInclude Include="fvacommonlib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\lib\json\json.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FVADescriptionFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -88,6 +85,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="qexifimageheader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="json.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -5,16 +5,16 @@
 
 extern QMap< unsigned int , unsigned int > sizes; 
 
-#define LOG_QWARN qWarning()<<"[WRN]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]"
-#define LOG_QCRIT qCritical()<<"[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]"
-#define LOG_QDEB qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]"
+#define LOG_QWARN qWarning()<<"[WRN]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]"
+#define LOG_QCRIT qCritical()<<"[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]"
+#define LOG_QDEB qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]"
 
 #define _CLASS_TASK_DECLARATION(name,supReadOnly) class name : public CmdLineBaseTask \
 {\
 public:\
 	name(const QString& dir_,bool readOnly_=false,const QString& custom_="")\
-	:CmdLineBaseTask( dir_,readOnly_,custom_){qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_;}\
-	virtual ~name() {qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]cmd deleted, dir:"<<m_folder;}\
+	:CmdLineBaseTask( dir_,readOnly_,custom_){qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_;}\
+	virtual ~name() {qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]cmd deleted, dir:"<<m_folder;}\
 	virtual FVA_ERROR_CODE execute();\
 	static QString Name(){return #name;}\
 	virtual bool supportReadOnly () {return supReadOnly;}\
@@ -48,7 +48,7 @@ class CLT_Auto_Checks_2 : public CmdLineBaseTask
 {
 public:
 	CLT_Auto_Checks_2(const QString& dir_,bool readOnly_=false,const QString& custom_="")
-	:CmdLineBaseTask( dir_,readOnly_,custom_){qWarning()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_<<",RO=" << (readOnly_?"yes":"no")<<",SRO=" << (supportReadOnly()?"yes":"no"); }
+	:CmdLineBaseTask( dir_,readOnly_,custom_){qWarning()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_<<",RO=" << (readOnly_?"yes":"no")<<",SRO=" << (supportReadOnly()?"yes":"no"); }
 	virtual ~CLT_Auto_Checks_2();
 	virtual FVA_ERROR_CODE execute();
 	static QString Name(){return "CLT_Auto_Checks_2";}

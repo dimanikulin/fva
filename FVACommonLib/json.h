@@ -33,8 +33,8 @@
 #ifndef JSON_H
 #define JSON_H
 
-#include <QVariant>
-#include <QString>
+#include <QtCore/QVariant>
+#include <QtCore/QString>
 
 namespace QtJson
 {

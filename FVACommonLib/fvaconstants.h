@@ -1,8 +1,8 @@
 #ifndef FVACONSTS_H
 #define FVACONSTS_H
 
-#include <QString>
-#include <QMap>
+#include <QtCore/QString>
+#include <QtCore/QMap>
 
 /*!
  * \brief it enumerates internal valuable file system types

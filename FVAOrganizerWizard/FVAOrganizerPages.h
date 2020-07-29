@@ -1,13 +1,13 @@
 #ifndef _FVA_ORGANIZER_PAGES_H_
 #define _FVA_ORGANIZER_PAGES_H_ 
 
-#include <QtGui/QWizardPage>
-#include <QLabel>
-#include <QLineEdit>
-#include <QTextBrowser>
-#include <QPushButton>
-#include <QComboBox>
-#include <QCheckBox>
+#include <QtWidgets/QWizardPage>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QCheckBox>
 
 /*!
  * \brief keeps all organizer pages functionality

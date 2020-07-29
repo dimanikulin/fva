@@ -3,10 +3,10 @@
 #include "fvacommondata.h"
 #include "fvadescriptionfile.h"
 
-#include <QDir>
-#include <QTextStream>
-#include <QProcess>
-#include <QCoreApplication>
+#include <QtCore/QDir>
+#include <QtCore/QTextStream>
+#include <QtCore/QProcess>
+#include <QtCore/QCoreApplication>
 
 #include "qexifimageheader.h"
 #include "fvariffparser.h"
