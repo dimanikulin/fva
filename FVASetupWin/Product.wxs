@@ -7,107 +7,121 @@
     <Property Id="WIXUI_INSTALLDIR" Value="PRODUCTDIR" />
     <UIRef Id="WixUI_InstallDir" />
     <Feature Id="ProductFeature" Title="FVASetupWin" Level="1">
-			<ComponentRef Id="binFilesComponents" />
-      <ComponentRef Id="binIconsFilesComponents" />
-      <ComponentRef Id="binJpegrFilesComponents" />
-      <ComponentRef Id="binMediaserviceFilesComponents" />
-      <ComponentRef Id="binScripts" />
-      <ComponentRef Id="binsql" />
-      <ComponentRef Id="rootFilesComponents" />
-		</Feature>
+			<ComponentRef Id="platformsComponents" />
+      <ComponentRef Id="icons" />
+      <ComponentRef Id="jpegr" />
+      <ComponentRef Id="mediaserviceFilesComponents" />
+      <ComponentRef Id="scripts" />
+      <ComponentRef Id="sql" />
+      <ComponentRef Id="files" />
+      <ComponentRef Id="sqldriversComponents" />
+    
+    </Feature>
   </Product>
 
 	<Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="PRODUCTDIR">
-        <!--Directory Id="INSTALLFOLDER" Name="FVA"-->
-          <Directory Id="bin" Name='#BIN#'>
-            <Directory Id="Icons" Name='Icons'>
-              <Component Id="binIconsFilesComponents" Guid="1af1fda7-a0f8-41f3-979f-07cf8ca5a411">
-                <File Id="audio" Name="audio.png"  Source="#BIN#\Icons\audio.png"  Vital="yes" KeyPath="no"/>
-                <File Id="folder" Name="folder.png" Source="#BIN#\Icons\folder.png"  Vital="yes" KeyPath="no"/>
-                <File Id="photo" Name="photo.png"  Source="#BIN#\Icons\photo.png"  Vital="yes" KeyPath="no"/>
-                <File Id="video" Name="video.png"  Source="#BIN#\Icons\video.png"  Vital="yes" KeyPath="no"/>
-                <File Id="main" Name="main.png"  Source="#BIN#\Icons\main.png"  Vital="yes" KeyPath="no"/>
-                <File Id="people" Name="people.png"  Source="#BIN#\Icons\people.png"  Vital="yes" KeyPath="no"/>
-                <File Id="person" Name="person.png"  Source="#BIN#\Icons\person.png"  Vital="yes" KeyPath="no"/>
-                <File Id="location" Name="location.png"  Source="#BIN#\Icons\location.PNG"  Vital="yes" KeyPath="no"/>
-              </Component>
-            </Directory>
-            <Directory Id="Jpegr" Name='Jpegr'>
-              <Component Id="binJpegrFilesComponents" Guid="0e134b5c-8d08-4059-bc73-ba96d6080990">
-                <File Id="jpegr" Name="jpegr.exe"  Source="#BIN#\Jpegr\jpegr.exe"  Vital="yes" KeyPath="no"/>
-                <File Id="jpegrotate" Name="jpegrotate.dll"  Source="#BIN#\Jpegr\jpegrotate.dll"  Vital="yes" KeyPath="no"/>
-                <File Id="jpgrotate" Name="jpgrotate.dll"  Source="#BIN#\Jpegr\jpgrotate.dll"  Vital="yes" KeyPath="no"/>
-                <CreateFolder />
-              </Component>
-            </Directory>
+        <Directory Id="Icons" Name='Icons'>
+          <Component Id="icons" Guid="1af1fda7-a0f8-41f3-979f-07cf8ca5a411">
+            <File Id="audio" Name="audio.png"  Source="#BIN#\Icons\audio.png"  Vital="yes" KeyPath="no"/>
+            <File Id="folder" Name="folder.png" Source="#BIN#\Icons\folder.png"  Vital="yes" KeyPath="no"/>
+            <File Id="photo" Name="photo.png"  Source="#BIN#\Icons\photo.png"  Vital="yes" KeyPath="no"/>
+            <File Id="video" Name="video.png"  Source="#BIN#\Icons\video.png"  Vital="yes" KeyPath="no"/>
+            <File Id="main" Name="main.png"  Source="#BIN#\Icons\main.png"  Vital="yes" KeyPath="no"/>
+            <File Id="people" Name="people.png"  Source="#BIN#\Icons\people.png"  Vital="yes" KeyPath="no"/>
+            <File Id="person" Name="person.png"  Source="#BIN#\Icons\person.png"  Vital="yes" KeyPath="no"/>
+            <File Id="location" Name="location.png"  Source="#BIN#\Icons\location.PNG"  Vital="yes" KeyPath="no"/>
+          </Component>
+        </Directory>
+    
+        <Directory Id="Jpegr" Name='Jpegr'>
+          <Component Id="jpegr" Guid="0e134b5c-8d08-4059-bc73-ba96d6080990">
+            <File Id="jpegr" Name="jpegr.exe"  Source="#BIN#\Jpegr\jpegr.exe"  Vital="yes" KeyPath="no"/>
+            <File Id="jpegrotate" Name="jpegrotate.dll"  Source="#BIN#\Jpegr\jpegrotate.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="jpgrotate" Name="jpgrotate.dll"  Source="#BIN#\Jpegr\jpgrotate.dll"  Vital="yes" KeyPath="no"/>
+            <CreateFolder />
+          </Component>
+        </Directory>
 
-            <Directory Id="scripts" Name='scripts'>
-              <Component Id="binScripts" Guid="D4AE1F4B-9CDC-424A-B757-1A970DF59665">
-                <File Id="checkAll" Name="checkAll.cmd" Source="..\FVAScripts\checkAll.cmd"  Vital="yes" KeyPath="no"/>
-                <File Id="checkCLT2" Name="checkCLT2.cmd" Source="..\FVAScripts\checkCLT2.cmd"  Vital="yes" KeyPath="no"/>
-                <File Id="checkDigiKamDB" Name="checkDigiKamDB.cmd" Source="..\FVAScripts\checkDigiKamDB.cmd"  Vital="yes" KeyPath="no"/>
-                <File Id="checkFvaDB" Name="checkFvaDB.cmd" Source="..\FVAScripts\checkFvaDB.cmd"  Vital="yes" KeyPath="no"/>
-                <File Id="createFvaDB.cmd" Name="createFvaDB.cmd" Source="..\FVAScripts\createFvaDB.cmd"  Vital="yes" KeyPath="no"/>
-                <File Id="setAttr" Name="setAttr.cmd" Source="..\FVAScripts\setAttr.cmd"  Vital="yes" KeyPath="no"/>
-                <File Id="updateTargetDirName" Name="updateTargetDirName.py"  Source="..\FVAScripts\updateTargetDirName.py"  Vital="yes" KeyPath="no"/>
-                <File Id="fixCLT2Issues" Name="fixCLT2Issues.py"  Source="..\FVAScripts\fixCLT2Issues.py"  Vital="yes" KeyPath="no"/>
-                <File Id="merge2csv" Name="merge2csv.py"  Source="..\FVAScripts\merge2csv.py"  Vital="yes" KeyPath="no"/>
-                <CreateFolder />
-              </Component>
-            </Directory>
+        <Directory Id="scripts" Name='scripts'>
+          <Component Id="scripts" Guid="D4AE1F4B-9CDC-424A-B757-1A970DF59665">
+            <File Id="checkAll" Name="checkAll.cmd" Source="..\FVAScripts\checkAll.cmd"  Vital="yes" KeyPath="no"/>
+            <File Id="checkCLT2" Name="checkCLT2.cmd" Source="..\FVAScripts\checkCLT2.cmd"  Vital="yes" KeyPath="no"/>
+            <File Id="checkDigiKamDB" Name="checkDigiKamDB.cmd" Source="..\FVAScripts\checkDigiKamDB.cmd"  Vital="yes" KeyPath="no"/>
+            <File Id="checkFvaDB" Name="checkFvaDB.cmd" Source="..\FVAScripts\checkFvaDB.cmd"  Vital="yes" KeyPath="no"/>
+            <File Id="createFvaDB.cmd" Name="createFvaDB.cmd" Source="..\FVAScripts\createFvaDB.cmd"  Vital="yes" KeyPath="no"/>
+            <File Id="setAttr" Name="setAttr.cmd" Source="..\FVAScripts\setAttr.cmd"  Vital="yes" KeyPath="no"/>
+            <File Id="updateTargetDirName" Name="updateTargetDirName.py"  Source="..\FVAScripts\updateTargetDirName.py"  Vital="yes" KeyPath="no"/>
+            <File Id="fixCLT2Issues" Name="fixCLT2Issues.py"  Source="..\FVAScripts\fixCLT2Issues.py"  Vital="yes" KeyPath="no"/>
+            <File Id="merge2csv" Name="merge2csv.py"  Source="..\FVAScripts\merge2csv.py"  Vital="yes" KeyPath="no"/>
+            <CreateFolder />
+          </Component>
+        </Directory>
 
-            <Directory Id="sql" Name='sql'>
-              <Component Id="binsql" Guid="66C91399-D716-47C7-BE9C-F375EECBE69E">
-                <File Id="initDBStructure" Name="01.initDBStructure.sql" Source="..\FVASQL\01.initDBStructure.sql"  Vital="yes" KeyPath="no"/>
-                <File Id="createViews" Name="02.createViews.sql" Source="..\FVASQL\02.createViews.sql"  Vital="yes" KeyPath="no"/>
-                <File Id="EventTypes" Name="03.EventTypes.sql" Source="..\FVASQL\03.EventTypes.sql"  Vital="yes" KeyPath="no"/>
-                <File Id="EventRelations" Name="04.EventRelations.sql" Source="..\FVASQL\04.EventRelations.sql"  Vital="yes" KeyPath="no"/>
-                <File Id="placeTypes" Name="05.placeTypes.sql" Source="..\FVASQL\05.placeTypes.sql"  Vital="yes" KeyPath="no"/>
-                <File Id="deviceTypes" Name="06.deviceTypes.sql" Source="..\FVASQL\06.deviceTypes.sql"  Vital="yes" KeyPath="no"/>
-                <File Id="relationTypes" Name="07.relationTypes.sql" Source="..\FVASQL\07.relationTypes.sql"  Vital="yes" KeyPath="no"/>
-                <File Id="params" Name="08.params.sql" Source="..\FVASQL\08.params.sql"  Vital="yes" KeyPath="no"/>
-                <File Id="customData" Name="09.customData.sql" Source="..\FVASQL\09.customData.sql"  Vital="yes" KeyPath="no"/>
-                <CreateFolder />
-              </Component>
-            </Directory>
+        <Directory Id="sql" Name='sql'>
+          <Component Id="sql" Guid="66C91399-D716-47C7-BE9C-F375EECBE69E">
+            <File Id="initDBStructure" Name="01.initDBStructure.sql" Source="..\FVASQL\01.initDBStructure.sql"  Vital="yes" KeyPath="no"/>
+            <File Id="createViews" Name="02.createViews.sql" Source="..\FVASQL\02.createViews.sql"  Vital="yes" KeyPath="no"/>
+            <File Id="EventTypes" Name="03.EventTypes.sql" Source="..\FVASQL\03.EventTypes.sql"  Vital="yes" KeyPath="no"/>
+            <File Id="EventRelations" Name="04.EventRelations.sql" Source="..\FVASQL\04.EventRelations.sql"  Vital="yes" KeyPath="no"/>
+            <File Id="placeTypes" Name="05.placeTypes.sql" Source="..\FVASQL\05.placeTypes.sql"  Vital="yes" KeyPath="no"/>
+            <File Id="deviceTypes" Name="06.deviceTypes.sql" Source="..\FVASQL\06.deviceTypes.sql"  Vital="yes" KeyPath="no"/>
+            <File Id="relationTypes" Name="07.relationTypes.sql" Source="..\FVASQL\07.relationTypes.sql"  Vital="yes" KeyPath="no"/>
+            <File Id="params" Name="08.params.sql" Source="..\FVASQL\08.params.sql"  Vital="yes" KeyPath="no"/>
+            <File Id="customData" Name="09.customData.sql" Source="..\FVASQL\09.customData.sql"  Vital="yes" KeyPath="no"/>
+            <CreateFolder />
+          </Component>
+        </Directory>
             
-            <Directory Id="mediaservice" Name='mediaservice'>
-              <Component Id="binMediaserviceFilesComponents" Guid="1ea80614-bc07-4675-96a5-d418a1d67060">
-                <CreateFolder />
-                <File Id="dsengine" Name="dsengine.dll"  Source="#BIN#\mediaservice\dsengine.dll"  Vital="yes" KeyPath="no"/>
-                <File Id="qtmedia_audioengine" Name="qtmedia_audioengine.dll"  Source="#BIN#\mediaservice\qtmedia_audioengine.dll"  Vital="yes" KeyPath="no"/>
-                <File Id="wmfengine" Name="wmfengine.dll"  Source="#BIN#\mediaservice\wmfengine.dll"  Vital="yes" KeyPath="no"/>
-              </Component>
-            </Directory>
-            <Component Id="binFilesComponents" Guid="99f7d041-c3ff-4b1d-8b85-5e08dd5acec4">
-              <File Id="descEditor" Name="FVADescriptionEditor.exe" Source="..\fvabin\win32\release\#BIN#\FVADescriptionEditor.exe" Vital="yes" KeyPath="no"/>
-              <File Id="dictEditor" Name="FVADictionaryEditor.exe" Source="..\fvabin\win32\release\#BIN#\FVADictionaryEditor.exe" Vital="yes" KeyPath="no"/>
-              <File Id="player" Name="FVAPlayer.exe" Source="..\fvabin\win32\release\#BIN#\FVAPlayer.exe" Vital="yes" KeyPath="no"/>
-              <File Id="conv" Name="Converter.exe" Source="#BIN#\Converter.exe"  Vital="yes" KeyPath="no"/>
-              <File Id="exif" Name="exiftool(-k).exe"  Source="#BIN#\exiftool(-k).exe"  Vital="yes" KeyPath="no"/>
-              <File Id="jhead" Name="jhead.exe"  Source="#BIN#\jhead.exe"  Vital="yes" KeyPath="no"/>
+        <Directory Id="mediaservice" Name='mediaservice'>
+          <Component Id="mediaserviceFilesComponents" Guid="1ea80614-bc07-4675-96a5-d418a1d67060">
+            <CreateFolder />
+            <File Id="dsengine" Name="dsengine.dll"  Source="#BIN#\mediaservice\dsengine.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="qtmedia_audioengine" Name="qtmedia_audioengine.dll"  Source="#BIN#\mediaservice\qtmedia_audioengine.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="wmfengine" Name="wmfengine.dll"  Source="#BIN#\mediaservice\wmfengine.dll"  Vital="yes" KeyPath="no"/>
+           </Component>            
+         </Directory>
 
-              <File Id="Qt5Core" Name="Qt5Core.dll"  Source="#BIN#\Qt5Core.dll"  Vital="yes" KeyPath="no"/>
-              <File Id="Qt5Gui" Name="Qt5Gui.dll"  Source="#BIN#\Qt5Gui.dll"  Vital="yes" KeyPath="no"/>
-              <File Id="Qt5Multimedia" Name="Qt5Multimedia.dll"  Source="#BIN#\Qt5Multimedia.dll"  Vital="yes" KeyPath="no"/>
-              <File Id="Qt5MultimediaWidgets" Name="Qt5MultimediaWidgets.dll"  Source="#BIN#\Qt5MultimediaWidgets.dll"  Vital="yes" KeyPath="no"/>
-              <File Id="Qt5Network" Name="Qt5Network.dll"  Source="#BIN#\Qt5Network.dll"  Vital="yes" KeyPath="no"/>
-              <File Id="Qt5OpenGL" Name="Qt5OpenGL.dll"  Source="#BIN#\Qt5OpenGL.dll"  Vital="yes" KeyPath="no"/>
-              <File Id="Qt5Widgets" Name="Qt5Widgets.dll"  Source="#BIN#\Qt5Widgets.dll"  Vital="yes" KeyPath="no"/>
-              <File Id="sqlite3" Name="sqlite3.exe"  Source="#BIN#\sqlite3.exe"  Vital="yes" KeyPath="no"/>
-              
+        <Directory Id="platforms" Name='platforms'>
+          <Component Id="platformsComponents" Guid="F1F0CD8C-9E9D-4A09-8FD9-BEC16D04EC5C">
+            <CreateFolder />
+            <File Id="qwindows" Name="qwindows.dll"  Source="#BIN#\platforms\qwindows.dll"  Vital="yes" KeyPath="no"/>
+          </Component>
+        </Directory>
 
-            </Component>
-          </Directory>
-          <Component Id="rootFilesComponents" Guid="af4356ff-56aa-4c7c-baca-cd1af6e51267">
+        <Directory Id="sqldrivers" Name='sqldrivers'>
+          <Component Id="sqldriversComponents" Guid="2F5B4920-D2F6-464D-A6CA-B4697AE50801">
+            <CreateFolder />
+            <File Id="qsqlite" Name="qsqlite.dll"  Source="#BIN#\sqldrivers\qsqlite.dll"  Vital="yes" KeyPath="no"/>
+          </Component>
+        </Directory>
+
+        <Component Id="files" Guid="af4356ff-56aa-4c7c-baca-cd1af6e51267">
+            
             <File Id="viewer" Name="FVAViewer.exe" Source="..\fvabin\win32\release\FVAViewer.exe" Vital="yes" KeyPath="no"/>
             <File Id="FVAOrganizer" Name="FVAOrganizer.exe" Source="..\fvabin\win32\release\FVAOrganizer.exe" Vital="yes" KeyPath="no"/>
             <File Id="FVAOrganizerWizard" Name="FVAOrganizerWizard.exe" Source="..\fvabin\win32\release\FVAOrganizerWizard.exe" Vital="yes" KeyPath="no"/>
             <File Id="FVAConfigurator" Name="FVAConfigurator.exe" Source="..\fvabin\win32\release\FVAConfigurator.exe" Vital="yes" KeyPath="no"/>
+            <File Id="descEditor" Name="FVADescriptionEditor.exe" Source="..\fvabin\win32\release\#BIN#\FVADescriptionEditor.exe" Vital="yes" KeyPath="no"/>
+            <File Id="dictEditor" Name="FVADictionaryEditor.exe" Source="..\fvabin\win32\release\#BIN#\FVADictionaryEditor.exe" Vital="yes" KeyPath="no"/>
+            <File Id="player" Name="FVAPlayer.exe" Source="..\fvabin\win32\release\#BIN#\FVAPlayer.exe" Vital="yes" KeyPath="no"/>
+   
+            <File Id="conv" Name="Converter.exe" Source="#BIN#\Converter.exe"  Vital="yes" KeyPath="no"/>
+            <File Id="exif" Name="exiftool(-k).exe"  Source="#BIN#\exiftool(-k).exe"  Vital="yes" KeyPath="no"/>
+            <File Id="jhead" Name="jhead.exe"  Source="#BIN#\jhead.exe"  Vital="yes" KeyPath="no"/>
+            <File Id="sqlite3" Name="sqlite3.exe"  Source="#BIN#\sqlite3.exe"  Vital="yes" KeyPath="no"/>
+
+            <File Id="Qt5Core" Name="Qt5Core.dll"  Source="#BIN#\Qt5Core.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5Gui" Name="Qt5Gui.dll"  Source="#BIN#\Qt5Gui.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5Multimedia" Name="Qt5Multimedia.dll"  Source="#BIN#\Qt5Multimedia.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5MultimediaWidgets" Name="Qt5MultimediaWidgets.dll"  Source="#BIN#\Qt5MultimediaWidgets.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5Network" Name="Qt5Network.dll"  Source="#BIN#\Qt5Network.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5OpenGL" Name="Qt5OpenGL.dll"  Source="#BIN#\Qt5OpenGL.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5Widgets" Name="Qt5Widgets.dll"  Source="#BIN#\Qt5Widgets.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5Sql" Name="Qt5Sql.dll"  Source="#BIN#\Qt5Sql.dll"  Vital="yes" KeyPath="no"/>
+          
           </Component>
-        <!--/Directory-->
       </Directory>
     </Directory>
 	</Fragment>
