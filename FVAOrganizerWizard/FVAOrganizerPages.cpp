@@ -107,7 +107,7 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 	// to run change orintation in auto mode
 	QProcess myProcess(this);    
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
-	myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/jpegr/jpegr.exe -auto " + dir);
+	myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe -auto " + dir);
 
 	myProcess.waitForFinished( -1 );
 	return true;
@@ -115,7 +115,7 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 
 FVAOrganizerOrientPage::FVAOrganizerOrientPage()
 {
-	// to suggest user to run /#BIN#/jpegr_portable32/jpegr.exe
+	// to suggest user to run /jpegr_portable32/jpegr.exe
 	rotateLabel		= new QLabel(tr("Советуем Вам проверить ориентацию контента перед началом работы:"));
 	rotateLabel->setAlignment(Qt::AlignLeft);
 	rotateButton	= new QPushButton;
@@ -134,7 +134,7 @@ void FVAOrganizerOrientPage::OnOrientationButtonClicked()
 {
 	QProcess myProcess(this);    
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
-	myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/jpegr/jpegr.exe");
+	myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe");
 
 	myProcess.waitForFinished( -1 );
 }
@@ -236,7 +236,7 @@ void FVAOrganizerDevicePage::OnChangeDictPressed()
 	params.append(QCoreApplication::applicationDirPath() + "/" + FVA_DB_NAME);
 	QString		deviceName_		= ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
 	params.append(deviceName_);
-	myProcess.start(QCoreApplication::applicationDirPath() + "/#BIN#/FVADictionaryEditor.exe", params);
+	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe", params);
 	myProcess.waitForFinished( -1 );
 }
 
@@ -431,7 +431,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	// change FVA_TARGET_FOLDER_NAME tag to actual folder name for sql files
 	QString pyScriptPath = "python " 
 							+ QCoreApplication::applicationDirPath() 
-							+ "/#BIN#/scripts/updateTargetDirName.py " 
+							+ "/scripts/updateTargetDirName.py " 
 							+ FVA_DEFAULT_ROOT_DIR;
 	QString mergeDir = outputDirLineEdit->text();
 	mergeDir = mergeDir.replace("\\","/");  // replace slaches on backslashes
@@ -441,14 +441,14 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	// merge 2 csv into one: previpus and new ones - for folder CSVs
 	QString pyScriptPathMerge = "python " 
 							+ QCoreApplication::applicationDirPath() 
-							+ "/#BIN#/scripts/merge2csv.py " 
+							+ "/scripts/merge2csv.py " 
 							+ FVA_DEFAULT_ROOT_DIR;
 	pyCmdList.append(pyScriptPathMerge + "fvaFolder.csv " + FVA_DEFAULT_ROOT_DIR + "fvaFolderN.csv ");
 
 	// merge 2 csv into one: previpus and new ones - for file CSVs
 	QString pyScriptPathMerge2 = "python " 
 							+ QCoreApplication::applicationDirPath() 
-							+ "/#BIN#/scripts/merge2csv.py " 
+							+ "/scripts/merge2csv.py " 
 							+ FVA_DEFAULT_ROOT_DIR;
 	pyCmdList.append(pyScriptPathMerge2 + "fvaFile.csv " + FVA_DEFAULT_ROOT_DIR + "fvaFileN.csv " );
 
