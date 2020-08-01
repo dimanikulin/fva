@@ -12,8 +12,6 @@
 /*!
  * \brief keeps all organizer pages functionality
  */
-
-
 class FVAOrganizerStartPage : public QWizardPage
 {
 	Q_OBJECT
@@ -56,7 +54,8 @@ class FVAOrganizerInputDirPage : public QWizardPage
 
 	protected:
 
-		virtual bool	validatePage ();
+		virtual bool validatePage ();
+		virtual bool isComplete() const;
 
 	private slots:
 		void OnDirButtonClicked();
@@ -80,6 +79,7 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 	protected:
 
 		virtual bool	validatePage ();
+		virtual bool	isComplete() const;
 
 	private slots:
 		void OnDirButtonClicked();
@@ -121,6 +121,7 @@ class FVAOrganizerDevicePage : public QWizardPage
 
 		virtual bool	validatePage ();
 		virtual void	setVisible( bool visible );
+		virtual bool	isComplete() const;
 
 	protected slots:
 		void OnChangeDictPressed();

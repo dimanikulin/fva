@@ -53,5 +53,9 @@ void fvaFindCheckedItem(QTreeWidgetItem *item, QVector<unsigned int>& Ids);
  */
 void fvaUpdateChecks(QTreeWidgetItem *item, int column);
 
+#define FVA_MESSAGE_BOX(message)\
+QMessageBox msgBox; \
+msgBox.setText(message); \
+msgBox.exec();
 
 #endif // FVACOMMONUI_H

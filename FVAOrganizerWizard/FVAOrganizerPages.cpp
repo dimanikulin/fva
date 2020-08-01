@@ -3,12 +3,14 @@
 
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QFileDialog>
+#include <QtWidgets/QMessageBox>
 #include <QtCore/QProcess>
 #include <QtCore/QCoreApplication>
 
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
 #include "fvacommondb.h"
+#include "fvacommonui.h"
 
 FVAOrganizerStartPage::FVAOrganizerStartPage()
 {
@@ -30,6 +32,7 @@ FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
     
 	inputDirLineEdit = new QLineEdit;
 	inputDirLineEdit->setText("");
+	inputDirLineEdit->setReadOnly(true);
 
 	dirButton		= new QPushButton;
 	dirButton->setText(tr("Указать папку"));		
@@ -57,17 +60,25 @@ void FVAOrganizerInputDirPage::OnDirButtonClicked()
 	QString path = dirDialog.getExistingDirectory();
 
 	if (!path.isEmpty())
+	{
 		inputDirLineEdit->setText(path);
+		emit completeChanged();
+	}
 }
+bool FVAOrganizerInputDirPage::isComplete() const
+{
+	QString dir = inputDirLineEdit->text();
 
+	// make button be disabled if dir.isEmpty()
+	if (dir.isEmpty())
+	{
+		return false;
+	}
+}
 bool	FVAOrganizerInputDirPage::validatePage ()
 {
 	QString dir = inputDirLineEdit->text();
-	if ( dir.isEmpty() )
-	{
-		// TODO make button be disabled if dir.isEmpty()
-		return false;
-	}
+
 	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
 
 	QDir _dir(dir); 
@@ -76,7 +87,7 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
 	if ( FVA_NO_ERROR != res )
 	{
-		// TODO make suggestion
+		FVA_MESSAGE_BOX("fvaLoadDeviceMapFromDictionary failed with error " + QString::number(res));
 		return false;
 	}
 	DEVICE_MAP deviceMap;
@@ -219,6 +230,7 @@ void FVAOrganizerDevicePage::setVisible( bool visible )
 			deviceName->setText(deviceMap.begin().value().guiName);
 			ownerName->setText(deviceMap.begin().value().ownerName);
 			deviceId = deviceMap.begin().value().deviceId;
+			emit completeChanged();
 		}
 		else
 		{
@@ -239,6 +251,14 @@ void FVAOrganizerDevicePage::OnChangeDictPressed()
 	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe", params);
 	myProcess.waitForFinished( -1 );
 }
+bool FVAOrganizerDevicePage::isComplete() const
+{
+	// make button next ne disabled
+	if (deviceId == -1)
+	{
+		return false;
+	}
+}
 
 bool FVAOrganizerDevicePage::validatePage()
 {
@@ -254,13 +274,7 @@ bool FVAOrganizerDevicePage::validatePage()
 		}
 	}
 
-	if (deviceId == -1)
-	{
-		// TODO make button next ne disabled
-		return false;
-	}
 	QStringList cmdList;
-	// TODO check on one time several photo
 	cmdList.append("CLT_Video_Rename_By_Sequence");
 	cmdList.append("CLT_Convert_Amr");
 	cmdList.append("CLT_Device_Name_Check");
@@ -278,7 +292,7 @@ bool FVAOrganizerDevicePage::validatePage()
 	QFile fileLog(logPath);
 	if (!fileLog.open(QIODevice::Append | QIODevice::Text))
 	{
-		//TODO show error
+		FVA_MESSAGE_BOX("FVAOrganizerDevicePage unable to open organizerlog");
 		return false;	
 	}
 
@@ -314,7 +328,7 @@ bool FVAOrganizerDevicePage::validatePage()
 		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
 		if (exitCode != FVA_NO_ERROR)
 		{
-			//TODO show error
+			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));
 			return false;
 		}
 
@@ -329,6 +343,7 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
     
 	outputDirLineEdit = new QLineEdit;
     outputDirLineEdit->setText("");
+	outputDirLineEdit->setReadOnly(true);
 
 	dirButton		= new QPushButton;
 	dirButton->setText(tr("Указать папку"));		
@@ -363,26 +378,33 @@ void FVAOrganizerOutputDirPage::OnDirButtonClicked()
 	QString path = dirDialog.getExistingDirectory();
 
 	if (!path.isEmpty())
+	{
 		outputDirLineEdit->setText(path);
+		emit completeChanged();
+	}
 }
 
+bool FVAOrganizerOutputDirPage::isComplete() const
+{
+	QString dir = outputDirLineEdit->text();
+
+	// make button be disabled if dir.isEmpty()
+	if (dir.isEmpty())
+	{
+		return false;
+	}
+}
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {
 	QString dir = outputDirLineEdit->text();
 	
-	if ( dir.isEmpty() )
-	{
-		// TODO make button be disabled if dir.isEmpty()
-		return false;
-	}
-
 	QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog"
 					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toLatin1().data()
 					+ ".txt"; 
 	QFile fileLog(logPath);
 	if (!fileLog.open(QIODevice::Append | QIODevice::Text))
 	{
-		//TODO show error
+		FVA_MESSAGE_BOX("FVAOrganizerOutputDirPage unable to open organizerlog");
 		return false;	
 	}
 	QStringList cmdList;
@@ -421,7 +443,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
 		if (exitCode != FVA_NO_ERROR)
 		{
-			//TODO show error
+			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));
 			return false;
 		}
 	}
@@ -470,7 +492,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
 		if (exitCode != FVA_NO_ERROR)
 		{
-			//TODO show error
+			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));
 			return false;
 		}
 	}
