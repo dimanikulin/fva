@@ -4,6 +4,7 @@
 
 #include "cmdlineexecutor.h"
 #include "fvacommonlib.h"
+#include "fvadefaultcfg.h"
 
 #include <fstream>
 
@@ -17,8 +18,14 @@ std::ofstream	g_logfile;
  */
 QtMsgType	g_logLevel = QtDebugMsg;
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+void msghandler(QtMsgType type, const QMessageLogContext &, const QString & str)
+{
+	const char * msg = str.toStdString().c_str();
+#else
 void msghandler( QtMsgType type, const char *msg )
 {
+#endif
 	if ( type < g_logLevel )
 		return;
 	
@@ -40,15 +47,19 @@ void msghandler( QtMsgType type, const char *msg )
 			abort();
 		}
 	}	
-	//g_logfile << msg << "\n";
+	g_logfile << msg << "\n";
 }
 
 int main( int argc, char *argv[] )
 {
 	//install : set the callback
-	//qInstallMsgHandler( msghandler );
-	//QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog.txt";  
-	//g_logfile.open( logPath.toStdString(), std::ios::app );
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+	qInstallMessageHandler(msghandler);
+#else
+	qInstallMsgHandler( msghandler );
+#endif
+	QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog.txt";  
+	g_logfile.open( logPath.toStdString(), std::ios::app );
 
 	QCoreApplication a(argc, argv);
 

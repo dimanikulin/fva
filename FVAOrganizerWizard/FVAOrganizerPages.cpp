@@ -286,16 +286,6 @@ bool FVAOrganizerDevicePage::validatePage()
 	cmdList.append("CLT_Alone_Files_Move");
 	cmdList.append("CLT_Auto_Checks_2");
 
-	QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog"
-					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toLatin1().data()
-					+ ".txt"; 
-	QFile fileLog(logPath);
-	if (!fileLog.open(QIODevice::Append | QIODevice::Text))
-	{
-		FVA_MESSAGE_BOX("FVAOrganizerDevicePage unable to open organizerlog");
-		return false;	
-	}
-
 	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
 	{
 		QProcess myProcess(this);
@@ -317,13 +307,7 @@ bool FVAOrganizerDevicePage::validatePage()
 			params.append("custom=" + QString::number(deviceId));
 
 		myProcess.start("FVAOrganizer.exe",params);
-		while(myProcess.waitForReadyRead())
-		{
-			QString output = myProcess.readAll();
-			logOutput->append(output);
-			fileLog.write(output.toStdString().c_str());
-		}
-		myProcess.waitForFinished( -1 );
+		myProcess.waitForFinished(-1);
 
 		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
 		if (exitCode != FVA_NO_ERROR)
@@ -398,15 +382,6 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 {
 	QString dir = outputDirLineEdit->text();
 	
-	QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog"
-					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toLatin1().data()
-					+ ".txt"; 
-	QFile fileLog(logPath);
-	if (!fileLog.open(QIODevice::Append | QIODevice::Text))
-	{
-		FVA_MESSAGE_BOX("FVAOrganizerOutputDirPage unable to open organizerlog");
-		return false;	
-	}
 	QStringList cmdList;
 	if (mergeCheckBox->isChecked())
 		cmdList.append("CLT_One_Event_Folder_Merging");
@@ -432,13 +407,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 			params.append("custom=" + dir);
 
 		myProcess.start("FVAOrganizer.exe",params);
-		while(myProcess.waitForReadyRead())
-		{
-			QString output = myProcess.readAll();
-			logOutput->append(output);
-			fileLog.write(output.toStdString().c_str());
-		}
-		myProcess.waitForFinished( -1 );
+		myProcess.waitForFinished(-1);
 
 		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
 		if (exitCode != FVA_NO_ERROR)
@@ -481,13 +450,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		myProcess.setProcessChannelMode(QProcess::MergedChannels);
 
 		myProcess.start(*it);
-		while(myProcess.waitForReadyRead())
-		{
-			QString output = myProcess.readAll();
-			logOutput->append(output);
-			fileLog.write(output.toStdString().c_str());
-		}
-		myProcess.waitForFinished( -1 );
+		myProcess.waitForFinished(-1);
 
 		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
 		if (exitCode != FVA_NO_ERROR)
