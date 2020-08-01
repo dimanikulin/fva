@@ -47,7 +47,7 @@ int main( int argc, char *argv[] )
 {
 	//install : set the callback
 	//qInstallMsgHandler( msghandler );
-	//QString logPath = QCoreApplication::applicationDirPath() + "\\organizerlog.txt";  
+	//QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog.txt";  
 	//g_logfile.open( logPath.toStdString(), std::ios::app );
 
 	QCoreApplication a(argc, argv);

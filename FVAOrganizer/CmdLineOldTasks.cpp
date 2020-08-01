@@ -126,7 +126,7 @@ CLT_Print_FS_Structure::CLT_Print_FS_Structure(const QString& dir_,bool readOnly
 	:CmdLineBaseTask( dir_,readOnly_,custom_)
 {
 	qDebug()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_;
-	m_file.setFileName(QCoreApplication::applicationDirPath() + "\\fsoutput.txt");
+	m_file.setFileName(FVA_DEFAULT_ROOT_DIR + "fsoutput.txt");
 	m_file.open( QIODevice::WriteOnly );
 }
 

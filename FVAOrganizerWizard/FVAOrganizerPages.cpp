@@ -73,7 +73,7 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 	QDir _dir(dir); 
 
 	DEVICE_MAP fullDeviceMap;
-	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, QCoreApplication::applicationDirPath() + "/" + FVA_DB_NAME);
+	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
 	if ( FVA_NO_ERROR != res )
 	{
 		// TODO make suggestion
@@ -233,7 +233,7 @@ void FVAOrganizerDevicePage::OnChangeDictPressed()
 	QProcess myProcess(this);    
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	QStringList params;
-	params.append(QCoreApplication::applicationDirPath() + "/" + FVA_DB_NAME);
+	params.append(FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
 	QString		deviceName_		= ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
 	params.append(deviceName_);
 	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe", params);
@@ -272,7 +272,7 @@ bool FVAOrganizerDevicePage::validatePage()
 	cmdList.append("CLT_Alone_Files_Move");
 	cmdList.append("CLT_Auto_Checks_2");
 
-	QString logPath = QCoreApplication::applicationDirPath() + "/organizerlog"  
+	QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog"
 					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toLatin1().data()
 					+ ".txt"; 
 	QFile fileLog(logPath);
@@ -376,7 +376,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		return false;
 	}
 
-	QString logPath = QCoreApplication::applicationDirPath() + "/organizerlog"  
+	QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog"
 					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toLatin1().data()
 					+ ".txt"; 
 	QFile fileLog(logPath);
