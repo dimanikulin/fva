@@ -311,13 +311,13 @@ bool FVAOrganizerDevicePage::validatePage()
 		}
 		myProcess.waitForFinished( -1 );
 
-		int exitCode = myProcess.exitCode();
-
+		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
 		if (exitCode != FVA_NO_ERROR)
 		{
 			//TODO show error
 			return false;
 		}
+
 	}
 	return true;
 }
@@ -418,7 +418,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		}
 		myProcess.waitForFinished( -1 );
 
-		int exitCode = myProcess.exitCode();
+		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
 		if (exitCode != FVA_NO_ERROR)
 		{
 			//TODO show error
@@ -467,8 +467,8 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		}
 		myProcess.waitForFinished( -1 );
 
-		int exitCode = myProcess.exitCode();
-		if (exitCode != 0)
+		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
+		if (exitCode != FVA_NO_ERROR)
 		{
 			//TODO show error
 			return false;
