@@ -19,7 +19,7 @@ FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& 
 	RET_IF_RES_IS_ERROR
 
 	ui.cbOwner->clear();
-	ui.cbOwner->addItem ( tr("Âûáèðåòå âëàäåëüöà"), 0 );
+	ui.cbOwner->addItem ( tr("Ð’Ñ‹Ð±Ð¸Ñ€ÐµÑ‚Ðµ Ð²Ð»Ð°Ð´ÐµÐ»ÑŒÑ†Ð°"), 0 );
 	QVariantList people = dictionaries["people"].toList();
 	for ( auto i = people.begin(); i != people.end() ; ++i )
 		ui.cbOwner->addItem ( i->toMap()["name"].toString(), i->toMap()["ID"].toString());

@@ -14,7 +14,7 @@ FVAOrganizerStartPage::FVAOrganizerStartPage()
 {
 	helloWords		= new QTextBrowser;
 
-	helloWords->setText(tr("ƒÓ·Ó ÔÓÊ‡ÎÓ‚‡Ú¸ ‚ ÒËÒÚÂÏÛ Ó„‡ÌËÁ‡ˆËË ÏÂ‰Ë‡-ÍÓÌÚÂÌÚ‡!"));
+	helloWords->setText(tr("–î–æ–±—Ä–æ –ø–æ–∂–∞–ª–æ–≤–∞—Ç—å –≤ —Å–∏—Å—Ç–µ–º—É –æ—Ä–≥–∞–Ω–∏–∑–∞—Ü–∏–∏ –º–µ–¥–∏–∞-–∫–æ–Ω—Ç–µ–Ω—Ç–∞!"));
 
 	QVBoxLayout * layout = new QVBoxLayout;
 
@@ -25,14 +25,14 @@ FVAOrganizerStartPage::FVAOrganizerStartPage()
 
 FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 {
-	inputDirLabel	= new QLabel(tr("”Í‡ÊËÚÂ ‚ıÓ‰ÌÛ˛ Ô‡ÔÍÛ Ò ÍÓÌÚÂÌÚÓÏ\n (¬ÌËÏ‡ÌËÂ! œ‡ÔÍ‡ ‰ÓÎÊÌ‡ Ì‡˜ËÌ‡Ú¸Òˇ Ò ÒËÏ‚ÓÎ‡ '#'):"));
+	inputDirLabel	= new QLabel(tr("–£–∫–∞–∂–∏—Ç–µ –≤—Ö–æ–¥–Ω—É—é –ø–∞–ø–∫—É —Å –∫–æ–Ω—Ç–µ–Ω—Ç–æ–º\n (–í–Ω–∏–º–∞–Ω–∏–µ! –ü–∞–ø–∫–∞ –¥–æ–ª–∂–Ω–∞ –Ω–∞—á–∏–Ω–∞—Ç—å—Å—è —Å —Å–∏–º–≤–æ–ª–∞ '#'):"));
 	inputDirLabel->setAlignment(Qt::AlignLeft);
     
 	inputDirLineEdit = new QLineEdit;
 	inputDirLineEdit->setText("");
 
 	dirButton		= new QPushButton;
-	dirButton->setText(tr("”Í‡Á‡Ú¸ Ô‡ÔÍÛ"));		
+	dirButton->setText(tr("–£–∫–∞–∑–∞—Ç—å –ø–∞–ø–∫—É"));		
 
 	QGridLayout * dirLayout = new QGridLayout;
 	dirLayout->addWidget(inputDirLineEdit,0,0);
@@ -116,10 +116,10 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 FVAOrganizerOrientPage::FVAOrganizerOrientPage()
 {
 	// to suggest user to run /jpegr_portable32/jpegr.exe
-	rotateLabel		= new QLabel(tr("—Ó‚ÂÚÛÂÏ ¬‡Ï ÔÓ‚ÂËÚ¸ ÓËÂÌÚ‡ˆË˛ ÍÓÌÚÂÌÚ‡ ÔÂÂ‰ Ì‡˜‡ÎÓÏ ‡·ÓÚ˚:"));
+	rotateLabel		= new QLabel(tr("–°–æ–≤–µ—Ç—É–µ–º –í–∞–º –ø—Ä–æ–≤–µ—Ä–∏—Ç—å –æ—Ä–∏–µ–Ω—Ç–∞—Ü–∏—é –∫–æ–Ω—Ç–µ–Ω—Ç–∞ –ø–µ—Ä–µ–¥ –Ω–∞—á–∞–ª–æ–º —Ä–∞–±–æ—Ç—ã:"));
 	rotateLabel->setAlignment(Qt::AlignLeft);
 	rotateButton	= new QPushButton;
-	rotateButton->setText(tr("œÓ‚ÂËÚ¸"));
+	rotateButton->setText(tr("–ü—Ä–æ–≤–µ—Ä–∏—Ç—å"));
 
 	QVBoxLayout * layout = new QVBoxLayout;
 	layout->addWidget(rotateLabel);
@@ -141,24 +141,24 @@ void FVAOrganizerOrientPage::OnOrientationButtonClicked()
 FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	: deviceId (-1)
 {
-	QLabel * titleLabel	= new QLabel(tr("”·Â‰ËÚÂÒ¸, ˜ÚÓ ÛÒÚÓÈÒÚ‚Ó, ÍÓÚÓ˚Ï ‰ÂÎ‡ÎËÒ¸ ÒÌËÏÍË, ‚ÂÌÓ ÓÔÂ‰ÂÎËÎÓÒ¸!"));
+	QLabel * titleLabel	= new QLabel(tr("–£–±–µ–¥–∏—Ç–µ—Å—å, —á—Ç–æ —É—Å—Ç—Ä–æ–π—Å—Ç–≤–æ, –∫–æ—Ç–æ—Ä—ã–º –¥–µ–ª–∞–ª–∏—Å—å —Å–Ω–∏–º–∫–∏, –≤–µ—Ä–Ω–æ –æ–ø—Ä–µ–¥–µ–ª–∏–ª–æ—Å—å!"));
     titleLabel->setAlignment(Qt::AlignLeft);
 
-	deviceLbl	= new QLabel(tr("Õ‡Á‚‡ÌËÂ:"));
+	deviceLbl	= new QLabel(tr("–ù–∞–∑–≤–∞–Ω–∏–µ:"));
     deviceLbl->setAlignment(Qt::AlignLeft);
 
 	deviceName	= new QLineEdit;
 	deviceName->setAlignment(Qt::AlignLeft);
 	deviceName->setMaxLength(40);
 
-	matchLbl	= new QLabel(tr("ÀËÌÍÓ‚Ó˜ÌÓÂ ËÏˇ:"));
+	matchLbl	= new QLabel(tr("–õ–∏–Ω–∫–æ–≤–æ—á–Ω–æ–µ –∏–º—è:"));
     matchLbl->setAlignment(Qt::AlignLeft);
 
 	matchName	= new QLineEdit;
     matchName->setAlignment(Qt::AlignLeft);
 	matchName->setMaxLength(40);
 
-	ownerLbl	= new QLabel(tr("¬Î‡‰ÂÎÂˆ:"));
+	ownerLbl	= new QLabel(tr("–í–ª–∞–¥–µ–ª–µ—Ü:"));
     ownerLbl->setAlignment(Qt::AlignLeft);
 	
 	ownerName	= new QLineEdit;
@@ -167,7 +167,7 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	cbDevice	= new QComboBox;
 
 	btnDct		= new QPushButton;
-	btnDct->setText(tr("—Ô‡‚Ó˜ÌËÍË"));
+	btnDct->setText(tr("–°–ø—Ä–∞–≤–æ—á–Ω–∏–∫–∏"));
 
 	QGridLayout * tableLayout = new QGridLayout;
 
@@ -207,12 +207,12 @@ void FVAOrganizerDevicePage::setVisible( bool visible )
 		{
 			cbDevice->setVisible(true);
 			cbDevice->clear();
-			cbDevice->addItem ( tr("¬˚·ËÂÚÂ ‚Î‡‰ÂÎ¸ˆ‡"), 0 );
+			cbDevice->addItem ( tr("–í—ã–±–∏—Ä–µ—Ç–µ –≤–ª–∞–¥–µ–ª—å—Ü–∞"), 0 );
 			for ( auto i = deviceMap.begin(); i != deviceMap.end() ; ++i )
 				cbDevice->addItem ( i->ownerName, i->deviceId );
 
-			deviceName->setText(tr("Õ≈Œœ–≈ƒ≈À≈ÕÕŒ!"));
-			ownerName->setText(tr("Õ≈Œœ–≈ƒ≈À≈Õ!"));
+			deviceName->setText(tr("–ù–ï–û–ü–†–ï–î–ï–õ–ï–ù–ù–û!"));
+			ownerName->setText(tr("–ù–ï–û–ü–†–ï–î–ï–õ–ï–ù!"));
 		}
 		else if (deviceMap.size() ==1 )
 		{	
@@ -222,8 +222,8 @@ void FVAOrganizerDevicePage::setVisible( bool visible )
 		}
 		else
 		{
-			deviceName->setText(tr("Õ≈Œœ–≈ƒ≈À≈ÕÕŒ!"));
-			ownerName->setText(tr("Õ≈Œœ–≈ƒ≈À≈Õ!"));
+			deviceName->setText(tr("–ù–ï–û–ü–†–ï–î–ï–õ–ï–ù–ù–û!"));
+			ownerName->setText(tr("–ù–ï–û–ü–†–ï–î–ï–õ–ï–ù!"));
 		}
 	}
 	return QWizardPage::setVisible(visible);
@@ -324,21 +324,21 @@ bool FVAOrganizerDevicePage::validatePage()
 
 FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 {
-    outputDirLabel	= new QLabel(tr("”Í‡ÊËÚÂ ‚˚ıÓ‰ÌÛ˛ ÍÓÌÂ‚Û˛ Ô‡ÔÍÛ Ò ÍÓÌÚÂÌÚÓÏ:"));
+    outputDirLabel	= new QLabel(tr("–£–∫–∞–∂–∏—Ç–µ –≤—ã—Ö–æ–¥–Ω—É—é –∫–æ—Ä–Ω–µ–≤—É—é –ø–∞–ø–∫—É —Å –∫–æ–Ω—Ç–µ–Ω—Ç–æ–º:"));
     outputDirLabel->setAlignment(Qt::AlignLeft);
     
 	outputDirLineEdit = new QLineEdit;
     outputDirLineEdit->setText("");
 
 	dirButton		= new QPushButton;
-	dirButton->setText(tr("”Í‡Á‡Ú¸ Ô‡ÔÍÛ"));		
+	dirButton->setText(tr("–£–∫–∞–∑–∞—Ç—å –ø–∞–ø–∫—É"));		
 
 	QGridLayout * dirLayout = new QGridLayout;
 	dirLayout->addWidget(outputDirLineEdit,0,0);
 	dirLayout->addWidget(dirButton,0,1);
 
 	mergeCheckBox		= new QCheckBox;
-	mergeCheckBox->setText(tr("—ÎËÚ¸ ÏÌÓ„Ó ÔÓ‰ÙÓÎ‰ÂÓ‚ ‚ Ó‰ËÌ:"));		
+	mergeCheckBox->setText(tr("–°–ª–∏—Ç—å –º–Ω–æ–≥–æ –ø–æ–¥—Ñ–æ–ª–¥–µ—Ä–æ–≤ –≤ –æ–¥–∏–Ω:"));		
     
 	QGridLayout * mergeLayout = new QGridLayout;
 	mergeLayout->addWidget(mergeCheckBox,0,0);
@@ -486,7 +486,7 @@ FVAOrganizerDonePage::FVAOrganizerDonePage(void)
 {
 	finishWords		= new QTextBrowser;
 
-	finishWords->setText(tr("œÓÁ‰‡‚ÎÂÌËˇ! ¬˚ ‚ ¯‡„Â Ó ÓÍÓÌ˜‡ÌËˇ ÔÓˆÂÒÒ‡."));
+	finishWords->setText(tr("–ü–æ–∑–¥—Ä–∞–≤–ª–µ–Ω–∏—è! –í—ã –≤ —à–∞–≥–µ –æ –æ–∫–æ–Ω—á–∞–Ω–∏—è –ø—Ä–æ—Ü–µ—Å—Å–∞."));
 
 	QVBoxLayout * layout = new QVBoxLayout;
 

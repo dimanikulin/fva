@@ -35,7 +35,7 @@ void FVAViewer::prepareFilters()
 	QDialog *tabCommonFilters	= new QDialog ();
 	m_uiFiltersCommon			= new Ui_commonFilter ;
 	m_uiFiltersCommon->setupUi(tabCommonFilters);
-  	tabs->addTab(tabCommonFilters,tr("Îáùèå ôèëüòðû"));
+  	tabs->addTab(tabCommonFilters,tr("ÐžÐ±Ñ‰Ð¸Ðµ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ñ‹"));
 	connect(m_uiFiltersCommon->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
 
 	m_defFilterDataTime	= QDateTime::currentDateTime();	
@@ -45,28 +45,28 @@ void FVAViewer::prepareFilters()
 	QDialog *tabEventFilters	= new QDialog ();
 	m_uiEventFilter				= new Ui_eventFilter;
 	m_uiEventFilter->setupUi(tabEventFilters);
-	tabs->addTab(tabEventFilters,tr("Ñîáûòèÿ"));
+	tabs->addTab(tabEventFilters,tr("Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ"));
 	connect(m_uiEventFilter->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
 
 	QDialog *tabPeopleFilters	= new QDialog ();
 	m_uiPeopleFilter			= new Ui_hfilter;
 	m_uiPeopleFilter->setupUi(tabPeopleFilters);
-  	tabs->addTab(tabPeopleFilters,tr("Ëþäè"));
+  	tabs->addTab(tabPeopleFilters,tr("Ð›ÑŽÐ´Ð¸"));
 	connect(m_uiPeopleFilter->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
 
 	QDialog *tabGeoFilters		= new QDialog ();
 	m_uiPlaceFilter				= new Ui_placeFilter;
 	m_uiPlaceFilter->setupUi(tabGeoFilters);
-  	tabs->addTab(tabGeoFilters,tr("Ìåñòà"));
+  	tabs->addTab(tabGeoFilters,tr("ÐœÐµÑÑ‚Ð°"));
 	connect(m_uiPlaceFilter->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
 
 	QDialog *tabDeviceFilters	= new QDialog ();
 	m_uiDeviceFilter			= new Ui_dfilter;
 	m_uiDeviceFilter->setupUi(tabDeviceFilters);
-  	tabs->addTab(tabDeviceFilters,tr("Óñòðîéñòâà"));
+  	tabs->addTab(tabDeviceFilters,tr("Ð£ÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð°"));
 	connect(m_uiDeviceFilter->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
 	
-	// tabs->addTab(new QWidget(),tr("Ñâîéñòâà"));
+	// tabs->addTab(new QWidget(),tr("Ð¡Ð²Ð¾Ð¹ÑÑ‚Ð²Ð°"));
 	
 	fvaBuildPeopleFilterTree(this, m_uiPeopleFilter->treeWidget, false, m_dictionaries);
 	fvaBuildPeopleFilterTree(this, m_uiDeviceFilter->treeWidget, true, m_dictionaries);
