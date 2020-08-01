@@ -77,23 +77,23 @@
         <Directory Id="mediaservice" Name='mediaservice'>
           <Component Id="mediaserviceFilesComponents" Guid="1ea80614-bc07-4675-96a5-d418a1d67060">
             <CreateFolder />
-            <File Id="dsengine" Name="dsengine.dll"  Source="#BIN#\mediaservice\dsengine.dll"  Vital="yes" KeyPath="no"/>
-            <File Id="qtmedia_audioengine" Name="qtmedia_audioengine.dll"  Source="#BIN#\mediaservice\qtmedia_audioengine.dll"  Vital="yes" KeyPath="no"/>
-            <File Id="wmfengine" Name="wmfengine.dll"  Source="#BIN#\mediaservice\wmfengine.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="dsengine" Name="dsengine.dll"  Source="#BIN#\QT$(var.Configuration)\mediaservice\dsengine.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="qtmedia_audioengine" Name="qtmedia_audioengine.dll"  Source="#BIN#\QT$(var.Configuration)\mediaservice\qtmedia_audioengine.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="wmfengine" Name="wmfengine.dll"  Source="#BIN#\QT$(var.Configuration)\mediaservice\wmfengine.dll"  Vital="yes" KeyPath="no"/>
            </Component>            
          </Directory>
 
         <Directory Id="platforms" Name='platforms'>
           <Component Id="platformsComponents" Guid="F1F0CD8C-9E9D-4A09-8FD9-BEC16D04EC5C">
             <CreateFolder />
-            <File Id="qwindows" Name="qwindows.dll"  Source="#BIN#\platforms\qwindows.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="qwindows" Name="qwindows.dll"  Source="#BIN#\QT$(var.Configuration)\platforms\qwindows.dll"  Vital="yes" KeyPath="no"/>
           </Component>
         </Directory>
 
         <Directory Id="sqldrivers" Name='sqldrivers'>
           <Component Id="sqldriversComponents" Guid="2F5B4920-D2F6-464D-A6CA-B4697AE50801">
             <CreateFolder />
-            <File Id="qsqlite" Name="qsqlite.dll"  Source="#BIN#\sqldrivers\qsqlite.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="qsqlite" Name="qsqlite.dll"  Source="#BIN#\QT$(var.Configuration)\sqldrivers\qsqlite.dll"  Vital="yes" KeyPath="no"/>
           </Component>
         </Directory>
 
@@ -112,14 +112,14 @@
             <File Id="jhead" Name="jhead.exe"  Source="#BIN#\jhead.exe"  Vital="yes" KeyPath="no"/>
             <File Id="sqlite3" Name="sqlite3.exe"  Source="#BIN#\sqlite3.exe"  Vital="yes" KeyPath="no"/>
 
-            <File Id="Qt5Core" Name="Qt5Core.dll"  Source="#BIN#\Qt5Core.dll"  Vital="yes" KeyPath="no"/>
-            <File Id="Qt5Gui" Name="Qt5Gui.dll"  Source="#BIN#\Qt5Gui.dll"  Vital="yes" KeyPath="no"/>
-            <File Id="Qt5Multimedia" Name="Qt5Multimedia.dll"  Source="#BIN#\Qt5Multimedia.dll"  Vital="yes" KeyPath="no"/>
-            <File Id="Qt5MultimediaWidgets" Name="Qt5MultimediaWidgets.dll"  Source="#BIN#\Qt5MultimediaWidgets.dll"  Vital="yes" KeyPath="no"/>
-            <File Id="Qt5Network" Name="Qt5Network.dll"  Source="#BIN#\Qt5Network.dll"  Vital="yes" KeyPath="no"/>
-            <File Id="Qt5OpenGL" Name="Qt5OpenGL.dll"  Source="#BIN#\Qt5OpenGL.dll"  Vital="yes" KeyPath="no"/>
-            <File Id="Qt5Widgets" Name="Qt5Widgets.dll"  Source="#BIN#\Qt5Widgets.dll"  Vital="yes" KeyPath="no"/>
-            <File Id="Qt5Sql" Name="Qt5Sql.dll"  Source="#BIN#\Qt5Sql.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5Core" Name="Qt5Core.dll"  Source="#BIN#\QT$(var.Configuration)\Qt5Core.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5Gui" Name="Qt5Gui.dll"  Source="#BIN#\QT$(var.Configuration)\Qt5Gui.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5Multimedia" Name="Qt5Multimedia.dll"  Source="#BIN#\QT$(var.Configuration)\Qt5Multimedia.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5MultimediaWidgets" Name="Qt5MultimediaWidgets.dll"  Source="#BIN#\QT$(var.Configuration)\Qt5MultimediaWidgets.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5Network" Name="Qt5Network.dll"  Source="#BIN#\QT$(var.Configuration)\Qt5Network.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5OpenGL" Name="Qt5OpenGL.dll"  Source="#BIN#\QT$(var.Configuration)\Qt5OpenGL.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5Widgets" Name="Qt5Widgets.dll"  Source="#BIN#\QT$(var.Configuration)\Qt5Widgets.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="Qt5Sql" Name="Qt5Sql.dll"  Source="#BIN#\QT$(var.Configuration)\Qt5Sql.dll"  Vital="yes" KeyPath="no"/>
           
           </Component>
       </Directory>
