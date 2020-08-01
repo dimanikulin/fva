@@ -41,17 +41,17 @@
     <ClCompile Include="fvaorganizerwizard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_fvaorganizerwizard.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_fvaorganizerwizard.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_fvaorganizerwizard.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="FVAOrganizerPages.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_fvaorganizerwizard.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_fvaorganizerwizard.cpp">
+      <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_FVAOrganizerPages.cpp">
       <Filter>Generated Files\Debug</Filter>

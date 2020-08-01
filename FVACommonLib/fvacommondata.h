@@ -1,6 +1,8 @@
 #ifndef FVACOMMONDATA_H
 #define FVACOMMONDATA_H
 
+#include <memory>
+
 #include <QtCore/QString>
 #include <QtCore/QVariantMap>
 #include <QtCore/QVector> 
