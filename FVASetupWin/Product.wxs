@@ -99,13 +99,13 @@
 
         <Component Id="files" Guid="af4356ff-56aa-4c7c-baca-cd1af6e51267">
             
-            <File Id="viewer" Name="FVAViewer.exe" Source="..\fvabin\win32\release\FVAViewer.exe" Vital="yes" KeyPath="no"/>
-            <File Id="FVAOrganizer" Name="FVAOrganizer.exe" Source="..\fvabin\win32\release\FVAOrganizer.exe" Vital="yes" KeyPath="no"/>
-            <File Id="FVAOrganizerWizard" Name="FVAOrganizerWizard.exe" Source="..\fvabin\win32\release\FVAOrganizerWizard.exe" Vital="yes" KeyPath="no"/>
-            <File Id="FVAConfigurator" Name="FVAConfigurator.exe" Source="..\fvabin\win32\release\FVAConfigurator.exe" Vital="yes" KeyPath="no"/>
-            <File Id="descEditor" Name="FVADescriptionEditor.exe" Source="..\fvabin\win32\release\#BIN#\FVADescriptionEditor.exe" Vital="yes" KeyPath="no"/>
-            <File Id="dictEditor" Name="FVADictionaryEditor.exe" Source="..\fvabin\win32\release\#BIN#\FVADictionaryEditor.exe" Vital="yes" KeyPath="no"/>
-            <File Id="player" Name="FVAPlayer.exe" Source="..\fvabin\win32\release\#BIN#\FVAPlayer.exe" Vital="yes" KeyPath="no"/>
+            <File Id="viewer" Name="FVAViewer.exe" Source="..\fvabin\x64\$(var.Configuration)\FVAViewer.exe" Vital="yes" KeyPath="no"/>
+            <File Id="FVAOrganizer" Name="FVAOrganizer.exe" Source="..\fvabin\x64\$(var.Configuration)\FVAOrganizer.exe" Vital="yes" KeyPath="no"/>
+            <File Id="FVAOrganizerWizard" Name="FVAOrganizerWizard.exe" Source="..\fvabin\x64\$(var.Configuration)\FVAOrganizerWizard.exe" Vital="yes" KeyPath="no"/>
+            <File Id="FVAConfigurator" Name="FVAConfigurator.exe" Source="..\fvabin\x64\$(var.Configuration)\FVAConfigurator.exe" Vital="yes" KeyPath="no"/>
+            <File Id="descEditor" Name="FVADescriptionEditor.exe" Source="..\fvabin\x64\$(var.Configuration)\FVADescriptionEditor.exe" Vital="yes" KeyPath="no"/>
+            <File Id="dictEditor" Name="FVADictionaryEditor.exe" Source="..\fvabin\x64\$(var.Configuration)\FVADictionaryEditor.exe" Vital="yes" KeyPath="no"/>
+            <File Id="player" Name="FVAPlayer.exe" Source="..\fvabin\x64\$(var.Configuration)\FVAPlayer.exe" Vital="yes" KeyPath="no"/>
    
             <File Id="conv" Name="Converter.exe" Source="#BIN#\Converter.exe"  Vital="yes" KeyPath="no"/>
             <File Id="exif" Name="exiftool(-k).exe"  Source="#BIN#\exiftool(-k).exe"  Vital="yes" KeyPath="no"/>
