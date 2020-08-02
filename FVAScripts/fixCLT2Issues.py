@@ -3,10 +3,10 @@ import csv
 import subprocess
 import os, stat
 
-#fixCLT2Issues.py issues.csv FVA_ERROR_MISMATCH_TAKEN_TIME > fixedMismatchTakenTime
-#fixCLT2Issues.py issues.csv FVA_ERROR_NULL_TAKEN_TIME > fixedEmptyTakenTime
-#fixCLT2Issues.py issues.csv FVA_ERROR_NO_DEV_ID > fixedNotLinkedDevId
-#fixCLT2Issues.py issues.csv FVA_ERROR_EMPTY_DEVICE > fixedEmptyDevice
+#fixCLT2Issues.py issues.csv FVA_ERROR_MISMATCH_TAKEN_TIME > fixedMismatchTakenTime.txt
+#fixCLT2Issues.py issues.csv FVA_ERROR_NULL_TAKEN_TIME > fixedEmptyTakenTime.txt
+#fixCLT2Issues.py issues.csv FVA_ERROR_NO_DEV_ID > fixedNotLinkedDevId.txt
+#fixCLT2Issues.py issues.csv FVA_ERROR_EMPTY_DEVICE > fixedEmptyDevice.txt
 
 with open(sys.argv[1], newline='') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
@@ -57,7 +57,7 @@ with open(sys.argv[1], newline='') as csvfile:
         if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_NO_DEV_ID':
             print(', '.join(row))
 
-        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_EMPTY_DEVICE' and row[2] == '15':
+        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_EMPTY_DEVICE' and row[2] == '7':
             print(', '.join(row))
             os.chmod(row[1], stat.S_IWRITE) # clear read only file attribute
             subprocess.call(['../jhead.exe', "-te", "source.JPG" , row[1]])
