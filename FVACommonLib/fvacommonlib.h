@@ -105,5 +105,12 @@ FVA_ERROR_CODE fvaGetIDFromFile(const QString& file, int& ID);
  */
 FVA_ERROR_CODE fvaSaveIDInFile(const QString& file, int ID);
 
+/*!
+ * \brief it removes the dir if there is no content inside
+ * \param dirPath - path to folder to remove
+ * \returns it returns true if folder has been deleted, otherwize it return false
+ */
+bool fvaRemoveDirIfEmpty(const QString& dirPath);
+
 #endif // FVACOMMONLIB_H
 
