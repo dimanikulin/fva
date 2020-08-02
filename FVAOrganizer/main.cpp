@@ -24,6 +24,7 @@ void msghandler(QtMsgType type, const QMessageLogContext &, const QString & str)
 	if ( type < g_logLevel )
 		return;	
 	g_logfile << str.toLatin1().data() << "\n";
+	g_logfile.flush();
 }
 
 int main( int argc, char *argv[] )
