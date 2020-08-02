@@ -383,11 +383,11 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	QString dir = outputDirLineEdit->text();
 	
 	QStringList cmdList;
+	cmdList.append("CLT_Set_File_Atts");
 	if (mergeCheckBox->isChecked())
 		cmdList.append("CLT_1_Event_Folder_Merging");
 	else
 		cmdList.append("CLT_1_Day_Event_Folder_Merging");
-	cmdList.append("CLT_Set_File_Atts");
 	
 	// lets run FVA cmd list 
 	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
@@ -396,10 +396,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		myProcess.setProcessChannelMode(QProcess::MergedChannels);
 		QStringList params;
 		params.append(*it);
-		if (*it == "CLT_1_Event_Folder_Merging" )	
-			params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
-		else
-			params.append(dir);
+		params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
 		params.append("recursive=yes");
 		params.append("logvel=4");
 		params.append("readonly=no");
