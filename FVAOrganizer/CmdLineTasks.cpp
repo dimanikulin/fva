@@ -366,11 +366,12 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 					{
 						LOG_QWARN << "empty device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
 						countSupportedFiles++;	// it is our file
-						m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE,"+ info.absoluteFilePath() + "," + QString::number(deviceID) + "," + deviceMap[deviceID].guiName + " " + deviceMap[deviceID].ownerName  );
+						m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE,"+ info.absoluteFilePath() + "," + QString::number(deviceID) + "," + deviceMap[deviceID].guiName + " " + deviceMap[deviceID].ownerName);
 						continue;
 					}
 					LOG_QWARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
-					m_Issues.push_back("FVA_ERROR_UKNOWN_DEVICE," + info.absoluteFilePath() + "," + info.fileName() );
+					m_Issues.push_back("FVA_ERROR_UKNOWN_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + deviceMap[deviceID].guiName + " " + deviceMap[deviceID].ownerName);
+					continue;
 					if (m_readOnly)
 						continue;
 					else
