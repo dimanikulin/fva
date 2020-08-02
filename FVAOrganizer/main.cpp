@@ -18,46 +18,19 @@ std::ofstream	g_logfile;
  */
 QtMsgType	g_logLevel = QtDebugMsg;
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
 void msghandler(QtMsgType type, const QMessageLogContext &, const QString & str)
 {
 	const char * msg = str.toStdString().c_str();
-#else
-void msghandler( QtMsgType type, const char *msg )
-{
-#endif
 	if ( type < g_logLevel )
-		return;
-	
-	g_logfile << QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data();
-	switch ( type ) 
-	{
-		case QtDebugMsg:
-			g_logfile << "[DBG]" << msg << "\n";
-		break;
-		case QtWarningMsg:
-			g_logfile << "[WRN]" << msg << "\n";
-		break;
-		case QtCriticalMsg:
-			g_logfile << "[ERR]" << msg << "\n";
-		break;
-		case QtFatalMsg:
-		{
-			g_logfile << "[FAT]" << msg << "\n";
-			abort();
-		}
-	}	
-	g_logfile << msg << "\n";
+		return;	
+	g_logfile << str.toLatin1().data() << "\n";
 }
 
 int main( int argc, char *argv[] )
 {
 	//install : set the callback
-#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
 	qInstallMessageHandler(msghandler);
-#else
-	qInstallMsgHandler( msghandler );
-#endif
+
 	QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog.txt";  
 	g_logfile.open( logPath.toStdString(), std::ios::app );
 
