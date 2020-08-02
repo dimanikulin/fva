@@ -699,26 +699,27 @@ FVA_ERROR_CODE CLT_One_Event_Folder_Merging::execute()
 			continue;
 
 		if( !m_dir.rename( original, dest ) )
-		{			
-			if(QDir(dest).entryInfoList(QDir::NoDotAndDotDot|QDir::AllEntries).count() == 0)
-			{
-				// empty folder now - no need in it to keep
-				if (!m_dir.rmdir(dest))
-				{
-					LOG_QCRIT << "could not remove empty dest:" << dest;
-					return FVA_ERROR_CANT_MOVE_DIR;
-				}
-				else
-				{
-					LOG_QDEB << "removed empty destination:" << dest;
-					continue;
-				}
-			}
-			
+		{						
 			LOG_QCRIT << "could not move:" << original << " into " << dest;
 			return FVA_ERROR_CANT_MOVE_DIR;
 		}
+
 		LOG_QDEB << "moved:" << original << " into " << dest;
+
+		if (QDir(dest).entryInfoList(QDir::NoDotAndDotDot | QDir::AllEntries).count() == 0)
+		{
+			// empty folder now - no need in it to keep
+			if (!m_dir.rmdir(dest))
+			{
+				LOG_QCRIT << "could not remove empty dest:" << dest;
+				return FVA_ERROR_CANT_MOVE_DIR;
+			}
+			else
+			{
+				LOG_QDEB << "removed empty destination:" << dest;
+				continue;
+			}
+		}
 	}
 	return FVA_NO_ERROR;
 }
