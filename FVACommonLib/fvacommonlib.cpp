@@ -460,18 +460,14 @@ FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, c
 	return FVA_ERROR_NO_DEV_ID;
 };
 
-
 bool fvaIsInternalDir(const QString& dir)
 {
 	if (dir.contains("#"))
 		return true;
+	return false;
 }
 bool fvaRemoveDirIfEmpty(const QString& dirPath)
 {
-	// we skip internal folders from removing even they empty
-	if (fvaIsInternalDir(dirPath))
-		return true;
-
 	if (QDir(dirPath).entryInfoList(QDir::NoDotAndDotDot | QDir::AllEntries).count() == 0)
 	{
 		QDir dir(dirPath);
@@ -479,4 +475,6 @@ bool fvaRemoveDirIfEmpty(const QString& dirPath)
 		// empty folder now - no need in it to keep
 		return dir.rmdir(dirPath);
 	}
+	else
+		return false;
 }
