@@ -635,19 +635,15 @@ FVA_ERROR_CODE CLT_1_Event_Folder_Merging::execute()
 
 		LOG_QDEB << "moved:" << original << " into " << dest;
 
-		if (QDir(dest).entryInfoList(QDir::NoDotAndDotDot | QDir::AllEntries).count() == 0)
+		if (!fvaRemoveDirIfEmpty(dest))
 		{
-			// empty folder now - no need in it to keep
-			if (!m_dir.rmdir(dest))
-			{
-				LOG_QCRIT << "could not remove empty dest:" << dest;
-				return FVA_ERROR_CANT_MOVE_DIR;
-			}
-			else
-			{
-				LOG_QDEB << "removed empty destination:" << dest;
-				continue;
-			}
+			LOG_QCRIT << "could not remove empty dest:" << dest;
+			return FVA_ERROR_CANT_MOVE_DIR;
+		}
+		else
+		{
+			LOG_QDEB << "removed empty destination:" << dest;
+			continue;
 		}
 	}
 	return FVA_NO_ERROR;
@@ -656,15 +652,17 @@ FVA_ERROR_CODE CLT_1_Day_Event_Folder_Merging::execute()
 {
 	// get the last dir leaf in input folder
 	QString dir = m_dir.dirName();
-	QString dstDirPath = FVA_DEFAULT_ROOT_DIR + dir.mid(0, 4)/*extract year*/ + "/" + m_dir.dirName();
-	LOG_QDEB << "path to move:" << dstDirPath;
-
+	QString dstDirPath = FVA_DEFAULT_ROOT_DIR + dir.mid(0, 4)/*extract year*/ + "/" + m_dir.dirName();	
 	if (!m_dir.exists(dstDirPath))
 	{
-		if (!m_dir.mkpath(dstDirPath))
+		if (!dstDirPath.contains("#"))
 		{
-			LOG_QCRIT << "could not create dest folder:" << dstDirPath;
-			return FVA_ERROR_CANT_CREATE_DIR;
+			// # means internal folder and not subject of merging
+			if (!m_dir.mkpath(dstDirPath))
+			{
+				LOG_QCRIT << "could not create dest folder:" << dstDirPath;
+				return FVA_ERROR_CANT_CREATE_DIR;
+			}
 		}
 	}
 	else
@@ -680,11 +678,22 @@ FVA_ERROR_CODE CLT_1_Day_Event_Folder_Merging::execute()
 			LOG_QWARN << "skipped #copy for: " << info.absoluteFilePath() << " , dst: " << dstDirPath;
 			continue;
 		}
-		if (!m_dir.rename(info.absoluteFilePath(), dstDirPath + "/" + info.fileName()))
+		// we move files only
+		if (!info.isDir() && !m_dir.rename(info.absoluteFilePath(), dstDirPath + "/" + info.fileName()))
 		{
 			LOG_QCRIT << "could not move:" << info.absoluteFilePath() << " into " << dstDirPath + "/" + info.fileName();
 			return FVA_ERROR_CANT_MOVE_DIR;
 		}
+		else if (!info.isDir())
+			LOG_QDEB << "moved:" << info.absoluteFilePath() << " into " << dstDirPath + "/" + info.fileName();
+
+		if (info.isDir() && !fvaRemoveDirIfEmpty(info.absoluteFilePath()))
+		{
+			LOG_QCRIT << "could not remove empty source:" << info.absoluteFilePath();
+			return FVA_ERROR_CANT_MOVE_DIR;
+		}
+		else if (info.isDir())
+			LOG_QDEB << "removed empty destination:" << info.absoluteFilePath();
 	}
 	return FVA_NO_ERROR;
 }
