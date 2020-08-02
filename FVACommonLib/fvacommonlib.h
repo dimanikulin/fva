@@ -26,6 +26,11 @@ bool fvaIsInternalFile( const QString& fileName );
 bool fvaIsFVAFile( const QString& extention );
 
 /*!
+* \brief it answers if dir is internal one
+*/
+bool fvaIsInternalDir(const QString& dir);
+
+/*!
  * \brief it tries to parse dir name into period of date
  * \param dirName directory name to be parsed
  * \param from to fill as a date from
