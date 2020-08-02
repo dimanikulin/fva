@@ -1,11 +1,11 @@
 #ifndef FVACOMMONLIB_H
 #define FVACOMMONLIB_H
 
-#include <QString>
-#include <QStringList>
-#include <QVector>
-#include <QDateTime>
-#include <QVariantMap>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QVector>
+#include <QtCore/QDateTime>
+#include <QtCore/QVariantMap>
 
 #include "fvaconstants.h"
 #include "fvaerrors.h"
@@ -24,6 +24,11 @@ bool fvaIsInternalFile( const QString& fileName );
 * \brief it answers if file is supported type of  (by its file extention)
 */
 bool fvaIsFVAFile( const QString& extention );
+
+/*!
+* \brief it answers if dir is internal one
+*/
+bool fvaIsInternalDir(const QString& dir);
 
 /*!
  * \brief it tries to parse dir name into period of date
@@ -104,6 +109,13 @@ FVA_ERROR_CODE fvaGetIDFromFile(const QString& file, int& ID);
  * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
  */
 FVA_ERROR_CODE fvaSaveIDInFile(const QString& file, int ID);
+
+/*!
+ * \brief it removes the dir if there is no content inside
+ * \param dirPath - path to folder to remove
+ * \returns it returns true if folder has been deleted, otherwize it return false
+ */
+bool fvaRemoveDirIfEmpty(const QString& dirPath);
 
 #endif // FVACOMMONLIB_H
 

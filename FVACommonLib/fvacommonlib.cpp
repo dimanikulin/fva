@@ -3,10 +3,10 @@
 #include "fvacommondata.h"
 #include "fvadescriptionfile.h"
 
-#include <QDir>
-#include <QTextStream>
-#include <QProcess>
-#include <QCoreApplication>
+#include <QtCore/QDir>
+#include <QtCore/QTextStream>
+#include <QtCore/QProcess>
+#include <QtCore/QCoreApplication>
 
 #include "qexifimageheader.h"
 #include "fvariffparser.h"
@@ -459,3 +459,22 @@ FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, c
 
 	return FVA_ERROR_NO_DEV_ID;
 };
+
+bool fvaIsInternalDir(const QString& dir)
+{
+	if (dir.contains("#"))
+		return true;
+	return false;
+}
+bool fvaRemoveDirIfEmpty(const QString& dirPath)
+{
+	if (QDir(dirPath).entryInfoList(QDir::NoDotAndDotDot | QDir::AllEntries).count() == 0)
+	{
+		QDir dir(dirPath);
+
+		// empty folder now - no need in it to keep
+		return dir.rmdir(dirPath);
+	}
+	else
+		return false;
+}

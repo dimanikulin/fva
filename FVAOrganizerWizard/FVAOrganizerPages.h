@@ -1,19 +1,17 @@
 #ifndef _FVA_ORGANIZER_PAGES_H_
 #define _FVA_ORGANIZER_PAGES_H_ 
 
-#include <QtGui/QWizardPage>
-#include <QLabel>
-#include <QLineEdit>
-#include <QTextBrowser>
-#include <QPushButton>
-#include <QComboBox>
-#include <QCheckBox>
+#include <QtWidgets/QWizardPage>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QCheckBox>
 
 /*!
  * \brief keeps all organizer pages functionality
  */
-
-
 class FVAOrganizerStartPage : public QWizardPage
 {
 	Q_OBJECT
@@ -56,7 +54,8 @@ class FVAOrganizerInputDirPage : public QWizardPage
 
 	protected:
 
-		virtual bool	validatePage ();
+		virtual bool validatePage ();
+		virtual bool isComplete() const;
 
 	private slots:
 		void OnDirButtonClicked();
@@ -80,6 +79,7 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 	protected:
 
 		virtual bool	validatePage ();
+		virtual bool	isComplete() const;
 
 	private slots:
 		void OnDirButtonClicked();
@@ -121,6 +121,7 @@ class FVAOrganizerDevicePage : public QWizardPage
 
 		virtual bool	validatePage ();
 		virtual void	setVisible( bool visible );
+		virtual bool	isComplete() const;
 
 	protected slots:
 		void OnChangeDictPressed();

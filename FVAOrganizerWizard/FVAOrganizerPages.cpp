@@ -1,20 +1,22 @@
 #include "FVAOrganizerPages.h"
 #include "fvaorganizerwizard.h"
 
-#include <QVBoxLayout>
-#include <QFileDialog>
-#include <QProcess>
-#include <QCoreApplication>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtCore/QProcess>
+#include <QtCore/QCoreApplication>
 
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
 #include "fvacommondb.h"
+#include "fvacommonui.h"
 
 FVAOrganizerStartPage::FVAOrganizerStartPage()
 {
 	helloWords		= new QTextBrowser;
 
-	helloWords->setText(tr("ƒÓ·Ó ÔÓÊ‡ÎÓ‚‡Ú¸ ‚ ÒËÒÚÂÏÛ Ó„‡ÌËÁ‡ˆËË ÏÂ‰Ë‡-ÍÓÌÚÂÌÚ‡!"));
+	helloWords->setText(tr("–î–æ–±—Ä–æ –ø–æ–∂–∞–ª–æ–≤–∞—Ç—å –≤ —Å–∏—Å—Ç–µ–º—É –æ—Ä–≥–∞–Ω–∏–∑–∞—Ü–∏–∏ –º–µ–¥–∏–∞-–∫–æ–Ω—Ç–µ–Ω—Ç–∞!"));
 
 	QVBoxLayout * layout = new QVBoxLayout;
 
@@ -25,14 +27,15 @@ FVAOrganizerStartPage::FVAOrganizerStartPage()
 
 FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 {
-	inputDirLabel	= new QLabel(tr("”Í‡ÊËÚÂ ‚ıÓ‰ÌÛ˛ Ô‡ÔÍÛ Ò ÍÓÌÚÂÌÚÓÏ\n (¬ÌËÏ‡ÌËÂ! œ‡ÔÍ‡ ‰ÓÎÊÌ‡ Ì‡˜ËÌ‡Ú¸Òˇ Ò ÒËÏ‚ÓÎ‡ '#'):"));
+	inputDirLabel	= new QLabel(tr("–£–∫–∞–∂–∏—Ç–µ –≤—Ö–æ–¥–Ω—É—é –ø–∞–ø–∫—É —Å –∫–æ–Ω—Ç–µ–Ω—Ç–æ–º\n (–í–Ω–∏–º–∞–Ω–∏–µ! –ü–∞–ø–∫–∞ –¥–æ–ª–∂–Ω–∞ –Ω–∞—á–∏–Ω–∞—Ç—å—Å—è —Å —Å–∏–º–≤–æ–ª–∞ '#'):"));
 	inputDirLabel->setAlignment(Qt::AlignLeft);
     
 	inputDirLineEdit = new QLineEdit;
 	inputDirLineEdit->setText("");
+	inputDirLineEdit->setReadOnly(true);
 
 	dirButton		= new QPushButton;
-	dirButton->setText(tr("”Í‡Á‡Ú¸ Ô‡ÔÍÛ"));		
+	dirButton->setText(tr("–£–∫–∞–∑–∞—Ç—å –ø–∞–ø–∫—É"));		
 
 	QGridLayout * dirLayout = new QGridLayout;
 	dirLayout->addWidget(inputDirLineEdit,0,0);
@@ -57,26 +60,34 @@ void FVAOrganizerInputDirPage::OnDirButtonClicked()
 	QString path = dirDialog.getExistingDirectory();
 
 	if (!path.isEmpty())
+	{
 		inputDirLineEdit->setText(path);
+		emit completeChanged();
+	}
 }
+bool FVAOrganizerInputDirPage::isComplete() const
+{
+	QString dir = inputDirLineEdit->text();
 
+	// make button be disabled if dir.isEmpty()
+	if (dir.isEmpty())
+	{
+		return false;
+	}
+}
 bool	FVAOrganizerInputDirPage::validatePage ()
 {
 	QString dir = inputDirLineEdit->text();
-	if ( dir.isEmpty() )
-	{
-		// TODO make button be disabled if dir.isEmpty()
-		return false;
-	}
+
 	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
 
 	QDir _dir(dir); 
 
 	DEVICE_MAP fullDeviceMap;
-	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, QCoreApplication::applicationDirPath() + "/" + FVA_DB_NAME);
+	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
 	if ( FVA_NO_ERROR != res )
 	{
-		// TODO make suggestion
+		FVA_MESSAGE_BOX("fvaLoadDeviceMapFromDictionary failed with error " + QString::number(res));
 		return false;
 	}
 	DEVICE_MAP deviceMap;
@@ -116,10 +127,10 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 FVAOrganizerOrientPage::FVAOrganizerOrientPage()
 {
 	// to suggest user to run /jpegr_portable32/jpegr.exe
-	rotateLabel		= new QLabel(tr("—Ó‚ÂÚÛÂÏ ¬‡Ï ÔÓ‚ÂËÚ¸ ÓËÂÌÚ‡ˆË˛ ÍÓÌÚÂÌÚ‡ ÔÂÂ‰ Ì‡˜‡ÎÓÏ ‡·ÓÚ˚:"));
+	rotateLabel		= new QLabel(tr("–°–æ–≤–µ—Ç—É–µ–º –í–∞–º –ø—Ä–æ–≤–µ—Ä–∏—Ç—å –æ—Ä–∏–µ–Ω—Ç–∞—Ü–∏—é –∫–æ–Ω—Ç–µ–Ω—Ç–∞ –ø–µ—Ä–µ–¥ –Ω–∞—á–∞–ª–æ–º —Ä–∞–±–æ—Ç—ã:"));
 	rotateLabel->setAlignment(Qt::AlignLeft);
 	rotateButton	= new QPushButton;
-	rotateButton->setText(tr("œÓ‚ÂËÚ¸"));
+	rotateButton->setText(tr("–ü—Ä–æ–≤–µ—Ä–∏—Ç—å"));
 
 	QVBoxLayout * layout = new QVBoxLayout;
 	layout->addWidget(rotateLabel);
@@ -141,24 +152,24 @@ void FVAOrganizerOrientPage::OnOrientationButtonClicked()
 FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	: deviceId (-1)
 {
-	QLabel * titleLabel	= new QLabel(tr("”·Â‰ËÚÂÒ¸, ˜ÚÓ ÛÒÚÓÈÒÚ‚Ó, ÍÓÚÓ˚Ï ‰ÂÎ‡ÎËÒ¸ ÒÌËÏÍË, ‚ÂÌÓ ÓÔÂ‰ÂÎËÎÓÒ¸!"));
+	QLabel * titleLabel	= new QLabel(tr("–£–±–µ–¥–∏—Ç–µ—Å—å, —á—Ç–æ —É—Å—Ç—Ä–æ–π—Å—Ç–≤–æ, –∫–æ—Ç–æ—Ä—ã–º –¥–µ–ª–∞–ª–∏—Å—å —Å–Ω–∏–º–∫–∏, –≤–µ—Ä–Ω–æ –æ–ø—Ä–µ–¥–µ–ª–∏–ª–æ—Å—å!"));
     titleLabel->setAlignment(Qt::AlignLeft);
 
-	deviceLbl	= new QLabel(tr("Õ‡Á‚‡ÌËÂ:"));
+	deviceLbl	= new QLabel(tr("–ù–∞–∑–≤–∞–Ω–∏–µ:"));
     deviceLbl->setAlignment(Qt::AlignLeft);
 
 	deviceName	= new QLineEdit;
 	deviceName->setAlignment(Qt::AlignLeft);
 	deviceName->setMaxLength(40);
 
-	matchLbl	= new QLabel(tr("ÀËÌÍÓ‚Ó˜ÌÓÂ ËÏˇ:"));
+	matchLbl	= new QLabel(tr("–õ–∏–Ω–∫–æ–≤–æ—á–Ω–æ–µ –∏–º—è:"));
     matchLbl->setAlignment(Qt::AlignLeft);
 
 	matchName	= new QLineEdit;
     matchName->setAlignment(Qt::AlignLeft);
 	matchName->setMaxLength(40);
 
-	ownerLbl	= new QLabel(tr("¬Î‡‰ÂÎÂˆ:"));
+	ownerLbl	= new QLabel(tr("–í–ª–∞–¥–µ–ª–µ—Ü:"));
     ownerLbl->setAlignment(Qt::AlignLeft);
 	
 	ownerName	= new QLineEdit;
@@ -167,7 +178,7 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	cbDevice	= new QComboBox;
 
 	btnDct		= new QPushButton;
-	btnDct->setText(tr("—Ô‡‚Ó˜ÌËÍË"));
+	btnDct->setText(tr("–°–ø—Ä–∞–≤–æ—á–Ω–∏–∫–∏"));
 
 	QGridLayout * tableLayout = new QGridLayout;
 
@@ -207,23 +218,24 @@ void FVAOrganizerDevicePage::setVisible( bool visible )
 		{
 			cbDevice->setVisible(true);
 			cbDevice->clear();
-			cbDevice->addItem ( tr("¬˚·ËÂÚÂ ‚Î‡‰ÂÎ¸ˆ‡"), 0 );
+			cbDevice->addItem ( tr("–í—ã–±–∏—Ä–µ—Ç–µ –≤–ª–∞–¥–µ–ª—å—Ü–∞"), 0 );
 			for ( auto i = deviceMap.begin(); i != deviceMap.end() ; ++i )
 				cbDevice->addItem ( i->ownerName, i->deviceId );
 
-			deviceName->setText(tr("Õ≈Œœ–≈ƒ≈À≈ÕÕŒ!"));
-			ownerName->setText(tr("Õ≈Œœ–≈ƒ≈À≈Õ!"));
+			deviceName->setText(tr("–ù–ï–û–ü–†–ï–î–ï–õ–ï–ù–ù–û!"));
+			ownerName->setText(tr("–ù–ï–û–ü–†–ï–î–ï–õ–ï–ù!"));
 		}
 		else if (deviceMap.size() ==1 )
 		{	
 			deviceName->setText(deviceMap.begin().value().guiName);
 			ownerName->setText(deviceMap.begin().value().ownerName);
 			deviceId = deviceMap.begin().value().deviceId;
+			emit completeChanged();
 		}
 		else
 		{
-			deviceName->setText(tr("Õ≈Œœ–≈ƒ≈À≈ÕÕŒ!"));
-			ownerName->setText(tr("Õ≈Œœ–≈ƒ≈À≈Õ!"));
+			deviceName->setText(tr("–ù–ï–û–ü–†–ï–î–ï–õ–ï–ù–ù–û!"));
+			ownerName->setText(tr("–ù–ï–û–ü–†–ï–î–ï–õ–ï–ù!"));
 		}
 	}
 	return QWizardPage::setVisible(visible);
@@ -233,11 +245,19 @@ void FVAOrganizerDevicePage::OnChangeDictPressed()
 	QProcess myProcess(this);    
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	QStringList params;
-	params.append(QCoreApplication::applicationDirPath() + "/" + FVA_DB_NAME);
+	params.append(FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
 	QString		deviceName_		= ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
 	params.append(deviceName_);
 	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe", params);
 	myProcess.waitForFinished( -1 );
+}
+bool FVAOrganizerDevicePage::isComplete() const
+{
+	// make button next ne disabled
+	if (deviceId == -1)
+	{
+		return false;
+	}
 }
 
 bool FVAOrganizerDevicePage::validatePage()
@@ -254,13 +274,7 @@ bool FVAOrganizerDevicePage::validatePage()
 		}
 	}
 
-	if (deviceId == -1)
-	{
-		// TODO make button next ne disabled
-		return false;
-	}
 	QStringList cmdList;
-	// TODO check on one time several photo
 	cmdList.append("CLT_Video_Rename_By_Sequence");
 	cmdList.append("CLT_Convert_Amr");
 	cmdList.append("CLT_Device_Name_Check");
@@ -271,16 +285,6 @@ bool FVAOrganizerDevicePage::validatePage()
 	cmdList.append("CLT_Dir_Struct_Create_By_File");
 	cmdList.append("CLT_Alone_Files_Move");
 	cmdList.append("CLT_Auto_Checks_2");
-
-	QString logPath = QCoreApplication::applicationDirPath() + "/organizerlog"  
-					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toAscii().data()
-					+ ".txt"; 
-	QFile fileLog(logPath);
-	if (!fileLog.open(QIODevice::Append | QIODevice::Text))
-	{
-		//TODO show error
-		return false;	
-	}
 
 	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
 	{
@@ -303,42 +307,37 @@ bool FVAOrganizerDevicePage::validatePage()
 			params.append("custom=" + QString::number(deviceId));
 
 		myProcess.start("FVAOrganizer.exe",params);
-		while(myProcess.waitForReadyRead())
-		{
-			QString output = myProcess.readAll();
-			logOutput->append(output);
-			fileLog.write(output.toStdString().c_str());
-		}
-		myProcess.waitForFinished( -1 );
+		myProcess.waitForFinished(-1);
 
-		int exitCode = myProcess.exitCode();
-
+		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
 		if (exitCode != FVA_NO_ERROR)
 		{
-			//TODO show error
+			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));
 			return false;
 		}
+
 	}
 	return true;
 }
 
 FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 {
-    outputDirLabel	= new QLabel(tr("”Í‡ÊËÚÂ ‚˚ıÓ‰ÌÛ˛ ÍÓÌÂ‚Û˛ Ô‡ÔÍÛ Ò ÍÓÌÚÂÌÚÓÏ:"));
+    outputDirLabel	= new QLabel(tr("–£–∫–∞–∂–∏—Ç–µ –≤—ã—Ö–æ–¥–Ω—É—é –∫–æ—Ä–Ω–µ–≤—É—é –ø–∞–ø–∫—É —Å –∫–æ–Ω—Ç–µ–Ω—Ç–æ–º:"));
     outputDirLabel->setAlignment(Qt::AlignLeft);
     
 	outputDirLineEdit = new QLineEdit;
     outputDirLineEdit->setText("");
+	outputDirLineEdit->setReadOnly(true);
 
 	dirButton		= new QPushButton;
-	dirButton->setText(tr("”Í‡Á‡Ú¸ Ô‡ÔÍÛ"));		
+	dirButton->setText(tr("–£–∫–∞–∑–∞—Ç—å –ø–∞–ø–∫—É"));		
 
 	QGridLayout * dirLayout = new QGridLayout;
 	dirLayout->addWidget(outputDirLineEdit,0,0);
 	dirLayout->addWidget(dirButton,0,1);
 
 	mergeCheckBox		= new QCheckBox;
-	mergeCheckBox->setText(tr("—ÎËÚ¸ ÏÌÓ„Ó ÔÓ‰ÙÓÎ‰ÂÓ‚ ‚ Ó‰ËÌ:"));		
+	mergeCheckBox->setText(tr("–°–ª–∏—Ç—å –º–Ω–æ–≥–æ –ø–æ–¥—Ñ–æ–ª–¥–µ—Ä–æ–≤ –≤ –æ–¥–∏–Ω:"));		
     
 	QGridLayout * mergeLayout = new QGridLayout;
 	mergeLayout->addWidget(mergeCheckBox,0,0);
@@ -363,34 +362,32 @@ void FVAOrganizerOutputDirPage::OnDirButtonClicked()
 	QString path = dirDialog.getExistingDirectory();
 
 	if (!path.isEmpty())
+	{
 		outputDirLineEdit->setText(path);
+		emit completeChanged();
+	}
 }
 
+bool FVAOrganizerOutputDirPage::isComplete() const
+{
+	QString dir = outputDirLineEdit->text();
+
+	// make button be disabled if dir.isEmpty()
+	if (dir.isEmpty())
+	{
+		return false;
+	}
+}
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {
 	QString dir = outputDirLineEdit->text();
 	
-	if ( dir.isEmpty() )
-	{
-		// TODO make button be disabled if dir.isEmpty()
-		return false;
-	}
-
-	QString logPath = QCoreApplication::applicationDirPath() + "/organizerlog"  
-					+ QDateTime::currentDateTime().toString( "yyyy-MM-dd").toAscii().data()
-					+ ".txt"; 
-	QFile fileLog(logPath);
-	if (!fileLog.open(QIODevice::Append | QIODevice::Text))
-	{
-		//TODO show error
-		return false;	
-	}
 	QStringList cmdList;
-	if (mergeCheckBox->isChecked())
-		cmdList.append("CLT_One_Event_Folder_Merging");
-	else
-		cmdList.append("CLT_Folder_Merging");
 	cmdList.append("CLT_Set_File_Atts");
+	if (mergeCheckBox->isChecked())
+		cmdList.append("CLT_1_Event_Folder_Merging");
+	else
+		cmdList.append("CLT_1_Day_Event_Folder_Merging");
 	
 	// lets run FVA cmd list 
 	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
@@ -399,34 +396,32 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		myProcess.setProcessChannelMode(QProcess::MergedChannels);
 		QStringList params;
 		params.append(*it);
-		if (*it == "CLT_Folder_Merging" || *it == "CLT_One_Event_Folder_Merging" )	
-			params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
-		else
-			params.append(dir);
+		params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
 		params.append("recursive=yes");
 		params.append("logvel=4");
 		params.append("readonly=no");
-		if (*it == "CLT_Folder_Merging" || *it == "CLT_One_Event_Folder_Merging")
+		if (*it == "CLT_1_Event_Folder_Merging")
 			params.append("custom=" + dir);
 
 		myProcess.start("FVAOrganizer.exe",params);
-		while(myProcess.waitForReadyRead())
-		{
-			QString output = myProcess.readAll();
-			logOutput->append(output);
-			fileLog.write(output.toStdString().c_str());
-		}
-		myProcess.waitForFinished( -1 );
+		myProcess.waitForFinished(-1);
 
-		int exitCode = myProcess.exitCode();
+		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
 		if (exitCode != FVA_NO_ERROR)
 		{
-			//TODO show error
+			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));
 			return false;
 		}
 	}
 	
 	QStringList pyCmdList;
+
+	// merge 2 csv into one: common one and just generated - for file CSVs
+	QString pyScriptPathMerge2 = "python "
+		+ QCoreApplication::applicationDirPath()
+		+ "/scripts/merge2csv.py "
+		+ FVA_DEFAULT_ROOT_DIR;
+	pyCmdList.append(pyScriptPathMerge2 + "fvaFile.csv " + FVA_DEFAULT_ROOT_DIR + "fvaFileN.csv ");
 
 	// change FVA_TARGET_FOLDER_NAME tag to actual folder name for sql files
 	QString pyScriptPath = "python " 
@@ -438,19 +433,12 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	mergeDir = mergeDir.remove(FVA_DEFAULT_ROOT_DIR); // remove a prefix as root dir
 	pyCmdList.append(pyScriptPath + "fvaFolderN.csv "	+ "/" + mergeDir);
 
-	// merge 2 csv into one: previpus and new ones - for folder CSVs
+	// merge 2 csv into one: common one and just generated - for folder CSVs
 	QString pyScriptPathMerge = "python " 
 							+ QCoreApplication::applicationDirPath() 
 							+ "/scripts/merge2csv.py " 
 							+ FVA_DEFAULT_ROOT_DIR;
 	pyCmdList.append(pyScriptPathMerge + "fvaFolder.csv " + FVA_DEFAULT_ROOT_DIR + "fvaFolderN.csv ");
-
-	// merge 2 csv into one: previpus and new ones - for file CSVs
-	QString pyScriptPathMerge2 = "python " 
-							+ QCoreApplication::applicationDirPath() 
-							+ "/scripts/merge2csv.py " 
-							+ FVA_DEFAULT_ROOT_DIR;
-	pyCmdList.append(pyScriptPathMerge2 + "fvaFile.csv " + FVA_DEFAULT_ROOT_DIR + "fvaFileN.csv " );
 
 	// lets run python cmd list 
 	for (auto it = pyCmdList.begin(); it != pyCmdList.end(); ++it)
@@ -459,18 +447,12 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		myProcess.setProcessChannelMode(QProcess::MergedChannels);
 
 		myProcess.start(*it);
-		while(myProcess.waitForReadyRead())
-		{
-			QString output = myProcess.readAll();
-			logOutput->append(output);
-			fileLog.write(output.toStdString().c_str());
-		}
-		myProcess.waitForFinished( -1 );
+		myProcess.waitForFinished(-1);
 
-		int exitCode = myProcess.exitCode();
-		if (exitCode != 0)
+		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
+		if (exitCode != FVA_NO_ERROR)
 		{
-			//TODO show error
+			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));
 			return false;
 		}
 	}
@@ -486,7 +468,7 @@ FVAOrganizerDonePage::FVAOrganizerDonePage(void)
 {
 	finishWords		= new QTextBrowser;
 
-	finishWords->setText(tr("œÓÁ‰‡‚ÎÂÌËˇ! ¬˚ ‚ ¯‡„Â Ó ÓÍÓÌ˜‡ÌËˇ ÔÓˆÂÒÒ‡."));
+	finishWords->setText(tr("–ü–æ–∑–¥—Ä–∞–≤–ª–µ–Ω–∏—è! –í—ã –≤ —à–∞–≥–µ –æ –æ–∫–æ–Ω—á–∞–Ω–∏—è –ø—Ä–æ—Ü–µ—Å—Å–∞."));
 
 	QVBoxLayout * layout = new QVBoxLayout;
 

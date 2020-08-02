@@ -1,7 +1,7 @@
 #ifndef FVADESCRIPTIONEDITOR_H
 #define FVADESCRIPTIONEDITOR_H
 
-#include <QtGui/QMainWindow>
+#include <QtWidgets/QMainWindow>
 #include "ui_fvadescriptioneditor.h"
 
 class FVADescriptionEditor : public QMainWindow

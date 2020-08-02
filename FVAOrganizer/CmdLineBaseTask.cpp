@@ -1,6 +1,6 @@
 #include "CmdLineBaseTask.h"
 
-#include <qdebug>
+#include <QtCore/qdebug>
 
 CmdLineBaseTask::CmdLineBaseTask( const QString& folder_, bool readOnly, const QString& custom_ )
 	:	m_folder		( folder_ ),

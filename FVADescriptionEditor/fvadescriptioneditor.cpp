@@ -4,11 +4,11 @@
 #include "fvacommondb.h"
 #include "fvacommonui.h"
 
-#include <QFileInfo>
-#include <QListWidgetItem>
-#include <QDir>
-#include <QDateTime>
-#include <QProcess>
+#include <QtCore/QFileInfo>
+#include <QtWidgets/QListWidgetItem>
+#include <QtCore/QDir>
+#include <QtCore/QDateTime>
+#include <QtCore/QProcess>
 
 void FVADescriptionEditor::updateDictionaryGUI()
 {
@@ -321,7 +321,7 @@ void FVADescriptionEditor::saveCurrentDescription()
 		{
 			QString newName = dir.absolutePath()
 				+ "/" + FVA_DIR_DESCRIPTION_FILE_NAME 
-				+ "_" + QDateTime::currentDateTime().toString( "yyyy-MM-dd-hh-mm-ss").toAscii().data();
+				+ "_" + QDateTime::currentDateTime().toString( "yyyy-MM-dd-hh-mm-ss").toLatin1().data();
 			QString oldName = dir.absolutePath()+ QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME;
 			if ( !dir.rename( oldName, newName ))
 			{
@@ -363,7 +363,7 @@ void FVADescriptionEditor::saveCurrentDescription()
 		{
 			QString newName = dir.absolutePath()
 				+ "/" + FVA_DESCRIPTION_FILE_NAME 
-				+ "_" + QDateTime::currentDateTime().toString( "yyyy-MM-dd-hh-mm-ss").toAscii().data();
+				+ "_" + QDateTime::currentDateTime().toString( "yyyy-MM-dd-hh-mm-ss").toLatin1().data();
 			QString oldName = dir.absolutePath()+ "/" + FVA_DESCRIPTION_FILE_NAME;
 			if ( !dir.rename( oldName, newName ))
 			{

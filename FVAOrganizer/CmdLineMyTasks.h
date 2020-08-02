@@ -1,7 +1,7 @@
 #ifndef _CMD_LINE_MY_TASKS_H_
 #define _CMD_LINE_MY_TASKS_H_
 
-#include "CmdLineTasks.h"
+#include "CmdLineBaseTask.h"
 
 _CLASS_TASK_DECLARATION(CLT_Xml_Convert,false)
 _CLASS_TASK_DECLARATION(CLT_Update_File_Description,false)

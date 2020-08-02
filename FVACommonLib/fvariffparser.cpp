@@ -24,8 +24,8 @@ bool RiffParser::open ( const QString& path, QString& error )
 	
 	// check format
 	qint32 size = m_stream->readRawData( buffer, sizeof( buffer ) );
-	if ( QString::fromAscii( buffer, 4 ) != "RIFF" 
-		&& QString::fromAscii( buffer, 4 ) != "RIFX" )
+	if ( QString::fromLatin1( buffer, 4 ) != "RIFF" 
+		&& QString::fromLatin1( buffer, 4 ) != "RIFX" )
 	{
 		error = "Incorrect FourCC";
 		return false;
@@ -49,7 +49,7 @@ bool RiffParser::processNode( const QString& tag, QString& value )
 		char buffer [8];		
 		qint32 readSize = m_stream->readRawData( buffer, sizeof( buffer ) );
 		int datasize	= * ( (int*) ( &buffer[ 4 ]) );
-		if ( QString::fromAscii( buffer, 4 ) == "LIST" )
+		if ( QString::fromLatin1( buffer, 4 ) == "LIST" )
 		{
 			char buffer_ [4];
 			qint32 readSize_ = m_stream->readRawData( buffer_, sizeof( buffer_ ) );	
@@ -61,11 +61,11 @@ bool RiffParser::processNode( const QString& tag, QString& value )
 			int paddedSize = datasize;
 			if (0 != (datasize & 1)) 
 				++paddedSize;
-			if ( tag == QString::fromAscii( buffer, 4 ) )
+			if ( tag == QString::fromLatin1( buffer, 4 ) )
 			{
 				char buffer_ [1024];
 				qint32 readSize_ = m_stream->readRawData( buffer_, sizeof( buffer_ ) );	
-				value = QString::fromAscii( buffer_, datasize );
+				value = QString::fromLatin1( buffer_, datasize );
 				return true;
 			}
 			m_stream->skipRawData( paddedSize );	

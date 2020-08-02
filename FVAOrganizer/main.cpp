@@ -1,9 +1,10 @@
 #include <QtCore/QCoreApplication>
-#include <QDateTime>
-#include <QDebug>
+#include <QtCore/QDateTime>
+#include <QtCore/QDebug>
 
 #include "cmdlineexecutor.h"
 #include "fvacommonlib.h"
+#include "fvadefaultcfg.h"
 
 #include <fstream>
 
@@ -17,38 +18,22 @@ std::ofstream	g_logfile;
  */
 QtMsgType	g_logLevel = QtDebugMsg;
 
-void msghandler( QtMsgType type, const char *msg )
+void msghandler(QtMsgType type, const QMessageLogContext &, const QString & str)
 {
+	const char * msg = str.toStdString().c_str();
 	if ( type < g_logLevel )
-		return;
-	
-	g_logfile << QDateTime::currentDateTime().toString( "[hh:mm:ss]").toAscii().data();
-	switch ( type ) 
-	{
-		case QtDebugMsg:
-			g_logfile << "[DBG]" << msg << "\n";
-		break;
-		case QtWarningMsg:
-			g_logfile << "[WRN]" << msg << "\n";
-		break;
-		case QtCriticalMsg:
-			g_logfile << "[ERR]" << msg << "\n";
-		break;
-		case QtFatalMsg:
-		{
-			g_logfile << "[FAT]" << msg << "\n";
-			abort();
-		}
-	}	
-	//g_logfile << msg << "\n";
+		return;	
+	g_logfile << str.toLatin1().data() << "\n";
+	g_logfile.flush();
 }
 
 int main( int argc, char *argv[] )
 {
 	//install : set the callback
-	//qInstallMsgHandler( msghandler );
-	//QString logPath = QCoreApplication::applicationDirPath() + "\\organizerlog.txt";  
-	//g_logfile.open( logPath.toStdString(), std::ios::app );
+	qInstallMessageHandler(msghandler);
+
+	QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog.txt";  
+	g_logfile.open( logPath.toStdString(), std::ios::app );
 
 	QCoreApplication a(argc, argv);
 

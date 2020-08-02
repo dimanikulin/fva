@@ -4,8 +4,8 @@
 #include "fvaerrors.h"
 #include "fvaconstants.h"
 
-#include <QString>
-#include <QVariantMap>
+#include <QtCore/QString>
+#include <QtCore/QVariantMap>
 
 /*!
  * \brief it loads FVA dictionaries from file 

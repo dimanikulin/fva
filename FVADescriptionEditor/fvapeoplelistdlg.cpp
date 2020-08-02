@@ -1,7 +1,7 @@
 #include "fvapeoplelistdlg.h"
 #include "fvacommonlib.h"
 #include "fvacommondb.h"
-#include <QProcess>
+#include <QtCore/QProcess>
 
 FVAPeopleListDlg::FVAPeopleListDlg(QVariantMap& dictionaries, const QString& dictPath, QWidget *parent)
 	: QDialog		(parent),

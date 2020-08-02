@@ -1,9 +1,9 @@
 #ifndef _CMD_LINE_EXECUTOR_H_
 #define _CMD_LINE_EXECUTOR_H_
 
-#include <qlist> 
-#include <qstring> 
-#include <qstringlist> 
+#include <QtCore/qlist> 
+#include <QtCore/qstring> 
+#include <QtCore/qstringlist> 
 
 #include "CmdLineBaseTask.h"
 

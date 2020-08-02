@@ -1,7 +1,7 @@
 #include "fvacsvfile.h"
 
-#include <QTextStream>
-#include <QTextCodec>
+#include <QtCore/QTextStream>
+#include <QtCore/QTextCodec>
 
 CSVFile::CSVFile(  )
 {

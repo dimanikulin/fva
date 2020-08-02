@@ -1,7 +1,7 @@
 #ifndef FVADICTIONARYEDITOR_H
 #define FVADICTIONARYEDITOR_H
 
-#include <QtGui/QDialog>
+#include <QtWidgets/QDialog>
 #include "ui_fvadictionaryeditor.h"
 
 class FVADictionaryEditor : public QDialog

@@ -1,9 +1,9 @@
 #include "fvacommonui.h"
 
-#include <QTGui/QMessageBox>
+#include <QtWidgets/QMessageBox>
 #include <QTGui/QPainter>
 #include <QTGui/QIcon>
-#include <QCoreApplication>
+#include <QtCore/QCoreApplication>
 
 FVA_ERROR_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QString& text )
 {

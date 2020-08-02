@@ -1,5 +1,5 @@
 #include "fvaconfigurator.h"
-#include <QtGui/QApplication>
+#include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
