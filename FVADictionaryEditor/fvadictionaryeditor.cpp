@@ -2,6 +2,15 @@
 #include "fvacommonlib.h"
 #include "fvacommondb.h"
 
+/*!
+* \brief it saves FVA dictionaries to file
+* \param file to save dictionaries to
+* \param outputJson input parameter to be saved
+* \param error - human-readable description of error if any
+* \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
+*/
+FVA_ERROR_CODE fvaSaveDictionary(const QString& file, QVariantMap& inputJson, QString& error);
+
 FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& device, QWidget *parent)
 	: QDialog	(parent),
 	m_dictPath	(dictPath),
@@ -111,4 +120,46 @@ void FVADictionaryEditor::OnAddDeviceBtnPressed()
 void FVADictionaryEditor::OnAddPlaceBtnPressed()
 {
 	addDictItem(m_dictPath, ui.editPlace->text(),this, "places" );
+}
+FVA_ERROR_CODE fvaSaveDictionary(const QString& file, QVariantMap& inputJson, QString& error)
+{
+	/*QDir dir(file);
+	if (!dir.exists(file))
+	{
+		error = "dictionaries file does not exist";
+		return FVA_ERROR_CANT_FIND_DICTIONARIES;
+	}
+	else
+	{
+		QString newName = file + "_" + QDateTime::currentDateTime().toString(FVA_FILE_NAME_FMT).toLatin1().data();
+		if (!dir.rename(file, newName))
+		{
+			return FVA_ERROR_CANT_OPEN_DICTIONARIES;
+		}
+	}
+	// open it
+	QFile _file(file);
+	if (!_file.open(QIODevice::WriteOnly))
+	{
+		error = "can not open dictionaries";
+		return FVA_ERROR_CANT_OPEN_DICTIONARIES;
+	}
+
+	bool res = false;
+
+	QByteArray data = QtJson::Json::serialize(inputJson, res);
+	if (!res)
+	{
+		error = "can not save dictionaries";
+		_file.close();
+		return FVA_ERROR_CANT_SAVE_DICTIONARIES;
+	}
+	QString result = QString::fromLocal8Bit(data);
+
+	QTextStream writeStream(&_file);
+	writeStream << result;
+	writeStream.flush();
+	_file.close();*/
+
+	return FVA_NO_ERROR;
 }

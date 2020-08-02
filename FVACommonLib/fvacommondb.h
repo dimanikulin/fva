@@ -17,15 +17,6 @@
 FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& output, QString& error );
 
 /*!
- * \brief it saves FVA dictionaries to file 
- * \param file to save dictionaries to 
- * \param outputJson input parameter to be saved
- * \param error - human-readable description of error if any 
- * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
- */
-FVA_ERROR_CODE fvaSaveDictionary( const QString& file, QVariantMap& inputJson, QString& error );
-
-/*!
  * \brief it tries to load device id map from dictionary
  * \param deviceIds a map to be filled up
  * \param dictPath path to dictionary to load map from

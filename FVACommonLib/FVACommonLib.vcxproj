@@ -156,7 +156,6 @@
     <ClCompile Include="fvacommonui.cpp" />
     <ClCompile Include="FVADescriptionFile.cpp" />
     <ClCompile Include="fvariffparser.cpp" />
-    <ClCompile Include="json.cpp" />
     <ClCompile Include="qexifimageheader.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,7 +169,6 @@
     <ClInclude Include="FVADescriptionFile.h" />
     <ClInclude Include="fvaerrors.h" />
     <ClInclude Include="fvariffparser.h" />
-    <ClInclude Include="json.h" />
     <ClInclude Include="qexifimageheader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

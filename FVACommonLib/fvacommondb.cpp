@@ -3,8 +3,6 @@
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
 
-#include "json.h"
-
 #include <QtSql/QtSql>
 
 FVA_ERROR_CODE fillOneDictFromDB(QVariantMap& outputData, const QString& dictName)
@@ -128,48 +126,6 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 	return FVA_NO_ERROR;
 }
 
-FVA_ERROR_CODE fvaSaveDictionary( const QString& file, QVariantMap& inputJson, QString& error )
-{
-	QDir dir ( file );
-	if ( !dir.exists( file ) )
-	{
-		error = "dictionaries file does not exist" ;
-		return FVA_ERROR_CANT_FIND_DICTIONARIES;
-	}
-	else
-	{
-		QString newName = file + "_" + QDateTime::currentDateTime().toString(FVA_FILE_NAME_FMT).toLatin1().data();
-		if ( !dir.rename( file, newName ))
-		{
-			return FVA_ERROR_CANT_OPEN_DICTIONARIES;
-		}
-	}
-	// open it
-	QFile _file ( file );
-	if ( !_file.open( QIODevice::WriteOnly ) )
-	{
-		error =  "can not open dictionaries";
-		return FVA_ERROR_CANT_OPEN_DICTIONARIES;
-	}
-
-	bool res				= false;
-
-	QByteArray data = QtJson::Json::serialize( inputJson, res );
-	if ( !res )
-	{
-		error =  "can not save dictionaries";
-		_file.close();
-		return FVA_ERROR_CANT_SAVE_DICTIONARIES;
-	}
-	QString result = QString::fromLocal8Bit(data);
-
-	QTextStream writeStream( &_file );
-	writeStream << result;	
-	writeStream.flush();
-	_file.close();
-
-	return FVA_NO_ERROR;
-}
 
 FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QString& dictPath)
 {

@@ -2,7 +2,6 @@
 #include <QtCore/QXmlStreamReader>
 #include "FVADescriptionFile.h"
 
-#include "../FVACommonLib/json.h"
 #include "../FVACommonLib/qexifimageheader.h"
 
 #include <QtCore/qdir>
@@ -154,7 +153,7 @@ FVA_ERROR_CODE CLT_Convert_Dir_Desc::execute()
 	file.close();
 
 	bool res = false;
-	QVariantMap result = QtJson::Json::parse ( jsonData, res ).toMap();
+	/*QVariantMap result = QtJson::Json::parse ( jsonData, res ).toMap();
 
 	if ( res && !result["event"].toString().isEmpty() ) 
 		LOG_QWARN << "dir:" << m_folder << ",event:" << result["event"].toString();
@@ -167,15 +166,15 @@ FVA_ERROR_CODE CLT_Convert_Dir_Desc::execute()
 			return FVA_ERROR_CANT_RENAME_DIR_DESC;
 		}
 		QString error;
-		/*FVA_ERROR_CODE res = fvaCreateFolderDescription( descFolderPath, result, error );
+		FVA_ERROR_CODE res = fvaCreateFolderDescription( descFolderPath, result, error );
 		if ( FVA_NO_ERROR != res )
 		{
 			LOG_QCRIT << error;
 			return res;
-		}*/
+		}
 
 		LOG_QWARN << "updated folder description:" << descFolderPath;
-	}	
+	}*/	
 	return FVA_NO_ERROR;
 }
 
