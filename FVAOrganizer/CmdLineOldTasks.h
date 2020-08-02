@@ -1,7 +1,7 @@
 #ifndef _CMD_LINE_OLD_TASKS_H_
 #define _CMD_LINE_OLD_TASKS_H_
 
-#include "CmdLineTasks.h"
+#include "CmdLineBaseTask.h"
 
 /*!
  * \brief it creates folder structure using device names in input folder

@@ -1,7 +1,7 @@
 #ifndef _CMD_LINE_CSV_TASKS_H_
 #define _CMD_LINE_CSV_TASKS_H_
 
-#include "CmdLineTasks.h"
+#include "CmdLineBaseTask.h"
 
 /*!
  * \brief it creates CSV file with FVA information for files in a folder

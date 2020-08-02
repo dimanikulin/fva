@@ -1,7 +1,7 @@
 #ifndef _CMD_LINE_DB_TASKS_H_
 #define _CMD_LINE_DB_TASKS_H_
 
-#include "CmdLineTasks.h"
+#include "CmdLineBaseTask.h"
 
 class CLT_Base_SQL : public CmdLineBaseTask
 {
