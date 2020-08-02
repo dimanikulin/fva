@@ -652,3 +652,39 @@ FVA_ERROR_CODE CLT_1_Event_Folder_Merging::execute()
 	}
 	return FVA_NO_ERROR;
 }
+FVA_ERROR_CODE CLT_1_Day_Event_Folder_Merging::execute()
+{
+	// get the last dir leaf in input folder
+	QString dir = m_dir.dirName();
+	QString dstDirPath = FVA_DEFAULT_ROOT_DIR + dir.mid(0, 4)/*extract year*/ + "/" + m_dir.dirName();
+	LOG_QDEB << "path to move:" << dstDirPath;
+
+	if (!m_dir.exists(dstDirPath))
+	{
+		if (!m_dir.mkpath(dstDirPath))
+		{
+			LOG_QCRIT << "could not create dest folder:" << dstDirPath;
+			return FVA_ERROR_CANT_CREATE_DIR;
+		}
+	}
+	else
+	{
+		LOG_QCRIT << "could not create dest folder as it already exists:" << dstDirPath;
+		return FVA_ERROR_CANT_CREATE_DIR;
+	}
+	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{
+		// skip internal folder 
+		if (dir.contains("#copy") || dstDirPath.contains("#copy"))
+		{
+			LOG_QWARN << "skipped #copy for: " << info.absoluteFilePath() << " , dst: " << dstDirPath;
+			continue;
+		}
+		if (!m_dir.rename(info.absoluteFilePath(), dstDirPath + "/" + info.fileName()))
+		{
+			LOG_QCRIT << "could not move:" << info.absoluteFilePath() << " into " << dstDirPath + "/" + info.fileName();
+			return FVA_ERROR_CANT_MOVE_DIR;
+		}
+	}
+	return FVA_NO_ERROR;
+}
