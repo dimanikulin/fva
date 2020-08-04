@@ -390,9 +390,6 @@ FVA_ERROR_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo)
 	if (-1 == columnName)
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
-	QFile file(FVA_DEFAULT_ROOT_DIR + "fvaNotUniqueFileName.csv");
-	file.open(QIODevice::WriteOnly | QIODevice::Append);
-	QTextStream writeStream( &file );	
 	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
 	{
 		QStringList list = it.value();
@@ -400,14 +397,17 @@ FVA_ERROR_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo)
 		QString fileName = list[columnName].toUpper();
 		if (fvaFileInfo.find(fileName) != fvaFileInfo.end())
 		{
+			QFile file(FVA_DEFAULT_ROOT_DIR + "fvaNotUniqueFileName.csv");
+			file.open(QIODevice::WriteOnly | QIODevice::Append);
+			QTextStream writeStream(&file);
 			writeStream << list[columnID].toUpper() << "\n";
-			//return FVA_ERROR_NON_UNIQUE_FVA_INFO;
+			file.close();
+			return FVA_ERROR_NON_UNIQUE_FVA_INFO;
 		}
 		fvaFile newFile;
 		newFile.deviceId = list[columnDevId].remove("\t").toUInt();
 		fvaFileInfo[fileName.toUpper()] = newFile; 		
 	}
-	file.close();
 	return FVA_NO_ERROR;
 }
 FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID,const QString& dir)
