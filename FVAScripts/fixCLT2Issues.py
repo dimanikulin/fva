@@ -7,6 +7,7 @@ import os, stat
 #fixCLT2Issues.py issues.csv FVA_ERROR_NULL_TAKEN_TIME > fixedEmptyTakenTime.txt
 #fixCLT2Issues.py issues.csv FVA_ERROR_NO_DEV_ID > fixedNotLinkedDevId.txt
 #fixCLT2Issues.py issues.csv FVA_ERROR_EMPTY_DEVICE > fixedEmptyDevice.txt
+#fixCLT2Issues.py issues.csv FVA_ERROR_UKNOWN_DEVICE > fixedUknownDevice.txt
 
 with open(sys.argv[1], newline='') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
@@ -57,7 +58,12 @@ with open(sys.argv[1], newline='') as csvfile:
         if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_NO_DEV_ID':
             print(', '.join(row))
 
-        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_EMPTY_DEVICE' and row[2] == '7':
+        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_EMPTY_DEVICE' and row[2] == '52':
+            print(', '.join(row))
+            os.chmod(row[1], stat.S_IWRITE) # clear read only file attribute
+            subprocess.call(['../jhead.exe', "-te", "source.JPG" , row[1]])
+
+        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_UKNOWN_DEVICE' and row[2] == '52':
             print(', '.join(row))
             os.chmod(row[1], stat.S_IWRITE) # clear read only file attribute
             subprocess.call(['../jhead.exe', "-te", "source.JPG" , row[1]])
