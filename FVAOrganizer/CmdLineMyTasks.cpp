@@ -91,7 +91,7 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 		else	if ( "CanonCanon EOS D60"		== deviceName )	deviceId = "85";
 
 		QString oldName = info.baseName().mid( 21 ); // remove part of new name
-		auto it = decsItems.find( oldName.toUpper() + "." + suffix.toUpper() );
+		/*auto it = decsItems.find(oldName.toUpper() + "." + suffix.toUpper());
 
 		QString description;
 		QString comment;
@@ -124,6 +124,8 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 		}
 		else
 			LOG_QDEB << "renamed file:" << info.absoluteFilePath() << " to:" << newFileName;
+			*/
+
 	}
 
 	return FVA_NO_ERROR;

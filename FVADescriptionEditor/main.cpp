@@ -104,13 +104,13 @@ int main(int argc, char *argv[])
 			if (emptyDescFile)
 			{
 				emptyDescription[0]						= info.fileName().toUpper();
-				decsItems[info.fileName().toUpper()]	= emptyDescription;	
+				// decsItems[info.fileName().toUpper()]	= emptyDescription;	
 			}
 		}
 		if ( -1 == indexOfFile && fvaPath.isEmpty())
 			indexOfFile = 0;
-		FVADescriptionEditor w( folderMode, titles, decsItems, dictionaries, indexOfFile, dirFiles, dictPath, "" );
-		w.show();
+		// FVADescriptionEditor w( folderMode, titles, decsItems, dictionaries, indexOfFile, dirFiles, dictPath, "" );
+		// w.show();
 		return a.exec();
 	}
 	else
@@ -130,10 +130,10 @@ int main(int argc, char *argv[])
 		emptyDescription.append(result["tags"].toString());
 		emptyDescription.append(result["linkedFolder"].toString());
 
-		decsItems[info.fileName().toUpper()]	= emptyDescription;	
+		//decsItems[info.fileName().toUpper()]	= emptyDescription;	
 		
-		FVADescriptionEditor w( folderMode, titles, decsItems, dictionaries, 0, dirFiles, dictPath, fvaPath );
-		w.show();
+		//FVADescriptionEditor w( folderMode, titles, decsItems, dictionaries, 0, dirFiles, dictPath, fvaPath );
+		//w.show();
 		return a.exec();
 	}
 }

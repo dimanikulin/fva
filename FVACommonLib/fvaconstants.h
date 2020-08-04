@@ -34,7 +34,7 @@ const int FVA_UNDEFINED_ID	= -1;
 class fvaDevice;
 typedef QMap<int, fvaDevice> DEVICE_MAP;
 
-typedef QMap< QString, QStringList > DESCRIPTIONS_MAP;
+typedef QMap< int, QStringList > DESCRIPTIONS_MAP;
 
 class fvaFile;
 typedef QMap<QString, fvaFile> FVA_FILE_INFO_MAP;

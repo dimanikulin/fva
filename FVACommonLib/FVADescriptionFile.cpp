@@ -14,7 +14,7 @@ FVA_ERROR_CODE FVADescriptionFile::load( const QString& path, QStringList& title
 	if ( !openForRead( path ) )
 		return FVA_ERROR_CANT_OPEN_FILE_DESC;
 	
-	int		indexOfFileNameColumn = -1;
+	int		indexOfIDColumn = -1;
 	while ( !atEnd() )
 	{
 		QString	line = readLine();
@@ -29,8 +29,8 @@ FVA_ERROR_CODE FVADescriptionFile::load( const QString& path, QStringList& title
 		{
 			if ( titles.isEmpty() )
 			{
-				indexOfFileNameColumn = getColumnIdByName( values, "name" );
-				if ( -1 == indexOfFileNameColumn )
+				indexOfIDColumn = getColumnIdByName( values, "ID" );
+				if (-1 == indexOfIDColumn)
 					return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 				titles = values;
 				continue;
@@ -39,7 +39,7 @@ FVA_ERROR_CODE FVADescriptionFile::load( const QString& path, QStringList& title
 			{
 				if ( values.size() != titles.size() )
 					return FVA_ERROR_INCORRECT_FORMAT;
-				decsItems [ values[ indexOfFileNameColumn ].toUpper() ] = values;
+				decsItems[values[indexOfIDColumn].toInt()] = values;
 			}
 		}
 	}
