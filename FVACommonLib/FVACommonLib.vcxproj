@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="fvacommonexif.cpp" />
     <ClCompile Include="fvacsvfile.cpp" />
     <ClCompile Include="fvacommondata.cpp" />
     <ClCompile Include="fvacommondb.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="qexifimageheader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="fvacommonexif.h" />
     <ClInclude Include="fvacsvfile.h" />
     <ClInclude Include="fvacommondata.h" />
     <ClInclude Include="fvacommondb.h" />
