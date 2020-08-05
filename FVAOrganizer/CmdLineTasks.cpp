@@ -3,7 +3,7 @@
 #include "fvacommondb.h"
 #include "fvacommondata.h"
 
-#include "../FVACommonLib/qexifimageheader.h"
+#include "fvacommonexif.h"
 
 #include <QtCore/QCoreApplication>
 
@@ -105,7 +105,7 @@ FVA_ERROR_CODE CLT_Files_Rename::execute()
 		{
 			if ( !checkIfParentFileExist( info, renameDateTime, prevRenameDateTime ) ) 
 			{
-				renameDateTime = QExifImageHeader( info.filePath()).value(QExifImageHeader::DateTimeOriginal).toDateTime();
+				renameDateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath());
 				QString _newName = renameDateTime.toString( FVA_FILE_NAME_FMT );
 				if ( _newName.isEmpty() )
 					fillRenameDateTimeFromLastModifiedIfValid( m_dir, info, renameDateTime );				
@@ -203,8 +203,8 @@ FVA_ERROR_CODE CLT_Device_Name_Check::execute()
 		if(	FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType ( suffix ) )
 			continue;
 		
-		QString newDeviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
-								+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
+		QString newDeviceName = fvaGetExifMakeAndModelFromFile(info.filePath());
+
 		if ( newDeviceName.isEmpty() )
 		{
 			LOG_QWARN << "no device name in picture:" << info.absoluteFilePath();
@@ -391,7 +391,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			if (FVA_FS_TYPE_IMG == type)
 			{
 				QString error;
-				QDateTime dateTime = QExifImageHeader( info.filePath()).value(QExifImageHeader::DateTimeOriginal).toDateTime();
+				QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath());
 
 				if (!dateTime.isValid())
 				{
@@ -410,7 +410,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			if (FVA_FS_TYPE_VIDEO == type)
 			{
 				QString error;
-				QDateTime dateTime = QExifImageHeader( info.filePath()).value(QExifImageHeader::DateTimeOriginal).toDateTime();
+				QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath());
 				if (!dateTime.isValid())
 				{
 					LOG_QWARN << "empty video taken time found in:" << info.absoluteFilePath();

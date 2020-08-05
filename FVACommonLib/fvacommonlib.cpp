@@ -2,13 +2,13 @@
 #include "fvadefaultcfg.h"
 #include "fvacommondata.h"
 #include "fvadescriptionfile.h"
+#include "fvacommonexif.h"
 
 #include <QtCore/QDir>
 #include <QtCore/QTextStream>
 #include <QtCore/QProcess>
 #include <QtCore/QCoreApplication>
 
-#include "qexifimageheader.h"
 #include "fvariffparser.h"
 
 #include <windows.h>
@@ -256,8 +256,7 @@ bool fvaFilter::doIDsMatchToFilter(const QVector<unsigned int>& IDs, const QVect
 }
 DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pathToFile, QString& deviceName)
 {
-	deviceName = QExifImageHeader(pathToFile).value(QExifImageHeader::Make).toString()
-						+ QExifImageHeader(pathToFile).value(QExifImageHeader::Model).toString();
+	deviceName = fvaGetExifMakeAndModelFromFile(pathToFile);
 
 	DEVICE_MAP result;
 	if (deviceName.isEmpty())
@@ -285,8 +284,8 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
 
 QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error)
 {
-	QExifImageHeader header(pathToFile);
-	QDateTime renameDateTime = header.value(QExifImageHeader::DateTimeOriginal).toDateTime();
+
+	QDateTime renameDateTime = fvaGetExifDateTimeOriginalFromFile(pathToFile); 
 	QString _newName = renameDateTime.toString( FVA_FILE_NAME_FMT );
 	if (_newName.isEmpty())
 	{

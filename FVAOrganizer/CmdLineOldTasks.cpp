@@ -1,7 +1,7 @@
 #include "CmdLineOldTasks.h"
 #include "fvadefaultcfg.h"
 
-#include "../FVACommonLib/qexifimageheader.h"
+#include "fvacommonexif.h"
 
 #include <QtCore/QCoreApplication>
 #include <QtCore/QCryptographicHash>
@@ -21,8 +21,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_Device_Name::execute()
 		QString fullname = info.absoluteFilePath();
 		if(	FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType ( suffix ) )
 		{
-			QString newDeviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
-									+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
+			QString newDeviceName = fvaGetExifMakeAndModelFromFile(info.filePath());
 			
 			while(newDeviceName.endsWith( '\n' )) 
 				newDeviceName.chop( 1 );

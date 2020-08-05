@@ -2,7 +2,7 @@
 #include <QtCore/QXmlStreamReader>
 #include "FVADescriptionFile.h"
 
-#include "../FVACommonLib/qexifimageheader.h"
+#include "fvacommonexif.h"
 
 #include <QtCore/qdir>
 
@@ -80,9 +80,7 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 		if(	FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType ( suffix ) )
 			continue;
 		
-		QString deviceName = QExifImageHeader( info.filePath()).value(QExifImageHeader::Make).toString()
-								+ QExifImageHeader( info.filePath()).value(QExifImageHeader::Model).toString();
-		
+		QString deviceName = fvaGetExifMakeAndModelFromFile(info.filePath());	
 		QString deviceId;
 
 		// to map subset of devices 
