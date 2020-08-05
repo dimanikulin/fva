@@ -370,6 +370,9 @@ void FVAOrganizerOutputDirPage::OnDirButtonClicked()
 
 bool FVAOrganizerOutputDirPage::isComplete() const
 {
+	// TODO to fix as soon as this page is redesigned to be - one-day-event, many-day-one-event, many-event-many-days  
+	return true;
+
 	QString dir = outputDirLineEdit->text();
 
 	// make button be disabled if dir.isEmpty()
@@ -449,8 +452,8 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		myProcess.start(*it);
 		myProcess.waitForFinished(-1);
 
-		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
-		if (exitCode != FVA_NO_ERROR)
+		int exitCode = myProcess.exitCode();
+		if (exitCode != 0)
 		{
 			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));
 			return false;
