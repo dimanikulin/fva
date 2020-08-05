@@ -10,5 +10,5 @@ QString fvaGetExifMakeAndModelFromFile(const QString& pathToFile)
 
 QDateTime fvaGetExifDateTimeOriginalFromFile(const QString& pathToFile)
 {
-	return QExifImageHeader().value(QExifImageHeader::DateTimeOriginal).toDateTime();
+	return QExifImageHeader(pathToFile).value(QExifImageHeader::DateTimeOriginal).toDateTime();
 }
