@@ -5,27 +5,27 @@
 FVA_ERROR_CODE CLT_Fva_Folder_2_CSV::execute()
 {
 	int ID = FVA_UNDEFINED_ID;
-	FVA_ERROR_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"fvaFolder.id", ID);
+	FVA_ERROR_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFolder.id", ID);
 	RET_RES_IF_RES_IS_ERROR
 	QString csvRecord =  QString::number(++ID) + "," // ID
 		+ FVA_TARGET_FOLDER_NAME		+ "," // Name	
 		+ m_custom						// DevId
 		+ ",,,,,,,,";	//Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
 
-	QFile fileNew ( FVA_DEFAULT_ROOT_DIR + "fvaFolderN.csv" );		
+	QFile fileNew ( FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv" );		
 	if ( !fileNew.open( QIODevice::WriteOnly | QIODevice::Text ) )	
 		return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;	
 	QTextStream writeStream( &fileNew );	
 	writeStream << csvRecord;	
 	writeStream.flush();	
 	fileNew.close();	
-	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"fvaFolder.id", ID);
+	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFolder.id", ID);
 }
 
 FVA_ERROR_CODE CLT_Fva_Files_2_CSV::execute()
 {	
 	int ID = FVA_UNDEFINED_ID;
-	FVA_ERROR_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"fvaFile.id", ID);
+	FVA_ERROR_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFile.id", ID);
 	RET_RES_IF_RES_IS_ERROR
 
 	QVector<QString>		m_records;	
@@ -46,7 +46,7 @@ FVA_ERROR_CODE CLT_Fva_Files_2_CSV::execute()
 		m_records.append(csvRecord);
 				
 	}
-	QFile fileNew ( FVA_DEFAULT_ROOT_DIR + "fvaFileN.csv" );		
+	QFile fileNew ( FVA_DEFAULT_ROOT_DIR + "#data#/fvaFileN.csv" );		
 	if ( !fileNew.open( QIODevice::WriteOnly | QIODevice::Text ) )	
 		return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;	
 	QTextStream writeStream( &fileNew );
@@ -59,5 +59,5 @@ FVA_ERROR_CODE CLT_Fva_Files_2_CSV::execute()
 
 	writeStream.flush();
 	fileNew.close();	
-	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"fvaFile.id", ID);
+	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFile.id", ID);
 }

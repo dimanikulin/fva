@@ -1,5 +1,7 @@
 DROP TABLE IF EXISTS fvaDeviceTypes;
 CREATE TABLE fvaDeviceTypes	(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT NULL);
+.separator ,
+.import "../../fva/#data#/fvaFolder.csv" fvaFolder
 
 DROP TABLE IF EXISTS fvaDevices;
 CREATE TABLE fvaDevices		(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, 
@@ -51,7 +53,7 @@ CREATE TABLE fvaFolder		(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NO
 				ScanerId INTEGER REFERENCES fvaDevices (ID) ON DELETE RESTRICT MATCH SIMPLE
 				);
 .separator ,
-.import "../../fva/fvaFolder.csv" fvaFolder
+.import "../../fva/#data#/fvaFolder.csv" fvaFolder
 
 DROP TABLE IF EXISTS fvaFile;
 CREATE TABLE fvaFile		(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT NULL,
@@ -66,4 +68,4 @@ CREATE TABLE fvaFile		(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT 
 				OldName1	VARCHAR 
                                 );
 .separator ,
-.import "../../fva/fvaFile.csv" fvaFile
+.import "../../fva/#data#/fvaFile.csv" fvaFile

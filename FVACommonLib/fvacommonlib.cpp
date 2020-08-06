@@ -373,7 +373,7 @@ FVA_ERROR_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo)
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
 
-	FVA_ERROR_CODE res = fvaFileCsv.load( FVA_DEFAULT_ROOT_DIR + "fvaFile.csv", titles, decsItems);
+	FVA_ERROR_CODE res = fvaFileCsv.load( FVA_DEFAULT_ROOT_DIR + "#data#/fvaFile.csv", titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
 
 	// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,OldName,WhoTook,OldName1
@@ -423,7 +423,7 @@ FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, c
 	FVADescriptionFile fvaFolderCsv;
 	QStringList			titlesD; 
 	DESCRIPTIONS_MAP	decsItemsD;
-	FVA_ERROR_CODE res = fvaFolderCsv.load(FVA_DEFAULT_ROOT_DIR + "fvaFolder.csv", titlesD, decsItemsD); 
+	FVA_ERROR_CODE res = fvaFolderCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolder.csv", titlesD, decsItemsD); 
 	RET_RES_IF_RES_IS_ERROR
 
 	// ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
@@ -450,13 +450,13 @@ FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, c
 			{
 				deviceID = list[columnDevIdD].remove("\t").toUInt();
 				
-				QFile file ( FVA_DEFAULT_ROOT_DIR + "fvaFileNoDevId.csv" );		
+				QFile file ( FVA_DEFAULT_ROOT_DIR + "#data#/fvaFileNoDevId.csv" );		
 				file.open( QIODevice::WriteOnly | QIODevice::Append );	
 				int ID = FVA_UNDEFINED_ID;
-				fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"fvaFile.id", ID);
+				fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFile.id", ID);
 				QTextStream writeStream( &file );
 				writeStream << QString::number(++ID) << "," << fvaFile << ",,," <<  QString::number(deviceID) << ",,,,,,\n" ;
-				fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"fvaFile.id", ID);
+				fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFile.id", ID);
 				file.close();
 
 				return FVA_NO_ERROR;
