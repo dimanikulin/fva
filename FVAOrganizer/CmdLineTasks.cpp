@@ -360,7 +360,8 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			if (FVA_FS_TYPE_IMG == type)
 			{
 				QString deviceName;
-				if (0 == fvaGetDeviceMapForImg(deviceMap, info.filePath(),deviceName).size()) 
+				DEVICE_MAP devMap = fvaGetDeviceMapForImg(deviceMap, info.filePath(), deviceName);
+				if (0 == devMap.size())
 				{
 					LOG_QWARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
 					m_Issues.push_back("FVA_ERROR_UKNOWN_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + deviceMap[deviceID].guiName + " " + deviceMap[deviceID].ownerName);
@@ -378,9 +379,9 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 					m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + deviceMap[deviceID].guiName + " " + deviceMap[deviceID].ownerName);
 					continue;
 				}
-				if (deviceMap.size() == 1 && deviceMap[0].deviceId != deviceID)
+				if (devMap.size() == 1 && devMap.begin().value().deviceId != deviceID)
 				{
-					LOG_QWARN << "device id linked wrongly,got from image=" << deviceMap[0].deviceId << ", from fvafile=" << deviceID;
+					LOG_QWARN << "device id linked wrongly, " << info.absoluteFilePath() << ",from image-" << devMap.begin().value().deviceId << ", from fvafile=" << deviceID;
 					countSupportedFiles++;	// it is our file
 					m_Issues.push_back("FVA_ERROR_LINKED_WRONG_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + deviceMap[deviceID].guiName + " " + deviceMap[deviceID].ownerName);
 					continue;
