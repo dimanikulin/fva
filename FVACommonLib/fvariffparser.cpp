@@ -1,4 +1,5 @@
 #include "fvariffparser.h"
+#include "fvadefaultcfg.h"
 
 RiffParser::RiffParser( )
 {
