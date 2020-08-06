@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 import sys
 import csv
 import subprocess
 import os, stat
+
 
 #fixCLT2Issues.py issues.csv FVA_ERROR_MISMATCH_TAKEN_TIME > fixedMismatchTakenTime.txt
 #fixCLT2Issues.py issues.csv FVA_ERROR_NULL_TAKEN_TIME > fixedEmptyTakenTime.txt
@@ -9,9 +11,10 @@ import os, stat
 #fixCLT2Issues.py issues.csv FVA_ERROR_EMPTY_DEVICE > fixedEmptyDevice.txt
 #fixCLT2Issues.py issues.csv FVA_ERROR_UKNOWN_DEVICE > fixedUknownDevice.txt
 
-with open(sys.argv[1], newline='') as csvfile:
+with open(sys.argv[1], newline='', encoding='utf-8') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in spamreader:
+        #yield [unicode(cell, 'utf-8') for cell in row]
         if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_MISMATCH_TAKEN_TIME':
             print(', '.join(row))
             # converting into yyyy:mm:dd-hh:mm:ss
@@ -53,6 +56,7 @@ with open(sys.argv[1], newline='') as csvfile:
             #print ('-ts' + ''.join(tsParameter))
             os.chmod(row[1], stat.S_IWRITE) # clear read only file attribute
             subprocess.call(['../jhead.exe', '-mkexif', row[1]])
+            subprocess.call(['../jhead.exe', '-rgt', row[1]])
             subprocess.call(['../jhead.exe', '-ts' + ''.join(tsParameter) , row[1]])
 
         if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_NO_DEV_ID':
@@ -62,8 +66,10 @@ with open(sys.argv[1], newline='') as csvfile:
             print(', '.join(row))
             os.chmod(row[1], stat.S_IWRITE) # clear read only file attribute
             subprocess.call(['../jhead.exe', "-te", "source.JPG" , row[1]])
+            subprocess.call(['../jhead.exe', '-rgt', row[1]])
 
-        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_UKNOWN_DEVICE' and row[2] == '52':
-            print(', '.join(row))
+        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_UKNOWN_DEVICE' and row[2] == '114':
+            #print(', '.join(row))
             os.chmod(row[1], stat.S_IWRITE) # clear read only file attribute
             subprocess.call(['../jhead.exe', "-te", "source.JPG" , row[1]])
+            subprocess.call(['../jhead.exe', '-rgt', row[1]])
