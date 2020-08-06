@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\easyexif\exif.cpp" />
     <ClCompile Include="fvacommonexif.cpp" />
     <ClCompile Include="fvacsvfile.cpp" />
     <ClCompile Include="fvacommondata.cpp" />
