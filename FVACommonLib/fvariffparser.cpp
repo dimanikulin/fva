@@ -85,7 +85,7 @@ bool RiffParser::convertToDate ( const QString& strDate, QDateTime& value ) cons
 	{
 		// try to use other format
 		QString newStr = strDate.mid(0,strDate.size() -1 ).remove( "\n" );
-		value = QDateTime::fromString( newStr, "yyyy:MM:dd hh:mm:ss" );
+		value = QDateTime::fromString(newStr, EXIF_DATE_TIME_FMT);
 	}
 
 	if ( !value.isValid() )

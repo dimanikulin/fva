@@ -313,7 +313,7 @@ QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error)
 				if (index != 1)
 				{
 					QString time = output.mid(index+1,20 );
-					renameDateTime = QDateTime::fromString( time, " yyyy:MM:dd hh:mm:ss" );
+					renameDateTime = QDateTime::fromString(time, " " + EXIF_DATE_TIME_FMT);
 				}
 			}
 			
