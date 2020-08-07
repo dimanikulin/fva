@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 
 	QApplication a(argc, argv);
 	// QTextCodec::setCodecForTr(QTextCodec::codecForName("Windows-1251"));
-	//QString logPath = QApplication::applicationDirPath() + "\\viewerlog.txt";  
+	//QString logPath = QApplication::applicationDirPath() + "/viewerlog.txt";  
 	//g_logfile.open( logPath.toStdString(), std::ios::app );
 	 
 	QString rootDir (( a.arguments().size() >= 2 ) ? a.arguments() [1] : QApplication::applicationDirPath());

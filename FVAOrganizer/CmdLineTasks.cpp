@@ -427,7 +427,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 				if (m_dir.dirName()[0] == '#')
 					continue;
 
-				LOG_QCRIT << "wrong matchig folder name:" << info.absoluteFilePath();
+				LOG_QCRIT << "wrong matching folder name:" << info.absoluteFilePath();
 				m_Issues.push_back("FVA_ERROR_WRONG_FOLDER_NAME," + info.absoluteFilePath()+ "," + info.fileName() );
 				if (m_readOnly)
 					continue;
@@ -630,8 +630,8 @@ FVA_ERROR_CODE CLT_1_Event_Folder_Merging::execute()
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{				
-		QString original	= m_folder + QDir::separator() + info.fileName();
-		QString dest		= m_custom + QDir::separator() + info.fileName();
+		QString original	= m_folder + "/" + info.fileName();
+		QString dest		= m_custom + "/" + info.fileName();
 
 		// skip internal folder 
 		if (original.contains("#copy") || dest.contains("#copy"))

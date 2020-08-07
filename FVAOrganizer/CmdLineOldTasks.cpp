@@ -216,7 +216,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File_Old::execute()
 			// copy folder description
 			if ( !m_readOnly )
 			{
-				if ( QFile::copy( m_folder + "\\" + FVA_DIR_DESCRIPTION_FILE_NAME , fullSubFolderpath + "\\"+ FVA_DIR_DESCRIPTION_FILE_NAME ) )
+				if ( QFile::copy( m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME , fullSubFolderpath + "/"+ FVA_DIR_DESCRIPTION_FILE_NAME ) )
 					LOG_QDEB << FVA_DIR_DESCRIPTION_FILE_NAME << " is copied to " << subFolderName ;
 				else
 				{
@@ -368,14 +368,14 @@ FVA_ERROR_CODE CLT_Folder_Merging_Old::execute()
 	QString subFolder	= m_folder;
 	subFolder.remove(m_baseFolder);
 
-	if (!m_dir.exists(m_custom + subFolder + QDir::separator()))
+	if (!m_dir.exists(m_custom + subFolder + "/"))
 	{
 		// skip internal folder 
 		if (!subFolder.contains("#copy"))
 		{
-			if (!m_dir.mkpath(m_custom + subFolder + QDir::separator()))
+			if (!m_dir.mkpath(m_custom + subFolder + "/"))
 			{
-				LOG_QCRIT << "could not create dest folder:" << m_custom + subFolder + QDir::separator();
+				LOG_QCRIT << "could not create dest folder:" << m_custom + subFolder + "/";
 				return FVA_ERROR_CANT_CREATE_DIR;
 			}
 		}
@@ -384,29 +384,29 @@ FVA_ERROR_CODE CLT_Folder_Merging_Old::execute()
 	{
 		if (!subFolder.isEmpty())
 		{
-			if (m_dir.exists(m_custom + subFolder + " #1" + QDir::separator() ))
+			if (m_dir.exists(m_custom + subFolder + " #1" + "/" ))
 			{
-				if( !m_dir.rename( m_custom + subFolder + " #1" + QDir::separator(), m_custom + subFolder + " #2" + QDir::separator() ) )
-					LOG_QWARN << "could not rename source :" << m_custom + subFolder + " #1" + QDir::separator() << " into " << m_custom + subFolder + " #2" + QDir::separator();
+				if (!m_dir.rename(m_custom + subFolder + " #1" + "/", m_custom + subFolder + " #2" + "/"))
+					LOG_QWARN << "could not rename source :" << m_custom + subFolder + " #1" + "/" << " into " << m_custom + subFolder + " #2" + "/";
 				else
 					LOG_QWARN << "renamed source :" << m_custom + subFolder + " #1/" << " into " << m_custom + subFolder + " #2";
 			}
 
-			if( !m_dir.rename( m_custom + subFolder, m_custom + subFolder + " #1" + QDir::separator() ) )
+			if( !m_dir.rename( m_custom + subFolder, m_custom + subFolder + " #1" + "/" ) )
 				LOG_QWARN << "could not rename source :" << m_custom + subFolder << " into " << m_custom + subFolder + " #1/";
 			else
 				LOG_QWARN << "renamed source :" << m_custom + subFolder << " into " << m_custom + subFolder + " #1/";
 			
 			// skip internal folder 
 			if (!subFolder.contains("#copy"))	
-				m_dir.mkpath(m_custom + subFolder + QDir::separator());
+				m_dir.mkpath(m_custom + subFolder + "/");
 		}
 	}
 
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{				
-		QString original	= m_folder  + QDir::separator() + info.fileName();
-		QString dest		= m_custom + subFolder + QDir::separator() + info.fileName();
+		QString original	= m_folder  + "/" + info.fileName();
+		QString dest		= m_custom + subFolder + "/" + info.fileName();
 
 		// skip internal folder 
 		if (original.contains("#copy") || dest.contains("#copy"))
@@ -493,14 +493,14 @@ FVA_ERROR_CODE CLT_Folder_Merging::execute()
 	QString subFolder = m_folder;
 	subFolder.remove(m_baseFolder);
 
-	if (!m_dir.exists(m_custom + subFolder + QDir::separator()))
+	if (!m_dir.exists(m_custom + subFolder + "/"))
 	{
 		// skip internal folder 
 		if (!subFolder.contains("#copy"))
 		{
-			if (!m_dir.mkpath(m_custom + subFolder + QDir::separator()))
+			if (!m_dir.mkpath(m_custom + subFolder + "/"))
 			{
-				LOG_QCRIT << "could not create dest folder:" << m_custom + subFolder + QDir::separator();
+				LOG_QCRIT << "could not create dest folder:" << m_custom + subFolder + "/";
 				return FVA_ERROR_CANT_CREATE_DIR;
 			}
 		}
@@ -509,30 +509,30 @@ FVA_ERROR_CODE CLT_Folder_Merging::execute()
 	{
 		if (!subFolder.isEmpty())
 		{
-			if (m_dir.exists(m_custom + subFolder + " #1" + QDir::separator()))
+			if (m_dir.exists(m_custom + subFolder + " #1" + "/"))
 			{
-				if (!m_dir.rename(m_custom + subFolder + " #1" + QDir::separator(), m_custom + subFolder + " #2" + QDir::separator()))
-					LOG_QWARN << "could not rename source :" << m_custom + subFolder + " #1" + QDir::separator() << " into " << m_custom + subFolder + " #2" + QDir::separator();
+				if (!m_dir.rename(m_custom + subFolder + " #1" + "/", m_custom + subFolder + " #2" + "/"))
+					LOG_QWARN << "could not rename source :" << m_custom + subFolder + " #1" + "/" << " into " << m_custom + subFolder + " #2" + "/";
 				else
 					LOG_QWARN << "renamed source :" << m_custom + subFolder + " #1/" << " into " << m_custom + subFolder + " #2";
 			}
 
-			if (!m_dir.rename(m_custom + subFolder, m_custom + subFolder + " #1" + QDir::separator()))
+			if (!m_dir.rename(m_custom + subFolder, m_custom + subFolder + " #1" + "/"))
 				LOG_QWARN << "could not rename source :" << m_custom + subFolder << " into " << m_custom + subFolder + " #1/";
 			else
 				LOG_QWARN << "renamed source :" << m_custom + subFolder << " into " << m_custom + subFolder + " #1/";
 
 			// skip internal folder 
 			if (!subFolder.contains("#copy"))
-				m_dir.mkpath(m_custom + subFolder + QDir::separator());
+				m_dir.mkpath(m_custom + subFolder + "/");
 		}
 	}
 
 	// create folder structure the same as in source folder
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
-		QString original = m_folder + QDir::separator() + info.fileName();
-		QString dest = m_custom + subFolder + QDir::separator() + info.fileName();
+		QString original = m_folder + "/" + info.fileName();
+		QString dest = m_custom + subFolder + "/" + info.fileName();
 
 		// skip internal folder 
 		if (original.contains("#copy") || dest.contains("#copy"))

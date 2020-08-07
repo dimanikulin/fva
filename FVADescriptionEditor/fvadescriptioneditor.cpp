@@ -322,14 +322,14 @@ void FVADescriptionEditor::saveCurrentDescription()
 			QString newName = dir.absolutePath()
 				+ "/" + FVA_DIR_DESCRIPTION_FILE_NAME 
 				+ "_" + QDateTime::currentDateTime().toString( "yyyy-MM-dd-hh-mm-ss").toLatin1().data();
-			QString oldName = dir.absolutePath()+ QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME;
+			QString oldName = dir.absolutePath()+ "/" + FVA_DIR_DESCRIPTION_FILE_NAME;
 			if ( !dir.rename( oldName, newName ))
 			{
 				return;
 			}
 		}
 		QString error;
-		/*FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folderPath + QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
+		/*FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folderPath + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
 		RET_IF_RES_NO_ERROR*/
 	}
 	else

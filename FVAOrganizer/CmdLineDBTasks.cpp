@@ -65,14 +65,14 @@ CLT_Fva_Folder_To_SQL::~CLT_Fva_Folder_To_SQL()
 	for ( auto it = m_movedFolders.begin(); it != m_movedFolders.end(); ++it )
 	{
 		QFileInfo info( *it );
-		if ( !m_dir.rename( *it + QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME, 
-						m_folder + QDir::separator() + info.fileName() + ".json" ))
+		if ( !m_dir.rename( *it + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, 
+						m_folder + "/" + info.fileName() + ".json" ))
 		{
 			LOG_QCRIT << "can not move fva desc for " << *it;
 			continue;
 		}
-		LOG_QWARN	<< "moved from - "	<< *it + QDir::separator() + FVA_DIR_DESCRIPTION_FILE_NAME
-					<< " to - "			<< m_folder + QDir::separator() + info.fileName() + ".json";
+		LOG_QWARN	<< "moved from - "	<< *it + "/" + FVA_DIR_DESCRIPTION_FILE_NAME
+					<< " to - "			<< m_folder + "/" + info.fileName() + ".json";
 	}
 
 	LOG_QWARN << "totally inserted - " << m_SQLs.size() / 2 << ", totally moved - " << m_movedFolders.size();	
@@ -120,14 +120,14 @@ CLT_Fva_File_To_SQL::~CLT_Fva_File_To_SQL()
 	for ( auto it = m_movedFiles.begin(); it != m_movedFiles.end(); ++it )
 	{
 		QFileInfo info( *it );
-		if ( !m_dir.rename( *it + QDir::separator() + FVA_DESCRIPTION_FILE_NAME, 
-						m_folder + QDir::separator() + info.fileName() + ".csv" ))
+		if ( !m_dir.rename( *it + "/" + FVA_DESCRIPTION_FILE_NAME, 
+						m_folder + "/" + info.fileName() + ".csv" ))
 		{
 			LOG_QCRIT << "can not move file fva desc for " << *it;
 			continue;
 		}
-		LOG_QWARN	<< "moved from - "	<< *it + QDir::separator() + FVA_DESCRIPTION_FILE_NAME
-					<< " to - "			<< m_folder + QDir::separator() + info.fileName() + ".csv";
+		LOG_QWARN	<< "moved from - "	<< *it + "/" + FVA_DESCRIPTION_FILE_NAME
+					<< " to - "			<< m_folder + "/" + info.fileName() + ".csv";
 	}
 
 	LOG_QWARN << "totally inserted - " << m_SQLs.size() / 2 << ", totally moved - " << m_movedFiles.size();
@@ -149,7 +149,7 @@ FVA_ERROR_CODE CLT_Fva_File_To_SQL::execute()
 	std::auto_ptr<FVADescriptionFile> desc( new FVADescriptionFile );
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_ERROR_CODE res = desc->load( m_folder + QDir::separator() + FVA_DESCRIPTION_FILE_NAME, titles, decsItems );
+	FVA_ERROR_CODE res = desc->load( m_folder + "/" + FVA_DESCRIPTION_FILE_NAME, titles, decsItems );
 	RET_RES_IF_RES_IS_ERROR // yes, it is NOT an error for this CLT
 	
 	QStringList			t2Check = titles; // titlesToCheck 

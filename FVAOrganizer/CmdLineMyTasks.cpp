@@ -180,7 +180,7 @@ FVA_ERROR_CODE CLT_Convert_Dir_Desc::execute()
 
 FVA_ERROR_CODE CLT_Rename_File_By_Desc::execute()
 {
-	QString descPath = m_folder + QDir::separator() + FVA_DESCRIPTION_FILE_NAME;
+	QString descPath = m_folder + "/" + FVA_DESCRIPTION_FILE_NAME;
 	if ( !m_dir.exists( descPath ) )
 	{
 		LOG_QCRIT << "description file does not exist";
@@ -217,16 +217,16 @@ FVA_ERROR_CODE CLT_Rename_File_By_Desc::execute()
 		}
 		QString oldName = it.value()[ indexColumn ];
 
-		if (m_dir.exists(m_folder + QDir::separator() + oldName))
+		if (m_dir.exists(m_folder + "/" + oldName))
 		{
-			if ( !m_dir.rename( m_folder + QDir::separator() + oldName, m_folder + QDir::separator() + newName ) )
+			if ( !m_dir.rename( m_folder + "/" + oldName, m_folder + "/" + newName ) )
 			{
-				LOG_QCRIT << "cant move file:" << m_folder << QDir::separator() << oldName << " into " << m_folder << QDir::separator() << newName;
+				LOG_QCRIT << "cant move file:" << m_folder << "/" << oldName << " into " << m_folder << "/" << newName;
 				return FVA_ERROR_CANT_RENAME_FILE;
 			}
 			else
 			{
-				LOG_QCRIT << "moved file:" << m_folder << QDir::separator() << oldName << " into " << m_folder << QDir::separator() << newName;
+				LOG_QCRIT << "moved file:" << m_folder << "/" << oldName << " into " << m_folder << "/" << newName;
 			}
 		}
 	}
