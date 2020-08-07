@@ -46,9 +46,6 @@
     <ClCompile Include="fvariffparser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="qexifimageheader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="fvacommonexif.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -85,9 +82,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="fvariffparser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="qexifimageheader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="fvacommonexif.h">
