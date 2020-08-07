@@ -12,10 +12,8 @@
       <ComponentRef Id="jpegr" />
       <ComponentRef Id="mediaserviceFilesComponents" />
       <ComponentRef Id="scripts" />
-      <ComponentRef Id="sql" />
       <ComponentRef Id="files" />
       <ComponentRef Id="sqldriversComponents" />
-    
     </Feature>
   </Product>
 
@@ -55,25 +53,11 @@
             <File Id="updateTargetDirName" Name="updateTargetDirName.py"  Source="..\FVAScripts\updateTargetDirName.py"  Vital="yes" KeyPath="no"/>
             <File Id="fixCLT2Issues" Name="fixCLT2Issues.py"  Source="..\FVAScripts\fixCLT2Issues.py"  Vital="yes" KeyPath="no"/>
             <File Id="merge2csv" Name="merge2csv.py"  Source="..\FVAScripts\merge2csv.py"  Vital="yes" KeyPath="no"/>
+            <File Id="createFvaDB" Name="createFvaDB.sql" Source="..\FVAScripts\createFvaDB.sql"  Vital="yes" KeyPath="no"/>
             <CreateFolder />
           </Component>
         </Directory>
-
-        <Directory Id="sql" Name='sql'>
-          <Component Id="sql" Guid="66C91399-D716-47C7-BE9C-F375EECBE69E">
-            <File Id="initDBStructure" Name="01.initDBStructure.sql" Source="..\FVASQL\01.initDBStructure.sql"  Vital="yes" KeyPath="no"/>
-            <File Id="createViews" Name="02.createViews.sql" Source="..\FVASQL\02.createViews.sql"  Vital="yes" KeyPath="no"/>
-            <File Id="EventTypes" Name="03.EventTypes.sql" Source="..\FVASQL\03.EventTypes.sql"  Vital="yes" KeyPath="no"/>
-            <File Id="EventRelations" Name="04.EventRelations.sql" Source="..\FVASQL\04.EventRelations.sql"  Vital="yes" KeyPath="no"/>
-            <File Id="placeTypes" Name="05.placeTypes.sql" Source="..\FVASQL\05.placeTypes.sql"  Vital="yes" KeyPath="no"/>
-            <File Id="deviceTypes" Name="06.deviceTypes.sql" Source="..\FVASQL\06.deviceTypes.sql"  Vital="yes" KeyPath="no"/>
-            <File Id="relationTypes" Name="07.relationTypes.sql" Source="..\FVASQL\07.relationTypes.sql"  Vital="yes" KeyPath="no"/>
-            <File Id="params" Name="08.params.sql" Source="..\FVASQL\08.params.sql"  Vital="yes" KeyPath="no"/>
-            <File Id="customData" Name="09.customData.sql" Source="..\FVASQL\09.customData.sql"  Vital="yes" KeyPath="no"/>
-            <CreateFolder />
-          </Component>
-        </Directory>
-            
+         
         <Directory Id="mediaservice" Name='mediaservice'>
           <Component Id="mediaserviceFilesComponents" Guid="1ea80614-bc07-4675-96a5-d418a1d67060">
             <CreateFolder />
