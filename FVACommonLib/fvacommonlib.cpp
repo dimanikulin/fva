@@ -396,7 +396,7 @@ FVA_ERROR_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo)
 		QString fileName = list[columnName].toUpper();
 		if (fvaFileInfo.find(fileName) != fvaFileInfo.end())
 		{
-			QFile file(FVA_DEFAULT_ROOT_DIR + "fvaNotUniqueFileName.csv");
+			QFile file(FVA_DEFAULT_ROOT_DIR + "#data#/fvaNotUniqueFileName.csv");
 			file.open(QIODevice::WriteOnly | QIODevice::Append);
 			QTextStream writeStream(&file);
 			writeStream << list[columnID].toUpper() << "\n";
