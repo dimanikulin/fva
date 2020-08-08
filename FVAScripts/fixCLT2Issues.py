@@ -68,7 +68,7 @@ with open(sys.argv[1], newline='', encoding='utf-8') as csvfile:
             subprocess.call(['../jhead.exe', "-te", "source.JPG" , row[1]])
             subprocess.call(['../jhead.exe', '-rgt', row[1]])
 
-        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_UKNOWN_DEVICE' and row[2] == '114':
+        if row[0] == sys.argv[2] and row[0] == 'FVA_ERROR_UKNOWN_DEVICE' and row[2] == '86':
             #print(', '.join(row))
             os.chmod(row[1], stat.S_IWRITE) # clear read only file attribute
             subprocess.call(['../jhead.exe', "-te", "source.JPG" , row[1]])
