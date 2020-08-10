@@ -379,7 +379,17 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 					m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + deviceMap[deviceID].guiName + " " + deviceMap[deviceID].ownerName);
 					continue;
 				}
-				if (devMap.size() == 1 && devMap.begin().value().deviceId != deviceID)
+				bool matched = false;
+				for (DEVICE_MAP::iterator it = devMap.begin(); it != devMap.end(); ++it)
+				{
+					if (it.value().deviceId == deviceID)
+					{
+						matched = true;
+						break;
+					}
+				}
+				 
+				if (!matched)
 				{
 					LOG_QWARN << "device id linked wrongly, " << info.absoluteFilePath() << ",from image-" << devMap.begin().value().deviceId << ", from fvafile=" << deviceID;
 					countSupportedFiles++;	// it is our file
