@@ -356,6 +356,15 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 				if (FVA_ERROR_NON_UNIQUE_FVA_INFO==res)
 					m_Issues.push_back("FVA_ERROR_NON_UNIQUE_FVA_INFO," + info.absoluteFilePath() + "," + info.fileName() );
 			}
+			QMap<QString, QString>::iterator it = m_uniqueFileNames.find(info.fileName());
+			if (m_uniqueFileNames.end() != it)
+			{
+				LOG_QWARN << "not uniquie file name found: " << info.fileName() << ",cur path:" << info.absoluteFilePath() << ",prev path:" << it.value();
+				m_Issues.push_back("FVA_ERROR_NON_UNIQUE_FILE_NAME," + info.absoluteFilePath() + "," + info.fileName());
+			}
+			else
+				m_uniqueFileNames[info.fileName()] = info.absoluteFilePath();
+
 			//////////////////////////////////// 4. check for exsiting device in dictionary by device name in pictire 
 			if (FVA_FS_TYPE_IMG == type)
 			{

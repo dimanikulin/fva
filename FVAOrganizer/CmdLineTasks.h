@@ -45,6 +45,12 @@ private: // data
 	 * issues found, divided by type (in string format)
 	 */	
 	QVector<QString>				m_Issues;
+
+	/*!
+	* file names to file pathes
+	*/
+	QMap<QString, QString>			m_uniqueFileNames;
+
 };
 
 #endif // _CMD_LINE_TASKS_H_
