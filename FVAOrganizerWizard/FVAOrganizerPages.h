@@ -8,6 +8,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QRadioButton>
 
 /*!
  * \brief keeps all organizer pages functionality
@@ -93,6 +94,14 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 		QTextBrowser*	logOutput;
 
 		QCheckBox*		mergeCheckBox;
+
+		QRadioButton*	oneEventOneDay;
+
+		QRadioButton*	severalEventsOneDay;
+
+		QRadioButton*	severalEventsSeveralDays;
+
+		QRadioButton*	oneEventSeveralDays;
 };
 
 class FVAOrganizerDonePage : public QWizardPage

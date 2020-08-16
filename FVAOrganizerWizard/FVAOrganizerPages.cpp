@@ -322,6 +322,15 @@ bool FVAOrganizerDevicePage::validatePage()
 
 FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 {
+
+	oneEventOneDay = new QRadioButton("Один день-одно событие");
+
+	severalEventsOneDay = new QRadioButton("Один день-много событий");;
+
+	severalEventsSeveralDays = new QRadioButton("Много дней-много событий");;
+
+	oneEventSeveralDays = new QRadioButton("Много дней-одно событие");;
+
     outputDirLabel	= new QLabel(tr("Укажите выходную корневую папку с контентом:"));
     outputDirLabel->setAlignment(Qt::AlignLeft);
     
@@ -346,10 +355,14 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	
 	QVBoxLayout * layout = new QVBoxLayout;
 
-	layout->addWidget(outputDirLabel);
-	layout->addLayout(dirLayout);
-	layout->addLayout(mergeLayout);
-	layout->addWidget(logOutput);
+	//layout->addWidget(outputDirLabel);
+	//layout->addLayout(dirLayout);
+	//layout->addLayout(mergeLayout);
+	//layout->addWidget(logOutput);
+	layout->addWidget(oneEventOneDay);
+	layout->addWidget(severalEventsOneDay);
+	layout->addWidget(severalEventsSeveralDays);
+	layout->addWidget(oneEventSeveralDays);
 
 	setLayout(layout);
 
