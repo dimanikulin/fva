@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS fvaDevices;
+CREATE TABLE fvaDevices		(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, 
+				OwnerId INTEGER REFERENCES fvaPeople (ID) ON DELETE RESTRICT MATCH SIMPLE NOT NULL, 
+				LinkedName VARCHAR NOT NULL,
+				Name VARCHAR NOT NULL, 
+				fvaDeviceType INTEGER NOT NULL REFERENCES fvaDeviceTypes (ID) ON DELETE RESTRICT MATCH SIMPLE);
+.separator ,
+.import "../../#data#/fvaDevices.csv" fvaDevices

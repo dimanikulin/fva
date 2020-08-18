@@ -1,0 +1,1 @@
+"../sqlite3.exe" "C:/FVA/digikam4.db" < createFvaDBDevices.sql
