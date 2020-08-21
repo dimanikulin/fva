@@ -91,10 +91,6 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 		QLineEdit*		outputDirLineEdit;
 		QPushButton*	dirButton;
 
-		QTextBrowser*	logOutput;
-
-		QCheckBox*		mergeCheckBox;
-
 		QRadioButton*	oneEventOneDay;
 
 		QRadioButton*	severalEventsOneDay;

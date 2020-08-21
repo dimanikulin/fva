@@ -322,47 +322,29 @@ bool FVAOrganizerDevicePage::validatePage()
 
 FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 {
-
 	oneEventOneDay = new QRadioButton("Один день-одно событие");
-
 	severalEventsOneDay = new QRadioButton("Один день-много событий");;
-
 	severalEventsSeveralDays = new QRadioButton("Много дней-много событий");;
-
 	oneEventSeveralDays = new QRadioButton("Много дней-одно событие");;
-
-    outputDirLabel	= new QLabel(tr("Укажите выходную корневую папку с контентом:"));
-    outputDirLabel->setAlignment(Qt::AlignLeft);
-    
-	outputDirLineEdit = new QLineEdit;
-    outputDirLineEdit->setText("");
-	outputDirLineEdit->setReadOnly(true);
-
-	dirButton		= new QPushButton;
-	dirButton->setText(tr("Указать папку"));		
-
-	QGridLayout * dirLayout = new QGridLayout;
-	dirLayout->addWidget(outputDirLineEdit,0,0);
-	dirLayout->addWidget(dirButton,0,1);
-
-	mergeCheckBox		= new QCheckBox;
-	mergeCheckBox->setText(tr("Слить много подфолдеров в один:"));		
-    
-	QGridLayout * mergeLayout = new QGridLayout;
-	mergeLayout->addWidget(mergeCheckBox,0,0);
-
-	logOutput		= new QTextBrowser;
-	
+    	
 	QVBoxLayout * layout = new QVBoxLayout;
 
-	//layout->addWidget(outputDirLabel);
-	//layout->addLayout(dirLayout);
-	//layout->addLayout(mergeLayout);
-	//layout->addWidget(logOutput);
 	layout->addWidget(oneEventOneDay);
+
 	layout->addWidget(severalEventsOneDay);
+	
 	layout->addWidget(severalEventsSeveralDays);
+	
 	layout->addWidget(oneEventSeveralDays);
+	outputDirLineEdit = new QLineEdit;
+	outputDirLineEdit->setText("");
+	outputDirLineEdit->setReadOnly(true);
+	dirButton = new QPushButton;
+	dirButton->setText(tr("Указать папку"));
+	QGridLayout * dirLayout = new QGridLayout;
+	dirLayout->addWidget(outputDirLineEdit, 0, 0);
+	dirLayout->addWidget(dirButton, 0, 1);	
+	layout->addLayout(dirLayout);
 
 	setLayout(layout);
 
@@ -400,10 +382,11 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	
 	QStringList cmdList;
 	cmdList.append("CLT_Set_File_Atts");
-	if (mergeCheckBox->isChecked())
-		cmdList.append("CLT_1_Event_Folder_Merging");
-	else
+	
+	if (oneEventOneDay->isChecked())
 		cmdList.append("CLT_1_Day_Event_Folder_Merging");
+	else
+		cmdList.append("CLT_1_Event_Folder_Merging");
 	
 	// lets run FVA cmd list 
 	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
