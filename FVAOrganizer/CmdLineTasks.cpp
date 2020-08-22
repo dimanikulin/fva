@@ -645,10 +645,8 @@ FVA_EXIT_CODE CLT_1_Day_Event_Folder_Merging::execute()
 		}
 	}
 	else
-	{
-		LOG_QCRIT << "could not create dest folder as it already exists:" << dstDirPath;
-		return FVA_ERROR_CANT_CREATE_DIR;
-	}
+		LOG_QWARN << "could not create dest folder as it already exists:" << dstDirPath;
+
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		// skip internal folder 
