@@ -53,7 +53,7 @@ private: // data
 };
 
 /*!
-* \brief it returns if input foder type is FVA_1_EVENT_1_DAY or FVA_1_EVENT_FEW_DAYS	
+* \brief it returns if input foder type is FVA_1_EVENT_1_DAY, FVA_1_EVENT_FEW_DAYS, FVA_FEW_EVENTS_1_DAY or FVA_1_EVENT_FEW_DAYS
 */
 _CLASS_TASK_DECLARATION(CLT_Get_Fva_Dir_Type, true)
 
