@@ -36,7 +36,6 @@ class fvaItem;
  */
 FVA_EXIT_CODE fvaLoadItems(const QString& rootPath, fvaItem* rootItem, const QString& DBPath, QString& error, int& number);
 
-
 #define FILL_COMB_FROM_DICT(dict,combo) \
 	vlist = m_dictionaries[dict].toList();\
 	combo->clear(); \

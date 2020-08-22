@@ -726,3 +726,8 @@ FVA_EXIT_CODE CLT_1_Day_Event_Folder_Merging::execute()
 	}
 	return FVA_NO_ERROR;
 }
+
+FVA_EXIT_CODE CLT_Get_Fva_Dir_Type::execute()
+{
+	return FVA_NO_ERROR;
+}

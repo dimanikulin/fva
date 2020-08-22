@@ -82,5 +82,6 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLT_Fva_Folder_2_CSV::Name() )					r.reset(new CLT_Fva_Folder_2_CSV(dir, readOnly, custom));
 	else if (name == CLT_Fva_Files_2_CSV::Name() )					r.reset(new CLT_Fva_Files_2_CSV(dir, readOnly, custom));
 	else if (name == CLT_1_Day_Event_Folder_Merging::Name())		r.reset(new CLT_1_Day_Event_Folder_Merging(dir, readOnly));
+	else if (name == CLT_Get_Fva_Dir_Type::Name())					r.reset(new CLT_Get_Fva_Dir_Type(dir, readOnly));
 	return r;
 }

@@ -284,6 +284,7 @@ bool FVAOrganizerDevicePage::validatePage()
 	cmdList.append("CLT_Fva_Folder_2_CSV"); 
 	cmdList.append("CLT_Dir_Struct_Create_By_File");
 	cmdList.append("CLT_Alone_Files_Move");
+	cmdList.append("CLT_Get_Fva_Dir_Type");
 	cmdList.append("CLT_Auto_Checks_2");
 
 	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
