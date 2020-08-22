@@ -294,7 +294,10 @@ bool FVAOrganizerDevicePage::validatePage()
 		QStringList params;
 		params.append(*it);
 		params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
-		params.append("recursive=yes");
+		if (*it == "CLT_Get_Fva_Dir_Type") 
+			params.append("recursive=no");
+		else
+			params.append("recursive=yes");
 		params.append("logvel=4");
 		params.append("readonly=no");
 		
@@ -311,7 +314,11 @@ bool FVAOrganizerDevicePage::validatePage()
 		myProcess.waitForFinished(-1);
 
 		FVA_EXIT_CODE exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
-		if (exitCode != FVA_NO_ERROR)
+		if (*it == "CLT_Get_Fva_Dir_Type")
+		{
+			((FVAOrganizerWizard*)wizard())->inputDirType(exitCode);
+		}
+		else if (exitCode != FVA_NO_ERROR)
 		{
 			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));
 			return false;
@@ -349,7 +356,19 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 
 	setLayout(layout);
 
-	connect( dirButton, SIGNAL( clicked() ), this, SLOT( OnDirButtonClicked() ) );
+	connect(dirButton, SIGNAL(clicked()), this, SLOT(OnDirButtonClicked()));
+
+	if (((FVAOrganizerWizard*)wizard())->inputDirType() == FVA_1_EVENT_1_DAY)
+		oneEventOneDay->setChecked(true);
+
+	if (((FVAOrganizerWizard*)wizard())->inputDirType() == FVA_FEW_EVENTS_FEW_DAYS)
+		severalEventsSeveralDays->setChecked(true);
+
+	if (((FVAOrganizerWizard*)wizard())->inputDirType() == FVA_FEW_EVENTS_1_DAY)
+		severalEventsOneDay->setChecked(true);
+
+	if (((FVAOrganizerWizard*)wizard())->inputDirType() == FVA_1_EVENT_FEW_DAYS)
+		oneEventSeveralDays->setChecked(true);
 }
 void FVAOrganizerOutputDirPage::OnDirButtonClicked()
 {

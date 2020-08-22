@@ -93,7 +93,7 @@ int main( int argc, char *argv[] )
 			cmdType = a.arguments()[1];
 		}
 	}
-	CmdLineExecutor cmdExecutor( cmdType, path, recursive == "yes", readOnly=="yes", custom );
+	CmdLineExecutor cmdExecutor(cmdType, path, recursive == "yes", readOnly=="yes", custom);
 	int result = cmdExecutor.run();
 	g_logfile.close();
 	return result;
