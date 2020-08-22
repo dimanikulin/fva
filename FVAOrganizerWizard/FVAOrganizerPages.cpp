@@ -204,7 +204,7 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 
 	connect (btnDct,SIGNAL(clicked()),this,SLOT(OnChangeDictPressed()));
 }
-void FVAOrganizerDevicePage::setVisible( bool visible )
+void FVAOrganizerDevicePage::setVisible(bool visible)
 {	
 	DEVICE_MAP	deviceMap		= ((FVAOrganizerWizard*)wizard())->matchedDeviceMap();
 	QString		deviceName_		= ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
@@ -357,7 +357,9 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	setLayout(layout);
 
 	connect(dirButton, SIGNAL(clicked()), this, SLOT(OnDirButtonClicked()));
-
+}
+void FVAOrganizerOutputDirPage::setVisible(bool visible)
+{
 	if (((FVAOrganizerWizard*)wizard())->inputDirType() == FVA_1_EVENT_1_DAY)
 		oneEventOneDay->setChecked(true);
 

@@ -81,6 +81,7 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 
 		virtual bool	validatePage ();
 		virtual bool	isComplete() const;
+		virtual void	setVisible(bool visible);
 
 	private slots:
 		void OnDirButtonClicked();
