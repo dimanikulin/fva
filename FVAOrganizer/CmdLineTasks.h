@@ -27,7 +27,11 @@ _CLASS_TASK_DECLARATION(CLT_Alone_Files_Move,true)
 class CLT_Auto_Checks_2 : public CmdLineBaseTask
 {
 public:
-	CLT_Auto_Checks_2(const QString& dir_, bool readOnly_ = false, const QString& custom_ = "");
+	CLT_Auto_Checks_2(const QString& dir_, bool readOnly_ = false, const QString& custom_ = "")
+		:CmdLineBaseTask(dir_, readOnly_, custom_)
+	{
+		LOG_QDEB << "cmd created,dir:" << dir_ << ",RO=" << (readOnly_ ? "yes" : "no") << ",SRO=" << (supportReadOnly() ? "yes" : "no");
+	}
 	virtual ~CLT_Auto_Checks_2();
 	virtual FVA_EXIT_CODE execute();
 	static QString Name(){return "CLT_Auto_Checks_2";}
@@ -49,16 +53,6 @@ private: // data
 	 * file names to file pathes
 	 */
 	QMap<QString, QString>			m_uniqueFileNames;
-
-	/*!
-	 * global device map
-	 */
-	DEVICE_MAP						m_deviceMap;
-
-	/*!
-	 * global fva file information
-	 */
-	FVA_FILE_INFO_MAP				m_fvaFileInfo;
 };
 
 /*!
@@ -66,4 +60,32 @@ private: // data
 */
 _CLASS_TASK_DECLARATION(CLT_Get_Fva_Dir_Type, true)
 
+
+class CLT_Auto_Checks_3 : public CmdLineBaseTask
+{
+public:
+	CLT_Auto_Checks_3(const QString& dir_, bool readOnly_ = false, const QString& custom_ = "");
+	virtual ~CLT_Auto_Checks_3();
+	virtual FVA_EXIT_CODE execute();
+	static QString Name(){ return "CLT_Auto_Checks_3"; }
+	virtual bool supportReadOnly() { return true; }
+
+private:
+
+	/*!
+	* issues found, divided by type (in string format)
+	*/
+	QVector<QString>				m_Issues;
+
+	/*!
+	* global device map
+	*/
+	DEVICE_MAP						m_deviceMap;
+
+	/*!
+	* global fva file information
+	*/
+	FVA_FILE_INFO_MAP				m_fvaFileInfo;
+
+};
 #endif // _CMD_LINE_TASKS_H_
