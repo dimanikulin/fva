@@ -329,7 +329,7 @@ void FVADescriptionEditor::saveCurrentDescription()
 			}
 		}
 		QString error;
-		/*FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folderPath + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
+		/*FVA_EXIT_CODE res = fvaCreateFolderDescription( m_folderPath + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
 		RET_IF_RES_NO_ERROR*/
 	}
 	else
@@ -372,7 +372,7 @@ void FVADescriptionEditor::saveCurrentDescription()
 		}
 	
 		//FVADescriptionFile desc;
-		//FVA_ERROR_CODE res = desc.save( dir.absolutePath() + "/" + FVA_DESCRIPTION_FILE_NAME, 
+		//FVA_EXIT_CODE res = desc.save( dir.absolutePath() + "/" + FVA_DESCRIPTION_FILE_NAME, 
 			//							m_titles, 
 				//						m_decsItems );
 		// RET_IF_RES_NO_ERROR
@@ -395,7 +395,7 @@ void FVADescriptionEditor::OnChangeDictPressed()
 	myProcess.waitForFinished( -1 );
 
 	QString		error;
-	FVA_ERROR_CODE res = fvaLoadDictionary( m_dictPath, m_dictionaries, error );
+	FVA_EXIT_CODE res = fvaLoadDictionary( m_dictPath, m_dictionaries, error );
 	RET_IF_RES_IS_ERROR
 
 	updateDictionaryGUI();

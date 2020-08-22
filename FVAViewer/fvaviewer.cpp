@@ -103,7 +103,7 @@ FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *p
 	setWindowIcon(icon);
 
 	QString		error;
-	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, m_dictionaries, error );
+	FVA_EXIT_CODE res = fvaLoadDictionary( dictPath, m_dictionaries, error );
 	RET_IF_RES_IS_ERROR
 
 	showProgress(rootDir);
@@ -290,7 +290,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 			QVariantMap result;
 			QString error;
 
-			FVA_ERROR_CODE code = fvaGetFolderDescription( info.absoluteFilePath(), result, error );
+			FVA_EXIT_CODE code = fvaGetFolderDescription( info.absoluteFilePath(), result, error );
 			if ( FVA_NO_ERROR != code )
 			{
 				qWarning() << error;
@@ -324,7 +324,7 @@ void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& n
 					
 			}
 			QString descFilePath = info.absoluteFilePath() + "/" + FVA_DESCRIPTION_FILE_NAME;
-			FVA_ERROR_CODE res = m_descriptionFile.load( descFilePath,dirItem->descTitles, dirItem->decsItems );
+			FVA_EXIT_CODE res = m_descriptionFile.load( descFilePath,dirItem->descTitles, dirItem->decsItems );
 			if ( FVA_ERROR_CANT_OPEN_FILE_DESC == res || FVA_NO_ERROR == res)
 			{
 				// it is not an error

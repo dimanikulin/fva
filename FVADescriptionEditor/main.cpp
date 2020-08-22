@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
 	QString		error;
 	QVariantMap	dictionaries;
-	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
+	FVA_EXIT_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
 	RET_RES_IF_RES_IS_ERROR
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
 	{
 		QVariantMap		result;
 		QString			error;
-		//FVA_ERROR_CODE	code = fvaGetFolderDescription( fvaPath, result, error );
+		//FVA_EXIT_CODE	code = fvaGetFolderDescription( fvaPath, result, error );
 		// RET_IF_RES_NO_ERROR
 		// "Name","Place","People","Device","Description","Scaner","Comment","oldName"
 		QFileInfo info(fvaPath);

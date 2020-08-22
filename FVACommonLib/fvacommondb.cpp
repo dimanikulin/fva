@@ -5,7 +5,7 @@
 
 #include <QtSql/QtSql>
 
-FVA_ERROR_CODE fillOneDictFromDB(QVariantMap& outputData, const QString& dictName)
+FVA_EXIT_CODE fillOneDictFromDB(QVariantMap& outputData, const QString& dictName)
 {
     QSqlQuery query;
     if (!query.exec("SELECT * FROM " + dictName)) 
@@ -23,7 +23,7 @@ FVA_ERROR_CODE fillOneDictFromDB(QVariantMap& outputData, const QString& dictNam
     outputData[dictName] = list;
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, QString& error )
+FVA_EXIT_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, QString& error )
 {
 	QDir dir ( file );
 	if ( !dir.exists( file ) )
@@ -127,11 +127,11 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& outputData, 
 }
 
 
-FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QString& dictPath)
+FVA_EXIT_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QString& dictPath)
 {
 	QString		error;
 	QVariantMap	dictionaries;
-	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
+	FVA_EXIT_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
 	RET_RES_IF_RES_IS_ERROR
 
 	QVariantList vlist = dictionaries["fvaDevices"].toList();
@@ -170,7 +170,7 @@ FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QStri
 		error =  "can not open fva DB"; \
 		return FVA_ERROR_CANT_OPEN_FVA_DB; \
 	}
-FVA_ERROR_CODE fvaLoadFiles( fvaItem* rootItem, const QString& DBPath, QString& error )
+FVA_EXIT_CODE fvaLoadFiles( fvaItem* rootItem, const QString& DBPath, QString& error )
 {
 	OPEN_DB
 	QSqlQuery query;
@@ -184,7 +184,7 @@ FVA_ERROR_CODE fvaLoadFiles( fvaItem* rootItem, const QString& DBPath, QString& 
 	return FVA_NO_ERROR;
 }
 typedef QMap<int, fvaFolder*> FVA_FOLDER_MAP; 
-FVA_ERROR_CODE fvaLoadFolders( FVA_FOLDER_MAP& folderMap, const QString& DBPath, QString& error )
+FVA_EXIT_CODE fvaLoadFolders( FVA_FOLDER_MAP& folderMap, const QString& DBPath, QString& error )
 {
 	OPEN_DB
 	QSqlQuery query;
@@ -206,7 +206,7 @@ FVA_ERROR_CODE fvaLoadFolders( FVA_FOLDER_MAP& folderMap, const QString& DBPath,
 }
 
 typedef QMap<int, fvaFile*> FVA_FILE_MAP; 
-FVA_ERROR_CODE fvaLoadFiles( FVA_FILE_MAP& fileMap, const QString& DBPath, QString& error )
+FVA_EXIT_CODE fvaLoadFiles( FVA_FILE_MAP& fileMap, const QString& DBPath, QString& error )
 {
 	OPEN_DB
 	QSqlQuery query;
@@ -230,7 +230,7 @@ FVA_ERROR_CODE fvaLoadFiles( FVA_FILE_MAP& fileMap, const QString& DBPath, QStri
 	return FVA_NO_ERROR;
 }
 
-FVA_ERROR_CODE fvaLoadItems( const QString& rootPath, fvaItem* rootItem, const QString& DBPath, QString& error, int& number )
+FVA_EXIT_CODE fvaLoadItems( const QString& rootPath, fvaItem* rootItem, const QString& DBPath, QString& error, int& number )
 {
 	OPEN_DB	
 	FVA_FOLDER_MAP fvaFolderMap;

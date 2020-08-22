@@ -25,7 +25,7 @@ CLT_Fs_To_SQL::~CLT_Fs_To_SQL()
 	SaveSQL(FVA_DEFAULT_ROOT_DIR + "11.fva.sql");
 	qDebug() << "totally inserted - " << m_SQLs.size() << ", totally skipped - " << m_skippedFiles;
 }
-FVA_ERROR_CODE CLT_Fs_To_SQL::execute()
+FVA_EXIT_CODE CLT_Fs_To_SQL::execute()
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
@@ -78,11 +78,11 @@ CLT_Fva_Folder_To_SQL::~CLT_Fva_Folder_To_SQL()
 	LOG_QWARN << "totally inserted - " << m_SQLs.size() / 2 << ", totally moved - " << m_movedFolders.size();	
 }
 
-FVA_ERROR_CODE CLT_Fva_Folder_To_SQL::execute()
+FVA_EXIT_CODE CLT_Fva_Folder_To_SQL::execute()
 {
 	QVariantMap		dirDesc;
 	QString			error;
-	/*FVA_ERROR_CODE	code = fvaGetFolderDescription( m_folder, dirDesc, error );
+	/*FVA_EXIT_CODE	code = fvaGetFolderDescription( m_folder, dirDesc, error );
 	RET_IF_RES_NO_ERROR // yes, it is NOT an error for this CLT
 		*/
 	//ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder
@@ -144,12 +144,12 @@ QString FVget( FVADescriptionFile* desc, const QString& fieldName, const QString
 	return it.value()[ indexColumn ];
 }
 
-FVA_ERROR_CODE CLT_Fva_File_To_SQL::execute()
+FVA_EXIT_CODE CLT_Fva_File_To_SQL::execute()
 {
 	std::auto_ptr<FVADescriptionFile> desc( new FVADescriptionFile );
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_ERROR_CODE res = desc->load( m_folder + "/" + FVA_DESCRIPTION_FILE_NAME, titles, decsItems );
+	FVA_EXIT_CODE res = desc->load( m_folder + "/" + FVA_DESCRIPTION_FILE_NAME, titles, decsItems );
 	RET_RES_IF_RES_IS_ERROR // yes, it is NOT an error for this CLT
 	
 	QStringList			t2Check = titles; // titlesToCheck 
@@ -192,7 +192,7 @@ FVA_ERROR_CODE CLT_Fva_File_To_SQL::execute()
 	return FVA_NO_ERROR;
 }
 
-FVA_ERROR_CODE CLT_Create_FVA_SQL::execute()
+FVA_EXIT_CODE CLT_Create_FVA_SQL::execute()
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{

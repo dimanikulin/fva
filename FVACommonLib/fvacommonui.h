@@ -14,7 +14,7 @@
  * \param text - text to draw over an image
  * \returns it returns code of error if any or FVA_NO_ERROR if showing was successful
  */
-FVA_ERROR_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QString& text);
+FVA_EXIT_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QString& text);
 
 /*!
  * \brief it created filter tree in gui widgets with two levels

@@ -6,7 +6,7 @@
 
 #include <QtCore/qdir>
 
-FVA_ERROR_CODE CLT_Xml_Convert::execute()
+FVA_EXIT_CODE CLT_Xml_Convert::execute()
 {
 	std::auto_ptr< QFile > xmlFile ( new QFile ( m_folder/*it is path to file*/ ) );
 	
@@ -49,7 +49,7 @@ FVA_ERROR_CODE CLT_Xml_Convert::execute()
 	return FVA_NO_ERROR;
 }
 
-FVA_ERROR_CODE CLT_Update_File_Description::execute()
+FVA_EXIT_CODE CLT_Update_File_Description::execute()
 {
 	QString descPath = m_folder + "/" + FVA_DESCRIPTION_FILE_NAME;
 	if ( !m_dir.exists( descPath ) )
@@ -62,7 +62,7 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_ERROR_CODE res = descFile.load( descPath, titles, decsItems );
+	FVA_EXIT_CODE res = descFile.load( descPath, titles, decsItems );
 	if ( FVA_NO_ERROR != res )
 	{
 		LOG_QCRIT << "description file can not be loaded";
@@ -128,7 +128,7 @@ FVA_ERROR_CODE CLT_Update_File_Description::execute()
 
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE CLT_Convert_Dir_Desc::execute()
+FVA_EXIT_CODE CLT_Convert_Dir_Desc::execute()
 {
 	QString descFolderPath = m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME;
 	if ( !m_dir.exists( descFolderPath ) )
@@ -166,7 +166,7 @@ FVA_ERROR_CODE CLT_Convert_Dir_Desc::execute()
 			return FVA_ERROR_CANT_RENAME_DIR_DESC;
 		}
 		QString error;
-		FVA_ERROR_CODE res = fvaCreateFolderDescription( descFolderPath, result, error );
+		FVA_EXIT_CODE res = fvaCreateFolderDescription( descFolderPath, result, error );
 		if ( FVA_NO_ERROR != res )
 		{
 			LOG_QCRIT << error;
@@ -178,7 +178,7 @@ FVA_ERROR_CODE CLT_Convert_Dir_Desc::execute()
 	return FVA_NO_ERROR;
 }
 
-FVA_ERROR_CODE CLT_Rename_File_By_Desc::execute()
+FVA_EXIT_CODE CLT_Rename_File_By_Desc::execute()
 {
 	QString descPath = m_folder + "/" + FVA_DESCRIPTION_FILE_NAME;
 	if ( !m_dir.exists( descPath ) )
@@ -191,7 +191,7 @@ FVA_ERROR_CODE CLT_Rename_File_By_Desc::execute()
 
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_ERROR_CODE res = descFile.load( descPath, titles, decsItems );
+	FVA_EXIT_CODE res = descFile.load( descPath, titles, decsItems );
 	if ( FVA_NO_ERROR != res )
 	{
 		LOG_QCRIT << "description file can not be loaded";

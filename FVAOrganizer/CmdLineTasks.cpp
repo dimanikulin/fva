@@ -16,7 +16,7 @@
 #include <windows.h>
 #include <winbase.h>
 
-FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File::execute()
+FVA_EXIT_CODE CLT_Dir_Struct_Create_By_File::execute()
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
@@ -88,7 +88,7 @@ void fillRenameDateTimeFromLastModifiedIfValid( const QDir& dir, const QFileInfo
 		}
 	}				
 }
-FVA_ERROR_CODE CLT_Files_Rename::execute()
+FVA_EXIT_CODE CLT_Files_Rename::execute()
 {
 	QFileInfoList files = m_dir.entryInfoList(QDir::Files);
 	QFileInfo info;
@@ -190,7 +190,7 @@ FVA_ERROR_CODE CLT_Files_Rename::execute()
 	return FVA_NO_ERROR;
 }
 
-FVA_ERROR_CODE CLT_Device_Name_Check::execute()
+FVA_EXIT_CODE CLT_Device_Name_Check::execute()
 {
 	QString deviceName;
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
@@ -227,7 +227,7 @@ FVA_ERROR_CODE CLT_Device_Name_Check::execute()
 	return FVA_NO_ERROR;
 };
 
-FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
+FVA_EXIT_CODE CLT_Video_Rename_By_Sequence::execute()
 {
 	QString imageFilePrefix;
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
@@ -253,7 +253,7 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 				continue;
 			}
 
-			FVA_ERROR_CODE res = fvaParseFileName(info.baseName(), renameDateTime );
+			FVA_EXIT_CODE res = fvaParseFileName(info.baseName(), renameDateTime );
 			if (FVA_NO_ERROR == res)
 			{
 				continue;
@@ -295,10 +295,10 @@ FVA_ERROR_CODE CLT_Video_Rename_By_Sequence::execute()
 	}
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
+FVA_EXIT_CODE CLT_Auto_Checks_2::execute()
 {
 	DEVICE_MAP deviceMap;
-	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(deviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
+	FVA_EXIT_CODE res = fvaLoadDeviceMapFromDictionary(deviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
 	RET_RES_IF_RES_IS_ERROR
 
 	FVA_FILE_INFO_MAP fvaFileInfo;
@@ -347,7 +347,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_2::execute()
 			}
 			//////////////////////////////////// 3. check for exsiting device in fva info by fileName 
 			int deviceID = FVA_UNDEFINED_ID;
-			FVA_ERROR_CODE res = fvaGetDeviceIdFromFvaInfo(fvaFileInfo, info.fileName(), deviceID, info.absoluteDir().absolutePath());
+			FVA_EXIT_CODE res = fvaGetDeviceIdFromFvaInfo(fvaFileInfo, info.fileName(), deviceID, info.absoluteDir().absolutePath());
 			if (FVA_NO_ERROR != res)
 			{
 				LOG_QWARN << "no dev id found for file: " << info.absoluteFilePath();
@@ -515,7 +515,7 @@ CLT_Auto_Checks_2::~CLT_Auto_Checks_2()
 	writeStream.flush();
 	fileNew.close();
 }
-FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
+FVA_EXIT_CODE CLT_Alone_Files_Move::execute()
 {
 	unsigned int countSupportedFiles = 0; 
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
@@ -560,7 +560,7 @@ FVA_ERROR_CODE CLT_Alone_Files_Move::execute()
 
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE CLT_Auto_Checks_1::execute()
+FVA_EXIT_CODE CLT_Auto_Checks_1::execute()
 {
 	m_dir.setSorting(QDir::LocaleAware);
 	bool first = false;
@@ -599,7 +599,7 @@ FVA_ERROR_CODE CLT_Auto_Checks_1::execute()
 
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE CLT_Convert_Amr::execute()
+FVA_EXIT_CODE CLT_Convert_Amr::execute()
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
@@ -615,7 +615,7 @@ FVA_ERROR_CODE CLT_Convert_Amr::execute()
 	return FVA_NO_ERROR;
 }
 
-FVA_ERROR_CODE CLT_Set_File_Atts::execute()
+FVA_EXIT_CODE CLT_Set_File_Atts::execute()
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
@@ -645,7 +645,7 @@ FVA_ERROR_CODE CLT_Set_File_Atts::execute()
 	
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE CLT_1_Event_Folder_Merging::execute()
+FVA_EXIT_CODE CLT_1_Event_Folder_Merging::execute()
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{				
@@ -677,7 +677,7 @@ FVA_ERROR_CODE CLT_1_Event_Folder_Merging::execute()
 	}
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE CLT_1_Day_Event_Folder_Merging::execute()
+FVA_EXIT_CODE CLT_1_Day_Event_Folder_Merging::execute()
 {
 	// get the last dir leaf in input folder
 	QString dir = m_dir.dirName();

@@ -84,7 +84,7 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 	QDir _dir(dir); 
 
 	DEVICE_MAP fullDeviceMap;
-	FVA_ERROR_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
+	FVA_EXIT_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
 	if ( FVA_NO_ERROR != res )
 	{
 		FVA_MESSAGE_BOX("fvaLoadDeviceMapFromDictionary failed with error " + QString::number(res));
@@ -309,7 +309,7 @@ bool FVAOrganizerDevicePage::validatePage()
 		myProcess.start("FVAOrganizer.exe",params);
 		myProcess.waitForFinished(-1);
 
-		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
+		FVA_EXIT_CODE exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
 		if (exitCode != FVA_NO_ERROR)
 		{
 			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));
@@ -322,10 +322,10 @@ bool FVAOrganizerDevicePage::validatePage()
 
 FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 {
-	oneEventOneDay = new QRadioButton("Один день-одно событие");
-	severalEventsOneDay = new QRadioButton("Один день-много событий");;
-	severalEventsSeveralDays = new QRadioButton("Много дней-много событий");;
-	oneEventSeveralDays = new QRadioButton("Много дней-одно событие");;
+	oneEventOneDay				= new QRadioButton("Один день-одно событие");
+	severalEventsOneDay			= new QRadioButton("Один день-много событий");;
+	severalEventsSeveralDays	= new QRadioButton("Много дней-много событий");;
+	oneEventSeveralDays			= new QRadioButton("Много дней-одно событие");;
     	
 	QVBoxLayout * layout = new QVBoxLayout;
 
@@ -405,7 +405,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		myProcess.start("FVAOrganizer.exe",params);
 		myProcess.waitForFinished(-1);
 
-		FVA_ERROR_CODE exitCode = static_cast<FVA_ERROR_CODE> (myProcess.exitCode());
+		FVA_EXIT_CODE exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
 		if (exitCode != FVA_NO_ERROR)
 		{
 			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));

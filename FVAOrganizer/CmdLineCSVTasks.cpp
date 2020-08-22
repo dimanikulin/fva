@@ -2,10 +2,10 @@
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
 
-FVA_ERROR_CODE CLT_Fva_Folder_2_CSV::execute()
+FVA_EXIT_CODE CLT_Fva_Folder_2_CSV::execute()
 {
 	int ID = FVA_UNDEFINED_ID;
-	FVA_ERROR_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFolder.id", ID);
+	FVA_EXIT_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFolder.id", ID);
 	RET_RES_IF_RES_IS_ERROR
 	QString csvRecord =  QString::number(++ID) + "," // ID
 		+ FVA_TARGET_FOLDER_NAME		+ "," // Name	
@@ -22,10 +22,10 @@ FVA_ERROR_CODE CLT_Fva_Folder_2_CSV::execute()
 	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFolder.id", ID);
 }
 
-FVA_ERROR_CODE CLT_Fva_Files_2_CSV::execute()
+FVA_EXIT_CODE CLT_Fva_Files_2_CSV::execute()
 {	
 	int ID = FVA_UNDEFINED_ID;
-	FVA_ERROR_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFile.id", ID);
+	FVA_EXIT_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFile.id", ID);
 	RET_RES_IF_RES_IS_ERROR
 
 	QVector<QString>		m_records;	

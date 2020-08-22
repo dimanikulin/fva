@@ -37,7 +37,7 @@ bool fvaIsInternalDir(const QString& dir);
  * \param to to fill as a date to
  * \returns it returns code of error if any or FVA_NO_ERROR if parsing was successful
  */
-FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTime& to );
+FVA_EXIT_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTime& to );
 
 /*!
  * \brief it tries to parse file name into date
@@ -45,7 +45,7 @@ FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTi
  * \param date a date to be filled up
  * \returns it returns code of error if any or FVA_NO_ERROR if parsing was successful
  */
-FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date );
+FVA_EXIT_CODE fvaParseFileName( const QString& fileName, QDateTime& date );
 
 /*!
  * \brief it returns device id from map loaded
@@ -64,14 +64,14 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
  * \param dir - the directory where the file is located
  * \returns it returns code of error if any or FVA_NO_ERROR if device ID has been retrieved
  */
-FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID, const QString& dir);
+FVA_EXIT_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID, const QString& dir);
 
 /*!
  * \brief it loads fva information saved in CSV files
  * \param - fvaFileInfo - fva file info ti fill up
  * \returns it returns code of error if any or FVA_NO_ERROR if info was loaded
  */
-FVA_ERROR_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo);
+FVA_EXIT_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo);
 
 /*!
  * \brief it tries to get time a video taken at from header
@@ -100,7 +100,7 @@ QString fvaDVget(const QString& fieldName, QVariantMap& result );
  * \param int& - variable to fill up by ID loaded from the file
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_ERROR_CODE fvaGetIDFromFile(const QString& file, int& ID);
+FVA_EXIT_CODE fvaGetIDFromFile(const QString& file, int& ID);
 
 /*!
  * \brief it saves an ID value in file by file path provided (it will delete previous content!)
@@ -108,7 +108,7 @@ FVA_ERROR_CODE fvaGetIDFromFile(const QString& file, int& ID);
  * \param int - ID to save
  * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
  */
-FVA_ERROR_CODE fvaSaveIDInFile(const QString& file, int ID);
+FVA_EXIT_CODE fvaSaveIDInFile(const QString& file, int ID);
 
 /*!
  * \brief it removes the dir if there is no content inside

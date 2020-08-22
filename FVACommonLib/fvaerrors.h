@@ -4,7 +4,7 @@
 /*!
  * code errors enumeration
  */
-enum FVA_ERROR_CODE
+enum FVA_EXIT_CODE
 {
 	FVA_NO_ERROR								= 0,
 	
@@ -50,6 +50,11 @@ enum FVA_ERROR_CODE
 	FVA_ERROR_NO_DEV_ID							= 1040,
 	FVA_ERROR_NON_UNIQUE_FVA_INFO				= 1041,
 	FVA_ERROR_EMPTY_VIDEO_TIME					= 1042,
+
+	FVA_1_EVENT_1_DAY							= 2001,
+	FVA_FEW_EVENTS_1_DAY						= 2002,
+	FVA_FEW_EVENTS_FEW_DAYS						= 2003,
+	FVA_1_EVENT_FEW_DAYS						= 2004,
 };
 
 #define RET_RES_IF_RES_IS_ERROR\

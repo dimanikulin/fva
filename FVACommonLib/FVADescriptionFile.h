@@ -24,7 +24,7 @@ class FVADescriptionFile : 	public CSVFile
 		 * \param decsItems it set of rows with structure according to titles
 		 * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
 		 */
-		FVA_ERROR_CODE load( const QString& path, QStringList& titles, DESCRIPTIONS_MAP& decsItems );
+		FVA_EXIT_CODE load( const QString& path, QStringList& titles, DESCRIPTIONS_MAP& decsItems );
 
 		/*!
 		 * \brief it saves data to file
@@ -33,7 +33,7 @@ class FVADescriptionFile : 	public CSVFile
 		 * \param decsItems it set of rows with structure according to titles
 		 * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
 		 */
-		FVA_ERROR_CODE save( const QString& path, const QStringList& titles, const DESCRIPTIONS_MAP& decsItems );
+		FVA_EXIT_CODE save( const QString& path, const QStringList& titles, const DESCRIPTIONS_MAP& decsItems );
 
 		/*!
 		 * \brief it returns id of colum by name 

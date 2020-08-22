@@ -30,7 +30,7 @@ public:
 	CLT_Auto_Checks_2(const QString& dir_,bool readOnly_=false,const QString& custom_="")
 	:CmdLineBaseTask( dir_,readOnly_,custom_){qWarning()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_<<",RO=" << (readOnly_?"yes":"no")<<",SRO=" << (supportReadOnly()?"yes":"no"); }
 	virtual ~CLT_Auto_Checks_2();
-	virtual FVA_ERROR_CODE execute();
+	virtual FVA_EXIT_CODE execute();
 	static QString Name(){return "CLT_Auto_Checks_2";}
 	virtual bool supportReadOnly() {return true;}
 

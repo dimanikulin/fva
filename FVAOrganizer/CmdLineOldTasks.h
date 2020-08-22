@@ -23,7 +23,7 @@ class CLT_Print_FS_Structure : public CmdLineBaseTask
 public:
 	CLT_Print_FS_Structure(const QString& dir_,bool readOnly_=false,const QString& custom_="");
 	virtual ~CLT_Print_FS_Structure();
-	virtual FVA_ERROR_CODE execute();
+	virtual FVA_EXIT_CODE execute();
 	static QString Name(){return "CLT_Print_FS_Structure";}
 	virtual bool supportReadOnly () {return false;}
 

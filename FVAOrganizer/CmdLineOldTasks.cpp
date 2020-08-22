@@ -9,7 +9,7 @@
 #include <windows.h>
 #include <winbase.h>
 
-FVA_ERROR_CODE CLT_Dir_Struct_Create_By_Device_Name::execute()
+FVA_EXIT_CODE CLT_Dir_Struct_Create_By_Device_Name::execute()
 {
 	QString deviceName;
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
@@ -72,7 +72,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_Device_Name::execute()
 	}
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE CLT_Files_Rename_By_Dir::execute()
+FVA_EXIT_CODE CLT_Files_Rename_By_Dir::execute()
 {
 	int id = 0;
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
@@ -98,7 +98,7 @@ FVA_ERROR_CODE CLT_Files_Rename_By_Dir::execute()
 
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE CLT_Dir_Name_Change::execute()
+FVA_EXIT_CODE CLT_Dir_Name_Change::execute()
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
@@ -134,7 +134,7 @@ CLT_Print_FS_Structure::~CLT_Print_FS_Structure()
 	m_file.close();
 }
 
-FVA_ERROR_CODE CLT_Print_FS_Structure::execute()
+FVA_EXIT_CODE CLT_Print_FS_Structure::execute()
 {
 	char		buffer [ 64* 1024 ];
 	qint64		size = 0;
@@ -168,7 +168,7 @@ FVA_ERROR_CODE CLT_Print_FS_Structure::execute()
 	}
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File_Old::execute()
+FVA_EXIT_CODE CLT_Dir_Struct_Create_By_File_Old::execute()
 {
 	// check for existing folder description
 	if ( !m_dir.exists( m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME ))
@@ -185,7 +185,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File_Old::execute()
 			
 			QVariantMap content;
 			content["deviceId"] = m_custom; // m_custom must be device id
-			/* FVA_ERROR_CODE res = fvaCreateFolderDescription( m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
+			/* FVA_EXIT_CODE res = fvaCreateFolderDescription( m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
 			if ( FVA_NO_ERROR != res )
 			{
 				LOG_QCRIT << error;
@@ -247,7 +247,7 @@ FVA_ERROR_CODE CLT_Dir_Struct_Create_By_File_Old::execute()
 	return FVA_NO_ERROR;
 }
 
-FVA_ERROR_CODE CLT_Alone_Files_Move_Old::execute()
+FVA_EXIT_CODE CLT_Alone_Files_Move_Old::execute()
 {
 	unsigned int countSupportedFiles = 0; 
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
@@ -272,7 +272,7 @@ FVA_ERROR_CODE CLT_Alone_Files_Move_Old::execute()
 
 	QVariantMap result;
 	QString error;
-	/*FVA_ERROR_CODE code = fvaGetFolderDescription( m_folder, result, error );
+	/*FVA_EXIT_CODE code = fvaGetFolderDescription( m_folder, result, error );
 	if ( FVA_NO_ERROR != code )
 	{
 		LOG_QCRIT << error;
@@ -362,7 +362,7 @@ FVA_ERROR_CODE CLT_Alone_Files_Move_Old::execute()
 	}
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE CLT_Folder_Merging_Old::execute()
+FVA_EXIT_CODE CLT_Folder_Merging_Old::execute()
 {
 	// create folder structure the same as in source folder
 	QString subFolder	= m_folder;
@@ -488,7 +488,7 @@ FVA_ERROR_CODE CLT_Folder_Merging_Old::execute()
 	}
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE CLT_Folder_Merging::execute()
+FVA_EXIT_CODE CLT_Folder_Merging::execute()
 {
 	QString subFolder = m_folder;
 	subFolder.remove(m_baseFolder);

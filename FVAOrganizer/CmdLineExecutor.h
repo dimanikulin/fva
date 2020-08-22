@@ -23,7 +23,7 @@ class CmdLineExecutor
 		 * \brief performs running of command
 		 * \return it returns result code (not 0 if error happened, 0 - if no error happened) 
 		 */
-		FVA_ERROR_CODE run();
+		FVA_EXIT_CODE run();
 
 	private: // method
 

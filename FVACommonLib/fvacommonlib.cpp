@@ -49,7 +49,7 @@ FVA_FS_TYPE fvaConvertFileExt2FileType ( const QString& extention )
 	return FVA_FS_TYPE_UNKNOWN;
 }
 
-FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTime& to )
+FVA_EXIT_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTime& to )
 {	
 	switch( dirName.length() )
 	{
@@ -135,7 +135,7 @@ FVA_ERROR_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTi
 	}
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE fvaParseFileName( const QString& fileName, QDateTime& date )
+FVA_EXIT_CODE fvaParseFileName( const QString& fileName, QDateTime& date )
 {
 	if (fileName.contains("IMG_") && fileName.length() == 19 )
 	{
@@ -343,7 +343,7 @@ QString fvaDVget( const QString& fieldName, QVariantMap& result )
 	return fieldValue;
 }
 
-FVA_ERROR_CODE fvaGetIDFromFile(const QString& fileName, int& ID)
+FVA_EXIT_CODE fvaGetIDFromFile(const QString& fileName, int& ID)
 {
 	QFile file( fileName );		
 	if ( !file.open( QIODevice::ReadOnly | QIODevice::Text ) )	
@@ -354,7 +354,7 @@ FVA_ERROR_CODE fvaGetIDFromFile(const QString& fileName, int& ID)
 	return FVA_NO_ERROR;
 }
 
-FVA_ERROR_CODE fvaSaveIDInFile(const QString& fileName, int ID)
+FVA_EXIT_CODE fvaSaveIDInFile(const QString& fileName, int ID)
 {
 	QFile file ( fileName );		
 	if ( !file.open( QIODevice::WriteOnly | QIODevice::Text ) )	
@@ -365,7 +365,7 @@ FVA_ERROR_CODE fvaSaveIDInFile(const QString& fileName, int ID)
 	file.close();	
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo)
+FVA_EXIT_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo)
 {
 	FVADescriptionFile fvaFileCsv;
 
@@ -373,7 +373,7 @@ FVA_ERROR_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo)
 	QStringList			titles; 
 	DESCRIPTIONS_MAP	decsItems;
 
-	FVA_ERROR_CODE res = fvaFileCsv.load( FVA_DEFAULT_ROOT_DIR + "#data#/fvaFile.csv", titles, decsItems);
+	FVA_EXIT_CODE res = fvaFileCsv.load( FVA_DEFAULT_ROOT_DIR + "#data#/fvaFile.csv", titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
 
 	// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,OldName,WhoTook,OldName1
@@ -409,7 +409,7 @@ FVA_ERROR_CODE fvaLoadFvaFileInfoFromScv(FVA_FILE_INFO_MAP& fvaFileInfo)
 	}
 	return FVA_NO_ERROR;
 }
-FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID,const QString& dir)
+FVA_EXIT_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID,const QString& dir)
 {
 	deviceID = FVA_UNDEFINED_ID;
 
@@ -423,7 +423,7 @@ FVA_ERROR_CODE fvaGetDeviceIdFromFvaInfo(const FVA_FILE_INFO_MAP& fvaFileInfo, c
 	FVADescriptionFile fvaFolderCsv;
 	QStringList			titlesD; 
 	DESCRIPTIONS_MAP	decsItemsD;
-	FVA_ERROR_CODE res = fvaFolderCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolder.csv", titlesD, decsItemsD); 
+	FVA_EXIT_CODE res = fvaFolderCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolder.csv", titlesD, decsItemsD); 
 	RET_RES_IF_RES_IS_ERROR
 
 	// ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid

@@ -21,7 +21,7 @@ CmdLineExecutor::~CmdLineExecutor( )
 {
 }
 
-FVA_ERROR_CODE CmdLineExecutor::run( )
+FVA_EXIT_CODE CmdLineExecutor::run( )
 {
 	QDir dir( m_folder );
 

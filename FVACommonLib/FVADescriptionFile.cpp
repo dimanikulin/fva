@@ -9,7 +9,7 @@ FVADescriptionFile::~FVADescriptionFile( )
 
 }
 
-FVA_ERROR_CODE FVADescriptionFile::load( const QString& path, QStringList& titles, DESCRIPTIONS_MAP& decsItems )
+FVA_EXIT_CODE FVADescriptionFile::load( const QString& path, QStringList& titles, DESCRIPTIONS_MAP& decsItems )
 {
 	if ( !openForRead( path ) )
 		return FVA_ERROR_CANT_OPEN_FILE_DESC;
@@ -54,7 +54,7 @@ int FVADescriptionFile::getColumnIdByName( const QStringList& titles, const QStr
 	}
 	return -1;
 }
-FVA_ERROR_CODE FVADescriptionFile::save( const QString& path, const QStringList& titles, const DESCRIPTIONS_MAP& decsItems )
+FVA_EXIT_CODE FVADescriptionFile::save( const QString& path, const QStringList& titles, const DESCRIPTIONS_MAP& decsItems )
 {
 	if ( !openForWrite( path ) )
 		return FVA_ERROR_CANT_OPEN_FILE_DESC;

@@ -9,7 +9,7 @@
 * \param error - human-readable description of error if any
 * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
 */
-FVA_ERROR_CODE fvaSaveDictionary(const QString& file, QVariantMap& inputJson, QString& error);
+FVA_EXIT_CODE fvaSaveDictionary(const QString& file, QVariantMap& inputJson, QString& error);
 
 FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& device, QWidget *parent)
 	: QDialog	(parent),
@@ -24,7 +24,7 @@ FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& 
 
 	QString		error;
 	QVariantMap	dictionaries;
-	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
+	FVA_EXIT_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
 	RET_IF_RES_IS_ERROR
 
 	ui.cbOwner->clear();
@@ -51,7 +51,7 @@ void addDictItem(const QString& dictPath, const QString& name, QDialog* dlg, con
 
 	QString		error;
 	QVariantMap	dictionaries;
-	FVA_ERROR_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
+	FVA_EXIT_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
 	RET_IF_RES_IS_ERROR
 
 	QVariantList vlist = dictionaries[dictName].toList();
@@ -84,7 +84,7 @@ void FVADictionaryEditor::OnAddDeviceBtnPressed()
 {
 	QString		error;
 	QVariantMap	dictionaries;
-	FVA_ERROR_CODE res = fvaLoadDictionary( m_dictPath, dictionaries, error );
+	FVA_EXIT_CODE res = fvaLoadDictionary( m_dictPath, dictionaries, error );
 	RET_IF_RES_IS_ERROR
 
 	QVariantList vlist = dictionaries["devices"].toList();
@@ -121,7 +121,7 @@ void FVADictionaryEditor::OnAddPlaceBtnPressed()
 {
 	addDictItem(m_dictPath, ui.editPlace->text(),this, "places" );
 }
-FVA_ERROR_CODE fvaSaveDictionary(const QString& file, QVariantMap& inputJson, QString& error)
+FVA_EXIT_CODE fvaSaveDictionary(const QString& file, QVariantMap& inputJson, QString& error)
 {
 	/*QDir dir(file);
 	if (!dir.exists(file))

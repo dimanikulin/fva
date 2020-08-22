@@ -17,7 +17,7 @@ CmdLineBaseTask::~CmdLineBaseTask( )
 }
 
 
-FVA_ERROR_CODE CmdLineBaseTask::processFolderRecursivly( const QString& folder )
+FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly( const QString& folder )
 {
 	QDir recurDir(folder);
 	// qDebug() << "[BASE_CMD]dir for rec:" << folder;
@@ -35,7 +35,7 @@ FVA_ERROR_CODE CmdLineBaseTask::processFolderRecursivly( const QString& folder )
 			// change folder context on each iteration
 			m_folder = QDir::toNativeSeparators(info.filePath());
 			m_dir = QDir( m_folder );
-			FVA_ERROR_CODE res = processFolderRecursivly( QDir::toNativeSeparators(info.filePath()) );
+			FVA_EXIT_CODE res = processFolderRecursivly( QDir::toNativeSeparators(info.filePath()) );
 			RET_RES_IF_RES_IS_ERROR
 			continue;
 		}

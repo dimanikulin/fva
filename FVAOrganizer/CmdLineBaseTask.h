@@ -23,14 +23,14 @@ class CmdLineBaseTask
 		 * \brief it performs running of command
 		 * \return it returns code of error (not 0 if error happened, 0 - if no error happened) 
 		 */
-		virtual FVA_ERROR_CODE execute() = 0;
+		virtual FVA_EXIT_CODE execute() = 0;
 
 		/*!
 		 * \brief it performs procesing folder in recursive mode
 		 * \param folder to work with
 		 * \return it returns error code (not 0 if error happened, 0 - if no error happened) 
 		 */		
-		FVA_ERROR_CODE processFolderRecursivly( const QString& folder );
+		FVA_EXIT_CODE processFolderRecursivly( const QString& folder );
 
 		/*!
 		 * \brief it answers if task supports read only mode
@@ -88,7 +88,7 @@ public:\
 	name(const QString& dir_, bool readOnly_ = false, const QString& custom_ = "")\
 	:CmdLineBaseTask(dir_, readOnly_, custom_){ qDebug() << "[DBG]" << QDateTime::currentDateTime().toString("[hh:mm:ss]").toLatin1().data() << "[" << Name().toUpper() << "]cmd created,dir:" << dir_; }\
 	virtual ~name() { qDebug() << "[DBG]" << QDateTime::currentDateTime().toString("[hh:mm:ss]").toLatin1().data() << "[" << Name().toUpper() << "]cmd deleted, dir:" << m_folder; }\
-	virtual FVA_ERROR_CODE execute(); \
+	virtual FVA_EXIT_CODE execute(); \
 	static QString Name(){ return #name; }\
 	virtual bool supportReadOnly() { return supReadOnly; }\
 }; \

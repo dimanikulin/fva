@@ -14,7 +14,7 @@
  * \param error - human-readable description of error if any 
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& output, QString& error );
+FVA_EXIT_CODE fvaLoadDictionary( const QString& file, QVariantMap& output, QString& error );
 
 /*!
  * \brief it tries to load device id map from dictionary
@@ -22,7 +22,7 @@ FVA_ERROR_CODE fvaLoadDictionary( const QString& file, QVariantMap& output, QStr
  * \param dictPath path to dictionary to load map from
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_ERROR_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QString& dictPath); 
+FVA_EXIT_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QString& dictPath); 
 
 class fvaItem;
 /*!
@@ -34,7 +34,7 @@ class fvaItem;
  * \param number count of items to be proceeded
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_ERROR_CODE fvaLoadItems(const QString& rootPath, fvaItem* rootItem, const QString& DBPath, QString& error, int& number);
+FVA_EXIT_CODE fvaLoadItems(const QString& rootPath, fvaItem* rootItem, const QString& DBPath, QString& error, int& number);
 
 
 #define FILL_COMB_FROM_DICT(dict,combo) \

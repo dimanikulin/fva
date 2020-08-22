@@ -44,7 +44,7 @@ void FVAPeopleListDlg::OnAddPeopleBtnPressed()
 		return;
 	}
 	QString		error;
-	FVA_ERROR_CODE res = fvaLoadDictionary( m_dictPath, m_dictionaries, error );
+	FVA_EXIT_CODE res = fvaLoadDictionary( m_dictPath, m_dictionaries, error );
 	RET_IF_RES_IS_ERROR
 
 	updateGui();

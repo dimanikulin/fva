@@ -5,7 +5,7 @@
 #include <QTGui/QIcon>
 #include <QtCore/QCoreApplication>
 
-FVA_ERROR_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QString& text )
+FVA_EXIT_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QString& text )
 {
 	if ( fileName.isEmpty() || !imgLabel )
 	{

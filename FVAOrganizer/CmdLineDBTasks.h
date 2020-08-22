@@ -40,7 +40,7 @@ public:
 						<<",SRO=" << (supportReadOnly()?"yes":"no"); 
 	}
 	virtual ~CLT_Fs_To_SQL();
-	virtual FVA_ERROR_CODE execute();
+	virtual FVA_EXIT_CODE execute();
 	static QString Name(){return "CLT_Fs_To_SQL";}
 	
 private: // data
@@ -64,7 +64,7 @@ public:
 					<<",SRO=" << (supportReadOnly()?"yes":"no"); 
 	}
 	virtual ~CLT_Fva_Folder_To_SQL();
-	virtual FVA_ERROR_CODE execute();
+	virtual FVA_EXIT_CODE execute();
 	static QString Name(){return "CLT_Fva_Folder_To_SQL";}
 
 private: // data
@@ -88,7 +88,7 @@ class CLT_Fva_File_To_SQL : public CLT_Base_SQL
 						<<",SRO=" << (supportReadOnly()?"yes":"no"); 
 		}
 		virtual ~CLT_Fva_File_To_SQL();
-		virtual FVA_ERROR_CODE execute();
+		virtual FVA_EXIT_CODE execute();
 		static QString Name(){return "CLT_Fva_File_To_SQL";}
 	
 	private: // data
@@ -116,7 +116,7 @@ class CLT_Create_FVA_SQL : public CLT_Base_SQL
 						<<",SRO=" << (supportReadOnly()?"yes":"no"); 
 		}
 		virtual ~CLT_Create_FVA_SQL();
-		virtual FVA_ERROR_CODE execute();
+		virtual FVA_EXIT_CODE execute();
 		static QString Name(){return "CLT_Create_FVA_SQL";}
 	
 	private: // data
