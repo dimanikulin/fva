@@ -371,6 +371,7 @@ void FVAOrganizerOutputDirPage::setVisible(bool visible)
 
 	if (((FVAOrganizerWizard*)wizard())->inputDirType() == FVA_1_EVENT_FEW_DAYS)
 		oneEventSeveralDays->setChecked(true);
+	return QWizardPage::setVisible(visible);
 }
 void FVAOrganizerOutputDirPage::OnDirButtonClicked()
 {

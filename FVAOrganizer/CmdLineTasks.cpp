@@ -63,12 +63,12 @@ bool checkIfParentFileExist( const QFileInfo& fileToCheck, QDateTime& renameDate
 
 	if ( fileToCheck.baseName().contains("_1") )
 	{
-		qWarning() << "[ \"CLT_FILES_RENAME\" ]file contains _1:" << fileToCheck.absoluteFilePath() << ", rename time to use:" << prevRenameDateTime.addSecs( 1 ).toString( "yyyy-MM-dd-hh-mm-ss" );
+		qWarning() << "[ \"CLT_FILES_RENAME\" ]file contains _1:" << fileToCheck.absoluteFilePath() << ", rename time to use:" << prevRenameDateTime.addSecs(1).toString(FVA_FILE_NAME_FMT);
 		renameDateTime = prevRenameDateTime.addSecs ( 1 );
 	}
 	else if ( fileToCheck.baseName().contains("_2") )
 	{
-		qWarning() << "[ \"CLT_FILES_RENAME\" ]file contains _2:" << fileToCheck.absoluteFilePath() << ", rename time to use:" << prevRenameDateTime.addSecs( 2 ).toString( "yyyy-MM-dd-hh-mm-ss" );
+		qWarning() << "[ \"CLT_FILES_RENAME\" ]file contains _2:" << fileToCheck.absoluteFilePath() << ", rename time to use:" << prevRenameDateTime.addSecs(2).toString(FVA_FILE_NAME_FMT);
 		renameDateTime = prevRenameDateTime.addSecs ( 2 );	
 	}
 	return false;
@@ -83,7 +83,7 @@ void fillRenameDateTimeFromLastModifiedIfValid( const QDir& dir, const QFileInfo
 		QDateTime validDateEnd = validDateStart.addDays( 1 );
 		if ( ( info.lastModified() > validDateStart ) && ( info.lastModified() < validDateEnd ) )
 		{
-			qWarning() << "[ \"CLT_FILES_RENAME\" ]modification time to use for:" << info.absoluteFilePath() << ",time:" << info.lastModified().toString("yyyy-MM-dd-hh-mm-ss");
+			qWarning() << "[ \"CLT_FILES_RENAME\" ]modification time to use for:" << info.absoluteFilePath() << ",time:" << info.lastModified().toString(FVA_FILE_NAME_FMT);
 			renameDateTime = info.lastModified();
 		}
 	}				
@@ -107,8 +107,16 @@ FVA_EXIT_CODE CLT_Files_Rename::execute()
 			{
 				renameDateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath());
 				QString _newName = renameDateTime.toString( FVA_FILE_NAME_FMT );
-				if ( _newName.isEmpty() )
-					fillRenameDateTimeFromLastModifiedIfValid( m_dir, info, renameDateTime );				
+				if (_newName.isEmpty())
+					fillRenameDateTimeFromLastModifiedIfValid( m_dir, info, renameDateTime );
+				if (!renameDateTime.isValid() && (true == FVA_RENAME_FILES_BY_MODIF_TIME_FOR_EMPTY_EXIF))
+				{
+					if (info.lastModified().isValid())
+					{
+						LOG_QWARN << "modification time to use (true == FVA_RENAME_FILES_BY_MODIF_TIME_FOR_EMPTY_EXIF) for:" << info.absoluteFilePath() << ", time : " << info.lastModified().toString(FVA_FILE_NAME_FMT);
+						renameDateTime = info.lastModified();
+					}
+				}
 			}
 		}
 		// if it is video file

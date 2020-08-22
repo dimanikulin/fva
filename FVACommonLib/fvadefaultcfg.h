@@ -10,6 +10,12 @@ const QString	FVA_DEFAULT_ROOT_DIR				= "C:/FVA/";
 const unsigned int FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR	= 0;
 
 /*!
+* \brief shall be renamed pictures files using the file modification time if they do not have exif taken time set
+*/
+const bool FVA_RENAME_FILES_BY_MODIF_TIME_FOR_EMPTY_EXIF = true;
+
+////////////////////////// FORMATTING STRING OPTIONS/////////////////////////////////////////
+/*!
  * \brief format a dir name as a date
  */
 const QString FVA_DIR_NAME_FMT = "yyyy.MM.dd";
