@@ -27,7 +27,7 @@ FVA_EXIT_CODE CmdLineExecutor::run( )
 
 	if ( !dir.exists( m_folder ) )
 	{
-		qCritical() << "[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"[CMD_FOLDER_CREATE_RECURSIVE]input folder does not exist";
+		qCritical() << "[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"[CMD_LINE_EXECUTOR]input folder does not exist";
 		return FVA_ERROR_INPUT_DIR_NOT_EXIST_ARG;
 	}
 

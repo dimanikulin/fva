@@ -109,7 +109,7 @@ FVA_EXIT_CODE CLT_Files_Rename::execute()
 				QString _newName = renameDateTime.toString( FVA_FILE_NAME_FMT );
 				if (_newName.isEmpty())
 					fillRenameDateTimeFromLastModifiedIfValid( m_dir, info, renameDateTime );
-				if (!renameDateTime.isValid() && (true == FVA_RENAME_FILES_BY_MODIF_TIME_FOR_EMPTY_EXIF))
+				if (!renameDateTime.isValid() && (true == FVA_RENAME_PICS_BY_MODIF_TIME_IF_EMPTY_EXIF))
 				{
 					if (info.lastModified().isValid())
 					{
@@ -130,6 +130,11 @@ FVA_EXIT_CODE CLT_Files_Rename::execute()
 				{
 					LOG_QWARN << "can not get taken time from:" << info.absoluteFilePath() << ",error:" << error;
 					fillRenameDateTimeFromLastModifiedIfValid( m_dir, info, renameDateTime );
+					if (!renameDateTime.isValid() && FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true && info.lastModified().isValid())
+					{
+						LOG_QWARN << "last modif time to use (FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true): for" << info.absoluteFilePath();
+						renameDateTime = info.lastModified();
+					}
 				}
 			}
 		}
@@ -273,12 +278,18 @@ FVA_EXIT_CODE CLT_Video_Rename_By_Sequence::execute()
 			}
 			int index				= info.baseName().indexOf("_");
 			QString videoFilePrefix	= info.baseName().mid(0, index );
-			if ( imageFilePrefix.isEmpty() )
+			if (imageFilePrefix.isEmpty())
 			{
-				LOG_QCRIT << "still empty image prefix for path:" << info.absoluteFilePath();
-				return FVA_ERROR_SEQUENCE;
+				if (FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true && info.lastModified().isValid())
+				{					
+					continue;
+				}
+				else
+				{
+					LOG_QCRIT << "still empty image prefix for path:" << info.absoluteFilePath();
+					return FVA_ERROR_SEQUENCE;
+				}
 			}
-
 			QString newFilePath	= info.absoluteFilePath().replace( videoFilePrefix, imageFilePrefix ) ;
 
 			// sometimes the file names are already in state as we need
@@ -532,6 +543,11 @@ FVA_EXIT_CODE CLT_Auto_Checks_1::execute()
 				QDateTime time = fvaGetVideoTakenTime(info.absoluteFilePath(),error);
 				if (!time.isValid())
 				{
+					if (FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true && info.lastModified().isValid())
+					{
+						LOG_QWARN << "skipping first video/audio file (FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true):" << info.absoluteFilePath();
+						continue;
+					}
 					LOG_QWARN << "found first video/audio file:" << info.absoluteFilePath();
 					return FVA_ERROR_VIDEO_FIRST;
 				}
