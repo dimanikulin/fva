@@ -632,13 +632,13 @@ FVA_EXIT_CODE CLT_1_Event_Folder_Merging::execute()
 
 		if (info.isDir() && !fvaRemoveDirIfEmpty(original))
 		{
-			LOG_QCRIT << "could not remove empty dest:" << dest;
+			LOG_QCRIT << "could not remove empty original:" << original;
 			continue;
 		}
 		else
 		{
-			LOG_QDEB << "removed empty destination:" << dest;
-			continue;
+			if (info.isDir())
+				LOG_QDEB << "removed empty destination:" << dest;
 		}
 	}
 	return FVA_NO_ERROR;
