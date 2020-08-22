@@ -27,8 +27,7 @@ _CLASS_TASK_DECLARATION(CLT_Alone_Files_Move,true)
 class CLT_Auto_Checks_2 : public CmdLineBaseTask
 {
 public:
-	CLT_Auto_Checks_2(const QString& dir_,bool readOnly_=false,const QString& custom_="")
-	:CmdLineBaseTask( dir_,readOnly_,custom_){qWarning()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_<<",RO=" << (readOnly_?"yes":"no")<<",SRO=" << (supportReadOnly()?"yes":"no"); }
+	CLT_Auto_Checks_2(const QString& dir_, bool readOnly_ = false, const QString& custom_ = "");
 	virtual ~CLT_Auto_Checks_2();
 	virtual FVA_EXIT_CODE execute();
 	static QString Name(){return "CLT_Auto_Checks_2";}
@@ -47,9 +46,19 @@ private: // data
 	QVector<QString>				m_Issues;
 
 	/*!
-	* file names to file pathes
-	*/
+	 * file names to file pathes
+	 */
 	QMap<QString, QString>			m_uniqueFileNames;
+
+	/*!
+	 * global device map
+	 */
+	DEVICE_MAP						m_deviceMap;
+
+	/*!
+	 * global fva file information
+	 */
+	FVA_FILE_INFO_MAP				m_fvaFileInfo;
 };
 
 /*!

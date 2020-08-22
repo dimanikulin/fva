@@ -303,16 +303,19 @@ FVA_EXIT_CODE CLT_Video_Rename_By_Sequence::execute()
 	}
 	return FVA_NO_ERROR;
 }
+CLT_Auto_Checks_2::CLT_Auto_Checks_2(const QString& dir_, bool readOnly_, const QString& custom_)
+	:CmdLineBaseTask(dir_, readOnly_, custom_)
+{
+	qWarning() << "[DBG]" << QDateTime::currentDateTime().toString("[hh:mm:ss]").toLatin1().data() << "[" << Name().toUpper() << "]cmd created,dir:" << dir_ << ",RO=" << (readOnly_ ? "yes" : "no") << ",SRO=" << (supportReadOnly() ? "yes" : "no");
+	FVA_EXIT_CODE res = fvaLoadDeviceMapFromDictionary(m_deviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
+	RET_IF_RES_IS_ERROR
+
+	res = fvaLoadFvaFileInfoFromScv(m_fvaFileInfo);
+	RET_IF_RES_IS_ERROR
+}
+
 FVA_EXIT_CODE CLT_Auto_Checks_2::execute()
 {
-	DEVICE_MAP deviceMap;
-	FVA_EXIT_CODE res = fvaLoadDeviceMapFromDictionary(deviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
-	RET_RES_IF_RES_IS_ERROR
-
-	FVA_FILE_INFO_MAP fvaFileInfo;
-	res = fvaLoadFvaFileInfoFromScv( fvaFileInfo );
-	RET_RES_IF_RES_IS_ERROR
-
 	QMap<QString, unsigned int> fileCount;
 	unsigned int countSupportedFiles = 0; 
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
@@ -355,7 +358,7 @@ FVA_EXIT_CODE CLT_Auto_Checks_2::execute()
 			}
 			//////////////////////////////////// 3. check for exsiting device in fva info by fileName 
 			int deviceID = FVA_UNDEFINED_ID;
-			FVA_EXIT_CODE res = fvaGetDeviceIdFromFvaInfo(fvaFileInfo, info.fileName(), deviceID, info.absoluteDir().absolutePath());
+			FVA_EXIT_CODE res = fvaGetDeviceIdFromFvaInfo(m_fvaFileInfo, info.fileName(), deviceID, info.absoluteDir().absolutePath());
 			if (FVA_NO_ERROR != res)
 			{
 				LOG_QWARN << "no dev id found for file: " << info.absoluteFilePath();
@@ -377,11 +380,11 @@ FVA_EXIT_CODE CLT_Auto_Checks_2::execute()
 			if (FVA_FS_TYPE_IMG == type)
 			{
 				QString deviceName;
-				DEVICE_MAP devMap = fvaGetDeviceMapForImg(deviceMap, info.filePath(), deviceName);
+				DEVICE_MAP devMap = fvaGetDeviceMapForImg(m_deviceMap, info.filePath(), deviceName);
 				if (0 == devMap.size())
 				{
 					LOG_QWARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
-					m_Issues.push_back("FVA_ERROR_UKNOWN_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + deviceMap[deviceID].guiName + " " + deviceMap[deviceID].ownerName);
+					m_Issues.push_back("FVA_ERROR_UKNOWN_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
 					countSupportedFiles++;	// it is our file
 					if (m_readOnly)
 						continue;
@@ -393,7 +396,7 @@ FVA_EXIT_CODE CLT_Auto_Checks_2::execute()
 				{
 					LOG_QWARN << "empty device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
 					countSupportedFiles++;	// it is our file
-					m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + deviceMap[deviceID].guiName + " " + deviceMap[deviceID].ownerName);
+					m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
 					continue;
 				}
 				bool matched = false;
@@ -410,7 +413,7 @@ FVA_EXIT_CODE CLT_Auto_Checks_2::execute()
 				{
 					LOG_QWARN << "device id linked wrongly, " << info.absoluteFilePath() << ",from image-" << devMap.begin().value().deviceId << ", from fvafile=" << deviceID;
 					countSupportedFiles++;	// it is our file
-					m_Issues.push_back("FVA_ERROR_LINKED_WRONG_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + deviceMap[deviceID].guiName + " " + deviceMap[deviceID].ownerName);
+					m_Issues.push_back("FVA_ERROR_LINKED_WRONG_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
 					continue;
 				}
 			}
