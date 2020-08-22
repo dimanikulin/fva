@@ -753,4 +753,6 @@ FVA_EXIT_CODE CLT_Get_Fva_Dir_Type::execute()
 		return FVA_1_EVENT_1_DAY;
 	if (dirNumber > 1)
 		return FVA_FEW_EVENTS_FEW_DAYS;
+
+	// TODO to impelemnt FVA_FEW_EVENTS_1_DAY and FVA_1_EVENT_FEW_DAYS
 }
