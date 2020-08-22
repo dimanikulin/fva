@@ -408,9 +408,12 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	
 	if (oneEventOneDay->isChecked())
 		cmdList.append("CLT_1_Day_Event_Folder_Merging");
-	else
+	else if (oneEventSeveralDays->isChecked())
 		cmdList.append("CLT_1_Event_Folder_Merging");
-	
+	else
+	{
+		FVA_MESSAGE_BOX("Not implemented yet");
+	}
 	// lets run FVA cmd list 
 	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
 	{
