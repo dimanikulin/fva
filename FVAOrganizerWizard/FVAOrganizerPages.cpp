@@ -484,6 +484,24 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	QFile::remove(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv");
 	QFile::remove(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv.bak");
 
+	// last but not least check
+	QProcess myProcess(this);
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	QStringList params;
+	params.append("CLT_Auto_Checks_3");
+	params.append(mergeDir);
+	params.append("recursive=yes");
+	params.append("logvel=4");
+	params.append("readonly=no");
+	myProcess.start("FVAOrganizer.exe", params);
+	myProcess.waitForFinished(-1);
+	FVA_EXIT_CODE exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
+	if (exitCode != FVA_NO_ERROR)
+	{
+		FVA_MESSAGE_BOX("Fva cmd CLT_Auto_Checks_3 failed with error " + QString::number(exitCode));
+		return false;
+	}
+
 	return true;
 }
 FVAOrganizerDonePage::FVAOrganizerDonePage(void)
