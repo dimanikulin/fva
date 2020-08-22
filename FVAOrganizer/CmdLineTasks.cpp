@@ -630,10 +630,10 @@ FVA_EXIT_CODE CLT_1_Event_Folder_Merging::execute()
 
 		LOG_QDEB << "moved:" << original << " into " << dest;
 
-		if (!fvaRemoveDirIfEmpty(dest))
+		if (info.isDir() && !fvaRemoveDirIfEmpty(original))
 		{
 			LOG_QCRIT << "could not remove empty dest:" << dest;
-			return FVA_ERROR_CANT_MOVE_DIR;
+			continue;
 		}
 		else
 		{
