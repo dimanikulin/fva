@@ -1,6 +1,7 @@
-#include <QtCore/QCoreApplication>
 #include <QtCore/QDateTime>
 #include <QtCore/QDebug>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QApplication>
 
 #include "cmdlineexecutor.h"
 #include "fvacommonlib.h"
@@ -14,7 +15,7 @@
 std::ofstream	g_logfile;
 
 /*!
- * global log file
+ * global log level
  */
 QtMsgType	g_logLevel = QtDebugMsg;
 
@@ -29,26 +30,29 @@ void msghandler(QtMsgType type, const QMessageLogContext &, const QString & str)
 
 int main( int argc, char *argv[] )
 {
+	QApplication a(argc, argv);
+
 	//install : set the callback
 	qInstallMessageHandler(msghandler);
 
-	QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog.txt";  
-	g_logfile.open( logPath.toStdString(), std::ios::app );
-
-	QCoreApplication a(argc, argv);
+	QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog.txt";
+	g_logfile.open(logPath.toStdString(), std::ios::app);
 
 	QString cmdType, path, recursive, logLevel, readOnly, custom;
 	if ( a.arguments().size() < 3 || a.arguments().size() > 7 )
 	{
-		// argList[0] /*path*/
-		// argList[1] /*cmdType*/, 
-		// argList[2] /*path to folder or file*/,
-		// argList[3] /*recursive*/,
-		// argList[4] /*logLevel*/,
-		// argList[5] /*readonly*/,
-		// argList[6] /*custom*/,
+		QMessageBox msgBox;
+		msgBox.setText("Not enough parameters!\n"\
+		"argument [0] - path \n" \
+		"argument [1] - cmdType \n" \
+		"argument [2] - path to folder or file \n" \
+		"argument [3] - recursive \n" \
+		"argument [4] - logLevel \n" \
+		"argument [5] - readonly \n" \
+		"argument [6] - custom \n\n" \
+		"example: CLT_Auto_Checks_2 \"C:/FVA/2009/2009.09.05\" recursive=yes logvel=4 readonly=no custom=someValue");
+		msgBox.exec();
 
-		qCritical() << "[MAIN] not enough parameters!";
 		return FVA_ERROR_NOT_ENOUGH_ARG;
 	}
 	switch ( a.arguments().size() )
@@ -93,6 +97,7 @@ int main( int argc, char *argv[] )
 			cmdType = a.arguments()[1];
 		}
 	}
+
 	CmdLineExecutor cmdExecutor(cmdType, path, recursive == "yes", readOnly=="yes", custom);
 	int result = cmdExecutor.run();
 	g_logfile.close();
