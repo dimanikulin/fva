@@ -279,7 +279,7 @@ bool FVAOrganizerDevicePage::validatePage()
 	cmdList.append("CLT_Convert_Amr");
 	cmdList.append("CLT_Device_Name_Check");
 	cmdList.append("CLT_Auto_Checks_1");
-	cmdList.append("CLT_Files_Rename");
+	cmdList.append("CLTRenameFiles");
 	cmdList.append("CLT_Fva_Files_2_CSV");
 	cmdList.append("CLT_Fva_Folder_2_CSV"); 
 	cmdList.append("CLT_Dir_Struct_Create_By_File");

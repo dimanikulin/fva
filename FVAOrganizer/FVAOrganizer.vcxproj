@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CLTRenameFiles.cpp" />
     <ClCompile Include="CmdLineBaseTask.cpp" />
     <ClCompile Include="CmdLineCSVTasks.cpp" />
     <ClCompile Include="CmdLineDBTasks.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CLTRenameFiles.h" />
     <ClInclude Include="CmdLineBaseTask.h" />
     <ClInclude Include="CmdLineCSVTasks.h" />
     <ClInclude Include="CmdLineDBTasks.h" />

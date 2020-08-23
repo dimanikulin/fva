@@ -4,6 +4,7 @@
 #include "CmdLineDBTasks.h"
 #include "CmdLineOldTasks.h"
 #include "CmdLineCSVTasks.h"
+#include "CLTRenameFiles.h"
 
 #include <QtCore/qdebug>
 #include <QtCore/qdir>
@@ -58,7 +59,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	
 	if ( name == CLT_Dir_Struct_Create_By_File::Name())				r.reset(new CLT_Dir_Struct_Create_By_File(dir, readOnly, custom));
 	else if (name == CLT_Dir_Struct_Create_By_Device_Name::Name())	r.reset(new CLT_Dir_Struct_Create_By_Device_Name(dir, readOnly));
-	else if (name == CLT_Files_Rename::Name())						r.reset(new CLT_Files_Rename(dir, readOnly, custom));	
+	else if (name == CLTRenameFiles::Name())						r.reset(new CLTRenameFiles(dir, readOnly, custom));	
 	else if (name == CLT_Device_Name_Check::Name())					r.reset(new CLT_Device_Name_Check(dir,readOnly));
 	else if (name == CLT_Files_Rename_By_Dir::Name())				r.reset(new CLT_Files_Rename_By_Dir(dir,readOnly));
 	else if (name == CLT_Video_Rename_By_Sequence::Name())			r.reset(new CLT_Video_Rename_By_Sequence(dir,readOnly));
