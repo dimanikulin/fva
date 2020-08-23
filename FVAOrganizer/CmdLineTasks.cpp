@@ -622,6 +622,13 @@ FVA_EXIT_CODE CLT_1_Event_Folder_Merging::execute()
 		if (original.contains("#copy") || dest.contains("#copy"))
 			continue;
 
+		// check for already existing
+		if (m_dir.exists(dest))
+		{
+			LOG_QCRIT << "destination already exists: " << dest;
+			return FVA_ERROR_DEST_ALREADY_EXISTS;
+		}
+
 		if( !m_dir.rename( original, dest ) )
 		{						
 			LOG_QCRIT << "could not move:" << original << " into " << dest;
@@ -671,6 +678,14 @@ FVA_EXIT_CODE CLT_1_Day_Event_Folder_Merging::execute()
 			LOG_QWARN << "skipped #copy for: " << info.absoluteFilePath() << " , dst: " << dstDirPath;
 			continue;
 		}
+
+		// check for already existing
+		if (m_dir.exists(dstDirPath + "/" + info.fileName()))
+		{
+			LOG_QCRIT << "destination already exists: " << dstDirPath + "/" + info.fileName();
+			return FVA_ERROR_DEST_ALREADY_EXISTS;
+		}
+
 		// we move files only
 		if (!info.isDir() && !m_dir.rename(info.absoluteFilePath(), dstDirPath + "/" + info.fileName()))
 		{
