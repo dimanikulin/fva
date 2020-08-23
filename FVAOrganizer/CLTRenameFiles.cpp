@@ -120,6 +120,20 @@ FVA_EXIT_CODE CLTRenameFiles::execute()
 		else
 			newPath = m_dir.path() + "/" + newName + "." + info.suffix();
 
+		if (m_readOnly)
+		{
+			if (m_uniqueFileNames.find(newPath) != m_uniqueFileNames.end())
+			{
+				LOG_QCRIT << "not unique future file name:" << newPath << " for file: " << info.absoluteFilePath();
+				return FVA_ERROR_NON_UNIQUE_FILE_NAME;
+			}
+			else
+			{
+				m_uniqueFileNames[newPath] = info.fileName();
+				continue;
+			}
+		}
+
 		if (info.absoluteFilePath() == newPath)
 		{
 			LOG_QWARN << "File already has the same name:" << info.absoluteFilePath();

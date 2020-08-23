@@ -21,6 +21,13 @@ protected:
 	bool checkIfParentFileExist(const QFileInfo& fileToCheck, QDateTime& renameDateTime, const QDateTime& prevRenameDateTime);
 
 	void fillRenameDateTimeFromLastModifiedIfValid(const QDir& dir, const QFileInfo& info, QDateTime& renameDateTime);
+
+private:
+
+	/*!
+	* file pates to file name
+	*/
+	QMap<QString, QString>			m_uniqueFileNames;
 }; 
 
 #endif // _CLT_RENAME_FILES_H_
