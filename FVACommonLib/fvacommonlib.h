@@ -117,5 +117,16 @@ FVA_EXIT_CODE fvaSaveIDInFile(const QString& file, int ID);
  */
 bool fvaRemoveDirIfEmpty(const QString& dirPath);
 
+/*!
+ * \brief it starts CLT cmd and waits for finish
+ * \param cmdName - name of CLT to be executed
+ * \param inputDir - name of dir to be executed in
+ * \param isRecursive - if it must be executed in recursive mode
+ * \param isReadOnly - if it must be executed in read only mode
+ * \param custom - any string value to path to cmd
+ * \returns it returns FVA_EXIT_CODE
+ */
+FVA_EXIT_CODE fvaRunCLT(const QString& cmdName, const QString& inputDir, bool isRecursive = true, bool isReadOnly = false, const QString& custom="");
+
 #endif // FVACOMMONLIB_H
 

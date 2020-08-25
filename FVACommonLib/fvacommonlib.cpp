@@ -487,3 +487,21 @@ bool fvaRemoveDirIfEmpty(const QString& dirPath)
 	else
 		return false;
 }
+FVA_EXIT_CODE fvaRunCLT(const QString& cmdName, const QString& inputDir, bool isRecursive, bool isReadOnly, const QString& custom)
+{
+	QProcess myProcess;
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	QStringList params;
+	params.append(cmdName);
+	params.append(inputDir);
+	params.append(isRecursive ? "recursive=yes" : "recursive=no");
+	params.append("logvel=4");
+	params.append("readonly=no");
+	if (!custom.isEmpty())
+		params.append("custom=" + custom);
+
+	myProcess.start("FVAOrganizer.exe", params);
+	myProcess.waitForFinished(-1);
+
+	return static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
+}
