@@ -274,57 +274,32 @@ bool FVAOrganizerDevicePage::validatePage()
 		}
 	}
 
-	QStringList cmdList;
-	cmdList.append("CLT_Video_Rename_By_Sequence");
-	cmdList.append("CLT_Convert_Amr");
-	cmdList.append("CLT_Device_Name_Check");
-	cmdList.append("CLT_Auto_Checks_1");
-	cmdList.append("CLTRenameFiles");
-	cmdList.append("CLT_Fva_Files_2_CSV");
-	cmdList.append("CLT_Fva_Folder_2_CSV"); 
-	cmdList.append("CLT_Dir_Struct_Create_By_File");
-	cmdList.append("CLT_Alone_Files_Move");
-	cmdList.append("CLT_Get_Fva_Dir_Type");
-	cmdList.append("CLT_Auto_Checks_2");
+	FVA_EXIT_CODE exitCode = fvaRunCLT("CLT_Video_Rename_By_Sequence", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Video_Rename_By_Sequence")
+	exitCode = fvaRunCLT("CLT_Convert_Amr", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Convert_Amr")
+	exitCode = fvaRunCLT("CLT_Device_Name_Check", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Device_Name_Check")
+	exitCode = fvaRunCLT("CLT_Auto_Checks_1", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Auto_Checks_1")
+	// in read only mode CLTRenameFiles just checks if renaming is possible 
+	exitCode = fvaRunCLT("CLTRenameFiles", ((FVAOrganizerWizard*)wizard())->inputFolder(),false,true);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTRenameFiles RO mode")
+	exitCode = fvaRunCLT("CLTRenameFiles", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTRenameFiles")
+	exitCode = fvaRunCLT("CLT_Fva_Files_2_CSV", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Fva_Files_2_CSV")
+	exitCode = fvaRunCLT("CLT_Fva_Folder_2_CSV", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Fva_Folder_2_CSV")
+	exitCode = fvaRunCLT("CLT_Dir_Struct_Create_By_File", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Dir_Struct_Create_By_File")
+	exitCode = fvaRunCLT("CLT_Alone_Files_Move", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Alone_Files_Move")
+	exitCode = fvaRunCLT("CLT_Get_Fva_Dir_Type", ((FVAOrganizerWizard*)wizard())->inputFolder(),false);
+	((FVAOrganizerWizard*)wizard())->inputDirType(exitCode);
+	exitCode = fvaRunCLT("CLT_Auto_Checks_2", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Auto_Checks_2")
 
-	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
-	{
-		QProcess myProcess(this);
-		myProcess.setProcessChannelMode(QProcess::MergedChannels);
-		QStringList params;
-		params.append(*it);
-		params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
-		if (*it == "CLT_Get_Fva_Dir_Type") 
-			params.append("recursive=no");
-		else
-			params.append("recursive=yes");
-		params.append("logvel=4");
-		params.append("readonly=no");
-		
-		if (*it == "CLT_Dir_Struct_Create_By_File")		
-			params.append("custom=" + QString::number(deviceId));
-		
-		if (*it == "CLT_Fva_Files_2_CSV")		
-			params.append("custom=" + QString::number(deviceId));
-
-		if (*it == "CLT_Fva_Folder_2_CSV")		
-			params.append("custom=" + QString::number(deviceId));
-
-		myProcess.start("FVAOrganizer.exe",params);
-		myProcess.waitForFinished(-1);
-
-		FVA_EXIT_CODE exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
-		if (*it == "CLT_Get_Fva_Dir_Type")
-		{
-			((FVAOrganizerWizard*)wizard())->inputDirType(exitCode);
-		}
-		else if (exitCode != FVA_NO_ERROR)
-		{
-			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));
-			return false;
-		}
-
-	}
 	return true;
 }
 
@@ -402,41 +377,24 @@ bool FVAOrganizerOutputDirPage::isComplete() const
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {
 	QString dir = outputDirLineEdit->text();
-	
-	QStringList cmdList;
-	cmdList.append("CLT_Set_File_Atts");
-	
+
+	FVA_EXIT_CODE exitCode = fvaRunCLT("CLT_Set_File_Atts", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Set_File_Atts")
+
 	if (oneEventOneDay->isChecked())
-		cmdList.append("CLT_1_Day_Event_Folder_Merging");
+	{
+		exitCode = fvaRunCLT("CLT_1_Day_Event_Folder_Merging", ((FVAOrganizerWizard*)wizard())->inputFolder());
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_1_Day_Event_Folder_Merging")
+	}
 	else if (oneEventSeveralDays->isChecked())
-		cmdList.append("CLT_1_Event_Folder_Merging");
+	{
+		exitCode = fvaRunCLT("CLT_1_Event_Folder_Merging", ((FVAOrganizerWizard*)wizard())->inputFolder(),true,false,dir);
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_1_Event_Folder_Merging")
+	}
 	else
 	{
 		FVA_MESSAGE_BOX("Not implemented yet");
-	}
-	// lets run FVA cmd list 
-	for (auto it = cmdList.begin(); it != cmdList.end(); ++it)
-	{
-		QProcess myProcess(this);
-		myProcess.setProcessChannelMode(QProcess::MergedChannels);
-		QStringList params;
-		params.append(*it);
-		params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
-		params.append("recursive=yes");
-		params.append("logvel=4");
-		params.append("readonly=no");
-		if (*it == "CLT_1_Event_Folder_Merging")
-			params.append("custom=" + dir);
-
-		myProcess.start("FVAOrganizer.exe",params);
-		myProcess.waitForFinished(-1);
-
-		FVA_EXIT_CODE exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
-		if (exitCode != FVA_NO_ERROR)
-		{
-			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));
-			return false;
-		}
+		return false;
 	}
 	
 	QStringList pyCmdList;
@@ -488,23 +446,8 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	QFile::remove(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv.bak");
 
 	// last but not least check
-	QProcess myProcess(this);
-	myProcess.setProcessChannelMode(QProcess::MergedChannels);
-	QStringList params;
-	params.append("CLT_Auto_Checks_3");
-	params.append(mergeDir);
-	params.append("recursive=yes");
-	params.append("logvel=4");
-	params.append("readonly=no");
-	myProcess.start("FVAOrganizer.exe", params);
-	myProcess.waitForFinished(-1);
-	FVA_EXIT_CODE exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
-	if (exitCode != FVA_NO_ERROR)
-	{
-		FVA_MESSAGE_BOX("Fva cmd CLT_Auto_Checks_3 failed with error " + QString::number(exitCode));
-		return false;
-	}
-
+	exitCode = fvaRunCLT("CLT_Auto_Checks_3", mergeDir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Auto_Checks_3")
 	return true;
 }
 FVAOrganizerDonePage::FVAOrganizerDonePage(void)
