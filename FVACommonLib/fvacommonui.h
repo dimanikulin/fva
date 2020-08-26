@@ -5,7 +5,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QTreeWidget>
 
-#include "fvaerrors.h"
+#include "fvaexitcodes.h"
 
 /*!
  * \brief it makes showing images in the most common way

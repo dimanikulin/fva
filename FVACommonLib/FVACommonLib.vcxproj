@@ -171,7 +171,7 @@
     <ClInclude Include="fvaconstants.h" />
     <ClInclude Include="fvadefaultcfg.h" />
     <ClInclude Include="FVADescriptionFile.h" />
-    <ClInclude Include="fvaerrors.h" />
+    <ClInclude Include="fvaexitcodes.h" />
     <ClInclude Include="fvariffparser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

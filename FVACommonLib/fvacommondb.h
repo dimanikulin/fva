@@ -1,7 +1,7 @@
 #ifndef FVACOMMONDB_H
 #define FVACOMMONDB_H
 
-#include "fvaerrors.h"
+#include "fvaexitcodes.h"
 #include "fvaconstants.h"
 
 #include <QtCore/QString>

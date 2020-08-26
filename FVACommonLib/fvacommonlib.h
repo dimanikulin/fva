@@ -8,7 +8,7 @@
 #include <QtCore/QVariantMap>
 
 #include "fvaconstants.h"
-#include "fvaerrors.h"
+#include "fvaexitcodes.h"
 
 /*!
 * \brief it converts file extention to file type if it is possible

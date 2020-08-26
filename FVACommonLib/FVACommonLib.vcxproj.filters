@@ -72,9 +72,6 @@
     <ClInclude Include="fvacommondb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fvaerrors.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="fvaconstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -91,6 +88,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="fvacommoncsv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fvaexitcodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
