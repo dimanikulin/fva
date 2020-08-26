@@ -97,6 +97,80 @@ QString fvaItem::getGuiName(const QVariantMap&	dictionaries)
 	}
 	return "";
 }
+void fillNameByOneId(int ident, const QString& dict, const QVariantMap&	dictionaries, QString& fullName)
+{
+	QVariantList vlist;
+
+	if (ident)
+	{
+		vlist = dictionaries[dict].toList();
+		for (auto i = vlist.begin(); i != vlist.end(); ++i)
+		{
+			if (i->toMap()["ID"].toInt() == ident)
+			{
+				if (fullName.isEmpty())
+					fullName = i->toMap()["name"].toString();
+				else
+					fullName += "\n[" + i->toMap()["name"].toString() + "]";
+				break;
+			}
+		}
+	}
+}
+
+QString fvaItem::getGuiFullName(const QVariantMap&	dictionaries)
+{
+	QString fullName;
+	if (!fvaFolder && !fvaFile)
+		return "";
+	if (type != FVA_FS_TYPE_DIR && fvaFile)
+	{
+		if (!fvaFile->description.isEmpty())
+			fullName = fvaFile->description;
+	}
+
+	if (type != FVA_FS_TYPE_DIR && fvaFile)
+	{
+		if (fullName.isEmpty())
+			fullName = fvaFile->comment;
+		else
+			fullName += ", " + fvaFile->comment;
+	}
+	else if (type == FVA_FS_TYPE_DIR && fvaFolder)
+	{
+		if (fullName.isEmpty())
+			fullName = fvaFolder->tags;
+		else
+			fullName += ", " + fvaFolder->tags;
+	}
+
+	if (type != FVA_FS_TYPE_DIR && fvaFile)
+	{
+		fillNameByOneId(fvaFile->deviceId, "devices", dictionaries, fullName);
+	}
+	return fullName;
+}
+
+bool fvaFilter::doesIDMatchToFilter(unsigned int ID, const QVector<unsigned int>& Ids) const
+{
+	for (auto it = Ids.begin(); it != Ids.end(); ++it)
+	{
+		if (ID == *it)
+			return  true;
+	}
+	return false;
+}
+
+bool fvaFilter::doIDsMatchToFilter(const QVector<unsigned int>& IDs, const QVector<unsigned int>& filterIds) const
+{
+	for (auto it = IDs.begin(); it != IDs.end(); ++it)
+	{
+		if (doesIDMatchToFilter(*it, filterIds))
+			return  true;
+	}
+	return false;
+}
+
 void fvaFilterTree( const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& defFilterDataTime )
 {
 	for ( auto idChild = fvaitem->children.begin(); idChild != fvaitem->children.end(); ++idChild)
