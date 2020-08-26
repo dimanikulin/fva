@@ -496,7 +496,7 @@ FVA_EXIT_CODE fvaRunCLT(const QString& cmdName, const QString& inputDir, bool is
 	params.append(inputDir);
 	params.append(isRecursive ? "recursive=yes" : "recursive=no");
 	params.append("logvel=4");
-	params.append("readonly=no");
+	params.append(isReadOnly ? "readonly=yes" : "readonly=no");
 	if (!custom.isEmpty())
 		params.append("custom=" + custom);
 
