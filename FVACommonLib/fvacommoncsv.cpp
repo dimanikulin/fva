@@ -89,8 +89,8 @@ FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const 
 	FVA_EXIT_CODE res = fvaFolderCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolder.csv", titlesD, decsItemsD);
 	RET_RES_IF_RES_IS_ERROR
 
-		// ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
-		int columnDevIdD = FVADescriptionFile::getColumnIdByName(titlesD, "DevId");
+	// ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
+	int columnDevIdD = FVADescriptionFile::getColumnIdByName(titlesD, "DevId");
 	if (-1 == columnDevIdD)
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
@@ -133,5 +133,44 @@ FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const 
 };
 FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(DEVICE_MAP& deviceMap, const QString& dictPath)
 {
+	FVADescriptionFile	fvaDeviceCsv;
+	QStringList			titles;
+	DESCRIPTIONS_MAP	decsItems;
+	FVA_EXIT_CODE res = fvaDeviceCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaDevices.csv", titles, decsItems);
+	RET_RES_IF_RES_IS_ERROR
+	// ID,OwnerId,LinkedName,Name,fvaDeviceType
+	int columnDevId = FVADescriptionFile::getColumnIdByName(titles, "ID");
+	if (-1 == columnDevId)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnName = FVADescriptionFile::getColumnIdByName(titles, "Name");
+	if (-1 == columnName)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnOwnerId = FVADescriptionFile::getColumnIdByName(titles, "OwnerId");
+	if (-1 == columnOwnerId)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnLinkedName = FVADescriptionFile::getColumnIdByName(titles, "LinkedName");
+	if (-1 == columnLinkedName)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnfvaDeviceType = FVADescriptionFile::getColumnIdByName(titles, "fvaDeviceType");
+	if (-1 == columnfvaDeviceType)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
+	{
+		QStringList list = it.value();
+
+		fvaDevice device;
+		device.linkedName	= list[columnLinkedName].remove("\t").trimmed();
+		device.deviceId		= list[columnDevId].remove("\t").toUInt();
+		device.guiName		= list[columnName].remove("\t").trimmed();
+		device.ownerName	= "N/A";
+		device.ownerId		= list[columnOwnerId].remove("\t").toUInt();
+		device.type			= static_cast<FVA_DEVICE_TYPE> (list[columnfvaDeviceType].remove("\t").toUInt());
+		deviceMap[device.deviceId] = device;
+	}
 	return FVA_NO_ERROR;
 }
