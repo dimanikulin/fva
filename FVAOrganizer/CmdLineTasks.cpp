@@ -1,8 +1,7 @@
 #include "CmdLineTasks.h"
 #include "fvadefaultcfg.h"
-#include "fvacommondb.h"
+#include "fvacommoncsv.h"
 #include "fvacommondata.h"
-
 #include "fvacommonexif.h"
 
 #include <QtCore/QCoreApplication>
@@ -590,10 +589,10 @@ CLT_Auto_Checks_3::CLT_Auto_Checks_3(const QString& dir_, bool readOnly_, const 
 {
 	LOG_QDEB << "cmd created,dir:" << dir_ << ",RO=" << (readOnly_ ? "yes" : "no") << ",SRO=" << (supportReadOnly() ? "yes" : "no");
 
-	FVA_EXIT_CODE res = fvaLoadFvaFileInfoFromScv(m_fvaFileInfo);
+	FVA_EXIT_CODE res = fvaLoadFvaFileInfoFromCsv(m_fvaFileInfo);
 	RET_IF_RES_IS_ERROR
 
-	res = fvaLoadDeviceMapFromDictionary(m_deviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
+	res = fvaLoadDeviceMapFromCsv(m_deviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
 	RET_IF_RES_IS_ERROR
 }
 FVA_EXIT_CODE CLT_Auto_Checks_3::execute()
@@ -607,7 +606,7 @@ FVA_EXIT_CODE CLT_Auto_Checks_3::execute()
 			continue;
 		//////////////////////////////////// 3. check for exsiting device in fva info by fileName
 		int deviceID = FVA_UNDEFINED_ID;
-		FVA_EXIT_CODE res = fvaGetDeviceIdFromFvaInfo(m_fvaFileInfo, info.fileName(), deviceID, info.absoluteDir().absolutePath());
+		FVA_EXIT_CODE res = fvaGetDeviceIdFromCsv(m_fvaFileInfo, info.fileName(), deviceID, info.absoluteDir().absolutePath());
 		if (FVA_NO_ERROR != res)
 		{
 			LOG_QWARN << "no dev id found for file: " << info.absoluteFilePath();
