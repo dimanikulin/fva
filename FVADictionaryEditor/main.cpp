@@ -7,17 +7,23 @@ int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 	
-	if ( a.arguments().size() < 2 )
+	// get application input parameters into list
+	QStringList list;
+	for (int a = 0; a < argc; ++a) {
+		list << QString::fromLocal8Bit(argv[a]);
+	}
+
+	if (list.size() < 2)
 	{
 		return FVA_ERROR_NOT_ENOUGH_ARG;
 	}
 	QString deviceMatchName;
-	if ( a.arguments().size() >= 3 )
+	if (list.size() >= 3)
 	{
-		deviceMatchName = a.arguments().at(2);
+		deviceMatchName = list.at(2);
 	}
 //	QTextCodec::setCodecForTr(QTextCodec::codecForName("Windows-1251"));
-	FVADictionaryEditor w(a.arguments().at(1), deviceMatchName);
+	FVADictionaryEditor w(list.at(1), deviceMatchName);
 	w.show();
 	return a.exec();
 }

@@ -428,7 +428,6 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	{
 		QProcess myProcess(this);
 		myProcess.setProcessChannelMode(QProcess::MergedChannels);
-
 		myProcess.start(*it);
 		myProcess.waitForFinished(-1);
 
