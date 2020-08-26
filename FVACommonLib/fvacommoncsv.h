@@ -40,9 +40,8 @@ FVA_EXIT_CODE fvaSaveIDInFile(const QString& file, int ID);
 /*!
 * \brief it tries to load device id map from dictionary
 * \param deviceIds a map to be filled up
-* \param dictPath path to dictionary to load map from
 * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
 */
-FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(DEVICE_MAP& deviceMap, const QString& dictPath);
+FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(DEVICE_MAP& deviceMap);
 
 #endif // FVACOMMONCSV_H
