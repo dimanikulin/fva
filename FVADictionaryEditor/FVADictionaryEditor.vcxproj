@@ -108,7 +108,7 @@
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>..\FVAbin\$(Platform)\$(Configuration)\;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ws2_32.lib;imm32.lib;winmm.lib;winspool.lib;qtmaind.lib;Qt5Guid.lib;Qt5Cored.lib;Qt5Sqld.lib;fva.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;imm32.lib;winmm.lib;winspool.lib;qtmaind.lib;Qt5Guid.lib;Qt5Cored.lib;Qt5Sqld.lib;fva.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
