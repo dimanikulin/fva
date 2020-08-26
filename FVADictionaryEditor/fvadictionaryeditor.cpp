@@ -24,8 +24,8 @@ FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& 
 
 	QString		error;
 	QVariantMap	dictionaries;
-	//FVA_EXIT_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
-	//RET_IF_RES_IS_ERROR
+	FVA_EXIT_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
+	RET_IF_RES_IS_ERROR
 
 	ui.cbOwner->clear();
 	ui.cbOwner->addItem ( tr("Выбирете владельца"), 0 );

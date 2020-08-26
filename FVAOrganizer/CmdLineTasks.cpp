@@ -592,7 +592,7 @@ CLT_Auto_Checks_3::CLT_Auto_Checks_3(const QString& dir_, bool readOnly_, const 
 	FVA_EXIT_CODE res = fvaLoadFvaFileInfoFromCsv(m_fvaFileInfo);
 	RET_IF_RES_IS_ERROR
 
-	res = fvaLoadDeviceMapFromCsv(m_deviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
+	res = fvaLoadDeviceMapFromCsv(m_deviceMap);
 	RET_IF_RES_IS_ERROR
 }
 FVA_EXIT_CODE CLT_Auto_Checks_3::execute()
