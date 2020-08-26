@@ -52,6 +52,9 @@
     <ClCompile Include="..\easyexif\exif.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fvacommoncsv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fvacommonlib.h">
@@ -85,6 +88,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="fvacommonexif.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fvacommoncsv.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
