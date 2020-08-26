@@ -131,7 +131,7 @@ FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const 
 
 	return FVA_ERROR_NO_DEV_ID;
 };
-FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(DEVICE_MAP& deviceMap, const QString& dictPath)
+FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(DEVICE_MAP& deviceMap)
 {
 	FVADescriptionFile	fvaDeviceCsv;
 	QStringList			titles;
