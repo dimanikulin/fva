@@ -9,7 +9,7 @@
 
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
-#include "fvacommondb.h"
+#include "fvacommoncsv.h"
 #include "fvacommonui.h"
 
 FVAOrganizerStartPage::FVAOrganizerStartPage()
@@ -84,10 +84,10 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 	QDir _dir(dir); 
 
 	DEVICE_MAP fullDeviceMap;
-	FVA_EXIT_CODE res = fvaLoadDeviceMapFromDictionary(fullDeviceMap, FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
+	FVA_EXIT_CODE res = fvaLoadDeviceMapFromCsv(fullDeviceMap);
 	if ( FVA_NO_ERROR != res )
 	{
-		FVA_MESSAGE_BOX("fvaLoadDeviceMapFromDictionary failed with error " + QString::number(res));
+		FVA_MESSAGE_BOX("fvaLoadDeviceMapFromCsv failed with error " + QString::number(res));
 		return false;
 	}
 	DEVICE_MAP deviceMap;
