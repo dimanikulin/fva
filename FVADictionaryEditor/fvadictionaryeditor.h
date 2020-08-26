@@ -10,9 +10,9 @@ class FVADictionaryEditor : public QDialog
 
 public:
 	FVADictionaryEditor(const QString&  dictPath, const QString& device ,QWidget *parent = 0);
-	~FVADictionaryEditor();
+	virtual ~FVADictionaryEditor();
 
-	protected slots:
+	private slots:
 		void OnAddPersonBtnPressed();
 		void OnAddPlaceBtnPressed();
 		void OnAddDeviceBtnPressed();
