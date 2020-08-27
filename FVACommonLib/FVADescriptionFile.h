@@ -2,7 +2,9 @@
 #define _FVA_DESC_FILE_
 
 #include "fvacsvfile.h"
-#include "fvacommonlib.h"
+#include "fvaexitcodes.h"
+
+typedef QMap< int, QStringList > DESCRIPTIONS_MAP;
 
 /*!
  * \brief it wraps functions to work with descption file (having format a csv file)
@@ -38,8 +40,7 @@ class FVADescriptionFile : 	public CSVFile
 		/*!
 		 * \brief it returns id of colum by name 
 		 */
-		static int getColumnIdByName( const QStringList& titles, const QString& columnName );
-
+		static int getColumnIdByName(const QStringList& titles, const QString& columnName);
 };
 
 #endif // _FVA_DESC_FILE_

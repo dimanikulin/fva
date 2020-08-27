@@ -18,6 +18,16 @@ enum FVA_FS_TYPE
 };
 
 /*!
+* \brief it enumerates internal valuable device types
+*/
+enum FVA_DEVICE_TYPE
+{
+	DEVICE_TYPE_PHOTO_UKNOWN	= 0,
+	DEVICE_TYPE_PHOTO_VIDEO		= 1,
+	DEVICE_TYPE_PHOTO_SCANER	= 1,
+};
+
+/*!
  * \brief internal file names
  */
 const QString	FVA_DESCRIPTION_FILE_NAME			= "description.csv";
@@ -33,8 +43,6 @@ const int FVA_UNDEFINED_ID	= -1;
 
 class fvaDevice;
 typedef QMap<int, fvaDevice> DEVICE_MAP;
-
-typedef QMap< int, QStringList > DESCRIPTIONS_MAP;
 
 class fvaFile;
 typedef QMap<QString, fvaFile> FVA_FILE_INFO_MAP;

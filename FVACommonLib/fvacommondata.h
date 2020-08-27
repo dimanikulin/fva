@@ -10,13 +10,6 @@
 
 #include "fvaconstants.h"
 
-enum FVA_DEVICE_TYPE
-{
-	DEVICE_TYPE_PHOTO_UKNOWN	= 0,
-	DEVICE_TYPE_PHOTO_VIDEO		= 1,
-	DEVICE_TYPE_PHOTO_SCANER	= 1,
-};
-
 /*!
  * \brief it describes whole information about device 
  */
