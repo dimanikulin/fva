@@ -51,7 +51,7 @@ class fvaFilter
 		/*
 		 * does ID match to filtration
 		 */
-		bool doesIDMatchToFilter(unsigned int ID, const QVector<unsigned int>& Ids) const;
+		bool doesIDMatchToFilter(unsigned int ID, const QVector<unsigned int>& Ids) const
 		{
 			for (auto it = Ids.begin(); it != Ids.end(); ++it)
 			{
@@ -64,7 +64,7 @@ class fvaFilter
 		/*
 		 * does list of ID matche to filtration
 		 */
-		bool doIDsMatchToFilter(const QVector<unsigned int>& IDs, const QVector<unsigned int>& filterIds) const;
+		bool doIDsMatchToFilter(const QVector<unsigned int>& IDs, const QVector<unsigned int>& filterIds) const
 		{
 			for (auto it = IDs.begin(); it != IDs.end(); ++it)
 			{
