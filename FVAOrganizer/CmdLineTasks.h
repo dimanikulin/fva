@@ -2,7 +2,7 @@
 #define _CMD_LINE_TASKS_H_
 
 #include "CmdLineBaseTask.h"
-
+#include "data/fvafile.h"
 
 /*!
  * \brief it creates folder structure by days folders, using file names in input folder
