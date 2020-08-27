@@ -53,6 +53,14 @@ class FVAViewer : public QDialog
 		 */
 		void prepareFilters();
 
+		/*!
+		* \brief it recursivly filters FVA tree
+		* \param filter - filter condition set
+		* \param fvaitem - fva tree item
+		* \param defFilterDataTime - data+time that is defined as default one
+		*/
+		void fvaFilterTree(const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& defFilterDataTime);
+
 	private: // data
 
 		Ui::FVAViewerClass *		m_ui;
