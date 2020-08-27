@@ -41,10 +41,4 @@ const QString	FVA_TARGET_FOLDER_NAME				= "TARGET_FOLDER_NAME";
  */
 const int FVA_UNDEFINED_ID	= -1;
 
-class fvaDevice;
-typedef QMap<int, fvaDevice> DEVICE_MAP;
-
-class fvaFile;
-typedef QMap<QString, fvaFile> FVA_FILE_INFO_MAP;
-
 #endif // FVACONSTS_H
