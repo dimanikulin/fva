@@ -1,7 +1,8 @@
-#ifndef FVAPEOPLE_H
-#define FVAPEOPLE_H
+#ifndef FVAFOLDER_H
+#define FVAFOLDER_H
 
 #include <QtCore/QString>
+#include <QtCore/QVector> 
 
 /*!
  * \brief it keeps fva specific information about a folder
@@ -34,4 +35,6 @@ class fvaFolder
 		QString					linkedFolder;
 };
 
-#endif // FVAPEOPLE_H
+typedef QMap<int, fvaFolder*> FVA_FOLDER_MAP;
+
+#endif // FVAFOLDER_H

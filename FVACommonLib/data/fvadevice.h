@@ -1,7 +1,10 @@
-#ifndef FVAPEOPLE_H
-#define FVAPEOPLE_H
+#ifndef FVADEVICE_H
+#define FVADEVICE_H
 
 #include <QtCore/QString>
+#include <QtCore/QMap>
+
+#include "fvaconstants.h"
 
 /*!
  * \brief it describes whole information about device 
@@ -43,4 +46,4 @@ class fvaDevice
 
 typedef QMap<int, fvaDevice> DEVICE_MAP;
 
-#endif // FVAPEOPLE_H
+#endif // FVADEVICE_H

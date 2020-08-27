@@ -1,7 +1,8 @@
-#ifndef FVAPEOPLE_H
-#define FVAPEOPLE_H
+#ifndef FVAFILE_H
+#define FVAFILE_H
 
 #include <QtCore/QString>
+#include <QtCore/QVector>
 
 /*!
  * \brief it keeps fva specific information about a file
@@ -16,6 +17,7 @@ class fvaFile
 			placeId(0)
 		{
 		}
+
 		virtual ~fvaFile()
 		{
 		}
@@ -56,5 +58,7 @@ class fvaFile
 		QString					name;
 
 };
+typedef QMap<QString, fvaFile> FVA_FILE_INFO_MAP;
+typedef QMap<int, fvaFile*> FVA_FILE_MAP;
 
-#endif // FVAPEOPLE_H
+#endif // FVAFILE_H
