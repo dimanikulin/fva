@@ -59,9 +59,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_fvaviewer.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="fvaItem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fvaviewer.h">
@@ -118,9 +115,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="fvaFilter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="fvaItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

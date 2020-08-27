@@ -58,6 +58,9 @@
     <ClCompile Include="fvacommoncsv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="data\fvaItem.cpp">
+      <Filter>data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fvacommonlib.h">
@@ -96,9 +99,6 @@
     <ClInclude Include="fvaexitcodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="data\fvapeople.h">
-      <Filter>data</Filter>
-    </ClInclude>
     <ClInclude Include="data\fvadevice.h">
       <Filter>data</Filter>
     </ClInclude>
@@ -106,6 +106,12 @@
       <Filter>data</Filter>
     </ClInclude>
     <ClInclude Include="data\fvafolder.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\fvaperson.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\fvaItem.h">
       <Filter>data</Filter>
     </ClInclude>
   </ItemGroup>
