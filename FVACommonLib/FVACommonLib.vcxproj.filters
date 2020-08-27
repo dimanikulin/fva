@@ -23,6 +23,9 @@
       <Extensions>moc;h;cpp</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{3b4d3e17-1de8-45bb-9c89-b0b4efd65ec6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fvacommonlib.cpp">
@@ -92,6 +95,9 @@
     </ClInclude>
     <ClInclude Include="fvaexitcodes.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data\fvapeople.h">
+      <Filter>data</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
