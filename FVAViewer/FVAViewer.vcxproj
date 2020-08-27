@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="fvaItem.cpp" />
     <ClCompile Include="fvaviewer.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_fvaviewer.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -235,6 +236,8 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="fvaFilter.h" />
+    <ClInclude Include="fvaItem.h" />
     <ClInclude Include="GeneratedFiles\ui_d-filter.h" />
     <ClInclude Include="GeneratedFiles\ui_e-filter.h" />
     <ClInclude Include="GeneratedFiles\ui_filters.h" />
