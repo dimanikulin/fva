@@ -1,5 +1,7 @@
 #include "fvacommondb.h"
-#include "fvacommondata.h"
+#include "data/fvafolder.h"
+#include "data/fvafile.h"
+#include "data/fvaitem.h"
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
 
@@ -183,8 +185,8 @@ FVA_EXIT_CODE fvaLoadFiles( fvaItem* rootItem, const QString& DBPath, QString& e
 	}
 	return FVA_NO_ERROR;
 }
-typedef QMap<int, fvaFolder*> FVA_FOLDER_MAP; 
-FVA_EXIT_CODE fvaLoadFolders( FVA_FOLDER_MAP& folderMap, const QString& DBPath, QString& error )
+
+FVA_EXIT_CODE fvaLoadFolders(FVA_FOLDER_MAP& folderMap, const QString& DBPath, QString& error)
 {
 	OPEN_DB
 	QSqlQuery query;
@@ -204,8 +206,7 @@ FVA_EXIT_CODE fvaLoadFolders( FVA_FOLDER_MAP& folderMap, const QString& DBPath, 
 	}
 	return FVA_NO_ERROR;
 }
-
-typedef QMap<int, fvaFile*> FVA_FILE_MAP; 
+ 
 FVA_EXIT_CODE fvaLoadFiles( FVA_FILE_MAP& fileMap, const QString& DBPath, QString& error )
 {
 	OPEN_DB
