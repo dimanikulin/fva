@@ -1,5 +1,5 @@
-#ifndef FVAPEOPLE_H
-#define FVAPEOPLE_H
+#ifndef FVAPERSON_H
+#define FVAPERSON_H
 
 #include <QtCore/QString>
 
@@ -38,4 +38,4 @@ public:
 
 typedef QMap<int, fvaPerson> PEOPLE_MAP;
 
-#endif // FVAPEOPLE_H
+#endif // FVAPERSON_H
