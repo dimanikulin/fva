@@ -1,11 +1,17 @@
 #include "fvaviewer.h"
 #include "QPictureLabel.h"
+
 #include <QtCore/QString>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QProgressDialog>
 #include <QtUiTools/QtUiTools>
+
 #include "fvacommonui.h"
 #include "fvacommondb.h"
+
+#include "data/fvaitem.h"
+#include "data/fvafolder.h"
+#include "data/fvafile.h"
 
 void FVAViewer::showProgress(const QString& rootDir)
 {

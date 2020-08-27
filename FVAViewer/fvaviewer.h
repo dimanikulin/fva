@@ -7,8 +7,10 @@
 #include <QtWidgets/QTreeWidget>
 
 #include "fvacommonlib.h"
-#include "fvacommondata.h"
 #include "FVADescriptionFile.h"
+#include "fvafilter.h"
+
+#include <memory>
 
 #include "ui_fvaviewer.h"
 #include "ui_filters.h"
@@ -18,6 +20,7 @@
 #include "ui_e-filter.h"
 
 class QProgressDialog;
+class fvaItem;
 
 /*!
  * \brief keeps main dilaog functionality
