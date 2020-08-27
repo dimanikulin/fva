@@ -1,7 +1,8 @@
 #include "fvacommoncsv.h"
 #include "fvadescriptionfile.h"
 #include "fvadefaultcfg.h"
-#include "fvacommondata.h"
+#include "data/fvafile.h"
+#include "data/fvadevice.h"
 
 #include <QtCore/QTextStream>
 #include <QtCore/QFile>

@@ -7,7 +7,7 @@
 #include <QtCore/QDateTime>
 #include <QtCore/QVariantMap>
 
-#include "fvaconstants.h"
+#include "data/fvadevice.h"
 #include "fvaexitcodes.h"
 
 /*!

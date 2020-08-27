@@ -2,7 +2,7 @@
 #define FVACOMMONDB_H
 
 #include "fvaexitcodes.h"
-#include "fvaconstants.h"
+#include "data/fvadevice.h"
 
 #include <QtCore/QString>
 #include <QtCore/QVariantMap>

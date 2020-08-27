@@ -1,9 +1,11 @@
 #ifndef FVACOMMONCSV_H
 #define FVACOMMONCSV_H
 
-#include "fvaconstants.h"
 #include "fvaexitcodes.h"
-#include "data\fvapeople.h"
+
+#include "data/fvafile.h"
+#include "data/fvadevice.h"
+#include "data/fvaperson.h"
 
 /*!
  * \brief it returns device ID by file name from fva information saved in CSV files
