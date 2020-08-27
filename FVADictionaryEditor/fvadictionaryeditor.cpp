@@ -1,6 +1,7 @@
 #include "fvadictionaryeditor.h"
 #include "fvacommonlib.h"
 #include "fvacommondb.h"
+#include "fvacommoncsv.h"
 
 /*!
 * \brief it saves FVA dictionaries to file
@@ -22,16 +23,14 @@ FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& 
 	connect (ui.btnAddPlace,SIGNAL(clicked()),this,SLOT(OnAddPlaceBtnPressed()));
 	connect (ui.btnAddDevice,SIGNAL(clicked()),this,SLOT(OnAddDeviceBtnPressed()));
 
-	QString		error;
-	QVariantMap	dictionaries;
-	FVA_EXIT_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
+	PEOPLE_MAP peopleMap;
+	FVA_EXIT_CODE res = fvaLoadPeopleMapFromCsv(peopleMap);
 	RET_IF_RES_IS_ERROR
 
 	ui.cbOwner->clear();
 	ui.cbOwner->addItem ( tr("Выбирете владельца"), 0 );
-	QVariantList people = dictionaries["people"].toList();
-	for ( auto i = people.begin(); i != people.end() ; ++i )
-		ui.cbOwner->addItem ( i->toMap()["name"].toString(), i->toMap()["ID"].toString());
+	for (auto i = peopleMap.begin(); i != peopleMap.end(); ++i)
+		ui.cbOwner->addItem(i->name, i->Id);
 
 	ui.editName->setText(m_device);
 	ui.editLinkName->setText(m_device);
