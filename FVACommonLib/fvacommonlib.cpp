@@ -1,7 +1,6 @@
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
 #include "fvacommonexif.h"
-#include "fvacommondata.h"
 
 #include <QtCore/QDir>
 #include <QtCore/QProcess>

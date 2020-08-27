@@ -1,7 +1,6 @@
 #include "CmdLineTasks.h"
 #include "fvadefaultcfg.h"
 #include "fvacommoncsv.h"
-#include "fvacommondata.h"
 #include "fvacommonexif.h"
 
 #include <QtCore/QCoreApplication>

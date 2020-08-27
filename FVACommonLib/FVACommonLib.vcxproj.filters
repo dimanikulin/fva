@@ -34,9 +34,6 @@
     <ClCompile Include="FVADescriptionFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="fvacommondata.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="fvacommondb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -67,9 +64,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FVADescriptionFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="fvacommondata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="fvadefaultcfg.h">
