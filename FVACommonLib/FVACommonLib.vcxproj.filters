@@ -99,5 +99,14 @@
     <ClInclude Include="data\fvapeople.h">
       <Filter>data</Filter>
     </ClInclude>
+    <ClInclude Include="data\fvadevice.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\fvafile.h">
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\fvafolder.h">
+      <Filter>data</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

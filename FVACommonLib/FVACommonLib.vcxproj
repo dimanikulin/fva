@@ -161,6 +161,9 @@
     <ClCompile Include="fvariffparser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="data\fvadevice.h" />
+    <ClInclude Include="data\fvafile.h" />
+    <ClInclude Include="data\fvafolder.h" />
     <ClInclude Include="data\fvapeople.h" />
     <ClInclude Include="fvacommoncsv.h" />
     <ClInclude Include="fvacommonexif.h" />
