@@ -1,25 +1,19 @@
 #include "fvadictionaryeditor.h"
 #include "fvacommonlib.h"
-#include "fvacommondb.h"
 #include "fvacommoncsv.h"
+#include "fvadefaultcfg.h"
 
-/*!
-* \brief it saves FVA dictionaries to file
-* \param file to save dictionaries to
-* \param outputJson input parameter to be saved
-* \param error - human-readable description of error if any
-* \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
-*/
-FVA_EXIT_CODE fvaSaveDictionary(const QString& file, QVariantMap& inputJson, QString& error);
+#include "QtCore/QFile"
+#include "QtCore/QTextStream"
 
 FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& device, QWidget *parent)
 	: QDialog	(parent),
 	 m_dictPath	(dictPath),
-	m_device	(device)
+	 m_device	(device)
 {
 	ui.setupUi(this);
 
-	connect (ui.btnAddPerson,SIGNAL(clicked()),this,SLOT(OnAddPersonBtnPressed()) );
+	connect (ui.btnAddPerson,SIGNAL(clicked()),this,SLOT(OnAddPersonBtnPressed()));
 	connect (ui.btnAddPlace,SIGNAL(clicked()),this,SLOT(OnAddPlaceBtnPressed()));
 	connect (ui.btnAddDevice,SIGNAL(clicked()),this,SLOT(OnAddDeviceBtnPressed()));
 
@@ -46,9 +40,10 @@ FVADictionaryEditor::~FVADictionaryEditor()
 {
 
 }
+
 void addDictItem(const QString& dictPath, const QString& name, QDialog* dlg, const QString& dictName)
 {
-	if (name.isEmpty())
+	/*if (name.isEmpty())
 		return;
 
 	QString		error;
@@ -75,7 +70,7 @@ void addDictItem(const QString& dictPath, const QString& name, QDialog* dlg, con
 	res = fvaSaveDictionary( dictPath, dictionaries, error );
 	RET_IF_RES_IS_ERROR
 
-	dlg->close();
+	dlg->close();*/
 }
 void FVADictionaryEditor::OnAddPersonBtnPressed()
 {
@@ -84,37 +79,23 @@ void FVADictionaryEditor::OnAddPersonBtnPressed()
 
 void FVADictionaryEditor::OnAddDeviceBtnPressed()
 {
-	QString		error;
-	QVariantMap	dictionaries;
-	FVA_EXIT_CODE res = fvaLoadDictionary( m_dictPath, dictionaries, error );
+	DEVICE_MAP deviceMap;
+	FVA_EXIT_CODE res = fvaLoadDeviceMapFromCsv(deviceMap);
 	RET_IF_RES_IS_ERROR
-
-	QVariantList vlist = dictionaries["devices"].toList();
-	int maxID = -1;
-	for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
-	{
-		if (maxID < i->toMap()["ID"].toInt())
-			maxID = i->toMap()["ID"].toInt();
-	}
-	if ( -1 == maxID )
-		return;
-
-	QVariantMap newDevice;
-	newDevice["ID"]		= maxID + 1;
-	newDevice["name"]	= ui.editName->text();
-	newDevice["LinkedName"]	= ui.editLinkName->text();
-	int index = ui.cbOwner->currentIndex();
-	if ( 1 <= index ) 
-	{
-		newDevice["OwnerId"] = ui.cbOwner->itemData( index ).toString();
-	}
-
-	vlist.append(newDevice);
-
-	dictionaries["devices"] = vlist;
-
-	res = fvaSaveDictionary( m_dictPath, dictionaries, error );
-	RET_IF_RES_IS_ERROR
+	
+	QFile file(FVA_DEFAULT_ROOT_DIR + "#data#/fvadevices.csv");
+	file.open(QIODevice::Append | QIODevice::Text);
+	QTextStream writeStream(&file);
+	writeStream.setCodec("UTF-8"); 
+	// ID,OwnerId,LinkedName,Name,fvaDeviceType
+	writeStream << "\n" 
+				<< deviceMap.lastKey() + 1										<< ","
+				<< ui.cbOwner->itemData(ui.cbOwner->currentIndex()).toString()	<< ","
+				<< ui.editLinkName->text()										<< ","
+				<< ui.editName->text()											<< ","
+				<< "1"; // hardcoded now to photo-video device type 
+	writeStream.flush();
+	file.close();
 
 	close();
 }
@@ -123,6 +104,14 @@ void FVADictionaryEditor::OnAddPlaceBtnPressed()
 {
 	addDictItem(m_dictPath, ui.editPlace->text(),this, "places" );
 }
+
+/*!
+* \brief it saves FVA dictionaries to file
+* \param file to save dictionaries to
+* \param outputJson input parameter to be saved
+* \param error - human-readable description of error if any
+* \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
+*/
 FVA_EXIT_CODE fvaSaveDictionary(const QString& file, QVariantMap& inputJson, QString& error)
 {
 	/*QDir dir(file);
