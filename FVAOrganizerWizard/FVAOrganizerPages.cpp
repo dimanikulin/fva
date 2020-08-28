@@ -90,6 +90,20 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 		FVA_MESSAGE_BOX("fvaLoadDeviceMapFromCsv failed with error " + QString::number(res));
 		return false;
 	}
+
+	PEOPLE_MAP peopleMap;
+	res = fvaLoadPeopleMapFromCsv(peopleMap);
+	if (FVA_NO_ERROR != res)
+	{
+		FVA_MESSAGE_BOX("fvaLoadPeopleMapFromCsv failed with error " + QString::number(res));
+		return false;
+	}
+
+	for (auto it = fullDeviceMap.begin(); it != fullDeviceMap.end(); ++it)
+	{
+		it.value().ownerName = peopleMap[it.value().ownerId].name;
+	}
+
 	DEVICE_MAP deviceMap;
 	Q_FOREACH(QFileInfo info, _dir.entryInfoList(QDir::System | QDir::Hidden  | QDir::Files, QDir::DirsLast))
 	{		
@@ -279,7 +293,12 @@ bool FVAOrganizerDevicePage::validatePage()
 	exitCode = fvaRunCLT("CLT_Convert_Amr", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Convert_Amr")
 	exitCode = fvaRunCLT("CLT_Device_Name_Check", ((FVAOrganizerWizard*)wizard())->inputFolder());
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Device_Name_Check")
+	if (FVA_ERROR_NON_UNIQUE_DEVICE_NAME == exitCode)
+	{
+		exitCode = fvaRunCLT("CLTCreateDirStructByDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTCreateDirStructByDeviceName")
+	}
+	else IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Device_Name_Check")
 	exitCode = fvaRunCLT("CLT_Auto_Checks_1", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Auto_Checks_1")
 	// in read only mode CLTRenameFiles just checks if renaming is possible 
