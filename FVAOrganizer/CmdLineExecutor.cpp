@@ -4,7 +4,9 @@
 #include "CmdLineDBTasks.h"
 #include "CmdLineOldTasks.h"
 #include "CmdLineCSVTasks.h"
+
 #include "CLTRenameFiles.h"
+#include "CLTCreateDirStructByDevNames.h"
 
 #include <QtCore/qdebug>
 #include <QtCore/qdir>
@@ -57,34 +59,34 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 {
 	std::auto_ptr<CmdLineBaseTask> r(0);
 	
-	if ( name == CLT_Dir_Struct_Create_By_File::Name())				r.reset(new CLT_Dir_Struct_Create_By_File(dir, readOnly, custom));
-	else if (name == CLT_Dir_Struct_Create_By_Device_Name::Name())	r.reset(new CLT_Dir_Struct_Create_By_Device_Name(dir, readOnly));
-	else if (name == CLTRenameFiles::Name())						r.reset(new CLTRenameFiles(dir, readOnly, custom));	
-	else if (name == CLT_Device_Name_Check::Name())					r.reset(new CLT_Device_Name_Check(dir,readOnly));
-	else if (name == CLT_Files_Rename_By_Dir::Name())				r.reset(new CLT_Files_Rename_By_Dir(dir,readOnly));
-	else if (name == CLT_Video_Rename_By_Sequence::Name())			r.reset(new CLT_Video_Rename_By_Sequence(dir,readOnly));
-	else if (name == CLT_Dir_Name_Change::Name())					r.reset(new CLT_Dir_Name_Change(dir,readOnly));
-	else if (name == CLT_Xml_Convert::Name())						r.reset(new CLT_Xml_Convert(dir,readOnly));
-	else if (name == CLT_Update_File_Description::Name())			r.reset(new CLT_Update_File_Description(dir,readOnly));
-	else if (name == CLT_Auto_Checks_2::Name())						r.reset(new CLT_Auto_Checks_2(dir,readOnly));
-	else if (name == CLT_Alone_Files_Move::Name())					r.reset(new CLT_Alone_Files_Move(dir, readOnly));
-	else if (name == CLT_Convert_Dir_Desc::Name())					r.reset(new CLT_Convert_Dir_Desc(dir, readOnly));
-	else if (name == CLT_Convert_Amr::Name())						r.reset(new CLT_Convert_Amr(dir, readOnly));
-	else if (name == CLT_Auto_Checks_1::Name())						r.reset(new CLT_Auto_Checks_1(dir, readOnly));
-	else if (name == CLT_Folder_Merging::Name())					r.reset(new CLT_Folder_Merging (dir, readOnly, custom)); 
-	else if (name == CLT_Set_File_Atts::Name())						r.reset(new CLT_Set_File_Atts(dir, readOnly));	
-	else if (name == CLT_Print_FS_Structure::Name())				r.reset(new CLT_Print_FS_Structure(dir, readOnly));
-	else if (name == CLT_Rename_File_By_Desc::Name())				r.reset(new CLT_Rename_File_By_Desc(dir, readOnly));
-	else if (name == CLT_Fs_To_SQL::Name())							r.reset(new CLT_Fs_To_SQL(dir, readOnly));
-	else if (name == CLT_Fva_File_To_SQL::Name())					r.reset(new CLT_Fva_File_To_SQL(dir, readOnly));
-	else if (name == CLT_Fva_Folder_To_SQL::Name())					r.reset(new CLT_Fva_Folder_To_SQL(dir, readOnly));
-	else if (name == CLT_Create_FVA_SQL::Name())					r.reset(new CLT_Create_FVA_SQL(dir, readOnly, custom));
-	else if (name == CLT_1_Event_Folder_Merging::Name())			r.reset(new CLT_1_Event_Folder_Merging(dir, readOnly, custom));
-	else if (name == CLT_Fva_Folder_2_CSV::Name() )					r.reset(new CLT_Fva_Folder_2_CSV(dir, readOnly, custom));
-	else if (name == CLT_Fva_Files_2_CSV::Name() )					r.reset(new CLT_Fva_Files_2_CSV(dir, readOnly, custom));
-	else if (name == CLT_1_Day_Event_Folder_Merging::Name())		r.reset(new CLT_1_Day_Event_Folder_Merging(dir, readOnly));
-	else if (name == CLT_Get_Fva_Dir_Type::Name())					r.reset(new CLT_Get_Fva_Dir_Type(dir, readOnly));
-	else if (name == CLT_Auto_Checks_3::Name())						r.reset(new CLT_Auto_Checks_3(dir, readOnly));
+	if ( name == CLT_Dir_Struct_Create_By_File::Name())		r.reset(new CLT_Dir_Struct_Create_By_File(dir, readOnly, custom));
+	else if (name == CLTCreateDirStructByDeviceName::Name())r.reset(new CLTCreateDirStructByDeviceName(dir, readOnly));
+	else if (name == CLTRenameFiles::Name())				r.reset(new CLTRenameFiles(dir, readOnly, custom));	
+	else if (name == CLT_Device_Name_Check::Name())			r.reset(new CLT_Device_Name_Check(dir,readOnly));
+	else if (name == CLT_Files_Rename_By_Dir::Name())		r.reset(new CLT_Files_Rename_By_Dir(dir,readOnly));
+	else if (name == CLT_Video_Rename_By_Sequence::Name())	r.reset(new CLT_Video_Rename_By_Sequence(dir,readOnly));
+	else if (name == CLT_Dir_Name_Change::Name())			r.reset(new CLT_Dir_Name_Change(dir,readOnly));
+	else if (name == CLT_Xml_Convert::Name())				r.reset(new CLT_Xml_Convert(dir,readOnly));
+	else if (name == CLT_Update_File_Description::Name())	r.reset(new CLT_Update_File_Description(dir,readOnly));
+	else if (name == CLT_Auto_Checks_2::Name())				r.reset(new CLT_Auto_Checks_2(dir,readOnly));
+	else if (name == CLT_Alone_Files_Move::Name())			r.reset(new CLT_Alone_Files_Move(dir, readOnly));
+	else if (name == CLT_Convert_Dir_Desc::Name())			r.reset(new CLT_Convert_Dir_Desc(dir, readOnly));
+	else if (name == CLT_Convert_Amr::Name())				r.reset(new CLT_Convert_Amr(dir, readOnly));
+	else if (name == CLT_Auto_Checks_1::Name())				r.reset(new CLT_Auto_Checks_1(dir, readOnly));
+	else if (name == CLT_Folder_Merging::Name())			r.reset(new CLT_Folder_Merging (dir, readOnly, custom)); 
+	else if (name == CLT_Set_File_Atts::Name())				r.reset(new CLT_Set_File_Atts(dir, readOnly));	
+	else if (name == CLT_Print_FS_Structure::Name())		r.reset(new CLT_Print_FS_Structure(dir, readOnly));
+	else if (name == CLT_Rename_File_By_Desc::Name())		r.reset(new CLT_Rename_File_By_Desc(dir, readOnly));
+	else if (name == CLT_Fs_To_SQL::Name())					r.reset(new CLT_Fs_To_SQL(dir, readOnly));
+	else if (name == CLT_Fva_File_To_SQL::Name())			r.reset(new CLT_Fva_File_To_SQL(dir, readOnly));
+	else if (name == CLT_Fva_Folder_To_SQL::Name())			r.reset(new CLT_Fva_Folder_To_SQL(dir, readOnly));
+	else if (name == CLT_Create_FVA_SQL::Name())			r.reset(new CLT_Create_FVA_SQL(dir, readOnly, custom));
+	else if (name == CLT_1_Event_Folder_Merging::Name())	r.reset(new CLT_1_Event_Folder_Merging(dir, readOnly, custom));
+	else if (name == CLT_Fva_Folder_2_CSV::Name() )			r.reset(new CLT_Fva_Folder_2_CSV(dir, readOnly, custom));
+	else if (name == CLT_Fva_Files_2_CSV::Name() )			r.reset(new CLT_Fva_Files_2_CSV(dir, readOnly, custom));
+	else if (name == CLT_1_Day_Event_Folder_Merging::Name())r.reset(new CLT_1_Day_Event_Folder_Merging(dir, readOnly));
+	else if (name == CLT_Get_Fva_Dir_Type::Name())			r.reset(new CLT_Get_Fva_Dir_Type(dir, readOnly));
+	else if (name == CLT_Auto_Checks_3::Name())				r.reset(new CLT_Auto_Checks_3(dir, readOnly));
 
 	return r;
 }
