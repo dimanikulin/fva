@@ -190,7 +190,7 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
 	QString fixedDevName = deviceName.toUpper().trimmed();
 	for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it)
 	{
-		QString name = it.value().linkedName; 
+		QString name = it.value().linkedName.toUpper(); 
 		if (name == fixedDevName)
 			result[it.key()] = it.value(); 
 	}
