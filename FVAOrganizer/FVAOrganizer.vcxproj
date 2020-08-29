@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CLTAutoChecks3.cpp" />
     <ClCompile Include="CLTCreateDirStructByDevNames.cpp" />
     <ClCompile Include="CLTRenameFiles.cpp" />
     <ClCompile Include="CmdLineBaseTask.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CLTAutoChecks3.h" />
     <ClInclude Include="CLTCreateDirStructByDevNames.h" />
     <ClInclude Include="CLTRenameFiles.h" />
     <ClInclude Include="CmdLineBaseTask.h" />

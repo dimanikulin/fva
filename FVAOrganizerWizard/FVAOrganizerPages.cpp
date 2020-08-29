@@ -468,8 +468,8 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	QFile::remove(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv.bak");
 
 	// last but not least check
-	exitCode = fvaRunCLT("CLT_Auto_Checks_3", mergeDir);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Auto_Checks_3")
+	exitCode = fvaRunCLT("CLTAutoChecks3", mergeDir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTAutoChecks3")
 	return true;
 }
 FVAOrganizerDonePage::FVAOrganizerDonePage(void)
