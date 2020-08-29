@@ -385,16 +385,17 @@ void FVAOrganizerOutputDirPage::OnDirButtonClicked()
 
 bool FVAOrganizerOutputDirPage::isComplete() const
 {
-	// TODO to fix as soon as this page is redesigned to be - one-day-event, many-day-one-event, many-event-many-days  
-	return true;
-
-	QString dir = outputDirLineEdit->text();
-
-	// make button be disabled if dir.isEmpty()
-	if (dir.isEmpty())
+	if (oneEventSeveralDays->isChecked())
 	{
-		return false;
+		QString dir = outputDirLineEdit->text();
+
+		// make button be disabled if dir.isEmpty()
+		if (dir.isEmpty())
+		{
+			return false;
+		}
 	}
+	return true;
 }
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {
