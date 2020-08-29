@@ -81,6 +81,15 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 
 	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
 
+	FVA_EXIT_CODE exitCode = fvaRunCLT("CLT_Device_Name_Check", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	if (FVA_ERROR_NON_UNIQUE_DEVICE_NAME == exitCode)
+	{
+		exitCode = fvaRunCLT("CLTCreateDirStructByDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
+		FVA_MESSAGE_BOX("Found several devices in a folder, please select other dir!");
+		return false;
+	}
+	else IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Device_Name_Check")
+
 	QDir _dir(dir); 
 
 	DEVICE_MAP fullDeviceMap;
@@ -272,6 +281,7 @@ bool FVAOrganizerDevicePage::isComplete() const
 	{
 		return false;
 	}
+	return true;
 }
 
 bool FVAOrganizerDevicePage::validatePage()
@@ -292,13 +302,6 @@ bool FVAOrganizerDevicePage::validatePage()
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Video_Rename_By_Sequence")
 	exitCode = fvaRunCLT("CLT_Convert_Amr", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Convert_Amr")
-	exitCode = fvaRunCLT("CLT_Device_Name_Check", ((FVAOrganizerWizard*)wizard())->inputFolder());
-	if (FVA_ERROR_NON_UNIQUE_DEVICE_NAME == exitCode)
-	{
-		exitCode = fvaRunCLT("CLTCreateDirStructByDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
-		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTCreateDirStructByDeviceName")
-	}
-	else IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Device_Name_Check")
 	exitCode = fvaRunCLT("CLT_Auto_Checks_1", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Auto_Checks_1")
 	// in read only mode CLTRenameFiles just checks if renaming is possible 
