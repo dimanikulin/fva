@@ -54,6 +54,9 @@
     <ClCompile Include="CLTAutoChecks3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTFixDuplicatedFileNames.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTAutoChecks3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTFixDuplicatedFileNames.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
