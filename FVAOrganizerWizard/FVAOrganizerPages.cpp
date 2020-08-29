@@ -328,9 +328,9 @@ bool FVAOrganizerDevicePage::validatePage()
 FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 {
 	oneEventOneDay				= new QRadioButton("Один день-одно событие");
-	severalEventsOneDay			= new QRadioButton("Один день-много событий");;
-	severalEventsSeveralDays	= new QRadioButton("Много дней-много событий");;
-	oneEventSeveralDays			= new QRadioButton("Много дней-одно событие");;
+	severalEventsOneDay			= new QRadioButton("Один день-много событий");
+	severalEventsSeveralDays	= new QRadioButton("Много дней-много событий");
+	oneEventSeveralDays			= new QRadioButton("Много дней-одно событие");
     	
 	QVBoxLayout * layout = new QVBoxLayout;
 
