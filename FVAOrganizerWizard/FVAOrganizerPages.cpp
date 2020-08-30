@@ -311,12 +311,12 @@ bool FVAOrganizerDevicePage::validatePage()
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTRenameFiles")
 	exitCode = fvaRunCLT("CLT_Fva_Files_2_CSV", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Fva_Files_2_CSV")
-	exitCode = fvaRunCLT("CLT_Fva_Folder_2_CSV", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Fva_Folder_2_CSV")
 	exitCode = fvaRunCLT("CLT_Dir_Struct_Create_By_File", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Dir_Struct_Create_By_File")
 	exitCode = fvaRunCLT("CLT_Alone_Files_Move", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Alone_Files_Move")
+	exitCode = fvaRunCLT("CLT_Fva_Folder_2_CSV", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Fva_Folder_2_CSV")
 	exitCode = fvaRunCLT("CLT_Get_Fva_Dir_Type", ((FVAOrganizerWizard*)wizard())->inputFolder(),false);
 	((FVAOrganizerWizard*)wizard())->inputDirType(exitCode);
 	exitCode = fvaRunCLT("CLTAutoChecks2", ((FVAOrganizerWizard*)wizard())->inputFolder());
@@ -399,8 +399,6 @@ bool FVAOrganizerOutputDirPage::isComplete() const
 }
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {
-	QString dir = outputDirLineEdit->text();
-
 	FVA_EXIT_CODE exitCode = fvaRunCLT("CLT_Set_File_Atts", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Set_File_Atts")
 
@@ -417,7 +415,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	}
 	else if (oneEventSeveralDays->isChecked())
 	{
-		exitCode = fvaRunCLT("CLT_1_Event_Folder_Merging", ((FVAOrganizerWizard*)wizard())->inputFolder(),true,false,dir);
+		exitCode = fvaRunCLT("CLT_1_Event_Folder_Merging", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, outputDirLineEdit->text());
 
 		if (FVA_ERROR_DEST_ALREADY_EXISTS == exitCode)
 		{
@@ -481,8 +479,16 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	QFile::remove(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv.bak");
 
 	// last but not least check
-	exitCode = fvaRunCLT("CLTAutoChecks3", mergeDir);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTAutoChecks3")
+	if (oneEventSeveralDays->isChecked())
+	{
+		exitCode = fvaRunCLT("CLTAutoChecks3", outputDirLineEdit->text());
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTAutoChecks3")
+	}
+	else
+	{
+		// TODO
+	}
+
 	return true;
 }
 FVAOrganizerDonePage::FVAOrganizerDonePage(void)
