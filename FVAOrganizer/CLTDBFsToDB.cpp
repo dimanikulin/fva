@@ -1,14 +1,13 @@
-#include "CmdLineDBTasks.h"
+#include "CLTDBFsToDB.h"
 #include "fvadefaultcfg.h"
-#include "FVADescriptionFile.h"
 
 
-CLT_Fs_To_SQL::~CLT_Fs_To_SQL()
+CLTDBFsToDB::~CLTDBFsToDB()
 {
 	SaveSQL(FVA_DEFAULT_ROOT_DIR + "11.fva.sql");
 	qDebug() << "totally inserted - " << m_SQLs.size() << ", totally skipped - " << m_skippedFiles;
 }
-FVA_EXIT_CODE CLT_Fs_To_SQL::execute()
+FVA_EXIT_CODE CLTDBFsToDB::execute()
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{

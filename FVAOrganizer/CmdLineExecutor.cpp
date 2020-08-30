@@ -1,7 +1,6 @@
 #include "CmdLineExecutor.h"
 #include "CmdLineTasks.h"
 #include "CmdLineMyTasks.h"
-#include "CmdLineDBTasks.h"
 #include "CmdLineOldTasks.h"
 
 #include "CLTRenameFiles.h"
@@ -10,12 +9,13 @@
 #include "CLTPrintFSStructure.h"
 #include "CLTCSVFvaFiles.h"
 
-#include "CLTAutoChecks3.h"
 #include "CLTAutoChecks2.h"
+#include "CLTAutoChecks3.h"
 
 #include "CLTDBCreateFVA.h"
 #include "CLTDBFvaFileToDB.h"
 #include "CLTDBFvaFolderToDB.h"
+#include "CLTDBFsToDB.h"
 
 #include <QtCore/qdebug>
 #include <QtCore/qdir>
@@ -86,7 +86,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLT_Set_File_Atts::Name())				r.reset(new CLT_Set_File_Atts(dir, readOnly));	
 	else if (name == CLTPrintFSStructure::Name())			r.reset(new CLTPrintFSStructure(dir, readOnly));
 	else if (name == CLT_Rename_File_By_Desc::Name())		r.reset(new CLT_Rename_File_By_Desc(dir, readOnly));
-	else if (name == CLT_Fs_To_SQL::Name())					r.reset(new CLT_Fs_To_SQL(dir, readOnly));
+	else if (name == CLTDBFsToDB::Name())					r.reset(new CLTDBFsToDB(dir, readOnly));
 	else if (name == CLTDBFvaFileToDB::Name())				r.reset(new CLTDBFvaFileToDB(dir, readOnly));
 	else if (name == CLTDBFvaFolderToDB::Name())			r.reset(new CLTDBFvaFolderToDB(dir, readOnly));
 	else if (name == CLTDBCreateFVA::Name())				r.reset(new CLTDBCreateFVA(dir, readOnly, custom));

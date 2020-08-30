@@ -169,7 +169,7 @@
     <ClCompile Include="CLTRenameFiles.cpp" />
     <ClCompile Include="CmdLineBaseTask.cpp" />
     <ClCompile Include="CLTCSVFvaFiles.cpp" />
-    <ClCompile Include="CmdLineDBTasks.cpp" />
+    <ClCompile Include="CLTDBFsToDB.cpp" />
     <ClCompile Include="CmdLineExecutor.cpp" />
     <ClCompile Include="CmdLineMyTasks.cpp" />
     <ClCompile Include="CmdLineOldTasks.cpp" />
@@ -189,7 +189,7 @@
     <ClInclude Include="CLTRenameFiles.h" />
     <ClInclude Include="CmdLineBaseTask.h" />
     <ClInclude Include="CLTCSVFvaFiles.h" />
-    <ClInclude Include="CmdLineDBTasks.h" />
+    <ClInclude Include="CLTDBFsToDB.h" />
     <ClInclude Include="CmdLineExecutor.h" />
     <ClInclude Include="CmdLineMyTasks.h" />
     <ClInclude Include="CmdLineOldTasks.h" />
