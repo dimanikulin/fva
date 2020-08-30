@@ -27,9 +27,8 @@ FVA_EXIT_CODE CLT_Dir_Struct_Create_By_File::execute()
 
 		QString subFolderName		= info.baseName().mid(0,10).replace("-",".");
 		QString fullSubFolderpath	= m_folder + "/" + subFolderName;
-		fullSubFolderpath			= fullSubFolderpath.replace("-",".");
 			
-		if ( !m_dir.exists( subFolderName ) )
+		if (!m_dir.exists(subFolderName))
 		{
 			if ( !m_readOnly )
 				m_dir.mkdir( subFolderName );
