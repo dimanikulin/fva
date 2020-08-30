@@ -1,4 +1,5 @@
 #include "CmdLineCSVTasks.h"
+#include "fvacommoncsv.h"
 #include "fvadefaultcfg.h"
 
 FVA_EXIT_CODE CLT_Fva_Files_2_CSV::execute()
