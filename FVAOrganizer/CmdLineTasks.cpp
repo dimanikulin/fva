@@ -538,7 +538,7 @@ FVA_EXIT_CODE CLT_1_Day_Event_Folder_Merging::execute()
 		if (!info.isDir() && !m_dir.rename(info.absoluteFilePath(), dstDirPath + "/" + info.fileName()))
 		{
 			LOG_QCRIT << "could not move:" << info.absoluteFilePath() << " into " << dstDirPath + "/" + info.fileName();
-			return FVA_ERROR_CANT_MOVE_DIR;
+			return FVA_ERROR_CANT_RENAME_FILE;
 		}
 		else if (!info.isDir())
 			LOG_QDEB << "moved:" << info.absoluteFilePath() << " into " << dstDirPath + "/" + info.fileName();

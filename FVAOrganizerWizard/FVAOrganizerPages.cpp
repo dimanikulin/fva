@@ -407,11 +407,24 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	if (oneEventOneDay->isChecked())
 	{
 		exitCode = fvaRunCLT("CLT_1_Day_Event_Folder_Merging", ((FVAOrganizerWizard*)wizard())->inputFolder());
+		if (FVA_ERROR_DEST_ALREADY_EXISTS == exitCode)
+		{
+			exitCode = fvaRunCLT("CLTFixDuplicatedFileNames", ((FVAOrganizerWizard*)wizard())->inputFolder());
+			IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTFixDuplicatedFileNames")
+			exitCode = fvaRunCLT("CLT_1_Day_Event_Folder_Merging", ((FVAOrganizerWizard*)wizard())->inputFolder());
+		}
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_1_Day_Event_Folder_Merging")
 	}
 	else if (oneEventSeveralDays->isChecked())
 	{
 		exitCode = fvaRunCLT("CLT_1_Event_Folder_Merging", ((FVAOrganizerWizard*)wizard())->inputFolder(),true,false,dir);
+
+		if (FVA_ERROR_DEST_ALREADY_EXISTS == exitCode)
+		{
+			exitCode = fvaRunCLT("CLTFixDuplicatedFileNames", ((FVAOrganizerWizard*)wizard())->inputFolder());
+			IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTFixDuplicatedFileNames")
+			exitCode = fvaRunCLT("CLT_1_Day_Event_Folder_Merging", ((FVAOrganizerWizard*)wizard())->inputFolder());
+		}
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_1_Event_Folder_Merging")
 	}
 	else
