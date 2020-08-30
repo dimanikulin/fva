@@ -6,6 +6,7 @@
 #include <QtWidgets/QMessageBox>
 #include <QtCore/QProcess>
 #include <QtCore/QCoreApplication>
+#include <QtCore/QFileInfo>
 
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
@@ -441,23 +442,15 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		+ FVA_DEFAULT_ROOT_DIR;
 	pyCmdList.append(pyScriptPathMerge2 + "#data#/fvaFile.csv " + FVA_DEFAULT_ROOT_DIR + "#data#/fvaFileN.csv ");
 
-	// change FVA_TARGET_FOLDER_NAME tag to actual folder name for sql files
-	QString pyScriptPath = "python " 
-							+ QCoreApplication::applicationDirPath() 
-							+ "/scripts/updateTargetDirName.py " 
-							+ FVA_DEFAULT_ROOT_DIR;
-	QString mergeDir = outputDirLineEdit->text();
-	mergeDir = mergeDir.replace("\\","/");  // replace slaches on backslashes
-	mergeDir = mergeDir.remove(FVA_DEFAULT_ROOT_DIR); // remove a prefix as root dir
-	pyCmdList.append(pyScriptPath + "#data#/fvaFolderN.csv "	+ "/" + mergeDir);
-
-	// merge 2 csv into one: common one and just generated - for folder CSVs
-	QString pyScriptPathMerge = "python " 
-							+ QCoreApplication::applicationDirPath() 
-							+ "/scripts/merge2csv.py " 
-							+ FVA_DEFAULT_ROOT_DIR;
-	pyCmdList.append(pyScriptPathMerge + "#data#/fvaFolder.csv " + FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv ");
-
+	if (QFileInfo(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv").exists())
+	{
+		// merge 2 csv into one: common one and just generated - for folder CSVs
+		QString pyScriptPathMerge = "python "
+			+ QCoreApplication::applicationDirPath()
+			+ "/scripts/merge2csv.py "
+			+ FVA_DEFAULT_ROOT_DIR;
+		pyCmdList.append(pyScriptPathMerge + "#data#/fvaFolder.csv " + FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv ");
+	}
 	// lets run python cmd list 
 	for (auto it = pyCmdList.begin(); it != pyCmdList.end(); ++it)
 	{
@@ -476,8 +469,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 
 	// clean up after processing
 	QFile::remove(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFileN.csv");
-	QFile::remove(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv");
-	QFile::remove(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv.bak");
+	
 
 	// last but not least check
 	if (oneEventSeveralDays->isChecked())
@@ -487,8 +479,11 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	}
 	else
 	{
-		// TODO
+		// TODO - check fvaFolderN and call CLTAutoChecks3 for all that folders
 	}
+
+	// clean up after processing
+	QFile::remove(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv");
 
 	return true;
 }
