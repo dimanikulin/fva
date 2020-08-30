@@ -3,35 +3,13 @@
 
 #include "CmdLineBaseTask.h"
 
-class CLT_Base_SQL : public CmdLineBaseTask
-{
-public:
-	CLT_Base_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
-	:CmdLineBaseTask( dir_,readOnly_,custom_)
-	{	}
-	virtual ~CLT_Base_SQL()
-	{	}
-	virtual bool supportReadOnly() {return true;}
-	static QString Name(){return "CLT_Base_SQL";}
+#include "CLTDBBase.h"
 
-protected:
-
-	/*!
-	 * SQL inserts
-	 */
-	QVector<QString>		m_SQLs;
-
-	/*!
-	 * common work with output
-	 */
-	void SaveSQL( const QString& fileToSaveIn );
-};
-
-class CLT_Fs_To_SQL : public CLT_Base_SQL
+class CLT_Fs_To_SQL : public CLTDBBase
 {
 public:
 	CLT_Fs_To_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
-	: CLT_Base_SQL( dir_,readOnly_,custom_), m_skippedFiles(0)
+		: CLTDBBase(dir_, readOnly_, custom_), m_skippedFiles(0)
 	{
 		qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()
 						<<"["<< Name().toUpper()
@@ -51,11 +29,11 @@ private: // data
 	int						m_skippedFiles;
 };
 
-class CLT_Fva_Folder_To_SQL : public CLT_Base_SQL
+class CLT_Fva_Folder_To_SQL : public CLTDBBase
 {
 public:
 	CLT_Fva_Folder_To_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
-	:CLT_Base_SQL( dir_,readOnly_,custom_)
+		:CLTDBBase(dir_, readOnly_, custom_)
 	{
 		qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()
 					<<"["<< Name().toUpper()
@@ -75,11 +53,11 @@ private: // data
 	QVector<QString>		m_movedFolders;
 };
 
-class CLT_Fva_File_To_SQL : public CLT_Base_SQL
+class CLT_Fva_File_To_SQL : public CLTDBBase
 {
 	public:
 		CLT_Fva_File_To_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
-		:CLT_Base_SQL( dir_,readOnly_,custom_)
+			:CLTDBBase(dir_, readOnly_, custom_)
 		{
 			qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()
 						<<"["<< Name().toUpper()
@@ -103,11 +81,11 @@ class CLT_Fva_File_To_SQL : public CLT_Base_SQL
 /*!
  * \brief it creates the fva insert records to add into FVA DB for each file in this folder
  */
-class CLT_Create_FVA_SQL : public CLT_Base_SQL
+class CLT_Create_FVA_SQL : public CLTDBBase
 {
 	public:
 		CLT_Create_FVA_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
-		:CLT_Base_SQL( dir_,readOnly_,custom_)
+			:CLTDBBase(dir_, readOnly_, custom_)
 		{
 			qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()
 						<<"["<< Name().toUpper()
