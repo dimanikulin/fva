@@ -368,7 +368,7 @@ FVA_EXIT_CODE CLT_1_Day_Event_Folder_Merging::execute()
 					return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;
 				QTextStream writeStream(&fileNew);
 				//ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
-				writeStream << "\n" << QString::number(++ID) << "," << dir << ",0,,,,,,,,";
+				writeStream << "\n" << QString::number(++ID) << ",/" << dir << ",0,,,,,,,,";
 				writeStream.flush();
 				fileNew.close();
 
