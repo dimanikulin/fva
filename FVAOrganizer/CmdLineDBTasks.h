@@ -78,32 +78,5 @@ class CLT_Fva_File_To_SQL : public CLTDBBase
 
 };
 
-/*!
- * \brief it creates the fva insert records to add into FVA DB for each file in this folder
- */
-class CLT_Create_FVA_SQL : public CLTDBBase
-{
-	public:
-		CLT_Create_FVA_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
-			:CLTDBBase(dir_, readOnly_, custom_)
-		{
-			qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()
-						<<"["<< Name().toUpper()
-						<<"]cmd created,dir:" <<dir_
-						<<",RO=" << (readOnly_?"yes":"no")
-						<<",SRO=" << (supportReadOnly()?"yes":"no"); 
-		}
-		virtual ~CLT_Create_FVA_SQL();
-		virtual FVA_EXIT_CODE execute();
-		static QString Name(){return "CLT_Create_FVA_SQL";}
-	
-	private: // data
-
-	/*!
-	 * moved file descriptions
-	 */
-	QVector<QString>		m_movedFiles;
-
-};
 
 #endif // _CMD_LINE_DB_TASKS_H_
