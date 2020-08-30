@@ -8,6 +8,7 @@
 #include "CLTRenameFiles.h"
 #include "CLTCreateDirStructByDevNames.h"
 #include "CLTFixDuplicatedFileNames.h"
+#include "CLTPrintFSStructure.h"
 
 #include "CLTAutoChecks3.h"
 #include "CLTAutoChecks2.h"
@@ -79,7 +80,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLT_Auto_Checks_1::Name())				r.reset(new CLT_Auto_Checks_1(dir, readOnly));
 	else if (name == CLT_Folder_Merging::Name())			r.reset(new CLT_Folder_Merging (dir, readOnly, custom)); 
 	else if (name == CLT_Set_File_Atts::Name())				r.reset(new CLT_Set_File_Atts(dir, readOnly));	
-	else if (name == CLT_Print_FS_Structure::Name())		r.reset(new CLT_Print_FS_Structure(dir, readOnly));
+	else if (name == CLTPrintFSStructure::Name())			r.reset(new CLTPrintFSStructure(dir, readOnly));
 	else if (name == CLT_Rename_File_By_Desc::Name())		r.reset(new CLT_Rename_File_By_Desc(dir, readOnly));
 	else if (name == CLT_Fs_To_SQL::Name())					r.reset(new CLT_Fs_To_SQL(dir, readOnly));
 	else if (name == CLT_Fva_File_To_SQL::Name())			r.reset(new CLT_Fva_File_To_SQL(dir, readOnly));

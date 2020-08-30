@@ -4,7 +4,6 @@
 #include "fvacommonexif.h"
 
 #include <QtCore/QCoreApplication>
-#include <QtCore/QCryptographicHash>
 
 #include <windows.h>
 #include <winbase.h>
@@ -57,53 +56,6 @@ FVA_EXIT_CODE CLT_Dir_Name_Change::execute()
 			continue;			
 	}
 
-	return FVA_NO_ERROR;
-}
-CLT_Print_FS_Structure::CLT_Print_FS_Structure(const QString& dir_,bool readOnly_,const QString& custom_)
-	:CmdLineBaseTask( dir_,readOnly_,custom_)
-{
-	qDebug()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_;
-	m_file.setFileName(FVA_DEFAULT_ROOT_DIR + "fsoutput.txt");
-	m_file.open( QIODevice::WriteOnly );
-}
-
-CLT_Print_FS_Structure::~CLT_Print_FS_Structure()
-{
-	m_file.close();
-}
-
-FVA_EXIT_CODE CLT_Print_FS_Structure::execute()
-{
-	char		buffer [ 64* 1024 ];
-	qint64		size = 0;
-	QCryptographicHash hash( QCryptographicHash::Sha1 );
-	QString		result;
-
-	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
-	{
-		if ( info.isDir() )
-			continue;
-
-		QFile file( info.absoluteFilePath() );
-
-		if ( !file.open( QIODevice::ReadOnly ) ) 
-		{
-			LOG_QCRIT << "failed to open file:" << info.absoluteFilePath();
-			continue;
-		}
-		while (!file.atEnd())
-		{
-			size	= file.read(buffer, 64 * 1024);
-			if (size)
-				hash.addData( buffer, size);
-		}
-		QFileInfo f(info);
-		result =	info.filePath()										+ "," 
-					+	hash.result().toBase64()						+ ","
-					+	f.lastModified().toString("yyyy-MM-dd-hh-mm-ss")	+ ","
-					+	QString::number(info.size())					+ "\n";
-		m_file.write(result.toLocal8Bit());
-	}
 	return FVA_NO_ERROR;
 }
 FVA_EXIT_CODE CLT_Dir_Struct_Create_By_File_Old::execute()

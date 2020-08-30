@@ -11,23 +11,6 @@ _CLASS_TASK_DECLARATION(CLT_Files_Rename_By_Dir,false)
 _CLASS_TASK_DECLARATION(CLT_Dir_Name_Change,false)
 
 /*!
- * \brief it prints file system structure with adding info to compare with fs structure on remote PC 
- */
-class CLT_Print_FS_Structure : public CmdLineBaseTask
-{
-public:
-	CLT_Print_FS_Structure(const QString& dir_,bool readOnly_=false,const QString& custom_="");
-	virtual ~CLT_Print_FS_Structure();
-	virtual FVA_EXIT_CODE execute();
-	static QString Name(){return "CLT_Print_FS_Structure";}
-	virtual bool supportReadOnly () {return false;}
-
-private: // data
-
-		QFile m_file;
-};
-
-/*!
  * \brief it creates folder structure by days folders, using file names in input folder - old impl
  */
 _CLASS_TASK_DECLARATION(CLT_Dir_Struct_Create_By_File_Old,true)

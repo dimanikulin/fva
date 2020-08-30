@@ -161,6 +161,7 @@
     <ClCompile Include="CLTAutoChecks3.cpp" />
     <ClCompile Include="CLTCreateDirStructByDevNames.cpp" />
     <ClCompile Include="CLTFixDuplicatedFileNames.cpp" />
+    <ClCompile Include="CLTPrintFSStructure.cpp" />
     <ClCompile Include="CLTRenameFiles.cpp" />
     <ClCompile Include="CmdLineBaseTask.cpp" />
     <ClCompile Include="CmdLineCSVTasks.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="CLTAutoChecks3.h" />
     <ClInclude Include="CLTCreateDirStructByDevNames.h" />
     <ClInclude Include="CLTFixDuplicatedFileNames.h" />
+    <ClInclude Include="CLTPrintFSStructure.h" />
     <ClInclude Include="CLTRenameFiles.h" />
     <ClInclude Include="CmdLineBaseTask.h" />
     <ClInclude Include="CmdLineCSVTasks.h" />
