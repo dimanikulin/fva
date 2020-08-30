@@ -1,47 +1,5 @@
 #include "CmdLineCSVTasks.h"
-#include "fvacommoncsv.h"
 #include "fvadefaultcfg.h"
-
-FVA_EXIT_CODE CLT_Fva_Folder_2_CSV::execute()
-{
-	int ID = FVA_UNDEFINED_ID;
-	FVA_EXIT_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolder.id", ID);
-	RET_RES_IF_RES_IS_ERROR
-
-	QVector<QString>		records;
-	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
-	{
-		QString q = info.absoluteFilePath();
-		// just skip internal folder
-		if ((info.isDir() && info.fileName()[0] == '#' && info.fileName()[info.fileName().size() - 1] == '#')
-			||
-			info.isFile())
-			continue;
-		QString dir = info.absoluteFilePath().replace("\\", "/");  // replace slaches on backslashes
-		dir = dir.remove(FVA_DEFAULT_ROOT_DIR); // remove a prefix as root dir
-		QString csvRecord = QString::number(++ID) + "," // ID
-			+ dir + "," // Name	
-			+ m_custom						// DevId
-			+ ",,,,,,,,";	//Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
-		records.append(csvRecord);
-	}
-	if (0 == records.size())
-		return FVA_NO_ERROR;
-	
-	QFile fileNew(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv");
-	if (!fileNew.open(QIODevice::WriteOnly | QIODevice::Text))
-		return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;
-	QTextStream writeStream(&fileNew);
-	for (auto it = records.begin(); it != records.end(); ++it)
-		if (records.last() == *it)
-			writeStream << *it;
-		else
-			writeStream << *it << "\n";
-
-	writeStream.flush();	
-	fileNew.close();	
-	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFolder.id", ID);
-}
 
 FVA_EXIT_CODE CLT_Fva_Files_2_CSV::execute()
 {	
