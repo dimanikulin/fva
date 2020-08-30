@@ -13,7 +13,7 @@ public:
 	}
 	virtual ~CLTAutoChecks2();
 	virtual FVA_EXIT_CODE execute();
-	static QString Name(){return "CLTAuto_Checks2";}
+	static QString Name(){return "CLTAutoChecks2";}
 	virtual bool supportReadOnly() {return true;}
 
 private: // data
