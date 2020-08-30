@@ -50,7 +50,7 @@ int main( int argc, char *argv[] )
 		"argument [4] - logLevel \n" \
 		"argument [5] - readonly \n" \
 		"argument [6] - custom \n\n" \
-		"example: CLT_Auto_Checks_2 \"C:/FVA/2009/2009.09.05\" recursive=yes logvel=4 readonly=no custom=someValue");
+		"example: CLTAutoChecks2 \"C:/FVA/2009/2009.09.05\" recursive=yes logvel=4 readonly=no custom=someValue");
 		msgBox.exec();
 
 		return FVA_ERROR_NOT_ENOUGH_ARG;

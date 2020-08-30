@@ -319,8 +319,8 @@ bool FVAOrganizerDevicePage::validatePage()
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Alone_Files_Move")
 	exitCode = fvaRunCLT("CLT_Get_Fva_Dir_Type", ((FVAOrganizerWizard*)wizard())->inputFolder(),false);
 	((FVAOrganizerWizard*)wizard())->inputDirType(exitCode);
-	exitCode = fvaRunCLT("CLT_Auto_Checks_2", ((FVAOrganizerWizard*)wizard())->inputFolder());
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Auto_Checks_2")
+	exitCode = fvaRunCLT("CLTAutoChecks2", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTAutoChecks2")
 
 	return true;
 }
