@@ -355,7 +355,27 @@ FVA_EXIT_CODE CLT_1_Day_Event_Folder_Merging::execute()
 			else
 			{
 				LOG_QDEB << "created dest folder:" << dstDirPath;
+				
+				int ID = FVA_UNDEFINED_ID;
+				FVA_EXIT_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolder.id", ID);
+				RET_RES_IF_RES_IS_ERROR
 
+				QString dir = dstDirPath.replace("\\", "/");  // replace slaches on backslashes
+				dir = dir.remove(FVA_DEFAULT_ROOT_DIR); // remove a prefix as root dir
+
+				QFile fileNew(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv");
+				if (!fileNew.open(QIODevice::WriteOnly | QIODevice::Text))
+					return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;
+				QTextStream writeStream(&fileNew);
+				//ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
+				writeStream << "\n" << QString::number(++ID) << "," << dir << ",0,,,,,,,,";
+				writeStream.flush();
+				fileNew.close();
+
+				res = fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolder.id", ID);
+				RET_RES_IF_RES_IS_ERROR
+
+				LOG_QDEB << "created fvaFolderN.csv for folder:" << dir;
 			}
 		}
 	}
