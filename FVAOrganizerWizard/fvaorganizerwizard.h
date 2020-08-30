@@ -30,6 +30,9 @@ class FVAOrganizerWizard : public QWizard
 		void inputDirType(FVA_EXIT_CODE	inputDirType_) { m_inputDirType = inputDirType_; }
 		FVA_EXIT_CODE inputDirType() { return m_inputDirType; }
 
+		void matchedDeviceID(int matchedDeviceID_) { m_matchedDeviceID = matchedDeviceID_; }
+		int matchedDeviceID() { return m_matchedDeviceID; }
+
 	private:
 
 		Ui::FVAOrganizerWizardClass ui;
@@ -39,6 +42,7 @@ class FVAOrganizerWizard : public QWizard
 		DEVICE_MAP		m_fullDeviceMap;
 		DEVICE_MAP		m_matchedDeviceMap;
 		FVA_EXIT_CODE	m_inputDirType; // dir type is returned as exit code 
+		int				m_matchedDeviceID;
 };
 
 #endif // FVAORGANIZERWIZARD_H
