@@ -72,6 +72,9 @@
     <ClCompile Include="CLTCSVFvaFiles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTDBFvaFolderToDB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -120,6 +123,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTCSVFvaFiles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTDBFvaFolderToDB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
