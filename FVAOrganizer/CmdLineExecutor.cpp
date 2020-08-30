@@ -10,6 +10,7 @@
 #include "CLTFixDuplicatedFileNames.h"
 
 #include "CLTAutoChecks3.h"
+#include "CLTAutoChecks2.h"
 
 #include <QtCore/qdebug>
 #include <QtCore/qdir>
@@ -71,7 +72,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLT_Dir_Name_Change::Name())			r.reset(new CLT_Dir_Name_Change(dir,readOnly));
 	else if (name == CLT_Xml_Convert::Name())				r.reset(new CLT_Xml_Convert(dir,readOnly));
 	else if (name == CLT_Update_File_Description::Name())	r.reset(new CLT_Update_File_Description(dir,readOnly));
-	else if (name == CLT_Auto_Checks_2::Name())				r.reset(new CLT_Auto_Checks_2(dir,readOnly));
+	else if (name == CLTAutoChecks2::Name())				r.reset(new CLTAutoChecks2(dir,readOnly));
 	else if (name == CLT_Alone_Files_Move::Name())			r.reset(new CLT_Alone_Files_Move(dir, readOnly));
 	else if (name == CLT_Convert_Dir_Desc::Name())			r.reset(new CLT_Convert_Dir_Desc(dir, readOnly));
 	else if (name == CLT_Convert_Amr::Name())				r.reset(new CLT_Convert_Amr(dir, readOnly));

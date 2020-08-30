@@ -1,6 +1,7 @@
 #include "CLTAutoChecks3.h"
 
 #include "fvadefaultcfg.h"
+#include "fvacommoncsv.h"
 
 CLTAutoChecks3::CLTAutoChecks3(const QString& dir_, bool readOnly_, const QString& custom_)
 :CmdLineBaseTask(dir_, readOnly_, custom_)

@@ -2,7 +2,9 @@
 #define _CLT_AUTO_CHECKS_3_H
 
 #include "CmdLineBaseTask.h"
-#include "fvacommoncsv.h"
+
+#include "data/fvafile.h"
+#include "data/fvadevice.h"
 
 class CLTAutoChecks3 : public CmdLineBaseTask
 {

@@ -1,6 +1,8 @@
 #ifndef FVADEFAULTCFG_H
 #define FVADEFAULTCFG_H
 
+#include <QtCore/Qstring>
+
 const QString	FVA_DB_NAME							= "digikam4.db";
 const QString	FVA_DEFAULT_ROOT_DIR				= "C:/FVA/";
 
