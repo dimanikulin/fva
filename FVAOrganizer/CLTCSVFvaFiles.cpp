@@ -1,8 +1,8 @@
-#include "CmdLineCSVTasks.h"
+#include "CLTCSVFvaFiles.h"
 #include "fvacommoncsv.h"
 #include "fvadefaultcfg.h"
 
-FVA_EXIT_CODE CLT_Fva_Files_2_CSV::execute()
+FVA_EXIT_CODE CLTCSVFvaFile::execute()
 {	
 	int ID = FVA_UNDEFINED_ID;
 	FVA_EXIT_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFile.id", ID);

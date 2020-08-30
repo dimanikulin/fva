@@ -167,7 +167,7 @@
     <ClCompile Include="CLTPrintFSStructure.cpp" />
     <ClCompile Include="CLTRenameFiles.cpp" />
     <ClCompile Include="CmdLineBaseTask.cpp" />
-    <ClCompile Include="CmdLineCSVTasks.cpp" />
+    <ClCompile Include="CLTCSVFvaFiles.cpp" />
     <ClCompile Include="CmdLineDBTasks.cpp" />
     <ClCompile Include="CmdLineExecutor.cpp" />
     <ClCompile Include="CmdLineMyTasks.cpp" />
@@ -186,7 +186,7 @@
     <ClInclude Include="CLTPrintFSStructure.h" />
     <ClInclude Include="CLTRenameFiles.h" />
     <ClInclude Include="CmdLineBaseTask.h" />
-    <ClInclude Include="CmdLineCSVTasks.h" />
+    <ClInclude Include="CLTCSVFvaFiles.h" />
     <ClInclude Include="CmdLineDBTasks.h" />
     <ClInclude Include="CmdLineExecutor.h" />
     <ClInclude Include="CmdLineMyTasks.h" />
