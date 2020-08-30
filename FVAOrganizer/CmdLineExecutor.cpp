@@ -14,6 +14,7 @@
 #include "CLTAutoChecks2.h"
 
 #include "CLTDBCreateFVA.h"
+#include "CLTDBFvaFileToDB.h"
 
 #include <QtCore/qdebug>
 #include <QtCore/qdir>
@@ -85,7 +86,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLTPrintFSStructure::Name())			r.reset(new CLTPrintFSStructure(dir, readOnly));
 	else if (name == CLT_Rename_File_By_Desc::Name())		r.reset(new CLT_Rename_File_By_Desc(dir, readOnly));
 	else if (name == CLT_Fs_To_SQL::Name())					r.reset(new CLT_Fs_To_SQL(dir, readOnly));
-	else if (name == CLT_Fva_File_To_SQL::Name())			r.reset(new CLT_Fva_File_To_SQL(dir, readOnly));
+	else if (name == CLTDBFvaFileToDB::Name())				r.reset(new CLTDBFvaFileToDB(dir, readOnly));
 	else if (name == CLT_Fva_Folder_To_SQL::Name())			r.reset(new CLT_Fva_Folder_To_SQL(dir, readOnly));
 	else if (name == CLTDBCreateFVA::Name())				r.reset(new CLTDBCreateFVA(dir, readOnly, custom));
 	else if (name == CLT_1_Event_Folder_Merging::Name())	r.reset(new CLT_1_Event_Folder_Merging(dir, readOnly, custom));

@@ -53,30 +53,4 @@ private: // data
 	QVector<QString>		m_movedFolders;
 };
 
-class CLT_Fva_File_To_SQL : public CLTDBBase
-{
-	public:
-		CLT_Fva_File_To_SQL(const QString& dir_,bool readOnly_=false,const QString& custom_="")
-			:CLTDBBase(dir_, readOnly_, custom_)
-		{
-			qWarning()	<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()
-						<<"["<< Name().toUpper()
-						<<"]cmd created,dir:" <<dir_
-						<<",RO=" << (readOnly_?"yes":"no")
-						<<",SRO=" << (supportReadOnly()?"yes":"no"); 
-		}
-		virtual ~CLT_Fva_File_To_SQL();
-		virtual FVA_EXIT_CODE execute();
-		static QString Name(){return "CLT_Fva_File_To_SQL";}
-	
-	private: // data
-
-	/*!
-	 * moved file descriptions
-	 */
-	QVector<QString>		m_movedFiles;
-
-};
-
-
 #endif // _CMD_LINE_DB_TASKS_H_
