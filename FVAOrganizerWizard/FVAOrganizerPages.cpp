@@ -293,8 +293,11 @@ bool FVAOrganizerDevicePage::validatePage()
 		if ( 1 <= index ) 
 		{
 			int ID = cbDevice->itemData( index ).toInt();
-			if ( ID >= 1)
-				deviceId = ID; 
+			if (ID >= 1)
+			{
+				deviceId = ID;
+				((FVAOrganizerWizard*)wizard())->matchedDeviceID(deviceId);
+			}
 		}
 	}
 
@@ -315,8 +318,6 @@ bool FVAOrganizerDevicePage::validatePage()
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Dir_Struct_Create_By_File")
 	exitCode = fvaRunCLT("CLT_Alone_Files_Move", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Alone_Files_Move")
-	exitCode = fvaRunCLT("CLT_Fva_Folder_2_CSV", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Fva_Folder_2_CSV")
 	exitCode = fvaRunCLT("CLT_Get_Fva_Dir_Type", ((FVAOrganizerWizard*)wizard())->inputFolder(),false);
 	((FVAOrganizerWizard*)wizard())->inputDirType(exitCode);
 	exitCode = fvaRunCLT("CLTAutoChecks2", ((FVAOrganizerWizard*)wizard())->inputFolder());
