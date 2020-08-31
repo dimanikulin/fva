@@ -8,7 +8,7 @@
  */
 _CLASS_TASK_DECLARATION(CLT_Dir_Struct_Create_By_File,true)
 
-_CLASS_TASK_DECLARATION(CLT_Device_Name_Check,false)
+
 
 
 

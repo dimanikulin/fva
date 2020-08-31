@@ -99,6 +99,9 @@
     <ClCompile Include="CLTRenameVideoBySequence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTCheckDeviceName.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -174,6 +177,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTRenameVideoBySequence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTCheckDeviceName.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

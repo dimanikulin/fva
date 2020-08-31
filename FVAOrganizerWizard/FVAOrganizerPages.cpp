@@ -75,6 +75,7 @@ bool FVAOrganizerInputDirPage::isComplete() const
 	{
 		return false;
 	}
+	return true;
 }
 bool	FVAOrganizerInputDirPage::validatePage ()
 {
@@ -82,14 +83,14 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 
 	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
 
-	FVA_EXIT_CODE exitCode = fvaRunCLT("CLT_Device_Name_Check", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTCheckDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	if (FVA_ERROR_NON_UNIQUE_DEVICE_NAME == exitCode)
 	{
 		exitCode = fvaRunCLT("CLTCreateDirStructByDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
 		FVA_MESSAGE_BOX("Found several devices in a folder, please select other dir!");
 		return false;
 	}
-	else IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Device_Name_Check")
+	else IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTCheckDeviceName")
 
 	QDir _dir(dir); 
 
