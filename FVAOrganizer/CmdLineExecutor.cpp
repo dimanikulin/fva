@@ -11,6 +11,7 @@
 #include "CLTGetFvaDirType.h"
 #include "CLTMerge1DayEventDir.h"
 #include "CLTMerge1EventDir.h"
+#include "CLTSetFileAtts.h"
 
 #include "CLTAutoChecks1.h"
 #include "CLTAutoChecks2.h"
@@ -87,7 +88,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLT_Convert_Amr::Name())				r.reset(new CLT_Convert_Amr(dir, readOnly));
 	else if (name == CLTAutoChecks1::Name())				r.reset(new CLTAutoChecks1(dir, readOnly));
 	else if (name == CLT_Folder_Merging::Name())			r.reset(new CLT_Folder_Merging (dir, readOnly, custom)); 
-	else if (name == CLT_Set_File_Atts::Name())				r.reset(new CLT_Set_File_Atts(dir, readOnly));	
+	else if (name == CLTSetFileAtts::Name())				r.reset(new CLTSetFileAtts(dir, readOnly));	
 	else if (name == CLTPrintFSStructure::Name())			r.reset(new CLTPrintFSStructure(dir, readOnly));
 	else if (name == CLT_Rename_File_By_Desc::Name())		r.reset(new CLT_Rename_File_By_Desc(dir, readOnly));
 	else if (name == CLTDBFsToDB::Name())					r.reset(new CLTDBFsToDB(dir, readOnly));

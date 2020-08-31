@@ -401,8 +401,8 @@ bool FVAOrganizerOutputDirPage::isComplete() const
 }
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {
-	FVA_EXIT_CODE exitCode = fvaRunCLT("CLT_Set_File_Atts", ((FVAOrganizerWizard*)wizard())->inputFolder());
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Set_File_Atts")
+	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTSetFileAtts", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTSetFileAtts")
 
 	if (oneEventOneDay->isChecked())
 	{
