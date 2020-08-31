@@ -166,6 +166,7 @@
     <ClCompile Include="CLTDBFvaFileToDB.cpp" />
     <ClCompile Include="CLTDBFvaFolderToDB.cpp" />
     <ClCompile Include="CLTFixDuplicatedFileNames.cpp" />
+    <ClCompile Include="CLTGetFvaDirType.cpp" />
     <ClCompile Include="CLTPrintFSStructure.cpp" />
     <ClCompile Include="CLTRenameFiles.cpp" />
     <ClCompile Include="CmdLineBaseTask.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="CLTDBFvaFileToDB.h" />
     <ClInclude Include="CLTDBFvaFolderToDB.h" />
     <ClInclude Include="CLTFixDuplicatedFileNames.h" />
+    <ClInclude Include="CLTGetFvaDirType.h" />
     <ClInclude Include="CLTPrintFSStructure.h" />
     <ClInclude Include="CLTRenameFiles.h" />
     <ClInclude Include="CmdLineBaseTask.h" />

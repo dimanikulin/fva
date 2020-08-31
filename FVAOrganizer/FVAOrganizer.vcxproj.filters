@@ -78,6 +78,9 @@
     <ClCompile Include="CLTAutoChecks1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTGetFvaDirType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -132,6 +135,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTAutoChecks1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTGetFvaDirType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

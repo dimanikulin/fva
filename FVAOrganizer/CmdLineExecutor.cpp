@@ -8,6 +8,7 @@
 #include "CLTFixDuplicatedFileNames.h"
 #include "CLTPrintFSStructure.h"
 #include "CLTCSVFvaFiles.h"
+#include "CLTGetFvaDirType.h"
 
 #include "CLTAutoChecks1.h"
 #include "CLTAutoChecks2.h"
@@ -94,7 +95,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLT_1_Event_Folder_Merging::Name())	r.reset(new CLT_1_Event_Folder_Merging(dir, readOnly, custom));
 	else if (name == CLTCSVFvaFile::Name())					r.reset(new CLTCSVFvaFile(dir, readOnly, custom));
 	else if (name == CLT_1_Day_Event_Folder_Merging::Name())r.reset(new CLT_1_Day_Event_Folder_Merging(dir, readOnly));
-	else if (name == CLT_Get_Fva_Dir_Type::Name())			r.reset(new CLT_Get_Fva_Dir_Type(dir, readOnly));
+	else if (name == CLTGetFvaDirType::Name())				r.reset(new CLTGetFvaDirType(dir, readOnly));
 	else if (name == CLTAutoChecks3::Name())				r.reset(new CLTAutoChecks3(dir, readOnly));
 	else if (name == CLTFixDuplicatedFileNames::Name())		r.reset(new CLTFixDuplicatedFileNames(dir, readOnly));
 
