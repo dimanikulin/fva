@@ -170,6 +170,7 @@
     <ClCompile Include="CLTGetFvaDirType.cpp" />
     <ClCompile Include="CLTMerge1DayEventDir.cpp" />
     <ClCompile Include="CLTMerge1EventDir.cpp" />
+    <ClCompile Include="CLTMoveAloneFiles.cpp" />
     <ClCompile Include="CLTPrintFSStructure.cpp" />
     <ClCompile Include="CLTRenameFiles.cpp" />
     <ClCompile Include="CLTSetFileAtts.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="CLTGetFvaDirType.h" />
     <ClInclude Include="CLTMerge1DayEventDir.h" />
     <ClInclude Include="CLTMerge1EventDir.h" />
+    <ClInclude Include="CLTMoveAloneFiles.h" />
     <ClInclude Include="CLTPrintFSStructure.h" />
     <ClInclude Include="CLTRenameFiles.h" />
     <ClInclude Include="CLTSetFileAtts.h" />

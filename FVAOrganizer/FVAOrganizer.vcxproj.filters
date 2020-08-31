@@ -93,6 +93,9 @@
     <ClCompile Include="CLTConvertAmr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTMoveAloneFiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -162,6 +165,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTConvertAmr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTMoveAloneFiles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

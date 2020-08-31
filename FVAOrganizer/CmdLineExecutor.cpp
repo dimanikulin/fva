@@ -13,6 +13,7 @@
 #include "CLTMerge1EventDir.h"
 #include "CLTSetFileAtts.h"
 #include "CLTConvertAmr.h"
+#include "CLTMoveAloneFiles.h"
 
 #include "CLTAutoChecks1.h"
 #include "CLTAutoChecks2.h"
@@ -84,7 +85,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLT_Xml_Convert::Name())				r.reset(new CLT_Xml_Convert(dir,readOnly));
 	else if (name == CLT_Update_File_Description::Name())	r.reset(new CLT_Update_File_Description(dir,readOnly));
 	else if (name == CLTAutoChecks2::Name())				r.reset(new CLTAutoChecks2(dir,readOnly));
-	else if (name == CLT_Alone_Files_Move::Name())			r.reset(new CLT_Alone_Files_Move(dir, readOnly));
+	else if (name == CLTMoveAloneFiles::Name())				r.reset(new CLTMoveAloneFiles(dir, readOnly));
 	else if (name == CLT_Convert_Dir_Desc::Name())			r.reset(new CLT_Convert_Dir_Desc(dir, readOnly));
 	else if (name == CLTConvertAmr::Name())					r.reset(new CLTConvertAmr(dir, readOnly));
 	else if (name == CLTAutoChecks1::Name())				r.reset(new CLTAutoChecks1(dir, readOnly));

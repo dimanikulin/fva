@@ -11,9 +11,5 @@ _CLASS_TASK_DECLARATION(CLT_Dir_Struct_Create_By_File,true)
 _CLASS_TASK_DECLARATION(CLT_Device_Name_Check,false)
 _CLASS_TASK_DECLARATION(CLT_Video_Rename_By_Sequence,false)
 
-/*!
- * \brief it moves alone (or twins) files to parent folder, with adding their description into parent folder DESCRIPTION_FILE_NAME
- */
-_CLASS_TASK_DECLARATION(CLT_Alone_Files_Move,true)
 
 #endif // _CMD_LINE_TASKS_H_
