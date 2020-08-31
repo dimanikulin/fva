@@ -3,8 +3,6 @@
 
 #include "CmdLineBaseTask.h"
 
-_CLASS_TASK_DECLARATION(CLT_Set_File_Atts, false)
-
 class CLTSetFileAtts : public CmdLineBaseTask
 {
 public:
@@ -16,6 +14,6 @@ public:
 	virtual ~CLTSetFileAtts() { LOG_QDEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute();
 	static QString Name(){ return "CLTSetFileAtts"; }
-	virtual bool supportReadOnly() { return true; }
+	virtual bool supportReadOnly() { return false; }
 };
 #endif // _CLT_SET_FILE_ATTRS_H_

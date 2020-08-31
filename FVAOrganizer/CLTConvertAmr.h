@@ -3,8 +3,6 @@
 
 #include "CmdLineBaseTask.h"
 
-_CLASS_TASK_DECLARATION(CLT_Convert_Amr, false)
-
 class CLTConvertAmr : public CmdLineBaseTask
 {
 public:
@@ -16,6 +14,6 @@ public:
 	virtual ~CLTConvertAmr() { LOG_QDEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute();
 	static QString Name(){ return "CLTConvertAmr"; }
-	virtual bool supportReadOnly() { return true; }
+	virtual bool supportReadOnly() { return false; }
 };
 #endif // _CLT_CONVERT_AMR_H_

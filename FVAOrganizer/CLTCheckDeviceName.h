@@ -3,8 +3,6 @@
 
 #include "CmdLineBaseTask.h"
 
-_CLASS_TASK_DECLARATION(CLT_Device_Name_Check, false)
-
 class CLTCheckDeviceName : public CmdLineBaseTask
 {
 public:
