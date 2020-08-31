@@ -406,14 +406,14 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 
 	if (oneEventOneDay->isChecked())
 	{
-		exitCode = fvaRunCLT("CLT_1_Day_Event_Folder_Merging", ((FVAOrganizerWizard*)wizard())->inputFolder());
+		exitCode = fvaRunCLT("CLTMerge1DayEventDir", ((FVAOrganizerWizard*)wizard())->inputFolder());
 		if (FVA_ERROR_DEST_ALREADY_EXISTS == exitCode)
 		{
 			exitCode = fvaRunCLT("CLTFixDuplicatedFileNames", ((FVAOrganizerWizard*)wizard())->inputFolder());
 			IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTFixDuplicatedFileNames")
-			exitCode = fvaRunCLT("CLT_1_Day_Event_Folder_Merging", ((FVAOrganizerWizard*)wizard())->inputFolder());
+			exitCode = fvaRunCLT("CLTMerge1DayEventDir", ((FVAOrganizerWizard*)wizard())->inputFolder());
 		}
-		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_1_Day_Event_Folder_Merging")
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTMerge1DayEventDir")
 	}
 	else if (oneEventSeveralDays->isChecked())
 	{

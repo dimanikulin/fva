@@ -13,7 +13,7 @@ _CLASS_TASK_DECLARATION(CLT_Video_Rename_By_Sequence,false)
 _CLASS_TASK_DECLARATION(CLT_Convert_Amr, false)
 _CLASS_TASK_DECLARATION(CLT_1_Event_Folder_Merging, false)
 _CLASS_TASK_DECLARATION(CLT_Set_File_Atts, false)
-_CLASS_TASK_DECLARATION(CLT_1_Day_Event_Folder_Merging, false)
+
 
 /*!
  * \brief it moves alone (or twins) files to parent folder, with adding their description into parent folder DESCRIPTION_FILE_NAME
