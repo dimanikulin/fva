@@ -306,8 +306,8 @@ bool FVAOrganizerDevicePage::validatePage()
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Video_Rename_By_Sequence")
 	exitCode = fvaRunCLT("CLT_Convert_Amr", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Convert_Amr")
-	exitCode = fvaRunCLT("CLT_Auto_Checks_1", ((FVAOrganizerWizard*)wizard())->inputFolder());
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Auto_Checks_1")
+	exitCode = fvaRunCLT("CLTAutoChecks1", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTAutoChecks1")
 	// in read only mode CLTRenameFiles just checks if renaming is possible 
 	exitCode = fvaRunCLT("CLTRenameFiles", ((FVAOrganizerWizard*)wizard())->inputFolder(),false,true);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTRenameFiles RO mode")

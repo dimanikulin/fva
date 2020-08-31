@@ -9,6 +9,7 @@
 #include "CLTPrintFSStructure.h"
 #include "CLTCSVFvaFiles.h"
 
+#include "CLTAutoChecks1.h"
 #include "CLTAutoChecks2.h"
 #include "CLTAutoChecks3.h"
 
@@ -81,7 +82,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLT_Alone_Files_Move::Name())			r.reset(new CLT_Alone_Files_Move(dir, readOnly));
 	else if (name == CLT_Convert_Dir_Desc::Name())			r.reset(new CLT_Convert_Dir_Desc(dir, readOnly));
 	else if (name == CLT_Convert_Amr::Name())				r.reset(new CLT_Convert_Amr(dir, readOnly));
-	else if (name == CLT_Auto_Checks_1::Name())				r.reset(new CLT_Auto_Checks_1(dir, readOnly));
+	else if (name == CLTAutoChecks1::Name())				r.reset(new CLTAutoChecks1(dir, readOnly));
 	else if (name == CLT_Folder_Merging::Name())			r.reset(new CLT_Folder_Merging (dir, readOnly, custom)); 
 	else if (name == CLT_Set_File_Atts::Name())				r.reset(new CLT_Set_File_Atts(dir, readOnly));	
 	else if (name == CLTPrintFSStructure::Name())			r.reset(new CLTPrintFSStructure(dir, readOnly));

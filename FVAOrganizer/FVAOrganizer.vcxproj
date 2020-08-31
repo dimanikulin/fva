@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CLTAutoChecks1.cpp" />
     <ClCompile Include="CLTAutoChecks2.cpp" />
     <ClCompile Include="CLTAutoChecks3.cpp" />
     <ClCompile Include="CLTCreateDirStructByDevNames.cpp" />
@@ -177,6 +178,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CLTAutoChecks1.h" />
     <ClInclude Include="CLTAutoChecks2.h" />
     <ClInclude Include="CLTAutoChecks3.h" />
     <ClInclude Include="CLTCreateDirStructByDevNames.h" />
