@@ -9,7 +9,7 @@
 _CLASS_TASK_DECLARATION(CLT_Dir_Struct_Create_By_File,true)
 
 _CLASS_TASK_DECLARATION(CLT_Device_Name_Check,false)
-_CLASS_TASK_DECLARATION(CLT_Video_Rename_By_Sequence,false)
+
 
 
 #endif // _CMD_LINE_TASKS_H_

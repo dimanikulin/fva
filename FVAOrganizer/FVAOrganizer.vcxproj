@@ -173,6 +173,7 @@
     <ClCompile Include="CLTMoveAloneFiles.cpp" />
     <ClCompile Include="CLTPrintFSStructure.cpp" />
     <ClCompile Include="CLTRenameFiles.cpp" />
+    <ClCompile Include="CLTRenameVideoBySequence.cpp" />
     <ClCompile Include="CLTSetFileAtts.cpp" />
     <ClCompile Include="CmdLineBaseTask.cpp" />
     <ClCompile Include="CLTCSVFvaFiles.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="CLTMoveAloneFiles.h" />
     <ClInclude Include="CLTPrintFSStructure.h" />
     <ClInclude Include="CLTRenameFiles.h" />
+    <ClInclude Include="CLTRenameVideoBySequence.h" />
     <ClInclude Include="CLTSetFileAtts.h" />
     <ClInclude Include="CmdLineBaseTask.h" />
     <ClInclude Include="CLTCSVFvaFiles.h" />
