@@ -10,8 +10,10 @@ public:
 	/// CmdLineBaseTask interface
 	CLTRenameFiles(const QString& dir_, bool readOnly_ = false, const QString& custom_ = "")
 	:CmdLineBaseTask(dir_, readOnly_, custom_)
-									{	LOG_QDEB << "cmd created, dir:" << dir_;		}
-	virtual ~CLTRenameFiles()		{	LOG_QDEB << "cmd deleted, dir:" << m_folder;	}
+	{
+		LOG_QDEB << "cmd created,dir:" << dir_ << ",RO=" << (readOnly_ ? "yes" : "no") << ",SRO=" << (supportReadOnly() ? "yes" : "no");
+	}
+	virtual ~CLTRenameFiles()		{ LOG_QDEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute();
 	static QString Name()			{	return "CLTRenameFiles";						}
 	virtual bool supportReadOnly()	{	return true;									}
