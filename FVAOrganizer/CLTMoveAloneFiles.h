@@ -6,8 +6,6 @@
 /*!
 * \brief it moves alone (or twins) files to parent folder, with adding their description into parent folder DESCRIPTION_FILE_NAME
 */
-_CLASS_TASK_DECLARATION(CLT_Alone_Files_Move, true)
-
 class CLTMoveAloneFiles : public CmdLineBaseTask
 {
 public:
