@@ -90,6 +90,9 @@
     <ClCompile Include="CLTSetFileAtts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTConvertAmr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -156,6 +159,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTSetFileAtts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTConvertAmr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

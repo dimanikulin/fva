@@ -12,6 +12,7 @@
 #include "CLTMerge1DayEventDir.h"
 #include "CLTMerge1EventDir.h"
 #include "CLTSetFileAtts.h"
+#include "CLTConvertAmr.h"
 
 #include "CLTAutoChecks1.h"
 #include "CLTAutoChecks2.h"
@@ -85,7 +86,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLTAutoChecks2::Name())				r.reset(new CLTAutoChecks2(dir,readOnly));
 	else if (name == CLT_Alone_Files_Move::Name())			r.reset(new CLT_Alone_Files_Move(dir, readOnly));
 	else if (name == CLT_Convert_Dir_Desc::Name())			r.reset(new CLT_Convert_Dir_Desc(dir, readOnly));
-	else if (name == CLT_Convert_Amr::Name())				r.reset(new CLT_Convert_Amr(dir, readOnly));
+	else if (name == CLTConvertAmr::Name())					r.reset(new CLTConvertAmr(dir, readOnly));
 	else if (name == CLTAutoChecks1::Name())				r.reset(new CLTAutoChecks1(dir, readOnly));
 	else if (name == CLT_Folder_Merging::Name())			r.reset(new CLT_Folder_Merging (dir, readOnly, custom)); 
 	else if (name == CLTSetFileAtts::Name())				r.reset(new CLTSetFileAtts(dir, readOnly));	

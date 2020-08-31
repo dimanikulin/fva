@@ -160,6 +160,7 @@
     <ClCompile Include="CLTAutoChecks1.cpp" />
     <ClCompile Include="CLTAutoChecks2.cpp" />
     <ClCompile Include="CLTAutoChecks3.cpp" />
+    <ClCompile Include="CLTConvertAmr.cpp" />
     <ClCompile Include="CLTCreateDirStructByDevNames.cpp" />
     <ClCompile Include="CLTDBBase.cpp" />
     <ClCompile Include="CLTDBCreateFVA.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="CLTAutoChecks1.h" />
     <ClInclude Include="CLTAutoChecks2.h" />
     <ClInclude Include="CLTAutoChecks3.h" />
+    <ClInclude Include="CLTConvertAmr.h" />
     <ClInclude Include="CLTCreateDirStructByDevNames.h" />
     <ClInclude Include="CLTDBBase.h" />
     <ClInclude Include="CLTDBCreateFVA.h" />
