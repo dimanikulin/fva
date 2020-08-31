@@ -33,9 +33,6 @@
     <ClCompile Include="CmdLineMyTasks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CmdLineTasks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CmdLineOldTasks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -102,15 +99,15 @@
     <ClCompile Include="CLTCheckDeviceName.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTCreateDirStructByFileNames.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CmdLineBaseTask.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CmdLineTasks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CmdLineMyTasks.h">
@@ -180,6 +177,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTCheckDeviceName.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTCreateDirStructByFileNames.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,4 @@
 #include "CmdLineExecutor.h"
-#include "CmdLineTasks.h"
 #include "CmdLineMyTasks.h"
 #include "CmdLineOldTasks.h"
 
@@ -16,6 +15,7 @@
 #include "CLTConvertAmr.h"
 #include "CLTMoveAloneFiles.h"
 #include "CLTCheckDeviceName.h"
+#include "CLTCreateDirStructByFileNames.h"
 
 #include "CLTAutoChecks1.h"
 #include "CLTAutoChecks2.h"
@@ -77,7 +77,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 {
 	std::auto_ptr<CmdLineBaseTask> r(0);
 	
-	if ( name == CLT_Dir_Struct_Create_By_File::Name())		r.reset(new CLT_Dir_Struct_Create_By_File(dir, readOnly, custom));
+	if (name == CLTCreateDirStructByFileNames::Name())		r.reset(new CLTCreateDirStructByFileNames(dir, readOnly, custom));
 	else if (name == CLTCreateDirStructByDeviceName::Name())r.reset(new CLTCreateDirStructByDeviceName(dir, readOnly));
 	else if (name == CLTRenameFiles::Name())				r.reset(new CLTRenameFiles(dir, readOnly, custom));	
 	else if (name == CLTCheckDeviceName::Name())			r.reset(new CLTCheckDeviceName(dir,readOnly));

@@ -1,18 +1,6 @@
-#include "CmdLineTasks.h"
-#include "fvadefaultcfg.h"
-#include "fvacommoncsv.h"
-#include "fvacommonexif.h"
+#include "CLTCreateDirStructByFileNames.h"
 
-#include <QtCore/QCoreApplication>
-
-#include <iostream>
-#include <iomanip>
-
-#include <QtCore/QTextStream>
-#include <QtCore/QDateTime>
-
-
-FVA_EXIT_CODE CLT_Dir_Struct_Create_By_File::execute()
+FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute()
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{

@@ -316,8 +316,8 @@ bool FVAOrganizerDevicePage::validatePage()
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTRenameFiles")
 	exitCode = fvaRunCLT("CLTCSVFvaFile", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTCSVFvaFile")
-	exitCode = fvaRunCLT("CLT_Dir_Struct_Create_By_File", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_Dir_Struct_Create_By_File")
+	exitCode = fvaRunCLT("CLTCreateDirStructByFileNames", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTCreateDirStructByFileNames")
 	exitCode = fvaRunCLT("CLTMoveAloneFiles", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTMoveAloneFiles")
 	exitCode = fvaRunCLT("CLTGetFvaDirType", ((FVAOrganizerWizard*)wizard())->inputFolder(),false);

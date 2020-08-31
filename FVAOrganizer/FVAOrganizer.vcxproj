@@ -182,7 +182,7 @@
     <ClCompile Include="CmdLineExecutor.cpp" />
     <ClCompile Include="CmdLineMyTasks.cpp" />
     <ClCompile Include="CmdLineOldTasks.cpp" />
-    <ClCompile Include="CmdLineTasks.cpp" />
+    <ClCompile Include="CLTCreateDirStructByFileNames.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -211,7 +211,7 @@
     <ClInclude Include="CmdLineExecutor.h" />
     <ClInclude Include="CmdLineMyTasks.h" />
     <ClInclude Include="CmdLineOldTasks.h" />
-    <ClInclude Include="CmdLineTasks.h" />
+    <ClInclude Include="CLTCreateDirStructByFileNames.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
