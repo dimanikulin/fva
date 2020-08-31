@@ -10,6 +10,7 @@
 #include "CLTCSVFvaFiles.h"
 #include "CLTGetFvaDirType.h"
 #include "CLTMerge1DayEventDir.h"
+#include "CLTMerge1EventDir.h"
 
 #include "CLTAutoChecks1.h"
 #include "CLTAutoChecks2.h"
@@ -93,7 +94,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLTDBFvaFileToDB::Name())				r.reset(new CLTDBFvaFileToDB(dir, readOnly));
 	else if (name == CLTDBFvaFolderToDB::Name())			r.reset(new CLTDBFvaFolderToDB(dir, readOnly));
 	else if (name == CLTDBCreateFVA::Name())				r.reset(new CLTDBCreateFVA(dir, readOnly, custom));
-	else if (name == CLT_1_Event_Folder_Merging::Name())	r.reset(new CLT_1_Event_Folder_Merging(dir, readOnly, custom));
+	else if (name == CLTMerge1EventDir::Name())				r.reset(new CLTMerge1EventDir(dir, readOnly, custom));
 	else if (name == CLTCSVFvaFile::Name())					r.reset(new CLTCSVFvaFile(dir, readOnly, custom));
 	else if (name == CLTMerge1DayEventDir::Name())			r.reset(new CLTMerge1DayEventDir(dir, readOnly));
 	else if (name == CLTGetFvaDirType::Name())				r.reset(new CLTGetFvaDirType(dir, readOnly));

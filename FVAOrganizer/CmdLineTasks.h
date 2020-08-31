@@ -11,7 +11,6 @@ _CLASS_TASK_DECLARATION(CLT_Dir_Struct_Create_By_File,true)
 _CLASS_TASK_DECLARATION(CLT_Device_Name_Check,false)
 _CLASS_TASK_DECLARATION(CLT_Video_Rename_By_Sequence,false)
 _CLASS_TASK_DECLARATION(CLT_Convert_Amr, false)
-_CLASS_TASK_DECLARATION(CLT_1_Event_Folder_Merging, false)
 _CLASS_TASK_DECLARATION(CLT_Set_File_Atts, false)
 
 

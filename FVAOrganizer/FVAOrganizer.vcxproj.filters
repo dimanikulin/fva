@@ -84,6 +84,9 @@
     <ClCompile Include="CLTMerge1DayEventDir.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTMerge1EventDir.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -144,6 +147,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTMerge1DayEventDir.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTMerge1EventDir.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

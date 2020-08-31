@@ -417,15 +417,15 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	}
 	else if (oneEventSeveralDays->isChecked())
 	{
-		exitCode = fvaRunCLT("CLT_1_Event_Folder_Merging", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, outputDirLineEdit->text());
+		exitCode = fvaRunCLT("CLTMerge1EventDir", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, outputDirLineEdit->text());
 
 		if (FVA_ERROR_DEST_ALREADY_EXISTS == exitCode)
 		{
 			exitCode = fvaRunCLT("CLTFixDuplicatedFileNames", ((FVAOrganizerWizard*)wizard())->inputFolder());
 			IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTFixDuplicatedFileNames")
-			exitCode = fvaRunCLT("CLT_1_Day_Event_Folder_Merging", ((FVAOrganizerWizard*)wizard())->inputFolder());
+			exitCode = fvaRunCLT("CLTMerge1EventDir", ((FVAOrganizerWizard*)wizard())->inputFolder());
 		}
-		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLT_1_Event_Folder_Merging")
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTMerge1EventDir")
 	}
 	else
 	{
@@ -470,7 +470,6 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	// clean up after processing
 	QFile::remove(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFileN.csv");
 	
-
 	// last but not least check
 	if (oneEventSeveralDays->isChecked())
 	{
