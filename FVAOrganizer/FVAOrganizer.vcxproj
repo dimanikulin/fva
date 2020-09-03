@@ -163,6 +163,7 @@
     <ClCompile Include="CLTCheckDeviceName.cpp" />
     <ClCompile Include="CLTConvertAmr.cpp" />
     <ClCompile Include="CLTCreateDirStructByDevNames.cpp" />
+    <ClCompile Include="CLTCSVUpdateFvaFile.cpp" />
     <ClCompile Include="CLTDBBase.cpp" />
     <ClCompile Include="CLTDBCreateFVA.cpp" />
     <ClCompile Include="CLTDBFvaFileToDB.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="CLTCheckDeviceName.h" />
     <ClInclude Include="CLTConvertAmr.h" />
     <ClInclude Include="CLTCreateDirStructByDevNames.h" />
+    <ClInclude Include="CLTCSVUpdateFvaFile.h" />
     <ClInclude Include="CLTDBBase.h" />
     <ClInclude Include="CLTDBCreateFVA.h" />
     <ClInclude Include="CLTDBFvaFileToDB.h" />

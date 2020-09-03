@@ -1,4 +1,8 @@
 #include "CmdLineExecutor.h"
+
+#include <QtCore/qdebug>
+#include <QtCore/qdir>
+
 #include "CmdLineMyTasks.h"
 #include "CmdLineOldTasks.h"
 
@@ -7,7 +11,7 @@
 #include "CLTCreateDirStructByDevNames.h"
 #include "CLTFixDuplicatedFileNames.h"
 #include "CLTPrintFSStructure.h"
-#include "CLTCSVFvaFiles.h"
+
 #include "CLTGetFvaDirType.h"
 #include "CLTMerge1DayEventDir.h"
 #include "CLTMerge1EventDir.h"
@@ -27,8 +31,8 @@
 #include "CLTDBFvaFolderToDB.h"
 #include "CLTDBFsToDB.h"
 
-#include <QtCore/qdebug>
-#include <QtCore/qdir>
+#include "CLTCSVFvaFiles.h"
+#include "CLTCSVUpdateFvaFile.h"
 
 CmdLineExecutor::CmdLineExecutor( const QString& cmdName, const QString& folder, bool recursive, bool readOnly, const QString& custom )
 	:	m_cmdName	( cmdName ), 
@@ -86,7 +90,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLTRenameVideoBySequence::Name())		r.reset(new CLTRenameVideoBySequence(dir, readOnly));
 	else if (name == CLT_Dir_Name_Change::Name())			r.reset(new CLT_Dir_Name_Change(dir,readOnly));
 	else if (name == CLTXmlConvert::Name())					r.reset(new CLTXmlConvert(dir,readOnly));
-	else if (name == CLT_Update_File_Description::Name())	r.reset(new CLT_Update_File_Description(dir,readOnly));
+	else if (name == CLTCSVUpdateFvaFile::Name())			r.reset(new CLTCSVUpdateFvaFile(dir, readOnly));
 	else if (name == CLTAutoChecks2::Name())				r.reset(new CLTAutoChecks2(dir,readOnly));
 	else if (name == CLTMoveAloneFiles::Name())				r.reset(new CLTMoveAloneFiles(dir, readOnly));
 	else if (name == CLT_Convert_Dir_Desc::Name())			r.reset(new CLT_Convert_Dir_Desc(dir, readOnly));

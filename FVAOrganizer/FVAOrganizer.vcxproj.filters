@@ -105,6 +105,9 @@
     <ClCompile Include="CLTXMLConvert.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTCSVUpdateFvaFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -186,6 +189,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTXMLConvert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTCSVUpdateFvaFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
