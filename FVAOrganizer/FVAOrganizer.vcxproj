@@ -176,6 +176,7 @@
     <ClCompile Include="CLTRenameFiles.cpp" />
     <ClCompile Include="CLTRenameVideoBySequence.cpp" />
     <ClCompile Include="CLTSetFileAtts.cpp" />
+    <ClCompile Include="CLTXMLConvert.cpp" />
     <ClCompile Include="CmdLineBaseTask.cpp" />
     <ClCompile Include="CLTCSVFvaFiles.cpp" />
     <ClCompile Include="CLTDBFsToDB.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="CLTRenameFiles.h" />
     <ClInclude Include="CLTRenameVideoBySequence.h" />
     <ClInclude Include="CLTSetFileAtts.h" />
+    <ClInclude Include="CLTXMLConvert.h" />
     <ClInclude Include="CmdLineBaseTask.h" />
     <ClInclude Include="CLTCSVFvaFiles.h" />
     <ClInclude Include="CLTDBFsToDB.h" />

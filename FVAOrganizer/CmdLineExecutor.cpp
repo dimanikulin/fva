@@ -16,6 +16,7 @@
 #include "CLTMoveAloneFiles.h"
 #include "CLTCheckDeviceName.h"
 #include "CLTCreateDirStructByFileNames.h"
+#include "CLTXmlConvert.h"
 
 #include "CLTAutoChecks1.h"
 #include "CLTAutoChecks2.h"
@@ -84,7 +85,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLT_Files_Rename_By_Dir::Name())		r.reset(new CLT_Files_Rename_By_Dir(dir,readOnly));
 	else if (name == CLTRenameVideoBySequence::Name())		r.reset(new CLTRenameVideoBySequence(dir, readOnly));
 	else if (name == CLT_Dir_Name_Change::Name())			r.reset(new CLT_Dir_Name_Change(dir,readOnly));
-	else if (name == CLT_Xml_Convert::Name())				r.reset(new CLT_Xml_Convert(dir,readOnly));
+	else if (name == CLTXmlConvert::Name())					r.reset(new CLTXmlConvert(dir,readOnly));
 	else if (name == CLT_Update_File_Description::Name())	r.reset(new CLT_Update_File_Description(dir,readOnly));
 	else if (name == CLTAutoChecks2::Name())				r.reset(new CLTAutoChecks2(dir,readOnly));
 	else if (name == CLTMoveAloneFiles::Name())				r.reset(new CLTMoveAloneFiles(dir, readOnly));

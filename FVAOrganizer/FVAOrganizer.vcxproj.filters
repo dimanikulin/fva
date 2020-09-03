@@ -102,6 +102,9 @@
     <ClCompile Include="CLTCreateDirStructByFileNames.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTXMLConvert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -180,6 +183,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTCreateDirStructByFileNames.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTXMLConvert.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
