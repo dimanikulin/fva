@@ -30,9 +30,6 @@
     <ClCompile Include="CmdLineBaseTask.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CmdLineMyTasks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CmdLineOldTasks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -111,15 +108,15 @@
     <ClCompile Include="CLTJSONConvertDirDesc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTCSVRenameFilesByFva.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CmdLineBaseTask.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CmdLineMyTasks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CmdLineOldTasks.h">
@@ -198,6 +195,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTJSONConvertDirDesc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTCSVRenameFilesByFva.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

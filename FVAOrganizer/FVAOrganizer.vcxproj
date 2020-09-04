@@ -183,7 +183,7 @@
     <ClCompile Include="CLTCSVFvaFiles.cpp" />
     <ClCompile Include="CLTDBFsToDB.cpp" />
     <ClCompile Include="CmdLineExecutor.cpp" />
-    <ClCompile Include="CmdLineMyTasks.cpp" />
+    <ClCompile Include="CLTCSVRenameFilesByFva.cpp" />
     <ClCompile Include="CmdLineOldTasks.cpp" />
     <ClCompile Include="CLTCreateDirStructByFileNames.cpp" />
     <ClCompile Include="main.cpp" />
@@ -215,7 +215,7 @@
     <ClInclude Include="CLTCSVFvaFiles.h" />
     <ClInclude Include="CLTDBFsToDB.h" />
     <ClInclude Include="CmdLineExecutor.h" />
-    <ClInclude Include="CmdLineMyTasks.h" />
+    <ClInclude Include="CLTCSVRenameFilesByFva.h" />
     <ClInclude Include="CmdLineOldTasks.h" />
     <ClInclude Include="CLTCreateDirStructByFileNames.h" />
   </ItemGroup>

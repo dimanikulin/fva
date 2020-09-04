@@ -3,7 +3,6 @@
 #include <QtCore/qdebug>
 #include <QtCore/qdir>
 
-#include "CmdLineMyTasks.h"
 #include "CmdLineOldTasks.h"
 
 #include "CLTRenameFiles.h"
@@ -34,6 +33,7 @@
 
 #include "CLTCSVFvaFiles.h"
 #include "CLTCSVUpdateFvaFile.h"
+#include "CLTCSVRenameFilesByFva.h"
 
 CmdLineExecutor::CmdLineExecutor( const QString& cmdName, const QString& folder, bool recursive, bool readOnly, const QString& custom )
 	:	m_cmdName	( cmdName ), 
@@ -100,7 +100,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLT_Folder_Merging::Name())			r.reset(new CLT_Folder_Merging (dir, readOnly, custom)); 
 	else if (name == CLTSetFileAtts::Name())				r.reset(new CLTSetFileAtts(dir, readOnly));	
 	else if (name == CLTPrintFSStructure::Name())			r.reset(new CLTPrintFSStructure(dir, readOnly));
-	else if (name == CLT_Rename_File_By_Desc::Name())		r.reset(new CLT_Rename_File_By_Desc(dir, readOnly));
+	else if (name == CLTCSVRenameFilesByFva::Name())		r.reset(new CLTCSVRenameFilesByFva(dir, readOnly));
 	else if (name == CLTDBFsToDB::Name())					r.reset(new CLTDBFsToDB(dir, readOnly));
 	else if (name == CLTDBFvaFileToDB::Name())				r.reset(new CLTDBFvaFileToDB(dir, readOnly));
 	else if (name == CLTDBFvaFolderToDB::Name())			r.reset(new CLTDBFvaFolderToDB(dir, readOnly));

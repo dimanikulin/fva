@@ -1,8 +1,8 @@
-#include "CmdLineMyTasks.h"
+#include "CLTCSVRenameFilesByFva.h"
 
 #include "FVADescriptionFile.h"
 
-FVA_EXIT_CODE CLT_Rename_File_By_Desc::execute()
+FVA_EXIT_CODE CLTCSVRenameFilesByFva::execute()
 {
 	QString descPath = m_folder + "/" + FVA_DESCRIPTION_FILE_NAME;
 	if ( !m_dir.exists( descPath ) )
