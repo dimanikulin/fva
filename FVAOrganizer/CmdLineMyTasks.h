@@ -3,7 +3,7 @@
 
 #include "CmdLineBaseTask.h"
 
-_CLASS_TASK_DECLARATION(CLT_Convert_Dir_Desc,true)
+
 _CLASS_TASK_DECLARATION(CLT_Rename_File_By_Desc,false)
 
 #endif // _CMD_LINE_MY_TASKS_H_

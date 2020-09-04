@@ -21,6 +21,7 @@
 #include "CLTCheckDeviceName.h"
 #include "CLTCreateDirStructByFileNames.h"
 #include "CLTXmlConvert.h"
+#include "CLTJSONConvertDirDesc.h"
 
 #include "CLTAutoChecks1.h"
 #include "CLTAutoChecks2.h"
@@ -93,7 +94,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLTCSVUpdateFvaFile::Name())			r.reset(new CLTCSVUpdateFvaFile(dir, readOnly));
 	else if (name == CLTAutoChecks2::Name())				r.reset(new CLTAutoChecks2(dir,readOnly));
 	else if (name == CLTMoveAloneFiles::Name())				r.reset(new CLTMoveAloneFiles(dir, readOnly));
-	else if (name == CLT_Convert_Dir_Desc::Name())			r.reset(new CLT_Convert_Dir_Desc(dir, readOnly));
+	else if (name == CLTJSONConvertDirDesc::Name())			r.reset(new CLTJSONConvertDirDesc(dir, readOnly));
 	else if (name == CLTConvertAmr::Name())					r.reset(new CLTConvertAmr(dir, readOnly));
 	else if (name == CLTAutoChecks1::Name())				r.reset(new CLTAutoChecks1(dir, readOnly));
 	else if (name == CLT_Folder_Merging::Name())			r.reset(new CLT_Folder_Merging (dir, readOnly, custom)); 
