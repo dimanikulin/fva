@@ -120,6 +120,9 @@
     <ClCompile Include="CLTJSONCreateDirStructByFileNames.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTJSONMoveAloneFiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -216,6 +219,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTJSONCreateDirStructByFileNames.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTJSONMoveAloneFiles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
