@@ -171,6 +171,7 @@
     <ClCompile Include="CLTFixDuplicatedFileNames.cpp" />
     <ClCompile Include="CLTGetFvaDirType.cpp" />
     <ClCompile Include="CLTJSONConvertDirDesc.cpp" />
+    <ClCompile Include="CLTJSONCreateDirStructByFileNames.cpp" />
     <ClCompile Include="CLTMerge1DayEventDir.cpp" />
     <ClCompile Include="CLTMerge1EventDir.cpp" />
     <ClCompile Include="CLTMoveAloneFiles.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="CLTFixDuplicatedFileNames.h" />
     <ClInclude Include="CLTGetFvaDirType.h" />
     <ClInclude Include="CLTJSONConvertDirDesc.h" />
+    <ClInclude Include="CLTJSONCreateDirStructByFileNames.h" />
     <ClInclude Include="CLTMerge1DayEventDir.h" />
     <ClInclude Include="CLTMerge1EventDir.h" />
     <ClInclude Include="CLTMoveAloneFiles.h" />

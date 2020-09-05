@@ -117,6 +117,9 @@
     <ClCompile Include="CLTRenameDirs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTJSONCreateDirStructByFileNames.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -210,6 +213,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTRenameDirs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTJSONCreateDirStructByFileNames.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
