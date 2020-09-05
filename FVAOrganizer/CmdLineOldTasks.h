@@ -4,11 +4,6 @@
 #include "CmdLineBaseTask.h"
 
 /*!
- * \brief it renames folders with replacing "-" to "."
- */
-_CLASS_TASK_DECLARATION(CLT_Dir_Name_Change,false)
-
-/*!
  * \brief it creates folder structure by days folders, using file names in input folder - old impl
  */
 _CLASS_TASK_DECLARATION(CLT_Dir_Struct_Create_By_File_Old,true)

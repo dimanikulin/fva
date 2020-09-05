@@ -8,30 +8,6 @@
 #include <windows.h>
 #include <winbase.h>
 
-
-FVA_EXIT_CODE CLT_Dir_Name_Change::execute()
-{
-	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
-	{
-		if ( info.isDir() )
-		{
-			QString subFolderName		= info.baseName().mid(0,10);
-			info.absoluteDir();
-			QDir subdir ( info.absoluteDir() );
-
-			QString oldPath = info.absoluteFilePath();
-			QString newPath = info.absoluteFilePath().replace("-",".");
-			if ( subdir.rename( oldPath, newPath ) )
-				LOG_QWARN << "renamed folder from " << oldPath << " to " << newPath;
-			else
-				LOG_QCRIT << "cannot rename folder from " << oldPath << " to " << newPath;			
-		}
-		else
-			continue;			
-	}
-
-	return FVA_NO_ERROR;
-}
 FVA_EXIT_CODE CLT_Dir_Struct_Create_By_File_Old::execute()
 {
 	// check for existing folder description

@@ -7,6 +7,7 @@
 
 #include "CLTRenameFilesByDir.h"
 #include "CLTRenameFiles.h"
+#include "CLTRenameDirs.h"
 #include "CLTRenameVideoBySequence.h"
 #include "CLTCreateDirStructByDevNames.h"
 #include "CLTFixDuplicatedFileNames.h"
@@ -90,7 +91,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLTCheckDeviceName::Name())			r.reset(new CLTCheckDeviceName(dir,readOnly));
 	else if (name == CLTRenameFilesByDir::Name())			r.reset(new CLTRenameFilesByDir(dir, readOnly));
 	else if (name == CLTRenameVideoBySequence::Name())		r.reset(new CLTRenameVideoBySequence(dir, readOnly));
-	else if (name == CLT_Dir_Name_Change::Name())			r.reset(new CLT_Dir_Name_Change(dir,readOnly));
+	else if (name == CLTRenameDirs::Name())					r.reset(new CLTRenameDirs(dir, readOnly));
 	else if (name == CLTXmlConvert::Name())					r.reset(new CLTXmlConvert(dir,readOnly));
 	else if (name == CLTCSVUpdateFvaFile::Name())			r.reset(new CLTCSVUpdateFvaFile(dir, readOnly));
 	else if (name == CLTAutoChecks2::Name())				r.reset(new CLTAutoChecks2(dir,readOnly));
