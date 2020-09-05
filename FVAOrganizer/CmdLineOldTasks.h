@@ -3,8 +3,6 @@
 
 #include "CmdLineBaseTask.h"
 
-_CLASS_TASK_DECLARATION(CLT_Files_Rename_By_Dir,false)
-
 /*!
  * \brief it renames folders with replacing "-" to "."
  */

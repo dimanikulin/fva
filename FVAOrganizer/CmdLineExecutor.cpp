@@ -5,6 +5,7 @@
 
 #include "CmdLineOldTasks.h"
 
+#include "CLTRenameFilesByDir.h"
 #include "CLTRenameFiles.h"
 #include "CLTRenameVideoBySequence.h"
 #include "CLTCreateDirStructByDevNames.h"
@@ -87,7 +88,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLTCreateDirStructByDeviceName::Name())r.reset(new CLTCreateDirStructByDeviceName(dir, readOnly));
 	else if (name == CLTRenameFiles::Name())				r.reset(new CLTRenameFiles(dir, readOnly, custom));	
 	else if (name == CLTCheckDeviceName::Name())			r.reset(new CLTCheckDeviceName(dir,readOnly));
-	else if (name == CLT_Files_Rename_By_Dir::Name())		r.reset(new CLT_Files_Rename_By_Dir(dir,readOnly));
+	else if (name == CLTRenameFilesByDir::Name())			r.reset(new CLTRenameFilesByDir(dir, readOnly));
 	else if (name == CLTRenameVideoBySequence::Name())		r.reset(new CLTRenameVideoBySequence(dir, readOnly));
 	else if (name == CLT_Dir_Name_Change::Name())			r.reset(new CLT_Dir_Name_Change(dir,readOnly));
 	else if (name == CLTXmlConvert::Name())					r.reset(new CLTXmlConvert(dir,readOnly));

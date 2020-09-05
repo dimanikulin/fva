@@ -111,6 +111,9 @@
     <ClCompile Include="CLTCSVRenameFilesByFva.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTRenameFilesByDir.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -198,6 +201,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTCSVRenameFilesByFva.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTRenameFilesByDir.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
