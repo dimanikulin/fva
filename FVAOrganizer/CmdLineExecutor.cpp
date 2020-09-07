@@ -3,8 +3,6 @@
 #include <QtCore/qdebug>
 #include <QtCore/qdir>
 
-#include "CmdLineOldTasks.h"
-
 #include "CLTRenameFilesByDir.h"
 #include "CLTRenameFiles.h"
 #include "CLTRenameDirs.h"
@@ -16,6 +14,7 @@
 #include "CLTGetFvaDirType.h"
 #include "CLTMerge1DayEventDir.h"
 #include "CLTMerge1EventDir.h"
+#include "CLTMergeFewDaysFewsEventsDir.h"
 #include "CLTSetFileAtts.h"
 #include "CLTConvertAmr.h"
 #include "CLTMoveAloneFiles.h"
@@ -99,7 +98,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLTJSONConvertDirDesc::Name())			r.reset(new CLTJSONConvertDirDesc(dir, readOnly));
 	else if (name == CLTConvertAmr::Name())					r.reset(new CLTConvertAmr(dir, readOnly));
 	else if (name == CLTAutoChecks1::Name())				r.reset(new CLTAutoChecks1(dir, readOnly));
-	else if (name == CLT_Folder_Merging::Name())			r.reset(new CLT_Folder_Merging (dir, readOnly, custom)); 
+	else if (name == CLTMergeFewDaysFewsEventsDir::Name())	r.reset(new CLTMergeFewDaysFewsEventsDir(dir, readOnly, custom));
 	else if (name == CLTSetFileAtts::Name())				r.reset(new CLTSetFileAtts(dir, readOnly));	
 	else if (name == CLTPrintFSStructure::Name())			r.reset(new CLTPrintFSStructure(dir, readOnly));
 	else if (name == CLTCSVRenameFilesByFva::Name())		r.reset(new CLTCSVRenameFilesByFva(dir, readOnly));

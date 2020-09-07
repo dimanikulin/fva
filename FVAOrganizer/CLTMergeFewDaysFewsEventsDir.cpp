@@ -1,13 +1,8 @@
-#include "CmdLineOldTasks.h"
+#include "CLTMergeFewDaysFewsEventsDir.h"
 
-#include "fvacommonexif.h"
-
-#include <QtCore/QCoreApplication>
-
-
-FVA_EXIT_CODE CLT_Folder_Merging::execute()
+FVA_EXIT_CODE CLTMergeFewDaysFewsEventsDir::execute()
 {
-	QString subFolder = m_folder;
+	/*QString subFolder = m_folder;
 	subFolder.remove(m_baseFolder);
 
 	if (!m_dir.exists(m_custom + subFolder + "/"))
@@ -73,6 +68,6 @@ FVA_EXIT_CODE CLT_Folder_Merging::execute()
 			return FVA_ERROR_CANT_MOVE_DIR;
 		}
 		LOG_QDEB << "merged:" << original << " into " << dest;
-	}
+	}*/
 	return FVA_NO_ERROR;
 }

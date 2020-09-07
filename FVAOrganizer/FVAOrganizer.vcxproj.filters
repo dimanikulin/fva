@@ -30,9 +30,6 @@
     <ClCompile Include="CmdLineBaseTask.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CmdLineOldTasks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CLTRenameFiles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -126,15 +123,15 @@
     <ClCompile Include="CLTJSONMergeDirs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTMergeFewDaysFewsEventsDir.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CmdLineBaseTask.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CmdLineOldTasks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTRenameFiles.h">
@@ -228,6 +225,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTJSONMergeDirs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTMergeFewDaysFewsEventsDir.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

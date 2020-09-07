@@ -189,7 +189,7 @@
     <ClCompile Include="CLTDBFsToDB.cpp" />
     <ClCompile Include="CmdLineExecutor.cpp" />
     <ClCompile Include="CLTCSVRenameFilesByFva.cpp" />
-    <ClCompile Include="CmdLineOldTasks.cpp" />
+    <ClCompile Include="CLTMergeFewDaysFewsEventsDir.cpp" />
     <ClCompile Include="CLTCreateDirStructByFileNames.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -226,7 +226,7 @@
     <ClInclude Include="CLTDBFsToDB.h" />
     <ClInclude Include="CmdLineExecutor.h" />
     <ClInclude Include="CLTCSVRenameFilesByFva.h" />
-    <ClInclude Include="CmdLineOldTasks.h" />
+    <ClInclude Include="CLTMergeFewDaysFewsEventsDir.h" />
     <ClInclude Include="CLTCreateDirStructByFileNames.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
