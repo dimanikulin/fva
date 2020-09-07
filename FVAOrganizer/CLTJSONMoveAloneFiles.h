@@ -3,6 +3,9 @@
 
 #include "CmdLineBaseTask.h"
 
+/*!
+* \brief it moves alone (or twins) files to parent folder, with adding their description into parent folder DESCRIPTION_FILE_NAME - old impl
+*/
 class CLTJSONMoveAloneFiles : public CmdLineBaseTask
 {
 public:

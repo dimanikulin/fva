@@ -1,12 +1,11 @@
-#include "CmdLineOldTasks.h"
+#include "CLTJSONMergeDirs.h"
 
-#include "fvacommonexif.h"
+#include <windows.h>
+#include <winbase.h>
 
-#include <QtCore/QCoreApplication>
-
-
-FVA_EXIT_CODE CLT_Folder_Merging::execute()
+FVA_EXIT_CODE CLTJSONMergeDirs::execute()
 {
+	// create folder structure the same as in source folder
 	QString subFolder = m_folder;
 	subFolder.remove(m_baseFolder);
 
@@ -45,7 +44,6 @@ FVA_EXIT_CODE CLT_Folder_Merging::execute()
 		}
 	}
 
-	// create folder structure the same as in source folder
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		QString original = m_folder + "/" + info.fileName();
@@ -55,6 +53,60 @@ FVA_EXIT_CODE CLT_Folder_Merging::execute()
 		if (original.contains("#copy") || dest.contains("#copy"))
 			continue;
 
+		if (FVA_DESCRIPTION_FILE_NAME == info.fileName())
+		{
+			QFile fileInput(info.absoluteFilePath());
+			if (!fileInput.open(QIODevice::ReadOnly | QIODevice::Text))
+			{
+				LOG_QCRIT << "could not open source file desc:" << original;
+				return FVA_ERROR_CANT_OPEN_FILE_DESC;
+			}
+			if (m_dir.exists(dest))
+			{
+				if (!SetFileAttributes(dest.toStdWString().c_str(), FILE_ATTRIBUTE_NORMAL))
+				{
+					LOG_QCRIT << "can not set attr for dest desc file:" << dest;
+					return FVA_ERROR_CANT_OPEN_FILE_DESC;
+				}
+			}
+			QFile fileOutput(dest);
+			if (!fileOutput.open(QIODevice::Append | QIODevice::Text))
+			{
+				LOG_QCRIT << "could not open dest file desc:" << original;
+				return FVA_ERROR_CANT_OPEN_FILE_DESC;
+			}
+			{
+				QTextStream in(&fileInput);
+				QString line = in.readLine();
+				bool isFirst = true;
+				while (!line.isNull())
+				{
+					if (!isFirst)
+					{
+						fileOutput.write("\n");
+						fileOutput.write(line.toStdString().c_str());
+					}
+					else
+						isFirst = false;
+					line = in.readLine();
+				}
+				in.flush();
+			}
+			fileOutput.close();
+			fileInput.close();
+			if (!SetFileAttributes(dest.toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY))
+			{
+				LOG_QCRIT << "can not set attr for dest desc file:" << dest;
+				return FVA_ERROR_CANT_OPEN_FILE_DESC;
+			}
+			if (!QFile::remove(original))
+			{
+				LOG_QCRIT << "could not remove source file desc:" << original;
+				return FVA_ERROR_CANT_MOVE_DIR;
+			}
+			LOG_QCRIT << "merged desc file:" << original << " into " << dest;
+			continue;
+		}
 		if (!m_dir.rename(original, dest))
 		{
 			if (QDir(original).entryInfoList(QDir::NoDotAndDotDot | QDir::AllEntries).count() == 0)
@@ -73,6 +125,7 @@ FVA_EXIT_CODE CLT_Folder_Merging::execute()
 			return FVA_ERROR_CANT_MOVE_DIR;
 		}
 		LOG_QDEB << "merged:" << original << " into " << dest;
+		continue;
 	}
 	return FVA_NO_ERROR;
 }
