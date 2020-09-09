@@ -59,8 +59,8 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute()
 		// check for already existing
 		if (m_dir.exists(dstDirPath + "/" + info.fileName()))
 		{
-			LOG_QCRIT << "destination already exists: " << dstDirPath + "/" + info.fileName();
-			return FVA_ERROR_DEST_ALREADY_EXISTS;
+			LOG_QCRIT << "destination file already exists: " << dstDirPath + "/" + info.fileName();
+			return FVA_ERROR_DEST_FILE_ALREADY_EXISTS;
 		}
 
 		// we move files only

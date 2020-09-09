@@ -14,8 +14,8 @@ FVA_EXIT_CODE CLTMerge1EventDir::execute()
 		// check for already existing
 		if (m_dir.exists(dest))
 		{
-			LOG_QCRIT << "destination already exists: " << dest;
-			return FVA_ERROR_DEST_ALREADY_EXISTS;
+			LOG_QCRIT << "destination file already exists: " << dest;
+			return FVA_ERROR_DEST_FILE_ALREADY_EXISTS;
 		}
 
 		if( !m_dir.rename( original, dest ) )

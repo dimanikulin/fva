@@ -47,8 +47,8 @@ FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute()
 		// check for already existing again
 		if (m_dir.exists(newFullPath))
 		{
-			LOG_QCRIT << "destination already exists again: " << newFullPath;
-			return FVA_ERROR_DEST_ALREADY_EXISTS;
+			LOG_QCRIT << "destination file already exists again: " << newFullPath;
+			return FVA_ERROR_DEST_FILE_ALREADY_EXISTS;
 		}
 		else
 		{
