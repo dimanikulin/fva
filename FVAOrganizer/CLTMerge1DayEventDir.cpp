@@ -7,46 +7,57 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute()
 	// get the last dir leaf in input folder
 	QString dir = m_dir.dirName();
 	QString dstDirPath = FVA_DEFAULT_ROOT_DIR + dir.mid(0, 4)/*extract year*/ + "/" + m_dir.dirName();
-	if (!m_dir.exists(dstDirPath))
+	if (!dstDirPath.contains("#")) // # means internal folder and not subject of merging
 	{
-		if (!dstDirPath.contains("#"))
+		FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);
+		if (FVA_ERROR_CANT_CREATE_DIR == res)
 		{
-			// # means internal folder and not subject of merging
-			if (!m_dir.mkpath(dstDirPath))
+			LOG_QCRIT << "could not create dest folder:" << dstDirPath;
+			return FVA_ERROR_CANT_CREATE_DIR;
+		}
+		else if (FVA_ERROR_DEST_DIR_ALREADY_EXISTS == res)
+		{
+			// it is first time run
+			if (m_custom.isEmpty())
+				return FVA_ERROR_DEST_DIR_ALREADY_EXISTS;
+			else if (m_custom == "create")
 			{
-				LOG_QCRIT << "could not create dest folder:" << dstDirPath;
-				return FVA_ERROR_CANT_CREATE_DIR;
+				LOG_QCRIT << "destination dir already exists: " << dstDirPath;
+				// lets try to create with different name
+				dstDirPath += " #1";
+				res = fvaCreateDirIfNotExists(dstDirPath);
+				if (FVA_ERROR_CANT_CREATE_DIR == res)
+				{
+					LOG_QCRIT << "could not create dest folder:" << dstDirPath;
+					return FVA_ERROR_CANT_CREATE_DIR;
+				}
+				else if (FVA_ERROR_DEST_DIR_ALREADY_EXISTS == res)
+				{
+					LOG_QCRIT << "not immplemented to create dest folder with #2:" << dstDirPath;
+					return FVA_ERROR_NOT_IMPLEMENTED;
+				}
+				else if (FVA_NO_ERROR == res)
+				{
+					LOG_QDEB << "created dest folder:" << dstDirPath;
+					res = fvaUpdateFvaDirInfoInCsv(dstDirPath);
+					RET_RES_IF_RES_IS_ERROR
+					LOG_QDEB << "created fvaFolderN.csv for folder:" << dstDirPath;
+				}
 			}
-			else
+			else if (m_custom == "merge")
 			{
-				LOG_QDEB << "created dest folder:" << dstDirPath;
-
-				int ID = FVA_UNDEFINED_ID;
-				FVA_EXIT_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolder.id", ID);
-				RET_RES_IF_RES_IS_ERROR
-
-					QString dir = dstDirPath.replace("\\", "/");  // replace slaches on backslashes
-				dir = dir.remove(FVA_DEFAULT_ROOT_DIR); // remove a prefix as root dir
-
-				QFile fileNew(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv");
-				if (!fileNew.open(QIODevice::WriteOnly | QIODevice::Text))
-					return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;
-				QTextStream writeStream(&fileNew);
-				//ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
-				writeStream << "\n" << QString::number(++ID) << ",/" << dir << ",0,,,,,,,,";
-				writeStream.flush();
-				fileNew.close();
-
-				res = fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolder.id", ID);
-				RET_RES_IF_RES_IS_ERROR
-
-					LOG_QDEB << "created fvaFolderN.csv for folder:" << dir;
+				// do nothing here
 			}
 		}
+		else if (FVA_NO_ERROR == res)
+		{
+			LOG_QDEB << "created dest folder:" << dstDirPath;
+			res = fvaUpdateFvaDirInfoInCsv(dstDirPath);
+			RET_RES_IF_RES_IS_ERROR
+			LOG_QDEB << "created fvaFolderN.csv for folder:" << dstDirPath;
+		}
 	}
-	else
-		LOG_QWARN << "could not create dest folder as it already exists:" << dstDirPath;
-
+	
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		// skip internal folder 
