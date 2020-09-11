@@ -95,5 +95,13 @@ bool fvaRemoveDirIfEmpty(const QString& dirPath);
  */
 FVA_EXIT_CODE fvaRunCLT(const QString& cmdName, const QString& inputDir, bool isRecursive = true, bool isReadOnly = false, const QString& custom="");
 
+/*!
+ * \brief it creates directory if it does not exist
+ * \param dirPath - dir path to create
+ * \returns it returns FVA_EXIT_CODE
+ */
+FVA_EXIT_CODE fvaCreateDirIfNotExists(const QString& dirPath);
+
+
 #endif // FVACOMMONLIB_H
 

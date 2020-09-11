@@ -305,3 +305,17 @@ FVA_EXIT_CODE fvaRunCLT(const QString& cmdName, const QString& inputDir, bool is
 
 	return static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
 }
+FVA_EXIT_CODE fvaCreateDirIfNotExists(const QString& dirPath)
+{
+	if (!QDir(dirPath).exists())
+	{
+		QDir dir(dirPath);
+
+		if (!dir.mkdir(dirPath))
+			return FVA_ERROR_CANT_CREATE_DIR;
+		else
+			return FVA_NO_ERROR;
+	}
+	else
+		return FVA_ERROR_DEST_DIR_ALREADY_EXISTS;
+}
