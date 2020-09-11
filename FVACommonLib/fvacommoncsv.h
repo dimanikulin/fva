@@ -54,4 +54,11 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(DEVICE_MAP& deviceMap);
 */
 FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(PEOPLE_MAP& peopleMap);
 
+/*!
+* \brief it updates fva dir info with new folder
+* \param dirPath - dir path to add
+* \returns it returns FVA_EXIT_CODE
+*/
+FVA_EXIT_CODE fvaUpdateFvaDirInfoInCsv(const QString& dirPath);
+
 #endif // FVACOMMONCSV_H
