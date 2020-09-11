@@ -108,7 +108,7 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLTDBCreateFVA::Name())				r.reset(new CLTDBCreateFVA(dir, readOnly, custom));
 	else if (name == CLTMerge1EventDir::Name())				r.reset(new CLTMerge1EventDir(dir, readOnly, custom));
 	else if (name == CLTCSVFvaFile::Name())					r.reset(new CLTCSVFvaFile(dir, readOnly, custom));
-	else if (name == CLTMerge1DayEventDir::Name())			r.reset(new CLTMerge1DayEventDir(dir, readOnly));
+	else if (name == CLTMerge1DayEventDir::Name())			r.reset(new CLTMerge1DayEventDir(dir, readOnly, custom));
 	else if (name == CLTGetFvaDirType::Name())				r.reset(new CLTGetFvaDirType(dir, readOnly));
 	else if (name == CLTAutoChecks3::Name())				r.reset(new CLTAutoChecks3(dir, readOnly));
 	else if (name == CLTFixDuplicatedFileNames::Name())		r.reset(new CLTFixDuplicatedFileNames(dir, readOnly));
