@@ -408,7 +408,25 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	if (oneEventOneDay->isChecked())
 	{
 		exitCode = fvaRunCLT("CLTMerge1DayEventDir", ((FVAOrganizerWizard*)wizard())->inputFolder());
-		if (FVA_ERROR_DEST_ALREADY_EXISTS == exitCode)
+
+		QString mode = "merge";
+		if (exitCode == FVA_ERROR_DEST_DIR_ALREADY_EXISTS)
+		{
+			// ask user for what to do 
+			QMessageBox msgBox;
+			msgBox.setText("The dir for merge is already present in target!");
+			msgBox.setInformativeText("By pressing OK all the content will be merged to already existing folder,\n by pressing Cancel new dir will be created to keep the content");
+			msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+			msgBox.setDefaultButton(QMessageBox::Ok);
+			
+			QString mode = (msgBox.exec() == QMessageBox::Ok) ? "merge" : "create";			
+		}
+
+		// and run it again
+		exitCode = fvaRunCLT("CLTMerge1DayEventDir", ((FVAOrganizerWizard*)wizard())->inputFolder(), false, false, mode);
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTMerge1DayEventDir")
+
+		if (FVA_ERROR_DEST_FILE_ALREADY_EXISTS == exitCode)
 		{
 			exitCode = fvaRunCLT("CLTFixDuplicatedFileNames", ((FVAOrganizerWizard*)wizard())->inputFolder());
 			IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTFixDuplicatedFileNames")
@@ -420,7 +438,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	{
 		exitCode = fvaRunCLT("CLTMerge1EventDir", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, outputDirLineEdit->text());
 
-		if (FVA_ERROR_DEST_ALREADY_EXISTS == exitCode)
+		if (FVA_ERROR_DEST_FILE_ALREADY_EXISTS == exitCode)
 		{
 			exitCode = fvaRunCLT("CLTFixDuplicatedFileNames", ((FVAOrganizerWizard*)wizard())->inputFolder());
 			IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTFixDuplicatedFileNames")
