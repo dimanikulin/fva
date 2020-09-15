@@ -13,18 +13,7 @@
 /*!
  * \brief keeps all organizer pages functionality
  */
-class FVAOrganizerStartPage : public QWizardPage
-{
-	Q_OBJECT
-	public:
 
-		FVAOrganizerStartPage();
-		virtual ~FVAOrganizerStartPage(){};
-
-	private:
-
-		QTextBrowser*	helloWords;
-};
 
 class FVAOrganizerOrientPage : public QWizardPage
 {
