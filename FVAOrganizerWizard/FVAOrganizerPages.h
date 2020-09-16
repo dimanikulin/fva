@@ -15,25 +15,6 @@
  */
 
 
-class FVAOrganizerOrientPage : public QWizardPage
-{
-	Q_OBJECT
-	public:
-
-		FVAOrganizerOrientPage();
-		virtual ~FVAOrganizerOrientPage(){};
-
-	private slots:
-
-		void OnOrientationButtonClicked();
-
-	private: // data 
-
-		QLabel*			rotateLabel;
-		QPushButton*	rotateButton;
-
-};
-
 class FVAOrganizerInputDirPage : public QWizardPage
 {
 	Q_OBJECT

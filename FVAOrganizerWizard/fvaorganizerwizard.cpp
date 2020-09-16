@@ -1,6 +1,8 @@
 #include "fvaorganizerwizard.h"
 #include "FVAOrganizerPages.h"
+
 #include "FVAOrganizerStartPage.h"
+#include "FVAOrganizerOrientPage.h"
 
 FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	: QWizard(parent)

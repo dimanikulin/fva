@@ -68,6 +68,15 @@
     <ClCompile Include="GeneratedFiles\Release\moc_FVAOrganizerStartPage.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="FVAOrganizerOrientPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_FVAOrganizerOrientPage.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_FVAOrganizerOrientPage.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fvaorganizerwizard.h">
@@ -83,6 +92,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="FVAOrganizerStartPage.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="FVAOrganizerOrientPage.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
