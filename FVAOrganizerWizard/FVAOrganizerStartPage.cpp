@@ -1,6 +1,7 @@
 #include "FVAOrganizerStartPage.h"
 
 #include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QTextBrowser>
 
 FVAOrganizerStartPage::FVAOrganizerStartPage()
 {

@@ -1,8 +1,9 @@
-#ifndef _FVA_ORG_START_PAGES_H_
-#define _FVA_ORG_START_PAGES_H_
+#ifndef _FVA_ORG_START_PAGE_H_
+#define _FVA_ORG_START_PAGE_H_
 
 #include <QtWidgets/QWizardPage>
-#include <QtWidgets/QTextBrowser>
+
+class QTextBrowser;
 
 class FVAOrganizerStartPage : public QWizardPage
 {
@@ -17,4 +18,4 @@ private:
 	QTextBrowser*	helloWords;
 };
 
-#endif //_FVA_ORG_START_PAGES_H_
+#endif //_FVA_ORG_START_PAGE_H_
