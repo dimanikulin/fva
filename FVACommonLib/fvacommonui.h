@@ -4,6 +4,7 @@
 #include <QtCore/QString>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QTreeWidget>
+#include <QtWidgets/QMessageBox>
 
 #include "fvaexitcodes.h"
 

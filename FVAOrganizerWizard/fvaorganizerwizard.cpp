@@ -3,6 +3,7 @@
 
 #include "FVAOrganizerStartPage.h"
 #include "FVAOrganizerOrientPage.h"
+#include "FVAOrganizerInputDirPage.h"
 
 FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	: QWizard(parent)
