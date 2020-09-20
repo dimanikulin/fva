@@ -233,7 +233,7 @@ FVA_EXIT_CODE fvaUpdateFvaDirInfoInCsv(const QString& dirPath)
 
 	QTextStream writeStream(&fileNew);
 	//ID,Name,DevId,Tags,People,PlaceId,EventId,ReasonPeople,LinkedFolder,WhoTookFotoId,Scanerid
-	writeStream << "\n" << QString::number(++ID) << ",/" << dir << ",0,,,,,,,,";
+	writeStream << QString::number(++ID) << ",/" << dir << ",0,,,,,,,," << "\n";
 	writeStream.flush();
 	
 	fileNew.close();
