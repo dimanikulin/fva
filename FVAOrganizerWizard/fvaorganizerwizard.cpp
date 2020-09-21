@@ -5,6 +5,7 @@
 #include "FVAOrganizerOrientPage.h"
 #include "FVAOrganizerInputDirPage.h"
 #include "FVAOrganizerDevicePage.h"
+#include "FVAOrganizerOutputDirPage.h"
 
 FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	: QWizard(parent)

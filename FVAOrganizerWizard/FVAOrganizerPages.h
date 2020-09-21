@@ -16,37 +16,7 @@
 
 
 
-class FVAOrganizerOutputDirPage : public QWizardPage
-{
-	Q_OBJECT
-	public:
 
-		FVAOrganizerOutputDirPage();
-		virtual ~FVAOrganizerOutputDirPage(){};
-
-	protected:
-
-		virtual bool	validatePage ();
-		virtual bool	isComplete() const;
-		virtual void	setVisible(bool visible);
-
-	private slots:
-		void OnDirButtonClicked();
-
-	private:
-
-		QLabel*			outputDirLabel;
-		QLineEdit*		outputDirLineEdit;
-		QPushButton*	dirButton;
-
-		QRadioButton*	oneEventOneDay;
-
-		QRadioButton*	severalEventsOneDay;
-
-		QRadioButton*	severalEventsSeveralDays;
-
-		QRadioButton*	oneEventSeveralDays;
-};
 
 class FVAOrganizerDonePage : public QWizardPage
 {
