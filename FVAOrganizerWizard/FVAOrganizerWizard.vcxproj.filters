@@ -44,19 +44,10 @@
     <ClCompile Include="GeneratedFiles\qrc_fvaorganizerwizard.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="FVAOrganizerPages.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_fvaorganizerwizard.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_fvaorganizerwizard.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_FVAOrganizerPages.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_FVAOrganizerPages.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="FVAOrganizerStartPage.cpp">
@@ -104,6 +95,15 @@
     <ClCompile Include="GeneratedFiles\Release\moc_FVAOrganizerOutputDirPage.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_FVAOrganizerDonePage.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_FVAOrganizerDonePage.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="FVAOrganizerDonePage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="fvaorganizerwizard.h">
@@ -114,9 +114,6 @@
     </CustomBuild>
     <CustomBuild Include="fvaorganizerwizard.qrc">
       <Filter>Resource Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="FVAOrganizerPages.h">
-      <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="FVAOrganizerStartPage.h">
       <Filter>Header Files</Filter>
@@ -131,6 +128,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="FVAOrganizerOutputDirPage.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="FVAOrganizerDonePage.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

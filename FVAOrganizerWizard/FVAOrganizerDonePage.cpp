@@ -1,17 +1,7 @@
-#include "FVAOrganizerPages.h"
-#include "fvaorganizerwizard.h"
+#include "FVAOrganizerDonePage.h"
 
 #include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QFileDialog>
-#include <QtWidgets/QMessageBox>
-#include <QtCore/QProcess>
-#include <QtCore/QCoreApplication>
-#include <QtCore/QFileInfo>
-
-#include "fvacommonlib.h"
-#include "fvadefaultcfg.h"
-#include "fvacommoncsv.h"
-#include "fvacommonui.h"
+#include <QtWidgets/QTextBrowser>
 
 FVAOrganizerDonePage::FVAOrganizerDonePage(void)
 {

@@ -1,6 +1,6 @@
 #include "fvaorganizerwizard.h"
-#include "FVAOrganizerPages.h"
 
+#include "FVAOrganizerDonePage.h"
 #include "FVAOrganizerStartPage.h"
 #include "FVAOrganizerOrientPage.h"
 #include "FVAOrganizerInputDirPage.h"
