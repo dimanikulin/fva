@@ -93,7 +93,7 @@ void FVAViewer::prepareFilters()
 						&m_locationIcon);
 }
 
-FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *parent, Qt::WindowFlags flags)
+FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *parent, Qt::WindowFlags /*flags*/)
 	:QDialog 			(parent),
 	m_ui				(new Ui::FVAViewerClass),
 	m_dictionaryPath	(dictPath)
