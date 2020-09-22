@@ -20,7 +20,6 @@ FVA_EXIT_CODE CLTCheckDeviceName::execute()
 		{
 			LOG_QWARN << "no device name in picture:" << info.absoluteFilePath();
 			continue; // not so crirical
-			return FVA_ERROR_EMPTY_DEVICE_NAME;
 		}
 		else
 		{

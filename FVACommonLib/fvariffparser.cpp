@@ -10,50 +10,49 @@ RiffParser::~RiffParser( )
 
 }
 
-bool RiffParser::open ( const QString& path, QString& error )
+bool RiffParser::open(const QString& path, QString& error)
 {
-	m_file.reset ( new QFile ( path ) );
-	if ( !m_file->open( QIODevice::ReadOnly ) )
+	m_file.reset(new QFile(path));
+	if (!m_file->open(QIODevice::ReadOnly))
 	{
 		error = "Can not open file";
 		return false;
 	}
 
-	m_stream.reset ( new QDataStream( m_file.get() ) );
-	 
-	char buffer [12];
-	
+	m_stream.reset(new QDataStream(m_file.get()));
+
+	char buffer[12];
+
 	// check format
-	qint32 size = m_stream->readRawData( buffer, sizeof( buffer ) );
-	if ( QString::fromLatin1( buffer, 4 ) != "RIFF" 
-		&& QString::fromLatin1( buffer, 4 ) != "RIFX" )
+	m_stream->readRawData(buffer, sizeof(buffer));
+	if (QString::fromLatin1(buffer, 4) != "RIFF"
+		&& QString::fromLatin1(buffer, 4) != "RIFX")
 	{
 		error = "Incorrect FourCC";
 		return false;
 	}
 
-	int datasize	= * ( (int*) ( &buffer[ 4 ]) );
+	qint64 datasize = *((int*)(&buffer[4])) + sizeof (qint64);
 	// check size
-	if ( m_file->size() < datasize + sizeof ( int ) )
+	if (m_file->size() < datasize)
 	{
 		error = "Incorrect size";
 		return false;
 	}
 	return true;
 }
-
 bool RiffParser::processNode( const QString& tag, QString& value )
 {
 	while ( !m_stream->atEnd() )
 	{	
 		// Examine the element, is it a list or a chunk
 		char buffer [8];		
-		qint32 readSize = m_stream->readRawData( buffer, sizeof( buffer ) );
+		m_stream->readRawData( buffer, sizeof( buffer ) );
 		int datasize	= * ( (int*) ( &buffer[ 4 ]) );
 		if ( QString::fromLatin1( buffer, 4 ) == "LIST" )
 		{
 			char buffer_ [4];
-			qint32 readSize_ = m_stream->readRawData( buffer_, sizeof( buffer_ ) );	
+			m_stream->readRawData( buffer_, sizeof( buffer_ ) );	
 			if ( processNode( tag, value ) )
 				return true; // found wanted element
 		}
@@ -65,7 +64,7 @@ bool RiffParser::processNode( const QString& tag, QString& value )
 			if ( tag == QString::fromLatin1( buffer, 4 ) )
 			{
 				char buffer_ [1024];
-				qint32 readSize_ = m_stream->readRawData( buffer_, sizeof( buffer_ ) );	
+				m_stream->readRawData( buffer_, sizeof( buffer_ ) );	
 				value = QString::fromLatin1( buffer_, datasize );
 				return true;
 			}

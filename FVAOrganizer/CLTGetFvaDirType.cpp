@@ -26,6 +26,8 @@ FVA_EXIT_CODE CLTGetFvaDirType::execute()
 		return FVA_1_EVENT_1_DAY;
 	if (dirNumber > 1)
 		return FVA_FEW_EVENTS_FEW_DAYS;
+	else
+		return FVA_NO_ERROR;
 
 	// TODO to impelemnt FVA_FEW_EVENTS_1_DAY
 }

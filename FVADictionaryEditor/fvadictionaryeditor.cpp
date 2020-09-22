@@ -41,7 +41,7 @@ FVADictionaryEditor::~FVADictionaryEditor()
 
 }
 
-void addDictItem(const QString& dictPath, const QString& name, QDialog* dlg, const QString& dictName)
+void addDictItem(const QString& /*dictPath*/, const QString& /*name*/, QDialog* /*dlg*/, const QString& /*dictName*/)
 {
 	/*if (name.isEmpty())
 		return;
@@ -112,7 +112,7 @@ void FVADictionaryEditor::OnAddPlaceBtnPressed()
 * \param error - human-readable description of error if any
 * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
 */
-FVA_EXIT_CODE fvaSaveDictionary(const QString& file, QVariantMap& inputJson, QString& error)
+FVA_EXIT_CODE fvaSaveDictionary(const QString& /*file*/, QVariantMap& /*inputJson*/, QString& /*error*/)
 {
 	/*QDir dir(file);
 	if (!dir.exists(file))

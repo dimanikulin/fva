@@ -36,7 +36,7 @@ QString fvaItem::getGuiName(const QVariantMap&	dictionaries)
 			QVariantList vlist = dictionaries["events"].toList();
 			for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
 			{
-				if ( i->toMap()["ID"].toInt() == fvaFolder->eventId )
+				if ( i->toMap()["ID"].toUInt() == fvaFolder->eventId )
 				{
 					desc =	 " - " + i->toMap()["fullName"].toString();
 					break;
@@ -48,7 +48,7 @@ QString fvaItem::getGuiName(const QVariantMap&	dictionaries)
 				QVariantList vlist = dictionaries["people"].toList();
 				for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
 				{
-					if ( ( i->toMap()["ID"].toInt() == fvaFolder->eventReasonPeopleIds[0])
+					if ( ( i->toMap()["ID"].toUInt() == fvaFolder->eventReasonPeopleIds[0])
 					&& fvaFolder->eventReasonPeopleIds[0] )
 					{
 						desc +=	 "," + i->toMap()["name"].toString();
@@ -74,7 +74,6 @@ QString fvaItem::getGuiName(const QVariantMap&	dictionaries)
 	{
 		return dateFrom.toString( "yyyy-MM-dd (hh:mm:ss)");
 	}
-	return "";
 }
 void fillNameByOneId(int ident, const QString& dict, const QVariantMap&	dictionaries, QString& fullName)
 {

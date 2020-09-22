@@ -24,8 +24,8 @@ FVA_EXIT_CODE CLTJSONConvertDirDesc::execute()
 	jsonData = "{" + jsonData + "}";
 	file.close();
 
-	bool res = false;
-	/*QVariantMap result = QtJson::Json::parse ( jsonData, res ).toMap();
+	/*bool res = false;
+	QVariantMap result = QtJson::Json::parse ( jsonData, res ).toMap();
 
 	if ( res && !result["event"].toString().isEmpty() )
 	LOG_QWARN << "dir:" << m_folder << ",event:" << result["event"].toString();

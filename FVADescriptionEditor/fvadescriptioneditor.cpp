@@ -104,7 +104,7 @@ void setCheckedItem(QTreeWidgetItem *item, QVector<unsigned int>& Ids)
 {
 	for (auto it = Ids.begin(); it != Ids.end(); ++it)
 	{
-		auto ID = item->data(1, 1).toInt();
+		auto ID = item->data(1, 1).toUInt();
 		auto Id = (*it);
 		if(ID == Id)
 			item->setCheckState(0, Qt::CheckState::Checked);

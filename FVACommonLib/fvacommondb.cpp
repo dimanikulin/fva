@@ -172,7 +172,7 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromDictionary(DEVICE_MAP& deviceMap, const QStrin
 		error =  "can not open fva DB"; \
 		return FVA_ERROR_CANT_OPEN_FVA_DB; \
 	}
-FVA_EXIT_CODE fvaLoadFiles( fvaItem* rootItem, const QString& DBPath, QString& error )
+FVA_EXIT_CODE fvaLoadFiles( fvaItem* /*rootItem*/, const QString& DBPath, QString& error )
 {
 	OPEN_DB
 	QSqlQuery query;

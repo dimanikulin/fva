@@ -57,9 +57,9 @@ bool CSVFile::atEnd( )
 
 bool CSVFile::parseLine( const QString& line, QStringList&	values, char delimiter )
 {
-	unsigned int	pos		= 0;
-	bool			quotes	= false;
-	QString			field	= "";
+	int			pos		= 0;
+	bool		quotes	= false;
+	QString		field	= "";
  
 	while( pos < line.length() && line[ pos ] != 0x00 )
 	{

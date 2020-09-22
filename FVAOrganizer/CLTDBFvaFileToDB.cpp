@@ -4,6 +4,7 @@
 
 QString FVget(FVADescriptionFile* desc, const QString& fieldName, const QStringList& titles, DESCRIPTIONS_MAP::Iterator it, QStringList& titlesToCheck)
 {
+	desc;
 	int indexColumn = desc->getColumnIdByName(titles, fieldName);
 	if (-1 == indexColumn)
 	{
