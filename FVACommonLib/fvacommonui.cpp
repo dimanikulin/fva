@@ -194,7 +194,7 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
 			delete treeWidgetItem;		
 	}
 }
-void fvaFindCheckedItem(QTreeWidgetItem *item, QVector<unsigned int>& Ids)
+void fvaFindCheckedItem(QTreeWidgetItem *item, QList<unsigned int>& Ids)
 {
 	if (item->checkState(0) == Qt::CheckState::Checked)
 	{

@@ -238,7 +238,7 @@ void FVADescriptionEditor::updateGuiForItem( const QString& path )
 void FVADescriptionEditor::saveCurrentDescription()
 {
 	////////// PEOPLE /////////////////////
-	QVector<unsigned int> Ids;
+	QList<unsigned int> Ids;
 	for (auto idTop = 0; idTop < ui.treePeopleWidget->topLevelItemCount();++idTop )
 		fvaFindCheckedItem(ui.treePeopleWidget->topLevelItem(idTop), Ids);
 

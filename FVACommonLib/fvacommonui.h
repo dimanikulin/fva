@@ -45,7 +45,7 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
  * \param Ids - arrau to fill by id of checked items
  * \param devices - need to insert devices
  */
-void fvaFindCheckedItem(QTreeWidgetItem *item, QVector<unsigned int>& Ids);
+void fvaFindCheckedItem(QTreeWidgetItem *item, QList<unsigned int>& Ids);
 
 /*!
  * \brief it recursivle update checked 
