@@ -20,6 +20,6 @@ class CLTDBFvaFolderToDB : public CLTDBBase
 		/*!
 		* moved folder descriptions
 		*/
-		QVector<QString>		m_movedFolders;
+		QList<QString>		m_movedFolders;
 };
 #endif // _CLT_DB_FVA_FOLDER_TO_DB_H_

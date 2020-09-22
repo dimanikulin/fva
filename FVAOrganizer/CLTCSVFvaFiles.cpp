@@ -8,7 +8,7 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute()
 	FVA_EXIT_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFile.id", ID);
 	RET_RES_IF_RES_IS_ERROR
 
-	QVector<QString>		records;	
+	QList<QString>		records;	
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		// just skip internal folder

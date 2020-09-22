@@ -19,7 +19,7 @@ protected:
 	/*!
 	* SQL inserts
 	*/
-	QVector<QString>		m_SQLs;
+	QList<QString>		m_SQLs;
 
 	/*!
 	* common work with output

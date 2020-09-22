@@ -26,7 +26,7 @@ private: // data
 	/*!
 	 * issues found, divided by type (in string format)
 	 */	
-	QVector<QString>				m_Issues;
+	QList<QString>				m_Issues;
 
 	/*!
 	 * file names to file pathes

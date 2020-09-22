@@ -20,7 +20,7 @@ class CLTDBFvaFileToDB : public CLTDBBase
 	/*!
 	 * moved file descriptions
 	 */
-	QVector<QString>		m_movedFiles;
+	QList<QString>		m_movedFiles;
 
 };
 #endif // _CLT_DB_FVA_FILE_TO_DB_H_
