@@ -21,7 +21,12 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
     	
 	QVBoxLayout * layout = new QVBoxLayout;
 
-	layout->addWidget(oneEventOneDay);
+	fvaInfoButton = new QPushButton;
+	fvaInfoButton->setText(tr("Добавить инфо"));
+	QGridLayout * oneEventOneDayLayout = new QGridLayout;
+	oneEventOneDayLayout->addWidget(oneEventOneDay, 0, 0);
+	oneEventOneDayLayout->addWidget(fvaInfoButton, 0, 1);
+	layout->addLayout(oneEventOneDayLayout);
 
 	layout->addWidget(severalEventsOneDay);
 	
@@ -41,6 +46,16 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	setLayout(layout);
 
 	connect(dirButton, SIGNAL(clicked()), this, SLOT(OnDirButtonClicked()));
+	connect(fvaInfoButton, SIGNAL(clicked()), this, SLOT(OnFvaInfoButtonPressed()));
+}
+void FVAOrganizerOutputDirPage::OnFvaInfoButtonPressed()
+{
+	QProcess myProcess(this);
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	QStringList params;
+	params.append(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv");
+	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADescriptionEditor.exe", params);
+	myProcess.waitForFinished(-1);
 }
 void FVAOrganizerOutputDirPage::setVisible(bool visible)
 {
