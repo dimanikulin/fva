@@ -5,6 +5,8 @@
 #include <QTGui/QIcon>
 #include <QtCore/QCoreApplication>
 
+#include "fvacommoncsv.h"
+
 FVA_EXIT_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QString& text )
 {
 	if ( fileName.isEmpty() || !imgLabel )
@@ -101,6 +103,113 @@ void fvaBuildFilterTree(QWidget* pMainWnd,
 			delete treeWidgetItem;
 	}
 }
+void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices)
+{
+	pMainWnd->connect(pTreeWidget,
+		SIGNAL(itemChanged(QTreeWidgetItem*, int)),
+		pMainWnd,
+		SLOT(updateChecks(QTreeWidgetItem*, int)));
+
+	QIcon	personIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/person.png");
+	QIcon	peopleIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/people.png");
+	QIcon	photoIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/photo.png");
+
+	FVA_RELATION_TYPES_MAP  RelationsMap;
+	FVA_EXIT_CODE res = fvaLoadRelationTypesMapFromCsv(RelationsMap);
+	RET_IF_RES_IS_ERROR
+
+	FVA_PEOPLE_RELATION_MAP  peopleRelationsMap;
+	res = fvaLoadPeopleRelationMapFromCsv(peopleRelationsMap);
+	RET_IF_RES_IS_ERROR
+
+	DEVICE_MAP deviceMap;
+	res = fvaLoadDeviceMapFromCsv(deviceMap);
+	RET_IF_RES_IS_ERROR
+
+	PEOPLE_MAP peopleMap;
+	res = fvaLoadPeopleMapFromCsv(peopleMap);
+	RET_IF_RES_IS_ERROR
+
+	for (auto i = RelationsMap.begin(); i != RelationsMap.end(); ++i)
+	{
+		int ID = i->first;
+		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
+		treeWidgetItem->setText(0, i->second);
+		//treeWidgetItem->setIcon(0, peopleIcon);
+		treeWidgetItem->setFlags(treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
+		treeWidgetItem->setCheckState(0, Qt::Unchecked);
+		for (auto index = peopleRelationsMap.begin(); index != peopleRelationsMap.end(); ++index)
+		{
+			int IDc = index->Id;
+			int IDrel = index->relationType;
+			if (IDrel != ID)
+				continue;
+
+			QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
+			childWidgetItem->setText(0, index->name);
+			//childWidgetItem->setIcon(0, peopleIcon);
+			childWidgetItem->setFlags(childWidgetItem->flags() | Qt::ItemIsUserCheckable);
+			childWidgetItem->setCheckState(0, Qt::Unchecked);
+
+			for (auto indexp = peopleMap.begin(); indexp != peopleMap.end(); ++indexp)
+			{
+				int IDp = indexp->Id;
+				if (IDp == 0)
+					continue;
+
+				int IDrelp = indexp->relationId;
+				if (IDrelp != IDc)
+					continue;
+
+				QTreeWidgetItem* personWidgetItem = new QTreeWidgetItem;
+
+				personWidgetItem->setText(0, indexp->fullName);
+				if (!devices)
+					personWidgetItem->setData(1, 1, IDp);
+				//personWidgetItem->setIcon(0, personIcon);
+				personWidgetItem->setFlags(personWidgetItem->flags() | Qt::ItemIsUserCheckable);
+				personWidgetItem->setCheckState(0, Qt::Unchecked);
+
+				if (!devices)
+				{
+					childWidgetItem->addChild(personWidgetItem);
+					continue;
+				}
+				for (auto inddev = deviceMap.begin(); inddev != deviceMap.end(); ++inddev)
+				{
+					int IDdev = inddev->deviceId;
+					if (IDdev == 0)
+						continue;
+
+					int IDOwner = inddev->ownerId;
+					if (IDOwner != IDp)
+						continue;
+
+					QTreeWidgetItem* deviceWidgetItem = new QTreeWidgetItem;
+					deviceWidgetItem->setText(0, inddev->guiName);
+					deviceWidgetItem->setData(1, 1, IDdev);
+					//deviceWidgetItem->setIcon(0, photoIcon);
+					deviceWidgetItem->setFlags(deviceWidgetItem->flags() | Qt::ItemIsUserCheckable);
+					deviceWidgetItem->setCheckState(0, Qt::Unchecked);
+					personWidgetItem->addChild(deviceWidgetItem);
+				}
+				if (personWidgetItem->childCount())
+					childWidgetItem->addChild(personWidgetItem);
+				else
+					delete personWidgetItem;
+			}// for (auto indexp = people.begin(); indexp != people.end(); ++indexp)
+			if (childWidgetItem->childCount())
+				treeWidgetItem->addChild(childWidgetItem);
+			else
+				delete childWidgetItem;
+		} // for (auto index = vlist1.begin(); index != vlist1.end(); ++index)
+		if (treeWidgetItem->childCount())
+			pTreeWidget->addTopLevelItem(treeWidgetItem);
+		else
+			delete treeWidgetItem;
+	}
+}
+
 void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devicesNeed, const QVariantMap& dict )
 {
 	pMainWnd->connect(pTreeWidget, 
