@@ -156,6 +156,8 @@ CLTAutoChecks2::~CLTAutoChecks2()
 	{
 		sizes[it.value()] = ++sizes[it.value()];
 	}
+	if (0 == m_Issues.size())
+		return; // not to create file for no issues
 	QFile fileNew(FVA_DEFAULT_ROOT_DIR + "issues.csv");
 	fileNew.open(QIODevice::Append | QIODevice::Text);
 	QTextStream writeStream(&fileNew);
