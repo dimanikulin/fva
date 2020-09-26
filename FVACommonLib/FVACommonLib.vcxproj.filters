@@ -108,5 +108,8 @@
     <ClInclude Include="data\fvaItem.h">
       <Filter>data</Filter>
     </ClInclude>
+    <ClInclude Include="data\fvaPeopleRelations.h">
+      <Filter>data</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
