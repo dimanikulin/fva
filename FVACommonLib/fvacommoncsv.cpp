@@ -240,3 +240,66 @@ FVA_EXIT_CODE fvaUpdateFvaDirInfoInCsv(const QString& dirPath)
 
 	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolder.id", ID);
 }
+
+FVA_EXIT_CODE fvaLoadRelationTypesMapFromCsv(FVA_RELATION_TYPES_MAP& relationTypesMap)
+{
+	FVADescriptionFile	fvaRelationTypesCsv;
+	QStringList			titles;
+	DESCRIPTIONS_MAP	decsItems;
+	FVA_EXIT_CODE res = fvaRelationTypesCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaRelationTypes.csv", titles, decsItems);
+	RET_RES_IF_RES_IS_ERROR
+
+	// ID,Name
+	int columnId = FVADescriptionFile::getColumnIdByName(titles, "ID");
+	if (-1 == columnId)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnName = FVADescriptionFile::getColumnIdByName(titles, "Name");
+	if (-1 == columnName)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
+	{
+		QStringList list = it.value();
+
+		int ID = list[columnId].remove("\t").toUInt();
+		QString Name = list[columnName].remove("\t").trimmed();
+		relationTypesMap[ID] = Name;
+	}
+	return FVA_NO_ERROR;
+}
+FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(FVA_PEOPLE_RELATION_MAP& peopleRelationsMap)
+{
+	FVADescriptionFile	fvaRelationTypesCsv;
+	QStringList			titles;
+	DESCRIPTIONS_MAP	decsItems;
+	FVA_EXIT_CODE res = fvaRelationTypesCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaPeopleRelations.csv", titles, decsItems);
+	RET_RES_IF_RES_IS_ERROR
+
+	// ID,Name,RelationType
+	int columnId = FVADescriptionFile::getColumnIdByName(titles, "ID");
+	if (-1 == columnId)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnName = FVADescriptionFile::getColumnIdByName(titles, "Name");
+	if (-1 == columnName)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnRelationType = FVADescriptionFile::getColumnIdByName(titles, "RelationType");
+	if (-1 == columnRelationType)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
+	{
+		QStringList list = it.value();
+		
+		fvaPeopleRelation relation;
+
+		relation.Id = list[columnId].remove("\t").toUInt();
+		relation.name = list[columnName].remove("\t").trimmed();
+		relation.relationType = list[columnRelationType].remove("\t").toInt();
+
+		peopleRelationsMap[relation.Id] = relation;
+	}
+	return FVA_NO_ERROR;
+}
