@@ -8,7 +8,7 @@
 #include "data/fvaperson.h"
 #include "data/fvaPeopleRelations.h"
 
-typedef std::map<int, QString> FVA_RELATION_TYPES_MAP;
+typedef std::map<int, QString> FVA_SIMPLE_MAP;
 
 /*!
  * \brief it returns device ID by file name from fva information saved in CSV files
@@ -58,11 +58,12 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(DEVICE_MAP& deviceMap);
 FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(PEOPLE_MAP& peopleMap);
 
 /*!
-* \brief it tries to load relations type map from dictionary
-* \param relationTypesMap a map to be filled up
+* \brief it tries to load simple map <ID to Name> from dictionary
+* \param simple map <ID to Name> a map to be filled up
+* \param dictName file name of dictionary to load from
 * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
 */
-FVA_EXIT_CODE fvaLoadRelationTypesMapFromCsv(FVA_RELATION_TYPES_MAP& relationTypesMap);
+FVA_EXIT_CODE fvaLoadSimpleMapFromCsv(FVA_SIMPLE_MAP& simpleMap, const QString& dictName);
 
 /*!
 * \brief it tries to load people relations map from dictionary

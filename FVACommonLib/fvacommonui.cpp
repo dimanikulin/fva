@@ -114,8 +114,8 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
 	QIcon	peopleIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/people.png");
 	QIcon	photoIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/photo.png");
 
-	FVA_RELATION_TYPES_MAP  RelationsMap;
-	FVA_EXIT_CODE res = fvaLoadRelationTypesMapFromCsv(RelationsMap);
+	FVA_SIMPLE_MAP RelationsMap;
+	FVA_EXIT_CODE res = fvaLoadSimpleMapFromCsv(RelationsMap, "fvaRelationTypes.csv");
 	RET_IF_RES_IS_ERROR
 
 	FVA_PEOPLE_RELATION_MAP  peopleRelationsMap;

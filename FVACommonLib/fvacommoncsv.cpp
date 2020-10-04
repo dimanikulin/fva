@@ -241,12 +241,12 @@ FVA_EXIT_CODE fvaUpdateFvaDirInfoInCsv(const QString& dirPath)
 	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolder.id", ID);
 }
 
-FVA_EXIT_CODE fvaLoadRelationTypesMapFromCsv(FVA_RELATION_TYPES_MAP& relationTypesMap)
+FVA_EXIT_CODE fvaLoadSimpleMapFromCsv(FVA_SIMPLE_MAP& simpleMap, const QString& dictName)
 {
-	FVADescriptionFile	fvaRelationTypesCsv;
+	FVADescriptionFile	fvaCsv;
 	QStringList			titles;
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_EXIT_CODE res = fvaRelationTypesCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaRelationTypes.csv", titles, decsItems);
+	FVA_EXIT_CODE res = fvaCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/" + dictName, titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
 
 	// ID,Name
@@ -264,7 +264,7 @@ FVA_EXIT_CODE fvaLoadRelationTypesMapFromCsv(FVA_RELATION_TYPES_MAP& relationTyp
 
 		int ID = list[columnId].remove("\t").toUInt();
 		QString Name = list[columnName].remove("\t").trimmed();
-		relationTypesMap[ID] = Name;
+		simpleMap[ID] = Name;
 	}
 	return FVA_NO_ERROR;
 }
