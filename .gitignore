@@ -369,3 +369,7 @@ easyexif/
 
 #ignore ipynb_checkpoints
 .ipynb_checkpoints/
+
+#ignore some scripts
+fvaCsvEditor.py
+fvaCsvViewer.py
