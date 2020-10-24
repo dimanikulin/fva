@@ -10,6 +10,44 @@
 #include <QtCore/QDateTime>
 #include <QtCore/QProcess>
 
+FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
+	:
+	QMainWindow(parent),
+	m_forFolder(forFolder)
+{
+	ui.setupUi(this);
+
+	/*connect (ui.btnNext,SIGNAL(clicked()),this,SLOT(OnNextBtnPressed()) );
+	connect (ui.btnPrev,SIGNAL(clicked()),this,SLOT(OnPrevBtnPressed()) );
+	connect (ui.btnSave,SIGNAL(clicked()),this,SLOT(OnSaveBtnPressed()) );
+	connect (ui.btnDict,SIGNAL(clicked()),this,SLOT(OnChangeDictPressed()));*/
+
+	// QIcon	icon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/main.png");
+	// setWindowIcon(icon);
+
+	if (m_forFolder)
+	{
+		ui.editDescription->setVisible(false);
+		setFixedHeight(size().height());
+		setFixedWidth(ui.groupBox->size().width() + 20);
+		ui.btnNext->setVisible(false);
+		ui.btnPrev->setVisible(false);
+	}
+	else
+	{
+		// TODO	
+	}
+
+	fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false);
+	fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false);
+}
+
+FVADescriptionEditor::~FVADescriptionEditor()
+{
+
+}
+
+/*
 void FVADescriptionEditor::updateDictionaryGUI()
 {
 	fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false,m_dictionaries);
@@ -31,51 +69,6 @@ void FVADescriptionEditor::updateDictionaryGUI()
 
 	QVariantList vlist;
 	FILL_COMB_FROM_DICT("devices",ui.cmbBoxDevice);
-}
-void FVADescriptionEditor::init()
-{	
-	ui.setupUi(this);
-
-	updateDictionaryGUI();
-	
-	connect (ui.btnNext,SIGNAL(clicked()),this,SLOT(OnNextBtnPressed()) );
-	connect (ui.btnPrev,SIGNAL(clicked()),this,SLOT(OnPrevBtnPressed()) );
-	connect (ui.btnSave,SIGNAL(clicked()),this,SLOT(OnSaveBtnPressed()) );
-	connect (ui.btnDict,SIGNAL(clicked()),this,SLOT(OnChangeDictPressed()));
-}
-
-FVADescriptionEditor::FVADescriptionEditor(
-						bool							forFolder,
-						const QStringList&				titles, 
-						QMap< QString, QStringList >&	decsItems, 
-						const QVariantMap&				dictionaries,
-						int								indexOfFile,
-						const QStringList&				files,
-						const QString&					dictPath,
-						const QString&					folderPath,
-						QWidget *						parent)
-	:
-	 QMainWindow	(parent),
-	m_dictionaries	(dictionaries),
-	m_dictPath		(dictPath),
-	m_forFolder		(forFolder),
-	m_titles		(titles), 
-	m_decsItems		(decsItems), 
-	m_indexOfFile	(indexOfFile),
-	m_files			(files),
-	m_folderPath	(folderPath)
-{
-	init();
-
-	updateGuiForItem( forFolder ? folderPath : m_files[m_indexOfFile] );
-
-	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/main.png");
-	setWindowIcon(icon);
-}
-
-FVADescriptionEditor::~FVADescriptionEditor()
-{
-
 }
 
 void FVADescriptionEditor::OnNextBtnPressed()
@@ -329,8 +322,8 @@ void FVADescriptionEditor::saveCurrentDescription()
 			}
 		}
 		QString error;
-		/*FVA_EXIT_CODE res = fvaCreateFolderDescription( m_folderPath + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
-		RET_IF_RES_NO_ERROR*/
+		FVA_EXIT_CODE res = fvaCreateFolderDescription( m_folderPath + "/" + FVA_DIR_DESCRIPTION_FILE_NAME, content, error );
+		RET_IF_RES_NO_ERROR
 	}
 	else
 	{
@@ -400,3 +393,32 @@ void FVADescriptionEditor::OnChangeDictPressed()
 
 	updateDictionaryGUI();
 }
+
+FVADescriptionEditor::FVADescriptionEditor(
+	bool							forFolder,
+	const QStringList&				titles,
+	QMap< QString, QStringList >&	decsItems,
+	const QVariantMap&				dictionaries,
+	int								indexOfFile,
+	const QStringList&				files,
+	const QString&					dictPath,
+	const QString&					folderPath,
+	QWidget *						parent)
+	:
+	QMainWindow(parent),
+	m_dictionaries(dictionaries),
+	m_dictPath(dictPath),
+	m_forFolder(forFolder),
+	m_titles(titles),
+	m_decsItems(decsItems),
+	m_indexOfFile(indexOfFile),
+	m_files(files),
+	m_folderPath(folderPath)
+{
+	init();
+
+	updateGuiForItem(forFolder ? folderPath : m_files[m_indexOfFile]);
+
+	QIcon	icon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/main.png");
+	setWindowIcon(icon);
+}*/
