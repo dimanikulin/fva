@@ -364,5 +364,8 @@ FVASetupWin/#BIN#
 FVASetupWin/QT5.5DebWin32bin
 FVASetupWin/QT5.5RelWin32bin
 
-#ignore submodules
+#ignore submodule
 easyexif/
+
+#ignore ipynb_checkpoints
+.ipynb_checkpoints/
