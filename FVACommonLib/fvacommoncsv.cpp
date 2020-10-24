@@ -40,8 +40,8 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(FVA_FILE_INFO_MAP& fvaFileInfo)
 	FVA_EXIT_CODE res = fvaFileCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFile.csv", titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
 
-		// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,fvaTags,reserved1,reserved2
-		int columnDevId = FVADescriptionFile::getColumnIdByName(titles, "DevId");
+	// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,EventId,ReasonPeople,reserved1
+	int columnDevId = FVADescriptionFile::getColumnIdByName(titles, "DevId");
 	if (-1 == columnDevId)
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 

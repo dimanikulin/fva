@@ -126,6 +126,9 @@
     <ClCompile Include="CLTMergeFewDaysFewsEventsDir.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTCSVUpdateFvaFiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -228,6 +231,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTMergeFewDaysFewsEventsDir.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTCSVUpdateFvaFiles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
