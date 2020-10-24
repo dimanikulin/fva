@@ -19,7 +19,7 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute()
 			qDebug() << "skipped internal fs object - " << info.absoluteFilePath() ;
 			continue;
 		}
-		// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,OldName,WhoTook,OldName1
+		// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,EventId,ReasonPeople,reserved1
 		QString csvRecord =  QString::number(++ID) + "," // ID
 			+ info.fileName() + ",,," // Name
 			+ m_custom	+ ",,,,,,"; // m_custom here is device id

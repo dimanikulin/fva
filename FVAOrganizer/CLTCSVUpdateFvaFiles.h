@@ -3,7 +3,9 @@
 
 #include "CmdLineBaseTask.h"
 
-
+/*!
+* \brief it updates "fvaFile.csv" with placeId, EventId and ReasonPeople that it gets from "fvaFolder.csv"
+*/
 class CLTCSVUpdateFvaFiles : public CmdLineBaseTask
 {
 public:
