@@ -42,6 +42,7 @@ bool CSVFile::openForWrite( const QString& path )
 		return false;
 
 	m_stream.reset ( new QTextStream( m_file.get() ) );
+	m_stream->setCodec(QTextCodec::codecForName("UTF-8"));
 	return true;
 }
 
