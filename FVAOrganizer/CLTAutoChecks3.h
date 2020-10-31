@@ -32,5 +32,10 @@ private:
 	*/
 	FVA_FILE_INFO_MAP				m_fvaFileInfo;
 
+	/*!
+	* copy of global fva file information
+	*/
+	FVA_FILE_INFO_MAP				m_fvaFileInfoC;
+
 };
 #endif // _CLT_AUTO_CHECKS_3_H

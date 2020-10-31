@@ -12,6 +12,8 @@ CLTAutoChecks3::CLTAutoChecks3(const QString& dir_, bool readOnly_, const QStrin
 	FVA_EXIT_CODE res = fvaLoadFvaFileInfoFromCsv(m_fvaFileInfo);
 	RET_IF_RES_IS_ERROR
 
+	m_fvaFileInfoC = m_fvaFileInfo;
+
 	res = fvaLoadDeviceMapFromCsv(m_deviceMap);
 	RET_IF_RES_IS_ERROR
 }
@@ -21,6 +23,10 @@ FVA_EXIT_CODE CLTAutoChecks3::execute()
 	{
 		QString suffix = info.suffix().toUpper();
 		FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
+
+		// remove checked FVA file
+		if (fvaIsFVAFile(suffix))
+			m_fvaFileInfoC.erase(m_fvaFileInfoC.find(info.fileName().toUpper()));
 
 		if (FVA_FS_TYPE_IMG != type)
 			continue;
@@ -90,6 +96,11 @@ FVA_EXIT_CODE CLTAutoChecks3::execute()
 
 CLTAutoChecks3::~CLTAutoChecks3()
 {
+	for (auto it = m_fvaFileInfoC.begin(); it != m_fvaFileInfoC.end(); ++ it)
+	{
+		m_Issues.push_back("FVA_ERROR_NOT_EXISTING_FVA," + it.key());
+	}
+
 	QFile fileNew(FVA_DEFAULT_ROOT_DIR + "issues.csv");
 	fileNew.open(QIODevice::Append | QIODevice::Text);
 	QTextStream writeStream(&fileNew);
