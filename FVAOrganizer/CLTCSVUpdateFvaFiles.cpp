@@ -116,61 +116,61 @@ FVA_EXIT_CODE CLTCSVUpdateFvaFiles::execute()
 		if (-1 == columnFilePlaceId)
 			return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
-		if (fileList[columnFilePlaceId].isEmpty())
+		if (fileList[columnFilePlaceId].trimmed().isEmpty())
 		{
-			if (!dirList[columnDirPlaceId].isEmpty())
+			if (!dirList[columnDirPlaceId].trimmed().isEmpty())
 			{
-				fileList[columnFilePlaceId] = dirList[columnDirPlaceId];
-				LOG_QDEB << "applied for a file " << fileName << ", PlaceID " << dirList[columnDirPlaceId];
+				fileList[columnFilePlaceId] = dirList[columnDirPlaceId].trimmed();
+				LOG_QDEB << "applied for a file " << fileName << ", PlaceID " << dirList[columnDirPlaceId].trimmed();
 			}
 		}
 		else
-			LOG_QDEB << "found a file that already has placeID " << fileName << ", " << fileList[columnFilePlaceId];
+			LOG_QDEB << "found a file that already has placeID " << fileName << ", " << fileList[columnFilePlaceId].trimmed();
 
 		//////////////////////////////EVENTID///////////////////////////////////////////////
 		int columnFileEventId = FVADescriptionFile::getColumnIdByName(m_fileTitles, "EventId");
 		if (-1 == columnFileEventId)
 			return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-		if (fileList[columnFileEventId].isEmpty())
+		if (fileList[columnFileEventId].trimmed().isEmpty())
 		{
-			if (!dirList[columnDirEventId].isEmpty())
+			if (!dirList[columnDirEventId].trimmed().isEmpty())
 			{
-				fileList[columnFileEventId] = dirList[columnDirEventId];
-				LOG_QDEB << "applied for a file " << fileName << ", EventId " << dirList[columnDirEventId];
+				fileList[columnFileEventId] = dirList[columnDirEventId].trimmed();
+				LOG_QDEB << "applied for a file " << fileName << ", EventId " << dirList[columnDirEventId].trimmed();
 			}
 		}
 		else
-			LOG_QDEB << "found a file that already has EVENTID" << fileName << ", " << fileList[columnFileEventId];
+			LOG_QDEB << "found a file that already has EVENTID" << fileName << ", " << fileList[columnFileEventId].trimmed();
 
 		//////////////////////////////ReasonPeople///////////////////////////////////////////////
 		int columnFileReasonPeople = FVADescriptionFile::getColumnIdByName(m_fileTitles, "ReasonPeople");
 		if (-1 == columnFileReasonPeople)
 			return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-		if (fileList[columnFileReasonPeople].isEmpty())
+		if (fileList[columnFileReasonPeople].trimmed().isEmpty())
 		{
-			if (!dirList[columnDirReasonPeople].isEmpty())
+			if (!dirList[columnDirReasonPeople].trimmed().isEmpty())
 			{
-				fileList[columnFileReasonPeople] = dirList[columnDirReasonPeople];
-				LOG_QDEB << "applied for a file " << fileName << ", ReasonPeople " << dirList[columnDirReasonPeople];
+				fileList[columnFileReasonPeople] = dirList[columnDirReasonPeople].trimmed();
+				LOG_QDEB << "applied for a file " << fileName << ", ReasonPeople " << dirList[columnDirReasonPeople].trimmed();
 			}
 		}
 		else
-			LOG_QDEB << "found a file that already has ReasonPeople" << fileName << ", " << fileList[columnFileReasonPeople];
+			LOG_QDEB << "found a file that already has ReasonPeople" << fileName << ", " << fileList[columnFileReasonPeople].trimmed();
 
 		//////////////////////////////Tags///////////////////////////////////////////////
 		int columnFileTags = FVADescriptionFile::getColumnIdByName(m_fileTitles, "Tags");
 		if (-1 == columnFileTags)
 			return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-		if (fileList[columnFileTags].isEmpty())
+		if (fileList[columnFileTags].trimmed().isEmpty())
 		{
-			if (!dirList[columnDirTags].isEmpty())
+			if (!dirList[columnDirTags].trimmed().isEmpty())
 			{
-				fileList[columnFileTags] = dirList[columnDirTags];
-				LOG_QDEB << "applied for a file " << fileName << ", tags " << dirList[columnDirTags];
+				fileList[columnFileTags] = dirList[columnDirTags].trimmed();
+				LOG_QDEB << "applied for a file " << fileName << ", tags " << dirList[columnDirTags].trimmed();
 			}
 		}
 		else
-			LOG_QDEB << "found a file that already has Tags" << fileName << ", " << fileList[columnFileTags];
+			LOG_QDEB << "found a file that already has Tags" << fileName << ", " << fileList[columnFileTags].trimmed();
 
 		m_fileDecsItems[ID] = fileList;
 	}
