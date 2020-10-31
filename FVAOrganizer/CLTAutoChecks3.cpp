@@ -2,6 +2,7 @@
 
 #include "fvadefaultcfg.h"
 #include "fvacommoncsv.h"
+#include "fvacommonexif.h"
 
 CLTAutoChecks3::CLTAutoChecks3(const QString& dir_, bool readOnly_, const QString& custom_)
 :CmdLineBaseTask(dir_, readOnly_, custom_)
@@ -23,7 +24,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute()
 
 		if (FVA_FS_TYPE_IMG != type)
 			continue;
-		//////////////////////////////////// 3. check for exsiting device in fva info by fileName
+		//////////////////////////////////// 1. check for exsiting device in fva info by fileName
 		int deviceID = FVA_UNDEFINED_ID;
 		FVA_EXIT_CODE res = fvaGetDeviceIdFromCsv(m_fvaFileInfo, info.fileName(), deviceID, info.absoluteDir().absolutePath());
 		if (FVA_NO_ERROR != res)
@@ -34,7 +35,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute()
 			if (FVA_ERROR_NON_UNIQUE_FVA_INFO == res)
 				m_Issues.push_back("FVA_ERROR_NON_UNIQUE_FVA_INFO," + info.absoluteFilePath() + "," + info.fileName());
 		}
-		//////////////////////////////////// 4. check for exsiting device in dictionary by device name in pictire
+		//////////////////////////////////// 2. check for exsiting device in dictionary by device name in pictire
 		QString deviceName;
 		DEVICE_MAP devMap = fvaGetDeviceMapForImg(m_deviceMap, info.filePath(), deviceName);
 		if (0 == devMap.size())
@@ -67,6 +68,20 @@ FVA_EXIT_CODE CLTAutoChecks3::execute()
 			LOG_QWARN << "device id linked wrongly, " << info.absoluteFilePath() << ",from image-" << devMap.begin().value().deviceId << ", from fvafile=" << deviceID;
 			m_Issues.push_back("FVA_ERROR_LINKED_WRONG_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
 			continue;
+		}
+
+		//////////////////////////////////// 3. check for GEO position exsiting in file//////////////////////
+		bool GeoPresent = fvaExifGeoDataPresentFromFile(info.filePath());
+		if (!GeoPresent)
+		{
+			int PlaceId = -1;
+			if (m_fvaFileInfo.find(info.fileName().toUpper()) != m_fvaFileInfo.end())
+			{
+				PlaceId = m_fvaFileInfo[info.fileName().toUpper()].placeId;
+			}
+
+			LOG_QWARN << "GEO location is NOT preent in:" << info.absoluteFilePath() << ", PlaceId=" << PlaceId;
+			m_Issues.push_back("FVA_ERROR_NO_GEO," + info.absoluteFilePath() + "," + QString::number(PlaceId));
 		}
 
 	}
