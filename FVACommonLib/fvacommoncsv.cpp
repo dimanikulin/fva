@@ -53,6 +53,10 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(FVA_FILE_INFO_MAP& fvaFileInfo)
 	if (-1 == columnName)
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
+	int columnPlaceID = FVADescriptionFile::getColumnIdByName(titles, "PlaceId");
+	if (-1 == columnPlaceID)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
 	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
 	{
 		QStringList list = it.value();
@@ -69,6 +73,7 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(FVA_FILE_INFO_MAP& fvaFileInfo)
 		}
 		fvaFile newFile;
 		newFile.deviceId = list[columnDevId].remove("\t").toUInt();
+		newFile.placeId = list[columnPlaceID].remove("\t").toUInt();
 		fvaFileInfo[fileName.toUpper()] = newFile;
 	}
 	return FVA_NO_ERROR;
