@@ -1,1 +1,1 @@
-"../FVAOrganizer.exe" CLT_Auto_Checks_3 "c:/FVA" recursive=yes logvel=4 readonly=yes
+"../FVAOrganizer.exe" CLTAutoChecks3 "c:/FVA" recursive=yes logvel=4 readonly=yes
