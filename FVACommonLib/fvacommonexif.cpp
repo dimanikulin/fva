@@ -29,3 +29,20 @@ QDateTime fvaGetExifDateTimeOriginalFromFile(const QString& pathToFile)
 	}
 	return QDateTime();
 }
+bool fvaExifGeoDataPresentFromFile(const QString& pathToFile)
+{
+	QFile file(pathToFile);
+	if (file.open(QIODevice::ReadOnly)){
+		QByteArray data = file.readAll(/*1024 * 100*/);
+		easyexif::EXIFInfo info;
+		if (0 == info.parseFrom((unsigned char *)data.data(), data.size()))
+		{
+			easyexif::EXIFInfo::Geolocation_t loc = info.GeoLocation;
+			if (loc.Latitude > 0 && loc.Longitude > 0)
+				return true;
+			else
+				return false;
+		}
+	}
+	return false;
+}
