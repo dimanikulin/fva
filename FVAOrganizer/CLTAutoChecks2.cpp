@@ -84,7 +84,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute()
 				if (!dateTime.isValid())
 				{
 					LOG_QWARN << "empty video taken time found in:" << info.absoluteFilePath();
-					m_Issues.push_back("FVA_ERROR_EMPTY_VIDEO_TIME," + info.absoluteFilePath() + "," + info.fileName());
+					// m_Issues.push_back("FVA_ERROR_EMPTY_VIDEO_TIME," + info.absoluteFilePath() + "," + info.fileName());
 				}
 			}
 
@@ -158,7 +158,7 @@ CLTAutoChecks2::~CLTAutoChecks2()
 	}
 	if (0 == m_Issues.size())
 		return; // not to create file for no issues
-	QFile fileNew(FVA_DEFAULT_ROOT_DIR + "issues.csv");
+	QFile fileNew(FVA_DEFAULT_ROOT_DIR + "issues2.csv");
 	fileNew.open(QIODevice::Append | QIODevice::Text);
 	QTextStream writeStream(&fileNew);
 	writeStream.setCodec("UTF-8");
