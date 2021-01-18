@@ -22,5 +22,6 @@ into the IR multimedia systems like Google Photo, Apple Photo, Synology Photo St
 4. Votive2013.vsix
 5. add new QT version in vs-addin
 6. python-3.8.3-amd64.exe
+7. doxygen-1.9.0-setup.exe
 optional:
 7. jupyter-lab 
