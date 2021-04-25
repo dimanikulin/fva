@@ -1,10 +1,10 @@
 #ifndef FVACONFIGURATOR_H
 #define FVACONFIGURATOR_H
 
-#include <QTWidgets/QMainWindow>
+#include <QTWidgets/QDialog>
 #include "ui_fvaconfigurator.h"
 
-class FVAConfigurator : public QMainWindow
+class FVAConfigurator : public QDialog
 {
 	Q_OBJECT
 

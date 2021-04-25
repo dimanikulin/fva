@@ -1,9 +1,9 @@
 #include "fvaconfigurator.h"
 
 FVAConfigurator::FVAConfigurator(QWidget *parent)
-	: QMainWindow(parent)
+: QDialog(parent)
 {
-	ui.setupUi(this);
+	// ui.setupUi(this);
 }
 
 FVAConfigurator::~FVAConfigurator()
