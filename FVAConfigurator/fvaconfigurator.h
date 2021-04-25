@@ -13,9 +13,22 @@ class FVAConfigurator : public QDialog
 public:
 	FVAConfigurator(QWidget *parent = Q_NULLPTR);
 
-private:
+private:// methods
+	
+	void InitializeCommonTab();
+	void InitializeSearchTab();
+	void InitializeIntegratorTab();
+	void InitializeRenameTab();
+	void InitializeFormatTab();
+
+private: // data
 	Ui::FVAConfiguratorClass ui;
+
 	QTabWidget *tabs;
 	QDialogButtonBox *buttons;
-
+	QWidget *tabCommon;
+	QWidget *tabSearch;
+	QWidget *tabIntegrator;
+	QWidget *tabRename;
+	QWidget *tabFormat;
 };
