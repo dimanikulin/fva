@@ -43,4 +43,10 @@ const QString FVA_FILE_NAME_FMT = "yyyy-MM-dd-hh-mm-ss";
 */
 const QString EXIF_DATE_TIME_FMT = "yyyy:MM:dd hh:mm:ss";
 
+/*!
+* \brief language to be used
+*/
+ #define FVA_LANGUAGE_ENG
+// #define FVA_LANGUAGE_RUS
+
 #endif // FVADEFAULTCFG_H
