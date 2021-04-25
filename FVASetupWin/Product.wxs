@@ -90,6 +90,7 @@
             <File Id="descEditor" Name="FVADescriptionEditor.exe" Source="..\fvabin\x64\$(var.Configuration)\FVADescriptionEditor.exe" Vital="yes" KeyPath="no"/>
             <File Id="dictEditor" Name="FVADictionaryEditor.exe" Source="..\fvabin\x64\$(var.Configuration)\FVADictionaryEditor.exe" Vital="yes" KeyPath="no"/>
             <File Id="player" Name="FVAPlayer.exe" Source="..\fvabin\x64\$(var.Configuration)\FVAPlayer.exe" Vital="yes" KeyPath="no"/>
+          <File Id="player" Name="FVAConfigurator.exe" Source="..\fvabin\x64\$(var.Configuration)\FVAConfigurator.exe" Vital="yes" KeyPath="no"/>
    
             <File Id="conv" Name="Converter.exe" Source="#BIN#\Converter.exe"  Vital="yes" KeyPath="no"/>
             <File Id="exif" Name="exiftool(-k).exe"  Source="#BIN#\exiftool(-k).exe"  Vital="yes" KeyPath="no"/>
