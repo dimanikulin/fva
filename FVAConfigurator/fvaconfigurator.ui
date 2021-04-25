@@ -1,6 +1,6 @@
 <UI version="4.0" >
  <class>FVAConfiguratorClass</class>
- <widget class="QMainWindow" name="FVAConfiguratorClass" >
+ <widget class="QDialog" name="FVAConfiguratorClass" >
   <property name="objectName" >
    <string notr="true">FVAConfiguratorClass</string>
   </property>
@@ -15,15 +15,11 @@
   <property name="windowTitle" >
    <string>FVAConfigurator</string>
   </property>
-  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
  </widget>
  <layoutDefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
  <resources>
-   <include location="fvaconfigurator.qrc"/>
+   <include location="FVAConfigurator.qrc"/>
  </resources>
  <connections/>
 </UI>

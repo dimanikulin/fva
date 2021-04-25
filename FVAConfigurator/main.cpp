@@ -1,4 +1,4 @@
-#include "fvaconfigurator.h"
+#include "FVAConfigurator.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])

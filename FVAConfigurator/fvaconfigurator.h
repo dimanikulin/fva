@@ -1,19 +1,21 @@
-#ifndef FVACONFIGURATOR_H
-#define FVACONFIGURATOR_H
+#pragma once
 
-#include <QTWidgets/QDialog>
-#include "ui_fvaconfigurator.h"
+#include <QtWidgets/QDialog>
+#include "ui_FVAConfigurator.h"
+
+class QDialogButtonBox;
+class QTabWidget;
 
 class FVAConfigurator : public QDialog
 {
 	Q_OBJECT
 
 public:
-	FVAConfigurator(QWidget *parent = 0);
-	~FVAConfigurator();
+	FVAConfigurator(QWidget *parent = Q_NULLPTR);
 
 private:
 	Ui::FVAConfiguratorClass ui;
-};
+	QTabWidget *tabs;
+	QDialogButtonBox *buttons;
 
-#endif // FVACONFIGURATOR_H
+};
