@@ -1,3 +1,5 @@
+﻿#include "fvadefaultcfg.h"
+
 #include "fvaorganizerwizard.h"
 
 #include "FVAOrganizerDonePage.h"
@@ -28,6 +30,15 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 
 	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/main.png");
 	setWindowIcon(icon);
+
+#ifdef  FVA_LANGUAGE_RUS
+	setWindowTitle(tr("Cистема организации медиа-контента"));
+#else 
+#ifdef  FVA_LANGUAGE_ENG
+	setWindowTitle(tr("FVA Software"));
+#endif // FVA_LANGUAGE_ENG
+#endif // FVA_LANGUAGE_RUS
+	
 }
 
 FVAOrganizerWizard::~FVAOrganizerWizard()
