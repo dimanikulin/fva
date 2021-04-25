@@ -5,6 +5,8 @@
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QPushButton>
 
+#include <QtCore/QProcess>
+#include <QtCore/QCoreApplication>
 
 FVAOrganizerStartPage::FVAOrganizerStartPage()
 {
@@ -27,4 +29,18 @@ FVAOrganizerStartPage::FVAOrganizerStartPage()
 	layout->addWidget(cfgButton);
 
 	setLayout(layout);
+
+	connect(cfgButton, SIGNAL(clicked()), this, SLOT(OnCfgBtnPressed()));
+}
+
+void FVAOrganizerStartPage::OnCfgBtnPressed()
+{
+	QProcess myProcess(this);
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	/*QStringList params;
+	params.append(FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
+	QString		deviceName_ = ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
+	params.append(deviceName_);*/
+	myProcess.start(QCoreApplication::applicationDirPath() + "/FVAConfigurator.exe"/*, params*/);
+	myProcess.waitForFinished(-1);
 }

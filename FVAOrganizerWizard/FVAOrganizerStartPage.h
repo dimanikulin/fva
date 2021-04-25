@@ -14,6 +14,10 @@ public:
 	FVAOrganizerStartPage();
 	virtual ~FVAOrganizerStartPage(){};
 
+
+protected slots:
+	void OnCfgBtnPressed();
+
 private:
 
 	QTextBrowser*	helloWords;

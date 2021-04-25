@@ -23,7 +23,7 @@ protected:
 	virtual void	setVisible(bool visible);
 	virtual bool	isComplete() const;
 
-	protected slots:
+protected slots:
 	void OnChangeDictPressed();
 
 private:
