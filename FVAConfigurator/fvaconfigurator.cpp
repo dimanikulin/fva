@@ -65,23 +65,29 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 
 void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
 {
-	QSpinBox* minFilesInDirSpin = new QSpinBox();
 	QComboBox* cbLanguage = new QComboBox;
+	QComboBox* cbLogLevel = new QComboBox;
 #ifdef  FVA_LANGUAGE_RUS
 	QLabel* fvaRootDirLbl = new QLabel(tr("Путь к корневой папке:"));
-	QLabel* minFilesInDirLbl = new QLabel(tr("Как мало может быть файлов в папке"));
 	QCheckBox* CheckOrientationCheckBox = new QCheckBox(tr("Проверить ориентацию фото"));
 	QLabel* LanguageLbl = new QLabel(tr("Системный язык:"));
 	cbLanguage->addItem(tr("Английский"), 0);
 	cbLanguage->addItem(tr("Русский"), 0);
+	QLabel* LogLbl = new QLabel(tr("Уровень логирования:"));
+	cbLogLevel->addItem(tr("Ошибки"), 0);
+	cbLogLevel->addItem(tr("Предупрежедения"), 0);
+	cbLogLevel->addItem(tr("Отладка"), 0);
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	QLabel* fvaRootDirLbl = new QLabel(tr("Root folder path:"));
-	QLabel* minFilesInDirLbl = new QLabel(tr("How few files can be in a folder"));
 	QCheckBox* CheckOrientationCheckBox = new QCheckBox(tr("Check photo orientation"));
 	QLabel* LanguageLbl = new QLabel(tr("System language:"));
 	cbLanguage->addItem(tr("English"), 0);
 	cbLanguage->addItem(tr("Russian"), 0);
+	QLabel* LogLbl = new QLabel(tr("Log level:"));
+	cbLogLevel->addItem(tr("Critical"), 0);
+	cbLogLevel->addItem(tr("Warnings"), 0);
+	cbLogLevel->addItem(tr("Debug"), 0);
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
@@ -92,8 +98,8 @@ void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
 	layout->addWidget(cbLanguage); // TODO
 	layout->addWidget(fvaRootDirLbl);
 	layout->addWidget(fvaRootDirEdit); 
-	layout->addWidget(minFilesInDirLbl);
-	layout->addWidget(minFilesInDirSpin);
+	layout->addWidget(LogLbl);
+	layout->addWidget(cbLogLevel);
 	layout->addWidget(CheckOrientationCheckBox);
 	tabCommon->setLayout(layout);
 }
@@ -120,7 +126,7 @@ void FVAConfigurator::InitializeSearchTab(const FvaConfiguration& cfg)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-	DateTimeCheckBox->setChecked(cfg.getParamAsBoolean(""));
+	// DateTimeCheckBox->setChecked(cfg.getParamAsBoolean(""));
 
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addWidget(DateTimeCheckBox);
@@ -154,21 +160,25 @@ void FVAConfigurator::InitializeIntegratorTab(const FvaConfiguration& cfg)
 
 void FVAConfigurator::InitializeRenameTab(const FvaConfiguration& cfg)
 {
+	QSpinBox* minFilesInDirSpin = new QSpinBox();
 #ifdef  FVA_LANGUAGE_RUS
 	перевести
 	QCheckBox* picsByModifTimeCheckBox = new QCheckBox(tr("shall be renamed pictures files using \nthe file modification time if they do not have exif taken time set"));
 	QCheckBox* videoByModifTimeCheckBox = new QCheckBox(tr("shall be renamed video files using \nthe file modification time if they do not have taken time set"));
+	QLabel* minFilesInDirLbl = new QLabel(tr("Как мало может быть файлов в папке"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
-	QCheckBox* picsByModifTimeCheckBox = new QCheckBox(tr("shall be renamed pictures files using \nthe file modification time if they do not have exif taken time set"));
-	QCheckBox* videoByModifTimeCheckBox = new QCheckBox(tr("shall be renamed video files using \nthe file modification time if they do not have taken time set"));
+	QCheckBox* picsByModifTimeCheckBox = new QCheckBox(tr("shall be renamed pictures files using \nthe file modification time \nif they do not have exif taken time set"));
+	QCheckBox* videoByModifTimeCheckBox = new QCheckBox(tr("shall be renamed video files using \nthe file modification time \nif they do not have taken time set"));
+	QLabel* minFilesInDirLbl = new QLabel(tr("How few files can be in a folder"));
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
 	QVBoxLayout *layout = new QVBoxLayout;
-	layout->addWidget(picsByModifTimeCheckBox);
+	layout->addWidget(minFilesInDirLbl);
+	layout->addWidget(minFilesInDirSpin);
 	layout->addWidget(videoByModifTimeCheckBox);
-
+	layout->addWidget(picsByModifTimeCheckBox);
 	tabRename->setLayout(layout);
 }
 
