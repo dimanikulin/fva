@@ -58,6 +58,9 @@
     <ClCompile Include="data\fvaItem.cpp">
       <Filter>data</Filter>
     </ClCompile>
+    <ClCompile Include="fvaconfiguration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fvacommonlib.h">
@@ -110,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="data\fvaPeopleRelations.h">
       <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="fvaconfiguration.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

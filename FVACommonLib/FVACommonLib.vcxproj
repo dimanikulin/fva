@@ -158,6 +158,7 @@
     <ClCompile Include="data\fvaItem.cpp" />
     <ClCompile Include="fvacommoncsv.cpp" />
     <ClCompile Include="fvacommonexif.cpp" />
+    <ClCompile Include="fvaconfiguration.cpp" />
     <ClCompile Include="fvacsvfile.cpp" />
     <ClCompile Include="fvacommondb.cpp" />
     <ClCompile Include="fvacommonlib.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="data\fvaperson.h" />
     <ClInclude Include="fvacommoncsv.h" />
     <ClInclude Include="fvacommonexif.h" />
+    <ClInclude Include="fvaconfiguration.h" />
     <ClInclude Include="fvacsvfile.h" />
     <ClInclude Include="fvacommondb.h" />
     <ClInclude Include="fvacommonlib.h" />
