@@ -40,24 +40,48 @@ class FvaConfiguration
 
 		/*!
 		* \brief it returns the parameter value as string representation
-		* \param paramName - parameter value
+		* \param paramName - parameter name
 		* \returns it returns the parameter value as string representation
 		*/
 		QString getParamAsString(const QString& paramName) const;
 
 		/*!
 		* \brief it returns the parameter value as bool
-		* \param paramName - parameter value
+		* \param paramName - parameter name
 		* \returns it returns the parameter value as bool
 		*/
 		bool getParamAsBoolean(const QString& paramName) const;
 
 		/*!
 		* \brief it returns the parameter value as unsigned integer
-		* \param paramName - parameter value
+		* \param paramName - parameter name
 		* \returns it returns the parameter value as unsigned integer
 		*/
 		uint getParamAsUint(const QString& paramName) const;
+
+		/*!
+		* \brief it sets the parameter value as unsigned integer for the futher saving
+		* \param paramName - parameter name
+		* \param paramValue - parameter value
+		* \returns it returns code of error if any or FVA_NO_ERROR if setting was successful
+		*/
+		FVA_EXIT_CODE setParam(const QString& paramName, uint paramValue);
+
+		/*!
+		* \brief it sets the parameter value as boolean for the futher saving
+		* \param paramName - parameter name
+		* \param paramValue - parameter value
+		* \returns it returns code of error if any or FVA_NO_ERROR if setting was successful
+		*/
+		FVA_EXIT_CODE setParam(const QString& paramName, bool paramValue);
+
+		/*!
+		* \brief it sets the parameter value as string for the futher saving
+		* \param paramName - parameter name
+		* \param paramValue - parameter value
+		* \returns it returns code of error if any or FVA_NO_ERROR if setting was successful
+		*/
+		FVA_EXIT_CODE setParam(const QString& paramName, QString paramValue);
 
 	private: // data
 
