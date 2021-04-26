@@ -91,15 +91,20 @@ void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-	QVBoxLayout *layout = new QVBoxLayout;
+	
 	QLineEdit* fvaRootDirEdit = new QLineEdit;
+	fvaRootDirEdit->setText(cfg.getParamAsString("Common::RootDir"));
+	CheckOrientationCheckBox->setChecked(cfg.getParamAsBoolean("Common::CheckOrientation"));
+	// TODO set Common::Language
+	// TODO set Common::LogLevel
 
+	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addWidget(LanguageLbl);
-	layout->addWidget(cbLanguage); // TODO
+	layout->addWidget(cbLanguage); 
 	layout->addWidget(fvaRootDirLbl);
 	layout->addWidget(fvaRootDirEdit); 
 	layout->addWidget(LogLbl);
-	layout->addWidget(cbLogLevel);
+	layout->addWidget(cbLogLevel); 
 	layout->addWidget(CheckOrientationCheckBox);
 	tabCommon->setLayout(layout);
 }
@@ -126,7 +131,13 @@ void FVAConfigurator::InitializeSearchTab(const FvaConfiguration& cfg)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-	// DateTimeCheckBox->setChecked(cfg.getParamAsBoolean(""));
+	DateTimeCheckBox->setChecked(cfg.getParamAsBoolean("Search::DateTime"));
+	LocationCheckBox->setChecked(cfg.getParamAsBoolean("Search::Location"));
+	PeopleCheckBox->setChecked(cfg.getParamAsBoolean("Search::People"));
+	DeviceCheckBox->setChecked(cfg.getParamAsBoolean("Search::Device"));
+	DescOrCommentCheckBox->setChecked(cfg.getParamAsBoolean("Search::DescOrComment"));
+	EventCheckBox->setChecked(cfg.getParamAsBoolean("Search::Event"));
+	EventReasonPeopleCheckBox->setChecked(cfg.getParamAsBoolean("Search::EventReasonPeople"));
 
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addWidget(DateTimeCheckBox);
@@ -151,6 +162,9 @@ void FVAConfigurator::InitializeIntegratorTab(const FvaConfiguration& cfg)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
+	GooglePhotoCheckBox->setChecked(cfg.getParamAsBoolean("Integration::GooglePhoto"));
+	digiKamCheckBox->setChecked(cfg.getParamAsBoolean("Integration::digiKam"));
+
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addWidget(GooglePhotoCheckBox);
 	layout->addWidget(digiKamCheckBox);
@@ -174,11 +188,15 @@ void FVAConfigurator::InitializeRenameTab(const FvaConfiguration& cfg)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
+	picsByModifTimeCheckBox->setChecked(cfg.getParamAsBoolean("Rename::picsByModifTime"));
+	videoByModifTimeCheckBox->setChecked(cfg.getParamAsBoolean("Rename::videoByModifTime"));
+	minFilesInDirSpin->setValue(cfg.getParamAsUint("Rename::minFilesInDir"));
+
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addWidget(minFilesInDirLbl);
 	layout->addWidget(minFilesInDirSpin);
-	layout->addWidget(videoByModifTimeCheckBox);
 	layout->addWidget(picsByModifTimeCheckBox);
+	layout->addWidget(videoByModifTimeCheckBox);
 	tabRename->setLayout(layout);
 }
 
@@ -204,6 +222,11 @@ void FVAConfigurator::InitializeFormatTab(const FvaConfiguration& cfg)
 	QLineEdit* fvaDirNameYearEdit = new QLineEdit;
 	QLineEdit* fvaFileNameEdit = new QLineEdit;
 	QLineEdit* exifDateTimeEdit = new QLineEdit;
+
+	fvaDirNameEdit->setText(cfg.getParamAsString("Format::fvaDirName"));
+	fvaDirNameYearEdit->setText(cfg.getParamAsString("Format::fvaDirNameYear"));
+	fvaFileNameEdit->setText(cfg.getParamAsString("Format::fvaFileName"));
+	exifDateTimeEdit->setText(cfg.getParamAsString("Format::exifDateTime"));
 
 	layout->addWidget(fvaDirNameLbl);
 	layout->addWidget(fvaDirNameEdit);
