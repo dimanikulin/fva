@@ -37,10 +37,6 @@ void FVAOrganizerStartPage::OnCfgBtnPressed()
 {
 	QProcess myProcess(this);
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
-	/*QStringList params;
-	params.append(FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
-	QString		deviceName_ = ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
-	params.append(deviceName_);*/
-	myProcess.start(QCoreApplication::applicationDirPath() + "/FVAConfigurator.exe"/*, params*/);
+	myProcess.start(QCoreApplication::applicationDirPath() + "/FVAConfigurator.exe");
 	myProcess.waitForFinished(-1);
 }
