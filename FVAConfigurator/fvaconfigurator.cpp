@@ -53,14 +53,17 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-	InitializeCommonTab();
-	InitializeSearchTab();
-	InitializeIntegratorTab();
-	InitializeRenameTab();
-	InitializeFormatTab();
+	FVA_EXIT_CODE res = cfg.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaParams.csv");
+	RET_IF_RES_IS_ERROR
+
+	InitializeCommonTab(cfg);
+	InitializeSearchTab(cfg);
+	InitializeIntegratorTab(cfg);
+	InitializeRenameTab(cfg);
+	InitializeFormatTab(cfg);
 }
 
-void FVAConfigurator::InitializeCommonTab()
+void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
 {
 	QSpinBox* minFilesInDirSpin = new QSpinBox();
 	QComboBox* cbLanguage = new QComboBox;
@@ -86,16 +89,16 @@ void FVAConfigurator::InitializeCommonTab()
 	QLineEdit* fvaRootDirEdit = new QLineEdit;
 
 	layout->addWidget(LanguageLbl);
-	layout->addWidget(cbLanguage);
+	layout->addWidget(cbLanguage); // TODO
 	layout->addWidget(fvaRootDirLbl);
-	layout->addWidget(fvaRootDirEdit);
+	layout->addWidget(fvaRootDirEdit); 
 	layout->addWidget(minFilesInDirLbl);
 	layout->addWidget(minFilesInDirSpin);
 	layout->addWidget(CheckOrientationCheckBox);
 	tabCommon->setLayout(layout);
 }
 
-void FVAConfigurator::InitializeSearchTab()
+void FVAConfigurator::InitializeSearchTab(const FvaConfiguration& cfg)
 {
 #ifdef  FVA_LANGUAGE_RUS
 	QCheckBox* DateTimeCheckBox			= new QCheckBox(tr("Дата и время"));
@@ -117,6 +120,8 @@ void FVAConfigurator::InitializeSearchTab()
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
+	DateTimeCheckBox->setChecked(cfg.getParamAsBoolean(""));
+
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addWidget(DateTimeCheckBox);
 	layout->addWidget(LocationCheckBox);
@@ -128,7 +133,7 @@ void FVAConfigurator::InitializeSearchTab()
 	tabSearch->setLayout(layout);
 }
 
-void FVAConfigurator::InitializeIntegratorTab()
+void FVAConfigurator::InitializeIntegratorTab(const FvaConfiguration& cfg)
 {
 #ifdef  FVA_LANGUAGE_RUS
 	QCheckBox* GooglePhotoCheckBox = new QCheckBox(tr("Интеграция с Гугл Фото"));
@@ -147,7 +152,7 @@ void FVAConfigurator::InitializeIntegratorTab()
 	tabIntegrator->setLayout(layout);
 }
 
-void FVAConfigurator::InitializeRenameTab()
+void FVAConfigurator::InitializeRenameTab(const FvaConfiguration& cfg)
 {
 #ifdef  FVA_LANGUAGE_RUS
 	перевести
@@ -167,7 +172,7 @@ void FVAConfigurator::InitializeRenameTab()
 	tabRename->setLayout(layout);
 }
 
-void FVAConfigurator::InitializeFormatTab()
+void FVAConfigurator::InitializeFormatTab(const FvaConfiguration& cfg)
 {
 #ifdef  FVA_LANGUAGE_RUS
 	перевести
