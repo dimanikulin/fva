@@ -74,13 +74,13 @@ FVA_EXIT_CODE FvaConfiguration::setParam(const QString& paramName, QString param
 	if (-1 == columnValue)
 		throw std::exception("FvaConfiguration::getParamAsString - FVA_ERROR_CANT_FIND_MANDATORY_FIELDS");
 
-	for (DESCRIPTIONS_MAP::const_iterator it = m_cfgItems.begin(); it != m_cfgItems.end(); ++it)
+	for (DESCRIPTIONS_MAP::iterator it = m_cfgItems.begin(); it != m_cfgItems.end(); ++it)
 	{
 		QStringList list = it.value();
 		QString paramName_ = list[columnName].toUpper();
 		if (paramName.toUpper() == paramName_)
 		{
-			list[columnValue] = paramValue;
+			it.value()[columnValue] = paramValue;
 			return FVA_NO_ERROR;
 		}
 	}
