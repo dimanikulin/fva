@@ -2,7 +2,7 @@
 
 FVA_EXIT_CODE CLTDBCreateFVA::execute()
 {
-	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	/*Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		// just skip internal folder
 		if ((info.isDir() && info.fileName()[0] == '#' && info.fileName()[info.fileName().size() - 1] == '#')
@@ -26,6 +26,7 @@ FVA_EXIT_CODE CLTDBCreateFVA::execute()
 			+ "\";";
 		m_SQLs.push_back(update);
 	}
+	*/
 	return FVA_NO_ERROR;
 }
 CLTDBCreateFVA::~CLTDBCreateFVA()

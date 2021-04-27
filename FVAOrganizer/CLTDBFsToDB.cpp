@@ -9,7 +9,7 @@ CLTDBFsToDB::~CLTDBFsToDB()
 }
 FVA_EXIT_CODE CLTDBFsToDB::execute()
 {
-	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	/*Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		// just skip internal folder
 		if ( ( info.isDir() && info.fileName()[0] == '#' && info.fileName()[info.fileName().size()-1] == '#' )
@@ -37,6 +37,6 @@ FVA_EXIT_CODE CLTDBFsToDB::execute()
 			+ "-1"		  // FsAudioId
 			+ ");";
 		m_SQLs.push_front(insert);
-	}
+	}*/
 	return FVA_NO_ERROR;
 }

@@ -30,10 +30,7 @@ enum FVA_DEVICE_TYPE
 /*!
  * \brief internal file names
  */
-// const QString	FVA_DIR_DESCRIPTION_FILE_NAME		= "folderDescription.json";
 const QString	FVA_BACKGROUND_MUSIC_FILE_NAME		= "bgmusic.mid";
-
-const QString	FVA_TARGET_FOLDER_NAME				= "TARGET_FOLDER_NAME"; 
 
 /*!
  * \brief id for any object that is not defined
