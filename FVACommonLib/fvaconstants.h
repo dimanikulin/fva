@@ -30,7 +30,6 @@ enum FVA_DEVICE_TYPE
 /*!
  * \brief internal file names
  */
-const QString	FVA_DESCRIPTION_FILE_NAME			= "description.csv";
 const QString	FVA_DIR_DESCRIPTION_FILE_NAME		= "folderDescription.json";
 const QString	FVA_BACKGROUND_MUSIC_FILE_NAME		= "bgmusic.mid";
 

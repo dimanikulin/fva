@@ -5,7 +5,7 @@
 
 FVA_EXIT_CODE CLTJSONMergeDirs::execute()
 {
-	// create folder structure the same as in source folder
+	/*// create folder structure the same as in source folder
 	QString subFolder = m_folder;
 	subFolder.remove(m_baseFolder);
 
@@ -94,7 +94,7 @@ FVA_EXIT_CODE CLTJSONMergeDirs::execute()
 			}
 			fileOutput.close();
 			fileInput.close();
-			if (!SetFileAttributes(dest.toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY))
+			// if (!SetFileAttributes(dest.toStdWString().c_str(), FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_READONLY))
 			{
 				LOG_QCRIT << "can not set attr for dest desc file:" << dest;
 				return FVA_ERROR_CANT_OPEN_FILE_DESC;
@@ -126,6 +126,6 @@ FVA_EXIT_CODE CLTJSONMergeDirs::execute()
 		}
 		LOG_QDEB << "merged:" << original << " into " << dest;
 		continue;
-	}
+	}*/
 	return FVA_NO_ERROR;
 }

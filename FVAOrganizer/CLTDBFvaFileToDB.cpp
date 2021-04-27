@@ -17,7 +17,7 @@ QString FVget(FVADescriptionFile* desc, const QString& fieldName, const QStringL
 
 CLTDBFvaFileToDB::~CLTDBFvaFileToDB()
 {
-	SaveSQL("13.fvaFile.sql");
+	/*SaveSQL("13.fvaFile.sql");
 
 	for (auto it = m_movedFiles.begin(); it != m_movedFiles.end(); ++it)
 	{
@@ -32,12 +32,12 @@ CLTDBFvaFileToDB::~CLTDBFvaFileToDB()
 			<< " to - " << m_folder + "/" + info.fileName() + ".csv";
 	}
 
-	LOG_QWARN << "totally inserted - " << m_SQLs.size() / 2 << ", totally moved - " << m_movedFiles.size();
+	LOG_QWARN << "totally inserted - " << m_SQLs.size() / 2 << ", totally moved - " << m_movedFiles.size();*/
 }
 
 FVA_EXIT_CODE CLTDBFvaFileToDB::execute()
 {
-	std::auto_ptr<FVADescriptionFile> desc(new FVADescriptionFile);
+	/*std::auto_ptr<FVADescriptionFile> desc(new FVADescriptionFile);
 	QStringList			titles;
 	DESCRIPTIONS_MAP	decsItems;
 	FVA_EXIT_CODE res = desc->load(m_folder + "/" + FVA_DESCRIPTION_FILE_NAME, titles, decsItems);
@@ -79,6 +79,6 @@ FVA_EXIT_CODE CLTDBFvaFileToDB::execute()
 	// move dir description file for future backup purpose
 	m_movedFiles.push_back(m_folder);
 
-	LOG_QWARN << "converted file description to SQL:" << m_dir.dirName();
+	LOG_QWARN << "converted file description to SQL:" << m_dir.dirName();*/
 	return FVA_NO_ERROR;
 }

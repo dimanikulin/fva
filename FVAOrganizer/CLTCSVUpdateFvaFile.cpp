@@ -6,7 +6,7 @@
 
 FVA_EXIT_CODE CLTCSVUpdateFvaFile::execute()
 {
-	QString descPath = m_folder + "/" + FVA_DESCRIPTION_FILE_NAME;
+	/*QString descPath = m_folder + "/" + FVA_DESCRIPTION_FILE_NAME;
 	if (!m_dir.exists(descPath))
 	{
 		LOG_QCRIT << "description file does not exist";
@@ -44,7 +44,7 @@ FVA_EXIT_CODE CLTCSVUpdateFvaFile::execute()
 		else	if ("CanonCanon EOS D60" == deviceName)	deviceId = "85";
 
 		QString oldName = info.baseName().mid(21); // remove part of new name
-		/*auto it = decsItems.find(oldName.toUpper() + "." + suffix.toUpper());
+		auto it = decsItems.find(oldName.toUpper() + "." + suffix.toUpper());
 
 		QString description;
 		QString comment;
@@ -77,9 +77,9 @@ FVA_EXIT_CODE CLTCSVUpdateFvaFile::execute()
 		}
 		else
 		LOG_QDEB << "renamed file:" << info.absoluteFilePath() << " to:" << newFileName;
-		*/
+		
 
-	}
+	}*/
 
 	return FVA_NO_ERROR;
 }

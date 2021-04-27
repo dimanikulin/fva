@@ -21,7 +21,7 @@ FVA_EXIT_CODE CLTJSONMoveAloneFiles::execute()
 	if (countSupportedFiles >= FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR || !countSupportedFiles)
 		return FVA_NO_ERROR;
 
-	QString descFilePath = m_folder + "/" + FVA_DESCRIPTION_FILE_NAME;
+	/*QString descFilePath = m_folder + "/" + FVA_DESCRIPTION_FILE_NAME;
 	if (m_dir.exists(descFilePath))
 	{
 		LOG_QCRIT << "description for files exists, skipping folder:" << m_folder;
@@ -35,7 +35,7 @@ FVA_EXIT_CODE CLTJSONMoveAloneFiles::execute()
 	{
 	LOG_QCRIT << error;
 	return code;
-	}*/
+	}
 	// Name,Place,People,Device,Description,Scaner,Comment,oldName
 	QString oneFileDesc = ","
 		+ result["place"].toString() + ","
@@ -118,5 +118,6 @@ FVA_EXIT_CODE CLTJSONMoveAloneFiles::execute()
 		}
 		LOG_QDEB << "removed folder:" << m_folder;
 	}
+	*/
 	return FVA_NO_ERROR;
 }

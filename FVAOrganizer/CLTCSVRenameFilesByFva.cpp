@@ -4,7 +4,7 @@
 
 FVA_EXIT_CODE CLTCSVRenameFilesByFva::execute()
 {
-	QString descPath = m_folder + "/" + FVA_DESCRIPTION_FILE_NAME;
+	/*QString descPath = m_folder + "/" + FVA_DESCRIPTION_FILE_NAME;
 	if ( !m_dir.exists( descPath ) )
 	{
 		LOG_QCRIT << "description file does not exist";
@@ -53,7 +53,7 @@ FVA_EXIT_CODE CLTCSVRenameFilesByFva::execute()
 				LOG_QCRIT << "moved file:" << m_folder << "/" << oldName << " into " << m_folder << "/" << newName;
 			}
 		}
-	}
+	}*/
 
 	return FVA_NO_ERROR;
 }
