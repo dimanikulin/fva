@@ -2,7 +2,7 @@
 
 FVA_EXIT_CODE CLTJSONConvertDirDesc::execute()
 {
-	QString descFolderPath = m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME;
+	/*QString descFolderPath = m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME;
 	if (!m_dir.exists(descFolderPath))
 	{
 		LOG_QWARN << "description does not exist in:" << m_folder;

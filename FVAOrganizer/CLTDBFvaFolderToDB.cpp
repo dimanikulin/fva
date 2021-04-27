@@ -2,7 +2,7 @@
 
 CLTDBFvaFolderToDB::~CLTDBFvaFolderToDB()
 {
-	SaveSQL("12.fvaFolder.sql");
+	/*SaveSQL("12.fvaFolder.sql");
 
 	for (auto it = m_movedFolders.begin(); it != m_movedFolders.end(); ++it)
 	{
@@ -18,6 +18,7 @@ CLTDBFvaFolderToDB::~CLTDBFvaFolderToDB()
 	}
 
 	LOG_QWARN << "totally inserted - " << m_SQLs.size() / 2 << ", totally moved - " << m_movedFolders.size();
+	*/
 }
 
 FVA_EXIT_CODE CLTDBFvaFolderToDB::execute()

@@ -13,8 +13,7 @@
 
 bool fvaIsInternalFile( const QString& fileName )
 {
-	return (	fileName.toUpper() == FVA_DIR_DESCRIPTION_FILE_NAME.toUpper() 
-			||	fileName.toUpper() == FVA_BACKGROUND_MUSIC_FILE_NAME.toUpper() 
+	return (fileName.toUpper() == FVA_BACKGROUND_MUSIC_FILE_NAME.toUpper() 
 			||	fileName.toUpper() == FVA_DB_NAME  );
 }
 bool fvaIsFVAFile( const QString& extention )

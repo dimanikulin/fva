@@ -2,7 +2,7 @@
 
 FVA_EXIT_CODE CLTJSONCreateDirStructByFileNames::execute()
 {
-	// check for existing folder description
+	/*// check for existing folder description
 	if (!m_dir.exists(m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME))
 	{
 		if (m_custom.isEmpty())
@@ -22,11 +22,11 @@ FVA_EXIT_CODE CLTJSONCreateDirStructByFileNames::execute()
 			{
 			LOG_QCRIT << error;
 			return res;
-			}*/
+			}
 		}
-	}
+	}*/
 
-	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	/*Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		if (info.isDir())
 			continue;
@@ -75,6 +75,6 @@ FVA_EXIT_CODE CLTJSONCreateDirStructByFileNames::execute()
 		if (!QFile::remove(m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME))
 			// it is not critical error
 			LOG_QDEB << "file could not be removed:" << m_folder + "/" + FVA_DIR_DESCRIPTION_FILE_NAME;
-	}
+	}*/
 	return FVA_NO_ERROR;
 }
