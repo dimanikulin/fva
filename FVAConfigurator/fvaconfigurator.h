@@ -1,18 +1,26 @@
 #pragma once
 
 #include <QtWidgets/QDialog>
+#include <QtCore/QMap>
+
 #include "ui_FVAConfigurator.h"
 #include "FVAConfiguration.h"
 
 class QDialogButtonBox;
 class QTabWidget;
+class QCheckBox;
+
+typedef QMap<QString,QCheckBox*> CHECKBOXES;
 
 class FVAConfigurator : public QDialog
 {
 	Q_OBJECT
 
 public:
+
 	FVAConfigurator(QWidget *parent = Q_NULLPTR);
+
+	void accept();
 
 private:// methods
 	
@@ -27,11 +35,14 @@ private: // data
 
 	QTabWidget *tabs;
 	QDialogButtonBox *buttons;
+
 	QWidget *tabCommon;
 	QWidget *tabSearch;
 	QWidget *tabIntegrator;
 	QWidget *tabRename;
 	QWidget *tabFormat;
+
+	CHECKBOXES m_checkboxes;
 
 	FvaConfiguration cfg;
 };

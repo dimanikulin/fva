@@ -61,6 +61,16 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 	InitializeIntegratorTab(cfg);
 	InitializeRenameTab(cfg);
 	InitializeFormatTab(cfg);
+
+	for (CHECKBOXES::iterator it = m_checkboxes.begin(); it != m_checkboxes.end(); ++it)
+		it.value()->setChecked(cfg.getParamAsBoolean(it.key()));
+}
+
+void FVAConfigurator::accept()
+{
+	//FVA_EXIT_CODE res = cfg.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaParams.csv");
+	//RET_IF_RES_IS_ERROR
+	QDialog::accept();
 }
 
 void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
@@ -84,6 +94,7 @@ void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
 	QLabel* LanguageLbl = new QLabel(tr("System language:"));
 	cbLanguage->addItem(tr("English"), 0);
 	cbLanguage->addItem(tr("Russian"), 0);
+
 	QLabel* LogLbl = new QLabel(tr("Log level:"));
 	cbLogLevel->addItem(tr("Critical"), 0);
 	cbLogLevel->addItem(tr("Warnings"), 0);
@@ -91,10 +102,9 @@ void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-	
 	QLineEdit* fvaRootDirEdit = new QLineEdit;
 	fvaRootDirEdit->setText(cfg.getParamAsString("Common::RootDir"));
-	CheckOrientationCheckBox->setChecked(cfg.getParamAsBoolean("Common::CheckOrientation"));
+	m_checkboxes.insert("Common::CheckOrientation", CheckOrientationCheckBox);
 	// TODO set Common::Language
 	// TODO set Common::LogLevel
 
@@ -112,6 +122,7 @@ void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
 void FVAConfigurator::InitializeSearchTab(const FvaConfiguration& cfg)
 {
 #ifdef  FVA_LANGUAGE_RUS
+	TODO
 	QCheckBox* DateTimeCheckBox			= new QCheckBox(tr("Дата и время"));
 	QCheckBox* LocationCheckBox			= new QCheckBox(tr("Место"));
 	QCheckBox* PeopleCheckBox			= new QCheckBox(tr("Люди"));
@@ -121,38 +132,29 @@ void FVAConfigurator::InitializeSearchTab(const FvaConfiguration& cfg)
 	QCheckBox* EventReasonPeopleCheckBox= new QCheckBox(tr("Виновники события"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
-	QCheckBox* DateTimeCheckBox			= new QCheckBox(tr("Date and Time"));
-	QCheckBox* LocationCheckBox			= new QCheckBox(tr("Location"));
-	QCheckBox* PeopleCheckBox			= new QCheckBox(tr("People"));
-	QCheckBox* DeviceCheckBox			= new QCheckBox(tr("Device"));
-	QCheckBox* DescOrCommentCheckBox	= new QCheckBox(tr("Description Or Comment"));
-	QCheckBox* EventCheckBox			= new QCheckBox(tr("Event"));
-	QCheckBox* EventReasonPeopleCheckBox= new QCheckBox(tr("Reason event people"));
+	m_checkboxes.insert("Search::DateTime",			new QCheckBox(tr("Date and Time")));
+	m_checkboxes.insert("Search::Location",			new QCheckBox(tr("Location")));
+	m_checkboxes.insert("Search::People",			new QCheckBox(tr("People")));
+	m_checkboxes.insert("Search::Device",			new QCheckBox(tr("Device")));
+	m_checkboxes.insert("Search::DescOrComment",	new QCheckBox(tr("Description Or Comment")));
+	m_checkboxes.insert("Search::Event",			new QCheckBox(tr("Event")));
+	m_checkboxes.insert("Search::EventReasonPeople",new QCheckBox(tr("Reason event people")));
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-	DateTimeCheckBox->setChecked(cfg.getParamAsBoolean("Search::DateTime"));
-	LocationCheckBox->setChecked(cfg.getParamAsBoolean("Search::Location"));
-	PeopleCheckBox->setChecked(cfg.getParamAsBoolean("Search::People"));
-	DeviceCheckBox->setChecked(cfg.getParamAsBoolean("Search::Device"));
-	DescOrCommentCheckBox->setChecked(cfg.getParamAsBoolean("Search::DescOrComment"));
-	EventCheckBox->setChecked(cfg.getParamAsBoolean("Search::Event"));
-	EventReasonPeopleCheckBox->setChecked(cfg.getParamAsBoolean("Search::EventReasonPeople"));
-
 	QVBoxLayout *layout = new QVBoxLayout;
-	layout->addWidget(DateTimeCheckBox);
-	layout->addWidget(LocationCheckBox);
-	layout->addWidget(PeopleCheckBox);
-	layout->addWidget(DeviceCheckBox);
-	layout->addWidget(DescOrCommentCheckBox);
-	layout->addWidget(EventCheckBox);
-	layout->addWidget(EventReasonPeopleCheckBox);
+	for (CHECKBOXES::iterator it = m_checkboxes.begin(); it != m_checkboxes.end(); ++it)
+	{
+		if (it.key().contains("Search::", Qt::CaseInsensitive))
+			layout->addWidget(it.value());
+	}
 	tabSearch->setLayout(layout);
 }
 
 void FVAConfigurator::InitializeIntegratorTab(const FvaConfiguration& cfg)
 {
 #ifdef  FVA_LANGUAGE_RUS
+	TODO
 	QCheckBox* GooglePhotoCheckBox = new QCheckBox(tr("Интеграция с Гугл Фото"));
 	QCheckBox* digiKamCheckBox = new QCheckBox(tr("Интеграция с digiKam"));
 #else 
@@ -162,8 +164,8 @@ void FVAConfigurator::InitializeIntegratorTab(const FvaConfiguration& cfg)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-	GooglePhotoCheckBox->setChecked(cfg.getParamAsBoolean("Integration::GooglePhoto"));
-	digiKamCheckBox->setChecked(cfg.getParamAsBoolean("Integration::digiKam"));
+	m_checkboxes.insert("Integration::GooglePhoto", GooglePhotoCheckBox);
+	m_checkboxes.insert("Integration::digiKam", digiKamCheckBox);
 
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addWidget(GooglePhotoCheckBox);
@@ -194,7 +196,7 @@ void FVAConfigurator::InitializeRenameTab(const FvaConfiguration& cfg)
 
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addWidget(minFilesInDirLbl);
-	layout->addWidget(minFilesInDirSpin);
+	layout->addWidget(minFilesInDirSpin); // TODO to fill up
 	layout->addWidget(picsByModifTimeCheckBox);
 	layout->addWidget(videoByModifTimeCheckBox);
 	tabRename->setLayout(layout);
@@ -238,5 +240,4 @@ void FVAConfigurator::InitializeFormatTab(const FvaConfiguration& cfg)
 	layout->addWidget(exifDateTimeEdit);
 
 	tabFormat->setLayout(layout);
-
 }
