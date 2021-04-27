@@ -86,3 +86,12 @@ FVA_EXIT_CODE FvaConfiguration::setParam(const QString& paramName, QString param
 	}
 	return FVA_ERROR_CANT_SET_PARAM;
 }
+FVA_EXIT_CODE FvaConfiguration::setParam(const QString& paramName, bool paramValue)
+{
+	return setParam(paramName, QString(paramValue ? "TRUE" : "FALSE"));
+}
+
+FVA_EXIT_CODE FvaConfiguration::setParam(const QString& paramName, uint paramValue)
+{
+	return setParam(paramName, QString::number( paramValue ));
+}
