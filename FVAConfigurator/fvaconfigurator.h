@@ -9,8 +9,12 @@
 class QDialogButtonBox;
 class QTabWidget;
 class QCheckBox;
+class QSpinBox;
+class QComboBox;
 
-typedef QMap<QString,QCheckBox*> CHECKBOXES;
+typedef QMap<QString, QCheckBox*> CHECKBOXES;
+typedef QMap<QString, QLineEdit*> LINEEDITES;
+
 
 class FVAConfigurator : public QDialog
 {
@@ -43,6 +47,11 @@ private: // data
 	QWidget *tabFormat;
 
 	CHECKBOXES m_checkboxes;
+	LINEEDITES m_lineedites;
+
+	QComboBox*	cbLanguage;
+	QComboBox*	cbLogLevel;
+	QSpinBox*	minFilesInDirSpin;
 
 	FvaConfiguration cfg;
 };

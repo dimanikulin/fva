@@ -64,19 +64,33 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 
 	for (CHECKBOXES::iterator it = m_checkboxes.begin(); it != m_checkboxes.end(); ++it)
 		it.value()->setChecked(cfg.getParamAsBoolean(it.key()));
+
+	for (LINEEDITES::iterator it = m_lineedites.begin(); it != m_lineedites.end(); ++it)
+		it.value()->setText(cfg.getParamAsString(it.key()));
 }
 
 void FVAConfigurator::accept()
 {
-	//FVA_EXIT_CODE res = cfg.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaParams.csv");
-	//RET_IF_RES_IS_ERROR
 	QDialog::accept();
+
+	for (CHECKBOXES::iterator it = m_checkboxes.begin(); it != m_checkboxes.end(); ++it)
+		cfg.setParam(it.key(), it.value()->isChecked());
+
+	for (LINEEDITES::iterator it = m_lineedites.begin(); it != m_lineedites.end(); ++it)
+		cfg.setParam(it.key(), it.value()->text());	
+
+	cfg.setParam("Common::Language", static_cast<uint> (cbLanguage->currentIndex()));
+	cfg.setParam("Common::LogLevel", static_cast<uint> (cbLogLevel->currentIndex()));
+	cfg.setParam("Rename::minFilesInDir", static_cast<uint> (minFilesInDirSpin->value()));
+
+	FVA_EXIT_CODE res = cfg.save(FVA_DEFAULT_ROOT_DIR + "#data#/fvaParams.csv");
+	RET_IF_RES_IS_ERROR
 }
 
 void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
 {
-	QComboBox* cbLanguage = new QComboBox;
-	QComboBox* cbLogLevel = new QComboBox;
+	cbLanguage = new QComboBox;
+	cbLogLevel = new QComboBox;
 #ifdef  FVA_LANGUAGE_RUS
 	QLabel* fvaRootDirLbl = new QLabel(tr("Путь к корневой папке:"));
 	QCheckBox* CheckOrientationCheckBox = new QCheckBox(tr("Проверить ориентацию фото"));
@@ -103,10 +117,11 @@ void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
 #endif // FVA_LANGUAGE_RUS
 
 	QLineEdit* fvaRootDirEdit = new QLineEdit;
-	fvaRootDirEdit->setText(cfg.getParamAsString("Common::RootDir"));
 	m_checkboxes.insert("Common::CheckOrientation", CheckOrientationCheckBox);
-	// TODO set Common::Language
-	// TODO set Common::LogLevel
+	m_lineedites.insert("Common::RootDir", fvaRootDirEdit);
+
+	cbLanguage->setCurrentIndex(cfg.getParamAsUint("Common::Language"));
+	cbLogLevel->setCurrentIndex(cfg.getParamAsUint("Common::LogLevel"));
 
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addWidget(LanguageLbl);
@@ -176,7 +191,7 @@ void FVAConfigurator::InitializeIntegratorTab(const FvaConfiguration& cfg)
 
 void FVAConfigurator::InitializeRenameTab(const FvaConfiguration& cfg)
 {
-	QSpinBox* minFilesInDirSpin = new QSpinBox();
+	minFilesInDirSpin = new QSpinBox();
 #ifdef  FVA_LANGUAGE_RUS
 	перевести
 	QCheckBox* picsByModifTimeCheckBox = new QCheckBox(tr("shall be renamed pictures files using \nthe file modification time if they do not have exif taken time set"));
@@ -190,13 +205,13 @@ void FVAConfigurator::InitializeRenameTab(const FvaConfiguration& cfg)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-	picsByModifTimeCheckBox->setChecked(cfg.getParamAsBoolean("Rename::picsByModifTime"));
-	videoByModifTimeCheckBox->setChecked(cfg.getParamAsBoolean("Rename::videoByModifTime"));
 	minFilesInDirSpin->setValue(cfg.getParamAsUint("Rename::minFilesInDir"));
+	m_checkboxes.insert("Rename::picsByModifTime", picsByModifTimeCheckBox);
+	m_checkboxes.insert("Rename::videoByModifTime", videoByModifTimeCheckBox);
 
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addWidget(minFilesInDirLbl);
-	layout->addWidget(minFilesInDirSpin); // TODO to fill up
+	layout->addWidget(minFilesInDirSpin); 
 	layout->addWidget(picsByModifTimeCheckBox);
 	layout->addWidget(videoByModifTimeCheckBox);
 	tabRename->setLayout(layout);
@@ -225,10 +240,10 @@ void FVAConfigurator::InitializeFormatTab(const FvaConfiguration& cfg)
 	QLineEdit* fvaFileNameEdit = new QLineEdit;
 	QLineEdit* exifDateTimeEdit = new QLineEdit;
 
-	fvaDirNameEdit->setText(cfg.getParamAsString("Format::fvaDirName"));
-	fvaDirNameYearEdit->setText(cfg.getParamAsString("Format::fvaDirNameYear"));
-	fvaFileNameEdit->setText(cfg.getParamAsString("Format::fvaFileName"));
-	exifDateTimeEdit->setText(cfg.getParamAsString("Format::exifDateTime"));
+	m_lineedites.insert("Format::fvaDirName", fvaDirNameEdit);
+	m_lineedites.insert("Format::fvaDirNameYear", fvaDirNameYearEdit);
+	m_lineedites.insert("Format::fvaFileName", fvaFileNameEdit);
+	m_lineedites.insert("Format::exifDateTime", exifDateTimeEdit);
 
 	layout->addWidget(fvaDirNameLbl);
 	layout->addWidget(fvaDirNameEdit);
