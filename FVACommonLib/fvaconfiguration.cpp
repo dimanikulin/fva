@@ -25,7 +25,7 @@ FVA_EXIT_CODE FvaConfiguration::save(const QString& path)
 	return fvaFileCsv.save(path, m_cfgtitles, m_cfgItems);
 }
 
-QString FvaConfiguration::getParamAsString(const QString& paramName) const
+FVA_EXIT_CODE FvaConfiguration::getParamAsString(const QString& paramName, QString& paramValue) const
 {
 	// ID,Name,Value
 	int columnName = FVADescriptionFile::getColumnIdByName(m_cfgtitles, "Name");
@@ -42,25 +42,39 @@ QString FvaConfiguration::getParamAsString(const QString& paramName) const
 		QString paramName_ = list[columnName].toUpper();
 		QString paramValue_ = list[columnValue];
 		if (paramName.toUpper() == paramName_)
-			return paramValue_;
+		{
+			paramValue = paramValue_;
+			return FVA_NO_ERROR;
+		}
 	}
-	throw std::exception("FvaConfiguration::getParamAsString - not implemented");
+	return FVA_ERROR_CANT_GET_PARAM;
 }
 
-bool FvaConfiguration::getParamAsBoolean(const QString& paramName) const
+FVA_EXIT_CODE FvaConfiguration::getParamAsBoolean(const QString& paramName, bool& paramValue) const
 {
-	QString str = getParamAsString(paramName);
+	QString str;
+	FVA_EXIT_CODE res = getParamAsString(paramName, str);
+	RET_RES_IF_RES_IS_ERROR
 	if (str.toUpper() == "FALSE" || str.toUpper() == "NO")
-		return false;
+	{
+		paramValue = false;
+		return FVA_NO_ERROR;
+	}
 	if (str.toUpper() == "TRUE" || str.toUpper() == "YES")
-		return true;
-	throw std::exception("FvaConfiguration::getParamAsBoolean - not implemented");
+	{
+		paramValue = true;
+		return FVA_NO_ERROR;
+	}
+	return FVA_ERROR_CANT_GET_PARAM;
 }
 
-uint FvaConfiguration::getParamAsUint(const QString& paramName) const
+FVA_EXIT_CODE FvaConfiguration::getParamAsUint(const QString& paramName, uint& paramValue) const
 {
-	QString str = getParamAsString(paramName);
-	return str.toUInt();
+	QString str;
+	FVA_EXIT_CODE res = getParamAsString(paramName,str);
+	RET_RES_IF_RES_IS_ERROR
+	paramValue = str.toUInt();
+	return FVA_NO_ERROR;
 }
 
 FVA_EXIT_CODE FvaConfiguration::setParam(const QString& paramName, QString paramValue)

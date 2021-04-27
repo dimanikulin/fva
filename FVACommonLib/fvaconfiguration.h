@@ -41,23 +41,26 @@ class FvaConfiguration
 		/*!
 		* \brief it returns the parameter value as string representation
 		* \param paramName - parameter name
-		* \returns it returns the parameter value as string representation
+		* \param paramVaue - parameter value to be returned
+		* \returns it returns code of error if any or FVA_NO_ERROR if getting was successful
 		*/
-		QString getParamAsString(const QString& paramName) const;
+		FVA_EXIT_CODE getParamAsString(const QString& paramName, QString& paramValue) const;
 
 		/*!
 		* \brief it returns the parameter value as bool
 		* \param paramName - parameter name
-		* \returns it returns the parameter value as bool
+		* \param paramVaue - parameter value to be returned
+		* \returns it returns code of error if any or FVA_NO_ERROR if getting was successful
 		*/
-		bool getParamAsBoolean(const QString& paramName) const;
+		FVA_EXIT_CODE getParamAsBoolean(const QString& paramName, bool& paramValue) const;
 
 		/*!
 		* \brief it returns the parameter value as unsigned integer
 		* \param paramName - parameter name
-		* \returns it returns the parameter value as unsigned integer
+		* \param paramVaue - parameter value to be returned
+		* \returns it returns code of error if any or FVA_NO_ERROR if getting was successful
 		*/
-		uint getParamAsUint(const QString& paramName) const;
+		FVA_EXIT_CODE getParamAsUint(const QString& paramName, uint& paramValue) const;
 
 		/*!
 		* \brief it sets the parameter value as unsigned integer for the futher saving

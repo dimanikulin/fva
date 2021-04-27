@@ -11,7 +11,7 @@
 #include <QTWidgets/QComboBox>
 
 FVAConfigurator::FVAConfigurator(QWidget *parent)
-	: QDialog(parent)
+: QDialog(parent)
 {
 	ui.setupUi(this);
 
@@ -56,17 +56,26 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 	FVA_EXIT_CODE res = cfg.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaParams.csv");
 	RET_IF_RES_IS_ERROR
 
-	InitializeCommonTab(cfg);
+		InitializeCommonTab(cfg);
 	InitializeSearchTab(cfg);
 	InitializeIntegratorTab(cfg);
 	InitializeRenameTab(cfg);
 	InitializeFormatTab(cfg);
 
+	bool temp;
 	for (CHECKBOXES::iterator it = m_checkboxes.begin(); it != m_checkboxes.end(); ++it)
-		it.value()->setChecked(cfg.getParamAsBoolean(it.key()));
-
+	{
+		res = cfg.getParamAsBoolean(it.key(), temp);
+		RET_IF_RES_IS_ERROR
+		it.value()->setChecked(temp);
+	}
+	QString temp2;
 	for (LINEEDITES::iterator it = m_lineedites.begin(); it != m_lineedites.end(); ++it)
-		it.value()->setText(cfg.getParamAsString(it.key()));
+	{
+		res = cfg.getParamAsString(it.key(), temp2);
+		RET_IF_RES_IS_ERROR
+		it.value()->setText(temp2);
+	}
 }
 
 void FVAConfigurator::accept()
@@ -120,8 +129,14 @@ void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
 	m_checkboxes.insert("Common::CheckOrientation", CheckOrientationCheckBox);
 	m_lineedites.insert("Common::RootDir", fvaRootDirEdit);
 
-	cbLanguage->setCurrentIndex(cfg.getParamAsUint("Common::Language"));
-	cbLogLevel->setCurrentIndex(cfg.getParamAsUint("Common::LogLevel"));
+	uint temp;
+	FVA_EXIT_CODE res = cfg.getParamAsUint("Common::Language", temp);
+	RET_IF_RES_IS_ERROR
+	cbLanguage->setCurrentIndex(temp);
+
+	res = cfg.getParamAsUint("Common::LogLevel", temp);
+	RET_IF_RES_IS_ERROR
+	cbLogLevel->setCurrentIndex(temp);
 
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addWidget(LanguageLbl);
@@ -205,7 +220,11 @@ void FVAConfigurator::InitializeRenameTab(const FvaConfiguration& cfg)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-	minFilesInDirSpin->setValue(cfg.getParamAsUint("Rename::minFilesInDir"));
+	uint temp;
+	FVA_EXIT_CODE res = cfg.getParamAsUint("Rename::minFilesInDir", temp);
+	RET_IF_RES_IS_ERROR
+	minFilesInDirSpin->setValue(temp);
+
 	m_checkboxes.insert("Rename::picsByModifTime", picsByModifTimeCheckBox);
 	m_checkboxes.insert("Rename::videoByModifTime", videoByModifTimeCheckBox);
 
