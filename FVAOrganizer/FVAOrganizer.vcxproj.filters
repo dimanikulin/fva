@@ -152,5 +152,8 @@
     <ClInclude Include="CLTRenameDirs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CLTContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

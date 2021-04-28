@@ -186,6 +186,7 @@
     <ClInclude Include="CLTAutoChecks2.h" />
     <ClInclude Include="CLTAutoChecks3.h" />
     <ClInclude Include="CLTCheckDeviceName.h" />
+    <ClInclude Include="CLTContext.h" />
     <ClInclude Include="CLTConvertAmr.h" />
     <ClInclude Include="CLTCreateDirStructByDevNames.h" />
     <ClInclude Include="CLTFixDuplicatedFileNames.h" />
