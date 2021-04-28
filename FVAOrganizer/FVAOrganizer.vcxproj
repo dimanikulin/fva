@@ -188,16 +188,8 @@
     <ClInclude Include="CLTCheckDeviceName.h" />
     <ClInclude Include="CLTConvertAmr.h" />
     <ClInclude Include="CLTCreateDirStructByDevNames.h" />
-    <ClInclude Include="CLTDBBase.h" />
-    <ClInclude Include="CLTDBCreateFVA.h" />
-    <ClInclude Include="CLTDBFvaFileToDB.h" />
-    <ClInclude Include="CLTDBFvaFolderToDB.h" />
     <ClInclude Include="CLTFixDuplicatedFileNames.h" />
     <ClInclude Include="CLTGetFvaDirType.h" />
-    <ClInclude Include="CLTJSONConvertDirDesc.h" />
-    <ClInclude Include="CLTJSONCreateDirStructByFileNames.h" />
-    <ClInclude Include="CLTJSONMergeDirs.h" />
-    <ClInclude Include="CLTJSONMoveAloneFiles.h" />
     <ClInclude Include="CLTMerge1DayEventDir.h" />
     <ClInclude Include="CLTMerge1EventDir.h" />
     <ClInclude Include="CLTMoveAloneFiles.h" />
@@ -207,12 +199,9 @@
     <ClInclude Include="CLTRenameFilesByDir.h" />
     <ClInclude Include="CLTRenameVideoBySequence.h" />
     <ClInclude Include="CLTSetFileAtts.h" />
-    <ClInclude Include="CLTXMLConvert.h" />
     <ClInclude Include="CmdLineBaseTask.h" />
     <ClInclude Include="CLTCSVFvaFiles.h" />
-    <ClInclude Include="CLTDBFsToDB.h" />
     <ClInclude Include="CmdLineExecutor.h" />
-    <ClInclude Include="CLTCSVRenameFilesByFva.h" />
     <ClInclude Include="CLTCreateDirStructByFileNames.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

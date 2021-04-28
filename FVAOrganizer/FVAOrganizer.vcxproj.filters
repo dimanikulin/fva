@@ -113,22 +113,7 @@
     <ClInclude Include="CLTPrintFSStructure.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CLTDBCreateFVA.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTDBBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTDBFvaFileToDB.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CLTCSVFvaFiles.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTDBFvaFolderToDB.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTDBFsToDB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTAutoChecks1.h">
@@ -161,28 +146,10 @@
     <ClInclude Include="CLTCreateDirStructByFileNames.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CLTXMLConvert.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTJSONConvertDirDesc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTCSVRenameFilesByFva.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CLTRenameFilesByDir.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTRenameDirs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTJSONCreateDirStructByFileNames.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTJSONMoveAloneFiles.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTJSONMergeDirs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
