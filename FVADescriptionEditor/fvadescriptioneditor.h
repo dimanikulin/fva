@@ -23,11 +23,11 @@ protected slots:
 
 private: // methods
 
-	// void updateGuiForItem( const QString& path );
+	void updateGuiForItem( const QString& path );
 
-	// void saveCurrentDescription();
+	void saveCurrentDescription();
 
-	// void updateDictionaryGUI();
+	void updateDictionaryGUI();
 
 private: // data
 

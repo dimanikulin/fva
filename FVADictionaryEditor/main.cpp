@@ -22,7 +22,6 @@ int main(int argc, char *argv[])
 	{
 		deviceMatchName = list.at(2);
 	}
-//	QTextCodec::setCodecForTr(QTextCodec::codecForName("Windows-1251"));
 	FVADictionaryEditor w(list.at(1), deviceMatchName);
 	w.show();
 	return a.exec();

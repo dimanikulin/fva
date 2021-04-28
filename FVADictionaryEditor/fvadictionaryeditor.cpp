@@ -41,40 +41,9 @@ FVADictionaryEditor::~FVADictionaryEditor()
 
 }
 
-void addDictItem(const QString& /*dictPath*/, const QString& /*name*/, QDialog* /*dlg*/, const QString& /*dictName*/)
-{
-	/*if (name.isEmpty())
-		return;
-
-	QString		error;
-	QVariantMap	dictionaries;
-	FVA_EXIT_CODE res = fvaLoadDictionary( dictPath, dictionaries, error );
-	RET_IF_RES_IS_ERROR
-
-	QVariantList vlist = dictionaries[dictName].toList();
-	int maxID = -1;
-	for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
-	{
-		if (maxID < i->toMap()["ID"].toInt())
-			maxID = i->toMap()["ID"].toInt();
-	}
-	if ( -1 == maxID )
-		return;
-	QVariantMap newPerson;
-	newPerson["ID"]		= maxID + 1;
-	newPerson["name"]	= name;
-	vlist.append(newPerson);
-
-	dictionaries[dictName] = vlist;
-
-	res = fvaSaveDictionary( dictPath, dictionaries, error );
-	RET_IF_RES_IS_ERROR
-
-	dlg->close();*/
-}
 void FVADictionaryEditor::OnAddPersonBtnPressed()
 {
-	addDictItem(m_dictPath, ui.editPerson->text(),this, "people" );
+	//addDictItem(m_dictPath, ui.editPerson->text(),this, "people" );
 }
 
 void FVADictionaryEditor::OnAddDeviceBtnPressed()
@@ -102,55 +71,5 @@ void FVADictionaryEditor::OnAddDeviceBtnPressed()
 
 void FVADictionaryEditor::OnAddPlaceBtnPressed()
 {
-	addDictItem(m_dictPath, ui.editPlace->text(),this, "places" );
-}
-
-/*!
-* \brief it saves FVA dictionaries to file
-* \param file to save dictionaries to
-* \param outputJson input parameter to be saved
-* \param error - human-readable description of error if any
-* \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
-*/
-FVA_EXIT_CODE fvaSaveDictionary(const QString& /*file*/, QVariantMap& /*inputJson*/, QString& /*error*/)
-{
-	/*QDir dir(file);
-	if (!dir.exists(file))
-	{
-		error = "dictionaries file does not exist";
-		return FVA_ERROR_CANT_FIND_DICTIONARIES;
-	}
-	else
-	{
-		QString newName = file + "_" + QDateTime::currentDateTime().toString(FVA_FILE_NAME_FMT).toLatin1().data();
-		if (!dir.rename(file, newName))
-		{
-			return FVA_ERROR_CANT_OPEN_DICTIONARIES;
-		}
-	}
-	// open it
-	QFile _file(file);
-	if (!_file.open(QIODevice::WriteOnly))
-	{
-		error = "can not open dictionaries";
-		return FVA_ERROR_CANT_OPEN_DICTIONARIES;
-	}
-
-	bool res = false;
-
-	QByteArray data = QtJson::Json::serialize(inputJson, res);
-	if (!res)
-	{
-		error = "can not save dictionaries";
-		_file.close();
-		return FVA_ERROR_CANT_SAVE_DICTIONARIES;
-	}
-	QString result = QString::fromLocal8Bit(data);
-
-	QTextStream writeStream(&_file);
-	writeStream << result;
-	writeStream.flush();
-	_file.close();*/
-
-	return FVA_NO_ERROR;
+	//addDictItem(m_dictPath, ui.editPlace->text(),this, "places" );
 }
