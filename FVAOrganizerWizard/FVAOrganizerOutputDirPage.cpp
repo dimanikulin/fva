@@ -53,8 +53,7 @@ void FVAOrganizerOutputDirPage::OnFvaInfoButtonPressed()
 	QProcess myProcess(this);
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	QStringList params;
-	params.append(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv");
-	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADescriptionEditor.exe", params);
+	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADescriptionEditor.exe");
 	myProcess.waitForFinished(-1);
 }
 void FVAOrganizerOutputDirPage::setVisible(bool visible)
@@ -160,15 +159,6 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		+ FVA_DEFAULT_ROOT_DIR;
 	pyCmdList.append(pyScriptPathMerge2 + "#data#/fvaFile.csv " + FVA_DEFAULT_ROOT_DIR + "#data#/fvaFileN.csv ");
 
-	if (QFileInfo(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv").exists())
-	{
-		// merge 2 csv into one: common one and just generated - for folder CSVs
-		QString pyScriptPathMerge = "python "
-			+ QCoreApplication::applicationDirPath()
-			+ "/scripts/merge2csv.py "
-			+ FVA_DEFAULT_ROOT_DIR;
-		pyCmdList.append(pyScriptPathMerge + "#data#/fvaFolder.csv " + FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv ");
-	}
 	// lets run python cmd list 
 	for (auto it = pyCmdList.begin(); it != pyCmdList.end(); ++it)
 	{
@@ -196,11 +186,8 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	}
 	else
 	{
-		// TODO - check fvaFolderN and call CLTAutoChecks3 for all that folders
+		// TODO - apply call CLTAutoChecks3 for all merged folders
 	}
-
-	// clean up after processing
-	QFile::remove(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFolderN.csv");
 
 	return true;
 }

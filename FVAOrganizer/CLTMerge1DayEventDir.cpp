@@ -39,9 +39,6 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute()
 				else if (FVA_NO_ERROR == res)
 				{
 					LOG_QDEB << "created dest folder:" << dstDirPath;
-					res = fvaUpdateFvaDirInfoInCsv(dstDirPath);
-					RET_RES_IF_RES_IS_ERROR
-					LOG_QDEB << "created fvaFolderN.csv for folder:" << dstDirPath;
 				}
 			}
 			else if (m_custom == "merge")
@@ -52,9 +49,6 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute()
 		else if (FVA_NO_ERROR == res)
 		{
 			LOG_QDEB << "created dest folder:" << dstDirPath;
-			res = fvaUpdateFvaDirInfoInCsv(dstDirPath);
-			RET_RES_IF_RES_IS_ERROR
-			LOG_QDEB << "created fvaFolderN.csv for folder:" << dstDirPath;
 		}
 	}
 	
