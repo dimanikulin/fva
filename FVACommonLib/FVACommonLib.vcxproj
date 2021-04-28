@@ -160,7 +160,6 @@
     <ClCompile Include="fvacommonexif.cpp" />
     <ClCompile Include="fvaconfiguration.cpp" />
     <ClCompile Include="fvacsvfile.cpp" />
-    <ClCompile Include="fvacommondb.cpp" />
     <ClCompile Include="fvacommonlib.cpp" />
     <ClCompile Include="fvacommonui.cpp" />
     <ClCompile Include="FVADescriptionFile.cpp" />
@@ -177,7 +176,6 @@
     <ClInclude Include="fvacommonexif.h" />
     <ClInclude Include="fvaconfiguration.h" />
     <ClInclude Include="fvacsvfile.h" />
-    <ClInclude Include="fvacommondb.h" />
     <ClInclude Include="fvacommonlib.h" />
     <ClInclude Include="fvacommonui.h" />
     <ClInclude Include="fvaconstants.h" />

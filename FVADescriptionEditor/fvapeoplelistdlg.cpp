@@ -1,6 +1,5 @@
 #include "fvapeoplelistdlg.h"
 #include "fvacommonlib.h"
-#include "fvacommondb.h"
 #include <QtCore/QProcess>
 
 FVAPeopleListDlg::FVAPeopleListDlg(QVariantMap& dictionaries, const QString& dictPath, QWidget *parent)
@@ -43,9 +42,9 @@ void FVAPeopleListDlg::OnAddPeopleBtnPressed()
 	{
 		return;
 	}
-	QString		error;
+	/*QString		error;
 	FVA_EXIT_CODE res = fvaLoadDictionary( m_dictPath, m_dictionaries, error );
-	RET_IF_RES_IS_ERROR
+	RET_IF_RES_IS_ERROR*/
 
 	updateGui();
 }

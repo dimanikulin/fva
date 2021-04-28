@@ -2,7 +2,6 @@
 #include "fvadescriptionfile.h"
 #include "fvacommonlib.h"
 #include "fvadefaultcfg.h"
-#include "fvacommondb.h"
 
 #include <QtWidgets/QApplication>
 #include <QtCore/QDir>

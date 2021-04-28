@@ -7,7 +7,6 @@
 #include <QtUiTools/QtUiTools>
 
 #include "fvacommonui.h"
-#include "fvacommondb.h"
 
 #include "data/fvaitem.h"
 #include "data/fvafolder.h"
@@ -22,7 +21,7 @@ void FVAViewer::showProgress(const QString& rootDir)
 	int number = 0;
 	m_rootItem.reset (new fvaItem);
 	QString error;
-	fvaLoadItems ( rootDir, m_rootItem.get(), m_dictionaryPath, error, number /*, &progress*/ );
+	// fvaLoadItems ( rootDir, m_rootItem.get(), m_dictionaryPath, error, number /*, &progress*/ );
 	QProgressDialog progress("Loading...", "Abort", 0, number, this);
 	progress.setWindowModality(Qt::ApplicationModal); 
 	int itemNumber = 0;
@@ -108,9 +107,9 @@ FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *p
 	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/main.png");
 	setWindowIcon(icon);
 
-	QString		error;
+	/*QString		error;
 	FVA_EXIT_CODE res = fvaLoadDictionary( dictPath, m_dictionaries, error );
-	RET_IF_RES_IS_ERROR
+	RET_IF_RES_IS_ERROR*/
 
 	showProgress(rootDir);
 

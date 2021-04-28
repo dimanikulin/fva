@@ -1,7 +1,6 @@
 #include "fvadescriptioneditor.h"
 #include "FVADescriptionFile.h"
 #include "fvapeoplelistdlg.h"
-#include "fvacommondb.h"
 #include "fvacommonui.h"
 
 #include <QtCore/QFileInfo>
