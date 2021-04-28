@@ -42,4 +42,10 @@ const int FVA_UNDEFINED_ID	= -1;
 */
 const QString	FVA_DB_NAME = "digikam4.db";
 
+/*!
+* \brief language to be used TODO to remove
+*/
+#define FVA_LANGUAGE_ENG
+// #define FVA_LANGUAGE_RUS
+
 #endif // FVACONSTS_H
