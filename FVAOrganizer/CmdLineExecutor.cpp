@@ -14,27 +14,17 @@
 #include "CLTGetFvaDirType.h"
 #include "CLTMerge1DayEventDir.h"
 #include "CLTMerge1EventDir.h"
-#include "CLTMergeFewDaysFewsEventsDir.h"
 #include "CLTSetFileAtts.h"
 #include "CLTConvertAmr.h"
 #include "CLTMoveAloneFiles.h"
 #include "CLTCheckDeviceName.h"
 #include "CLTCreateDirStructByFileNames.h"
-#include "CLTXmlConvert.h"
-#include "CLTJSONConvertDirDesc.h"
 
 #include "CLTAutoChecks1.h"
 #include "CLTAutoChecks2.h"
 #include "CLTAutoChecks3.h"
 
-#include "CLTDBCreateFVA.h"
-#include "CLTDBFvaFileToDB.h"
-#include "CLTDBFvaFolderToDB.h"
-#include "CLTDBFsToDB.h"
-
 #include "CLTCSVFvaFiles.h"
-#include "CLTCSVUpdateFvaFile.h"
-#include "CLTCSVRenameFilesByFva.h"
 #include "CLTCSVUpdateFvaFiles.h"
 
 
@@ -93,21 +83,12 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLTRenameFilesByDir::Name())			r.reset(new CLTRenameFilesByDir(dir, readOnly));
 	else if (name == CLTRenameVideoBySequence::Name())		r.reset(new CLTRenameVideoBySequence(dir, readOnly));
 	else if (name == CLTRenameDirs::Name())					r.reset(new CLTRenameDirs(dir, readOnly));
-	else if (name == CLTXmlConvert::Name())					r.reset(new CLTXmlConvert(dir,readOnly));
-	else if (name == CLTCSVUpdateFvaFile::Name())			r.reset(new CLTCSVUpdateFvaFile(dir, readOnly));
 	else if (name == CLTAutoChecks2::Name())				r.reset(new CLTAutoChecks2(dir,readOnly));
 	else if (name == CLTMoveAloneFiles::Name())				r.reset(new CLTMoveAloneFiles(dir, readOnly));
-	else if (name == CLTJSONConvertDirDesc::Name())			r.reset(new CLTJSONConvertDirDesc(dir, readOnly));
 	else if (name == CLTConvertAmr::Name())					r.reset(new CLTConvertAmr(dir, readOnly));
 	else if (name == CLTAutoChecks1::Name())				r.reset(new CLTAutoChecks1(dir, readOnly));
-	else if (name == CLTMergeFewDaysFewsEventsDir::Name())	r.reset(new CLTMergeFewDaysFewsEventsDir(dir, readOnly, custom));
 	else if (name == CLTSetFileAtts::Name())				r.reset(new CLTSetFileAtts(dir, readOnly));	
 	else if (name == CLTPrintFSStructure::Name())			r.reset(new CLTPrintFSStructure(dir, readOnly));
-	else if (name == CLTCSVRenameFilesByFva::Name())		r.reset(new CLTCSVRenameFilesByFva(dir, readOnly));
-	else if (name == CLTDBFsToDB::Name())					r.reset(new CLTDBFsToDB(dir, readOnly));
-	else if (name == CLTDBFvaFileToDB::Name())				r.reset(new CLTDBFvaFileToDB(dir, readOnly));
-	else if (name == CLTDBFvaFolderToDB::Name())			r.reset(new CLTDBFvaFolderToDB(dir, readOnly));
-	else if (name == CLTDBCreateFVA::Name())				r.reset(new CLTDBCreateFVA(dir, readOnly, custom));
 	else if (name == CLTMerge1EventDir::Name())				r.reset(new CLTMerge1EventDir(dir, readOnly, custom));
 	else if (name == CLTCSVFvaFile::Name())					r.reset(new CLTCSVFvaFile(dir, readOnly, custom));
 	else if (name == CLTMerge1DayEventDir::Name())			r.reset(new CLTMerge1DayEventDir(dir, readOnly, custom));

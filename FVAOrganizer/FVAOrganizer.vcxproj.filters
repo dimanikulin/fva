@@ -48,22 +48,7 @@
     <ClCompile Include="CLTPrintFSStructure.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CLTDBCreateFVA.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTDBBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTDBFvaFileToDB.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CLTCSVFvaFiles.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTDBFvaFolderToDB.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTDBFsToDB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CLTAutoChecks1.cpp">
@@ -96,34 +81,10 @@
     <ClCompile Include="CLTCreateDirStructByFileNames.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CLTXMLConvert.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTCSVUpdateFvaFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTJSONConvertDirDesc.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTCSVRenameFilesByFva.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CLTRenameFilesByDir.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CLTRenameDirs.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTJSONCreateDirStructByFileNames.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTJSONMoveAloneFiles.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTJSONMergeDirs.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTMergeFewDaysFewsEventsDir.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CLTCSVUpdateFvaFiles.cpp">
@@ -206,9 +167,6 @@
     <ClInclude Include="CLTXMLConvert.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CLTCSVUpdateFvaFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CLTJSONConvertDirDesc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -228,9 +186,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTJSONMergeDirs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTMergeFewDaysFewsEventsDir.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTCSVUpdateFvaFiles.h">
