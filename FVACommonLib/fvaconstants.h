@@ -37,4 +37,9 @@ const QString	FVA_BACKGROUND_MUSIC_FILE_NAME		= "bgmusic.mid";
  */
 const int FVA_UNDEFINED_ID	= -1;
 
+/*!
+* \brief name of SQLlite db to work with
+*/
+const QString	FVA_DB_NAME = "digikam4.db";
+
 #endif // FVACONSTS_H
