@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# python updatePlaceIdForFolder.py "C:\FVANOGEO\283" 283 >> placeId283.csv
+
 import sys
 import csv
 import subprocess
