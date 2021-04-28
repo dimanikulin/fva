@@ -77,7 +77,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute()
 		}
 
 		//////////////////////////////////// 3. check for GEO position exsiting in file//////////////////////
-		bool GeoPresent = fvaExifGeoDataPresentFromFile(info.filePath());
+		bool GeoPresent = fvaExifGeoDataPresentInFile(info.filePath());
 		if (!GeoPresent)
 		{
 			int PlaceId = -1;

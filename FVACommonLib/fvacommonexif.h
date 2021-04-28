@@ -24,6 +24,6 @@ QDateTime fvaGetExifDateTimeOriginalFromFile(const QString& pathToFile);
 * \param pathToFile path file to check Exif GEO Location is present from
 * \returns it returns true if Exif GEO Location is present, otherwize it returns false 
 */
-bool fvaExifGeoDataPresentFromFile(const QString& pathToFile);
+bool fvaExifGeoDataPresentInFile(const QString& pathToFile);
 
 #endif // FVACOMMONEXIF_H

@@ -29,7 +29,7 @@ QDateTime fvaGetExifDateTimeOriginalFromFile(const QString& pathToFile)
 	}
 	return QDateTime();
 }
-bool fvaExifGeoDataPresentFromFile(const QString& pathToFile)
+bool fvaExifGeoDataPresentInFile(const QString& pathToFile)
 {
 	QFile file(pathToFile);
 	if (file.open(QIODevice::ReadOnly)){
