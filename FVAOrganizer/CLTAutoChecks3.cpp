@@ -32,7 +32,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute()
 			continue;
 		//////////////////////////////////// 1. check for exsiting device in fva info by fileName
 		int deviceID = FVA_UNDEFINED_ID;
-		FVA_EXIT_CODE res = fvaGetDeviceIdFromCsv(m_fvaFileInfo, info.fileName(), deviceID, info.absoluteDir().absolutePath());
+		FVA_EXIT_CODE res = fvaGetDeviceIdFromCsv(m_fvaFileInfo, info.fileName(), deviceID);
 		if (FVA_NO_ERROR != res)
 		{
 			LOG_QWARN << "no dev id found for file: " << info.absoluteFilePath();

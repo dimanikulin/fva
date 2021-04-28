@@ -164,7 +164,6 @@
     <ClCompile Include="CLTCheckDeviceName.cpp" />
     <ClCompile Include="CLTConvertAmr.cpp" />
     <ClCompile Include="CLTCreateDirStructByDevNames.cpp" />
-    <ClCompile Include="CLTCSVUpdateFvaFiles.cpp" />
     <ClCompile Include="CLTFixDuplicatedFileNames.cpp" />
     <ClCompile Include="CLTGetFvaDirType.cpp" />
     <ClCompile Include="CLTMerge1DayEventDir.cpp" />
@@ -189,7 +188,6 @@
     <ClInclude Include="CLTCheckDeviceName.h" />
     <ClInclude Include="CLTConvertAmr.h" />
     <ClInclude Include="CLTCreateDirStructByDevNames.h" />
-    <ClInclude Include="CLTCSVUpdateFvaFiles.h" />
     <ClInclude Include="CLTDBBase.h" />
     <ClInclude Include="CLTDBCreateFVA.h" />
     <ClInclude Include="CLTDBFvaFileToDB.h" />

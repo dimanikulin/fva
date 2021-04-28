@@ -25,7 +25,6 @@
 #include "CLTAutoChecks3.h"
 
 #include "CLTCSVFvaFiles.h"
-#include "CLTCSVUpdateFvaFiles.h"
 
 
 CmdLineExecutor::CmdLineExecutor( const QString& cmdName, const QString& folder, bool recursive, bool readOnly, const QString& custom )
@@ -95,7 +94,6 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const QString& 
 	else if (name == CLTGetFvaDirType::Name())				r.reset(new CLTGetFvaDirType(dir, readOnly));
 	else if (name == CLTAutoChecks3::Name())				r.reset(new CLTAutoChecks3(dir, readOnly));
 	else if (name == CLTFixDuplicatedFileNames::Name())		r.reset(new CLTFixDuplicatedFileNames(dir, readOnly));
-	else if (name == CLTCSVUpdateFvaFiles::Name())			r.reset(new CLTCSVUpdateFvaFiles(dir, readOnly));
 
 	return r;
 }

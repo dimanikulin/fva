@@ -15,10 +15,9 @@ typedef std::map<int, QString> FVA_SIMPLE_MAP;
  * \param fvaFileInfo - fva file information to search in
  * \param fvaFile - file to look information for not full path, just "1212.jpg")
  * \param deviceID - output parameter to contain device ID
- * \param dir - the directory where the file is located
  * \returns it returns code of error if any or FVA_NO_ERROR if device ID has been retrieved
  */
-FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID, const QString& dir);
+FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID);
 
 /*!
  * \brief it loads fva information saved in CSV files
