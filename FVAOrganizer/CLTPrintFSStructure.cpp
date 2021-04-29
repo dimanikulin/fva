@@ -4,10 +4,8 @@
 
 #include <QtCore/QCryptographicHash>
 
-CLTPrintFSStructure::CLTPrintFSStructure(const QString& dir_,bool readOnly_,const QString& custom_)
-	:CmdLineBaseTask( dir_,readOnly_,custom_)
+CLTPrintFSStructure::CLTPrintFSStructure()
 {
-	qDebug()<<"["<<Name().toUpper()<<"]cmd created,dir:"<<dir_;
 	m_file.setFileName(FVA_DEFAULT_ROOT_DIR + "fsoutput.txt");
 	m_file.open( QIODevice::WriteOnly );
 }
@@ -17,7 +15,7 @@ CLTPrintFSStructure::~CLTPrintFSStructure()
 	m_file.close();
 }
 
-FVA_EXIT_CODE CLTPrintFSStructure::execute()
+FVA_EXIT_CODE CLTPrintFSStructure::execute(const CLTContext& /*context*/, const FvaConfiguration& /*cfg*/)
 {
 	char		buffer [ 64* 1024 ];
 	qint64		size = 0;

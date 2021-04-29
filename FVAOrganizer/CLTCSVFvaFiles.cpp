@@ -2,7 +2,7 @@
 #include "fvacommoncsv.h"
 #include "fvadefaultcfg.h"
 
-FVA_EXIT_CODE CLTCSVFvaFile::execute()
+FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
 {	
 	int ID = FVA_UNDEFINED_ID;
 	FVA_EXIT_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFile.id", ID);
@@ -22,7 +22,7 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute()
 		// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,EventId,ReasonPeople,reserved1
 		QString csvRecord =  QString::number(++ID) + "," // ID
 			+ info.fileName() + ",,," // Name
-			+ m_custom	+ ",,,,,,"; // m_custom here is device id
+			+ context.custom + ",,,,,,"; // m_custom here is device id
 		records.append(csvRecord);
 				
 	}

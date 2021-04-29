@@ -4,11 +4,8 @@
 #include "fvacommoncsv.h"
 #include "fvacommonexif.h"
 
-CLTAutoChecks3::CLTAutoChecks3(const QString& dir_, bool readOnly_, const QString& custom_)
-:CmdLineBaseTask(dir_, readOnly_, custom_)
+CLTAutoChecks3::CLTAutoChecks3()
 {
-	LOG_QDEB << "cmd created,dir:" << dir_ << ",RO=" << (readOnly_ ? "yes" : "no") << ",SRO=" << (supportReadOnly() ? "yes" : "no");
-
 	FVA_EXIT_CODE res = fvaLoadFvaFileInfoFromCsv(m_fvaFileInfo);
 	RET_IF_RES_IS_ERROR
 
@@ -17,7 +14,7 @@ CLTAutoChecks3::CLTAutoChecks3(const QString& dir_, bool readOnly_, const QStrin
 	res = fvaLoadDeviceMapFromCsv(m_deviceMap);
 	RET_IF_RES_IS_ERROR
 }
-FVA_EXIT_CODE CLTAutoChecks3::execute()
+FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
@@ -48,7 +45,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute()
 		{
 			LOG_QWARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
 			m_Issues.push_back("FVA_ERROR_UKNOWN_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
-			if (m_readOnly)
+			if (context.readOnly)
 				continue;
 			else
 				return FVA_ERROR_UKNOWN_DEVICE;

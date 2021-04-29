@@ -112,8 +112,8 @@ int main( int argc, char *argv[] )
 		}
 	}
 
-	CmdLineExecutor cmdExecutor(context, cfg);
-	int result = cmdExecutor.run();
+	CmdLineExecutor cmdExecutor;
+	int result = cmdExecutor.run(context, cfg);
 	g_logfile.close();
 	return result;
 }

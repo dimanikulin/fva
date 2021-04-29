@@ -2,22 +2,7 @@
 
 #include <QtCore/qdebug>
 
-CmdLineBaseTask::CmdLineBaseTask( const QString& folder_, bool readOnly, const QString& custom_ )
-	:	m_folder		( folder_ ),
-		m_custom		( custom_ ),
-		m_readOnly		( readOnly ),
-		m_baseFolder	( folder_ )
-{
-	m_dir = QDir ( m_folder );
-}
-
-CmdLineBaseTask::~CmdLineBaseTask( )
-{
-
-}
-
-
-FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly( const QString& folder )
+FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly(const QString& folder, const CLTContext& context, const FvaConfiguration& cfg)
 {
 	QDir recurDir(folder);
 	// qDebug() << "[BASE_CMD]dir for rec:" << folder;
@@ -35,7 +20,7 @@ FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly( const QString& folder )
 			// change folder context on each iteration
 			m_folder = QDir::toNativeSeparators(info.filePath());
 			m_dir = QDir( m_folder );
-			FVA_EXIT_CODE res = processFolderRecursivly( QDir::toNativeSeparators(info.filePath()) );
+			FVA_EXIT_CODE res = processFolderRecursivly(QDir::toNativeSeparators(info.filePath()), context, cfg);
 			RET_RES_IF_RES_IS_ERROR
 			continue;
 		}
@@ -43,5 +28,5 @@ FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly( const QString& folder )
 	m_folder = QDir::toNativeSeparators(folder);
 	m_dir = QDir( m_folder );
 
-	return execute();
+	return execute(context, cfg);
 }

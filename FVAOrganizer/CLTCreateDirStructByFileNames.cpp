@@ -1,6 +1,6 @@
 #include "CLTCreateDirStructByFileNames.h"
 
-FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute()
+FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
@@ -16,11 +16,11 @@ FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute()
 			
 		if (!m_dir.exists(subFolderName))
 		{
-			if ( !m_readOnly )
+			if ( !context.readOnly )
 				m_dir.mkdir( subFolderName );
 			LOG_QDEB << "sub-folder:" << subFolderName << " created";
 		}
-		if ( !m_readOnly ) 
+		if ( !context.readOnly ) 
 		{
 			// move the file
 			if ( !m_dir.rename( info.absoluteFilePath(), fullSubFolderpath + "/" + info.fileName() ) )

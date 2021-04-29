@@ -2,16 +2,16 @@
 
 #include "fvadefaultcfg.h"
 
-FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute()
+FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
 {
 	// get the last dir leaf in input folder
 	QString dir = m_dir.dirName();
 
 	QString dstDirPath;
-	if (!m_custom.isEmpty())
+	if (!context.custom.isEmpty())
 	{
 		// it is destintation folder fo us
-		dstDirPath = m_custom;
+		dstDirPath = context.custom;
 	}
 	else 
 		dstDirPath = FVA_DEFAULT_ROOT_DIR + dir.mid(0, 4)/*extract year*/ + "/" + m_dir.dirName();

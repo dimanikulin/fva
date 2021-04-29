@@ -2,7 +2,7 @@
 #include "CLTCreateDirStructByDevNames.h"
 #include "fvacommonexif.h"
 
-FVA_EXIT_CODE CLTCreateDirStructByDeviceName::execute()
+FVA_EXIT_CODE CLTCreateDirStructByDeviceName::execute(const CLTContext& /*context*/, const FvaConfiguration& /*cfg*/)
 {
 	QString deviceName;
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))

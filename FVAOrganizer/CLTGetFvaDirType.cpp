@@ -1,6 +1,6 @@
 #include "CLTGetFvaDirType.h"
 
-FVA_EXIT_CODE CLTGetFvaDirType::execute()
+FVA_EXIT_CODE CLTGetFvaDirType::execute(const CLTContext& /*context*/, const FvaConfiguration& /*cfg*/)
 {
 	uint dirNumber = 0;
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))

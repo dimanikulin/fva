@@ -4,7 +4,7 @@
 
 #include "fvacommonexif.h"
 
-FVA_EXIT_CODE CLTAutoChecks2::execute()
+FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
 {
 	QMap<QString, unsigned int> fileCount;
 	unsigned int countSupportedFiles = 0;
@@ -22,7 +22,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute()
 
 				LOG_QCRIT << "wrong folder name:" << info.absoluteFilePath();
 				m_Issues.push_back("FVA_ERROR_WRONG_FOLDER_NAME," + info.absoluteFilePath() + "," + info.fileName());
-				if (m_readOnly)
+				if (context.readOnly)
 					continue;
 				else
 					return FVA_ERROR_WRONG_FOLDER_NAME;
@@ -42,7 +42,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute()
 			{
 				LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath();
 				m_Issues.push_back("FVA_ERROR_WRONG_FILE_NAME," + info.absoluteFilePath() + "," + info.fileName());
-				if (m_readOnly)
+				if (context.readOnly)
 					continue;
 				else
 					return FVA_ERROR_WRONG_FILE_NAME;
@@ -98,7 +98,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute()
 
 				LOG_QCRIT << "wrong matching folder name:" << info.absoluteFilePath();
 				m_Issues.push_back("FVA_ERROR_WRONG_FOLDER_NAME," + info.absoluteFilePath() + "," + info.fileName());
-				if (m_readOnly)
+				if (context.readOnly)
 					continue;
 				else
 					return FVA_ERROR_WRONG_FOLDER_NAME;
@@ -113,7 +113,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute()
 			{
 				LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath() << " data period=" << dateStart << ";" << dateEnd;
 				m_Issues.push_back("FVA_ERROR_NOT_SUPPORTED_FILE," + info.absoluteFilePath() + "," + info.fileName());
-				if (m_readOnly)
+				if (context.readOnly)
 					continue;
 				else
 					return FVA_ERROR_NOT_SUPPORTED_FILE;
@@ -130,7 +130,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute()
 		{
 			LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath();
 			m_Issues.push_back("FVA_ERROR_NOT_SUPPORTED_FILE," + info.absoluteFilePath() + "," + info.fileName());
-			if (!m_readOnly)
+			if (!context.readOnly)
 				return FVA_ERROR_NOT_SUPPORTED_FILE;
 		}
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -141,7 +141,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute()
 		// check for to little supported 
 		LOG_QCRIT << "too little supported files found in:" << m_folder;
 		m_Issues.push_back("FVA_ERROR_TOO_LITTLE_FILES," + m_folder + ",");
-		if (!m_readOnly)
+		if (!context.readOnly)
 			return FVA_ERROR_TOO_LITTLE_FILES;
 	}
 

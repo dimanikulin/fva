@@ -39,7 +39,7 @@ void CLTRenameFiles::fillRenameDateTimeFromLastModifiedIfValid(const QDir& dir, 
 	}
 }
 
-FVA_EXIT_CODE CLTRenameFiles::execute()
+FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
 {
 	QFileInfoList files = m_dir.entryInfoList(QDir::Files);
 	QFileInfo info;
@@ -115,12 +115,12 @@ FVA_EXIT_CODE CLTRenameFiles::execute()
 		}
 
 		QString newPath = "";
-		if ("OLD_NAME" == m_custom)
+		if ("OLD_NAME" == context.custom)
 			newPath = m_dir.path() + "/" + newName + "__" + info.baseName() + "." + info.suffix();
 		else
 			newPath = m_dir.path() + "/" + newName + "." + info.suffix();
 
-		if (m_readOnly)
+		if (context.readOnly)
 		{
 			if (m_uniqueFileNames.find(newPath) != m_uniqueFileNames.end())
 			{

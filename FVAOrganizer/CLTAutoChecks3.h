@@ -9,9 +9,9 @@
 class CLTAutoChecks3 : public CmdLineBaseTask
 {
 public:
-	CLTAutoChecks3(const QString& dir_, bool readOnly_ = false, const QString& custom_ = "");
+	CLTAutoChecks3();
 	virtual ~CLTAutoChecks3();
-	virtual FVA_EXIT_CODE execute();
+	virtual FVA_EXIT_CODE execute(const CLTContext& context, const FvaConfiguration& cfg);
 	static QString Name(){ return "CLTAutoChecks3"; }
 	virtual bool supportReadOnly() { return true; }
 

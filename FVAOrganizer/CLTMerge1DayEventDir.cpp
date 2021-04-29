@@ -2,7 +2,7 @@
 #include "fvadefaultcfg.h"
 #include "fvacommoncsv.h"
 
-FVA_EXIT_CODE CLTMerge1DayEventDir::execute()
+FVA_EXIT_CODE CLTMerge1DayEventDir::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
 {
 	// get the last dir leaf in input folder
 	QString dir = m_dir.dirName();
@@ -18,9 +18,9 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute()
 		else if (FVA_ERROR_DEST_DIR_ALREADY_EXISTS == res)
 		{
 			// it is first time run
-			if (m_custom.isEmpty())
+			if (context.custom.isEmpty())
 				return FVA_ERROR_DEST_DIR_ALREADY_EXISTS;
-			else if (m_custom == "create")
+			else if (context.custom == "create")
 			{
 				LOG_QCRIT << "destination dir already exists: " << dstDirPath;
 				// lets try to create with different name
@@ -41,7 +41,7 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute()
 					LOG_QDEB << "created dest folder:" << dstDirPath;
 				}
 			}
-			else if (m_custom == "merge")
+			else if (context.custom == "merge")
 			{
 				// do nothing here
 			}

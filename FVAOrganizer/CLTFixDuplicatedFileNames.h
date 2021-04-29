@@ -10,11 +10,8 @@ class CLTFixDuplicatedFileNames : public CmdLineBaseTask
 {
 public:
 	/// CmdLineBaseTask interface
-	CLTFixDuplicatedFileNames(const QString& dir_, bool readOnly_ = false, const QString& custom_ = "")
-	:CmdLineBaseTask(dir_, readOnly_, custom_)
-										{	LOG_QDEB << "cmd created, dir:" << dir_;		}
 	virtual ~CLTFixDuplicatedFileNames(){ LOG_QDEB << "cmd deleted, dir:" << m_folder;		}
-	virtual FVA_EXIT_CODE execute();
+	virtual FVA_EXIT_CODE execute(const CLTContext& context, const FvaConfiguration& cfg);
 	static QString Name()				{	return "CLTFixDuplicatedFileNames";				}
 	virtual bool supportReadOnly()		{	return false;									}
 }; 

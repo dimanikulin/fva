@@ -3,7 +3,7 @@
 #include <windows.h>
 #include <winbase.h>
 
-FVA_EXIT_CODE CLTSetFileAtts::execute()
+FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/, const FvaConfiguration& /*cfg*/)
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
