@@ -5,7 +5,6 @@
 
 #include "cmdlineexecutor.h"
 #include "fvacommonlib.h"
-#include "fvadefaultcfg.h"
 
 #include <fstream>
 
@@ -31,13 +30,26 @@ int main( int argc, char *argv[] )
 {
 	QApplication a(argc, argv);
 
+	FvaConfiguration cfg;
+	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	RET_RES_IF_RES_IS_ERROR
+
 	//install : set the callback
 	qInstallMessageHandler(msghandler);
 
-	QString logPath = FVA_DEFAULT_ROOT_DIR + "organizerlog.txt";
+	QString logPath; 
+	res = cfg.getParamAsString("Common::RootDir", logPath);
+	RET_RES_IF_RES_IS_ERROR
+	logPath += "organizerlog.txt";
 	g_logfile.open(logPath.toStdString(), std::ios::app);
 
-	QString cmdType, path, recursive, logLevel, readOnly, custom;
+	uint dLogLevel = 0;
+	res = cfg.getParamAsUint("Common::LogLevel", dLogLevel);
+	RET_RES_IF_RES_IS_ERROR
+	g_logLevel = (QtMsgType)dLogLevel;
+
+	CLTContext context;
+	QString temp;
 	if ( a.arguments().size() < 3 || a.arguments().size() > 7 )
 	{
 		QMessageBox msgBox;
@@ -58,46 +70,49 @@ int main( int argc, char *argv[] )
 	{
 		case 7:
 		{
-			custom = a.arguments()[6];
-			if ( custom.contains("custom=") )
-				custom = custom.remove( "custom=" );
+			context.custom = a.arguments()[6];
+			if (context.custom.contains("custom="))
+				context.custom = context.custom.remove("custom=");
 		}
 
 		case 6:
 		{
-			readOnly = a.arguments()[5];
-			if ( readOnly.contains("readonly=") )
-				readOnly = readOnly.remove( "readonly=" );
-		}
+			temp = a.arguments()[5];
+			if (temp.contains("readonly="))
+				temp = temp.remove("readonly=");
+			context.readOnly = (temp == "yes");
+ 		}
 
 		case 5:
 		{
-			logLevel = a.arguments()[4];
+			// TODO to change to anoter parameter when needs because it is now saved into cfg file - fvaParams.csv
+			/*logLevel = a.arguments()[4];
 			if ( logLevel.contains("loglevel=") )
 			{
 				logLevel = logLevel.remove( "loglevel=" );
 				int dLogLevel = logLevel.toInt();
 				if ( dLogLevel )
 					g_logLevel = ( QtMsgType ) dLogLevel;
-			}
+			}*/ 
 		}
 		case 4:
 		{
-			recursive = a.arguments()[3];
-			if ( recursive.contains("recursive=") )
-				recursive = recursive.remove("recursive=");	
+			temp = a.arguments()[3];
+			if (temp.contains("recursive="))
+				temp = temp.remove("recursive=");
+			context.readOnly = (temp == "yes");
 		}
 		case 3:
 		{
-			path = a.arguments()[2];
+			context.dir = a.arguments()[2]; 
 		}
 		case 2:
 		{
-			cmdType = a.arguments()[1];
+			context.cmdType = a.arguments()[1];
 		}
 	}
 
-	CmdLineExecutor cmdExecutor(cmdType, path, recursive == "yes", readOnly=="yes", custom);
+	CmdLineExecutor cmdExecutor(context, cfg);
 	int result = cmdExecutor.run();
 	g_logfile.close();
 	return result;
