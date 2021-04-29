@@ -6,6 +6,8 @@
 #include <QtCore/qstringlist> 
 
 #include "CmdLineBaseTask.h"
+#include "fvaconfiguration.h"
+#include "CLTContext.h"
 
 /*!
  * \brief performs command line processing
@@ -16,33 +18,26 @@ class CmdLineExecutor
 		/*!
 		 * \brief ctors-dtors section
 		 */
-		CmdLineExecutor( const QString& cmdName, const QString& folder, bool recursive = false, bool readOnly = false, const QString& custom = "" );
-		virtual ~CmdLineExecutor( );
+		CmdLineExecutor() {};
+		virtual ~CmdLineExecutor() {};
 
 		/*!
 		 * \brief performs running of command
+		 * \param context - one command parameters (environment)
+		 * \param cfg - system configuration, applicable for whole system  
 		 * \return it returns result code (not 0 if error happened, 0 - if no error happened) 
 		 */
-		FVA_EXIT_CODE run();
+		FVA_EXIT_CODE run(const CLTContext& context, const FvaConfiguration& cfg);
 
 	private: // method
 
 		/*!
 		 * \brief factory to create the tasks
-		 * \param cmdName - human-readable type of command
-		 * \param folder - folder to work in
-		 * \param custom - parameter to customize command internally
+		 * \param context - one command parameters (environment)
+		 * \param cfg - system configuration, applicable for whole system
 		 * \return pointer to created task or null if type is not supported
 		 */
-		std::auto_ptr<CmdLineBaseTask> createTaskByName( const QString& cmdName, const QString& folder, bool readOnly, const QString& custom = "" );
-
-	private: // data
-
-		QString	m_cmdName; 
-		QString	m_folder; 
-		QString m_custom;
-		bool	m_recursive;
-		bool	m_readOnly;
+		std::auto_ptr<CmdLineBaseTask> createTaskByName(const CLTContext& context, const FvaConfiguration& cfg);
 
 };
 #endif // _CMD_LINE_EXECUTOR_H_
