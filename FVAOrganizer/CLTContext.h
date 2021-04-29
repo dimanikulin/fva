@@ -3,18 +3,20 @@
 
 #include <QtCore/QString>
 
-
 /*!
  * \brief to keep command line task context (+settings) that is known before task is started
  */
 class CLTContext
 {
-	// data 
 	public:
 
-		////////////////////////// ONE COMMAND CONFIGURATION  //////////////////////////////////////////
 		/*!
-		 * \brief path to work folder of command
+		* \brief human - readable type of command
+		*/
+		QString cmdType;
+
+		/*!
+		 * \brief path to work folder of command to work in
 		 */
 		QString dir;
 
@@ -28,47 +30,54 @@ class CLTContext
 		*/
 		QString custom;
 
+		/*!
+		* \brief is it recursive mode now
+		*/
+		bool recursive;
+};
+#endif // CLT_CONTEXT_H_
+
+#ifdef _NOT_DEFINED_
 		////////////////////////// COMMON CONFIGURATION  //////////////////////////////////////////
 		/*!
-		 * \brief path to FVA root folder
-		 */
+		* \brief path to FVA root folder
+		*/
 		QString	rootDir;
 
 		/*!
-		 * \brief how many supported files should be in a folder
-		 */
+		* \brief how many supported files should be in a folder
+		*/
 		unsigned int minCountFilesInADir;
 
 		////////////////////////// RENAMING FILE OPTIONS   //////////////////////////////////////////
 		/*!
-		 * \brief shall be renamed pictures files using the file modification time if they do not have exif taken time set
-		 */
+		* \brief shall be renamed pictures files using the file modification time if they do not have exif taken time set
+		*/
 		bool renamePicsByModificationTimeIfEmptyExif;
 
 		/*!
-		 * \brief shall be renamed video files using the file modification time if they do not have taken time set
-		 */
+		* \brief shall be renamed video files using the file modification time if they do not have taken time set
+		*/
 		bool renameVideoByModificationTimeIfEmptyExif;
 
 		////////////////////////// FORMATTING STRING OPTIONS/////////////////////////////////////////
 		/*!
-		 * \brief format a dir name as a date
-		 */
+		* \brief format a dir name as a date
+		*/
 		QString dirNameFmt;
 
 		/*!
-		 * \brief format a dir name as a year
-		 */
+		* \brief format a dir name as a year
+		*/
 		QString dirNameYearFmt;
 
 		/*!
-		 * \brief format a FVA file name as a date + time
-		 */
+		* \brief format a FVA file name as a date + time
+		*/
 		QString fileNameFmt;
 
 		/*!
-		 * \brief format an EXIF date + time
-		 */
+		* \brief format an EXIF date + time
+		*/
 		QString ExidDateTimeFmt;
-
-#endif // CLT_CONTEXT_H_
+#endif // _NOT_DEFINED_

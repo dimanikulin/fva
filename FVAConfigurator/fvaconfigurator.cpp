@@ -56,7 +56,7 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 	FVA_EXIT_CODE res = cfg.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaParams.csv");
 	RET_IF_RES_IS_ERROR
 
-		InitializeCommonTab(cfg);
+	InitializeCommonTab(cfg);
 	InitializeSearchTab(cfg);
 	InitializeIntegratorTab(cfg);
 	InitializeRenameTab(cfg);
