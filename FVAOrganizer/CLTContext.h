@@ -11,8 +11,8 @@ class CLTContext
 	public:
 
 		/*!
-		* \brief human - readable type of command
-		*/
+		 * \brief human - readable type of command
+		 */
 		QString cmdType;
 
 		/*!
@@ -26,21 +26,23 @@ class CLTContext
 		bool readOnly;
 
 		/*!
-		* \brief a parameter to customize a command  - might be string or integer inside
-		*/
+		 * \brief a parameter to customize a command  - might be string or integer inside
+		 */
 		QString custom;
 
 		/*!
-		* \brief is it recursive mode now
-		*/
+		 * \brief is it recursive mode now
+		 */
 		bool recursive;
+
 };
 #endif // CLT_CONTEXT_H_
 
 #ifdef _NOT_DEFINED_
 		////////////////////////// COMMON CONFIGURATION  //////////////////////////////////////////
+
 		/*!
-		* \brief path to FVA root folder
+		* \brief path to FVA Software root folder (where the SW is installed)
 		*/
 		QString	rootDir;
 
