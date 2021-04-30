@@ -69,7 +69,7 @@ FVA_EXIT_CODE fvaLoadSimpleMapFromCsv(const QString& rootSWdir, FVA_SIMPLE_MAP& 
 
 /*!
 * \brief it tries to load people relations map from dictionary
-* \param rootSWdir - dir where fva SW is located
+* \param rootSWdir - dir where FVA SW is located
 * \param peopleRelationsMap a map to be filled up
 * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
 */

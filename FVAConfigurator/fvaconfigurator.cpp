@@ -1,5 +1,5 @@
 ﻿#include "FVAConfigurator.h"
-#include "fvadefaultcfg.h"
+#include "fvaconstants.h"
 
 #include <QTWidgets/QTabWidget>
 #include <QTWidgets/QDialogButtonBox>
@@ -53,7 +53,7 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-	FVA_EXIT_CODE res = cfg.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaParams.csv");
+	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
 	RET_IF_RES_IS_ERROR
 
 	InitializeCommonTab(cfg);
@@ -92,7 +92,7 @@ void FVAConfigurator::accept()
 	cfg.setParam("Common::LogLevel", static_cast<uint> (cbLogLevel->currentIndex()));
 	cfg.setParam("Rename::minFilesInDir", static_cast<uint> (minFilesInDirSpin->value()));
 
-	FVA_EXIT_CODE res = cfg.save(FVA_DEFAULT_ROOT_DIR + "#data#/fvaParams.csv");
+	FVA_EXIT_CODE res = cfg.save(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
 	RET_IF_RES_IS_ERROR
 }
 
