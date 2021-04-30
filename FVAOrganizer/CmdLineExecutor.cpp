@@ -73,18 +73,18 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const CLTContex
 	else if (context.cmdType == CLTRenameFilesByDir::Name())		r.reset(new CLTRenameFilesByDir());
 	else if (context.cmdType == CLTRenameVideoBySequence::Name())	r.reset(new CLTRenameVideoBySequence());
 	else if (context.cmdType == CLTRenameDirs::Name())				r.reset(new CLTRenameDirs());
-	else if (context.cmdType == CLTAutoChecks2::Name())				r.reset(new CLTAutoChecks2());
+	else if (context.cmdType == CLTAutoChecks2::Name())				r.reset(new CLTAutoChecks2(cfg));
 	else if (context.cmdType == CLTMoveAloneFiles::Name())			r.reset(new CLTMoveAloneFiles());
 	else if (context.cmdType == CLTConvertAmr::Name())				r.reset(new CLTConvertAmr());
 	else if (context.cmdType == CLTAutoChecks1::Name())				r.reset(new CLTAutoChecks1());
 	else if (context.cmdType == CLTSetFileAtts::Name())				r.reset(new CLTSetFileAtts());
 	else if (context.cmdType == CLTPrintFSStructure::Name())		r.reset(new CLTPrintFSStructure(cfg));
 	else if (context.cmdType == CLTMerge1EventDir::Name())			r.reset(new CLTMerge1EventDir());
-	else if (context.cmdType == CLTCSVFvaFile::Name())				r.reset(new CLTCSVFvaFile());
-	else if (context.cmdType == CLTMerge1DayEventDir::Name())		r.reset(new CLTMerge1DayEventDir());
+	else if (context.cmdType == CLTCSVFvaFile::Name())				r.reset(new CLTCSVFvaFile(cfg));
+	else if (context.cmdType == CLTMerge1DayEventDir::Name())		r.reset(new CLTMerge1DayEventDir(cfg));
 	else if (context.cmdType == CLTGetFvaDirType::Name())			r.reset(new CLTGetFvaDirType());
 	else if (context.cmdType == CLTAutoChecks3::Name())				r.reset(new CLTAutoChecks3(cfg));
-	else if (context.cmdType == CLTFixDuplicatedFileNames::Name())	r.reset(new CLTFixDuplicatedFileNames());
+	else if (context.cmdType == CLTFixDuplicatedFileNames::Name())	r.reset(new CLTFixDuplicatedFileNames(cfg));
 
 	return r;
 }

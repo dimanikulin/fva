@@ -149,6 +149,11 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context)
 }
 QMap< unsigned int, unsigned int > sizes;
 
+CLTAutoChecks2::CLTAutoChecks2(const FvaConfiguration& cfg)
+{
+	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
+	RET_IF_RES_IS_ERROR
+}
 CLTAutoChecks2::~CLTAutoChecks2()
 {
 	LOG_QDEB << "cmd deleted, dir:" << m_folder;
@@ -158,7 +163,7 @@ CLTAutoChecks2::~CLTAutoChecks2()
 	}
 	if (0 == m_Issues.size())
 		return; // not to create file for no issues
-	QFile fileNew(FVA_DEFAULT_ROOT_DIR + "#logs/issues2.csv");
+	QFile fileNew(m_rootSWdir + "#logs/issues2.csv");
 	fileNew.open(QIODevice::Append | QIODevice::Text);
 	QTextStream writeStream(&fileNew);
 	writeStream.setCodec("UTF-8");

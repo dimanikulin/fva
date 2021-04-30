@@ -37,5 +37,9 @@ private:
 	*/
 	FVA_FILE_INFO_MAP				m_fvaFileInfoC;
 
+	/*!
+	* path to root fva sw folder
+	*/
+	QString							m_rootSWdir;
 };
 #endif // _CLT_AUTO_CHECKS_3_H

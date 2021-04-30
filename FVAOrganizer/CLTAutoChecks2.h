@@ -6,6 +6,7 @@
 class CLTAutoChecks2 : public CmdLineBaseTask
 {
 public:
+	CLTAutoChecks2(const FvaConfiguration& cfg);
 	virtual ~CLTAutoChecks2();
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	static QString Name(){return "CLTAutoChecks2";}
@@ -21,11 +22,16 @@ private: // data
 	/*!
 	 * issues found, divided by type (in string format)
 	 */	
-	QList<QString>				m_Issues;
+	QList<QString>					m_Issues;
 
 	/*!
 	 * file names to file pathes
 	 */
 	QMap<QString, QString>			m_uniqueFileNames;
+
+	/*!
+	 * path to root fva sw folder
+	 */
+	QString							m_rootSWdir;
 };
 #endif // _CLT_AUTO_CHECKS_2_H

@@ -3,8 +3,6 @@
 
 #include <QtCore/Qstring>
 
-const QString	FVA_DEFAULT_ROOT_DIR				= "C:/FVA/";
-
 /*!
  * \brief how many supported files should be in a folder
  */

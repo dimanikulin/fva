@@ -2,6 +2,12 @@
 
 #include "fvadefaultcfg.h"
 
+CLTFixDuplicatedFileNames::CLTFixDuplicatedFileNames(const FvaConfiguration& cfg)
+{
+	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
+	RET_IF_RES_IS_ERROR
+}
+
 FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute(const CLTContext& context)
 {
 	// get the last dir leaf in input folder
@@ -14,7 +20,7 @@ FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute(const CLTContext& context)
 		dstDirPath = context.custom;
 	}
 	else 
-		dstDirPath = FVA_DEFAULT_ROOT_DIR + dir.mid(0, 4)/*extract year*/ + "/" + m_dir.dirName();
+		dstDirPath = m_rootSWdir + dir.mid(0, 4)/*extract year*/ + "/" + m_dir.dirName();
 
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{

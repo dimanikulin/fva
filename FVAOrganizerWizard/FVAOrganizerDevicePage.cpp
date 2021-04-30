@@ -110,7 +110,8 @@ void FVAOrganizerDevicePage::OnChangeDictPressed()
 	QProcess myProcess(this);    
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	QStringList params;
-	params.append(FVA_DEFAULT_ROOT_DIR + FVA_DB_NAME);
+	// TODO WHY DO WE NEED IT???
+	params.append(/*FVA_DEFAULT_ROOT_DIR +*/ FVA_DB_NAME);
 	QString		deviceName_		= ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
 	params.append(deviceName_);
 	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe", params);

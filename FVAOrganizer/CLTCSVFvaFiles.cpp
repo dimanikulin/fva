@@ -2,10 +2,16 @@
 #include "fvacommoncsv.h"
 #include "fvadefaultcfg.h"
 
+CLTCSVFvaFile::CLTCSVFvaFile(const FvaConfiguration& cfg)
+{
+	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
+	RET_IF_RES_IS_ERROR
+}
+
 FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context)
 {	
 	int ID = FVA_UNDEFINED_ID;
-	FVA_EXIT_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFile.id", ID);
+	FVA_EXIT_CODE res = fvaGetIDFromFile(m_rootSWdir + "#data#/fvaFile.id", ID);
 	RET_RES_IF_RES_IS_ERROR
 
 	QList<QString>		records;	
@@ -26,7 +32,7 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context)
 		records.append(csvRecord);
 				
 	}
-	QFile fileNew ( FVA_DEFAULT_ROOT_DIR + "#data#/fvaFileN.csv" );		
+	QFile fileNew(m_rootSWdir + "#data#/fvaFileN.csv");
 	if ( !fileNew.open( QIODevice::WriteOnly | QIODevice::Text ) )	
 		return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;	
 	QTextStream writeStream( &fileNew );
@@ -39,5 +45,5 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context)
 
 	writeStream.flush();
 	fileNew.close();	
-	return fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFile.id", ID);
+	return fvaSaveIDInFile(m_rootSWdir + "#data#/fvaFile.id", ID);
 }

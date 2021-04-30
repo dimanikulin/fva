@@ -6,15 +6,14 @@
 
 CLTAutoChecks3::CLTAutoChecks3(const FvaConfiguration& cfg)
 {
-	QString rootSWdir;
-	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
 	RET_IF_RES_IS_ERROR
-	res = fvaLoadFvaFileInfoFromCsv(rootSWdir, m_fvaFileInfo);
+	res = fvaLoadFvaFileInfoFromCsv(m_rootSWdir, m_fvaFileInfo);
 	RET_IF_RES_IS_ERROR
 
 	m_fvaFileInfoC = m_fvaFileInfo;
 
-	res = fvaLoadDeviceMapFromCsv(rootSWdir, m_deviceMap);
+	res = fvaLoadDeviceMapFromCsv(m_rootSWdir, m_deviceMap);
 	RET_IF_RES_IS_ERROR
 }
 FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context)
@@ -101,7 +100,7 @@ CLTAutoChecks3::~CLTAutoChecks3()
 		m_Issues.push_back("FVA_ERROR_NOT_EXISTING_FVA," + it.key());
 	}
 
-	QFile fileNew(FVA_DEFAULT_ROOT_DIR + "#logs/issues3.csv");
+	QFile fileNew(m_rootSWdir + "#logs/issues3.csv");
 	fileNew.open(QIODevice::Append | QIODevice::Text);
 	QTextStream writeStream(&fileNew);
 	writeStream.setCodec("UTF-8");

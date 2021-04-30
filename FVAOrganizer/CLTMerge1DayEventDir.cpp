@@ -2,11 +2,17 @@
 #include "fvadefaultcfg.h"
 #include "fvacommoncsv.h"
 
+CLTMerge1DayEventDir::CLTMerge1DayEventDir(const FvaConfiguration& cfg)
+{
+	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
+	RET_IF_RES_IS_ERROR
+}
+
 FVA_EXIT_CODE CLTMerge1DayEventDir::execute(const CLTContext& context)
 {
 	// get the last dir leaf in input folder
 	QString dir = m_dir.dirName();
-	QString dstDirPath = FVA_DEFAULT_ROOT_DIR + dir.mid(0, 4)/*extract year*/ + "/" + m_dir.dirName();
+	QString dstDirPath = m_rootSWdir + dir.mid(0, 4)/*extract year*/ + "/" + m_dir.dirName();
 	if (!dstDirPath.contains("#")) // # means internal folder and not subject of merging
 	{
 		FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);

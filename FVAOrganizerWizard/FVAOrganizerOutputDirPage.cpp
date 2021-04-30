@@ -10,7 +10,7 @@
 
 #include "fvaorganizerwizard.h"
 #include "fvacommonui.h"
-#include "fvadefaultcfg.h"
+#include "fvaconfiguration.h"
 
 FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 {
@@ -150,14 +150,29 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		return false;
 	}
 	
-	QStringList pyCmdList;
+	FvaConfiguration cfg;
+	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	if (FVA_NO_ERROR != res)
+	{
+		FVA_MESSAGE_BOX("cfg.load failed with error " + QString::number(exitCode));
+		return false;
+	}
 
+	QString fvaSWRootDir;
+	res = cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
+	if (FVA_NO_ERROR != res)
+	{
+		FVA_MESSAGE_BOX("cfg.load failed with error " + QString::number(exitCode));
+		return false;
+	}
+
+	QStringList pyCmdList;
 	// merge 2 csv into one: common one and just generated - for file CSVs
 	QString pyScriptPathMerge2 = "python "
 		+ QCoreApplication::applicationDirPath()
 		+ "/scripts/merge2csv.py "
-		+ FVA_DEFAULT_ROOT_DIR;
-	pyCmdList.append(pyScriptPathMerge2 + "#data#/fvaFile.csv " + FVA_DEFAULT_ROOT_DIR + "#data#/fvaFileN.csv ");
+		+ fvaSWRootDir;
+	pyCmdList.append(pyScriptPathMerge2 + "#data#/fvaFile.csv " + fvaSWRootDir + "#data#/fvaFileN.csv ");
 
 	// lets run python cmd list 
 	for (auto it = pyCmdList.begin(); it != pyCmdList.end(); ++it)
@@ -176,7 +191,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	}
 
 	// clean up after processing
-	QFile::remove(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFileN.csv");
+	QFile::remove(fvaSWRootDir + "#data#/fvaFileN.csv");
 	
 	// last but not least check
 	if (oneEventSeveralDays->isChecked())
