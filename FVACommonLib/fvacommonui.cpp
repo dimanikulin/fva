@@ -123,7 +123,7 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
 	RET_IF_RES_IS_ERROR
 
 	DEVICE_MAP deviceMap;
-	res = fvaLoadDeviceMapFromCsv(deviceMap);
+	res = fvaLoadDeviceMapFromCsv(rootSWdir, deviceMap);
 	RET_IF_RES_IS_ERROR
 
 	PEOPLE_MAP peopleMap;

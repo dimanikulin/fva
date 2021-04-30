@@ -45,10 +45,11 @@ FVA_EXIT_CODE fvaSaveIDInFile(const QString& file, int ID);
 
 /*!
  * \brief it tries to load device map from dictionary
+ * \param rootSWdir - dir where fva SW is located
  * \param deviceMap a map to be filled up
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(DEVICE_MAP& deviceMap);
+FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& deviceMap);
 
 /*!
 * \brief it tries to load people map from dictionary
