@@ -3,6 +3,8 @@
 
 #include "CmdLineBaseTask.h"
 
+#include <QtCore/QCoreApplication>
+
 class CLTAutoChecks1 : public CmdLineBaseTask
 {
 public:

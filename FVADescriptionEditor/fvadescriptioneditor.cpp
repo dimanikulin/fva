@@ -2,6 +2,7 @@
 #include "FVADescriptionFile.h"
 #include "fvapeoplelistdlg.h"
 #include "fvacommonui.h"
+#include "fvaconfiguration.h"
 
 #include <QtCore/QFileInfo>
 #include <QtWidgets/QListWidgetItem>
@@ -37,8 +38,15 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 		// TODO	
 	}
 
-	fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false);
-	fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false);
+	FvaConfiguration cfg;
+	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	RET_IF_RES_IS_ERROR
+
+	QString rootSWdir;
+	res = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	RET_IF_RES_IS_ERROR
+	fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false, rootSWdir);
+	fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false, rootSWdir);
 }
 
 FVADescriptionEditor::~FVADescriptionEditor()

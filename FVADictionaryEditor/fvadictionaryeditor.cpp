@@ -1,7 +1,7 @@
 #include "fvadictionaryeditor.h"
 #include "fvacommonlib.h"
 #include "fvacommoncsv.h"
-#include "fvadefaultcfg.h"
+
 
 #include "QtCore/QFile"
 #include "QtCore/QTextStream"
@@ -17,8 +17,15 @@ FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& 
 	connect (ui.btnAddPlace,SIGNAL(clicked()),this,SLOT(OnAddPlaceBtnPressed()));
 	connect (ui.btnAddDevice,SIGNAL(clicked()),this,SLOT(OnAddDeviceBtnPressed()));
 
+	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	RET_IF_RES_IS_ERROR
+
+	QString rootSWdir;
+	res = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	RET_IF_RES_IS_ERROR
+
 	PEOPLE_MAP peopleMap;
-	FVA_EXIT_CODE res = fvaLoadPeopleMapFromCsv(peopleMap);
+	res = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
 	RET_IF_RES_IS_ERROR
 
 	ui.cbOwner->clear();
@@ -48,11 +55,15 @@ void FVADictionaryEditor::OnAddPersonBtnPressed()
 
 void FVADictionaryEditor::OnAddDeviceBtnPressed()
 {
+	QString rootSWdir;
+	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	RET_IF_RES_IS_ERROR
+
 	DEVICE_MAP deviceMap;
-	FVA_EXIT_CODE res = fvaLoadDeviceMapFromCsv(deviceMap);
+	res = fvaLoadDeviceMapFromCsv(rootSWdir, deviceMap);
 	RET_IF_RES_IS_ERROR
 	
-	QFile file(FVA_DEFAULT_ROOT_DIR + "#data#/fvadevices.csv");
+	QFile file(rootSWdir + "#data#/fvadevices.csv");
 	file.open(QIODevice::Append | QIODevice::Text);
 	QTextStream writeStream(&file);
 	writeStream.setCodec("UTF-8"); 

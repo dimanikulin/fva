@@ -10,6 +10,7 @@
 #include <QtCore/QProcess>
 
 #include "FVAOrganizerWizard.h"
+#include "FVAConfiguration.h"
 #include "fvacommonui.h"
 #include "fvacommoncsv.h"
 
@@ -81,16 +82,30 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 
 	QDir _dir(dir); 
 
+	FvaConfiguration cfg;
+
+	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	if (FVA_NO_ERROR != res)
+	{
+		FVA_MESSAGE_BOX("cfg.load failed with error " + QString::number(res));
+		return false;
+	}
+
+	QString rootSWdir;
+	res = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	if (FVA_NO_ERROR != res)
+		return false;
+
 	DEVICE_MAP fullDeviceMap;
-	FVA_EXIT_CODE res = fvaLoadDeviceMapFromCsv(fullDeviceMap);
-	if ( FVA_NO_ERROR != res )
+	res = fvaLoadDeviceMapFromCsv(rootSWdir, fullDeviceMap);
+	if (FVA_NO_ERROR != res)
 	{
 		FVA_MESSAGE_BOX("fvaLoadDeviceMapFromCsv failed with error " + QString::number(res));
 		return false;
 	}
 
 	PEOPLE_MAP peopleMap;
-	res = fvaLoadPeopleMapFromCsv(peopleMap);
+	res = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
 	if (FVA_NO_ERROR != res)
 	{
 		FVA_MESSAGE_BOX("fvaLoadPeopleMapFromCsv failed with error " + QString::number(res));

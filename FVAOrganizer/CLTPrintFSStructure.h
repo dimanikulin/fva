@@ -10,9 +10,9 @@
 class CLTPrintFSStructure : public CmdLineBaseTask
 {
 public:
-	CLTPrintFSStructure();
+	CLTPrintFSStructure(const FvaConfiguration& cfg);
 	virtual ~CLTPrintFSStructure();
-	virtual FVA_EXIT_CODE execute(const CLTContext& context, const FvaConfiguration& cfg);
+	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	static QString Name(){return "CLTPrintFSStructure";}
 	virtual bool supportReadOnly () {return false;}
 

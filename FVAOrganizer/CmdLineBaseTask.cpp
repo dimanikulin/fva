@@ -2,7 +2,7 @@
 
 #include <QtCore/qdebug>
 
-FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly(const QString& folder, const CLTContext& context, const FvaConfiguration& cfg)
+FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly(const QString& folder, const CLTContext& context)
 {
 	QDir recurDir(folder);
 	// qDebug() << "[BASE_CMD]dir for rec:" << folder;
@@ -20,7 +20,7 @@ FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly(const QString& folder, co
 			// change folder context on each iteration
 			m_folder = QDir::toNativeSeparators(info.filePath());
 			m_dir = QDir( m_folder );
-			FVA_EXIT_CODE res = processFolderRecursivly(QDir::toNativeSeparators(info.filePath()), context, cfg);
+			FVA_EXIT_CODE res = processFolderRecursivly(QDir::toNativeSeparators(info.filePath()), context);
 			RET_RES_IF_RES_IS_ERROR
 			continue;
 		}

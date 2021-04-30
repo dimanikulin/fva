@@ -4,17 +4,20 @@
 #include "fvacommoncsv.h"
 #include "fvacommonexif.h"
 
-CLTAutoChecks3::CLTAutoChecks3()
+CLTAutoChecks3::CLTAutoChecks3(const FvaConfiguration& cfg)
 {
-	FVA_EXIT_CODE res = fvaLoadFvaFileInfoFromCsv(m_fvaFileInfo);
+	QString rootSWdir;
+	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	RET_IF_RES_IS_ERROR
+	res = fvaLoadFvaFileInfoFromCsv(rootSWdir, m_fvaFileInfo);
 	RET_IF_RES_IS_ERROR
 
 	m_fvaFileInfoC = m_fvaFileInfo;
 
-	res = fvaLoadDeviceMapFromCsv(m_deviceMap);
+	res = fvaLoadDeviceMapFromCsv(rootSWdir, m_deviceMap);
 	RET_IF_RES_IS_ERROR
 }
-FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
+FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context)
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{

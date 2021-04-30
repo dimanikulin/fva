@@ -4,6 +4,8 @@
 #include <QtWidgets/QDialog>
 #include "ui_fvadictionaryeditor.h"
 
+#include "fvaconfiguration.h"
+
 class FVADictionaryEditor : public QDialog
 {
 	Q_OBJECT
@@ -22,6 +24,8 @@ public:
 		Ui::FVADictionaryEditorClass	ui;
 		const QString					m_dictPath;
 		const QString					m_device;
+
+		FvaConfiguration				cfg;
 };
 
 #endif // FVADICTIONARYEDITOR_H

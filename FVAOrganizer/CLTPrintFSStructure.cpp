@@ -1,12 +1,13 @@
 #include "CLTPrintFSStructure.h"
 
-#include "fvadefaultcfg.h"
-
 #include <QtCore/QCryptographicHash>
 
-CLTPrintFSStructure::CLTPrintFSStructure()
+CLTPrintFSStructure::CLTPrintFSStructure(const FvaConfiguration& cfg)
 {
-	m_file.setFileName(FVA_DEFAULT_ROOT_DIR + "fsoutput.txt");
+	QString rootSWdir;
+	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	RET_IF_RES_IS_ERROR
+		m_file.setFileName(rootSWdir + "fsoutput.txt");
 	m_file.open( QIODevice::WriteOnly );
 }
 
@@ -15,7 +16,7 @@ CLTPrintFSStructure::~CLTPrintFSStructure()
 	m_file.close();
 }
 
-FVA_EXIT_CODE CLTPrintFSStructure::execute(const CLTContext& /*context*/, const FvaConfiguration& /*cfg*/)
+FVA_EXIT_CODE CLTPrintFSStructure::execute(const CLTContext& /*context*/)
 {
 	char		buffer [ 64* 1024 ];
 	qint64		size = 0;
