@@ -11,7 +11,7 @@ class CLTRenameDirs : public CmdLineBaseTask
 public:
 	/// CmdLineBaseTask interface
 	virtual ~CLTRenameDirs()		{ LOG_QDEB << "cmd deleted, dir:" << m_folder; }
-	virtual FVA_EXIT_CODE execute(const CLTContext& context, const FvaConfiguration& cfg);
+	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	static QString Name()			{ return "CLTRenameDirs"; }
 	virtual bool supportReadOnly()	{ return false; }
 };

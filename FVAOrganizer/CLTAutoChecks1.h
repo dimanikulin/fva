@@ -7,7 +7,7 @@ class CLTAutoChecks1 : public CmdLineBaseTask
 {
 public:
 	virtual ~CLTAutoChecks1() { LOG_QDEB << "cmd deleted, dir:" << m_folder; }
-	virtual FVA_EXIT_CODE execute(const CLTContext& context, const FvaConfiguration& cfg);
+	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	static QString Name(){return "CLTAutoChecks1";}
 	virtual bool supportReadOnly() {return true;}
 };

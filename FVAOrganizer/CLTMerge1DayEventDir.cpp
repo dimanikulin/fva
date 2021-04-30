@@ -2,7 +2,7 @@
 #include "fvadefaultcfg.h"
 #include "fvacommoncsv.h"
 
-FVA_EXIT_CODE CLTMerge1DayEventDir::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
+FVA_EXIT_CODE CLTMerge1DayEventDir::execute(const CLTContext& context)
 {
 	// get the last dir leaf in input folder
 	QString dir = m_dir.dirName();

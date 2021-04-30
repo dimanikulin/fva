@@ -1,6 +1,6 @@
 #include "CLTRenameFilesByDir.h"
 
-FVA_EXIT_CODE CLTRenameFilesByDir::execute(const CLTContext& /*context*/, const FvaConfiguration& /*cfg*/)
+FVA_EXIT_CODE CLTRenameFilesByDir::execute(const CLTContext& /*context*/)
 {
 	int id = 0;
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))

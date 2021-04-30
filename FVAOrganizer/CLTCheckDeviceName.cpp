@@ -1,7 +1,7 @@
 #include "CLTCheckDeviceName.h"
 #include "fvacommonexif.h"
 
-FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/, const FvaConfiguration& /*cfg*/)
+FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/)
 {
 	QString deviceName;
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))

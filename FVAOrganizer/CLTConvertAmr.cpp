@@ -1,6 +1,6 @@
 #include "CLTConvertAmr.h"
 
-FVA_EXIT_CODE CLTConvertAmr::execute(const CLTContext& /*context*/, const FvaConfiguration& /*cfg*/)
+FVA_EXIT_CODE CLTConvertAmr::execute(const CLTContext& /*context*/)
 {
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{

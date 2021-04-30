@@ -28,5 +28,5 @@ FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly(const QString& folder, co
 	m_folder = QDir::toNativeSeparators(folder);
 	m_dir = QDir( m_folder );
 
-	return execute(context, cfg);
+	return execute(context);
 }

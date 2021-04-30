@@ -7,7 +7,7 @@ class CLTCheckDeviceName : public CmdLineBaseTask
 {
 public:
 	virtual ~CLTCheckDeviceName() { LOG_QDEB << "cmd deleted, dir:" << m_folder; }
-	virtual FVA_EXIT_CODE execute(const CLTContext& context, const FvaConfiguration& cfg);
+	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	static QString Name(){ return "CLTCheckDeviceName"; }
 	virtual bool supportReadOnly() { return false; }
 };

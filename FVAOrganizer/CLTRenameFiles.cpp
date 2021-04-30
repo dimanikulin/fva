@@ -39,7 +39,7 @@ void CLTRenameFiles::fillRenameDateTimeFromLastModifiedIfValid(const QDir& dir, 
 	}
 }
 
-FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
+FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context)
 {
 	QFileInfoList files = m_dir.entryInfoList(QDir::Files);
 	QFileInfo info;

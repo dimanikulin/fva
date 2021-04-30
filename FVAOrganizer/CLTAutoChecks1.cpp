@@ -1,7 +1,7 @@
 #include "CLTAutoChecks1.h"
 #include "fvadefaultcfg.h"
 
-FVA_EXIT_CODE CLTAutoChecks1::execute(const CLTContext& /*context*/, const FvaConfiguration& /*cfg*/)
+FVA_EXIT_CODE CLTAutoChecks1::execute(const CLTContext& /*context*/)
 {
 	m_dir.setSorting(QDir::LocaleAware);
 	bool first = false;

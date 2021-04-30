@@ -9,7 +9,7 @@ class CLTRenameFiles : public CmdLineBaseTask
 public:
 	/// CmdLineBaseTask interface
 	virtual ~CLTRenameFiles()		{ LOG_QDEB << "cmd deleted, dir:" << m_folder; }
-	virtual FVA_EXIT_CODE execute(const CLTContext& context, const FvaConfiguration& cfg);
+	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	static QString Name()			{	return "CLTRenameFiles";						}
 	virtual bool supportReadOnly()	{	return true;									}
 

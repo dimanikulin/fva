@@ -1,7 +1,7 @@
 #include "CLTMoveAloneFiles.h"
 #include "fvadefaultcfg.h"
 
-FVA_EXIT_CODE CLTMoveAloneFiles::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
+FVA_EXIT_CODE CLTMoveAloneFiles::execute(const CLTContext& context)
 {
 	unsigned int countSupportedFiles = 0;
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))

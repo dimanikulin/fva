@@ -7,7 +7,7 @@ class CLTAutoChecks2 : public CmdLineBaseTask
 {
 public:
 	virtual ~CLTAutoChecks2();
-	virtual FVA_EXIT_CODE execute(const CLTContext& context, const FvaConfiguration& cfg);
+	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	static QString Name(){return "CLTAutoChecks2";}
 	virtual bool supportReadOnly() {return true;}
 

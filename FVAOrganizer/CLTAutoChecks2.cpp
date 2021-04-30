@@ -4,7 +4,7 @@
 
 #include "fvacommonexif.h"
 
-FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
+FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context)
 {
 	QMap<QString, unsigned int> fileCount;
 	unsigned int countSupportedFiles = 0;

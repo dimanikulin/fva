@@ -2,7 +2,7 @@
 #include "fvacommoncsv.h"
 #include "fvadefaultcfg.h"
 
-FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context, const FvaConfiguration& /*cfg*/)
+FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context)
 {	
 	int ID = FVA_UNDEFINED_ID;
 	FVA_EXIT_CODE res = fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR +"#data#/fvaFile.id", ID);
