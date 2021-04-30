@@ -24,19 +24,17 @@ class CmdLineBaseTask
 		/*!
 		 * \brief it performs running of command
 		 * \param context - one command parameters (environment)
-		 * \param cfg - system configuration, applicable for whole system
 		 * \return it returns code of error (not 0 if error happened, 0 - if no error happened) 
 		 */
-		virtual FVA_EXIT_CODE execute(const CLTContext& context, const FvaConfiguration& cfg) = 0;
+		virtual FVA_EXIT_CODE execute(const CLTContext& context) = 0;
 
 		/*!
 		 * \brief it performs procesing folder in recursive mode
 		 * \param folder to work with
 		 * \param context - one command parameters (environment)
-		 * \param cfg - system configuration, applicable for whole system
 		 * \return it returns error code (not 0 if error happened, 0 - if no error happened) 
 		 */		
-		FVA_EXIT_CODE processFolderRecursivly(const QString& folder, const CLTContext& context, const FvaConfiguration& cfg);
+		FVA_EXIT_CODE processFolderRecursivly(const QString& folder, const CLTContext& context);
 
 		/*!
 		 * \brief it answers if task supports read only mode
