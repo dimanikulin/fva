@@ -98,7 +98,7 @@ CLTAutoChecks3::~CLTAutoChecks3()
 		m_Issues.push_back("FVA_ERROR_NOT_EXISTING_FVA," + it.key());
 	}
 
-	QFile fileNew(FVA_DEFAULT_ROOT_DIR + "issues3.csv");
+	QFile fileNew(FVA_DEFAULT_ROOT_DIR + "#logs/issues3.csv");
 	fileNew.open(QIODevice::Append | QIODevice::Text);
 	QTextStream writeStream(&fileNew);
 	writeStream.setCodec("UTF-8");

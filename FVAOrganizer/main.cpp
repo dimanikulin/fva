@@ -40,7 +40,7 @@ int main( int argc, char *argv[] )
 	QString logPath; 
 	res = cfg.getParamAsString("Common::RootDir", logPath);
 	RET_RES_IF_RES_IS_ERROR
-	logPath += "organizerlog.txt";
+	logPath += "#logs/organizerlog.txt";
 	g_logfile.open(logPath.toStdString(), std::ios::app);
 
 	uint dLogLevel = 0;
