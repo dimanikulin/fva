@@ -21,10 +21,11 @@ FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const 
 
 /*!
  * \brief it loads fva information saved in CSV files
- * \param - fvaFileInfo - fva file info ti fill up
+ * \param rootSWdir - dir where fva SW is located
+ * \param fvaFileInfo - fva file info ti fill up
  * \returns it returns code of error if any or FVA_NO_ERROR if info was loaded
  */
-FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(FVA_FILE_INFO_MAP& fvaFileInfo);
+FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo);
 
 /*!
  * \brief it returns an ID value from file by file path provided
@@ -51,25 +52,28 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(DEVICE_MAP& deviceMap);
 
 /*!
 * \brief it tries to load people map from dictionary
+* \param rootSWdir - dir where fva SW is located
 * \param peopleMap a map to be filled up
 * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
 */
-FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(PEOPLE_MAP& peopleMap);
+FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peopleMap);
 
 /*!
 * \brief it tries to load simple map <ID to Name> from dictionary
+* \param rootSWdir - dir where fva SW is located
 * \param simple map <ID to Name> a map to be filled up
 * \param dictName file name of dictionary to load from
 * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
 */
-FVA_EXIT_CODE fvaLoadSimpleMapFromCsv(FVA_SIMPLE_MAP& simpleMap, const QString& dictName);
+FVA_EXIT_CODE fvaLoadSimpleMapFromCsv(const QString& rootSWdir, FVA_SIMPLE_MAP& simpleMap, const QString& dictName);
 
 /*!
 * \brief it tries to load people relations map from dictionary
+* \param rootSWdir - dir where fva SW is located
 * \param peopleRelationsMap a map to be filled up
 * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
 */
-FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(FVA_PEOPLE_RELATION_MAP& peopleRelationsMap);
+FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(const QString& rootSWdir, FVA_PEOPLE_RELATION_MAP& peopleRelationsMap);
 
 /*!
 * \brief it updates fva dir info with new folder

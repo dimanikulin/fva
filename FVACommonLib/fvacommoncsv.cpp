@@ -29,7 +29,7 @@ FVA_EXIT_CODE fvaSaveIDInFile(const QString& fileName, int ID)
 	file.close();
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(FVA_FILE_INFO_MAP& fvaFileInfo)
+FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo)
 {
 	FVADescriptionFile fvaFileCsv;
 
@@ -37,7 +37,7 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(FVA_FILE_INFO_MAP& fvaFileInfo)
 	QStringList			titles;
 	DESCRIPTIONS_MAP	decsItems;
 
-	FVA_EXIT_CODE res = fvaFileCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFile.csv", titles, decsItems);
+	FVA_EXIT_CODE res = fvaFileCsv.load(rootSWdir + "#data#/fvaFile.csv", titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
 
 	// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,EventId,ReasonPeople,reserved1
@@ -64,7 +64,7 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(FVA_FILE_INFO_MAP& fvaFileInfo)
 		QString fileName = list[columnName].toUpper();
 		if (fvaFileInfo.find(fileName) != fvaFileInfo.end())
 		{
-			QFile file(FVA_DEFAULT_ROOT_DIR + "#data#/fvaNotUniqueFileName.csv");
+			QFile file(rootSWdir + "#data#/fvaNotUniqueFileName.csv");
 			file.open(QIODevice::WriteOnly | QIODevice::Append);
 			QTextStream writeStream(&file);
 			writeStream << list[columnID].toUpper() << "\n";
@@ -88,24 +88,14 @@ FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const 
 		return FVA_NO_ERROR;
 	}
 
-	// TODO to delete?
-	/*QFile file(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFileNoDevId.csv");
-	file.open(QIODevice::WriteOnly | QIODevice::Append);
-	int ID = FVA_UNDEFINED_ID;
-	fvaGetIDFromFile(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFile.id", ID);
-	QTextStream writeStream(&file);
-	writeStream << QString::number(++ID) << "," << fvaFile << ",,," << QString::number(deviceID) << ",,,,,,\n";
-	fvaSaveIDInFile(FVA_DEFAULT_ROOT_DIR + "#data#/fvaFile.id", ID);
-	file.close();
-	return FVA_NO_ERROR;*/
 	return FVA_ERROR_NO_DEV_ID;
 };
-FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(DEVICE_MAP& deviceMap)
+FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& deviceMap)
 {
 	FVADescriptionFile	fvaDeviceCsv;
 	QStringList			titles;
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_EXIT_CODE res = fvaDeviceCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaDevices.csv", titles, decsItems);
+	FVA_EXIT_CODE res = fvaDeviceCsv.load(rootSWdir + "#data#/fvaDevices.csv", titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
 	// ID,OwnerId,LinkedName,Name,fvaDeviceType
 	int columnDevId = FVADescriptionFile::getColumnIdByName(titles, "ID");
@@ -143,12 +133,12 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(DEVICE_MAP& deviceMap)
 	}
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(PEOPLE_MAP& peopleMap)
+FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peopleMap)
 {
 	FVADescriptionFile	fvaPeopleCsv;
 	QStringList			titles;
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_EXIT_CODE res = fvaPeopleCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaPeople.csv", titles, decsItems);
+	FVA_EXIT_CODE res = fvaPeopleCsv.load(rootSWdir + "#data#/fvaPeople.csv", titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
 	// ID,Name,FullName,RelationId,RelPersonID
 	int columnId = FVADescriptionFile::getColumnIdByName(titles, "ID");
@@ -185,12 +175,12 @@ FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(PEOPLE_MAP& peopleMap)
 	}
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadSimpleMapFromCsv(FVA_SIMPLE_MAP& simpleMap, const QString& dictName)
+FVA_EXIT_CODE fvaLoadSimpleMapFromCsv(const QString& rootSWdir, FVA_SIMPLE_MAP& simpleMap, const QString& dictName)
 {
 	FVADescriptionFile	fvaCsv;
 	QStringList			titles;
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_EXIT_CODE res = fvaCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/" + dictName, titles, decsItems);
+	FVA_EXIT_CODE res = fvaCsv.load(rootSWdir + "#data#/" + dictName, titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
 
 	// ID,Name
@@ -212,12 +202,12 @@ FVA_EXIT_CODE fvaLoadSimpleMapFromCsv(FVA_SIMPLE_MAP& simpleMap, const QString& 
 	}
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(FVA_PEOPLE_RELATION_MAP& peopleRelationsMap)
+FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(const QString& rootSWdir, FVA_PEOPLE_RELATION_MAP& peopleRelationsMap)
 {
 	FVADescriptionFile	fvaRelationTypesCsv;
 	QStringList			titles;
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_EXIT_CODE res = fvaRelationTypesCsv.load(FVA_DEFAULT_ROOT_DIR + "#data#/fvaPeopleRelations.csv", titles, decsItems);
+	FVA_EXIT_CODE res = fvaRelationTypesCsv.load(rootSWdir + "#data#/fvaPeopleRelations.csv", titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
 
 	// ID,Name,RelationType
