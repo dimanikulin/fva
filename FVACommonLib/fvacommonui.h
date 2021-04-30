@@ -40,12 +40,12 @@ void fvaBuildFilterTree(QWidget* pMainWnd,
 void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QVariantMap& dict);
 
 /*!
-* \brief it creates people tree in gui widgets
-* \param pMainWnd - window keeping tree widget
-* \param pTreeWidget - widget to build tree in
-* \param devices - need to insert devices
-*/
-void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices);
+ * \brief it creates people tree in gui widgets
+ * \param pMainWnd - window keeping tree widget
+ * \param pTreeWidget - widget to build tree in
+ * \param rootSWdir - dir where FVA SW is located
+ */
+void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir);
 
 /*!
  * \brief it finds all checked item ID in gui widget tree

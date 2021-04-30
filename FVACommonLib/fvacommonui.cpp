@@ -103,7 +103,7 @@ void fvaBuildFilterTree(QWidget* pMainWnd,
 			delete treeWidgetItem;
 	}
 }
-void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices)
+void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir)
 {
 	pMainWnd->connect(pTreeWidget,
 		SIGNAL(itemChanged(QTreeWidgetItem*, int)),
@@ -115,11 +115,11 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
 	QIcon	photoIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/photo.png");
 
 	FVA_SIMPLE_MAP RelationsMap;
-	FVA_EXIT_CODE res = fvaLoadSimpleMapFromCsv(RelationsMap, "fvaRelationTypes.csv");
+	FVA_EXIT_CODE res = fvaLoadSimpleMapFromCsv(rootSWdir, RelationsMap, "fvaRelationTypes.csv");
 	RET_IF_RES_IS_ERROR
 
 	FVA_PEOPLE_RELATION_MAP  peopleRelationsMap;
-	res = fvaLoadPeopleRelationMapFromCsv(peopleRelationsMap);
+	res = fvaLoadPeopleRelationMapFromCsv(rootSWdir, peopleRelationsMap);
 	RET_IF_RES_IS_ERROR
 
 	DEVICE_MAP deviceMap;
@@ -127,7 +127,7 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
 	RET_IF_RES_IS_ERROR
 
 	PEOPLE_MAP peopleMap;
-	res = fvaLoadPeopleMapFromCsv(peopleMap);
+	res = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
 	RET_IF_RES_IS_ERROR
 
 	for (auto i = RelationsMap.begin(); i != RelationsMap.end(); ++i)
