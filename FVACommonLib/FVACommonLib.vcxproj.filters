@@ -114,5 +114,8 @@
     <ClInclude Include="fvafmtcontext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="fvacltcontext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

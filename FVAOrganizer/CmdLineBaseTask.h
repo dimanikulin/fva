@@ -6,8 +6,7 @@
 
 #include "fvacommonlib.h"
 #include "fvaconfiguration.h"
-#include "CLTContext.h"
-
+#include "fvacltcontext.h"
 /*!
  * \brief keeps base functionality for one command line task
  */

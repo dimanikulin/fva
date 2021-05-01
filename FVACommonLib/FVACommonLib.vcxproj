@@ -173,6 +173,7 @@
     <ClInclude Include="data\fvaItem.h" />
     <ClInclude Include="data\fvaPeopleRelations.h" />
     <ClInclude Include="data\fvaperson.h" />
+    <ClInclude Include="fvacltcontext.h" />
     <ClInclude Include="fvacommoncsv.h" />
     <ClInclude Include="fvacommonexif.h" />
     <ClInclude Include="fvaconfiguration.h" />

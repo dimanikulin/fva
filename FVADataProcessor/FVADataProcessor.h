@@ -2,7 +2,7 @@
 #define _FVA_DATA_PROCESSOR_H_
 
 #include "fvaconfiguration.h"
-// #include "CLTContext.h"
+#include "fvacltcontext.h"
 
 class FVADataProcessor
 {
@@ -20,6 +20,6 @@ public:
 	* \param cfg - system configuration, applicable for whole system
 	* \return it returns result code (not 0 if error happened, 0 - if no error happened)
 	*/
-	// static FVA_EXIT_CODE run(const CLTContext& context, const FvaConfiguration& cfg);
+	static FVA_EXIT_CODE run(const CLTContext& context, const FvaConfiguration& cfg);
 };
 #endif //_FVA_DATA_PROCESSOR_H_
