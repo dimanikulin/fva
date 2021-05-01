@@ -13,18 +13,26 @@
 #include "FVAConfiguration.h"
 #include "fvacommonui.h"
 #include "fvacommoncsv.h"
+#include "fvaconstants.h"
 
 FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 {
+#ifdef  FVA_LANGUAGE_RUS
 	inputDirLabel	= new QLabel(tr("Укажите входную папку с контентом\n (Внимание! Папка должна начинаться с символа '#'):"));
-	inputDirLabel->setAlignment(Qt::AlignLeft);
-    
+	dirButton = new QPushButton;
+	dirButton->setText(tr("Указать папку"));
+#else 
+#ifdef  FVA_LANGUAGE_ENG
+	inputDirLabel = new QLabel(tr("Please select a folder with a content\n (Attention! The folder name shall start with a char '#'):"));
+	dirButton = new QPushButton;
+	dirButton->setText(tr("Select a folder"));
+#endif // FVA_LANGUAGE_ENG
+#endif // FVA_LANGUAGE_RUS
+	
 	inputDirLineEdit = new QLineEdit;
 	inputDirLineEdit->setText("");
 	inputDirLineEdit->setReadOnly(true);
-
-	dirButton		= new QPushButton;
-	dirButton->setText(tr("Указать папку"));		
+		
 
 	QGridLayout * dirLayout = new QGridLayout;
 	dirLayout->addWidget(inputDirLineEdit,0,0);
