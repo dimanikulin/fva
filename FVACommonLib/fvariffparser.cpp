@@ -77,7 +77,7 @@ bool RiffParser::findTag( const QString& tag, QString& value )
 {
 	return processNode( tag, value );
 }
-bool RiffParser::convertToDate ( const QString& strDate, QDateTime& value ) const
+bool RiffParser::convertToDate(const QString& strDate, QDateTime& value, const QString& exifDateTimeFmt) const
 {
 	// remove terminate char and last symbol
 	value = QDateTime::fromString( strDate.mid( 4, strDate.size() - 5 ).remove("\n"), "MMM dd hh:mm:ss yyyy" );
@@ -85,7 +85,7 @@ bool RiffParser::convertToDate ( const QString& strDate, QDateTime& value ) cons
 	{
 		// try to use other format
 		QString newStr = strDate.mid(0,strDate.size() -1 ).remove( "\n" );
-		value = QDateTime::fromString(newStr, EXIF_DATE_TIME_FMT);
+		value = QDateTime::fromString(newStr, exifDateTimeFmt);
 	}
 
 	if ( !value.isValid() )

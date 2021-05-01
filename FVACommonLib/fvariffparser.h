@@ -44,7 +44,7 @@ class RiffParser
 		 * \param value - out param to be filled by date-time value 
 		 * \return it returns true if it succesfully converted the value, otherwize it returns false 
 		 */
-		bool convertToDate ( const QString& strDate, QDateTime& value ) const;
+		bool convertToDate(const QString& strDate, QDateTime& value, const QString& exifDateTimeFmt) const;
 
 	private: // methods
 

@@ -9,6 +9,8 @@
 
 #include "data/fvadevice.h"
 #include "fvaexitcodes.h"
+#include "fvafmtcontext.h"
+
 
 /*!
 * \brief it converts file extention to file type if it is possible
@@ -34,18 +36,20 @@ bool fvaIsInternalDir(const QString& dir);
  * \brief it tries to parse dir name into period of date
  * \param dirName directory name to be parsed
  * \param from to fill as a date from
- * \param to to fill as a date to
+ * \param to - to fill as a date to
+ * \param ctx - to use formatting options from
  * \returns it returns code of error if any or FVA_NO_ERROR if parsing was successful
  */
-FVA_EXIT_CODE fvaParseDirName( const QString& dirName, QDateTime& from, QDateTime& to );
+FVA_EXIT_CODE fvaParseDirName(const QString& dirName, QDateTime& from, QDateTime& to, const FvaFmtContext& ctx );
 
 /*!
  * \brief it tries to parse file name into date
  * \param fileName file name to be parsed
  * \param date a date to be filled up
+ * \param ctx - to use formatting options from
  * \returns it returns code of error if any or FVA_NO_ERROR if parsing was successful
  */
-FVA_EXIT_CODE fvaParseFileName( const QString& fileName, QDateTime& date );
+FVA_EXIT_CODE fvaParseFileName(const QString& fileName, QDateTime& date, const FvaFmtContext& ctx);
 
 /*!
  * \brief it returns device id from map loaded
@@ -60,9 +64,10 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
  * \brief it tries to get time a video taken at from header
  * \param pathToFile a path to video file
  * \param error error description
+ * \param ctx - to use formatting options from
  * \returns it returns time taken
  */
-QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error);
+QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error, const FvaFmtContext& ctx);
 
 /*!
  * \brief it convert identifiers list from string to int vector

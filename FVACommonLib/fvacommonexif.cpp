@@ -17,14 +17,14 @@ QString fvaGetExifMakeAndModelFromFile(const QString& pathToFile)
 	return "";
 }
 
-QDateTime fvaGetExifDateTimeOriginalFromFile(const QString& pathToFile)
+QDateTime fvaGetExifDateTimeOriginalFromFile(const QString& pathToFile, const QString& exifDateTimeFmt)
 {
 	QFile file(pathToFile);
 	if (file.open(QIODevice::ReadOnly)){
 		QByteArray data = file.readAll(/*1024 * 100*/);
 		easyexif::EXIFInfo info;
 		if (0== info.parseFrom((unsigned char *)data.data(), data.size())){
-			return  QDateTime::fromString(info.DateTimeOriginal.c_str(), EXIF_DATE_TIME_FMT);
+			return  QDateTime::fromString(info.DateTimeOriginal.c_str(), exifDateTimeFmt);
 		}
 	}
 	return QDateTime();

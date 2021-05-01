@@ -2,6 +2,7 @@
 #define _CLT_AUTO_CHECKS_2_H
 
 #include "CmdLineBaseTask.h"
+#include "fvafmtcontext.h"
 
 class CLTAutoChecks2 : public CmdLineBaseTask
 {
@@ -38,5 +39,10 @@ private: // data
 	 * min count of multimedia files in one folder allowed
 	 */
 	uint							m_minCountSupportedFiles;
+
+	/*!
+	* \brief formatting context to use formatting options from
+	*/
+	FvaFmtContext					m_fmtctx;
 };
 #endif // _CLT_AUTO_CHECKS_2_H

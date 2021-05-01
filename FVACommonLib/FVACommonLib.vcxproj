@@ -163,6 +163,7 @@
     <ClCompile Include="fvacommonlib.cpp" />
     <ClCompile Include="fvacommonui.cpp" />
     <ClCompile Include="FVADescriptionFile.cpp" />
+    <ClCompile Include="fvafmtcontext.cpp" />
     <ClCompile Include="fvariffparser.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +183,7 @@
     <ClInclude Include="fvadefaultcfg.h" />
     <ClInclude Include="FVADescriptionFile.h" />
     <ClInclude Include="fvaexitcodes.h" />
+    <ClInclude Include="fvafmtcontext.h" />
     <ClInclude Include="fvariffparser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

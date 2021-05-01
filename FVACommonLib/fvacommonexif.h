@@ -15,9 +15,10 @@ QString fvaGetExifMakeAndModelFromFile(const QString& pathToFile);
 /*!
 * \brief it returns Exif DateTimeOriginal attribute converted to QDateTime
 * \param pathToFile path file to load DateTimeOriginal from
+* \param exifDateTimeFmt format of an EXIF date 
 * \returns it returns empty QDateTime if loading of DateTimeOriginal not successful, otherwize it returns DateTimeOriginal attribute converted to QDateTime
 */
-QDateTime fvaGetExifDateTimeOriginalFromFile(const QString& pathToFile);
+QDateTime fvaGetExifDateTimeOriginalFromFile(const QString& pathToFile, const QString& exifDateTimeFmt);
 
 /*!
 * \brief it checks if Exif GEO Location is present

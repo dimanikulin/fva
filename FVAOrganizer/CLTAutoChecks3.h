@@ -2,6 +2,7 @@
 #define _CLT_AUTO_CHECKS_3_H
 
 #include "CmdLineBaseTask.h"
+#include "fvafmtcontext.h"
 
 #include "data/fvafile.h"
 #include "data/fvadevice.h"
@@ -20,7 +21,7 @@ private:
 	/*!
 	* issues found, divided by type (in string format)
 	*/
-	QList<QString>				m_Issues;
+	QList<QString>					m_Issues;
 
 	/*!
 	* global device map
@@ -41,5 +42,10 @@ private:
 	* path to root fva sw folder
 	*/
 	QString							m_rootSWdir;
+
+	/*!
+	* \brief formatting context to use formatting options from
+	*/
+	FvaFmtContext					m_fmtctx;
 };
 #endif // _CLT_AUTO_CHECKS_3_H

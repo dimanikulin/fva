@@ -9,6 +9,9 @@ CLTRenameFiles::CLTRenameFiles(const FvaConfiguration& cfg)
 
 	res = cfg.getParamAsBoolean("Rename::picsByModifTime", m_renamePicsByModifTime);
 	RET_IF_RES_IS_ERROR
+
+	res = m_fmtctx.fillFmtContextFromCfg(cfg);
+	RET_IF_RES_IS_ERROR
 }
 
 bool CLTRenameFiles::checkIfParentFileExist(const QFileInfo& fileToCheck, QDateTime& renameDateTime, const QDateTime& prevRenameDateTime)
@@ -22,12 +25,12 @@ bool CLTRenameFiles::checkIfParentFileExist(const QFileInfo& fileToCheck, QDateT
 
 	if (fileToCheck.baseName().contains("_1"))
 	{
-		LOG_QDEB << "file contains _1 : " << fileToCheck.absoluteFilePath() << ", rename time to use : " << prevRenameDateTime.addSecs(1).toString(FVA_FILE_NAME_FMT);
+		LOG_QDEB << "file contains _1 : " << fileToCheck.absoluteFilePath() << ", rename time to use : " << prevRenameDateTime.addSecs(1).toString(m_fmtctx.fvaFileName);
 		renameDateTime = prevRenameDateTime.addSecs(1);
 	}
 	else if (fileToCheck.baseName().contains("_2"))
 	{
-		LOG_QDEB << "file contains _2:" << fileToCheck.absoluteFilePath() << ", rename time to use:" << prevRenameDateTime.addSecs(2).toString(FVA_FILE_NAME_FMT);
+		LOG_QDEB << "file contains _2:" << fileToCheck.absoluteFilePath() << ", rename time to use:" << prevRenameDateTime.addSecs(2).toString(m_fmtctx.fvaFileName);
 		renameDateTime = prevRenameDateTime.addSecs(2);
 	}
 	return false;
@@ -35,14 +38,14 @@ bool CLTRenameFiles::checkIfParentFileExist(const QFileInfo& fileToCheck, QDateT
 void CLTRenameFiles::fillRenameDateTimeFromLastModifiedIfValid(const QDir& dir, const QFileInfo& info, QDateTime& renameDateTime)
 {
 	QString dirDate = dir.dirName().mid(0, 10);
-	QDateTime validDateStart = QDateTime::fromString(dirDate, FVA_DIR_NAME_FMT);
+	QDateTime validDateStart = QDateTime::fromString(dirDate, m_fmtctx.fvaDirName);
 
 	if (validDateStart.isValid())
 	{
 		QDateTime validDateEnd = validDateStart.addDays(1);
 		if ((info.lastModified() > validDateStart) && (info.lastModified() < validDateEnd))
 		{
-			LOG_QWARN << " modification time to use for:" << info.absoluteFilePath() << ",time:" << info.lastModified().toString(FVA_FILE_NAME_FMT);
+			LOG_QWARN << " modification time to use for:" << info.absoluteFilePath() << ",time:" << info.lastModified().toString(m_fmtctx.fvaFileName);
 			renameDateTime = info.lastModified();
 		}
 	}
@@ -65,15 +68,15 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context)
 		{
 			if (!checkIfParentFileExist(info, renameDateTime, prevRenameDateTime))
 			{
-				renameDateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath());
-				QString _newName = renameDateTime.toString(FVA_FILE_NAME_FMT);
+				renameDateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath(), m_fmtctx.exifDateTime);
+				QString _newName = renameDateTime.toString(m_fmtctx.fvaFileName);
 				if (_newName.isEmpty())
 					fillRenameDateTimeFromLastModifiedIfValid(m_dir, info, renameDateTime);
 				if (!renameDateTime.isValid() && (true == m_renamePicsByModifTime))
 				{
 					if (info.lastModified().isValid())
 					{
-						LOG_QWARN << "modification time to use (true == FVA_RENAME_FILES_BY_MODIF_TIME_FOR_EMPTY_EXIF) for:" << info.absoluteFilePath() << ", time : " << info.lastModified().toString(FVA_FILE_NAME_FMT);
+						LOG_QWARN << "modification time to use (true == FVA_RENAME_FILES_BY_MODIF_TIME_FOR_EMPTY_EXIF) for:" << info.absoluteFilePath() << ", time : " << info.lastModified().toString(m_fmtctx.fvaFileName);
 						renameDateTime = info.lastModified();
 					}
 				}
@@ -83,10 +86,10 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context)
 		else if (FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType(suffix))
 		{
 			QString error;
-			renameDateTime = fvaGetVideoTakenTime(info.filePath(), error);
+			renameDateTime = fvaGetVideoTakenTime(info.filePath(), error, m_fmtctx);
 			if (!renameDateTime.isValid())
 			{
-				if (FVA_NO_ERROR != fvaParseFileName(info.baseName(), renameDateTime))
+				if (FVA_NO_ERROR != fvaParseFileName(info.baseName(), renameDateTime, m_fmtctx))
 				{
 					LOG_QWARN << "can not get taken time from:" << info.absoluteFilePath() << ",error:" << error;
 					fillRenameDateTimeFromLastModifiedIfValid(m_dir, info, renameDateTime);
@@ -107,12 +110,12 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context)
 			LOG_QWARN << "unsupported file type:" << info.absoluteFilePath();
 			continue;
 		}
-		QString newName = renameDateTime.toString(FVA_FILE_NAME_FMT);
+		QString newName = renameDateTime.toString(m_fmtctx.fvaFileName);
 		if (newName.isEmpty())
 		{
 			LOG_QWARN << "no time in img file:" << info.absoluteFilePath() << ",prev time to use:" << prevRenameDateTime.addSecs(1).toString("yyyy-MM-dd-hh-mm-ss");
 			prevRenameDateTime = prevRenameDateTime.addSecs(1);
-			newName = prevRenameDateTime.toString(FVA_FILE_NAME_FMT);
+			newName = prevRenameDateTime.toString(m_fmtctx.fvaFileName);
 		}
 		else
 			prevRenameDateTime = renameDateTime;

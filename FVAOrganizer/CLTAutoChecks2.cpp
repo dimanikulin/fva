@@ -14,7 +14,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context)
 		if (info.isDir())
 		{
 			QDateTime from, to;
-			if (FVA_NO_ERROR != fvaParseDirName(info.fileName(), from, to))
+			if (FVA_NO_ERROR != fvaParseDirName(info.fileName(), from, to, m_fmtctx ))
 			{
 				// skip internal folder 
 				if (m_dir.dirName()[0] == '#')
@@ -38,7 +38,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context)
 			countSupportedFiles++;	// it is our file
 			QDateTime date;
 			QString baseFileName = info.baseName();
-			if (FVA_NO_ERROR != fvaParseFileName(info.baseName(), date))
+			if (FVA_NO_ERROR != fvaParseFileName(info.baseName(), date, m_fmtctx))
 			{
 				LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath();
 				m_Issues.push_back("FVA_ERROR_WRONG_FILE_NAME," + info.absoluteFilePath() + "," + info.fileName());
@@ -61,7 +61,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context)
 			if (FVA_FS_TYPE_IMG == type)
 			{
 				QString error;
-				QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath());
+				QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath(), m_fmtctx.exifDateTime);
 
 				if (!dateTime.isValid())
 				{
@@ -80,7 +80,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context)
 			if (FVA_FS_TYPE_VIDEO == type)
 			{
 				QString error;
-				QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath());
+				QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath(), m_fmtctx.exifDateTime);
 				if (!dateTime.isValid())
 				{
 					LOG_QWARN << "empty video taken time found in:" << info.absoluteFilePath();
@@ -90,7 +90,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context)
 
 			//////////////////////////////////// 6. MATCHING FILE NAME AND FOLDER NAME ////////////////////////////////////////////////////
 			QDateTime dateStart, dateEnd;
-			if (FVA_NO_ERROR != fvaParseDirName(m_dir.dirName(), dateStart, dateEnd))
+			if (FVA_NO_ERROR != fvaParseDirName(m_dir.dirName(), dateStart, dateEnd, m_fmtctx))
 			{
 				// skip internal folder 
 				if (m_dir.dirName()[0] == '#')
@@ -105,10 +105,10 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context)
 			}
 			if (dateStart == dateEnd)
 				dateEnd = dateEnd.addYears(1);
-			QDateTime fileDateTime = QDateTime::fromString(baseFileName, FVA_FILE_NAME_FMT);
+			QDateTime fileDateTime = QDateTime::fromString(baseFileName, m_fmtctx.fvaFileName);
 			QString newFileName = baseFileName.replace("##", "01");
 			if (!fileDateTime.isValid())
-				fileDateTime = QDateTime::fromString(newFileName, FVA_FILE_NAME_FMT);
+				fileDateTime = QDateTime::fromString(newFileName, m_fmtctx.fvaFileName);
 			if ((fileDateTime < dateStart) || (fileDateTime > dateEnd))
 			{
 				LOG_QCRIT << "unsupported file found:" << info.absoluteFilePath() << " data period=" << dateStart << ";" << dateEnd;
@@ -155,6 +155,9 @@ CLTAutoChecks2::CLTAutoChecks2(const FvaConfiguration& cfg)
 	RET_IF_RES_IS_ERROR
 
 	res = cfg.getParamAsUint("Rename::minFilesInDir", m_minCountSupportedFiles);
+	RET_IF_RES_IS_ERROR
+
+	res = m_fmtctx.fillFmtContextFromCfg(cfg);
 	RET_IF_RES_IS_ERROR
 }
 CLTAutoChecks2::~CLTAutoChecks2()

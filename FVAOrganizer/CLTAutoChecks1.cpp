@@ -5,6 +5,9 @@ CLTAutoChecks1::CLTAutoChecks1(const FvaConfiguration& cfg)
 {
 	FVA_EXIT_CODE res = cfg.getParamAsBoolean("Rename::videoByModifTime", m_renameVideoByModifTime);
 	RET_IF_RES_IS_ERROR
+
+	res = m_fmtctx.fillFmtContextFromCfg(cfg);
+	RET_IF_RES_IS_ERROR
 }
 
 FVA_EXIT_CODE CLTAutoChecks1::execute(const CLTContext& /*context*/)
@@ -26,7 +29,7 @@ FVA_EXIT_CODE CLTAutoChecks1::execute(const CLTContext& /*context*/)
 			if (FVA_FS_TYPE_VIDEO == type || FVA_FS_TYPE_AUDIO == type)
 			{
 				QString error;
-				QDateTime time = fvaGetVideoTakenTime(info.absoluteFilePath(), error);
+				QDateTime time = fvaGetVideoTakenTime(info.absoluteFilePath(), error, m_fmtctx);
 				if (!time.isValid())
 				{
 					if (m_renameVideoByModifTime == true && info.lastModified().isValid())

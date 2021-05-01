@@ -5,6 +5,9 @@ CLTRenameVideoBySequence::CLTRenameVideoBySequence(const FvaConfiguration& cfg)
 {
 	FVA_EXIT_CODE res = cfg.getParamAsBoolean("Rename::videoByModifTime", m_renameVideoByModifTime);
 	RET_IF_RES_IS_ERROR
+
+	res = m_fmtctx.fillFmtContextFromCfg(cfg);
+	RET_IF_RES_IS_ERROR
 }
 FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& /*context*/)
 {
@@ -26,13 +29,13 @@ FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& /*context*/)
 		else if (FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType(suffix))
 		{
 			QString error;
-			QDateTime renameDateTime = fvaGetVideoTakenTime(info.filePath(), error);
+			QDateTime renameDateTime = fvaGetVideoTakenTime(info.filePath(), error, m_fmtctx);
 			if (renameDateTime.isValid() || info.baseName().at(0) == 'P') // P is first latter for panasonic cameras
 			{
 				continue;
 			}
 
-			FVA_EXIT_CODE res = fvaParseFileName(info.baseName(), renameDateTime);
+			FVA_EXIT_CODE res = fvaParseFileName(info.baseName(), renameDateTime, m_fmtctx);
 			if (FVA_NO_ERROR == res)
 			{
 				continue;

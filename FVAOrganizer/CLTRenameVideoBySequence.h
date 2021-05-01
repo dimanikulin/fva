@@ -16,7 +16,12 @@ private:
 	/*!
 	* \brief shall be renamed video files using the file modification time if they do not have taken time set
 	*/
-	bool m_renameVideoByModifTime;
+	bool			m_renameVideoByModifTime;
+
+	/*!
+	* \brief formatting context to use formatting options from
+	*/
+	FvaFmtContext	m_fmtctx;
 };
 
 #endif // _CLT_RENAME_VIDEO_BY_SEQUENCE_H_

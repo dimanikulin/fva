@@ -8,12 +8,16 @@ CLTAutoChecks3::CLTAutoChecks3(const FvaConfiguration& cfg)
 {
 	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
 	RET_IF_RES_IS_ERROR
+
 	res = fvaLoadFvaFileInfoFromCsv(m_rootSWdir, m_fvaFileInfo);
 	RET_IF_RES_IS_ERROR
 
 	m_fvaFileInfoC = m_fvaFileInfo;
 
 	res = fvaLoadDeviceMapFromCsv(m_rootSWdir, m_deviceMap);
+	RET_IF_RES_IS_ERROR
+
+	res = m_fmtctx.fillFmtContextFromCfg(cfg);
 	RET_IF_RES_IS_ERROR
 }
 FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context)
