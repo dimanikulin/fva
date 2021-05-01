@@ -1,6 +1,12 @@
 #include "CLTAutoChecks1.h"
 #include "fvadefaultcfg.h"
 
+CLTAutoChecks1::CLTAutoChecks1(const FvaConfiguration& cfg)
+{
+	FVA_EXIT_CODE res = cfg.getParamAsBoolean("Rename::videoByModifTime", m_renameVideoByModifTime);
+	RET_IF_RES_IS_ERROR
+}
+
 FVA_EXIT_CODE CLTAutoChecks1::execute(const CLTContext& /*context*/)
 {
 	m_dir.setSorting(QDir::LocaleAware);
@@ -23,7 +29,7 @@ FVA_EXIT_CODE CLTAutoChecks1::execute(const CLTContext& /*context*/)
 				QDateTime time = fvaGetVideoTakenTime(info.absoluteFilePath(), error);
 				if (!time.isValid())
 				{
-					if (FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true && info.lastModified().isValid())
+					if (m_renameVideoByModifTime == true && info.lastModified().isValid())
 					{
 						LOG_QWARN << "skipping first video/audio file (FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true):" << info.absoluteFilePath();
 						continue;

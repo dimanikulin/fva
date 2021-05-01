@@ -68,15 +68,15 @@ std::auto_ptr<CmdLineBaseTask> CmdLineExecutor::createTaskByName(const CLTContex
 	
 	if (context.cmdType == CLTCreateDirStructByFileNames::Name())	r.reset(new CLTCreateDirStructByFileNames());
 	else if (context.cmdType == CLTCreateDirStructByDeviceName::Name())r.reset(new CLTCreateDirStructByDeviceName());
-	else if (context.cmdType == CLTRenameFiles::Name())				r.reset(new CLTRenameFiles());
+	else if (context.cmdType == CLTRenameFiles::Name())				r.reset(new CLTRenameFiles(cfg));
 	else if (context.cmdType == CLTCheckDeviceName::Name())			r.reset(new CLTCheckDeviceName());
 	else if (context.cmdType == CLTRenameFilesByDir::Name())		r.reset(new CLTRenameFilesByDir());
-	else if (context.cmdType == CLTRenameVideoBySequence::Name())	r.reset(new CLTRenameVideoBySequence());
+	else if (context.cmdType == CLTRenameVideoBySequence::Name())	r.reset(new CLTRenameVideoBySequence(cfg));
 	else if (context.cmdType == CLTRenameDirs::Name())				r.reset(new CLTRenameDirs());
 	else if (context.cmdType == CLTAutoChecks2::Name())				r.reset(new CLTAutoChecks2(cfg));
 	else if (context.cmdType == CLTMoveAloneFiles::Name())			r.reset(new CLTMoveAloneFiles(cfg));
 	else if (context.cmdType == CLTConvertAmr::Name())				r.reset(new CLTConvertAmr());
-	else if (context.cmdType == CLTAutoChecks1::Name())				r.reset(new CLTAutoChecks1());
+	else if (context.cmdType == CLTAutoChecks1::Name())				r.reset(new CLTAutoChecks1(cfg));
 	else if (context.cmdType == CLTSetFileAtts::Name())				r.reset(new CLTSetFileAtts());
 	else if (context.cmdType == CLTPrintFSStructure::Name())		r.reset(new CLTPrintFSStructure(cfg));
 	else if (context.cmdType == CLTMerge1EventDir::Name())			r.reset(new CLTMerge1EventDir());

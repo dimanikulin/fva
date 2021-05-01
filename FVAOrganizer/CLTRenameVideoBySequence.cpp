@@ -1,6 +1,11 @@
 #include "CLTRenameVideoBySequence.h"
 #include "fvadefaultcfg.h"
 
+CLTRenameVideoBySequence::CLTRenameVideoBySequence(const FvaConfiguration& cfg)
+{
+	FVA_EXIT_CODE res = cfg.getParamAsBoolean("Rename::videoByModifTime", m_renameVideoByModifTime);
+	RET_IF_RES_IS_ERROR
+}
 FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& /*context*/)
 {
 	QString imageFilePrefix;
@@ -41,7 +46,7 @@ FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& /*context*/)
 			QString videoFilePrefix = info.baseName().mid(0, index);
 			if (imageFilePrefix.isEmpty())
 			{
-				if (FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true && info.lastModified().isValid())
+				if (m_renameVideoByModifTime == true && info.lastModified().isValid())
 				{
 					continue;
 				}

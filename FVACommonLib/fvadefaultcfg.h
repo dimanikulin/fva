@@ -3,17 +3,6 @@
 
 #include <QtCore/Qstring>
 
-////////////////////////// RENAMING FILE OPTIONS   //////////////////////////////////////////
-/*!
-* \brief shall be renamed pictures files using the file modification time if they do not have exif taken time set
-*/
-const bool FVA_RENAME_PICS_BY_MODIF_TIME_IF_EMPTY_EXIF = true;
-
-/*!
-* \brief shall be renamed video files using the file modification time if they do not have taken time set
-*/
-const bool FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF = true;
-
 ////////////////////////// FORMATTING STRING OPTIONS/////////////////////////////////////////
 /*!
  * \brief format a dir name as a date

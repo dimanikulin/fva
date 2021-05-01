@@ -2,6 +2,15 @@
 #include "fvadefaultcfg.h"
 #include "fvacommonexif.h"
 
+CLTRenameFiles::CLTRenameFiles(const FvaConfiguration& cfg)
+{
+	FVA_EXIT_CODE res = cfg.getParamAsBoolean("Rename::videoByModifTime", m_renameVideoByModifTime);
+	RET_IF_RES_IS_ERROR
+
+	res = cfg.getParamAsBoolean("Rename::picsByModifTime", m_renamePicsByModifTime);
+	RET_IF_RES_IS_ERROR
+}
+
 bool CLTRenameFiles::checkIfParentFileExist(const QFileInfo& fileToCheck, QDateTime& renameDateTime, const QDateTime& prevRenameDateTime)
 {
 	QString newPath = fileToCheck.absoluteFilePath().remove("_1");
@@ -60,7 +69,7 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context)
 				QString _newName = renameDateTime.toString(FVA_FILE_NAME_FMT);
 				if (_newName.isEmpty())
 					fillRenameDateTimeFromLastModifiedIfValid(m_dir, info, renameDateTime);
-				if (!renameDateTime.isValid() && (true == FVA_RENAME_PICS_BY_MODIF_TIME_IF_EMPTY_EXIF))
+				if (!renameDateTime.isValid() && (true == m_renamePicsByModifTime))
 				{
 					if (info.lastModified().isValid())
 					{
@@ -81,7 +90,7 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context)
 				{
 					LOG_QWARN << "can not get taken time from:" << info.absoluteFilePath() << ",error:" << error;
 					fillRenameDateTimeFromLastModifiedIfValid(m_dir, info, renameDateTime);
-					if (!renameDateTime.isValid() && FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true && info.lastModified().isValid())
+					if (!renameDateTime.isValid() && m_renameVideoByModifTime == true && info.lastModified().isValid())
 					{
 						LOG_QWARN << "last modif time to use (FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true): for" << info.absoluteFilePath();
 						renameDateTime = info.lastModified();
