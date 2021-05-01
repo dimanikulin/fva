@@ -14,6 +14,8 @@
 #include "fvacommonui.h"
 #include "fvacommoncsv.h"
 #include "fvaconstants.h"
+#include "FVADataProcessor.h"
+
 
 FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 {
@@ -75,6 +77,7 @@ bool FVAOrganizerInputDirPage::isComplete() const
 }
 bool	FVAOrganizerInputDirPage::validatePage ()
 {
+	FVADataProcessor p;
 	QString dir = inputDirLineEdit->text();
 
 	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
