@@ -1,5 +1,4 @@
 #include "CLTRenameFiles.h"
-#include "fvadefaultcfg.h"
 #include "fvacommonexif.h"
 
 CLTRenameFiles::CLTRenameFiles(const FvaConfiguration& cfg)

@@ -1,5 +1,4 @@
 #include "CLTMerge1DayEventDir.h"
-#include "fvadefaultcfg.h"
 #include "fvacommoncsv.h"
 
 CLTMerge1DayEventDir::CLTMerge1DayEventDir(const FvaConfiguration& cfg)

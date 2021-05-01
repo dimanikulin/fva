@@ -1,6 +1,5 @@
 #include "CLTAutoChecks3.h"
 
-#include "fvadefaultcfg.h"
 #include "fvacommoncsv.h"
 #include "fvacommonexif.h"
 

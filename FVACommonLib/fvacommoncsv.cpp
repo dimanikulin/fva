@@ -1,6 +1,5 @@
 #include "fvacommoncsv.h"
 #include "fvadescriptionfile.h"
-#include "fvadefaultcfg.h"
 #include "data/fvafile.h"
 #include "data/fvadevice.h"
 

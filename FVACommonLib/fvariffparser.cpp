@@ -1,5 +1,4 @@
 #include "fvariffparser.h"
-#include "fvadefaultcfg.h"
 
 RiffParser::RiffParser( )
 {
@@ -7,7 +6,6 @@ RiffParser::RiffParser( )
 
 RiffParser::~RiffParser( )
 {
-
 }
 
 bool RiffParser::open(const QString& path, QString& error)

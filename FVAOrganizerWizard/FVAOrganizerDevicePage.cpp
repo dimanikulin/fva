@@ -10,7 +10,6 @@
 #include <QtCore/QProcess>
 
 #include "fvacommoncsv.h"
-#include "fvadefaultcfg.h"
 #include "fvacommonui.h"
 #include "FVAOrganizerWizard.h"
 

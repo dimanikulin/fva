@@ -1,5 +1,4 @@
 #include "fvacommonlib.h"
-#include "fvadefaultcfg.h"
 #include "fvacommonexif.h"
 
 #include <QtCore/QDir>

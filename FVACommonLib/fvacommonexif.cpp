@@ -1,6 +1,4 @@
 #include "fvacommonexif.h"
-#include "fvadefaultcfg.h"
-
 #include "../easyexif/exif.h"
 #include <QtCore\QFile>
 

@@ -1,7 +1,5 @@
 #include "CLTFixDuplicatedFileNames.h" 
 
-#include "fvadefaultcfg.h"
-
 CLTFixDuplicatedFileNames::CLTFixDuplicatedFileNames(const FvaConfiguration& cfg)
 {
 	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);

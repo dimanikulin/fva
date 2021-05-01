@@ -1,6 +1,5 @@
 #include "CLTCSVFvaFiles.h"
 #include "fvacommoncsv.h"
-#include "fvadefaultcfg.h"
 
 CLTCSVFvaFile::CLTCSVFvaFile(const FvaConfiguration& cfg)
 {

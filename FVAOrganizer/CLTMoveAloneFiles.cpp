@@ -1,5 +1,4 @@
 #include "CLTMoveAloneFiles.h"
-#include "fvadefaultcfg.h"
 
 CLTMoveAloneFiles::CLTMoveAloneFiles(const FvaConfiguration& cfg)
 {

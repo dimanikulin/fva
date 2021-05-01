@@ -1,6 +1,4 @@
-﻿#include "fvadefaultcfg.h"
-
-#include "fvaorganizerwizard.h"
+﻿#include "fvaorganizerwizard.h"
 
 #include "FVAOrganizerDonePage.h"
 #include "FVAOrganizerStartPage.h"

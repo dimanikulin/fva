@@ -1,5 +1,4 @@
 #include "CLTAutoChecks1.h"
-#include "fvadefaultcfg.h"
 
 CLTAutoChecks1::CLTAutoChecks1(const FvaConfiguration& cfg)
 {
