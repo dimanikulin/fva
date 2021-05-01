@@ -1,6 +1,11 @@
 #include "CLTMoveAloneFiles.h"
 #include "fvadefaultcfg.h"
 
+CLTMoveAloneFiles::CLTMoveAloneFiles(const FvaConfiguration& cfg)
+{
+	FVA_EXIT_CODE res = cfg.getParamAsUint("Rename::minFilesInDir", m_minCountSupportedFiles);
+	RET_IF_RES_IS_ERROR
+}
 FVA_EXIT_CODE CLTMoveAloneFiles::execute(const CLTContext& context)
 {
 	unsigned int countSupportedFiles = 0;
@@ -14,7 +19,7 @@ FVA_EXIT_CODE CLTMoveAloneFiles::execute(const CLTContext& context)
 			countSupportedFiles++;
 	}
 	// no need to move these files
-	if (countSupportedFiles >= FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR || !countSupportedFiles)
+	if ((countSupportedFiles >= m_minCountSupportedFiles) || !countSupportedFiles)
 		return FVA_NO_ERROR;
 
 	m_dir.cdUp();

@@ -136,7 +136,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context)
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	}
 	m_fileCount[m_folder] = countSupportedFiles;
-	if (countSupportedFiles < FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR && countSupportedFiles)
+	if ((countSupportedFiles < m_minCountSupportedFiles) && countSupportedFiles)
 	{
 		// check for to little supported 
 		LOG_QCRIT << "too little supported files found in:" << m_folder;
@@ -152,6 +152,9 @@ QMap< unsigned int, unsigned int > sizes;
 CLTAutoChecks2::CLTAutoChecks2(const FvaConfiguration& cfg)
 {
 	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
+	RET_IF_RES_IS_ERROR
+
+	res = cfg.getParamAsUint("Rename::minFilesInDir", m_minCountSupportedFiles);
 	RET_IF_RES_IS_ERROR
 }
 CLTAutoChecks2::~CLTAutoChecks2()

@@ -33,5 +33,10 @@ private: // data
 	 * path to root fva sw folder
 	 */
 	QString							m_rootSWdir;
+
+	/*!
+	 * min count of multimedia files in one folder allowed
+	 */
+	uint							m_minCountSupportedFiles;
 };
 #endif // _CLT_AUTO_CHECKS_2_H

@@ -3,11 +3,6 @@
 
 #include <QtCore/Qstring>
 
-/*!
- * \brief how many supported files should be in a folder
- */
-const unsigned int FVA_DEFAULT_MIN_COUNT_FILES_IN_DIR	= 0;
-
 ////////////////////////// RENAMING FILE OPTIONS   //////////////////////////////////////////
 /*!
 * \brief shall be renamed pictures files using the file modification time if they do not have exif taken time set
