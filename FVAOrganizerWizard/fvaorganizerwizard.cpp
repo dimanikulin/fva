@@ -1,5 +1,7 @@
 ﻿#include "fvaorganizerwizard.h"
 
+#include "fvacommonui.h"
+
 #include "FVAOrganizerDonePage.h"
 #include "FVAOrganizerStartPage.h"
 #include "FVAOrganizerOrientPage.h"
@@ -7,15 +9,36 @@
 #include "FVAOrganizerDevicePage.h"
 #include "FVAOrganizerOutputDirPage.h"
 
+
+
 FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	: QWizard(parent)
 {
-	setPage( 0,	new FVAOrganizerStartPage );
-	setPage( 1,	new FVAOrganizerInputDirPage );
-	setPage( 2,	new FVAOrganizerOrientPage );
-	setPage( 3, new	FVAOrganizerDevicePage );
-	setPage( 4,	new FVAOrganizerOutputDirPage );
-    setPage( 5,	new FVAOrganizerDonePage );	
+	FvaConfiguration cfg;
+
+	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	if (FVA_NO_ERROR != res)
+	{
+		FVA_MESSAGE_BOX("cfg.load failed with error " + QString::number(res));
+		return;
+	}
+	int index = 0;
+	setPage(index++, new FVAOrganizerStartPage);
+	setPage(index++, new FVAOrganizerInputDirPage);
+	// do we need to show OrientPage?
+	bool temp;
+	res = cfg.getParamAsBoolean("Common::CheckOrientation", temp);
+	RET_IF_RES_IS_ERROR
+	if (temp)
+		setPage(index++, new FVAOrganizerOrientPage);
+	
+	// do we need to show device page?
+	res = cfg.getParamAsBoolean("Search::Device", temp);
+	RET_IF_RES_IS_ERROR
+	if (temp)
+		setPage(index++, new FVAOrganizerDevicePage);
+	setPage(index++, new FVAOrganizerOutputDirPage);
+	setPage(index++, new FVAOrganizerDonePage);
 	
 	setStartId( 0 );
 

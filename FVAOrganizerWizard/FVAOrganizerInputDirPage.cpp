@@ -90,7 +90,7 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 	exitCode = FVADataProcessor::run(context, cfg);
 	QString dir = inputDirLineEdit->text();
 
-	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
+	/*((FVAOrganizerWizard*)wizard())->inputFolder(dir);
 
 	exitCode = fvaRunCLT("CLTCheckDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	if (FVA_ERROR_NON_UNIQUE_DEVICE_NAME == exitCode)
@@ -100,7 +100,7 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 		return false;
 	}
 	else IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTCheckDeviceName")
-
+	*/
 	QDir _dir(dir); 
 
 	QString rootSWdir;
@@ -150,15 +150,26 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 			break;
 		}
 	}
+	
 	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
 	((FVAOrganizerWizard*)wizard())->fullDeviceMap(fullDeviceMap);		
 	((FVAOrganizerWizard*)wizard())->matchedDeviceMap(deviceMap);
+	
+	bool needCheckOrientation;
+	exitCode = cfg.getParamAsBoolean("Common::CheckOrientation", needCheckOrientation);
+	if (FVA_NO_ERROR != exitCode)
+	{
+		FVA_MESSAGE_BOX("getParamAsBoolean with Common::CheckOrientation " + QString::number(exitCode));
+		return false;
+	}
 
-	// to run change orentation in auto mode
-	QProcess myProcess(this);    
-	myProcess.setProcessChannelMode(QProcess::MergedChannels);
-	myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe -auto " + dir);
-	myProcess.waitForFinished( -1 );
-
+	if (needCheckOrientation)
+	{
+		// to run change orentation in auto mode
+		QProcess myProcess(this);
+		myProcess.setProcessChannelMode(QProcess::MergedChannels);
+		myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe -auto " + dir);
+		myProcess.waitForFinished(-1);
+	}
 	return true;
 }
