@@ -96,7 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FVADataProcessor.h" />
-    <ClInclude Include="fvadataprocessor_global.h" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

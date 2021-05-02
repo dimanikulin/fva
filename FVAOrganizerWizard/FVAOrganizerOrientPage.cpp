@@ -29,6 +29,5 @@ void FVAOrganizerOrientPage::OnOrientationButtonClicked()
 	QProcess myProcess(this);    
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe");
-
 	myProcess.waitForFinished( -1 );
 }

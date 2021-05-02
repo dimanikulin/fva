@@ -77,12 +77,22 @@ bool FVAOrganizerInputDirPage::isComplete() const
 }
 bool	FVAOrganizerInputDirPage::validatePage ()
 {
-	FVADataProcessor p;
+	CLTContext context; 
+	FvaConfiguration cfg;
+
+	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	if (FVA_NO_ERROR != exitCode)
+	{
+		FVA_MESSAGE_BOX("cfg.load failed with error " + QString::number(exitCode));
+		return false;
+	}
+
+	exitCode = FVADataProcessor::run(context, cfg);
 	QString dir = inputDirLineEdit->text();
 
 	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
 
-	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTCheckDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	exitCode = fvaRunCLT("CLTCheckDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	if (FVA_ERROR_NON_UNIQUE_DEVICE_NAME == exitCode)
 	{
 		exitCode = fvaRunCLT("CLTCreateDirStructByDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
@@ -93,33 +103,24 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 
 	QDir _dir(dir); 
 
-	FvaConfiguration cfg;
-
-	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
-	if (FVA_NO_ERROR != res)
-	{
-		FVA_MESSAGE_BOX("cfg.load failed with error " + QString::number(res));
-		return false;
-	}
-
 	QString rootSWdir;
-	res = cfg.getParamAsString("Common::RootDir", rootSWdir);
-	if (FVA_NO_ERROR != res)
+	exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	if (FVA_NO_ERROR != exitCode)
 		return false;
 
 	DEVICE_MAP fullDeviceMap;
-	res = fvaLoadDeviceMapFromCsv(rootSWdir, fullDeviceMap);
-	if (FVA_NO_ERROR != res)
+	exitCode = fvaLoadDeviceMapFromCsv(rootSWdir, fullDeviceMap);
+	if (FVA_NO_ERROR != exitCode)
 	{
-		FVA_MESSAGE_BOX("fvaLoadDeviceMapFromCsv failed with error " + QString::number(res));
+		FVA_MESSAGE_BOX("fvaLoadDeviceMapFromCsv failed with error " + QString::number(exitCode));
 		return false;
 	}
 
 	PEOPLE_MAP peopleMap;
-	res = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
-	if (FVA_NO_ERROR != res)
+	exitCode = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
+	if (FVA_NO_ERROR != exitCode)
 	{
-		FVA_MESSAGE_BOX("fvaLoadPeopleMapFromCsv failed with error " + QString::number(res));
+		FVA_MESSAGE_BOX("fvaLoadPeopleMapFromCsv failed with error " + QString::number(exitCode));
 		return false;
 	}
 
@@ -153,11 +154,11 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 	((FVAOrganizerWizard*)wizard())->fullDeviceMap(fullDeviceMap);		
 	((FVAOrganizerWizard*)wizard())->matchedDeviceMap(deviceMap);
 
-	// to run change orintation in auto mode
+	// to run change orentation in auto mode
 	QProcess myProcess(this);    
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe -auto " + dir);
-
 	myProcess.waitForFinished( -1 );
+
 	return true;
 }
