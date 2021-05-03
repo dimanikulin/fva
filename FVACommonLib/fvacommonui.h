@@ -73,7 +73,7 @@ msgBox.exec();
 		QMessageBox msgBox; \
 		msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
 		msgBox.exec(); \
-		return false; \
+		return exitCode; \
 	}
 
 #endif // FVACOMMONUI_H

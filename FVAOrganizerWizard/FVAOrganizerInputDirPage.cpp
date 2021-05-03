@@ -7,13 +7,9 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QFileDialog>
 
-#include <QtCore/QProcess>
-
 #include "FVAOrganizerWizard.h"
-#include "FVAConfiguration.h"
-#include "fvacommonui.h"
-#include "fvacommoncsv.h"
-#include "fvaconstants.h"
+
+#include "FVAFlowController.h"
 
 FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 {
@@ -33,7 +29,6 @@ FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 	inputDirLineEdit->setText("");
 	inputDirLineEdit->setReadOnly(true);
 		
-
 	QGridLayout * dirLayout = new QGridLayout;
 	dirLayout->addWidget(inputDirLineEdit,0,0);
 	dirLayout->addWidget(dirButton,0,1);
@@ -75,98 +70,18 @@ bool FVAOrganizerInputDirPage::isComplete() const
 }
 bool	FVAOrganizerInputDirPage::validatePage ()
 {
-
 	QString dir = inputDirLineEdit->text();
 
+	FVAFlowController flow;
+	DeviceContext deviceContext;
+	FVA_EXIT_CODE exitCode = flow.PerformChecksForInputDir(dir, deviceContext,this);
+	if (exitCode != FVA_NO_ERROR)
+		return false;
+
 	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
-
-	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTCheckDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
-	if (FVA_ERROR_NON_UNIQUE_DEVICE_NAME == exitCode)
-	{
-		exitCode = fvaRunCLT("CLTCreateDirStructByDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
-		FVA_MESSAGE_BOX("Found several devices in a folder, please select other dir!");
-		return false;
-	}
-	else IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTCheckDeviceName")
+	((FVAOrganizerWizard*)wizard())->fullDeviceMap(deviceContext.fullDeviceMap);
+	((FVAOrganizerWizard*)wizard())->matchedDeviceMap(deviceContext.deviceMap);
+	((FVAOrganizerWizard*)wizard())->matchedDeviceName(deviceContext.matchedDeviceName);
 	
-	QDir _dir(dir); 
-
-	FvaConfiguration cfg;
-
-	exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
-	if (FVA_NO_ERROR != exitCode)
-	{
-		FVA_MESSAGE_BOX("cfg.load failed with error " + QString::number(exitCode));
-		return false;
-	}
-
-	QString rootSWdir;
-	exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
-	if (FVA_NO_ERROR != exitCode)
-		return false;
-
-	DEVICE_MAP fullDeviceMap;
-	exitCode = fvaLoadDeviceMapFromCsv(rootSWdir, fullDeviceMap);
-	if (FVA_NO_ERROR != exitCode)
-	{
-		FVA_MESSAGE_BOX("fvaLoadDeviceMapFromCsv failed with error " + QString::number(exitCode));
-		return false;
-	}
-
-	PEOPLE_MAP peopleMap;
-	exitCode = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
-	if (FVA_NO_ERROR != exitCode)
-	{
-		FVA_MESSAGE_BOX("fvaLoadPeopleMapFromCsv failed with error " + QString::number(exitCode));
-		return false;
-	}
-
-	for (auto it = fullDeviceMap.begin(); it != fullDeviceMap.end(); ++it)
-	{
-		it.value().ownerName = peopleMap[it.value().ownerId].name;
-	}
-
-	DEVICE_MAP deviceMap;
-	Q_FOREACH(QFileInfo info, _dir.entryInfoList(QDir::System | QDir::Hidden  | QDir::Files, QDir::DirsLast))
-	{		
-		if (info.isDir())
-			continue;
-		QString suffix = info.suffix().toUpper();
-		FVA_FS_TYPE type = fvaConvertFileExt2FileType ( suffix );
-		if ( FVA_FS_TYPE_IMG != type )
-			continue;
-
-		QString deviceName;		
-		deviceMap = fvaGetDeviceMapForImg(fullDeviceMap, info.filePath(), deviceName);
-		
-		if (deviceName.isEmpty())
-			continue;		
-		else
-		{
-			((FVAOrganizerWizard*)wizard())->matchedDeviceName(deviceName);
-			break;
-		}
-	}
-	
-	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
-	((FVAOrganizerWizard*)wizard())->fullDeviceMap(fullDeviceMap);		
-	((FVAOrganizerWizard*)wizard())->matchedDeviceMap(deviceMap);
-	
-	bool needCheckOrientation;
-	exitCode = cfg.getParamAsBoolean("Common::CheckOrientation", needCheckOrientation);
-	if (FVA_NO_ERROR != exitCode)
-	{
-		FVA_MESSAGE_BOX("getParamAsBoolean with Common::CheckOrientation " + QString::number(exitCode));
-		return false;
-	}
-
-	if (needCheckOrientation)
-	{
-		// to run change orentation in auto mode
-		QProcess myProcess(this);
-		myProcess.setProcessChannelMode(QProcess::MergedChannels);
-		myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe -auto " + dir);
-		myProcess.waitForFinished(-1);
-	}
 	return true;
 }
