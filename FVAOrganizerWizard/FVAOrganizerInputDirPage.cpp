@@ -14,8 +14,6 @@
 #include "fvacommonui.h"
 #include "fvacommoncsv.h"
 #include "fvaconstants.h"
-#include "FVADataProcessor.h"
-
 
 FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 {
@@ -77,22 +75,12 @@ bool FVAOrganizerInputDirPage::isComplete() const
 }
 bool	FVAOrganizerInputDirPage::validatePage ()
 {
-	CLTContext context; 
-	FvaConfiguration cfg;
 
-	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
-	if (FVA_NO_ERROR != exitCode)
-	{
-		FVA_MESSAGE_BOX("cfg.load failed with error " + QString::number(exitCode));
-		return false;
-	}
-
-	exitCode = FVADataProcessor::run(context, cfg);
 	QString dir = inputDirLineEdit->text();
 
-	/*((FVAOrganizerWizard*)wizard())->inputFolder(dir);
+	((FVAOrganizerWizard*)wizard())->inputFolder(dir);
 
-	exitCode = fvaRunCLT("CLTCheckDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
+	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTCheckDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
 	if (FVA_ERROR_NON_UNIQUE_DEVICE_NAME == exitCode)
 	{
 		exitCode = fvaRunCLT("CLTCreateDirStructByDeviceName", ((FVAOrganizerWizard*)wizard())->inputFolder());
@@ -100,8 +88,17 @@ bool	FVAOrganizerInputDirPage::validatePage ()
 		return false;
 	}
 	else IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTCheckDeviceName")
-	*/
+	
 	QDir _dir(dir); 
+
+	FvaConfiguration cfg;
+
+	exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	if (FVA_NO_ERROR != exitCode)
+	{
+		FVA_MESSAGE_BOX("cfg.load failed with error " + QString::number(exitCode));
+		return false;
+	}
 
 	QString rootSWdir;
 	exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
