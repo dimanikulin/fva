@@ -19,7 +19,7 @@ FVA_EXIT_CODE performDeviceChecks(const QString& dir, DeviceContext& deviceConte
 		FVA_MESSAGE_BOX("Found several devices in a folder, please select other dir!");
 		return exitCode;
 	}
-	else IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTCheckDeviceName")
+	else IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckDeviceName")
 
 	exitCode = fvaLoadDeviceMapFromCsv(rootSWdir, deviceContext.fullDeviceMap);
 	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadDeviceMapFromCsv")
@@ -65,6 +65,13 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	QString rootSWdir;
 	exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsString(Common::RootDir)")
+
+	exitCode = fvaRunCLT("CLTRenameVideoBySequence", dir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTRenameVideoBySequence")
+	exitCode = fvaRunCLT("CLTConvertAmr", dir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTConvertAmr")
+	exitCode = fvaRunCLT("CLTAutoChecks1", dir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTAutoChecks1")
 
 	// do we need to search by device?
 	bool SearchByDevice = false;
