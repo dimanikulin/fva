@@ -63,12 +63,6 @@
     <ClCompile Include="CLTCreateDirStructByFileNames.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CLTRenameFilesByDir.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTRenameDirs.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CmdLineExecutor.h">
@@ -108,12 +102,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTCreateDirStructByFileNames.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTRenameFilesByDir.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTRenameDirs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
