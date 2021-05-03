@@ -56,6 +56,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FVAConfigurator", "FVAConfi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FVADataProcessor", "FVADataProcessor\FVADataProcessor.vcxproj", "{1B101462-39F7-41D1-BCE9-636D435B95E2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FVAFlowController", "FVAFlowController\FVAFlowController.vcxproj", "{896FC014-88B4-4A02-A511-AB85C42E75E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -214,6 +216,18 @@ Global
 		{1B101462-39F7-41D1-BCE9-636D435B95E2}.Release|x64.ActiveCfg = Release|x64
 		{1B101462-39F7-41D1-BCE9-636D435B95E2}.Release|x64.Build.0 = Release|x64
 		{1B101462-39F7-41D1-BCE9-636D435B95E2}.Release|x86.ActiveCfg = Release|x64
+		{896FC014-88B4-4A02-A511-AB85C42E75E8}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{896FC014-88B4-4A02-A511-AB85C42E75E8}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{896FC014-88B4-4A02-A511-AB85C42E75E8}.Debug|Win32.ActiveCfg = Debug|x64
+		{896FC014-88B4-4A02-A511-AB85C42E75E8}.Debug|x64.ActiveCfg = Debug|x64
+		{896FC014-88B4-4A02-A511-AB85C42E75E8}.Debug|x64.Build.0 = Debug|x64
+		{896FC014-88B4-4A02-A511-AB85C42E75E8}.Debug|x86.ActiveCfg = Debug|x64
+		{896FC014-88B4-4A02-A511-AB85C42E75E8}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{896FC014-88B4-4A02-A511-AB85C42E75E8}.Release|Mixed Platforms.Build.0 = Release|x64
+		{896FC014-88B4-4A02-A511-AB85C42E75E8}.Release|Win32.ActiveCfg = Release|x64
+		{896FC014-88B4-4A02-A511-AB85C42E75E8}.Release|x64.ActiveCfg = Release|x64
+		{896FC014-88B4-4A02-A511-AB85C42E75E8}.Release|x64.Build.0 = Release|x64
+		{896FC014-88B4-4A02-A511-AB85C42E75E8}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
