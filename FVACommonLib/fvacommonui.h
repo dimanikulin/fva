@@ -67,7 +67,7 @@ QMessageBox msgBox; \
 msgBox.setText(message); \
 msgBox.exec();
 
-#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE(cmdName)\
+#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(cmdName)\
 	if (exitCode != FVA_NO_ERROR)\
 	{\
 		QMessageBox msgBox; \
@@ -75,6 +75,15 @@ msgBox.exec();
 		msgBox.exec(); \
 		return exitCode; \
 	}
+
+#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE(cmdName)\
+if (exitCode != FVA_NO_ERROR)\
+{\
+	QMessageBox msgBox; \
+	msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
+	msgBox.exec(); \
+	return false; \
+}
 
 #define IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(cmdName)\
 if (exitCode != FVA_NO_ERROR)\
