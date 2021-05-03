@@ -3,7 +3,6 @@
 
 #include <QtCore/QString>
 
-
 /*!
  * \brief it enumerates internal valuable file system types
  */

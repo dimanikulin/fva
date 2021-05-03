@@ -34,5 +34,8 @@
     <ClInclude Include="FVAFlowController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="fvadevicecontext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

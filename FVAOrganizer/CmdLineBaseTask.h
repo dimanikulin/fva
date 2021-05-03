@@ -23,7 +23,7 @@ class CmdLineBaseTask
 		/*!
 		 * \brief it performs running of command
 		 * \param context - one command parameters (environment)
-		 * \return it returns code of error (not 0 if error happened, 0 - if no error happened) 
+		 * \return it returns code of error (not FVA_NO_ERROR if error happened, FVA_NO_ERROR - if no error happened) 
 		 */
 		virtual FVA_EXIT_CODE execute(const CLTContext& context) = 0;
 

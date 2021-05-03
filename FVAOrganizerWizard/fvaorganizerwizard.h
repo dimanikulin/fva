@@ -6,7 +6,6 @@
 
 #include "fvacommonlib.h"
 
-
 class FVAOrganizerWizard : public QWizard
 {
 	Q_OBJECT

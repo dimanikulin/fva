@@ -10,7 +10,6 @@
 #include "FVAOrganizerOutputDirPage.h"
 
 
-
 FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	: QWizard(parent)
 {
