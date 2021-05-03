@@ -36,7 +36,7 @@ FVA_EXIT_CODE CLTAutoChecks1::execute(const CLTContext& /*context*/)
 						LOG_QWARN << "skipping first video/audio file (FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true):" << info.absoluteFilePath();
 						continue;
 					}
-					LOG_QWARN << "found first video/audio file:" << info.absoluteFilePath();
+					LOG_QCRIT << "found first video/audio file:" << info.absoluteFilePath();
 					return FVA_ERROR_VIDEO_FIRST;
 				}
 			}

@@ -92,9 +92,21 @@
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CLTAutoChecks1.cpp" />
+    <ClCompile Include="CLTCheckDeviceName.cpp" />
+    <ClCompile Include="CLTCheckFileFormat.cpp" />
+    <ClCompile Include="CLTConvertAmr.cpp" />
+    <ClCompile Include="CLTCreateDirStructByDevNames.cpp" />
+    <ClCompile Include="CLTRenameVideoBySequence.cpp" />
     <ClCompile Include="FVADataProcessor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CLTAutoChecks1.h" />
+    <ClInclude Include="CLTCheckDeviceName.h" />
+    <ClInclude Include="CLTCheckFileFormat.h" />
+    <ClInclude Include="CLTConvertAmr.h" />
+    <ClInclude Include="CLTCreateDirStructByDevNames.h" />
+    <ClInclude Include="CLTRenameVideoBySequence.h" />
     <ClInclude Include="FVADataProcessor.h" />
   </ItemGroup>
   <ItemGroup>

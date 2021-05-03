@@ -18,8 +18,8 @@ FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/)
 
 		if (newDeviceName.isEmpty())
 		{
-			LOG_QWARN << "no device name in picture:" << info.absoluteFilePath();
-			continue; // not so crirical
+			LOG_QCRIT << "no device name in picture:" << info.absoluteFilePath();
+			return FVA_ERROR_EMPTY_DEVICE_NAME;
 		}
 		else
 		{

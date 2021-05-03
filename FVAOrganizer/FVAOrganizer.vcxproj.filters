@@ -27,13 +27,7 @@
     <ClCompile Include="CmdLineExecutor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CmdLineBaseTask.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CLTRenameFiles.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTCreateDirStructByDevNames.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CLTAutoChecks3.cpp">
@@ -51,9 +45,6 @@
     <ClCompile Include="CLTCSVFvaFiles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CLTAutoChecks1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CLTGetFvaDirType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,16 +57,7 @@
     <ClCompile Include="CLTSetFileAtts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CLTConvertAmr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CLTMoveAloneFiles.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTRenameVideoBySequence.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CLTCheckDeviceName.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CLTCreateDirStructByFileNames.cpp">
@@ -92,13 +74,7 @@
     <ClInclude Include="CmdLineExecutor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CmdLineBaseTask.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CLTRenameFiles.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTCreateDirStructByDevNames.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTAutoChecks3.h">
@@ -116,9 +92,6 @@
     <ClInclude Include="CLTCSVFvaFiles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CLTAutoChecks1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CLTGetFvaDirType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -131,16 +104,7 @@
     <ClInclude Include="CLTSetFileAtts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CLTConvertAmr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CLTMoveAloneFiles.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTRenameVideoBySequence.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTCheckDeviceName.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTCreateDirStructByFileNames.h">

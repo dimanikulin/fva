@@ -158,12 +158,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CLTAutoChecks1.cpp" />
     <ClCompile Include="CLTAutoChecks2.cpp" />
     <ClCompile Include="CLTAutoChecks3.cpp" />
-    <ClCompile Include="CLTCheckDeviceName.cpp" />
-    <ClCompile Include="CLTConvertAmr.cpp" />
-    <ClCompile Include="CLTCreateDirStructByDevNames.cpp" />
     <ClCompile Include="CLTFixDuplicatedFileNames.cpp" />
     <ClCompile Include="CLTGetFvaDirType.cpp" />
     <ClCompile Include="CLTMerge1DayEventDir.cpp" />
@@ -173,21 +169,15 @@
     <ClCompile Include="CLTRenameDirs.cpp" />
     <ClCompile Include="CLTRenameFiles.cpp" />
     <ClCompile Include="CLTRenameFilesByDir.cpp" />
-    <ClCompile Include="CLTRenameVideoBySequence.cpp" />
     <ClCompile Include="CLTSetFileAtts.cpp" />
-    <ClCompile Include="CmdLineBaseTask.cpp" />
     <ClCompile Include="CLTCSVFvaFiles.cpp" />
     <ClCompile Include="CmdLineExecutor.cpp" />
     <ClCompile Include="CLTCreateDirStructByFileNames.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CLTAutoChecks1.h" />
     <ClInclude Include="CLTAutoChecks2.h" />
     <ClInclude Include="CLTAutoChecks3.h" />
-    <ClInclude Include="CLTCheckDeviceName.h" />
-    <ClInclude Include="CLTConvertAmr.h" />
-    <ClInclude Include="CLTCreateDirStructByDevNames.h" />
     <ClInclude Include="CLTFixDuplicatedFileNames.h" />
     <ClInclude Include="CLTGetFvaDirType.h" />
     <ClInclude Include="CLTMerge1DayEventDir.h" />
@@ -197,9 +187,7 @@
     <ClInclude Include="CLTRenameDirs.h" />
     <ClInclude Include="CLTRenameFiles.h" />
     <ClInclude Include="CLTRenameFilesByDir.h" />
-    <ClInclude Include="CLTRenameVideoBySequence.h" />
     <ClInclude Include="CLTSetFileAtts.h" />
-    <ClInclude Include="CmdLineBaseTask.h" />
     <ClInclude Include="CLTCSVFvaFiles.h" />
     <ClInclude Include="CmdLineExecutor.h" />
     <ClInclude Include="CLTCreateDirStructByFileNames.h" />

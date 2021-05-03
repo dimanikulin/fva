@@ -29,9 +29,45 @@
     <ClCompile Include="FVADataProcessor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CLTAutoChecks1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CLTCheckDeviceName.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CLTCheckFileFormat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CLTCreateDirStructByDevNames.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CLTConvertAmr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CLTRenameVideoBySequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FVADataProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTAutoChecks1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTCheckDeviceName.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTCheckFileFormat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTCreateDirStructByDevNames.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTConvertAmr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLTRenameVideoBySequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
