@@ -155,6 +155,7 @@
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4127</DisableSpecificWarnings>
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4127</DisableSpecificWarnings>
     </ClCompile>
+    <ClCompile Include="CmdLineBaseTask.cpp" />
     <ClCompile Include="data\fvaItem.cpp" />
     <ClCompile Include="fvacommoncsv.cpp" />
     <ClCompile Include="fvacommonexif.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="fvariffparser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CmdLineBaseTask.h" />
     <ClInclude Include="data\fvadevice.h" />
     <ClInclude Include="data\fvafile.h" />
     <ClInclude Include="data\fvafolder.h" />
