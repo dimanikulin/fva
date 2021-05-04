@@ -90,7 +90,7 @@ QString fvaDVget(const QString& fieldName, QVariantMap& result );
 bool fvaRemoveDirIfEmpty(const QString& dirPath);
 
 /*!
- * \brief it starts CLT cmd and waits for finish
+ * \brief it starts CLT cmd in the separate process and waits for finish
  * \param cmdName - name of CLT to be executed
  * \param inputDir - name of dir to be executed in
  * \param isRecursive - if it must be executed in recursive mode
