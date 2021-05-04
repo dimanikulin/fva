@@ -10,8 +10,6 @@
 #include "fvacommoncsv.h"
 #include "fvaconstants.h"
 
-#include "fvadataprocessor.h"
-
 FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContext, CLTContext& context, const FvaConfiguration& cfg)
 {
 	QString rootSWdir;
@@ -19,11 +17,11 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
 	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsString(Common::RootDir)")
 
 	context.cmdType = "CLTCheckDeviceName";
-	exitCode = FVADataProcessor::run(context, cfg);
+	exitCode = m_dataProcessor.run(context, cfg);
 	if (FVA_ERROR_NON_UNIQUE_DEVICE_NAME == exitCode)
 	{
 		context.cmdType = "CLTCreateDirStructByDeviceName";
-		exitCode = FVADataProcessor::run(context, cfg);
+		exitCode = m_dataProcessor.run(context, cfg);
 		FVA_MESSAGE_BOX("Found several devices in a folder, please select other dir!");
 		return exitCode;
 	}
@@ -67,19 +65,19 @@ void FVAFlowController::performOrientationChecks(const QString& dir, QObject* ob
 FVA_EXIT_CODE FVAFlowController::performCommonChecks(CLTContext& context, const FvaConfiguration& cfg)
 {
 	context.cmdType = "CLTCheckFileFormat";
-	FVA_EXIT_CODE exitCode = FVADataProcessor::run(context, cfg);
+	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckFileFormat")
 
 	context.cmdType = "CLTRenameVideoBySequence";
-	exitCode = FVADataProcessor::run(context, cfg);
+	exitCode = m_dataProcessor.run(context, cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTRenameVideoBySequence")
 
 	context.cmdType = "CLTConvertAmr";
-	exitCode = FVADataProcessor::run(context, cfg);
+	exitCode = m_dataProcessor.run(context, cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTConvertAmr")
 
 	context.cmdType = "CLTAutoChecks1";
-	exitCode = FVADataProcessor::run(context, cfg);
+	exitCode = m_dataProcessor.run(context, cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTAutoChecks1")
 
 	return FVA_NO_ERROR;
@@ -138,7 +136,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, const FvaConfiguration& cfg)
 {
 	context.cmdType = "CLTCheckDateTime";
-	FVA_EXIT_CODE exitCode = FVADataProcessor::run(context, cfg);
+	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckDateTime")
 	return FVA_NO_ERROR;
 }
@@ -146,7 +144,7 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, const FvaC
 FVA_EXIT_CODE FVAFlowController::performLocationChecks(CLTContext& context, const FvaConfiguration& cfg)
 {
 	context.cmdType = "CLTCheckLocation";
-	FVA_EXIT_CODE exitCode = FVADataProcessor::run(context, cfg);
+	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckLocation")
 	return FVA_NO_ERROR;
 }

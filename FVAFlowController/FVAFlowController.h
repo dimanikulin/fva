@@ -7,6 +7,7 @@
 #include "fvadevicecontext.h"
 #include "fvacltcontext.h"
 #include "fvaconfiguration.h"
+#include "FVADataProcessor.h"
 
 class QObject;
 
@@ -71,6 +72,9 @@ private:
 	*/
 	FVA_EXIT_CODE performLocationChecks(CLTContext& context, const FvaConfiguration& cfg);
 
+private: //data
+
+	FVADataProcessor m_dataProcessor;
 };
 #endif
 
