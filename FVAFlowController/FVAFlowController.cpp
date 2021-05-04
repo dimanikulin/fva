@@ -127,10 +127,14 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 }
 FVA_EXIT_CODE FVAFlowController::performDTChecks(const QString& dir)
 {
+	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTCheckDateTime", dir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckDateTime")
 	return FVA_NO_ERROR;
 }
 
 FVA_EXIT_CODE FVAFlowController::performLocationChecks(const QString& dir)
 {
+	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTCheckLocation", dir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckLocation")
 	return FVA_NO_ERROR;
 }
