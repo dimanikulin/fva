@@ -215,7 +215,6 @@ QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error, const 
 		QString createdDate;
 		if (!riffInfo.open(pathToFile, error) || !riffInfo.findTag("IDIT", createdDate) || !riffInfo.convertToDate(createdDate, renameDateTime, ctx.exifDateTime))
 		{
-			
 			QProcess myProcess;    
 			myProcess.setProcessChannelMode(QProcess::MergedChannels);
 			QStringList params;

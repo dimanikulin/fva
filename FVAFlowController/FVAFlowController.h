@@ -5,6 +5,8 @@
 
 #include "fvaexitcodes.h"
 #include "fvadevicecontext.h"
+#include "fvacltcontext.h"
+#include "fvaconfiguration.h"
 
 class QObject;
 
@@ -30,12 +32,12 @@ private:
 
 	/*!
 	 * \brief it performs the device checks for input folder
-	 * \param dir - directory for the checking
 	 * \param deviceContext - devices information got during checks, filled up by this function
-	 * \param rootSWdir - root directory where the fva sw is located
+	 * \param context - one command parameters (environment)
+	 * \param cfg - system configuration, applicable for whole system
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE performDeviceChecks(const QString& dir, DeviceContext& deviceContext, const QString& rootSWdir);
+	FVA_EXIT_CODE performDeviceChecks(DeviceContext& deviceContext, CLTContext& context, const FvaConfiguration& cfg);
 
 	/*!
 	 * \brief it performs the orientation checks for input folder and reorientate the photos for inproper orientation
@@ -47,24 +49,27 @@ private:
 
 	/*!
 	 * \brief it performs the common checks for input folder
-	 * \param dir - directory for the checking
+	 * \param context - one command parameters (environment)
+	 * \param cfg - system configuration, applicable for whole system
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)	
 	 */
-	FVA_EXIT_CODE performCommonChecks(const QString& dir);
+	FVA_EXIT_CODE performCommonChecks(CLTContext& context, const FvaConfiguration& cfg);
 
 	/*!
 	* \brief it performs the date-time checks for input folder
-	* \param dir - directory for the checking
+	* \param context - one command parameters (environment)
+	* \param cfg - system configuration, applicable for whole system
 	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	*/
-	FVA_EXIT_CODE performDTChecks(const QString& dir);
+	FVA_EXIT_CODE performDTChecks(CLTContext& context, const FvaConfiguration& cfg);
 
 	/*!
 	* \brief it performs the location checks for input folder
-	* \param dir - directory for the checking
+	* \param context - one command parameters (environment)
+	* \param cfg - system configuration, applicable for whole system
 	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	*/
-	FVA_EXIT_CODE performLocationChecks(const QString& dir);
+	FVA_EXIT_CODE performLocationChecks(CLTContext& context, const FvaConfiguration& cfg);
 
 };
 #endif
