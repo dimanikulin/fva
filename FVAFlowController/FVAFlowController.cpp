@@ -10,7 +10,7 @@
 #include "fvacommoncsv.h"
 #include "fvaconstants.h"
 
-FVA_EXIT_CODE performDeviceChecks(const QString& dir, DeviceContext& deviceContext, const QString& rootSWdir)
+FVA_EXIT_CODE FVAFlowController::performDeviceChecks(const QString& dir, DeviceContext& deviceContext, const QString& rootSWdir)
 {
 	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTCheckDeviceName", dir);
 	if (FVA_ERROR_NON_UNIQUE_DEVICE_NAME == exitCode)
@@ -47,13 +47,30 @@ FVA_EXIT_CODE performDeviceChecks(const QString& dir, DeviceContext& deviceConte
 	}
 	return FVA_NO_ERROR;
 }
-void performOrientationChecks(const QString& dir, QObject* obj)
+void FVAFlowController::performOrientationChecks(const QString& dir, QObject* obj)
 {
 	// to run change orentation in auto mode
 	QProcess myProcess(obj);
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe -auto " + dir);
 	myProcess.waitForFinished(-1);
+}
+
+FVA_EXIT_CODE FVAFlowController::performCommonChecks(const QString& dir)
+{
+	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTAutoChecks1", dir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckFileFormat")
+
+	exitCode = fvaRunCLT("CLTRenameVideoBySequence", dir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTRenameVideoBySequence")
+
+	exitCode = fvaRunCLT("CLTConvertAmr", dir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTConvertAmr")
+
+	exitCode = fvaRunCLT("CLTAutoChecks1", dir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTAutoChecks1")
+
+	return FVA_NO_ERROR;
 }
 
 FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, DeviceContext& deviceContext, QObject* obj)
@@ -66,12 +83,8 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsString(Common::RootDir)")
 
-	exitCode = fvaRunCLT("CLTRenameVideoBySequence", dir);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTRenameVideoBySequence")
-	exitCode = fvaRunCLT("CLTConvertAmr", dir);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTConvertAmr")
-	exitCode = fvaRunCLT("CLTAutoChecks1", dir);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTAutoChecks1")
+	FVA_EXIT_CODE res = performCommonChecks(dir);
+	RET_RES_IF_RES_IS_ERROR
 
 	// do we need to search by device?
 	bool SearchByDevice = false;
@@ -89,5 +102,6 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 
 	if (needCheckOrientation)
 		performOrientationChecks(dir,obj);
+
 	return FVA_NO_ERROR;
 }
