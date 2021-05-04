@@ -51,6 +51,21 @@ private:
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)	
 	 */
 	FVA_EXIT_CODE performCommonChecks(const QString& dir);
+
+	/*!
+	* \brief it performs the date-time checks for input folder
+	* \param dir - directory for the checking
+	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	*/
+	FVA_EXIT_CODE performDTChecks(const QString& dir);
+
+	/*!
+	* \brief it performs the location checks for input folder
+	* \param dir - directory for the checking
+	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	*/
+	FVA_EXIT_CODE performLocationChecks(const QString& dir);
+
 };
 #endif
 

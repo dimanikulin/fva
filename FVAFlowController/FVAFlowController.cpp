@@ -58,7 +58,7 @@ void FVAFlowController::performOrientationChecks(const QString& dir, QObject* ob
 
 FVA_EXIT_CODE FVAFlowController::performCommonChecks(const QString& dir)
 {
-	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTAutoChecks1", dir);
+	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTCheckFileFormat", dir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckFileFormat")
 
 	exitCode = fvaRunCLT("CLTRenameVideoBySequence", dir);
@@ -90,12 +90,32 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	bool SearchByDevice = false;
 	exitCode = cfg.getParamAsBoolean("Search::Device", SearchByDevice);
 	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Device)")
-
 	if (SearchByDevice)
 	{
 		FVA_EXIT_CODE res = performDeviceChecks(dir, deviceContext, rootSWdir);
 		RET_RES_IF_RES_IS_ERROR
 	}
+
+	// do we need to search by date-time?
+	bool SearchByDateTime = false;
+	exitCode = cfg.getParamAsBoolean("Search::DateTime", SearchByDateTime);
+	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::DateTime)")
+	if (SearchByDateTime)
+	{
+		FVA_EXIT_CODE res = performDTChecks(dir);
+		RET_RES_IF_RES_IS_ERROR
+	}
+
+	// do we need to search by location?
+	bool SearchByLocation = false;
+	exitCode = cfg.getParamAsBoolean("Search::Location", SearchByLocation);
+	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Location)")
+	if (SearchByLocation)
+	{
+		FVA_EXIT_CODE res = performLocationChecks(dir);
+		RET_RES_IF_RES_IS_ERROR
+	}
+
 	bool needCheckOrientation = false;
 	exitCode = cfg.getParamAsBoolean("Common::CheckOrientation", needCheckOrientation);
 	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean with Common::CheckOrientation")
@@ -103,5 +123,14 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	if (needCheckOrientation)
 		performOrientationChecks(dir,obj);
 
+	return FVA_NO_ERROR;
+}
+FVA_EXIT_CODE FVAFlowController::performDTChecks(const QString& dir)
+{
+	return FVA_NO_ERROR;
+}
+
+FVA_EXIT_CODE FVAFlowController::performLocationChecks(const QString& dir)
+{
 	return FVA_NO_ERROR;
 }
