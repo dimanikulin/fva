@@ -190,6 +190,9 @@
     <ClInclude Include="fvafmtcontext.h" />
     <ClInclude Include="fvariffparser.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="fvalogger.inl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -1,30 +1,12 @@
 #include <QtCore/QDateTime>
-#include <QtCore/QDebug>
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QApplication>
 
 #include "cmdlineexecutor.h"
 #include "fvacommonlib.h"
+#include "fvalogger.inl"
 
-#include <fstream>
-
-/*!
- * global log file
- */
-std::ofstream	g_logfile;
-
-/*!
- * global log level
- */
-QtMsgType	g_logLevel = QtDebugMsg;
-
-void msghandler(QtMsgType type, const QMessageLogContext &, const QString & str)
-{
-	if ( type < g_logLevel )
-		return;	
-	g_logfile << str.toLatin1().data() << "\n";
-	g_logfile.flush();
-}
+LOGGER_GLOBAL
 
 int main( int argc, char *argv[] )
 {
@@ -34,19 +16,7 @@ int main( int argc, char *argv[] )
 	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
 	RET_RES_IF_RES_IS_ERROR
 
-	//install : set the callback
-	qInstallMessageHandler(msghandler);
-
-	QString logPath; 
-	res = cfg.getParamAsString("Common::RootDir", logPath);
-	RET_RES_IF_RES_IS_ERROR
-	logPath += "#logs/organizerlog.txt";
-	g_logfile.open(logPath.toStdString(), std::ios::app);
-
-	uint dLogLevel = 0;
-	res = cfg.getParamAsUint("Common::LogLevel", dLogLevel);
-	RET_RES_IF_RES_IS_ERROR
-	g_logLevel = (QtMsgType)dLogLevel;
+	LOG_INIT(org.txt)
 
 	CLTContext context;
 	QString temp;
