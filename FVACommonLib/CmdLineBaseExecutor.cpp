@@ -26,14 +26,14 @@ FVA_EXIT_CODE CmdLineBaseExecutor::run(const CLTContext& context, const FvaConfi
 
 	if (context.readOnly && !task->supportReadOnly())
 	{
-		qCritical() << "[ERR]" << QDateTime::currentDateTime().toString("[hh:mm:ss]").toLatin1().data() << "[CLTEXECUTOR]command does not support readonly:" << context.cmdType;
+		qCritical() << "[ERR]" << QDateTime::currentDateTime().toString("[yyyy:MM:dd][hh:mm:ss]").toLatin1().data() << "[CLTEXECUTOR]command does not support readonly:" << context.cmdType;
 		return FVA_ERROR_NOT_SUPPORTED_RO_MODE;
 	}
 
 	// if it is recursive command
 	if (context.recursive)
 	{
-		qWarning() << "[DBG]" << QDateTime::currentDateTime().toString("[hh:mm:ss]").toLatin1().data() << "[CLTEXECUTOR] RECURSIVE mode for cmd:" << context.cmdType;
+		qWarning() << "[DBG]" << QDateTime::currentDateTime().toString("[yyyy:MM:dd][hh:mm:ss]").toLatin1().data() << "[CLTEXECUTOR] RECURSIVE mode for cmd:" << context.cmdType;
 		return task->processFolderRecursivly(context.dir, context);
 	}
 	else
