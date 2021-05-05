@@ -27,7 +27,7 @@ void msghandler(QtMsgType type, const QMessageLogContext &, const QString & str)
 qInstallMessageHandler(msghandler); \
 QString logPath; \
 res = cfg.getParamAsString("Common::RootDir", logPath); \
-logPath += "#logs/#LOG_NAME";\
+logPath += + LOG_NAME;\
 g_logfile.open(logPath.toStdString(), std::ios::app);\
 \
 uint dLogLevel = 0; \

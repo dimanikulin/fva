@@ -62,8 +62,8 @@ class CmdLineBaseTask
 
 extern QMap< unsigned int, unsigned int > sizes;
 
-#define LOG_QWARN qWarning()<<"[WRN]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]"
-#define LOG_QCRIT qCritical()<<"[ERR]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]"
-#define LOG_QDEB qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]"
+#define LOG_QWARN qWarning()<<"[WRN]"<<QDateTime::currentDateTime().toString( "[yyyy:MM:dd] [hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]"
+#define LOG_QCRIT qCritical()<<"[ERR]"<<QDateTime::currentDateTime().toString( "[yyyy:MM:dd] [hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]"
+#define LOG_QDEB qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString( "[yyyy:MM:dd] [hh:mm:ss]").toLatin1().data()<<"["<<Name().toUpper()<<"]"
 
 #endif //_CMD_LINE_BASE_TASK_H_

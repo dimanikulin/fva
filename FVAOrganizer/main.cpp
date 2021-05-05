@@ -16,7 +16,7 @@ int main( int argc, char *argv[] )
 	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
 	RET_RES_IF_RES_IS_ERROR
 
-	LOG_INIT(org.txt)
+	LOG_INIT("#logs/org.txt")
 
 	CLTContext context;
 	QString temp;
