@@ -373,3 +373,7 @@ easyexif/
 #ignore some scripts
 fvaCsvEditor.py
 fvaCsvViewer.py
+
+#ignore test data
+*.jpg
+
