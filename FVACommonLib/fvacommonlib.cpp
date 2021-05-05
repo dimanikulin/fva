@@ -24,9 +24,10 @@ FVA_FS_TYPE fvaConvertFileExt2FileType ( const QString& extention )
 {	
 	if (	extention.toUpper()	== "JPG" 
 		|| extention.toUpper()	== "JPEG" 
-		|| extention.toUpper()	== "PNG" 
-		|| extention.toUpper()	== "BMP" 
-		|| extention.toUpper()	== "GIF" )
+		//|| extention.toUpper()	== "PNG" 
+		//|| extention.toUpper()	== "BMP" 
+		//|| extention.toUpper()	== "GIF" 
+		)
 		return FVA_FS_TYPE_IMG;
 	
 	if ( extention.toUpper()	== "AVI" 
