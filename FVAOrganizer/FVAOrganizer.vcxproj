@@ -21,6 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CB6DCEA7-4012-4BBC-9A41-C310D6B0FCBC}</ProjectGuid>
     <Keyword>Qt4VSv1.0</Keyword>
+    <ProjectName>FVACLTProcess</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

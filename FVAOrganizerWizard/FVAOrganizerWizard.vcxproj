@@ -21,6 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{436CBF45-4DFC-4D2A-8B18-34AD617FCF41}</ProjectGuid>
     <Keyword>Qt4VSv1.0</Keyword>
+    <ProjectName>FVAOrganizerWizard</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

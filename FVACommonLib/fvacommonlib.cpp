@@ -296,7 +296,7 @@ FVA_EXIT_CODE fvaRunCLT(const QString& cmdName, const QString& inputDir, bool is
 	if (!custom.isEmpty())
 		params.append("custom=" + custom);
 
-	myProcess.start("FVAOrganizer.exe", params);
+	myProcess.start("FVACLTProcess.exe", params);
 	myProcess.waitForFinished(-1);
 
 	return static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
