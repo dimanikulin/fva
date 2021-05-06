@@ -9,6 +9,9 @@
 #include "CLTCheckDeviceName.h"
 #include "CLTAutoChecks1.h"
 #include "CLTCheckFileFormat.h"
+#include "CLTCheckLocation.h"
+#include "CLTCheckDatetime.h"
+
 
 std::auto_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTContext& context, const FvaConfiguration& cfg)
 {
@@ -20,6 +23,8 @@ std::auto_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTConte
 	else if (context.cmdType == CLTConvertAmr::Name())				r.reset(new CLTConvertAmr());
 	else if (context.cmdType == CLTAutoChecks1::Name())				r.reset(new CLTAutoChecks1(cfg));
 	else if (context.cmdType == CLTCheckFileFormat::Name())			r.reset(new CLTCheckFileFormat());
+	else if (context.cmdType == CLTCheckLocation::Name())			r.reset(new CLTCheckLocation());
+	else if (context.cmdType == CLTCheckDateTime::Name())			r.reset(new CLTCheckDateTime(cfg));
 
 	return r;
 }
