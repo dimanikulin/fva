@@ -2,7 +2,7 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QApplication>
 
-#include "cmdlineexecutor.h"
+#include "fvadataprocessor.h"
 #include "fvacommonlib.h"
 #include "fvalogger.inl"
 
@@ -82,7 +82,7 @@ int main( int argc, char *argv[] )
 		}
 	}
 
-	CmdLineExecutor cmdExecutor;
+	FVADataProcessor cmdExecutor;
 	int result = cmdExecutor.run(context, cfg);
 	g_logfile.close();
 	return result;

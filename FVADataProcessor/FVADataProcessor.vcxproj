@@ -93,24 +93,48 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CLTAutoChecks1.cpp" />
+    <ClCompile Include="CLTAutoChecks2.cpp" />
+    <ClCompile Include="CLTAutoChecks3.cpp" />
     <ClCompile Include="CLTCheckDateTime.cpp" />
     <ClCompile Include="CLTCheckDeviceName.cpp" />
     <ClCompile Include="CLTCheckFileFormat.cpp" />
     <ClCompile Include="CLTCheckLocation.cpp" />
     <ClCompile Include="CLTConvertAmr.cpp" />
     <ClCompile Include="CLTCreateDirStructByDevNames.cpp" />
+    <ClCompile Include="CLTCreateDirStructByFileNames.cpp" />
+    <ClCompile Include="CLTCSVFvaFiles.cpp" />
+    <ClCompile Include="CLTFixDuplicatedFileNames.cpp" />
+    <ClCompile Include="CLTGetFvaDirType.cpp" />
+    <ClCompile Include="CLTMerge1DayEventDir.cpp" />
+    <ClCompile Include="CLTMerge1EventDir.cpp" />
+    <ClCompile Include="CLTMoveAloneFiles.cpp" />
+    <ClCompile Include="CLTPrintFSStructure.cpp" />
+    <ClCompile Include="CLTRenameFiles.cpp" />
     <ClCompile Include="CLTRenameVideoBySequence.cpp" />
+    <ClCompile Include="CLTSetFileAtts.cpp" />
     <ClCompile Include="FVADataProcessor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLTAutoChecks1.h" />
+    <ClInclude Include="CLTAutoChecks2.h" />
+    <ClInclude Include="CLTAutoChecks3.h" />
     <ClInclude Include="CLTCheckDateTime.h" />
     <ClInclude Include="CLTCheckDeviceName.h" />
     <ClInclude Include="CLTCheckFileFormat.h" />
     <ClInclude Include="CLTCheckLocation.h" />
     <ClInclude Include="CLTConvertAmr.h" />
     <ClInclude Include="CLTCreateDirStructByDevNames.h" />
+    <ClInclude Include="CLTCreateDirStructByFileNames.h" />
+    <ClInclude Include="CLTCSVFvaFiles.h" />
+    <ClInclude Include="CLTFixDuplicatedFileNames.h" />
+    <ClInclude Include="CLTGetFvaDirType.h" />
+    <ClInclude Include="CLTMerge1DayEventDir.h" />
+    <ClInclude Include="CLTMerge1EventDir.h" />
+    <ClInclude Include="CLTMoveAloneFiles.h" />
+    <ClInclude Include="CLTPrintFSStructure.h" />
+    <ClInclude Include="CLTRenameFiles.h" />
     <ClInclude Include="CLTRenameVideoBySequence.h" />
+    <ClInclude Include="CLTSetFileAtts.h" />
     <ClInclude Include="FVADataProcessor.h" />
   </ItemGroup>
   <ItemGroup>

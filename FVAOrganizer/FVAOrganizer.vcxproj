@@ -101,7 +101,7 @@
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);.\..\fvacommonlib;.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);.\..\fvacommonlib;.\GeneratedFiles;.\..\fvadataprocessor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
@@ -110,7 +110,7 @@
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;..\FVAbin\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gdi32.lib;comdlg32.lib;ws2_32.lib;imm32.lib;winmm.lib;qtmaind.lib;Qt5Cored.lib;QT5Guid.lib;Qt5Sqld.lib;Qt5Widgetsd.lib;fva.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gdi32.lib;comdlg32.lib;ws2_32.lib;imm32.lib;winmm.lib;qtmaind.lib;Qt5Cored.lib;QT5Guid.lib;Qt5Sqld.lib;Qt5Widgetsd.lib;fva.lib;fvadataprocessor.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
@@ -142,7 +142,7 @@
       <DebugInformationFormat>
       </DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.\..\FVACommonLib;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\..\FVACommonLib;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);.\..\fvadataprocessor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>false</TreatWarningAsError>
@@ -151,42 +151,14 @@
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;..\FVABin\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ws2_32.lib;qtmain.lib;Qt5Core.lib;QT5Gui.lib;Qt5Sql.lib;Qt5Widgets.lib;fva.lib;imm32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;qtmain.lib;Qt5Core.lib;QT5Gui.lib;Qt5Sql.lib;Qt5Widgets.lib;fva.lib;imm32.lib;winmm.lib;fvadataprocessor.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <TargetMachine>MachineX64</TargetMachine>
       <AdditionalOptions> /SUBSYSTEM:WINDOWS</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CLTAutoChecks2.cpp" />
-    <ClCompile Include="CLTAutoChecks3.cpp" />
-    <ClCompile Include="CLTFixDuplicatedFileNames.cpp" />
-    <ClCompile Include="CLTGetFvaDirType.cpp" />
-    <ClCompile Include="CLTMerge1DayEventDir.cpp" />
-    <ClCompile Include="CLTMerge1EventDir.cpp" />
-    <ClCompile Include="CLTMoveAloneFiles.cpp" />
-    <ClCompile Include="CLTPrintFSStructure.cpp" />
-    <ClCompile Include="CLTRenameFiles.cpp" />
-    <ClCompile Include="CLTSetFileAtts.cpp" />
-    <ClCompile Include="CLTCSVFvaFiles.cpp" />
-    <ClCompile Include="CmdLineExecutor.cpp" />
-    <ClCompile Include="CLTCreateDirStructByFileNames.cpp" />
     <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CLTAutoChecks2.h" />
-    <ClInclude Include="CLTAutoChecks3.h" />
-    <ClInclude Include="CLTFixDuplicatedFileNames.h" />
-    <ClInclude Include="CLTGetFvaDirType.h" />
-    <ClInclude Include="CLTMerge1DayEventDir.h" />
-    <ClInclude Include="CLTMerge1EventDir.h" />
-    <ClInclude Include="CLTMoveAloneFiles.h" />
-    <ClInclude Include="CLTPrintFSStructure.h" />
-    <ClInclude Include="CLTRenameFiles.h" />
-    <ClInclude Include="CLTSetFileAtts.h" />
-    <ClInclude Include="CLTCSVFvaFiles.h" />
-    <ClInclude Include="CmdLineExecutor.h" />
-    <ClInclude Include="CLTCreateDirStructByFileNames.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
