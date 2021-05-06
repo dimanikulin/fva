@@ -16,33 +16,30 @@
 FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	: deviceId (-1)
 {
-	QLabel * titleLabel	= new QLabel(tr("Убедитесь, что устройство, которым делались снимки, верно определилось!"));
-    titleLabel->setAlignment(Qt::AlignLeft);
-
-	deviceLbl	= new QLabel(tr("Название:"));
-    deviceLbl->setAlignment(Qt::AlignLeft);
+#ifdef  FVA_LANGUAGE_RUS
+	QLabel * titleLabel = new QLabel(tr("Убедитесь, что устройство, которым делались снимки, верно определилось!"));
+	deviceLbl = new QLabel(tr("Название:"));
+	matchLbl = new QLabel(tr("Линковочное имя:"));
+	ownerLbl = new QLabel(tr("Владелец:"));
+	btnDct->setText(tr("Справочники"));
+#else 
+#ifdef  FVA_LANGUAGE_ENG
+	QLabel * titleLabel = new QLabel(tr("Please make sure, that device, took the photos, is defined properly!"));
+	deviceLbl = new QLabel(tr("Device Name:"));
+	matchLbl = new QLabel(tr("Linking name:"));
+	ownerLbl = new QLabel(tr("Device owner:"));
+	btnDct->setText(tr("Dictionary"));
+#endif // FVA_LANGUAGE_ENG
+#endif // FVA_LANGUAGE_RUS
 
 	deviceName	= new QLineEdit;
-	deviceName->setAlignment(Qt::AlignLeft);
 	deviceName->setMaxLength(40);
-
-	matchLbl	= new QLabel(tr("Линковочное имя:"));
-    matchLbl->setAlignment(Qt::AlignLeft);
-
 	matchName	= new QLineEdit;
-    matchName->setAlignment(Qt::AlignLeft);
 	matchName->setMaxLength(40);
 
-	ownerLbl	= new QLabel(tr("Владелец:"));
-    ownerLbl->setAlignment(Qt::AlignLeft);
-	
 	ownerName	= new QLineEdit;
-	ownerName->setAlignment(Qt::AlignLeft);
-
 	cbDevice	= new QComboBox;
-
 	btnDct		= new QPushButton;
-	btnDct->setText(tr("Справочники"));
 
 	QGridLayout * tableLayout = new QGridLayout;
 
@@ -82,12 +79,23 @@ void FVAOrganizerDevicePage::setVisible(bool visible)
 		{
 			cbDevice->setVisible(true);
 			cbDevice->clear();
+#ifdef  FVA_LANGUAGE_RUS
 			cbDevice->addItem ( tr("Выбирете владельца"), 0 );
 			for ( auto i = deviceMap.begin(); i != deviceMap.end() ; ++i )
-				cbDevice->addItem ( i->ownerName, i->deviceId );
+				cbDevice->addItem(i->ownerName, i->deviceId);
 
 			deviceName->setText(tr("НЕОПРЕДЕЛЕННО!"));
 			ownerName->setText(tr("НЕОПРЕДЕЛЕН!"));
+#else 
+#ifdef  FVA_LANGUAGE_ENG
+			cbDevice->addItem(tr("Select the owner"), 0);
+			for (auto i = deviceMap.begin(); i != deviceMap.end(); ++i)
+				cbDevice->addItem(i->ownerName, i->deviceId);
+
+			deviceName->setText(tr("UNDEFINED!"));
+			ownerName->setText(tr("UNDEFINED!"));
+#endif // FVA_LANGUAGE_ENG
+#endif // FVA_LANGUAGE_RUS
 		}
 		else if (deviceMap.size() ==1 )
 		{	
@@ -98,8 +106,15 @@ void FVAOrganizerDevicePage::setVisible(bool visible)
 		}
 		else
 		{
+#ifdef  FVA_LANGUAGE_RUS
 			deviceName->setText(tr("НЕОПРЕДЕЛЕННО!"));
 			ownerName->setText(tr("НЕОПРЕДЕЛЕН!"));
+#else 
+#ifdef  FVA_LANGUAGE_ENG
+			deviceName->setText(tr("UNDEFINED!"));
+			ownerName->setText(tr("UNDEFINED!"));
+#endif // FVA_LANGUAGE_ENG
+#endif // FVA_LANGUAGE_RUS
 		}
 	}
 	return QWizardPage::setVisible(visible);

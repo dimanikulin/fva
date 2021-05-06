@@ -25,9 +25,17 @@ public:
 	 * \param dir - directory for the checking
 	 * \param deviceContext - devices information got during checks, filled up by this function
 	 * \param obj - to attach the child processes to this object
-	 * \return it returns code of error (not FVA_NO_ERROR if error happened, FVA_NO_ERROR - if no error happened)
+	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	*/
 	FVA_EXIT_CODE PerformChecksForInputDir(const QString& dir, DeviceContext& deviceContext, QObject* obj);
+
+	/*!
+	* \brief it performs the organization stuff for the input folder according to fva configuration
+	* \param dir - directory to perform the actions in
+	* \param deviceId - identifier of device from FVA device dictionary  
+	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	*/
+	FVA_EXIT_CODE OrganizeInputDir(const QString& dir, int deviceId);
 
 private:
 

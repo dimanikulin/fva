@@ -148,3 +148,7 @@ FVA_EXIT_CODE FVAFlowController::performLocationChecks(CLTContext& context, cons
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckLocation")
 	return FVA_NO_ERROR;
 }
+FVA_EXIT_CODE OrganizeInputDir(const QString& dir, int deviceId)
+{
+	return FVA_NO_ERROR;
+}
