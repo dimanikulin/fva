@@ -5,10 +5,8 @@
 #include <QtCore/QDir>
 
 #include "FVAConfiguration.h"
-#include "fvacommonlib.h"
 #include "fvacommonui.h"
 #include "fvacommoncsv.h"
-#include "fvaconstants.h"
 
 FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContext, CLTContext& context, const FvaConfiguration& cfg)
 {
@@ -148,7 +146,45 @@ FVA_EXIT_CODE FVAFlowController::performLocationChecks(CLTContext& context, cons
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckLocation")
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE OrganizeInputDir(const QString& dir, int deviceId)
+FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int deviceId)
 {
+	FvaConfiguration cfg;
+	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.load")
+
+	CLTContext context;
+	context.dir = dir;
+	context.cmdType = "CLTRenameFiles";
+	context.readOnly = true; // in read only mode CLTRenameFiles just checks if renaming is possible 
+	exitCode = m_dataProcessor.run(context, cfg);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTRenameFiles RO mode")
+
+	context.readOnly = false;
+	exitCode = m_dataProcessor.run(context, cfg);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTRenameFiles")
+
+	context.cmdType = "CLTCSVFvaFile";
+	context.custom = QString::number(deviceId);
+	exitCode = m_dataProcessor.run(context, cfg);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCSVFvaFile")
+	context.custom = "";
+
+	context.cmdType = "CLTCreateDirStructByFileNames";
+	exitCode = m_dataProcessor.run(context, cfg);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCreateDirStructByFileNames")
+
+	context.cmdType = "CLTMoveAloneFiles";
+	exitCode = m_dataProcessor.run(context, cfg);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTMoveAloneFiles")
+
+	context.cmdType = "CLTGetFvaDirType";
+	context.recursive = false;
+	exitCode = m_dataProcessor.run(context, cfg);
+	context.recursive = true;
+
+	context.cmdType = "CLTAutoChecks2";
+	exitCode = m_dataProcessor.run(context, cfg);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTAutoChecks2")
+
 	return FVA_NO_ERROR;
 }

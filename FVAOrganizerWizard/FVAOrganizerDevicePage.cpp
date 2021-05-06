@@ -12,6 +12,7 @@
 #include "fvacommoncsv.h"
 #include "fvacommonui.h"
 #include "FVAOrganizerWizard.h"
+#include "FVAFlowController.h"
 
 FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	: deviceId (-1)
@@ -158,21 +159,10 @@ bool FVAOrganizerDevicePage::validatePage()
 		}
 	}
 
-	// in read only mode CLTRenameFiles just checks if renaming is possible 
-	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTRenameFiles", ((FVAOrganizerWizard*)wizard())->inputFolder(), false, true);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTRenameFiles RO mode")
-	exitCode = fvaRunCLT("CLTRenameFiles", ((FVAOrganizerWizard*)wizard())->inputFolder());
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTRenameFiles")
-	exitCode = fvaRunCLT("CLTCSVFvaFile", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTCSVFvaFile")
-	exitCode = fvaRunCLT("CLTCreateDirStructByFileNames", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, QString::number(deviceId));
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTCreateDirStructByFileNames")
-	exitCode = fvaRunCLT("CLTMoveAloneFiles", ((FVAOrganizerWizard*)wizard())->inputFolder());
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTMoveAloneFiles")
-	exitCode = fvaRunCLT("CLTGetFvaDirType", ((FVAOrganizerWizard*)wizard())->inputFolder(),false);
+	FVAFlowController flow;
+	FVA_EXIT_CODE exitCode = flow.OrganizeInputDir(((FVAOrganizerWizard*)wizard())->inputFolder(), deviceId);
 	((FVAOrganizerWizard*)wizard())->inputDirType(exitCode);
-	exitCode = fvaRunCLT("CLTAutoChecks2", ((FVAOrganizerWizard*)wizard())->inputFolder());
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTAutoChecks2")
-
+	if (exitCode != FVA_NO_ERROR)
+		return false;
 	return true;
 }
