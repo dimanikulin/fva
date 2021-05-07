@@ -3,9 +3,7 @@
 
 #include <QtWidgets/QWizardPage>
 
-class QLabel;
 class QLineEdit;
-class QTextBrowser;
 
 class FVAOrganizerOutputDirPage : public QWizardPage
 {
@@ -22,13 +20,13 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 		virtual void	setVisible(bool visible);
 
 	private slots:
-		void OnDirButtonClicked();
+		void OnDigiKamDirButtonClicked();
+		void OnGooglePhotoDirButtonClicked();
 
-	private:
+	private: //data
 
-		QLabel*			outputDirLabel;
-		QLineEdit*		outputDirLineEdit;
-		QPushButton*	dirButton;
+		QLineEdit* digiKamLineEdit;
+		QLineEdit* googlePhotoLineEdit;
 };
 
 #endif // _FVA_ORG_OUTPUT_PAGE_H_
