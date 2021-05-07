@@ -2,13 +2,10 @@
 #define _FVA_ORG_OUTPUT_PAGE_H_
 
 #include <QtWidgets/QWizardPage>
-#include <QtWidgets/QRadioButton>
 
 class QLabel;
 class QLineEdit;
 class QTextBrowser;
-class QPushButton;
-class QRaddioButton;
 
 class FVAOrganizerOutputDirPage : public QWizardPage
 {
@@ -26,22 +23,12 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 
 	private slots:
 		void OnDirButtonClicked();
-		void OnFvaInfoButtonPressed();
 
 	private:
 
-		QRadioButton*	oneEventOneDay;
-		QPushButton*	fvaInfoButton;
-
-		QRadioButton*	severalEventsOneDay;
-
-		QRadioButton*	severalEventsSeveralDays;
-
-		QRadioButton*	oneEventSeveralDays;
 		QLabel*			outputDirLabel;
 		QLineEdit*		outputDirLineEdit;
 		QPushButton*	dirButton;
-
 };
 
 #endif // _FVA_ORG_OUTPUT_PAGE_H_

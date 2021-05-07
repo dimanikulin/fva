@@ -17,7 +17,7 @@ class QObject;
 class FVAFlowController
 {
 public:
-	FVAFlowController(){};
+	FVAFlowController();
 	virtual ~FVAFlowController(){};
 
 	/*!
@@ -36,6 +36,14 @@ public:
 	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	*/
 	FVA_EXIT_CODE OrganizeInputDir(const QString& dir, int deviceId);
+
+	/*!
+	* \brief it performs the moving input folder content to output folder with checks according to event cfg
+	* \param inputDir - directory to move content from
+	* \param outputDir - directory to move content into
+	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	*/
+	FVA_EXIT_CODE MoveInputDirToOutput(const QString& inputDir, const QString& outputDir);
 
 private:
 
@@ -82,7 +90,15 @@ private:
 
 private: //data
 
+	/*!
+	 * brief processor to support the frow from low level actions
+	 */
 	FVADataProcessor m_dataProcessor;
+
+	/*!
+	* brief global application configuration
+	*/
+	FvaConfiguration m_cfg;
 };
 #endif
 

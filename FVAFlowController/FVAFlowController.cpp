@@ -8,6 +8,12 @@
 #include "fvacommonui.h"
 #include "fvacommoncsv.h"
 
+FVAFlowController::FVAFlowController()
+{
+	FVA_EXIT_CODE exitCode = m_cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.load")
+}
+
 FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContext, CLTContext& context, const FvaConfiguration& cfg)
 {
 	QString rootSWdir;
@@ -83,47 +89,43 @@ FVA_EXIT_CODE FVAFlowController::performCommonChecks(CLTContext& context, const 
 
 FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, DeviceContext& deviceContext, QObject* obj)
 {
-	FvaConfiguration cfg;
-	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
-	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.load")
-
 	CLTContext context;
 	context.dir = dir;
-	FVA_EXIT_CODE res = performCommonChecks(context, cfg);
+	FVA_EXIT_CODE res = performCommonChecks(context, m_cfg);
 	RET_RES_IF_RES_IS_ERROR
 
 	// do we need to search by device?
 	bool SearchByDevice = false;
-	exitCode = cfg.getParamAsBoolean("Search::Device", SearchByDevice);
+	FVA_EXIT_CODE exitCode = m_cfg.getParamAsBoolean("Search::Device", SearchByDevice);
 	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Device)")
 	if (SearchByDevice)
 	{
-		FVA_EXIT_CODE res = performDeviceChecks(deviceContext, context, cfg);
+		FVA_EXIT_CODE res = performDeviceChecks(deviceContext, context, m_cfg);
 		RET_RES_IF_RES_IS_ERROR
 	}
 
 	// do we need to search by date-time?
 	bool SearchByDateTime = false;
-	exitCode = cfg.getParamAsBoolean("Search::DateTime", SearchByDateTime);
+	exitCode = m_cfg.getParamAsBoolean("Search::DateTime", SearchByDateTime);
 	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::DateTime)")
 	if (SearchByDateTime)
 	{
-		FVA_EXIT_CODE res = performDTChecks(context, cfg);
+		FVA_EXIT_CODE res = performDTChecks(context, m_cfg);
 		RET_RES_IF_RES_IS_ERROR
 	}
 
 	// do we need to search by location?
 	bool SearchByLocation = false;
-	exitCode = cfg.getParamAsBoolean("Search::Location", SearchByLocation);
+	exitCode = m_cfg.getParamAsBoolean("Search::Location", SearchByLocation);
 	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Location)")
 	if (SearchByLocation)
 	{
-		FVA_EXIT_CODE res = performLocationChecks(context, cfg);
+		FVA_EXIT_CODE res = performLocationChecks(context, m_cfg);
 		RET_RES_IF_RES_IS_ERROR
 	}
 
 	bool needCheckOrientation = false;
-	exitCode = cfg.getParamAsBoolean("Common::CheckOrientation", needCheckOrientation);
+	exitCode = m_cfg.getParamAsBoolean("Common::CheckOrientation", needCheckOrientation);
 	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean with Common::CheckOrientation")
 
 	if (needCheckOrientation)
@@ -148,43 +150,149 @@ FVA_EXIT_CODE FVAFlowController::performLocationChecks(CLTContext& context, cons
 }
 FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int deviceId)
 {
-	FvaConfiguration cfg;
-	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
-	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.load")
-
 	CLTContext context;
 	context.dir = dir;
 	context.cmdType = "CLTRenameFiles";
 	context.readOnly = true; // in read only mode CLTRenameFiles just checks if renaming is possible 
-	exitCode = m_dataProcessor.run(context, cfg);
+	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, m_cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTRenameFiles RO mode")
 
 	context.readOnly = false;
-	exitCode = m_dataProcessor.run(context, cfg);
+	exitCode = m_dataProcessor.run(context, m_cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTRenameFiles")
 
 	context.cmdType = "CLTCSVFvaFile";
 	context.custom = QString::number(deviceId);
-	exitCode = m_dataProcessor.run(context, cfg);
+	exitCode = m_dataProcessor.run(context, m_cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCSVFvaFile")
 	context.custom = "";
 
 	context.cmdType = "CLTCreateDirStructByFileNames";
-	exitCode = m_dataProcessor.run(context, cfg);
+	exitCode = m_dataProcessor.run(context, m_cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCreateDirStructByFileNames")
 
 	context.cmdType = "CLTMoveAloneFiles";
-	exitCode = m_dataProcessor.run(context, cfg);
+	exitCode = m_dataProcessor.run(context, m_cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTMoveAloneFiles")
 
 	context.cmdType = "CLTGetFvaDirType";
 	context.recursive = false;
-	exitCode = m_dataProcessor.run(context, cfg);
+	exitCode = m_dataProcessor.run(context, m_cfg);
 	context.recursive = true;
 
 	context.cmdType = "CLTAutoChecks2";
-	exitCode = m_dataProcessor.run(context, cfg);
+	exitCode = m_dataProcessor.run(context, m_cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTAutoChecks2")
+
+	return FVA_NO_ERROR;
+}
+
+FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutput(const QString& inputDir, const QString& outputDir)
+{
+	/*
+	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTSetFileAtts", inputDir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTSetFileAtts")
+
+	if (oneEventOneDay->isChecked())
+	{
+		exitCode = fvaRunCLT("CLTMerge1DayEventDir", ((FVAOrganizerWizard*)wizard())->inputFolder());
+
+		QString mode = "merge";
+		if (exitCode == FVA_ERROR_DEST_DIR_ALREADY_EXISTS)
+		{
+			// ask user for what to do 
+			QMessageBox msgBox;
+			msgBox.setText("The dir for merge is already present in target!");
+			msgBox.setInformativeText("By pressing OK all the content will be merged to already existing folder,\n by pressing Cancel new dir will be created to keep the content");
+			msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+			msgBox.setDefaultButton(QMessageBox::Ok);
+
+			QString mode = (msgBox.exec() == QMessageBox::Ok) ? "merge" : "create";
+		}
+
+		// and run it again
+		exitCode = fvaRunCLT("CLTMerge1DayEventDir", ((FVAOrganizerWizard*)wizard())->inputFolder(), false, false, mode);
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTMerge1DayEventDir")
+
+		if (FVA_ERROR_DEST_FILE_ALREADY_EXISTS == exitCode)
+		{
+			exitCode = fvaRunCLT("CLTFixDuplicatedFileNames", ((FVAOrganizerWizard*)wizard())->inputFolder());
+			IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTFixDuplicatedFileNames")
+				exitCode = fvaRunCLT("CLTMerge1DayEventDir", ((FVAOrganizerWizard*)wizard())->inputFolder());
+		}
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTMerge1DayEventDir")
+	}
+	else if (oneEventSeveralDays->isChecked())
+	{
+		exitCode = fvaRunCLT("CLTMerge1EventDir", ((FVAOrganizerWizard*)wizard())->inputFolder(), true, false, outputDirLineEdit->text());
+
+		if (FVA_ERROR_DEST_FILE_ALREADY_EXISTS == exitCode)
+		{
+			exitCode = fvaRunCLT("CLTFixDuplicatedFileNames", ((FVAOrganizerWizard*)wizard())->inputFolder());
+			IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTFixDuplicatedFileNames")
+				exitCode = fvaRunCLT("CLTMerge1EventDir", ((FVAOrganizerWizard*)wizard())->inputFolder());
+		}
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTMerge1EventDir")
+	}
+	else
+	{
+		FVA_MESSAGE_BOX("Not implemented yet");
+		return false;
+	}
+
+	FvaConfiguration cfg;
+	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	if (FVA_NO_ERROR != res)
+	{
+		FVA_MESSAGE_BOX("cfg.load failed with error " + QString::number(exitCode));
+		return false;
+	}
+
+	QString fvaSWRootDir;
+	res = cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
+	if (FVA_NO_ERROR != res)
+	{
+		FVA_MESSAGE_BOX("cfg.load failed with error " + QString::number(exitCode));
+		return false;
+	}
+
+	QStringList pyCmdList;
+	// merge 2 csv into one: common one and just generated - for file CSVs
+	QString pyScriptPathMerge2 = "python "
+		+ QCoreApplication::applicationDirPath()
+		+ "/scripts/merge2csv.py "
+		+ fvaSWRootDir;
+	pyCmdList.append(pyScriptPathMerge2 + "#data#/fvaFile.csv " + fvaSWRootDir + "#data#/fvaFileN.csv ");
+
+	// lets run python cmd list 
+	for (auto it = pyCmdList.begin(); it != pyCmdList.end(); ++it)
+	{
+		QProcess myProcess(this);
+		myProcess.setProcessChannelMode(QProcess::MergedChannels);
+		myProcess.start(*it);
+		myProcess.waitForFinished(-1);
+
+		int exitCode = myProcess.exitCode();
+		if (exitCode != 0)
+		{
+			FVA_MESSAGE_BOX("Fva cmd " + *it + " failed with error " + QString::number(exitCode));
+			return false;
+		}
+	}
+
+	// clean up after processing
+	QFile::remove(fvaSWRootDir + "#data#/fvaFileN.csv");
+
+	// last but not least check
+	if (oneEventSeveralDays->isChecked())
+	{
+		exitCode = fvaRunCLT("CLTAutoChecks3", outputDirLineEdit->text());
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTAutoChecks3")
+	}
+	else
+	{
+		// TODO - apply call CLTAutoChecks3 for all merged folders
+	}*/
 
 	return FVA_NO_ERROR;
 }
