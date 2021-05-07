@@ -63,18 +63,18 @@ void fvaFindCheckedItem(QTreeWidgetItem *item, QList<unsigned int>& Ids);
 void fvaUpdateChecks(QTreeWidgetItem *item, int column);
 
 #define FVA_MESSAGE_BOX(message)\
-QMessageBox msgBox; \
-msgBox.setText(message); \
-msgBox.exec();
+	QMessageBox msgBox; \
+	msgBox.setText(message); \
+	msgBox.exec();
 
 #define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(cmdName)\
-	if (exitCode != FVA_NO_ERROR)\
-	{\
-		QMessageBox msgBox; \
-		msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
-		msgBox.exec(); \
-		return exitCode; \
-	}
+if (exitCode != FVA_NO_ERROR)\
+{\
+	QMessageBox msgBox; \
+	msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
+	msgBox.exec(); \
+	return exitCode; \
+}
 
 #define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE(cmdName)\
 if (exitCode != FVA_NO_ERROR)\
@@ -92,5 +92,14 @@ if (exitCode != FVA_NO_ERROR)\
 	msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
 	msgBox.exec(); \
 	return exitCode; \
+}
+
+#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET(cmdName)\
+if (exitCode != FVA_NO_ERROR)\
+{\
+	QMessageBox msgBox; \
+	msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
+	msgBox.exec(); \
+	return; \
 }
 #endif // FVACOMMONUI_H
