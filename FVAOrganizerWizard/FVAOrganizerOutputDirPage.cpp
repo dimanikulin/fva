@@ -4,10 +4,12 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QFileDialog>
+#include <QtWidgets/QCheckBox>
 
 #include "fvaorganizerwizard.h"
 #include "fvacommonui.h"
 #include "fvaconfiguration.h"
+#include "FVAFlowController.h"
 
 FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 {   
@@ -18,6 +20,7 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	QLabel* dirLabelGP = new QLabel(tr("Укажите папку Google Photo для контента:"));
 	QPushButton* googlePhotoButton = new QPushButton;
 	googlePhotoButton->setText(tr("Указать папку"));
+	QCheckBox* removeOriginDirCheckBox = new QCheckBox(tr("Удалить исходную папку"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	QLabel* dirLabelDK = new QLabel(tr("Please select a digiKam dir to put the content in:"));
@@ -26,6 +29,7 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	QLabel* dirLabelGP = new QLabel(tr("Please select a Google Photo dir to put the content in:"));
 	QPushButton* googlePhotoButton = new QPushButton;
 	googlePhotoButton->setText(tr("Select a folder"));
+	removeOriginDirCheckBox = new QCheckBox(tr("Remove input dir"));
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
@@ -46,21 +50,20 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	dirLayout->addWidget(googlePhotoLineEdit, 3, 0);
 	dirLayout->addWidget(googlePhotoButton, 3, 1);
 
+	dirLayout->addWidget(removeOriginDirCheckBox,4,0);
+
 	layout->addLayout(dirLayout);
 
 	setLayout(layout);
 
 	connect(digiKamButton, SIGNAL(clicked()), this, SLOT(OnDigiKamDirButtonClicked()));
 	connect(googlePhotoButton, SIGNAL(clicked()), this, SLOT(OnGooglePhotoDirButtonClicked()));
-
-	// TODO to add check to remove input dir 
 }
 
 void FVAOrganizerOutputDirPage::setVisible(bool visible)
 {
 	return QWizardPage::setVisible(visible);
-}
-void FVAOrganizerOutputDirPage::OnDigiKamDirButtonClicked()
+}void FVAOrganizerOutputDirPage::OnDigiKamDirButtonClicked()
 {
 	QFileDialog dirDialog;
 
@@ -90,6 +93,11 @@ bool FVAOrganizerOutputDirPage::isComplete() const
 }
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {
-	
+	FVAFlowController flow;
+	FVA_EXIT_CODE exitCode = flow.MoveInputDirToOutputDir(((FVAOrganizerWizard*)wizard())->inputFolder(), "TODO"/*, this*/);
+	if (exitCode != FVA_NO_ERROR)
+		return false;
+
+	removeOriginDirCheckBox->isChecked();
 	return true;
 }

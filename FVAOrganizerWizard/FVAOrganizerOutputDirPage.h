@@ -4,6 +4,7 @@
 #include <QtWidgets/QWizardPage>
 
 class QLineEdit;
+class QCheckBox;
 
 class FVAOrganizerOutputDirPage : public QWizardPage
 {
@@ -27,6 +28,8 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 
 		QLineEdit* digiKamLineEdit;
 		QLineEdit* googlePhotoLineEdit;
+
+		QCheckBox* removeOriginDirCheckBox;
 };
 
 #endif // _FVA_ORG_OUTPUT_PAGE_H_
