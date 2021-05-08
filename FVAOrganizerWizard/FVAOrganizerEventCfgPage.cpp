@@ -8,7 +8,6 @@
 
 #include "fvaorganizerwizard.h"
 #include "fvacommonui.h"
-#include "fvaconfiguration.h"
 #include "FVAFlowController.h"
 
 FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)

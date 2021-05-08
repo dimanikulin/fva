@@ -41,16 +41,34 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	googlePhotoLineEdit = new QLineEdit;
 	googlePhotoLineEdit->setReadOnly(true);
 
+	FvaConfiguration cfg;
+	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.load")
+
 	QGridLayout * dirLayout = new QGridLayout;
-	dirLayout->addWidget(dirLabelDK, 0, 0);
-	dirLayout->addWidget(digiKamLineEdit, 1, 0);
-	dirLayout->addWidget(digiKamButton, 1, 1);
 
-	dirLayout->addWidget(dirLabelGP, 2, 0);
-	dirLayout->addWidget(googlePhotoLineEdit, 3, 0);
-	dirLayout->addWidget(googlePhotoButton, 3, 1);
+	bool integration = false;
+	int rowindex = 0;
+	exitCode = cfg.getParamAsBoolean("Integration::digiKam", integration);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.getParamAsBoolean")
+	if (integration)
+	{
+		dirLayout->addWidget(dirLabelDK, rowindex++, 0);
+		dirLayout->addWidget(digiKamLineEdit, rowindex, 0);
+		dirLayout->addWidget(digiKamButton, rowindex, 1);
+	}
 
-	dirLayout->addWidget(removeOriginDirCheckBox,4,0);
+	exitCode = cfg.getParamAsBoolean("Integration::GooglePhoto", integration);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.digiKam")
+
+	if (integration)
+	{
+		dirLayout->addWidget(dirLabelGP, ++rowindex, 0);
+		dirLayout->addWidget(googlePhotoLineEdit, ++rowindex, 0);
+		dirLayout->addWidget(googlePhotoButton, rowindex, 1);
+	}
+
+	dirLayout->addWidget(removeOriginDirCheckBox, ++rowindex, 0);
 
 	layout->addLayout(dirLayout);
 
@@ -94,10 +112,17 @@ bool FVAOrganizerOutputDirPage::isComplete() const
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {
 	FVAFlowController flow;
-	FVA_EXIT_CODE exitCode = flow.MoveInputDirToOutputDir(((FVAOrganizerWizard*)wizard())->inputFolder(), "TODO"/*, this*/);
-	if (exitCode != FVA_NO_ERROR)
-		return false;
+	STR_LIST dirList;
+	if (!googlePhotoLineEdit->text().isEmpty())
+		dirList.append(googlePhotoLineEdit->text());
 
-	removeOriginDirCheckBox->isChecked();
-	return true;
+	if (!digiKamLineEdit->text().isEmpty())
+		dirList.append(digiKamLineEdit->text());
+
+	FVA_EXIT_CODE exitCode = flow.MoveInputDirToOutputDir(
+							((FVAOrganizerWizard*)wizard())->inputFolder(), 
+								dirList, 
+								removeOriginDirCheckBox->isChecked());
+	
+	return exitCode == FVA_NO_ERROR;
 }
