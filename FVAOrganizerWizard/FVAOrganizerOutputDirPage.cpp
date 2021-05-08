@@ -119,7 +119,7 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	if (!digiKamLineEdit->text().isEmpty())
 		dirList.append(digiKamLineEdit->text());
 
-	FVA_EXIT_CODE exitCode = flow.MoveInputDirToOutputDir(
+	FVA_EXIT_CODE exitCode = flow.MoveInputDirToOutputDirs(
 							((FVAOrganizerWizard*)wizard())->inputFolder(), 
 								dirList, 
 								removeOriginDirCheckBox->isChecked());

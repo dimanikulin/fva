@@ -296,8 +296,21 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEventCfg(const QString& input
 
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDir(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput)
+FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput)
 {
+	uint sizeProcessed = outputDirs.size();
+	for (STR_LIST::const_iterator it = outputDirs.begin; it != outputDirs.end(); ++it)
+	{
+		QString dirToMoveTo = *it;
+		if (1 == sizeProcessed && removeInput)
+		{
+			// do not copy to last folder if we need to remove the input one - we just rename it.
 	
+		}
+		else
+		{
+
+		}
+	}
 	return FVA_NO_ERROR;
 }

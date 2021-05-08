@@ -47,7 +47,7 @@ public:
 	 * \param removeInput - flag saying do we need to remove input folder or not
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE MoveInputDirToOutputDir(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput);
+	FVA_EXIT_CODE MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput);
 
 	/*!
 	 * \brief it process input folder content as one-event or multi-events according to event cfg
