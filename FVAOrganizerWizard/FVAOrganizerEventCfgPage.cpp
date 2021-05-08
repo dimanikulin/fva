@@ -79,7 +79,7 @@ bool FVAOrganizerEventCfgPage::isComplete() const
 bool	FVAOrganizerEventCfgPage::validatePage()
 {
 	FVAFlowController flow;
-	FVA_EXIT_CODE exitCode = flow.MoveInputDirToOutput(((FVAOrganizerWizard*)wizard())->inputFolder(), "TODO"/*, this*/);
+	FVA_EXIT_CODE exitCode = flow.ProcessInputDirForEventCfg(((FVAOrganizerWizard*)wizard())->inputFolder(), "TODO"/*, this*/);
 	if (exitCode != FVA_NO_ERROR)
 		return false;
 

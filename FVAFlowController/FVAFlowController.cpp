@@ -187,7 +187,7 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 	return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutput(const QString& inputDir, const QString& outputDir)
+FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEventCfg(const QString& inputDir, const QString& outputDir)
 {
 	/*
 	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTSetFileAtts", inputDir);
@@ -294,5 +294,9 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutput(const QString& inputDir, c
 		// TODO - apply call CLTAutoChecks3 for all merged folders
 	}*/
 
+	return FVA_NO_ERROR;
+}
+FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDir(const QString& inputDir, const QString& outputDir)
+{
 	return FVA_NO_ERROR;
 }

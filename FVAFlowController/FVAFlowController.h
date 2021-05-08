@@ -43,7 +43,15 @@ public:
 	* \param outputDir - directory to move content into
 	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	*/
-	FVA_EXIT_CODE MoveInputDirToOutput(const QString& inputDir, const QString& outputDir);
+	FVA_EXIT_CODE MoveInputDirToOutputDir(const QString& inputDir, const QString& outputDir);
+
+	/*!
+	* \brief it process input folder content as one-event or multi-events according to event cfg
+	* \param inputDir - directory to move content from
+	* \param outputDir - directory to move content into
+	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	*/
+	FVA_EXIT_CODE ProcessInputDirForEventCfg(const QString& inputDir, const QString& outputDir);
 
 private:
 
