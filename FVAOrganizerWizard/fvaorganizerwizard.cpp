@@ -15,25 +15,21 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 {
 	FvaConfiguration cfg;
 
-	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
-	if (FVA_NO_ERROR != res)
-	{
-		FVA_MESSAGE_BOX("cfg.load failed with error " + QString::number(res));
-		return;
-	}
+	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.load")
 	int index = 0;
 	setPage(index++, new FVAOrganizerStartPage);
 	setPage(index++, new FVAOrganizerInputDirPage);
 	// do we need to show OrientPage?
 	bool temp;
-	res = cfg.getParamAsBoolean("Common::CheckOrientation", temp);
-	RET_IF_RES_IS_ERROR
+	exitCode = cfg.getParamAsBoolean("Common::CheckOrientation", temp);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.getParamAsBoolean")
 	if (temp)
 		setPage(index++, new FVAOrganizerOrientPage);
 	
 	// do we need to show device page?
-	res = cfg.getParamAsBoolean("Search::Device", temp);
-	RET_IF_RES_IS_ERROR
+	exitCode = cfg.getParamAsBoolean("Search::Device", temp);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.getParamAsBoolean")
 	if (temp)
 		setPage(index++, new FVAOrganizerDevicePage);
 	setPage(index++, new FVAOrganizerOutputDirPage);
@@ -58,7 +54,6 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	setWindowTitle(tr("FVA Software"));
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
-	
 }
 
 FVAOrganizerWizard::~FVAOrganizerWizard()
