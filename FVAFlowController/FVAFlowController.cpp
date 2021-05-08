@@ -299,17 +299,26 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEventCfg(const QString& input
 FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput)
 {
 	uint sizeProcessed = outputDirs.size();
-	for (STR_LIST::const_iterator it = outputDirs.begin; it != outputDirs.end(); ++it)
+	for (STR_LIST::const_iterator it = outputDirs.begin(); it != outputDirs.end(); ++it)
 	{
 		QString dirToMoveTo = *it;
 		if (1 == sizeProcessed && removeInput)
 		{
+			// remove before rename if destination exists
+			bool res = fvaRemoveDirIfEmpty(dirToMoveTo);
+
 			// do not copy to last folder if we need to remove the input one - we just rename it.
-	
+			QDir dir(dirToMoveTo);
+
+			if (!dir.rename(inputDir, dirToMoveTo))
+			{
+				FVA_MESSAGE_BOX("Fva cmd MoveInputDirToOutputDirs could not rename the dir")
+				return FVA_ERROR_CANT_MOVE_DIR;
+			}
 		}
 		else
 		{
-
+			return FVA_ERROR_NOT_IMPLEMENTED;
 		}
 	}
 	return FVA_NO_ERROR;
