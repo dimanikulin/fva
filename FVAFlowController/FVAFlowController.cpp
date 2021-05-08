@@ -84,6 +84,9 @@ FVA_EXIT_CODE FVAFlowController::performCommonChecks(CLTContext& context, const 
 	exitCode = m_dataProcessor.run(context, cfg);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTAutoChecks1")
 
+	context.cmdType = "CLTSetFileAtts";
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTSetFileAtts")
+
 	return FVA_NO_ERROR;
 }
 
@@ -190,9 +193,6 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEventCfg(const QString& inputDir, const QString& outputDir)
 {
 	/*
-	FVA_EXIT_CODE exitCode = fvaRunCLT("CLTSetFileAtts", inputDir);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE("CLTSetFileAtts")
-
 	if (oneEventOneDay->isChecked())
 	{
 		exitCode = fvaRunCLT("CLTMerge1DayEventDir", ((FVAOrganizerWizard*)wizard())->inputFolder());
