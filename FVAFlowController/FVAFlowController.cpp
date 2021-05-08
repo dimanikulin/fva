@@ -296,7 +296,8 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEventCfg(const QString& input
 
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDir(const QString& inputDir, const QString& outputDir)
+FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDir(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput)
 {
+	
 	return FVA_NO_ERROR;
 }

@@ -2,12 +2,15 @@
 #define _FVA_FLOW_CONTROLLER_H_
 
 #include <QtCore/QString>
+#include <QtCore/QList>
 
 #include "fvaexitcodes.h"
 #include "fvadevicecontext.h"
 #include "fvacltcontext.h"
 #include "fvaconfiguration.h"
 #include "FVADataProcessor.h"
+
+typedef QList<QString> STR_LIST;
 
 class QObject;
 
@@ -26,31 +29,32 @@ public:
 	 * \param deviceContext - devices information got during checks, filled up by this function
 	 * \param obj - to attach the child processes to this object
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
-	*/
+	 */
 	FVA_EXIT_CODE PerformChecksForInputDir(const QString& dir, DeviceContext& deviceContext, QObject* obj);
 
 	/*!
-	* \brief it performs the organization stuff for the input folder according to fva configuration
-	* \param dir - directory to perform the actions in
-	* \param deviceId - identifier of device from FVA device dictionary  
-	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
-	*/
+	 * \brief it performs the organization stuff for the input folder according to fva configuration
+	 * \param dir - directory to perform the actions in
+	 * \param deviceId - identifier of device from FVA device dictionary  
+	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	 */
 	FVA_EXIT_CODE OrganizeInputDir(const QString& dir, int deviceId);
 
 	/*!
-	* \brief it performs the moving input folder content to output folder with checks according to event cfg
-	* \param inputDir - directory to move content from
-	* \param outputDir - directory to move content into
-	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
-	*/
-	FVA_EXIT_CODE MoveInputDirToOutputDir(const QString& inputDir, const QString& outputDir);
+	 * \brief it performs the moving input folder content to output folder with checks according to event cfg
+	 * \param inputDir - directory to move content from
+	 * \param outputDir - directories to move content into (it is a list of directories to move into)
+	 * \param removeInput - flag saying do we need to remove input folder or not
+	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	 */
+	FVA_EXIT_CODE MoveInputDirToOutputDir(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput);
 
 	/*!
-	* \brief it process input folder content as one-event or multi-events according to event cfg
-	* \param inputDir - directory to move content from
-	* \param outputDir - directory to move content into
-	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
-	*/
+	 * \brief it process input folder content as one-event or multi-events according to event cfg
+	 * \param inputDir - directory to move content from
+	 * \param outputDir - directory to move content into
+	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	 */
 	FVA_EXIT_CODE ProcessInputDirForEventCfg(const QString& inputDir, const QString& outputDir);
 
 private:
@@ -81,31 +85,31 @@ private:
 	FVA_EXIT_CODE performCommonChecks(CLTContext& context, const FvaConfiguration& cfg);
 
 	/*!
-	* \brief it performs the date-time checks for input folder
-	* \param context - one command parameters (environment)
-	* \param cfg - system configuration, applicable for whole system
-	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
-	*/
+	 * \brief it performs the date-time checks for input folder
+	 * \param context - one command parameters (environment)
+	 * \param cfg - system configuration, applicable for whole system
+	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	 */
 	FVA_EXIT_CODE performDTChecks(CLTContext& context, const FvaConfiguration& cfg);
 
 	/*!
-	* \brief it performs the location checks for input folder
-	* \param context - one command parameters (environment)
-	* \param cfg - system configuration, applicable for whole system
-	* \return it returns code of error (FVA_NO_ERROR - if no error happened)
-	*/
+	 * \brief it performs the location checks for input folder
+	 * \param context - one command parameters (environment)
+	 * \param cfg - system configuration, applicable for whole system
+	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	 */
 	FVA_EXIT_CODE performLocationChecks(CLTContext& context, const FvaConfiguration& cfg);
 
 private: //data
 
 	/*!
-	 * brief processor to support the frow from low level actions
+	 * brief processor to support from the side of the low level actions
 	 */
 	FVADataProcessor m_dataProcessor;
 
 	/*!
-	* brief global application configuration
-	*/
+	 * brief global application configuration
+	 */
 	FvaConfiguration m_cfg;
 };
 #endif
