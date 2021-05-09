@@ -12,7 +12,7 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute(const CLTContext& context)
 	// get the last dir leaf in input folder
 	QString dir = m_dir.dirName();
 	QString dstDirPath = m_rootSWdir + dir.mid(0, 4)/*extract year*/ + "/" + m_dir.dirName();
-	if (!dstDirPath.contains("#")) // # means internal folder and not subject of merging
+	if (!fvaIsInternalDir(dstDirPath)) // # means internal folder and not subject of merging
 	{
 		FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);
 		if (FVA_ERROR_CANT_CREATE_DIR == res)
@@ -60,7 +60,7 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute(const CLTContext& context)
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		// skip internal folder 
-		if (dir.contains("#copy") || dstDirPath.contains("#copy"))
+		if (fvaIsInternalDir(dir) || fvaIsInternalDir(dstDirPath))
 		{
 			LOG_QWARN << "skipped #copy for: " << info.absoluteFilePath() << " , dst: " << dstDirPath;
 			continue;

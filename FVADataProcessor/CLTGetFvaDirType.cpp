@@ -12,7 +12,7 @@ FVA_EXIT_CODE CLTGetFvaDirType::execute(const CLTContext& /*context*/)
 		// get the last dir leaf in input folder
 		QString dir = m_dir.dirName();
 		// skip internal folder 
-		if (dir.contains("#copy"))
+		if (fvaIsInternalDir (dir))
 		{
 			LOG_QWARN << "skipped internal folder: " << info.absoluteFilePath();
 			continue;

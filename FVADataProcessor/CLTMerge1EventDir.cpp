@@ -8,7 +8,7 @@ FVA_EXIT_CODE CLTMerge1EventDir::execute(const CLTContext& context)
 		QString dest		= context.custom + "/" + info.fileName();
 
 		// skip internal folder 
-		if (original.contains("#copy") || dest.contains("#copy"))
+		if (fvaIsInternalDir(original) || fvaIsInternalDir(dest))
 			continue;
 
 		// check for already existing
