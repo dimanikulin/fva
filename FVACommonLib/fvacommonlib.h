@@ -25,7 +25,7 @@ bool fvaIsInternalFile( const QString& fileName );
 /*!
 * \brief it answers if file is supported type of  (by its file extention)
 */
-bool fvaIsFVAFile( const QString& extention );
+bool fvaIsFVAFile(const QString& extention );
 
 /*!
 * \brief it answers if dir is internal one
@@ -61,26 +61,9 @@ FVA_EXIT_CODE fvaParseFileName(const QString& fileName, QDateTime& date, const F
 DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pathToFile, QString& deviceName); 
 
 /*!
- * \brief it tries to get time a video taken at from header
- * \param pathToFile a path to video file
- * \param error error description
- * \param ctx - to use formatting options from
- * \returns it returns time taken
- */
-QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error, const FvaFmtContext& ctx);
-
-/*!
  * \brief it convert identifiers list from string to int vector
  */
 QVector<unsigned int> fvaStringToIds(const QString& strList);
-
-/*!
- * \brief it returns a value by a name from resuls and deletes the name and the value after
- * \param fieldName - name of field
- * \param result - map to search in and to remove from
- * \return it returns a value
- */
-QString fvaDVget(const QString& fieldName, QVariantMap& result );
 
 /*!
  * \brief it removes the dir if there is no content inside
@@ -88,17 +71,6 @@ QString fvaDVget(const QString& fieldName, QVariantMap& result );
  * \returns it returns true if folder has been deleted, otherwize it return false
  */
 bool fvaRemoveDirIfEmpty(const QString& dirPath);
-
-/*!
- * \brief it starts CLT cmd in the separate process and waits for finish
- * \param cmdName - name of CLT to be executed
- * \param inputDir - name of dir to be executed in
- * \param isRecursive - if it must be executed in recursive mode
- * \param isReadOnly - if it must be executed in read only mode
- * \param custom - any string value to path to cmd
- * \returns it returns FVA_EXIT_CODE
- */
-FVA_EXIT_CODE fvaRunCLT(const QString& cmdName, const QString& inputDir, bool isRecursive = true, bool isReadOnly = false, const QString& custom="");
 
 /*!
  * \brief it creates directory if it does not exist

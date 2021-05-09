@@ -5,11 +5,6 @@
 #include <QtCore/QProcess>
 #include <QtCore/QCoreApplication>
 
-#include "fvariffparser.h"
-
-#include <windows.h>
-#include <winbase.h>
-
 bool fvaIsInternalFile( const QString& fileName )
 {
 	return (fileName.toUpper() == FVA_BACKGROUND_MUSIC_FILE_NAME.toUpper() 
@@ -206,43 +201,6 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
 	return result;
 }
 
-QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error, const FvaFmtContext& ctx)
-{
-	QDateTime renameDateTime = fvaGetExifDateTimeOriginalFromFile(pathToFile, ctx.exifDateTime);
-	QString _newName = renameDateTime.toString(ctx.fvaFileName);
-	if (_newName.isEmpty())
-	{
-		RiffParser riffInfo;
-		QString createdDate;
-		if (!riffInfo.open(pathToFile, error) || !riffInfo.findTag("IDIT", createdDate) || !riffInfo.convertToDate(createdDate, renameDateTime, ctx.exifDateTime))
-		{
-			QProcess myProcess;    
-			myProcess.setProcessChannelMode(QProcess::MergedChannels);
-			QStringList params;
-			params.append(pathToFile);
-			myProcess.start(QCoreApplication::applicationDirPath() + "/exiftool(-k).exe", params);
-			QString output;
-			while(myProcess.waitForReadyRead())
-			{
-				output = myProcess.readAll();
-				myProcess.putChar('\n');
-			}
-			myProcess.waitForFinished( -1 );
-			int index = output.indexOf("Date/Time Original");
-			if (index != -1)
-			{
-				index = output.indexOf(":", index);
-				if (index != 1)
-				{
-					QString time = output.mid(index+1,20 );
-					renameDateTime = QDateTime::fromString(time, " " + ctx.exifDateTime);
-				}
-			}
-			
-		}
-	}
-	return renameDateTime;
-}
 
 QVector<unsigned int> fvaStringToIds(const QString& strList)
 {
@@ -252,17 +210,6 @@ QVector<unsigned int> fvaStringToIds(const QString& strList)
 		result.append(iter->toUInt());					
 
 	return result;
-}
-
-QString fvaDVget( const QString& fieldName, QVariantMap& result )
-{
-	QString fieldValue = "";
-	if ( result.contains( fieldName ) )
-	{
-		fieldValue = result[fieldName].toString();
-		result.remove(fieldName);
-	}
-	return fieldValue;
 }
 
 bool fvaIsInternalDir(const QString& dir)

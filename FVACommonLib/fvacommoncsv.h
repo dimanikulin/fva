@@ -76,11 +76,4 @@ FVA_EXIT_CODE fvaLoadSimpleMapFromCsv(const QString& rootSWdir, FVA_SIMPLE_MAP& 
 */
 FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(const QString& rootSWdir, FVA_PEOPLE_RELATION_MAP& peopleRelationsMap);
 
-/*!
-* \brief it updates fva dir info with new folder
-* \param dirPath - dir path to add
-* \returns it returns FVA_EXIT_CODE
-*/
-FVA_EXIT_CODE fvaUpdateFvaDirInfoInCsv(const QString& dirPath);
-
 #endif // FVACOMMONCSV_H
