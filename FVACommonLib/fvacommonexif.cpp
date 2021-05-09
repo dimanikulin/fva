@@ -1,6 +1,7 @@
 #include "fvacommonexif.h"
 #include "../easyexif/exif.h"
 #include <QtCore\QFile>
+#include "fvariffparser.h"
 
 QString fvaGetExifMakeAndModelFromFile(const QString& pathToFile)
 {
@@ -43,4 +44,17 @@ bool fvaExifGeoDataPresentInFile(const QString& pathToFile)
 		}
 	}
 	return false;
+}
+QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error, const FvaFmtContext& ctx)
+{
+	QDateTime renameDateTime = fvaGetExifDateTimeOriginalFromFile(pathToFile, ctx.exifDateTime);
+	QString _newName = renameDateTime.toString(ctx.fvaFileName);
+	if (_newName.isEmpty())
+	{
+		RiffParser riffInfo;
+		QString createdDate;
+		if (!riffInfo.open(pathToFile, error) || !riffInfo.findTag("IDIT", createdDate) || !riffInfo.convertToDate(createdDate, renameDateTime, ctx.exifDateTime))
+			return renameDateTime;
+	}
+	return renameDateTime;
 }

@@ -1,4 +1,5 @@
 #include "CLTRenameVideoBySequence.h"
+#include "fvacommonexif.h"
 
 CLTRenameVideoBySequence::CLTRenameVideoBySequence(const FvaConfiguration& cfg)
 {

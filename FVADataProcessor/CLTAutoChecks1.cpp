@@ -1,4 +1,5 @@
 #include "CLTAutoChecks1.h"
+#include "fvacommonexif.h"
 
 CLTAutoChecks1::CLTAutoChecks1(const FvaConfiguration& cfg)
 {
