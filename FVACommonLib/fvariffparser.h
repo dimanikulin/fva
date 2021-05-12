@@ -6,6 +6,7 @@
 #include <QtCore/QDataStream>
 #include <QtCore/QFile>
 
+#include "fvafmtcontext.h"
 
 /*!
  * \brief contains functionality to worj with RIFF files
@@ -13,12 +14,6 @@
  */
 class RiffParser
 {
-	public:
-		/*!
-		 * \brief ctors-dtors section
-		 */
-		RiffParser(  );
-		virtual ~RiffParser( );
 
 	public: // methods
 
@@ -42,9 +37,10 @@ class RiffParser
 		 * \brief it converts string type to date-time type
 		 * \param strDate - human-readable date string
 		 * \param value - out param to be filled by date-time value 
+		 * \param ctx - to use formatting options from
 		 * \return it returns true if it succesfully converted the value, otherwize it returns false 
 		 */
-		bool convertToDate(const QString& strDate, QDateTime& value, const QString& exifDateTimeFmt) const;
+		bool convertToDate(const QString& strDate, QDateTime& value, const FvaFmtContext& ctx) const;
 
 	private: // methods
 

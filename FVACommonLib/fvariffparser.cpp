@@ -1,13 +1,5 @@
 #include "fvariffparser.h"
 
-RiffParser::RiffParser( )
-{
-}
-
-RiffParser::~RiffParser( )
-{
-}
-
 bool RiffParser::open(const QString& path, QString& error)
 {
 	m_file.reset(new QFile(path));
@@ -75,22 +67,22 @@ bool RiffParser::findTag( const QString& tag, QString& value )
 {
 	return processNode( tag, value );
 }
-bool RiffParser::convertToDate(const QString& strDate, QDateTime& value, const QString& exifDateTimeFmt) const
+bool RiffParser::convertToDate(const QString& strDate, QDateTime& value, const FvaFmtContext& ctx) const
 {
 	// remove terminate char and last symbol
-	value = QDateTime::fromString( strDate.mid( 4, strDate.size() - 5 ).remove("\n"), "MMM dd hh:mm:ss yyyy" );
+	value = QDateTime::fromString( strDate.mid( 4, strDate.size() - 5 ).remove("\n"), ctx.riffDateTime1 );
 	if ( !value.isValid() )
 	{
 		// try to use other format
 		QString newStr = strDate.mid(0,strDate.size() -1 ).remove( "\n" );
-		value = QDateTime::fromString(newStr, exifDateTimeFmt);
+		value = QDateTime::fromString(newStr, ctx.exifDateTime);
 	}
 
 	if ( !value.isValid() )
 	{
 		// try to use other format
 		QString newStr = strDate.mid( QString ( "UTC " ).size() ).remove( "\n" );
-		value = QDateTime::fromString( newStr, "yyyy-MM-dd hh:mm:ss" );
+		value = QDateTime::fromString(newStr, ctx.riffDateTime2);
 	}
 
 	return value.isValid();
