@@ -18,7 +18,7 @@ void msghandler( QtMsgType type, const char *msg )
 	if ( type < g_logLevel )
 		return;
 	
-	g_logfile << QDateTime::currentDateTime().toString( "[yyyy:MM:dd-hh:mm:ss]").toLatin1().data();
+	g_logfile << QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data();
 	switch ( type ) 
 	{
 		case QtDebugMsg:

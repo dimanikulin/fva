@@ -47,4 +47,10 @@ const QString	FVA_DB_NAME = "digikam4.db";
 #define FVA_LANGUAGE_ENG
 // #define FVA_LANGUAGE_RUS
 
+/*!
+* \brief language to be used TODO to remove
+*/
+const QString LOG_DT_FORMAT = "[yyyy:MM:dd] [hh:mm:ss]";
+
+
 #endif // FVACONSTS_H
