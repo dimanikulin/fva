@@ -33,6 +33,7 @@ private:// methods
 	void InitializeIntegratorTab(const FvaConfiguration& cfg);
 	void InitializeRenameTab(const FvaConfiguration& cfg);
 	void InitializeFormatTab(const FvaConfiguration& cfg);
+	void InitializeFormat2Tab(const FvaConfiguration& cfg);
 
 private: // data
 	Ui::FVAConfiguratorClass ui;
@@ -45,6 +46,7 @@ private: // data
 	QWidget *tabIntegrator;
 	QWidget *tabRename;
 	QWidget *tabFormat;
+	QWidget *tabFormat2;
 
 	CHECKBOXES m_checkboxes;
 	LINEEDITES m_lineedites;

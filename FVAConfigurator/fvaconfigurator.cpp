@@ -22,6 +22,7 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 	tabIntegrator = new QWidget();
 	tabRename = new QWidget();
 	tabFormat = new QWidget();
+	tabFormat2 = new QWidget();
 
 	buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 
@@ -39,6 +40,7 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 	tabs->addTab(tabIntegrator, tr("Интеграция"));
 	tabs->addTab(tabRename, tr("Переимнование"));
 	tabs->addTab(tabFormat, tr("Формат"));
+	tabs->addTab(tabFormat2, tr("Формат 2"));
 
 	setWindowTitle(tr("Конфигуратор"));
 #else 
@@ -48,6 +50,7 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 	tabs->addTab(tabIntegrator, tr("Integration"));
 	tabs->addTab(tabRename, tr("Rename"));
 	tabs->addTab(tabFormat, tr("Format"));
+	tabs->addTab(tabFormat2, tr("Format 2"));
 
 	setWindowTitle(tr("Configurator"));
 #endif // FVA_LANGUAGE_ENG
@@ -61,6 +64,7 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 	InitializeIntegratorTab(cfg);
 	InitializeRenameTab(cfg);
 	InitializeFormatTab(cfg);
+	InitializeFormat2Tab(cfg);
 
 	bool temp;
 	for (CHECKBOXES::iterator it = m_checkboxes.begin(); it != m_checkboxes.end(); ++it)
@@ -274,4 +278,44 @@ void FVAConfigurator::InitializeFormatTab(const FvaConfiguration& cfg)
 	layout->addWidget(exifDateTimeEdit);
 
 	tabFormat->setLayout(layout);
+}
+/////////////////////////////////
+void FVAConfigurator::InitializeFormat2Tab(const FvaConfiguration& cfg)
+{
+#ifdef  FVA_LANGUAGE_RUS
+	перевести
+	QLabel* fvaFileName1Lbl = new QLabel(tr("file name format 1 as a date + time:"));
+	QLabel* fvaFileName2Lbl = new QLabel(tr("file name format 2 as a date + time:"));
+	QLabel* fiffDateTime1Lbl = new QLabel(tr("riff format 1 of date + time:"));
+	QLabel* fiffDateTime2Lbl = new QLabel(tr("riff format 2 of date + time:"));
+#else 
+#ifdef  FVA_LANGUAGE_ENG
+	QLabel* fileName1Lbl = new QLabel(tr("file name format 1 as a date + time:"));
+	QLabel* fileName2Lbl = new QLabel(tr("file name format 2 as a date + time:"));
+	QLabel* riffDateTime1Lbl = new QLabel(tr("riff format 1 of date + time:"));
+	QLabel* riffDateTime2Lbl = new QLabel(tr("riff format 2 of date + time:"));
+#endif // FVA_LANGUAGE_ENG
+#endif // FVA_LANGUAGE_RUS
+	QVBoxLayout *layout = new QVBoxLayout;
+
+	QLineEdit* fileName1Edit = new QLineEdit;
+	QLineEdit* fileName2Edit = new QLineEdit;
+	QLineEdit* riffDateTime1Edit = new QLineEdit;
+	QLineEdit* riffDateTime2Edit = new QLineEdit;
+
+	m_lineedites.insert("Format::fileName1", fileName1Edit);
+	m_lineedites.insert("Format::fileName2", fileName2Edit);
+	m_lineedites.insert("Format::riffDateTime1", riffDateTime1Edit);
+	m_lineedites.insert("Format::riffDateTime2", riffDateTime2Edit);
+
+	layout->addWidget(fileName1Lbl);
+	layout->addWidget(fileName1Edit);
+	layout->addWidget(fileName2Lbl);
+	layout->addWidget(fileName2Edit);
+	layout->addWidget(riffDateTime1Lbl);
+	layout->addWidget(riffDateTime1Edit);
+	layout->addWidget(riffDateTime2Lbl);
+	layout->addWidget(riffDateTime2Edit);
+
+	tabFormat2->setLayout(layout);
 }
