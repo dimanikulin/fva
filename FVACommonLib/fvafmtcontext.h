@@ -14,24 +14,44 @@ class FvaFmtContext
 	public: // data 
 	
 		/*!
-		* \brief format a dir name as a date
-		*/
+		 * \brief format a dir name as a date
+		 */
 		QString		fvaDirName;
 
 		/*!
-		* \brief format a dir name as a year
-		*/
+		 * \brief format a dir name as a year
+		 */
 		QString		fvaDirNameYear;
 
 		/*!
-		* \brief format a FVA file name as a date + time
-		*/
+		 * \brief format a FVA file name as a date + time
+		 */
 		QString		fvaFileName;
 
 		/*!
-		* \brief format an EXIF date + time
-		*/
+		 * \brief format an EXIF date + time
+		 */
 		QString		exifDateTime;
+
+		/*!
+		 * \brief file name format 1 as a date + time
+		 */
+		QString		fileName1;
+
+		/*!
+		 * \brief file name format 2 as a date + time
+		 */
+		QString		fileName2;
+
+		/*!
+		 * \brief riff format 1 of date + time
+		 */
+		QString		riffDateTime1;
+
+		/*!
+		 * \brief riff format 2 of date + time
+		 */
+		QString		riffDateTime2;
 
 	public: //methods
 
