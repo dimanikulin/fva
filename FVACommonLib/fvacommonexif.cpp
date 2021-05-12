@@ -53,7 +53,7 @@ QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error, const 
 	{
 		RiffParser riffInfo;
 		QString createdDate;
-		if (!riffInfo.open(pathToFile, error) || !riffInfo.findTag("IDIT", createdDate) || !riffInfo.convertToDate(createdDate, renameDateTime, ctx.exifDateTime))
+		if (!riffInfo.open(pathToFile, error) || !riffInfo.findTag("IDIT", createdDate) || !riffInfo.convertToDate(createdDate, renameDateTime, ctx))
 			return renameDateTime;
 	}
 	return renameDateTime;

@@ -7,8 +7,12 @@ CLTPrintFSStructure::CLTPrintFSStructure(const FvaConfiguration& cfg)
 	QString rootSWdir;
 	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	RET_IF_RES_IS_ERROR
-		m_file.setFileName(rootSWdir + "fsoutput.txt");
+
+	m_file.setFileName(rootSWdir + "#logs/fsoutput.txt");
 	m_file.open( QIODevice::WriteOnly );
+
+	res = m_fmtctx.fillFmtContextFromCfg(cfg);
+	RET_IF_RES_IS_ERROR
 }
 
 CLTPrintFSStructure::~CLTPrintFSStructure()
@@ -43,9 +47,9 @@ FVA_EXIT_CODE CLTPrintFSStructure::execute(const CLTContext& /*context*/)
 		}
 		QFileInfo f(info);
 		result =	info.filePath()										+ "," 
-					+	hash.result().toBase64()						+ ","
-					+	f.lastModified().toString("yyyy-MM-dd-hh-mm-ss")	+ ","
-					+	QString::number(info.size())					+ "\n";
+					+ hash.result().toBase64()						+ ","
+					+ f.lastModified().toString(m_fmtctx.fvaFileName) + ","
+					+ QString::number(info.size())					+ "\n";
 		m_file.write(result.toLocal8Bit());
 	}
 	return FVA_NO_ERROR;

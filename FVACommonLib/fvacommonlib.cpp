@@ -132,7 +132,7 @@ FVA_EXIT_CODE fvaParseFileName(const QString& fileName, QDateTime& date,const Fv
 		// it is also file name to extract name from "IMG_20150504_142546"
 		QString newFileName = fileName;
 		newFileName.remove("IMG_");
-		date = QDateTime::fromString( newFileName, "yyyyMMdd_hhmmss" );
+		date = QDateTime::fromString(newFileName, ctx.fileName1);
 		if (!date.isValid())
 			return FVA_ERROR_WRONG_FILE_NAME;
 		else
@@ -143,7 +143,7 @@ FVA_EXIT_CODE fvaParseFileName(const QString& fileName, QDateTime& date,const Fv
 		// it is also file name to extract name from "WP_20151220_13_49_40_Pro"
 		QString newFileName = fileName;
 		newFileName.remove("WP_"); newFileName.remove("_Pro");
-		date = QDateTime::fromString( newFileName, "yyyyMMdd_hh_mm_ss" );
+		date = QDateTime::fromString(newFileName, ctx.fileName2);
 		if (!date.isValid())
 			return FVA_ERROR_WRONG_FILE_NAME;
 		else
@@ -153,7 +153,7 @@ FVA_EXIT_CODE fvaParseFileName(const QString& fileName, QDateTime& date,const Fv
 	{
 		// it is also file name to extract name from "20150504_142546"
 		QString newFileName = fileName;
-		date = QDateTime::fromString( newFileName, "yyyyMMdd_hhmmss" );
+		date = QDateTime::fromString(newFileName, ctx.fileName1);
 		if (!date.isValid())
 			return FVA_ERROR_WRONG_FILE_NAME;
 		else

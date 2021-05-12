@@ -18,7 +18,16 @@ public:
 
 private: // data
 
-	QFile m_file;
+	
+	/*!
+	 * \brief file to output the file stucture info into
+	 */
+	QFile			m_file;
+
+	/*!
+	 * \brief formatting context to use formatting options from
+	 */
+	FvaFmtContext	m_fmtctx;
 };
 
 #endif // _CLT_PRINT_FS_STRUCTURE_H_

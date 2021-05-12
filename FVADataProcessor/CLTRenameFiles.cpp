@@ -112,7 +112,7 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context)
 		QString newName = renameDateTime.toString(m_fmtctx.fvaFileName);
 		if (newName.isEmpty())
 		{
-			LOG_QWARN << "no time in img file:" << info.absoluteFilePath() << ",prev time to use:" << prevRenameDateTime.addSecs(1).toString("yyyy-MM-dd-hh-mm-ss");
+			LOG_QWARN << "no time in img file:" << info.absoluteFilePath() << ",prev time to use:" << prevRenameDateTime.addSecs(1).toString(m_fmtctx.fvaFileName);
 			prevRenameDateTime = prevRenameDateTime.addSecs(1);
 			newName = prevRenameDateTime.toString(m_fmtctx.fvaFileName);
 		}
