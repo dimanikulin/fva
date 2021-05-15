@@ -140,7 +140,16 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, const FvaC
 {
 	context.cmdType = "CLTCheckDateTime";
 	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, cfg);
+	if (FVA_ERROR_NO_EXIF_DATE_TIME == exitCode)
+	{
+		FVA_MESSAGE_BOX("Found empty date-time metadata, that will be fixed automatically")
+		context.cmdType = "CLTFixEmptyDateTime";
+		exitCode = m_dataProcessor.run(context, cfg);
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTFixEmptyDateTime")
+	}
+	else
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckDateTime")
+
 	return FVA_NO_ERROR;
 }
 
