@@ -11,6 +11,7 @@
 #include "CLTCheckFileFormat.h"
 #include "CLTCheckLocation.h"
 #include "CLTCheckDatetime.h"
+#include "CLTFixEmptyDatetime.h"
 
 #include "CLTRenameFiles.h"
 #include "CLTFixDuplicatedFileNames.h"
@@ -40,6 +41,7 @@ std::auto_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTConte
 	else if (context.cmdType == CLTCheckFileFormat::Name())			r.reset(new CLTCheckFileFormat());
 	else if (context.cmdType == CLTCheckLocation::Name())			r.reset(new CLTCheckLocation());
 	else if (context.cmdType == CLTCheckDateTime::Name())			r.reset(new CLTCheckDateTime(cfg));
+	else if (context.cmdType == CLTFixEmptyDateTime::Name())		r.reset(new CLTFixEmptyDateTime(cfg));
 	else if (context.cmdType == CLTCreateDirStructByFileNames::Name())	r.reset(new CLTCreateDirStructByFileNames());
 	else if (context.cmdType == CLTRenameFiles::Name())				r.reset(new CLTRenameFiles(cfg));
 	else if (context.cmdType == CLTAutoChecks2::Name())				r.reset(new CLTAutoChecks2(cfg));

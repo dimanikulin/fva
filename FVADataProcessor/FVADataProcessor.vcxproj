@@ -104,6 +104,7 @@
     <ClCompile Include="CLTCreateDirStructByFileNames.cpp" />
     <ClCompile Include="CLTCSVFvaFiles.cpp" />
     <ClCompile Include="CLTFixDuplicatedFileNames.cpp" />
+    <ClCompile Include="CLTFixEmptyDateTime.cpp" />
     <ClCompile Include="CLTGetFvaDirType.cpp" />
     <ClCompile Include="CLTMerge1DayEventDir.cpp" />
     <ClCompile Include="CLTMerge1EventDir.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="CLTCreateDirStructByFileNames.h" />
     <ClInclude Include="CLTCSVFvaFiles.h" />
     <ClInclude Include="CLTFixDuplicatedFileNames.h" />
+    <ClInclude Include="CLTFixEmptyDateTime.h" />
     <ClInclude Include="CLTGetFvaDirType.h" />
     <ClInclude Include="CLTMerge1DayEventDir.h" />
     <ClInclude Include="CLTMerge1EventDir.h" />
