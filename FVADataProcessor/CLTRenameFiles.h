@@ -10,8 +10,8 @@ public:
 	CLTRenameFiles(const FvaConfiguration& cfg);
 	virtual ~CLTRenameFiles()		{ LOG_QDEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
-	static QString Name()			{	return "CLTRenameFiles";						}
-	virtual bool supportReadOnly()	{	return true;									}
+	static QString Name()			{	return "CLTRenameFiles";					}
+	virtual bool supportReadOnly()	{	return true;								}
 
 protected:
 
@@ -22,23 +22,23 @@ protected:
 private:
 
 	/*!
-	* file pates to file name
-	*/
+	 * file pates to file name
+	 */
 	QMap<QString, QString>			m_uniqueFileNames;
 
 	/*!
-	* \brief shall be renamed video files using the file modification time if they do not have taken time set
-	*/
+	 * \brief shall be renamed video files using the file modification time if they do not have taken time set
+	 */
 	bool							m_renameVideoByModifTime;
 
 	/*!
-	* \brief shall be renamed pictures files using the file modification time if they do not have exif taken time set
-	*/
+	 * \brief shall be renamed pictures files using the file modification time if they do not have exif taken time set
+	 */
 	bool							m_renamePicsByModifTime;
 
 	/*!
-	* \brief formatting context to use formatting options from
-	*/
+	 * \brief formatting context to use formatting options from
+	 */
 	FvaFmtContext					m_fmtctx;
 }; 
 
