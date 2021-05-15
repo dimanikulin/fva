@@ -23,6 +23,6 @@ into the IR multimedia systems like digiKam Google Photo, Apple Photo, Synology 
 5. add new QT version in vs-addin
 6. python-3.8.3-amd64.exe
 7. doxygen-1.9.0-setup.exe
-
+8. pip install exif
 #optional:
 8. jupyter-lab 
