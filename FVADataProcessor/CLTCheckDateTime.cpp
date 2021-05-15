@@ -23,8 +23,8 @@ FVA_EXIT_CODE CLTCheckDateTime::execute(const CLTContext& context)
 
 		if (!DateTime.isValid() || DateTime.isNull())
 		{
-			LOG_QCRIT << "found not correct exif Date-Time:" << info.absoluteFilePath();
-			return FVA_ERROR_INCORRECT_EXIF_DATE_TIME;
+			LOG_QCRIT << "found empty exif Date-Time:" << info.absoluteFilePath();
+			return FVA_ERROR_NO_EXIF_DATE_TIME;
 		}
 	}
 	return FVA_NO_ERROR;
