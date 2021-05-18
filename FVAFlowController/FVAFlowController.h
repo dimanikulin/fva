@@ -21,7 +21,6 @@ class FVAFlowController
 {
 public:
 	FVAFlowController();
-	virtual ~FVAFlowController(){};
 
 	/*!
 	 * \brief it performs the checks for input folder according to fva configuration
@@ -88,9 +87,10 @@ private:
 	 * \brief it performs the date-time checks for input folder
 	 * \param context - one command parameters (environment)
 	 * \param cfg - system configuration, applicable for whole system
+	 * \param obj - to attach the child processes to this object
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE performDTChecks(CLTContext& context, const FvaConfiguration& cfg);
+	FVA_EXIT_CODE performDTChecks(CLTContext& context, const FvaConfiguration& cfg, QObject* obj);
 
 	/*!
 	 * \brief it performs the location checks for input folder
@@ -99,6 +99,16 @@ private:
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
 	FVA_EXIT_CODE performLocationChecks(CLTContext& context, const FvaConfiguration& cfg);
+
+	/*!
+	 * \brief it runs python command from #scipt dir
+	 * \param scriptName - name of script to run
+	 * \param obj - to attach the child processes to this object
+	 * \param cfg - system configuration, applicable for whole system
+	 * \param dir - directory for the python script to work on
+	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	 */
+	FVA_EXIT_CODE runPythonCMD(const QString& scriptName, QObject* obj, const FvaConfiguration& cfg, const QString& dir);
 
 private: //data
 

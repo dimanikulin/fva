@@ -113,7 +113,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::DateTime)")
 	if (SearchByDateTime)
 	{
-		FVA_EXIT_CODE res = performDTChecks(context, m_cfg);
+		FVA_EXIT_CODE res = performDTChecks(context, m_cfg, obj);
 		RET_RES_IF_RES_IS_ERROR
 	}
 
@@ -136,19 +136,49 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, const FvaConfiguration& cfg)
+FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject* obj, const FvaConfiguration& cfg, const QString& dir)
+{
+	QString fvaSWRootDir;
+	FVA_EXIT_CODE exitCode = cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
+
+	QString pyScriptRunPath = "python " + fvaSWRootDir + "/#scripts/" + scriptName + " " + dir;
+
+	QProcess myProcess(obj);
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	myProcess.start(pyScriptRunPath);
+	myProcess.waitForFinished(-1);
+
+	exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(pyScriptRunPath);
+	return FVA_NO_ERROR;
+}
+FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, const FvaConfiguration& cfg, QObject* obj)
 {
 	context.cmdType = "CLTCheckDateTime";
 	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, cfg);
 	if (FVA_ERROR_NO_EXIF_DATE_TIME == exitCode)
 	{
-		FVA_MESSAGE_BOX("Found empty date-time metadata, that will be fixed automatically")
-		context.cmdType = "CLTFixEmptyDateTime";
-		exitCode = m_dataProcessor.run(context, cfg);
+		bool fixPicsByModifTime = false;
+		exitCode = cfg.getParamAsBoolean("Rename::picsByModifTime", fixPicsByModifTime);
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsBoolean")
+
+		if (false == fixPicsByModifTime)
+		{
+			FVA_MESSAGE_BOX("Found empty date-time metadata, automated fixing is not possible")
+			return FVA_ERROR_NOT_IMPLEMENTED;
+		}
+		else
+		{
+			FVA_MESSAGE_BOX("Found empty date-time metadata, that will be fixed automatically")
+		}
+
+		exitCode = runPythonCMD("CLTFixEmptyDateTime.py", obj, cfg, context.dir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTFixEmptyDateTime")
+
 	}
 	else
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckDateTime")
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckDateTime")
 
 	return FVA_NO_ERROR;
 }
