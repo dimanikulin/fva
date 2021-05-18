@@ -1,3 +1,10 @@
+/*!
+* \file CLTCheckLocation.h
+* \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
+* \author Dima Nikulin.
+* \version 0.29
+* \date  2014-2021
+*/
 #ifndef _CLT_CHECK_LOCATION_H_
 #define _CLT_CHECK_LOCATION_H_
 

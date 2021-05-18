@@ -1,3 +1,11 @@
+/*!
+* \file fvariffparser.cpp
+* \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
+* \author Dima Nikulin.
+* \version 0.29
+* \date  2014-2021
+*/
+
 #include "fvariffparser.h"
 
 bool RiffParser::open(const QString& path, QString& error)

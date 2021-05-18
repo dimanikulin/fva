@@ -1,3 +1,10 @@
+/*!
+ * \file fvadevice.h 
+ * \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
+ * \author Dima Nikulin.
+ * \version 0.29
+ * \date  2014-2021
+ */
 #ifndef FVADEVICE_H
 #define FVADEVICE_H
 
@@ -7,7 +14,7 @@
 #include "fvaconstants.h"
 
 /*!
- * \brief it describes whole information about device 
+ * \brief it describes whole information about device
  */
 class fvaDevice
 {

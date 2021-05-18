@@ -1,3 +1,11 @@
+/*!
+* \file CLTAutoChecks2.h
+* \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
+* \author Dima Nikulin.
+* \version 0.29
+* \date  2014-2021
+*/
+
 #ifndef _CLT_AUTO_CHECKS_2_H_
 #define _CLT_AUTO_CHECKS_2_H
 

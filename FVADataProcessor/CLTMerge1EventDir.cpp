@@ -1,3 +1,10 @@
+/*!
+* \file CLTMerge1EventDir.cpp
+* \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
+* \author Dima Nikulin.
+* \version 0.29
+* \date  2014-2021
+*/
 #include "CLTMerge1EventDir.h"
 
 FVA_EXIT_CODE CLTMerge1EventDir::execute(const CLTContext& context)

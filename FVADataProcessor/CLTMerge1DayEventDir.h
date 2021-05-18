@@ -1,3 +1,10 @@
+/*!
+* \file CLTMerge1DayEventDir.h
+* \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
+* \author Dima Nikulin.
+* \version 0.29
+* \date  2014-2021
+*/
 #ifndef _CLT_MERGE_1_DAY_EVENT_DIR_H_
 #define _CLT_MERGE_1_DAY_EVENT_DIR_H_
 
