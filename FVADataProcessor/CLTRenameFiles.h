@@ -10,13 +10,20 @@
 
 #include "CmdLineBaseTask.h"
 
-// in read only mode this cmd just checks if renaming is even possible
+/*!
+* \brief it renames files by their EXIF date-time taken
+* In read only mode this cmd just checks if renaming is even possible
+*/
 class CLTRenameFiles : public CmdLineBaseTask
 {
 public:
 	CLTRenameFiles(const FvaConfiguration& cfg);
 	virtual ~CLTRenameFiles()		{ LOG_QDEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
+	/*!
+	* \brief returns command name
+	* \return returns command name as a string
+	*/
 	static QString Name()			{	return "CLTRenameFiles";					}
 	virtual bool supportReadOnly()	{	return true;								}
 

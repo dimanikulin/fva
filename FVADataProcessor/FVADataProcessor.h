@@ -10,6 +10,9 @@
 
 #include "CmdLineBaseExecutor.h"
 
+/*!
+* \brief it creates the CLT command and drives its execution
+*/
 class FVADataProcessor : public CmdLineBaseExecutor
 {
 private: // method

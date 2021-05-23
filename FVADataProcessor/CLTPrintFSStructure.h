@@ -20,6 +20,10 @@ public:
 	CLTPrintFSStructure(const FvaConfiguration& cfg);
 	virtual ~CLTPrintFSStructure();
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
+	/*!
+	* \brief returns command name
+	* \return returns command name as a string
+	*/
 	static QString Name(){return "CLTPrintFSStructure";}
 	virtual bool supportReadOnly () {return false;}
 

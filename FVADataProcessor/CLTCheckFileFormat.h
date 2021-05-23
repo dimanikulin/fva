@@ -10,11 +10,21 @@
 
 #include "CmdLineBaseTask.h"
 
+/*!
+* \brief CLTCheckFileFormat is child of CmdLineBaseTask and implements the next functions:
+*
+* 1. it checks for supported file format - returns FVA_ERROR_INCORRECT_FILE_FORMAT
+*
+*/
 class CLTCheckFileFormat : public CmdLineBaseTask
 {
 public:
 	virtual ~CLTCheckFileFormat() { LOG_QDEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
+	/*!
+	* \brief returns command name
+	* \return returns command name as a string
+	*/
 	static QString Name(){ return "CLTCheckFileFormat"; }
 	virtual bool supportReadOnly() { return false; }
 };

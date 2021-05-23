@@ -11,7 +11,7 @@
 #include "CmdLineBaseTask.h"
 
 /*!
-* \brief it moves alone (or twins) files to parent folder, with adding their description into parent folder DESCRIPTION_FILE_NAME
+* \brief it moves alone (or twins) files to parent folder
 */
 class CLTMoveAloneFiles : public CmdLineBaseTask
 {
@@ -19,6 +19,10 @@ public:
 	CLTMoveAloneFiles(const FvaConfiguration& cfg);
 	virtual ~CLTMoveAloneFiles() { LOG_QDEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
+	/*!
+	* \brief returns command name
+	* \return returns command name as a string
+	*/
 	static QString Name(){ return "CLTMoveAloneFiles"; }
 	virtual bool supportReadOnly() { return true; }
 

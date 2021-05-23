@@ -13,12 +13,23 @@
 
 #include <QtCore/QCoreApplication>
 
+/*!
+* \brief CLTAutoChecks1 is child of CmdLineBaseTask and implements the next functions:
+*
+* 1. checks if there is no first video
+* 2. checks if there is no panarom files
+*
+*/
 class CLTAutoChecks1 : public CmdLineBaseTask
 {
 public:
 	CLTAutoChecks1(const FvaConfiguration& cfg);
 	virtual ~CLTAutoChecks1() { LOG_QDEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
+	/*!
+	* \brief returns command name
+	* \return returns command name as a string
+	*/
 	static QString Name(){return "CLTAutoChecks1";}
 	virtual bool supportReadOnly() {return true;}
 
