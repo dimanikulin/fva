@@ -13,9 +13,8 @@
 #include "QtCore/QFile"
 #include "QtCore/QTextStream"
 
-FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& device, QWidget *parent)
+FVADictionaryEditor::FVADictionaryEditor(const QString& device, QWidget *parent)
 	: QDialog	(parent),
-	 m_dictPath	(dictPath),
 	 m_device	(device)
 {
 	ui.setupUi(this);

@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	{
 		deviceMatchName = list.at(2);
 	}
-	FVADictionaryEditor w(list.at(1), deviceMatchName);
+	FVADictionaryEditor w(deviceMatchName);
 	w.show();
 	return a.exec();
 }

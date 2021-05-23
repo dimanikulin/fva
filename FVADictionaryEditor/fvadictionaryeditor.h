@@ -26,7 +26,7 @@ class FVADictionaryEditor : public QDialog
 	Q_OBJECT
 
 public:
-	FVADictionaryEditor(const QString&  dictPath, const QString& device ,QWidget *parent = 0);
+	FVADictionaryEditor(const QString& device ,QWidget *parent = 0);
 	
 	private slots:
 		/*!
@@ -49,10 +49,20 @@ public:
 
 	private:
 
+		/*!
+		* \brief user interface QT implementation to work with
+		*/
 		Ui::FVADictionaryEditorClass	ui;
-		const QString					m_dictPath;
+
+		/*!
+		* \brief devive to be added as new one to a ditionary
+		* \return it returns nothing
+		*/
 		const QString					m_device;
 
+		/*!
+		* \brief application wide settings
+		*/
 		FvaConfiguration				cfg;
 };
 
