@@ -53,6 +53,11 @@ class FVAOrganizerEventCfgPage : public QWizardPage
 		virtual void	setVisible(bool visible);
 
 	private slots:
+
+		/*!
+		* \brief to call descsiption editor
+		* \return it returns nothing
+		*/
 		void OnFvaInfoButtonPressed();
 
 	private:
