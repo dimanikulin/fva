@@ -50,11 +50,6 @@ FVADictionaryEditor::FVADictionaryEditor(const QString&	dictPath,const QString& 
 	ui.groupBox_2->setDisabled(true);
 }
 
-FVADictionaryEditor::~FVADictionaryEditor()
-{
-
-}
-
 void FVADictionaryEditor::OnAddPersonBtnPressed()
 {
 	//addDictItem(m_dictPath, ui.editPerson->text(),this, "people" );
