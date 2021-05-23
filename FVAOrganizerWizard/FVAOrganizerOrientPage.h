@@ -13,22 +13,41 @@
 class QLabel;
 class QPushButton;
 
+/*!
+* \brief FVAOrganizerOrientPage is a child of <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a> and implements the next UI functions:
+*
+* 1. QLabel to suggest a user to check orintation;
+* 2. QPushButton to start "/jpegr/jpegr.exe" to check orintations.
+* 
+* Showing the elements and flow is based on class FvaConfiguration.
+* This class impelements "View" functions from MVC pattern.
+*/
+
 class FVAOrganizerOrientPage : public QWizardPage
 {
 	Q_OBJECT
 public:
 
 	FVAOrganizerOrientPage();
-	virtual ~FVAOrganizerOrientPage(){};
 
 	private slots:
 
+	/*!
+	* \brief starts "/jpegr/jpegr.exe" to check orintations 
+	* \return it returns nothing
+	*/
 	void OnOrientationButtonClicked();
 
 private: // data 
 
-	QLabel*			rotateLabel;
-	QPushButton*	rotateButton;
+	/*!
+	* \brief to suggest a user to check orintation
+	*/
+	QLabel*		rotateLabel;
 
+	/*!
+	* \brief to start "/jpegr/jpegr.exe" to check orintations
+	*/
+	QPushButton*	rotateButton;
 };
 #endif // _FVA_ORG_ORIENT_PAGE_H_

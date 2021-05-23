@@ -13,22 +13,39 @@
 class QPushButton;
 class QTextBrowser;
 
+/*!
+* \brief FVAOrganizerStartPage is a child of <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a> and implements the next UI functions:
+*
+* 1. "Welcome words" to user in a QTextBrowser;
+* 2. "Configuration" button (QPushButton) to start Configurator UI before System to use.
+* 
+* This class impelements "View" functions from MVC pattern.
+*/
 class FVAOrganizerStartPage : public QWizardPage
 {
 	Q_OBJECT
 public:
 
 	FVAOrganizerStartPage();
-	virtual ~FVAOrganizerStartPage(){};
-
 
 protected slots:
+
+	/*!
+	* \brief it starts the Configurator UI
+	* \return it returns nothing
+	*/
 	void OnCfgBtnPressed();
 
 private:
 
+	/*!
+	* \brief to tell the user the "Welcome words"
+	*/
 	QTextBrowser*	helloWords;
 
+	/*!
+	* \brief to start the Configurator UI
+	*/
 	QPushButton*	cfgButton;
 };
 

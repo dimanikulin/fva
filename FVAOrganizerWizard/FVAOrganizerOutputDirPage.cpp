@@ -85,10 +85,7 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	connect(googlePhotoButton, SIGNAL(clicked()), this, SLOT(OnGooglePhotoDirButtonClicked()));
 }
 
-void FVAOrganizerOutputDirPage::setVisible(bool visible)
-{
-	return QWizardPage::setVisible(visible);
-}void FVAOrganizerOutputDirPage::OnDigiKamDirButtonClicked()
+void FVAOrganizerOutputDirPage::OnDigiKamDirButtonClicked()
 {
 	QFileDialog dirDialog;
 
@@ -97,7 +94,6 @@ void FVAOrganizerOutputDirPage::setVisible(bool visible)
 	if (!path.isEmpty())
 	{
 		digiKamLineEdit->setText(path);
-		// emit completeChanged();
 	}
 }
 void FVAOrganizerOutputDirPage::OnGooglePhotoDirButtonClicked()
@@ -109,12 +105,11 @@ void FVAOrganizerOutputDirPage::OnGooglePhotoDirButtonClicked()
 	if (!path.isEmpty())
 	{
 		googlePhotoLineEdit->setText(path);
-		// emit completeChanged();
 	}
 }
 bool FVAOrganizerOutputDirPage::isComplete() const
 {
-	return true;
+	return !googlePhotoLineEdit->text().isEmpty() || !digiKamLineEdit->text().isEmpty();
 }
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {

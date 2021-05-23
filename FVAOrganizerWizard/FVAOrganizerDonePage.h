@@ -12,18 +12,26 @@
 
 class QTextBrowser;
 
+/*!
+* \brief FVAOrganizerDonePage is a child of <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a> and implements the next UI functions:
+*
+* 1. "Last words" to user in a QTextBrowser;
+*
+* This class impelements "View" functions from MVC pattern.
+*/
 class FVAOrganizerDonePage : public QWizardPage
 {
 	Q_OBJECT
 	public:
 
 		FVAOrganizerDonePage();
-		virtual ~FVAOrganizerDonePage(){};
 
 	private:
 
+		/*!
+		* \brief to tell the user the "Last words"
+		*/
 		QTextBrowser*	finishWords;
-
 };
 
 #endif // _FVA_ORG_DONE_PAGE_H_

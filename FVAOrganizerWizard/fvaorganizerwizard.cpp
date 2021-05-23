@@ -62,8 +62,3 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 }
-
-FVAOrganizerWizard::~FVAOrganizerWizard()
-{
-
-}
