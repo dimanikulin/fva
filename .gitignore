@@ -377,3 +377,5 @@ fvaCsvViewer.py
 #ignore test data
 *.jpg
 
+#ignore  old sources zip
+oldsrc.zip
