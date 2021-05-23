@@ -12,7 +12,7 @@
 
 #include "CLTRenameVideoBySequence.h"
 #include "CLTCreateDirStructByDevNames.h"
-#include "CLTConvertAmr.h"
+
 #include "CLTCheckDeviceName.h"
 #include "CLTAutoChecks1.h"
 #include "CLTCheckFileFormat.h"
@@ -42,7 +42,6 @@ std::auto_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTConte
 	if (context.cmdType == CLTCreateDirStructByDeviceName::Name())	r.reset(new CLTCreateDirStructByDeviceName());
 	else if (context.cmdType == CLTCheckDeviceName::Name())			r.reset(new CLTCheckDeviceName());
 	else if (context.cmdType == CLTRenameVideoBySequence::Name())	r.reset(new CLTRenameVideoBySequence(cfg));
-	else if (context.cmdType == CLTConvertAmr::Name())				r.reset(new CLTConvertAmr());
 	else if (context.cmdType == CLTAutoChecks1::Name())				r.reset(new CLTAutoChecks1(cfg));
 	else if (context.cmdType == CLTCheckFileFormat::Name())			r.reset(new CLTCheckFileFormat());
 	else if (context.cmdType == CLTCheckLocation::Name())			r.reset(new CLTCheckLocation());

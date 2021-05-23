@@ -99,7 +99,6 @@
     <ClCompile Include="CLTCheckDeviceName.cpp" />
     <ClCompile Include="CLTCheckFileFormat.cpp" />
     <ClCompile Include="CLTCheckLocation.cpp" />
-    <ClCompile Include="CLTConvertAmr.cpp" />
     <ClCompile Include="CLTCreateDirStructByDevNames.cpp" />
     <ClCompile Include="CLTCreateDirStructByFileNames.cpp" />
     <ClCompile Include="CLTCSVFvaFiles.cpp" />
@@ -122,7 +121,6 @@
     <ClInclude Include="CLTCheckDeviceName.h" />
     <ClInclude Include="CLTCheckFileFormat.h" />
     <ClInclude Include="CLTCheckLocation.h" />
-    <ClInclude Include="CLTConvertAmr.h" />
     <ClInclude Include="CLTCreateDirStructByDevNames.h" />
     <ClInclude Include="CLTCreateDirStructByFileNames.h" />
     <ClInclude Include="CLTCSVFvaFiles.h" />

@@ -41,9 +41,6 @@
     <ClCompile Include="CLTCreateDirStructByDevNames.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CLTConvertAmr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CLTRenameVideoBySequence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -104,9 +101,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTCreateDirStructByDevNames.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CLTConvertAmr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CLTRenameVideoBySequence.h">
