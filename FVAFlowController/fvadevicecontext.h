@@ -13,7 +13,7 @@
 #include "data/fvadevice.h"
 
 /*!
- * \brief to keep devices information for the flow
+ * \brief to keep devices information to control the flow
  */
 class DeviceContext
 {
