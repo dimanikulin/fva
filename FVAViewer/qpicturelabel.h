@@ -14,6 +14,9 @@
 
 #include "ui_qpicturelabel.h"
 
+/*!
+* \brief impelements the drawing functions for static images
+*/
 class QPictureLabel : public QLabel
 {
 	Q_OBJECT
