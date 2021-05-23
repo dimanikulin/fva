@@ -22,14 +22,6 @@
 */
 class FvaConfiguration
 {
-	public:
-
-		/*!
-		* \brief ctors-dtors section
-		*/
-		FvaConfiguration() {};
-		virtual ~FvaConfiguration(){};
-
 	public: // methods
 
 		/*!
