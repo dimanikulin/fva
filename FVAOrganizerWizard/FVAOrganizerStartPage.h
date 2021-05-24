@@ -19,7 +19,7 @@ class QTextBrowser;
 * 1. "Welcome words" to user in a QTextBrowser;
 * 2. "Configuration" button (QPushButton) to start Configurator UI before System to use.
 * 
-* This class impelements "View" functions from MVC pattern.
+* This class implements "View" functions from MVC pattern.
 */
 class FVAOrganizerStartPage : public QWizardPage
 {

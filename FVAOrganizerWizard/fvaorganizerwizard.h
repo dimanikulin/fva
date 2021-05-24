@@ -26,7 +26,7 @@
 * 
 * Each page/step is a separate class inherited from <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a>.  
 * Showing the elements and flow is based on class FvaConfiguration.
-* This class impelements "View" functions from MVC pattern.
+* This class implements "View" functions from MVC pattern.
 */
 class FVAOrganizerWizard : public QWizard
 {
