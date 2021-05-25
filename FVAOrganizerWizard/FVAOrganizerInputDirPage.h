@@ -22,7 +22,7 @@ class QPushButton;
 * 2. QTextBrowser to output the logging events;
 * 3. QPushButton to open QFileDialog to select input directory.
 *
-* This class impelements "View" functions from MVC pattern.
+* This class implements "View" functions from MVC pattern.
 */
 class FVAOrganizerInputDirPage : public QWizardPage
 {

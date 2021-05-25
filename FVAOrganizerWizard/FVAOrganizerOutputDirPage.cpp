@@ -113,14 +113,23 @@ bool FVAOrganizerOutputDirPage::isComplete() const
 }
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {
+	// create the flow controller to proceed
 	FVAFlowController flow;
+
+	// prepare list of directories to pass later to the FVAFlowController
 	STR_LIST dirList;
+
+	// if googlePhotoLineEdit is not empty 
 	if (!googlePhotoLineEdit->text().isEmpty())
+		// add this folder into list
 		dirList.append(googlePhotoLineEdit->text());
 
+	// if digiKamLineEdit is not empty 
 	if (!digiKamLineEdit->text().isEmpty())
+		// add this folder into list
 		dirList.append(digiKamLineEdit->text());
 
+	// call the Flow Controller MoveInputDirToOutputDirs method to integrate the input data into Multimedia IR systems
 	FVA_EXIT_CODE exitCode = flow.MoveInputDirToOutputDirs(
 							((FVAOrganizerWizard*)wizard())->inputFolder(), 
 								dirList, 

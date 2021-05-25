@@ -77,10 +77,14 @@ bool FVAOrganizerInputDirPage::isComplete() const
 }
 bool	FVAOrganizerInputDirPage::validatePage ()
 {
+	// get the directory the user selected
 	QString dir = inputDirLineEdit->text();
 
+	// create the flow controller to proceed 
 	FVAFlowController flow;
 	DeviceContext deviceContext;
+
+	// call the flow controller PerformChecksForInputDir method to check the multimedia data and to fix it if needs
 	FVA_EXIT_CODE exitCode = flow.PerformChecksForInputDir(dir, deviceContext,this);
 	if (exitCode != FVA_NO_ERROR)
 		return false;

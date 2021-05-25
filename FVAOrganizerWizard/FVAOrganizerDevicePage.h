@@ -26,7 +26,7 @@ class QComboBox;
 * 5. QComboBox to show a list of all devices for user to select;
 * 6. QPushButton to call dictionary editor
 *
-* This class impelements "View" functions from MVC pattern.
+* This class implements "View" functions from MVC pattern.
 * Showing the elements and flow is based on class FvaConfiguration.
 */
 class FVAOrganizerDevicePage : public QWizardPage

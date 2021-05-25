@@ -20,7 +20,7 @@ class QPushButton;
 * 2. QPushButton to start "/jpegr/jpegr.exe" to check orintations.
 * 
 * Showing the elements and flow is based on class FvaConfiguration.
-* This class impelements "View" functions from MVC pattern.
+* This class implements "View" functions from MVC pattern.
 */
 
 class FVAOrganizerOrientPage : public QWizardPage

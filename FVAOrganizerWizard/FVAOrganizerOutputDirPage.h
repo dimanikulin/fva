@@ -18,10 +18,10 @@ class QCheckBox;
 *
 * 1. QLineEdit for the digiKam directory to put the Multimedia Data in;
 * 2. QLineEdit for the GooglePhoto directory to put the Multimedia Data in;
-* 3. QCheckBox to remove origin (input) directory to get the Multimedia Data from;
+* 3. QCheckBox to remove origin (input) directory to get the Multimedia Data from.
 * 
 * Showing the elements and flow is based on class FvaConfiguration.
-* This class impelements "View" functions from MVC pattern.
+* This class implements "View" functions from MVC pattern.
 */
 
 class FVAOrganizerOutputDirPage : public QWizardPage

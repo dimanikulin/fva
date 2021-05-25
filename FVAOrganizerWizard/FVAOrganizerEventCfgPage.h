@@ -22,7 +22,7 @@ class QRadioButton;
 * 4. QRadioButton to choose one-Event-Several-Days as dir type;
 * 5. QPushButton to fill up the fva Information;
 *
-* This class impelements "View" functions from MVC pattern.
+* This class implements "View" functions from MVC pattern.
 * Showing the elements and flow is based on class FvaConfiguration.
 */
 class FVAOrganizerEventCfgPage : public QWizardPage
