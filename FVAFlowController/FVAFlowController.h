@@ -22,14 +22,14 @@ typedef QList<QString> STR_LIST;
 class QObject;
 
 /*!
- * \brief it is a main class to keep a logic of the operation flow and interaction with a user. It implements such functions as:
+ * \brief FVAFlowController is a main class to keep a logic of the operation flow and interaction with a user. It implements such functions as:
  *
  * 1. PerformChecksForInputDir - it performs the checks for input folder according to fva configuration;
  * 2. OrganizeInputDir - it performs the organization stuff for the input folder according to fva configuration;
  * 3. MoveInputDirToOutputDirs - it performs the moving input folder content to output folder with checks according to event cfg
  * 4. ProcessInputDirForEventCfg - t process input folder content as one-event or multi-events according to event cfg
 
- * This class impelements "Controller" functions from MVC pattern.
+ * This class implements "Controller" functions from MVC pattern.
  * Flow control is based on class FvaConfiguration.
  */
 class FVAFlowController
