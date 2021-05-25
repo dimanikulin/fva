@@ -11,7 +11,9 @@
 #include "CmdLineBaseExecutor.h"
 
 /*!
-* \brief it creates the CLT command and drives its execution
+* \brief FVADataProcessor is child of CmdLineBaseExecutor and 
+* 1. creates the CLT command (child of CmdLineBaseTask) 
+* 2. drives CmdLineBaseTask's child execution
 */
 class FVADataProcessor : public CmdLineBaseExecutor
 {
