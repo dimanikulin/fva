@@ -14,6 +14,7 @@
 * \brief CLTCheckDateTime is child of CmdLineBaseTask and implements the next functions:
 *
 * 1. it checks for existing EXIF date taken - returns FVA_ERROR_NO_EXIF_DATE_TIME
+* 2. TBD
 *
 */
 class CLTCheckDateTime : public CmdLineBaseTask

@@ -11,7 +11,7 @@
 #include "CmdLineBaseTask.h"
 
 /*!
-* \brief it merges one-day-event input folder into output foder 
+* \brief CLTMerge1DayEventDir is child of CmdLineBaseTask and it merges one-day-event input folder into output foder 
 */
 class CLTMerge1DayEventDir : public CmdLineBaseTask
 {

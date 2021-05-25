@@ -11,7 +11,8 @@
 #include "CmdLineBaseTask.h"
 
 /*!
- * \brief it creates folder structure using device names in input folder
+ * \brief CLTCreateDirStructByFileNames is child of CmdLineBaseTask and 
+ * it creates folder structure using device names in input folder
  */
 class CLTCreateDirStructByDeviceName : public CmdLineBaseTask
 {

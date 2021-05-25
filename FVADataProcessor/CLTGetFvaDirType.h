@@ -11,7 +11,12 @@
 #include "CmdLineBaseTask.h"
 
 /*!
- * \brief it returns the input foder type - FVA_1_EVENT_1_DAY, FVA_1_EVENT_FEW_DAYS, FVA_FEW_EVENTS_1_DAY or FVA_1_EVENT_FEW_DAYS
+ * \brief CLTGetFvaDirType is child of CmdLineBaseTask 
+ * and it returns the input foder type 
+ * 1. FVA_1_EVENT_1_DAY, 
+ * 2. FVA_1_EVENT_FEW_DAYS, 
+ * 3. FVA_FEW_EVENTS_1_DAY or
+ * 4. FVA_1_EVENT_FEW_DAYS
  */
 class CLTGetFvaDirType : public CmdLineBaseTask
 {

@@ -14,7 +14,7 @@
 * \brief CLTCheckLocation is child of CmdLineBaseTask and implements the next functions:
 *
 * 1. it checks for existing location - returns FVA_ERROR_NO_EXIF_LOCATION
-*
+* 2. TBD
 */
 class CLTCheckLocation : public CmdLineBaseTask
 {

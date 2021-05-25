@@ -11,7 +11,8 @@
 #include "CmdLineBaseTask.h"
 
 /*!
- * \brief it renames files in input folder if it finds the files with the same name in output folder
+ * \brief CLTFixDuplicatedFileNames is child of CmdLineBaseTask and 
+ * it renames files in input folder if it finds the files with the same name in output folder
  */
 class CLTFixDuplicatedFileNames : public CmdLineBaseTask
 {

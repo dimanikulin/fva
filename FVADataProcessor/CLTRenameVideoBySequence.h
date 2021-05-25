@@ -11,7 +11,7 @@
 #include "CmdLineBaseTask.h"
 
 /*!
-* \brief it renames video files by their sequence formatted in file name 
+* \brief CLTRenameVideoBySequence is child of CmdLineBaseTask and it renames video files by their sequence formatted in file name 
 * In read only mode this cmd just checks if renaming is even possible
 */
 class CLTRenameVideoBySequence : public CmdLineBaseTask

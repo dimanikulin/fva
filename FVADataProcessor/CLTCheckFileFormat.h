@@ -14,6 +14,7 @@
 * \brief CLTCheckFileFormat is child of CmdLineBaseTask and implements the next functions:
 *
 * 1. it checks for supported file format - returns FVA_ERROR_INCORRECT_FILE_FORMAT
+* 2. TBD
 *
 */
 class CLTCheckFileFormat : public CmdLineBaseTask

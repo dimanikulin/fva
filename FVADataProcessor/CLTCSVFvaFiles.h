@@ -11,7 +11,8 @@
 #include "CmdLineBaseTask.h"
 
 /*!
- * \brief it creates CSV file with FVA information for files in input folder 
+ * \brief CLTCSVFvaFile is child of CmdLineBaseTask and 
+ * it creates CSV file with FVA information for files in input folder 
  */
 class CLTCSVFvaFile : public CmdLineBaseTask
 {

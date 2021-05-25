@@ -12,7 +12,7 @@
 #include "CmdLineBaseTask.h"
 
 /*!
- * \brief it prints file system structure with adding info to compare with fs structure on remote PC 
+ * \brief CLTPrintFSStructure is child of CmdLineBaseTask and it prints file system structure with adding info to compare with fs structure on remote PC 
  */
 class CLTPrintFSStructure : public CmdLineBaseTask
 {

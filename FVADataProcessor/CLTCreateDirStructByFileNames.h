@@ -11,7 +11,8 @@
 #include "CmdLineBaseTask.h"
 
 /*!
-* \brief it creates folder structure by days folders, using file names in input folder
+* \brief CLTCreateDirStructByFileNames is child of CmdLineBaseTask and 
+* it creates folder structure by days folders, using file names in input folder
 */
 class CLTCreateDirStructByFileNames : public CmdLineBaseTask
 {

@@ -11,7 +11,7 @@
 #include "CmdLineBaseTask.h"
 
 /*!
-* \brief it moves alone (or twins) files to parent folder
+* \brief CLTMoveAloneFiles is child of CmdLineBaseTask and it moves alone (or twins) files to parent folder
 */
 class CLTMoveAloneFiles : public CmdLineBaseTask
 {

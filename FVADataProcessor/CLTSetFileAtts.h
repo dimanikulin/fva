@@ -11,7 +11,7 @@
 #include "CmdLineBaseTask.h"
 
 /*!
-* \brief it sets up "read only" attribute for all files in input folder 
+* \brief CLTSetFileAtts is child of CmdLineBaseTask and sets up "read only" attribute for all files in input folder 
 */
 class CLTSetFileAtts : public CmdLineBaseTask
 {
