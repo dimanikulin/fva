@@ -1,0 +1,21 @@
+ID,Name,Value
+1,Search::DateTime,TRUE
+2,Search::Location,FALSE
+3,Search::People,TRUE
+4,Search::Device,FALSE
+5,Search::DescOrComment,TRUE
+6,Search::Event,TRUE
+7,Search::EventReasonPeople,TRUE
+8,Common::Language,0
+9,Common::RootDir,C:/FVA/
+10,Common::LogLevel,2
+11,Common::CheckOrientation,FALSE
+12,Integration::GooglePhoto,TRUE
+13,Integration::digiKam,TRUE
+14,Rename::picsByModifTime,TRUE
+15,Rename::videoByModifTime,TRUE
+16,Rename::minFilesInDir,1
+17,Format::fvaDirName,yyyy.MM.dd
+18,Format::fvaDirNameYear,yyyy
+19,Format::fvaFileName,yyyy-MM-dd-hh-mm-ss
+20,Format::exifDateTime,yyyy:MM:dd hh:mm:ss
