@@ -29,5 +29,9 @@ into the IR multimedia systems like digiKam Google Photo, Apple Photo, Synology 
 2. graphviz http://www.graphviz.org/
 3. TeX Live - https://www.tug.org/texlive/acquire-netinstall.html
 
+## how to build the doxy documentation
+1. clear fva folder from binaries and generated files
+2. start doxy and give it doxy.cfg
+3. goto to C:\git\FvaDoxy\latex and run make.bat 
 #optional:
 8. jupyter-lab 
