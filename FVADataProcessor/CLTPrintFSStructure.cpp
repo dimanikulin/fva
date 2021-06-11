@@ -15,7 +15,7 @@ CLTPrintFSStructure::CLTPrintFSStructure(const FvaConfiguration& cfg)
 	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	RET_IF_RES_IS_ERROR
 
-	m_file.setFileName(rootSWdir + "#logs/fsoutput.txt");
+	m_file.setFileName(rootSWdir + "#logs#/fsoutput.txt");
 	m_file.open( QIODevice::WriteOnly );
 
 	res = m_fmtctx.fillFmtContextFromCfg(cfg);

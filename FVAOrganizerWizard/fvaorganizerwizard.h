@@ -21,8 +21,9 @@
 * 2. Input Dir Page - class FVAOrganizerInputDirPage;
 * 3. Orient Page - class FVAOrganizerOrientPage;
 * 4. Device Page - class FVAOrganizerDevicePage;
-* 5. Output Dir Page - class FVAOrganizerOutputDirPage;
-* 6. Done Page - class FVAOrganizerDonePage.
+* 5. Event Configuration Page - FVAOrganizerEventCfgPage;
+* 6. Output Dir Page - class FVAOrganizerOutputDirPage;
+* 7. Done Page - class FVAOrganizerDonePage.
 * 
 * Each page/step is a separate class inherited from <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a>.  
 * Showing the elements and flow is based on class FvaConfiguration.

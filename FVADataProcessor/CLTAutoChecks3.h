@@ -22,7 +22,7 @@
 * 2. it checks for existing device in dictionary by device name in pictire-returns FVA_ERROR_UKNOWN_DEVICE, FVA_ERROR_EMPTY_DEVICE, FVA_ERROR_LINKED_WRONG_DEVICE
 * 3. it checks for GEO position existing in file-returns FVA_ERROR_NO_GEO
 * 4. it checks for existing fva information in CSV file-returns FVA_ERROR_NOT_EXISTING_FVA
-* 5. finally it outputs all found issues into rootSWdir + "#logs/issues3.csv".
+* 5. finally it outputs all found issues into rootSWdir + "#logs#/issues3.csv".
 *
 */
 class CLTAutoChecks3 : public CmdLineBaseTask

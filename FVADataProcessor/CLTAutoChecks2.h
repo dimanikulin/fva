@@ -23,7 +23,7 @@
 * 6. it checks for not uniquie file name;
 * 7. it checks for empty taken date-time;
 * 8. it checks for too little files in one folder;
-* 9. finally it outputs all found issues into rootSWdir + "#logs/issues2.csv".
+* 9. finally it outputs all found issues into rootSWdir + "#logs#/issues2.csv".
 *
 */
 class CLTAutoChecks2 : public CmdLineBaseTask

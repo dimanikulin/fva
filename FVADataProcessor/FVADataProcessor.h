@@ -12,8 +12,11 @@
 
 /*!
 * \brief FVADataProcessor is child of CmdLineBaseExecutor and 
-* 1. creates the CLT command (child of CmdLineBaseTask) 
-* 2. drives CmdLineBaseTask's child execution
+* 1. creates the CLT command (child of CmdLineBaseTask);
+* 2. drives CmdLineBaseTask's child execution per external requests.
+
+* This class implements "Controller" functions from MVC pattern and Class Factory functions as well. 
+* Flow control is based on class FvaConfiguration.
 */
 class FVADataProcessor : public CmdLineBaseExecutor
 {

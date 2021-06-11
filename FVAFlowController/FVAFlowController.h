@@ -116,7 +116,7 @@ private:
 	FVA_EXIT_CODE performLocationChecks(CLTContext& context, const FvaConfiguration& cfg);
 
 	/*!
-	 * \brief it runs python command from #scipt dir
+	 * \brief it runs python command from #script dir
 	 * \param scriptName - name of script to run
 	 * \param obj - to attach the child processes to this object
 	 * \param cfg - system configuration, applicable for whole system
