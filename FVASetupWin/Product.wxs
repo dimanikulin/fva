@@ -20,7 +20,7 @@
 	<Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">      
       <Directory Id="PRODUCTDIR"> 
-        <Directory Id="scripts" Name='#scripts'>
+        <Directory Id="scripts" Name='#scripts#'>
           <Component Id="scripts" Guid="D4AE1F4B-9CDC-424A-B757-1A970DF59665">
             <File Id="checkCLT2" Name="checkCLT2.cmd" Source="..\FVAScripts\checkCLT2.cmd"  Vital="yes" KeyPath="no"/>
             <File Id="checkCLT3" Name="checkCLT3.cmd" Source="..\FVAScripts\checkCLT3.cmd"  Vital="yes" KeyPath="no"/>
@@ -35,7 +35,7 @@
           </Component>
         </Directory>
         
-        <Directory Id="bin" Name='#bin'>
+        <Directory Id="bin" Name='#bin#'>
           <Directory Id="Icons" Name='Icons'>
             <Component Id="icons" Guid="1af1fda7-a0f8-41f3-979f-07cf8ca5a411">
               <File Id="audio" Name="audio.png"  Source="#BIN#\Icons\audio.png"  Vital="yes" KeyPath="no"/>
