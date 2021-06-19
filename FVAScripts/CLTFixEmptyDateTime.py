@@ -1,5 +1,5 @@
 from exif import Image
-import os
+import os, stat
 import sys
 import datetime
 
@@ -17,7 +17,8 @@ for filename in os.listdir(sys.argv[1]):
             fiximage.datetime_original = str(time)
             fiximage.subsec_time_original = '000'
 
-        with open(fullPath, 'wb') as fixedfile:
+        os.chmod(fullPath, stat.S_IWRITE) # clear read only file attribute
+        with open(fullPath, 'wb') as fixedfile:   
            fixedfile.write(fiximage.get_file())
 
   
