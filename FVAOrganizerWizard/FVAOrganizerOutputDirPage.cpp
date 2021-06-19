@@ -109,7 +109,9 @@ void FVAOrganizerOutputDirPage::OnGooglePhotoDirButtonClicked()
 }
 bool FVAOrganizerOutputDirPage::isComplete() const
 {
-	return !googlePhotoLineEdit->text().isEmpty() || !digiKamLineEdit->text().isEmpty();
+	// TODO to fix it
+	// return !googlePhotoLineEdit->text().isEmpty() || !digiKamLineEdit->text().isEmpty();
+	return true;
 }
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {
