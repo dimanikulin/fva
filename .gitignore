@@ -367,13 +367,6 @@ FVASetupWin/QT5.5RelWin32bin
 #ignore submodule
 easyexif/
 
-#ignore ipynb_checkpoints
-.ipynb_checkpoints/
-
-#ignore some scripts
-fvaCsvEditor.py
-fvaCsvViewer.py
-
 #ignore test data
 *.jpg
 
