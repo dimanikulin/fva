@@ -116,6 +116,14 @@ jobs:
         restore-keys: |
           ${{ matrix.config.name }}-ccache-
 
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: '5.15'
+        target: 'desktop'
+        arch: 'win64_msvc2019_64'
+        #modules: 'debug_info'
+
     - name: Configure
       shell: cmake -P {0}
       run: |
