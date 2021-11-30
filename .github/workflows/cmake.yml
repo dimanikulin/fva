@@ -1,9 +1,8 @@
 name: FVA Build Matrix
 
 on:
-  # commented to reduce billed execution time
-  #push:
-  #  branches: [ master ]
+  push:
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
