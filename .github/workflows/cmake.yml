@@ -119,7 +119,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
-        version: $ENV{QT_VERSION}
+        version: "$ENV{QT_VERSION}"
         target: 'desktop'
         arch: 'win64_msvc2019_64'
         setup-python : 'false'
