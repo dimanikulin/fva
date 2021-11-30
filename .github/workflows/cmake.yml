@@ -121,6 +121,7 @@ jobs:
         version: '5.15'
         target: 'desktop'
         arch: 'win64_msvc2019_64'
+        setup-python : 'false'
         #modules: 'debug_info'
 
     - name: Configure
