@@ -7,10 +7,10 @@ on:
     branches: [ master ]
 
 env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+    # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
     CMAKE_VERSION: 3.21.1
     NINJA_VERSION: 1.10.2
-    #QT_VERSION : 5.15.2 TODO make it passable to QT installation
+    QT_VERSION : "5.15.2"
     BUILD_TYPE: Release
     CCACHE_VERSION: 4.4
 
@@ -120,12 +120,19 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
-        version: 5.15.2
+        version:  ${{ env.QT_VERSION }}
         target: 'desktop'
         arch: 'win64_msvc2019_64'
         setup-python : 'false'
-        #modules: 'debug_info'
+        modules: 'QtMultimediaWidgets QtMultimedia'
 
+
+    - name: Check QMake and make
+      run: |
+        Write-Output (Get-Command qmake.exe).Path
+        qmake.exe -version
+        #Write-Output (Get-Command mingw32-make.exe).Path
+        #mingw32-make.exe -version
     - name: Configure make files by CMake
       shell: cmake -P {0}
       run: |
