@@ -1,5 +1,5 @@
 #add_executable(fvaplayer fvaplayer.cpp fvaplayer.h main.cpp playercontrols.cpp playercontrols.h videowidget.h)
-add_executable(main.cpp)
+add_executable(fvaplayer main.cpp)
 
 find_package(
   QT NAMES Qt5
