@@ -126,7 +126,11 @@ jobs:
         setup-python : 'false'
         modules: 'qtmultimediawidgets qtmultimedia'
 
-
+     - name: Check availability of QT libraries
+      run: |
+        ls
+        ls D:/a/fva/Qt/${{ env.QT_VERSION }}/msvc2019_64/lib/
+        
     - name: Check QMake and make
       run: |
         Write-Output (Get-Command qmake.exe).Path
