@@ -30,6 +30,11 @@ jobs:
            # environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
           #}
         # commented to reduce billed execution time
+           #- {
+           # name: "Windows Latest x86", artifact: "Windows-x86.zip",
+           # os: windows-latest,
+           # environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars32.bat"
+          #}
         - {
             name: "Windows Latest MinGW", artifact: "Windows-MinGW.7z",
             os: windows-latest,
