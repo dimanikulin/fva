@@ -124,15 +124,16 @@ jobs:
         target: 'desktop'
         arch: 'win64_msvc2019_64'
         setup-python : 'false'
-        modules: 'QtMultimediaWidgets QtMultimedia'
+        modules: 'qtmultimediawidgets qtmultimedia'
 
 
     - name: Check QMake and make
       run: |
         Write-Output (Get-Command qmake.exe).Path
         qmake.exe -version
-        #Write-Output (Get-Command mingw32-make.exe).Path
-        #mingw32-make.exe -version
+        Write-Output (Get-Command mingw32-make.exe).Path
+        mingw32-make.exe -version
+        
     - name: Configure make files by CMake
       shell: cmake -P {0}
       run: |
