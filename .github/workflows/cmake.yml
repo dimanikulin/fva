@@ -13,6 +13,7 @@ env:
     QT_VERSION : "5.15.2"
     BUILD_TYPE: Release
     CCACHE_VERSION: 4.4
+    QTDIR: D:/a/fva/Qt/5.15.2/mingw81_64
 
 jobs:
   build:
