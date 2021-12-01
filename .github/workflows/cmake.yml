@@ -122,9 +122,8 @@ jobs:
       with:
         version:  ${{ env.QT_VERSION }}
         target: 'desktop'
-        arch: 'win64_msvc2019_64'
+        arch: 'win64_mingw81'
         setup-python : 'false'
-        modules: 'qtmultimediawidgets qtmultimedia'
 
      #- name: Check availability of QT libraries
       #run: |
