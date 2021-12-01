@@ -1,8 +1,8 @@
 name: FVA Build Matrix
 
 on:
-  #push:
-   # branches: [ master ]
+  push:
+   branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -46,9 +46,10 @@ jobs:
         #  }
 
     steps:
+    # download fva repo
     - uses: actions/checkout@v1
 
-    - name: Download Ninja and CMake
+    - name: Download Ninja and CMake and configuration it.
       shell: cmake -P {0}
       run: |
         set(cmake_version $ENV{CMAKE_VERSION})
@@ -108,7 +109,7 @@ jobs:
         string(TIMESTAMP current_date "%Y-%m-%d-%H;%M;%S" UTC)
         message("::set-output name=timestamp::${current_date}")
 
-    - name: ccache cache files
+    - name: ccache - cache files
       uses: actions/cache@v1.1.0
       with:
         path: .ccache
@@ -125,7 +126,7 @@ jobs:
         setup-python : 'false'
         #modules: 'debug_info'
 
-    - name: Configure
+    - name: Configure make files by CMake
       shell: cmake -P {0}
       run: |
         set(ENV{CC} ${{ matrix.config.cc }})
@@ -166,7 +167,7 @@ jobs:
         endif()
 
 
-    - name: Build
+    - name: Build the sources
       shell: cmake -P {0}
       run: |
         set(ENV{NINJA_STATUS} "[%f/%t %o/sec] ")
@@ -207,7 +208,7 @@ jobs:
           message(FATAL_ERROR "Build failed")
         endif()
 
-    - name: ccache statistics
+    - name: make ccache statistics
       shell: cmake -P {0}
       run: |
         file(TO_CMAKE_PATH "$ENV{GITHUB_WORKSPACE}" ccache_basedir)
@@ -216,7 +217,7 @@ jobs:
 
         execute_process(COMMAND ccache -s)
 
-    - name: Run tests
+    - name: Run unit tests based on CTests
       shell: cmake -P {0}
       run: |
         include(ProcessorCount)
@@ -239,21 +240,22 @@ jobs:
           message(FATAL_ERROR "Running tests failed!")
         endif()
 
-    - name: Install Strip
+    - name: CMake Install Strip to make binaries smaller
       run: cmake --install build --prefix instdir --strip
 
 
-    - name: Pack
+    - name: Pack the binaries by 7zip
       working-directory: instdir
       run: cmake -E tar cfv ../${{ matrix.config.artifact }} --format=7zip .
 
 
-    - name: Upload
+    - name: Upload artifact to git hub to storage use later
       uses: actions/upload-artifact@v1
       with:
         path: ./${{ matrix.config.artifact }}
         name: ${{ matrix.config.artifact }}
 
+  # not clear what it is bellow!!!!!
   release:
     if: contains(github.ref, 'tags/v')
     runs-on: ubuntu-latest
