@@ -122,7 +122,7 @@ jobs:
         restore-keys: |
           ${{ matrix.config.name }}-ccache-
 
-    - name: Install Qt
+    - name: Install Qt and 
       uses: jurplel/install-qt-action@v2
       with:
         version:  ${{ env.QT_VERSION }}
@@ -130,11 +130,9 @@ jobs:
         arch: 'win64_mingw81'
         setup-python : 'false'
     
-    - name: Configure CMake
+    - name: Check availability of QT libraries and Configure CMake for it
       env:
-         CMAKE_PREFIX_PATH: ${{env.Qt5_Dir}}
-    
-    - name: Check availability of QT libraries
+        CMAKE_PREFIX_PATH: ${{env.Qt5_Dir}}
       run: |
         #ls
         #ls D:/a/fva/Qt/${{ env.QT_VERSION }}/msvc2019_64/lib/
