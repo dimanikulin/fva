@@ -11,10 +11,10 @@
 
 #include "fvaexitcodes.h"
 
-#include "data/fvafile.h"
-#include "data/fvadevice.h"
-#include "data/fvaperson.h"
-#include "data/fvaPeopleRelations.h"
+#include "fvafile.h"
+#include "fvadevice.h"
+#include "fvaperson.h"
+#include "fvaPeopleRelations.h"
 
 typedef std::map<int, QString> FVA_SIMPLE_MAP;
 
