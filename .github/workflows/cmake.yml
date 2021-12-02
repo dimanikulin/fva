@@ -130,12 +130,12 @@ jobs:
         target: 'desktop'
         arch: 'win64_mingw81'
         setup-python : 'false'
-        tools: 'tools_cmake,3.21.1,qt.tools.cmake.win64'
-
-     #- name: Check availability of QT libraries
-      #run: |
+        
+     - name: Check availability of QT libraries
+      run: |
        # ls
         #ls D:/a/fva/Qt/${{ env.QT_VERSION }}/msvc2019_64/lib/
+        Tree D:/a/fva/Qt/5.15.2/mingw81_64 /F | Select-Object -Skip 2
         
     - name: Check QMake and make
       run: |
