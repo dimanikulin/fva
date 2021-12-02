@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 // #include "fvaplayer.h"
-#include "D:\a\fva\Qt\5.15.2\mingw81_64\include/QtWidgets/QApplication"
+#include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 
