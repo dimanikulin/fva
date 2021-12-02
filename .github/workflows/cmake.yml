@@ -130,6 +130,7 @@ jobs:
         target: 'desktop'
         arch: 'win64_mingw81'
         setup-python : 'false'
+        tools: 'tools_cmake,3.21.1,qt.tools.cmake.win64'
 
      #- name: Check availability of QT libraries
       #run: |
