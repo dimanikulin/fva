@@ -1,3 +1,3 @@
-add_executable(main main.cpp)
+#add_executable(main main.cpp)
 
-install(TARGETS main)
+#install(TARGETS main)
