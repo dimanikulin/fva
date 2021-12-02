@@ -5,13 +5,13 @@ set(CMAKE_AUTOUIC ON)
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 add_executable(fvalib 
-  data/fvadevice.h
-  data/fvafile.h
-  data/fvafolder.h
-  data/fvaItem.h
-  data/fvaPeopleRelations.h
-  data/fvaperson.h
-  data/fvaItem.cpp
+  fvadevice.h
+  fvafile.h
+  fvafolder.h
+  fvaItem.h
+  fvaPeopleRelations.h
+  fvaperson.h
+  fvaItem.cpp
 
   CmdLineBaseExecutor.h
   CmdLineBaseTask.h
