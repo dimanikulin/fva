@@ -7,8 +7,8 @@
 */
 #include "fvacommoncsv.h"
 #include "fvadescriptionfile.h"
-#include "data/fvafile.h"
-#include "data/fvadevice.h"
+#include "fvafile.h"
+#include "fvadevice.h"
 
 #include <QtCore/QTextStream>
 #include <QtCore/QFile>
