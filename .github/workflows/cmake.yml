@@ -13,8 +13,6 @@ env:
     QT_VERSION : "5.15.2"
     BUILD_TYPE: Release
     CCACHE_VERSION: 4.4
-    QTDIR: D:/a/fva/Qt/5.15.2/mingw81_64/lib
-    Qt5_Dir: D:/a/fva/Qt/5.15.2/mingw81_64/lib 
 
 jobs:
   build:
@@ -56,7 +54,7 @@ jobs:
     # download fva repo
     - uses: actions/checkout@v1
 
-    - name: Download Ninja and CMake and configuration it.
+    - name: Download Ninja and CMake.
       shell: cmake -P {0}
       run: |
         set(cmake_version $ENV{CMAKE_VERSION})
@@ -131,13 +129,17 @@ jobs:
         target: 'desktop'
         arch: 'win64_mingw81'
         setup-python : 'false'
-        
+    
+    - name: Configure CMake
+      env:
+         CMAKE_PREFIX_PATH: ${{env.Qt5_Dir}}
+    
     - name: Check availability of QT libraries
       run: |
         #ls
         #ls D:/a/fva/Qt/${{ env.QT_VERSION }}/msvc2019_64/lib/
         #Tree D:/a/fva/Qt/5.15.2/mingw81_64 /F | Select-Object -Skip 2
-        Get-ChildItem -Path D:/a/fva/Qt/5.15.2/mingw81_64 -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
+        Get-ChildItem -Path D:/a/fva/Qt/5.15.2/mingw81_64/lib -Recurse -Force -ErrorAction SilentlyContinue | Select-Object FullName
         
     - name: Check QMake and make
       run: |
