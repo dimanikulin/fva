@@ -131,9 +131,9 @@ jobs:
         arch: 'win64_mingw81'
         setup-python : 'false'
         
-     - name: Check availability of QT libraries
+    - name: Check availability of QT libraries
       run: |
-       # ls
+        #ls
         #ls D:/a/fva/Qt/${{ env.QT_VERSION }}/msvc2019_64/lib/
         Tree D:/a/fva/Qt/5.15.2/mingw81_64 /F | Select-Object -Skip 2
         
