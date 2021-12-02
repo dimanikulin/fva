@@ -53,7 +53,7 @@ jobs:
 
     steps:
     # download fva repo
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2 #v2 to checkout submodules as well
 
     - name: Download Ninja and CMake.
       shell: cmake -P {0}
