@@ -1,4 +1,4 @@
-find_package(Qt5 COMPONENTS Core Gui Widgets Multimedia main MultimediaWidgets REQUIRED)
+find_package(Qt5 COMPONENTS Core Gui Widgets Multimedia MultimediaWidgets REQUIRED)
 
 add_executable(fvaplayer fvaplayer.cpp fvaplayer.h main.cpp playercontrols.cpp playercontrols.h videowidget.h)
 
