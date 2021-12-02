@@ -9,4 +9,6 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 add_executable(fvaplayer main.cpp)
 
+target_link_libraries(fvaplayer Qt5::Widgets Qt5::Core Qt5::Gui)
+
 install(TARGETS fvaplayer)
