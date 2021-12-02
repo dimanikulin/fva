@@ -6,10 +6,10 @@
 * \date  2014-2021
 */
 // #include "fvaplayer.h"
-#include <QtWidgets/QApplication>
+#include "D:\a\fva\Qt\5.15.2\mingw81_64\include/QtWidgets/QApplication"
 
 int main(int argc, char *argv[])
-{
+
 	QApplication a(argc, argv);
 	// FVAPlayer w;
 	// w.show();
