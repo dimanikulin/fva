@@ -13,7 +13,7 @@ env:
     QT_VERSION : "5.15.2"
     BUILD_TYPE: Release
     CCACHE_VERSION: 4.4
-    QTDIR: D:/a/fva/Qt/5.15.2/mingw81_64/lib
+    QTDIR: D:/a/fva/Qt/5.15.2/mingw81_64/cmake
 
 jobs:
   build:
@@ -135,7 +135,8 @@ jobs:
       run: |
         #ls
         #ls D:/a/fva/Qt/${{ env.QT_VERSION }}/msvc2019_64/lib/
-        Tree D:/a/fva/Qt/5.15.2/mingw81_64 /F | Select-Object -Skip 2
+        #Tree D:/a/fva/Qt/5.15.2/mingw81_64 /F | Select-Object -Skip 2
+        Get-ChildItem -Path D:/a/fva/Qt/5.15.2/mingw81_64 -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object FullName
         
     - name: Check QMake and make
       run: |
