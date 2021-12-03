@@ -4,7 +4,7 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
-add_executable(fvalib 
+add_library(fvalib  
   fvadevice.h
   fvafile.h
   fvafolder.h
