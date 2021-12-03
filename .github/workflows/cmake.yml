@@ -54,7 +54,14 @@ jobs:
     steps:
     # download fva repo
     - uses: actions/checkout@v2 #v2 to checkout submodules as well
-
+    
+    # check what we download
+    - name: check what we download
+      run: |
+        #ls
+        #ls D:/a/fva/Qt/${{ env.QT_VERSION }}/msvc2019_64/lib/
+        Tree D:/a/fva/fva /F | Select-Object -Skip 2
+        
     - name: Download Ninja and CMake.
       shell: cmake -P {0}
       run: |
@@ -139,13 +146,14 @@ jobs:
         #ls D:/a/fva/Qt/${{ env.QT_VERSION }}/msvc2019_64/lib/
         #Tree D:/a/fva/Qt/5.15.2/mingw81_64 /F | Select-Object -Skip 2
         #Get-ChildItem -Path D:/a/fva/Qt/5.15.2/mingw81_64/lib -Recurse -Force -ErrorAction SilentlyContinue | Select-Object FullName
-        
-    - name: Check QMake and make
-      run: |
-        Write-Output (Get-Command qmake.exe).Path
-        qmake.exe -version
-        Write-Output (Get-Command mingw32-make.exe).Path
-        mingw32-make.exe -version
+    
+    # commented out due to unuse
+    #- name: Check QMake and make
+     # run: |
+      #  Write-Output (Get-Command qmake.exe).Path
+       # qmake.exe -version
+        #Write-Output (Get-Command mingw32-make.exe).Path
+        #mingw32-make.exe -version
         
     - name: Configure make files by CMake
       shell: cmake -P {0}
