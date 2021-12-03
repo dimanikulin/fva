@@ -8,7 +8,7 @@
 #ifndef _CLT_CHECK_DEVICE_NAME_H_
 #define _CLT_CHECK_DEVICE_NAME_H_
 
-#include "CmdLineBaseTask.h"
+#include "../FVACommonLib/CmdLineBaseTask.h"
 
 /*!
 * \brief CLTCheckDeviceName is child of CmdLineBaseTask and implements the next functions:

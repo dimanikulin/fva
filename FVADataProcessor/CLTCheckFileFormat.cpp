@@ -6,6 +6,8 @@
 * \date  2014-2021
 */
 #include "CLTCheckFileFormat.h"
+
+
 FVA_EXIT_CODE CLTCheckFileFormat::execute(const CLTContext& context)
 {
 	QString imageFilePrefix;

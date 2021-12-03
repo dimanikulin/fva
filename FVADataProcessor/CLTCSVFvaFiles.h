@@ -8,7 +8,7 @@
 #ifndef _CMD_CSV_FVA_FILES_H_
 #define _CMD_CSV_FVA_FILES_H_
 
-#include "CmdLineBaseTask.h"
+#include "../FVACommonLib/CmdLineBaseTask.h"
 
 /*!
  * \brief CLTCSVFvaFile is child of CmdLineBaseTask and 

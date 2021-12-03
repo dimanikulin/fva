@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "CLTRenameFiles.h"
-#include "fvacommonexif.h"
+#include "../FVACommonLib/fvacommonexif.h"
 
 CLTRenameFiles::CLTRenameFiles(const FvaConfiguration& cfg)
 {

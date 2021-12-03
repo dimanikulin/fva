@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "CLTCheckDeviceName.h"
-#include "fvacommonexif.h"
+#include "../FVACommonLib/fvacommonexif.h"
 
 FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/)
 {

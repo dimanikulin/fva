@@ -9,7 +9,7 @@
 #define _CLT_PRINT_FS_STRUCTURE_H_
 
 
-#include "CmdLineBaseTask.h"
+#include "../FVACommonLib/CmdLineBaseTask.h"
 
 /*!
  * \brief CLTPrintFSStructure is child of CmdLineBaseTask and it prints file system structure with adding info to compare with fs structure on remote PC 

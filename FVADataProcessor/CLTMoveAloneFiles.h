@@ -8,7 +8,7 @@
 #ifndef _CLT_MOVE_ALONE_FILES_H_
 #define _CLT_MOVE_ALONE_FILES_H_
 
-#include "CmdLineBaseTask.h"
+#include "../FVACommonLib/CmdLineBaseTask.h"
 
 /*!
 * \brief CLTMoveAloneFiles is child of CmdLineBaseTask and it moves alone (or twins) files to parent folder

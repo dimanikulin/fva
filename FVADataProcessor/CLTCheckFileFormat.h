@@ -8,7 +8,7 @@
 #ifndef _CLT_CHECK_FILE_FORMAT_H_
 #define _CLT_CHECK_FILE_FORMAT_H_
 
-#include "CmdLineBaseTask.h"
+#include "../FVACommonLib/CmdLineBaseTask.h"
 
 /*!
 * \brief CLTCheckFileFormat is child of CmdLineBaseTask and implements the next functions:

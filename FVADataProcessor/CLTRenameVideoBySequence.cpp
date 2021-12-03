@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "CLTRenameVideoBySequence.h"
-#include "fvacommonexif.h"
+#include "../FVACommonLib/fvacommonexif.h"
 
 CLTRenameVideoBySequence::CLTRenameVideoBySequence(const FvaConfiguration& cfg)
 {

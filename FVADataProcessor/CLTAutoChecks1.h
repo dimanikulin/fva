@@ -8,8 +8,8 @@
 #ifndef _CLT_AUTO_CHECKS_1_H_
 #define _CLT_AUTO_CHECKS_1_H
 
-#include "CmdLineBaseTask.h"
-#include "fvafmtcontext.h"
+#include "../FVACommonLib/CmdLineBaseTask.h"
+#include "../FVACommonLib/fvafmtcontext.h"
 
 #include <QtCore/QCoreApplication>
 

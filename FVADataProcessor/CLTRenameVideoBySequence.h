@@ -8,7 +8,7 @@
 #ifndef _CLT_RENAME_VIDEO_BY_SEQUENCE_H_
 #define _CLT_RENAME_VIDEO_BY_SEQUENCE_H_
 
-#include "CmdLineBaseTask.h"
+#include "../FVACommonLib/CmdLineBaseTask.h"
 
 /*!
 * \brief CLTRenameVideoBySequence is child of CmdLineBaseTask and it renames video files by their sequence formatted in file name 

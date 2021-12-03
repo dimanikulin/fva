@@ -8,7 +8,7 @@
 #ifndef _CLT_SET_FILE_ATTRS_H_
 #define _CLT_SET_FILE_ATTRS_H_
 
-#include "CmdLineBaseTask.h"
+#include "../FVACommonLib/CmdLineBaseTask.h"
 
 /*!
 * \brief CLTSetFileAtts is child of CmdLineBaseTask and sets up "read only" attribute for all files in input folder 

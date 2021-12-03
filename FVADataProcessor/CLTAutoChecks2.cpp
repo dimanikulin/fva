@@ -7,7 +7,7 @@
 */
 #include "CLTAutoChecks2.h"
 
-#include "fvacommonexif.h"
+#include "../FVACommonLib/fvacommonexif.h"
 
 FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context)
 {

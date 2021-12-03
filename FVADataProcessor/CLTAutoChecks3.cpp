@@ -7,8 +7,8 @@
 */
 #include "CLTAutoChecks3.h"
 
-#include "fvacommoncsv.h"
-#include "fvacommonexif.h"
+#include "../FVACommonLib/fvacommoncsv.h"
+#include "../FVACommonLib/fvacommonexif.h"
 
 CLTAutoChecks3::CLTAutoChecks3(const FvaConfiguration& cfg)
 {
