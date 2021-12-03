@@ -82,5 +82,5 @@ class CSVFile
 		std::unique_ptr< QTextStream >	m_stream;
 };
 
-#endif _CSV_FILE_HEADER_
+#endif // _CSV_FILE_HEADER_
 

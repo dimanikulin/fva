@@ -20,15 +20,15 @@ FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/)
 		FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
 		if (FVA_FS_TYPE_UNKNOWN != type)
 		{
-			if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), FILE_ATTRIBUTE_READONLY))
-				LOG_QCRIT << "can not set attr for fva file:" << info.absoluteFilePath();
+			//if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), FILE_ATTRIBUTE_READONLY))
+			//	LOG_QCRIT << "can not set attr for fva file:" << info.absoluteFilePath();
 		}
 		else
 		{
 			if (fvaIsInternalFile(info.fileName()))
 			{
-				if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY))
-					LOG_QCRIT << "can not set attr for internal file:" << info.absoluteFilePath();
+			//	if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY))
+			//		LOG_QCRIT << "can not set attr for internal file:" << info.absoluteFilePath();
 			}
 			else
 			{
