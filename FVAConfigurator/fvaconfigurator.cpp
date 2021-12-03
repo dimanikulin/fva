@@ -7,7 +7,7 @@
 */
 
 #include "FVAConfigurator.h"
-#include "fvaconstants.h"
+#include "../FVACommonLib/fvaconstants.h" // not best option to use .. but anyway
 
 #include <QTWidgets/QTabWidget>
 #include <QTWidgets/QDialogButtonBox>
