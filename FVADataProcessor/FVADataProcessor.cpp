@@ -35,9 +35,9 @@
 
 #include "CLTCSVFvaFiles.h"
 
-std::auto_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTContext& context, const FvaConfiguration& cfg)
+std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTContext& context, const FvaConfiguration& cfg)
 {
-	std::auto_ptr<CmdLineBaseTask> r(nullptr);
+	std::unique_ptr<CmdLineBaseTask> r(nullptr);
 
 	if (context.cmdType == CLTCreateDirStructByDeviceName::Name())	r.reset(new CLTCreateDirStructByDeviceName());
 	else if (context.cmdType == CLTCheckDeviceName::Name())			r.reset(new CLTCheckDeviceName());

@@ -36,7 +36,7 @@ private: // method
 	* \param cfg - system configuration, applicable for whole system
 	* \return pointer to created task or null if type is not supported
 	*/
-	virtual std::auto_ptr<CmdLineBaseTask> createTaskByName(const CLTContext& context, const FvaConfiguration& cfg) = 0;
+	virtual std::unique_ptr<CmdLineBaseTask> createTaskByName(const CLTContext& context, const FvaConfiguration& cfg) = 0;
 
 };
 #endif // _CMD_LINE_BASE_EXECUTOR_H_

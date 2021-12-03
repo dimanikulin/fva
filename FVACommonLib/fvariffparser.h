@@ -64,12 +64,12 @@ class RiffParser
 		/*!
 		 * file system object
 		 */
-		std::auto_ptr< QFile >			m_file;
+		std::unique_ptr< QFile >	m_file;
 
 		/*!
 		 * stream object
 		 */
-		std::auto_ptr< QDataStream >	m_stream;
+		std::unique_ptr< QDataStream >	m_stream;
 
 };
 

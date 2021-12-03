@@ -20,7 +20,7 @@ FVA_EXIT_CODE CmdLineBaseExecutor::run(const CLTContext& context, const FvaConfi
 		return FVA_ERROR_INPUT_DIR_NOT_EXIST_ARG;
 	}
 
-	std::auto_ptr<CmdLineBaseTask> task(createTaskByName(context, cfg));
+	std::unique_ptr<CmdLineBaseTask> task(createTaskByName(context, cfg));
 	if (!task.get())
 	{
 		qCritical() << "[ERR]" << QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data() << "[CLTEXECUTOR]uknown command:" << context.cmdType;

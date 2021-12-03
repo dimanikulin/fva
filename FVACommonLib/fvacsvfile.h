@@ -73,12 +73,12 @@ class CSVFile
 		/*!
 		 * file system object
 		 */
-		std::auto_ptr< QFile >			m_file;
+		std::unique_ptr< QFile >	m_file;
 
 		/*!
 		 * to work with file as with text one
 		 */
-		std::auto_ptr< QTextStream >	m_stream;
+		std::unique_ptr< QTextStream >	m_stream;
 };
 
 #endif _CSV_FILE_HEADER_
