@@ -55,8 +55,8 @@ jobs:
     # download fva repo
     - uses: actions/checkout@v2 #v2 to checkout submodules as well
     
-    # check what we download
-    - name: check what we download
+    # one more check for what we clone from fva repo
+    - name: one more check for what we clone from fva repo
       run: |
         #ls
         #ls D:/a/fva/Qt/${{ env.QT_VERSION }}/msvc2019_64/lib/
