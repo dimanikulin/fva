@@ -40,6 +40,8 @@ add_executable(fvalib
   FVADescriptionFile.cpp
   fvafmtcontext.cpp
   fvariffparser.cpp
+
+  exif.cpp
 )
 
 target_link_libraries(fvalib Qt5::Widgets Qt5::Core Qt5::Gui)

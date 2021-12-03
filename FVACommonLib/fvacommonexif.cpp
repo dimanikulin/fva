@@ -7,7 +7,7 @@
 */
 
 #include "fvacommonexif.h"
-#include "../easyexif/exif.h"
+#include "exif.h"
 #include <QtCore\QFile>
 #include "fvariffparser.h"
 
