@@ -18,6 +18,7 @@ class QTabWidget;
 class QCheckBox;
 class QSpinBox;
 class QComboBox;
+class QLineEdit;
 
 typedef QMap<QString, QCheckBox*> CHECKBOXES;
 typedef QMap<QString, QLineEdit*> LINEEDITES;
