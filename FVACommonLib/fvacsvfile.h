@@ -9,6 +9,7 @@
 #ifndef _CSV_FILE_HEADER_
 #define _CSV_FILE_HEADER_
 
+#include <memory>
 #include <QtCore/QString>
 #include <QtCore/QFile>
 #include <QtCore/QTextStream>

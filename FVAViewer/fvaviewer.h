@@ -8,6 +8,8 @@
 #ifndef FVAVIEWER_H
 #define FVAVIEWER_H
 
+#include <memory>
+
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QMainWindow>
 #include <QTCore/QtCore>
@@ -16,8 +18,6 @@
 #include "fvacommonlib.h"
 #include "FVADescriptionFile.h"
 #include "fvafilter.h"
-
-#include <memory>
 
 #include "ui_fvaviewer.h"
 #include "ui_filters.h"

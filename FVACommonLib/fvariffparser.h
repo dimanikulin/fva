@@ -8,6 +8,8 @@
 #ifndef _RIFF_PARSER_H_
 #define _RIFF_PARSER_H_
 
+#include <memory>
+
 #include <QtCore/Qstring> 
 #include <QtCore/QDateTime>
 #include <QtCore/QDataStream>

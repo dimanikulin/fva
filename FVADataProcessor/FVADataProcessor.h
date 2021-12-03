@@ -8,6 +8,7 @@
 #ifndef _FVA_DATA_PROCESSOR_H_
 #define _FVA_DATA_PROCESSOR_H_
 
+#include <memory>
 #include "CmdLineBaseExecutor.h"
 
 /*!

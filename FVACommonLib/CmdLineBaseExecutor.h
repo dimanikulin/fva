@@ -9,9 +9,11 @@
 #ifndef _CMD_LINE_BASE_EXECUTOR_H_
 #define _CMD_LINE_BASE_EXECUTOR_H_
 
+#include <memory>
 #include "CmdLineBaseTask.h"
 #include "fvaconfiguration.h"
 #include "fvacltcontext.h"
+
 
 /*!
 * \brief performs execution for command line tasks 
