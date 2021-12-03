@@ -53,7 +53,10 @@ jobs:
 
     steps:
     # download fva repo
-    - uses: actions/checkout@v2 #v2 to checkout submodules as well
+    - name: Checkout repository
+      uses: actions/checkout@v2 #v2 to checkout submodules as wellwith:
+      submodules: 'true'
+      #  token: ${{ secrets.PAT_TOKEN }}
     
     # one more check for what we clone from fva repo
     - name: one more check for what we clone from fva repo
