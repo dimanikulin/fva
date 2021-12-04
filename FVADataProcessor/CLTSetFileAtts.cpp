@@ -7,6 +7,7 @@
 */
 #include "CLTSetFileAtts.h"
 
+// TODO to make it cross compiled and not win depent
 #include <windows.h>
 #include <winbase.h>
 

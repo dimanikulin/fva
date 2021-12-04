@@ -12,8 +12,8 @@
 #include "CmdLineBaseTask.h"
 #include "fvafmtcontext.h"
 
-#include "data/fvafile.h"
-#include "data/fvadevice.h"
+#include "fvafile.h"
+#include "fvadevice.h"
 
 /*!
 * \brief CLTAutoChecks3 is child of CmdLineBaseTask and implements the next functions:

@@ -4,6 +4,13 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
+set(HEADER_FILES ${../FVACommonLib}/CmdLineBaseTask.h 
+   ${../FVACommonLib}/fvafmtcontext.h 
+   ${../FVACommonLib}/fvacommonexif.h
+   ${../FVACommonLib}/fvacommoncsv.h
+   ${../FVACommonLib}/CmdLineBaseExecutor.h
+)
+
 add_library( fvadataprocessorlib
    CLTAutoChecks1.cpp
    CLTAutoChecks1.h
@@ -45,6 +52,8 @@ add_library( fvadataprocessorlib
    CLTSetFileAtts.h
    FVADataProcessor.cpp
    FVADataProcessor.h
+
+   ${HEADER_FILES}
 )
 
 target_link_libraries(fvadataprocessorlib Qt5::Widgets Qt5::Core Qt5::Gui)
