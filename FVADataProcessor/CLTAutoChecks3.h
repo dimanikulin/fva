@@ -9,11 +9,11 @@
 #ifndef _CLT_AUTO_CHECKS_3_H_
 #define _CLT_AUTO_CHECKS_3_H
 
-#include "../FVACommonLib/CmdLineBaseTask.h"
-#include "../FVACommonLib/fvafmtcontext.h"
+#include "CmdLineBaseTask.h"
+#include "fvafmtcontext.h"
 
-#include "../FVACommonLib/fvafile.h"
-#include "../FVACommonLib/fvadevice.h"
+#include "data/fvafile.h"
+#include "data/fvadevice.h"
 
 /*!
 * \brief CLTAutoChecks3 is child of CmdLineBaseTask and implements the next functions:

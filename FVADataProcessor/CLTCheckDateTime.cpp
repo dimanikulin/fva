@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "CLTCheckDateTime.h"
-#include "../FVACommonLib/fvacommonexif.h"
+#include "fvacommonexif.h"
 
 CLTCheckDateTime::CLTCheckDateTime(const FvaConfiguration& cfg)
 {

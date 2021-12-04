@@ -8,7 +8,7 @@
 #ifndef _CMD_CREATE_DIR_STRUCTURE_BY_FILE_NAMES_H_
 #define _CMD_CREATE_DIR_STRUCTURE_BY_FILE_NAMES_H
 
-#include "../FVACommonLib/CmdLineBaseTask.h"
+#include "CmdLineBaseTask.h"
 
 /*!
 * \brief CLTCreateDirStructByFileNames is child of CmdLineBaseTask and 

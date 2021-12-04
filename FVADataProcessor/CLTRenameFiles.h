@@ -8,7 +8,7 @@
 #ifndef _CLT_RENAME_FILES_H_
 #define _CLT_RENAME_FILES_H_
 
-#include "../FVACommonLib/CmdLineBaseTask.h"
+#include "CmdLineBaseTask.h"
 
 /*!
 * \brief CLTRenameFiles is child of CmdLineBaseTask and it renames files by their EXIF date-time taken

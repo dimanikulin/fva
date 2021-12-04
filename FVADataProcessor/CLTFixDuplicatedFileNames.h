@@ -8,7 +8,7 @@
 #ifndef _CLT_FIX_DUPLICATED_FILE_NAMES_H_
 #define _CLT_FIX_DUPLICATED_FILE_NAMES_H_
 
-#include "../FVACommonLib/CmdLineBaseTask.h"
+#include "CmdLineBaseTask.h"
 
 /*!
  * \brief CLTFixDuplicatedFileNames is child of CmdLineBaseTask and 

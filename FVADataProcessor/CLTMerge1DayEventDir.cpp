@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "CLTMerge1DayEventDir.h"
-#include "../FVACommonLib/fvacommoncsv.h"
+#include "fvacommoncsv.h"
 
 CLTMerge1DayEventDir::CLTMerge1DayEventDir(const FvaConfiguration& cfg)
 {

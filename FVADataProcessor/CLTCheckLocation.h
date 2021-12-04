@@ -8,7 +8,7 @@
 #ifndef _CLT_CHECK_LOCATION_H_
 #define _CLT_CHECK_LOCATION_H_
 
-#include "../FVACommonLib/CmdLineBaseTask.h"
+#include "CmdLineBaseTask.h"
 
 /*!
 * \brief CLTCheckLocation is child of CmdLineBaseTask and implements the next functions:

@@ -8,7 +8,7 @@
 #ifndef _CLT_GET_FVA_DIR_TYPE_H_
 #define _CLT_GET_FVA_DIR_TYPE_H_
 
-#include "../FVACommonLib/CmdLineBaseTask.h"
+#include "CmdLineBaseTask.h"
 
 /*!
  * \brief CLTGetFvaDirType is child of CmdLineBaseTask 

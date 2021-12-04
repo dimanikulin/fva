@@ -9,7 +9,7 @@
 #define _FVA_DATA_PROCESSOR_H_
 
 #include <memory>
-#include "../FVACommonLib/CmdLineBaseExecutor.h"
+#include "CmdLineBaseExecutor.h"
 
 /*!
 * \brief FVADataProcessor is child of CmdLineBaseExecutor and 

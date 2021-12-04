@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "CLTCheckLocation.h"
-#include "../FVACommonLib/fvacommonexif.h"
+#include "fvacommonexif.h"
 
 FVA_EXIT_CODE CLTCheckLocation::execute(const CLTContext& context)
 {

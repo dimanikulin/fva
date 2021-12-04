@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "CLTCreateDirStructByDevNames.h"
-#include "../FVACommonLib/fvacommonexif.h"
+#include "fvacommonexif.h"
 
 FVA_EXIT_CODE CLTCreateDirStructByDeviceName::execute(const CLTContext& /*context*/)
 {

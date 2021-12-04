@@ -9,8 +9,8 @@
 #ifndef _CLT_AUTO_CHECKS_2_H_
 #define _CLT_AUTO_CHECKS_2_H
 
-#include "../FVACommonLib/CmdLineBaseTask.h"
-#include "../FVACommonLib/fvafmtcontext.h"
+#include "CmdLineBaseTask.h"
+#include "fvafmtcontext.h"
 
 /*!
 * \brief CLTAutoChecks2 is child of CmdLineBaseTask and implements the next functions:

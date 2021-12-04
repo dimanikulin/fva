@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "CLTAutoChecks1.h"
-#include "../FVACommonLib/fvacommonexif.h"
+#include "fvacommonexif.h"
 
 CLTAutoChecks1::CLTAutoChecks1(const FvaConfiguration& cfg)
 {

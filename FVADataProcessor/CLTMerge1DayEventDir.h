@@ -8,7 +8,7 @@
 #ifndef _CLT_MERGE_1_DAY_EVENT_DIR_H_
 #define _CLT_MERGE_1_DAY_EVENT_DIR_H_
 
-#include "../FVACommonLib/CmdLineBaseTask.h"
+#include "CmdLineBaseTask.h"
 
 /*!
 * \brief CLTMerge1DayEventDir is child of CmdLineBaseTask and it merges one-day-event input folder into output foder 
