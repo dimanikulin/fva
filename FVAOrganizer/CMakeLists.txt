@@ -4,7 +4,7 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
-set(HEADER_FILES ../FVADataProcessor/FVADataProcessor.h ../FVACommonLib/fvacommonlib.h ../FVACommonLib/fvalogger.inl1)
+set(HEADER_FILES ../FVADataProcessor/FVADataProcessor.h ../FVACommonLib/fvacommonlib.h ../FVACommonLib/fvalogger.inl)
 
 add_executable(fvaorganizer main.cpp ${HEADER_FILES})
 
