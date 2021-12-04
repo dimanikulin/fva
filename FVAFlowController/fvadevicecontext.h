@@ -10,7 +10,7 @@
 
 #include <QtCore/QString>
 
-#include "data/fvadevice.h"
+#include "fvadevice.h"
 
 /*!
  * \brief to keep devices information to control the flow
