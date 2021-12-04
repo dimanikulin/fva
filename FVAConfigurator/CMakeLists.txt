@@ -8,6 +8,6 @@ add_executable(fvaconfigurator fvaconfigurator.qrc fvaconfigurator.ui fvaconfigu
 
 target_link_libraries(fvaconfigurator Qt5::Widgets Qt5::Core Qt5::Gui fvalib)
 
-target_include_directories(fvaconfigurator ${../FVACommonLib})
+target_include_directories(fvaconfigurator PRIVATE ${../FVACommonLib})
 
 install(TARGETS fvaconfigurator)

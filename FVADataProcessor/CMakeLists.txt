@@ -49,6 +49,6 @@ add_library( fvadataprocessorlib
 
 target_link_libraries(fvadataprocessorlib Qt5::Widgets Qt5::Core Qt5::Gui)
 
-target_include_directories(fvadataprocessorlib ${../FVACommonLib})
+target_include_directories(fvadataprocessorlib PRIVATE ${../FVACommonLib})
 
 install(TARGETS fvadataprocessorlib)
