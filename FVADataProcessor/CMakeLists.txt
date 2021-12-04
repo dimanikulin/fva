@@ -4,10 +4,6 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
-target_link_libraries(fvadataprocessorlib Qt5::Widgets Qt5::Core Qt5::Gui)
-
-target_include_directories(fvadataprocessorlib ${../FVACommonLib})
-
 add_library( fvadataprocessorlib
    CLTAutoChecks1.cpp
    CLTAutoChecks1.h
@@ -50,5 +46,9 @@ add_library( fvadataprocessorlib
    FVADataProcessor.cpp
    FVADataProcessor.h
 )
+
+target_link_libraries(fvadataprocessorlib Qt5::Widgets Qt5::Core Qt5::Gui)
+
+target_include_directories(fvadataprocessorlib ${../FVACommonLib})
 
 install(TARGETS fvadataprocessorlib)
