@@ -4,11 +4,11 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
-set(HEADER_FILES ${../FVACommonLib}/CmdLineBaseTask.h 
-   ${../FVACommonLib}/fvafmtcontext.h 
-   ${../FVACommonLib}/fvacommonexif.h
-   ${../FVACommonLib}/fvacommoncsv.h
-   ${../FVACommonLib}/CmdLineBaseExecutor.h
+set(HEADER_FILES ../FVACommonLib/CmdLineBaseTask.h 
+   ../FVACommonLib/fvafmtcontext.h 
+   ../FVACommonLib/fvacommonexif.h
+   ../FVACommonLib/fvacommoncsv.h
+   ../FVACommonLib/CmdLineBaseExecutor.h
 )
 
 add_library( fvadataprocessorlib
@@ -58,6 +58,6 @@ add_library( fvadataprocessorlib
 
 target_link_libraries(fvadataprocessorlib Qt5::Widgets Qt5::Core Qt5::Gui)
 
-target_include_directories(fvadataprocessorlib PRIVATE ${../FVACommonLib})
+target_include_directories(fvadataprocessorlib PRIVATE ../FVACommonLib)
 
 install(TARGETS fvadataprocessorlib)
