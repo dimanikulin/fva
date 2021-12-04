@@ -241,7 +241,10 @@ void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item,i
 			continue;
 		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
 		treeWidgetItem->setText		( 0, (*idChild)->getGuiName(m_dictionaries) );
-		treeWidgetItem->setData( 1, 1, (int) *idChild );
+
+		// TODO fix error here - cast from 'fvaItem*' to 'int' loses precision [-fpermissive]
+		// treeWidgetItem->setData( 1, 1, (int) *idChild );
+
 		if ((*idChild)->type == FVA_FS_TYPE_DIR)
 			treeWidgetItem->setIcon(0, m_folderIcon);
 		else
