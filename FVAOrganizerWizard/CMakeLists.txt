@@ -11,7 +11,7 @@ set(HEADER_FILES
     ../FVACommonLib/FVAconstants.h
     ../FVACommonLib/fvaconfiguration.h
     ../FVACommonLib/fvalogger.inl
-    ../FVADataProcessor/FVAFlowController.h
+    ../FVADataProcessor/FVADataProcessor.h
     ../FVAFlowController/FVAFlowController.h
     )
 
@@ -40,3 +40,8 @@ add_executable(fvaorganizerwizard
     ${HEADER_FILES}
 )
 
+target_link_libraries(fvaorganizerwizard Qt5::Widgets Qt5::Core Qt5::Gui fvalib fvadataprocessorlib fvaflowcontrollerlib)
+
+target_include_directories(fvaorganizerwizard PRIVATE ../FVACommonLib ../FVADataProcessor ../FVAFlowController)
+
+install(TARGETS fvaorganizerwizard)

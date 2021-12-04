@@ -32,9 +32,9 @@ add_executable(fvaviewer
    ${HEADER_FILES}
 )
 
-target_link_libraries(fvaviewer Qt5::Widgets Qt5::Core Qt5::Gui fvalib fvadataprocessorlib)
+target_link_libraries(fvaviewer Qt5::Widgets Qt5::Core Qt5::Gui fvalib)
 
-target_include_directories(fvaviewer PRIVATE ../FVACommonLib ../FVADataProcessor)
+target_include_directories(fvaviewer PRIVATE ../FVACommonLib)
 
 install(TARGETS fvaviewer)
                                                                                                                     	
