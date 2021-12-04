@@ -15,9 +15,9 @@
 
 #include "fvacommonui.h"
 
-#include "data/fvaitem.h"
-#include "data/fvafolder.h"
-#include "data/fvafile.h"
+#include "fvaitem.h"
+#include "fvafolder.h"
+#include "fvafile.h"
 
 void FVAViewer::showProgress(const QString& rootDir)
 {
