@@ -2,10 +2,10 @@
 name: FVA Build Matrix
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  #push:
+   # branches: [ master ]
+  #pull_request:
+   # branches: [ master ]
 
 env:
     # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -332,7 +332,7 @@ jobs:
     - name: Upload win pkg to git hub storage to use later
       uses: actions/upload-artifact@v1
       with:
-        path: ./FVASetupWin/FVASetupWin.msi
+        path: ./FVASetupWin/bin/FVASetupWin.msi
         name: FVASetupWin.msi
 
   # not clear what it is bellow!!!!!
