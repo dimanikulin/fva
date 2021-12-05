@@ -98,14 +98,6 @@ jobs:
       uses: actions/checkout@v2 #v2 to checkout submodules as well
       with:
         submodules: 'true'
-
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.0.3
-    
-    - name: MS package build
-      #if: matrix.os == 'windows-latest'
-      run: >
-        msbuild ./FVASetupWin/FVASetupWin.wixproj
         
     - name: Download Ninja and CMake.
       shell: cmake -P {0}
@@ -316,9 +308,16 @@ jobs:
           message(FATAL_ERROR "Running tests failed!")
         endif()
 
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.3
+    
+    - name: MS package build
+      #if: matrix.os == 'windows-latest'
+      run: >
+        msbuild ./FVASetupWin/FVASetupWin.wixproj
+        
     - name: CMake Install Strip to make binaries smaller
       run: cmake --install build --prefix instdir --strip
-
 
     - name: Pack the binaries by 7zip
       working-directory: instdir
