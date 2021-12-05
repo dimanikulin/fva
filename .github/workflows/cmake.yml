@@ -17,24 +17,25 @@ env:
 
 jobs:
   build-doc:
-    name: "Build docs" 
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-    steps:
-    # download fva repo
-    - name: Checkout repository
-      uses: actions/checkout@v2 #v2 to checkout submodules as well
-      with:
-        submodules: 'true'
+      name: "Build docs" 
+      runs-on: ubuntu-latest
+      strategy:
+         fail-fast: false
+      steps:
+        
+      # download fva repo
+      - name: Checkout repository
+        uses: actions/checkout@v2 #v2 to checkout submodules as well
+        with:
+            submodules: 'true'
      
-    # run Doxygen
-    - name: run Doxygen documentation generation 
-      uses: mattnotmitt/doxygen-action@v1
-      with:
-         #working-directory: '' # now default one
-         doxyfile-path: './doxy.cfg'
-         enable-latex: true
+      # run Doxygen
+      - name: run Doxygen documentation generation 
+        uses: mattnotmitt/doxygen-action@v1
+        with:
+           #working-directory: '' # now default one
+           doxyfile-path: './doxy.cfg'
+           enable-latex: true
 
   build:
     name: ${{ matrix.config.name }}
