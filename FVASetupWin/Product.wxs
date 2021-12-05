@@ -6,7 +6,7 @@
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <Property Id="WIXUI_INSTALLDIR" Value="PRODUCTDIR" />
     <UIRef Id="WixUI_InstallDir" />
-    <?define Qt5_Dir = "D:\a\fva\Qt\5.15.2\" ?>
+    <?define Qt5_Dir = "D:\a\fva\Qt\5.15.2" ?>
     <Feature Id="ProductFeature" Title="FVASetupWin" Level="1">
       <ComponentRef Id="platformsComponents" />
       <ComponentRef Id="icons" />
@@ -39,14 +39,14 @@
         <Directory Id="bin" Name='#bin#'>
           <Directory Id="Icons" Name='Icons'>
             <Component Id="icons" Guid="1af1fda7-a0f8-41f3-979f-07cf8ca5a411">
-              <File Id="audio" Name="audio.png"  Source="FVAIcons\audio.png"  Vital="yes" KeyPath="no"/>
-              <File Id="folder" Name="folder.png" Source="FVAIcons\folder.png"  Vital="yes" KeyPath="no"/>
-              <File Id="photo" Name="photo.png"  Source="FVAIcons\photo.png"  Vital="yes" KeyPath="no"/>
-              <File Id="video" Name="video.png"  Source="FVAIcons\video.png"  Vital="yes" KeyPath="no"/>
-              <File Id="main" Name="main.png"  Source="FVAIcons\main.png"  Vital="yes" KeyPath="no"/>
-              <File Id="people" Name="people.png"  Source="FVAIcons\people.png"  Vital="yes" KeyPath="no"/>
-              <File Id="person" Name="person.png"  Source="#FVAIcons\person.png"  Vital="yes" KeyPath="no"/>
-              <File Id="location" Name="location.png"  Source="FVAIcons\location.PNG"  Vital="yes" KeyPath="no"/>
+              <File Id="audio" Name="audio.png"  Source="..\FVAIcons\audio.png"  Vital="yes" KeyPath="no"/>
+              <File Id="folder" Name="folder.png" Source="..\FVAIcons\folder.png"  Vital="yes" KeyPath="no"/>
+              <File Id="photo" Name="photo.png"  Source="..\FVAIcons\photo.png"  Vital="yes" KeyPath="no"/>
+              <File Id="video" Name="video.png"  Source="..\FVAIcons\video.png"  Vital="yes" KeyPath="no"/>
+              <File Id="main" Name="main.png"  Source="..\FVAIcons\main.png"  Vital="yes" KeyPath="no"/>
+              <File Id="people" Name="people.png"  Source="..\FVAIcons\people.png"  Vital="yes" KeyPath="no"/>
+              <File Id="person" Name="person.png"  Source="..\FVAIcons\person.png"  Vital="yes" KeyPath="no"/>
+              <File Id="location" Name="location.png"  Source="..\FVAIcons\location.PNG"  Vital="yes" KeyPath="no"/>
             </Component>
           </Directory>
            
@@ -83,13 +83,13 @@
           </Directory>
 
           <Component Id="files" Guid="af4356ff-56aa-4c7c-baca-cd1af6e51267">  
-            <File Id="viewer" Name="FVAViewer.exe" Source="instdir\bin\FVAViewer.exe" Vital="yes" KeyPath="no"/>
-            <File Id="FVAOrganizer" Name="FVAOrganizer.exe" Source="instdir\bin\FVAOrganizer.exe" Vital="yes" KeyPath="no"/>
-            <File Id="FVAOrganizerWizard" Name="FVAOrganizerWizard.exe" Source="instdir\bin\FVAOrganizerWizard.exe" Vital="yes" KeyPath="no"/>
-            <File Id="FVAConfigurator" Name="FVAConfigurator.exe" Source="instdir\bin\FVAConfigurator.exe" Vital="yes" KeyPath="no"/>
-            <File Id="descEditor" Name="FVADescriptionEditor.exe" Source="instdir\bin\FVADescriptionEditor.exe" Vital="yes" KeyPath="no"/>
-            <File Id="dictEditor" Name="FVADictionaryEditor.exe" Source="instdir\bin\FVADictionaryEditor.exe" Vital="yes" KeyPath="no"/>
-            <File Id="player" Name="FVAPlayer.exe" Source="instdir\bin\FVAPlayer.exe" Vital="yes" KeyPath="no"/>
+            <File Id="viewer" Name="FVAViewer.exe" Source="..\instdir\bin\FVAViewer.exe" Vital="yes" KeyPath="no"/>
+            <File Id="FVAOrganizer" Name="FVAOrganizer.exe" Source="..\instdir\bin\FVAOrganizer.exe" Vital="yes" KeyPath="no"/>
+            <File Id="FVAOrganizerWizard" Name="FVAOrganizerWizard.exe" Source="..\instdir\bin\FVAOrganizerWizard.exe" Vital="yes" KeyPath="no"/>
+            <File Id="FVAConfigurator" Name="FVAConfigurator.exe" Source="..\instdir\bin\FVAConfigurator.exe" Vital="yes" KeyPath="no"/>
+            <File Id="descEditor" Name="FVADescriptionEditor.exe" Source="..\instdir\bin\FVADescriptionEditor.exe" Vital="yes" KeyPath="no"/>
+            <File Id="dictEditor" Name="FVADictionaryEditor.exe" Source="..\instdir\bin\FVADictionaryEditor.exe" Vital="yes" KeyPath="no"/>
+            <File Id="player" Name="FVAPlayer.exe" Source="..\instdir\bin\FVAPlayer.exe" Vital="yes" KeyPath="no"/>
             <!--File Id="exif" Name="exiftool(-k).exe"  Source="#BIN#\exiftool(-k).exe"  Vital="yes" KeyPath="no"/-->
             <File Id="Qt5Core" Name="Qt5Core.dll"  Source="$(var.Qt5_Dir)\mingw81_64\bin\Qt5Core.dll"  Vital="yes" KeyPath="no"/>
             <File Id="Qt5Gui" Name="Qt5Gui.dll"  Source="$(var.Qt5_Dir)\mingw81_64\bin\Qt5Gui.dll"  Vital="yes" KeyPath="no"/>
