@@ -8,7 +8,7 @@ set(HEADER_FILES ../FVACommonLib/fvacommonlib.h ../FVACommonLib/fvalogger.inl ..
 
 add_executable(fvaorganizer main.cpp ${HEADER_FILES})
 
-target_link_libraries(fvaorganizer Qt5::Widgets Qt5::Core Qt5::Gui fvalib fvadataprocessorlib)
+target_link_libraries(fvaorganizer Qt5::Widgets Qt5::Core Qt5::Gui fvalib fvadataprocessorlib -static-libgcc -static-libstdc++)
 
 target_include_directories(fvaorganizer PRIVATE ../FVACommonLib ../FVADataProcessor)
 
