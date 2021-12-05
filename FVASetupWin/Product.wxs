@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-<Product Id="*" Name="FVA Software" Language="1033" Version="1.0.0.0" Manufacturer="FVA Software" UpgradeCode="358e1852-6d77-4aa5-a180-ff0f96c691e0">
+  <Product Id="*" Name="FVA Software" Language="1033" Version="1.0.0.0" Manufacturer="FVA Software" UpgradeCode="358e1852-6d77-4aa5-a180-ff0f96c691e0">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
     <Media Id='1' Cabinet='cab1.cab' EmbedCab='yes'/>
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <Property Id="WIXUI_INSTALLDIR" Value="PRODUCTDIR" />
     <UIRef Id="WixUI_InstallDir" />
+    <?define Qt5_Dir = “D:\a\fva\Qt\5.15.2\” ?>
     <Feature Id="ProductFeature" Title="FVASetupWin" Level="1">
-			<ComponentRef Id="platformsComponents" />
+      <ComponentRef Id="platformsComponents" />
       <ComponentRef Id="icons" />
       <ComponentRef Id="jpegr" />
       <ComponentRef Id="mediaserviceFilesComponents" />
