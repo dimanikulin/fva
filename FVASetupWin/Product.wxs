@@ -64,7 +64,7 @@
             <CreateFolder />
             <File Id="dsengine" Name="dsengine.dll"  Source="$(var.Qt5_Dir)\mingw81_64\plugins\mediaservice\dsengine.dll"  Vital="yes" KeyPath="no"/>
             <File Id="qtmedia_audioengine" Name="qtmedia_audioengine.dll"  Source="$(var.Qt5_Dir)\mingw81_64\plugins\mediaservice\qtmedia_audioengine.dll"  Vital="yes" KeyPath="no"/>
-            <File Id="wmfengine" Name="wmfengine.dll"  Source="$(var.Qt5_Dir)\mingw81_64\plugins\mediaservice\wmfengine.dll"  Vital="yes" KeyPath="no"/>
+            <!--File Id="wmfengine" Name="wmfengine.dll"  Source="$(var.Qt5_Dir)\mingw81_64\plugins\mediaservice\wmfengine.dll"  Vital="yes" KeyPath="no"/-->
            </Component>            
            </Directory>
 
