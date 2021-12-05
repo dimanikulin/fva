@@ -80,7 +80,6 @@ jobs:
         submodules: 'true'
             
     - name: Build package for win
-      runs-on: windows-latest
       run: |
        if ("${{ runner.os }}" STREQUAL "Windows")
          execute_process(msbuild ./FVASetupWin/FVASetupWin.wixproj)
