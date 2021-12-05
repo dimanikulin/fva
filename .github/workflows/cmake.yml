@@ -2,8 +2,8 @@
 name: FVA Build Matrix
 
 on:
-  #push:
-   #branches: [ master ]
+  push:
+   branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -41,14 +41,14 @@ jobs:
            doxyfile-path: './doxy.cfg'
            enable-latex: true
 
-    # check for what we clone from fva repo
-    #- name: check for what we clone from fva repo
-     #  run: |
-    #    Tree D:/a/fva/fva /F | Select-Object -Skip 2
+      # check for what we generated 
+      - name: check for what we clone from fva repo
+        run: |
+            ls
+            ls ./output
     
-     - name: Publish
-        uses: peaceiris/actions
-        -gh-pages@v3
+      - name: Publish of documentation 
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./html
