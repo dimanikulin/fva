@@ -18,7 +18,8 @@ env:
 
 jobs:
   build-doc:
-      name: "Build docs" 
+      if: contains(github.ref, 'tags/v') #comment if you need to have it each commit
+      name: releasing docs docs 
       runs-on: ubuntu-latest
       strategy:
          fail-fast: false
@@ -51,12 +52,6 @@ jobs:
       - name: Pack the docs by 7zip
         working-directory: ./output/
         run: cmake -E tar cfv ../docs.zip --format=7zip .
-
-      # check for what we generated 
-      - name: check for what we generated
-        run: |
-            ls
-            ls ./output
       
       - name: Upload docs artifact to git hub storage to use later
         uses: actions/upload-artifact@v1
@@ -104,16 +99,15 @@ jobs:
       uses: actions/checkout@v2 #v2 to checkout submodules as well
       with:
         submodules: 'true'
-            
+
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.3
+    
     - name: MS package build
       #if: matrix.os == 'windows-latest'
       run: >
         msbuild ./FVASetupWin/FVASetupWin.wixproj
-        #set(cmake_version $ENV{CMAKE_VERSION})        
-        #if ("${{ runner.os }}" STREQUAL "Windows")
-        #  message(STATUS "building pakcge for Win OS")
-          #execute_process(COMMAND msbuild ./FVASetupWin/FVASetupWin.wixproj)
-        #endif()
+
     
     # check for what we clone from fva repo
     #- name: check for what we clone from fva repo
