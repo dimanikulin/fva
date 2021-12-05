@@ -42,16 +42,27 @@ jobs:
            enable-latex: true
 
       # check for what we generated 
-      - name: check for what we clone from fva repo
-        run: |
-            ls
-            ls ./output
+      #- name: check for what we generated
+      #  run: |
+      #      ls
+      #      ls ./output
     
       - name: Publish of documentation 
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./html
+          publish_dir: ./output/html
+          
+      - name: Pack the docs by 7zip
+        working-directory: ./output/
+        run: cmake -E tar cfv ../docs.zip --format=7zip .
+
+
+      - name: Upload docs artifact to git hub storage to use later
+        uses: actions/upload-artifact@v1
+        with:
+          path: ../docs.zip
+          name: docs.zip
   build:
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -101,7 +112,7 @@ jobs:
         
         if ("${{ runner.os }}" STREQUAL "Windows")
           message(STATUS "building pakcge for Win OS")
-          execute_process(msbuild ./FVASetupWin/FVASetupWin.wixproj)
+          execute_process(COMMAND msbuild ./FVASetupWin/FVASetupWin.wixproj)
         endif()
     
     # check for what we clone from fva repo
@@ -327,7 +338,7 @@ jobs:
       run: cmake -E tar cfv ../${{ matrix.config.artifact }} --format=7zip .
 
 
-    - name: Upload artifact to git hub to storage use later
+    - name: Upload artifact to git hub storage to use later
       uses: actions/upload-artifact@v1
       with:
         path: ./${{ matrix.config.artifact }}
