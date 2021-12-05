@@ -60,7 +60,6 @@ jobs:
       
       - name: Upload docs artifact to git hub storage to use later
         uses: actions/upload-artifact@v1
-        working-directory: 
         with:
           path: ./output/docs.zip
           name: docs.zip
