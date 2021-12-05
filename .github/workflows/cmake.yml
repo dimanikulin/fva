@@ -50,7 +50,7 @@ jobs:
           
       - name: Pack the docs by 7zip
         working-directory: ./output/
-        run: cmake -E tar cfv ./docs.zip --format=7zip .
+        run: cmake -E tar cfv ../docs.zip --format=7zip .
 
       # check for what we generated 
       - name: check for what we generated
@@ -61,7 +61,7 @@ jobs:
       - name: Upload docs artifact to git hub storage to use later
         uses: actions/upload-artifact@v1
         with:
-          path: ./output/docs.zip
+          path: ./docs.zip
           name: docs.zip
   build:
     name: ${{ matrix.config.name }}
@@ -106,10 +106,10 @@ jobs:
         submodules: 'true'
             
     - name: MS package build
-      if: matrix.os == 'windows-latest'
+      #if: matrix.os == 'windows-latest'
       run: >
-        #set(cmake_version $ENV{CMAKE_VERSION})
         msbuild ./FVASetupWin/FVASetupWin.wixproj
+        #set(cmake_version $ENV{CMAKE_VERSION})        
         #if ("${{ runner.os }}" STREQUAL "Windows")
         #  message(STATUS "building pakcge for Win OS")
           #execute_process(COMMAND msbuild ./FVASetupWin/FVASetupWin.wixproj)
