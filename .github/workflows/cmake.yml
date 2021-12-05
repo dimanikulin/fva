@@ -2,8 +2,8 @@
 name: FVA Build Matrix
 
 on:
-  push:
-   branches: [ master ]
+  #push:
+   #branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -61,11 +61,11 @@ jobs:
             os: windows-latest,
             cc: "gcc", cxx: "g++"
           }
-        - {
-            name: "Ubuntu Latest GCC", artifact: "Linux.7z",
-            os: ubuntu-latest,
-            cc: "gcc", cxx: "g++"
-          }
+        #- {
+        #    name: "Ubuntu Latest GCC", artifact: "Linux.7z",
+        #    os: ubuntu-latest,
+        #    cc: "gcc", cxx: "g++"
+        #  }
         #- {
         #    name: "macOS Latest Clang", artifact: "macOS.7z",
         #    os: macos-latest,
@@ -80,10 +80,14 @@ jobs:
         submodules: 'true'
             
     - name: Build package for win
+      shell: cmake -P {0}
       run: |
-       if ("${{ runner.os }}" STREQUAL "Windows")
-         execute_process(msbuild ./FVASetupWin/FVASetupWin.wixproj)
-       endif()
+        set(cmake_version $ENV{CMAKE_VERSION})
+        
+        if ("${{ runner.os }}" STREQUAL "Windows")
+          message(STATUS "building pakcge for Win OS")
+          execute_process(msbuild ./FVASetupWin/FVASetupWin.wixproj)
+        endif()
     
     # check for what we clone from fva repo
     #- name: check for what we clone from fva repo
