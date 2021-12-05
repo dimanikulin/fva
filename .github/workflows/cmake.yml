@@ -2,8 +2,8 @@
 name: FVA Build Matrix
 
 on:
-  push:
-    branches: [ master ]
+  #push:
+   # branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -310,15 +310,7 @@ jobs:
      
     - name: CMake Install Strip to make binaries smaller
       run: cmake --install build --prefix instdir --strip
- 
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.0.3
-    
-    - name: MS package build
-      #if: matrix.os == 'windows-latest'
-      run: >
-        msbuild ./FVASetupWin/FVASetupWin.wixproj
-        
+
     - name: Pack the binaries by 7zip
       working-directory: instdir
       run: cmake -E tar cfv ../${{ matrix.config.artifact }} --format=7zip .
@@ -328,6 +320,20 @@ jobs:
       with:
         path: ./${{ matrix.config.artifact }}
         name: ${{ matrix.config.artifact }}
+ 
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.3
+    
+    - name: MS package build
+      #if: matrix.os == 'windows-latest'
+      run: >
+        msbuild ./FVASetupWin/FVASetupWin.wixproj
+        
+    - name: Upload win pkg to git hub storage to use later
+      uses: actions/upload-artifact@v1
+      with:
+        path: ./FVASetupWin/FVASetupWin.msi
+        name: FVASetupWin.msi
 
   # not clear what it is bellow!!!!!
   release:
