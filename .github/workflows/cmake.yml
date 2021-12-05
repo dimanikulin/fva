@@ -14,6 +14,7 @@ env:
     QT_VERSION : "5.15.2"
     BUILD_TYPE: Release
     CCACHE_VERSION: 4.4
+    WIX_BIN_PATH: 'C:/Program Files (x86)/WiX Toolset v3.11/bin/'
 
 jobs:
   build-doc:
@@ -55,13 +56,14 @@ jobs:
           
       - name: Pack the docs by 7zip
         working-directory: ./output/
-        run: cmake -E tar cfv ../docs.zip --format=7zip .
+        run: cmake -E tar cfv ./docs.zip --format=7zip .
 
 
       - name: Upload docs artifact to git hub storage to use later
         uses: actions/upload-artifact@v1
+        working-directory: ./output/
         with:
-          path: ../docs.zip
+          path: ./docs.zip
           name: docs.zip
   build:
     name: ${{ matrix.config.name }}
@@ -105,15 +107,15 @@ jobs:
       with:
         submodules: 'true'
             
-    - name: Build package for win
-      shell: cmake -P {0}
-      run: |
-        set(cmake_version $ENV{CMAKE_VERSION})
-        
-        if ("${{ runner.os }}" STREQUAL "Windows")
-          message(STATUS "building pakcge for Win OS")
-          execute_process(COMMAND msbuild ./FVASetupWin/FVASetupWin.wixproj)
-        endif()
+    - name: MS package build
+      if: matrix.os == 'windows-latest'
+      run: >
+        #set(cmake_version $ENV{CMAKE_VERSION})
+        msbuild ./FVASetupWin/FVASetupWin.wixproj
+        #if ("${{ runner.os }}" STREQUAL "Windows")
+        #  message(STATUS "building pakcge for Win OS")
+          #execute_process(COMMAND msbuild ./FVASetupWin/FVASetupWin.wixproj)
+        #endif()
     
     # check for what we clone from fva repo
     #- name: check for what we clone from fva repo
