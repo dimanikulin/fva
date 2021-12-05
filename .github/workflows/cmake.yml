@@ -16,6 +16,26 @@ env:
     CCACHE_VERSION: 4.4
 
 jobs:
+  build-doc:
+    name: "Build docs" 
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+    # download fva repo
+    - name: Checkout repository
+      uses: actions/checkout@v2 #v2 to checkout submodules as well
+      with:
+        submodules: 'true'
+     
+    # run Doxygen
+    - name: run Doxygen documentation generation 
+      uses: mattnotmitt/doxygen-action@v1
+      with:
+         #working-directory: '' # now default one
+         doxyfile-path: './doxy.cfg'
+         enable-latex: true
+
   build:
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -57,16 +77,7 @@ jobs:
       uses: actions/checkout@v2 #v2 to checkout submodules as well
       with:
         submodules: 'true'
-    
-    # run Doxygen
-    - name: run Doxygen documentation generation 
-      uses: mattnotmitt/doxygen-action@v1
-      runs-on: ubuntu-latest
-      with:
-         #working-directory: '' # now default one
-         doxyfile-path: './doxy.cfg'
-         enable-latex: true
-       
+            
     - name: Build package for win
       runs-on: windows-latest
       run: |
