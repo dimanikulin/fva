@@ -29,7 +29,11 @@ jobs:
         with:
             submodules: 'true'
      
-      # run Doxygen
+      # to draw nice graphs in doc 
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
+ 
+       # run Doxygen
       - name: run Doxygen documentation generation 
         uses: mattnotmitt/doxygen-action@v1
         with:
@@ -37,6 +41,17 @@ jobs:
            doxyfile-path: './doxy.cfg'
            enable-latex: true
 
+    # check for what we clone from fva repo
+    #- name: check for what we clone from fva repo
+     #  run: |
+    #    Tree D:/a/fva/fva /F | Select-Object -Skip 2
+    
+     - name: Publish
+        uses: peaceiris/actions
+        -gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./html
   build:
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
