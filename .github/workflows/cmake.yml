@@ -61,14 +61,14 @@ jobs:
     # run Doxygen
     - name: run Doxygen documentation generation 
       uses: mattnotmitt/doxygen-action@v1
-      os: [ubuntu-latest]
+      os: ubuntu-latest
       with:
          #working-directory: '' # now default one
          doxyfile-path: './doxy.cfg'
          enable-latex: true
        
     - name: Build package for win
-      os: [windows-latest]
+      os: windows-latest
       run: |
        if ("${{ runner.os }}" STREQUAL "Windows")
          execute_process(msbuild ./FVASetupWin/FVASetupWin.wixproj)
