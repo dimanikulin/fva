@@ -41,12 +41,6 @@ jobs:
            #working-directory: '' # now default one
            doxyfile-path: './doxy.cfg'
            enable-latex: true
-
-      # check for what we generated 
-      #- name: check for what we generated
-      #  run: |
-      #      ls
-      #      ls ./output
     
       - name: Publish of documentation 
         uses: peaceiris/actions-gh-pages@v3
@@ -58,12 +52,17 @@ jobs:
         working-directory: ./output/
         run: cmake -E tar cfv ./docs.zip --format=7zip .
 
-
+      # check for what we generated 
+      - name: check for what we generated
+        run: |
+            ls
+            ls ./output
+      
       - name: Upload docs artifact to git hub storage to use later
         uses: actions/upload-artifact@v1
-        working-directory: ./output/
+        working-directory: 
         with:
-          path: ./docs.zip
+          path: ./output/docs.zip
           name: docs.zip
   build:
     name: ${{ matrix.config.name }}
