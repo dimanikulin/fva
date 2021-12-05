@@ -14,28 +14,24 @@ env:
     QT_VERSION : "5.15.2"
     BUILD_TYPE: Release
     CCACHE_VERSION: 4.4
-    WIX_BIN_PATH: 'C:/Program Files (x86)/WiX Toolset v3.11/bin/'
 
 jobs:
   build-doc:
       if: contains(github.ref, 'tags/v') #comment if you need to have it each commit
-      name: releasing docs 
+      name: Releasing docs  
       runs-on: ubuntu-latest
       strategy:
          fail-fast: false
       steps:
         
-      # download fva repo
-      - name: Checkout repository
+      - name: Checkout fva repository
         uses: actions/checkout@v2 #v2 to checkout submodules as well
         with:
             submodules: 'true'
-     
-      # to draw nice graphs in doc 
-      - name: Setup Graphviz
+          
+      - name: Setup Graphviz to draw nice graphs in doc
         uses: ts-graphviz/setup-graphviz@v1
  
-       # run Doxygen
       - name: run Doxygen documentation generation 
         uses: mattnotmitt/doxygen-action@v1
         with:
@@ -65,28 +61,32 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        #- {
-         #   name: "Windows Latest MSVC", artifact: "Windows-MSVC.7z",
-          #  os: windows-latest,
-           # cc: "cl", cxx: "cl",
-           # environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
-          #}
-        # commented to reduce billed execution time
-           #- {
-           # name: "Windows Latest x86", artifact: "Windows-x86.zip",
-           # os: windows-latest,
-           # environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars32.bat"
-          #}
         - {
             name: "Windows Latest MinGW", artifact: "Windows-MinGW.7z",
             os: windows-latest,
             cc: "gcc", cxx: "g++"
           }
+        # commented to reduce billed execution time
+  
+        #- {
+        #    name: "Windows Latest MSVC", artifact: "Windows-MSVC.7z",
+        #    os: windows-latest,
+        #    cc: "cl", cxx: "cl",
+        #    environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
+        #}
+        
+        #- {
+        #    name: "Windows Latest x86", artifact: "Windows-x86.zip",
+        #    os: windows-latest,
+        #    environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars32.bat"
+        #}
+  
         #- {
         #    name: "Ubuntu Latest GCC", artifact: "Linux.7z",
         #    os: ubuntu-latest,
         #    cc: "gcc", cxx: "g++"
         #  }
+        
         #- {
         #    name: "macOS Latest Clang", artifact: "macOS.7z",
         #    os: macos-latest,
@@ -94,8 +94,7 @@ jobs:
         #  }
 
     steps:
-    # download fva repo
-    - name: Checkout repository
+    - name: Checkout fva repository
       uses: actions/checkout@v2 #v2 to checkout submodules as well
       with:
         submodules: 'true'
@@ -177,7 +176,7 @@ jobs:
           ${{ matrix.config.name }}-ccache-
           
     # https://github.com/jurplel/install-qt-action
-    - name: Install Qt and 
+    - name: Install Qt 
       uses: jurplel/install-qt-action@v2
       with:
         version:  ${{ env.QT_VERSION }}
@@ -187,19 +186,19 @@ jobs:
     
     # commented out due to unuse
     #- name: Check availability of QT libraries and Configure CMake for it
-      #run: |
-        #ls
-        #ls D:/a/fva/Qt/${{ env.QT_VERSION }}/msvc2019_64/lib/
-        #Tree D:/a/fva/Qt/5.15.2/mingw81_64 /F | Select-Object -Skip 2
-        #Get-ChildItem -Path D:/a/fva/Qt/5.15.2/mingw81_64/lib -Recurse -Force -ErrorAction SilentlyContinue | Select-Object FullName
+    #  run: |
+    #   ls
+    #   ls D:/a/fva/Qt/${{ env.QT_VERSION }}/msvc2019_64/lib/
+    #   Tree D:/a/fva/Qt/5.15.2/mingw81_64 /F | Select-Object -Skip 2
+    #   Get-ChildItem -Path D:/a/fva/Qt/5.15.2/mingw81_64/lib -Recurse -Force -ErrorAction SilentlyContinue | Select-Object FullName
     
     # commented out due to unuse
     #- name: Check QMake and make
-     # run: |
-      #  Write-Output (Get-Command qmake.exe).Path
-       # qmake.exe -version
-        #Write-Output (Get-Command mingw32-make.exe).Path
-        #mingw32-make.exe -version
+    # run: |
+    #  Write-Output (Get-Command qmake.exe).Path
+    # qmake.exe -version
+    # Write-Output (Get-Command mingw32-make.exe).Path
+    # mingw32-make.exe -version
         
     - name: Configure make files by CMake
       shell: cmake -P {0}
