@@ -40,11 +40,11 @@ jobs:
             os: windows-latest,
             cc: "gcc", cxx: "g++"
           }
-        #- {
-        #    name: "Ubuntu Latest GCC", artifact: "Linux.7z",
-        #    os: ubuntu-latest,
-        #    cc: "gcc", cxx: "g++"
-        #  }
+        - {
+            name: "Ubuntu Latest GCC", artifact: "Linux.7z",
+            os: ubuntu-latest,
+            cc: "gcc", cxx: "g++"
+          }
         #- {
         #    name: "macOS Latest Clang", artifact: "macOS.7z",
         #    os: macos-latest,
@@ -61,12 +61,14 @@ jobs:
     # run Doxygen
     - name: run Doxygen documentation generation 
       uses: mattnotmitt/doxygen-action@v1
+      os: [ubuntu-latest]
       with:
          #working-directory: '' # now default one
          doxyfile-path: './doxy.cfg'
          enable-latex: true
        
     - name: Build package for win
+      os: [windows-latest]
       run: |
        if ("${{ runner.os }}" STREQUAL "Windows")
          execute_process(msbuild ./FVASetupWin/FVASetupWin.wixproj)
