@@ -20,7 +20,7 @@ add_executable(fvadictionaryeditor
 
     ${HEADER_FILES}
 )
-target_link_libraries(fvadictionaryeditor Qt5::Widgets Qt5::Core Qt5::Gui fvalib -static-libgcc -static-libstdc++)
+target_link_libraries(fvadictionaryeditor Qt5::Widgets Qt5::Core Qt5::Gui fvalib)
 
 target_include_directories(fvadictionaryeditor PRIVATE ../FVACommonLib)
 

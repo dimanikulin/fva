@@ -44,6 +44,6 @@ add_library(fvalib
   exif.cpp
 )
 
-target_link_libraries(fvalib Qt5::Widgets Qt5::Core Qt5::Gui -static-libgcc -static-libstdc++)
+target_link_libraries(fvalib Qt5::Widgets Qt5::Core Qt5::Gui)
 
 install(TARGETS fvalib)

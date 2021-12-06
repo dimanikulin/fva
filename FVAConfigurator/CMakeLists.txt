@@ -8,7 +8,7 @@ set(HEADER_FILES ../FVACommonLib/fvaconstants.h ../FVACommonLib/FVAConfiguration
 
 add_executable(fvaconfigurator fvaconfigurator.qrc fvaconfigurator.ui fvaconfigurator.cpp fvaconfigurator.h main.cpp ${HEADER_FILES})
 
-target_link_libraries(fvaconfigurator Qt5::Widgets Qt5::Core Qt5::Gui fvalib -static-libgcc -static-libstdc++)
+target_link_libraries(fvaconfigurator Qt5::Widgets Qt5::Core Qt5::Gui fvalib)
 
 target_include_directories(fvaconfigurator PRIVATE ../FVACommonLib)
 

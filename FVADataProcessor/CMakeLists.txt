@@ -56,7 +56,7 @@ add_library( fvadataprocessorlib
    ${HEADER_FILES}
 )
 
-target_link_libraries(fvadataprocessorlib Qt5::Widgets Qt5::Core Qt5::Gui fvalib -static-libgcc -static-libstdc++)
+target_link_libraries(fvadataprocessorlib Qt5::Widgets Qt5::Core Qt5::Gui fvalib)
 
 target_include_directories(fvadataprocessorlib PRIVATE ../FVACommonLib)
 
