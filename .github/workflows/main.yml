@@ -54,6 +54,22 @@ jobs:
         with:
           path: ./docs.zip
           name: docs.zip
+          
+  check-code:
+     name: Checking code before build
+     runs-on: ubuntu-latest
+     strategy:
+         fail-fast: false
+     steps:
+        
+      - name: Checkout FVA repository
+        uses: actions/checkout@v2 #v2 to checkout submodules as well
+        with:
+            submodules: 'true'
+            
+      - name: Python style check
+        uses: bulv1ne/python-style-check@v0.3
+            
   build:
     name: Building the binaries for ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
