@@ -1,9 +1,9 @@
 #based on https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/
-name: FVA Build Matrix
+name: FVA GitHub Action flow
 
 on:
-  #push:
-   # branches: [ master ]
+  push:
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
