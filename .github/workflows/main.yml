@@ -2,8 +2,8 @@
 name: FVA Build Matrix
 
 on:
-  push:
-    branches: [ master ]
+  #push:
+   # branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -16,15 +16,15 @@ env:
     CCACHE_VERSION: 4.4
 
 jobs:
-  build-doc:
+  build-docs:
       if: contains(github.ref, 'tags/v') #comment if you need to have it each commit
-      name: Releasing docs  
+      name: Releasing documentation for code (based on doxy comments) 
       runs-on: ubuntu-latest
       strategy:
          fail-fast: false
       steps:
         
-      - name: Checkout fva repository
+      - name: Checkout FVA repository
         uses: actions/checkout@v2 #v2 to checkout submodules as well
         with:
             submodules: 'true'
@@ -32,7 +32,7 @@ jobs:
       - name: Setup Graphviz to draw nice graphs in doc
         uses: ts-graphviz/setup-graphviz@v1
  
-      - name: run Doxygen documentation generation 
+      - name: Generate Doxygen documentation 
         uses: mattnotmitt/doxygen-action@v1
         with:
            #working-directory: '' # now default one
@@ -55,7 +55,7 @@ jobs:
           path: ./docs.zip
           name: docs.zip
   build:
-    name: ${{ matrix.config.name }}
+    name: Building the binaries for ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
     strategy:
       fail-fast: false
@@ -94,7 +94,7 @@ jobs:
         #  }
 
     steps:
-    - name: Checkout fva repository
+    - name: Checkout FVA repository
       uses: actions/checkout@v2 #v2 to checkout submodules as well
       with:
         submodules: 'true'
@@ -144,7 +144,7 @@ jobs:
           )
         endif()
 
-    - name: Download ccache
+    - name: Download the ccache
       id: ccache
       shell: cmake -P {0}
       run: |
@@ -152,14 +152,14 @@ jobs:
         file(DOWNLOAD "${ccache_url}" ./ccache.tar.xz SHOW_PROGRESS)
         execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf ./ccache.tar.xz)
 
-    - name: Prepare ccache timestamp
+    - name: Prepare the ccache timestamp
       id: ccache_cache_timestamp
       shell: cmake -P {0}
       run: |
         string(TIMESTAMP current_date "%Y-%m-%d-%H;%M;%S" UTC)
         message("::set-output name=timestamp::${current_date}")
 
-    - name: ccache - cache files
+    - name: Call the ccache to cache files
       uses: actions/cache@v1.1.0
       with:
         path: .ccache
@@ -276,7 +276,7 @@ jobs:
           message(FATAL_ERROR "Build failed")
         endif()
 
-    - name: make ccache statistics
+    - name: Make the ccache statistics
       shell: cmake -P {0}
       run: |
         file(TO_CMAKE_PATH "$ENV{GITHUB_WORKSPACE}" ccache_basedir)
@@ -308,7 +308,7 @@ jobs:
           message(FATAL_ERROR "Running tests failed!")
         endif()
      
-    - name: CMake Install Strip to make binaries smaller
+    - name: Install Strip to make binaries smaller by CMake
       run: cmake --install build --prefix instdir --strip
 
     - name: Pack the binaries by 7zip
@@ -335,7 +335,6 @@ jobs:
         path: ./FVASetupWin/bin/FVASetupWin.msi
         name: FVASetupWin.msi
 
-  # not clear what it is bellow!!!!!
   release:
     if: contains(github.ref, 'tags/v')
     runs-on: ubuntu-latest
