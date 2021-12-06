@@ -106,6 +106,8 @@
             <File Id="libstd" Name="libstdc++-6.dll"  Source="$(var.Qt5_Dir)\mingw81_64\bin\libstdc++-6.dll"  Vital="yes" KeyPath="no"/>
             <File Id="libwinpthread" Name="libwinpthread-1.dll"  Source="$(var.Qt5_Dir)\mingw81_64\bin\libwinpthread-1.dll"  Vital="yes" KeyPath="no"/>
 
+            <File Id="fvaParams" Name="fvaParams.csv"  Source="fvaParams.csv"  Vital="yes" KeyPath="no"/>
+
           </Component>
         </Directory>
       </Directory>
