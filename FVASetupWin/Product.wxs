@@ -102,9 +102,9 @@
             <File Id="Qt5Widgets" Name="Qt5Widgets.dll"  Source="$(var.Qt5_Dir)\mingw81_64\bin\Qt5Widgets.dll"  Vital="yes" KeyPath="no"/>
             <File Id="Qt5Sql" Name="Qt5Sql.dll"  Source="$(var.Qt5_Dir)\mingw81_64\bin\Qt5Sql.dll"  Vital="yes" KeyPath="no"/>
 
-            <File Id="libgcc_s_seh-1" Name="libgcc_s_seh-1.dll"  Source="$(var.Qt5_Dir)\mingw81_64\bin\libgcc_s_seh-1.dll"  Vital="yes" KeyPath="no"/>       
-            <File Id="libstdc++-6" Name="libstdc++-6.dll"  Source="$(var.Qt5_Dir)\mingw81_64\bin\libstdc++-6.dll"  Vital="yes" KeyPath="no"/>
-            <File Id="libwinpthread-1" Name="libwinpthread-1.dll"  Source="$(var.Qt5_Dir)\mingw81_64\bin\libwinpthread-1.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="libgcc" Name="libgcc_s_seh-1.dll"  Source="$(var.Qt5_Dir)\mingw81_64\bin\libgcc_s_seh-1.dll"  Vital="yes" KeyPath="no"/>       
+            <File Id="libstd" Name="libstdc++-6.dll"  Source="$(var.Qt5_Dir)\mingw81_64\bin\libstdc++-6.dll"  Vital="yes" KeyPath="no"/>
+            <File Id="libwinpthread" Name="libwinpthread-1.dll"  Source="$(var.Qt5_Dir)\mingw81_64\bin\libwinpthread-1.dll"  Vital="yes" KeyPath="no"/>
 
           </Component>
         </Directory>
