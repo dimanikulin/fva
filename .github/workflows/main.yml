@@ -48,8 +48,6 @@ jobs:
       # commented as it does not work
       #- name: Python style check 
       #  uses: bulv1ne/python-style-check@v0.3
-
-
             
   build:
     name: Building the binaries for ${{ matrix.config.name }}
@@ -63,21 +61,7 @@ jobs:
             os: windows-latest,
             cc: "gcc", cxx: "g++"
           }
-        # commented to reduce billed execution time
-  
-        #- {
-        #    name: "Windows Latest MSVC", artifact: "Windows-MSVC.7z",
-        #    os: windows-latest,
-        #    cc: "cl", cxx: "cl",
-        #    environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
-        #}
-        
-        #- {
-        #    name: "Windows Latest x86", artifact: "Windows-x86.zip",
-        #    os: windows-latest,
-        #    environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars32.bat"
-        #}
-  
+        # commented to reduce billed execution time 
         #- {
         #    name: "Ubuntu Latest GCC", artifact: "Linux.7z",
         #    os: ubuntu-latest,
@@ -305,20 +289,21 @@ jobs:
           message(FATAL_ERROR "Running tests failed!")
         endif()
      
-    - name: Install Strip to make binaries smaller by CMake
+    - name: Install binaries to instdir and stripping them to make binaries smaller by CMake
       run: cmake --install build --prefix instdir --strip
 
-    - name: Pack the binaries by 7zip
-      working-directory: instdir
-      run: cmake -E tar cfv ../${{ matrix.config.artifact }} --format=7zip .
+    # commented out due to unuse 
+    #- name: Pack the binaries by 7zip
+    #  working-directory: instdir
+    #  run: cmake -E tar cfv ../${{ matrix.config.artifact }} --format=7zip .
 
-    - name: Upload artifact to git hub storage to use later
-      uses: actions/upload-artifact@v1
-      with:
-        path: ./${{ matrix.config.artifact }}
-        name: ${{ matrix.config.artifact }}
+    #- name: Upload artifact to git hub storage to use later
+    #  uses: actions/upload-artifact@v1
+    #  with:
+    #    path: ./${{ matrix.config.artifact }}
+    #    name: ${{ matrix.config.artifact }}
  
-    - name: Setup MSBuild.exe
+    - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.3
     
     - name: MS package build

@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "CLTFixDuplicatedFileNames.h" 
-
+//TODO to work with digiKam dir but not fva dir
 CLTFixDuplicatedFileNames::CLTFixDuplicatedFileNames(const FvaConfiguration& cfg)
 {
 	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
@@ -15,6 +15,7 @@ CLTFixDuplicatedFileNames::CLTFixDuplicatedFileNames(const FvaConfiguration& cfg
 
 FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute(const CLTContext& context)
 {
+        
 	// get the last dir leaf in input folder
 	QString dir = m_dir.dirName();
 
