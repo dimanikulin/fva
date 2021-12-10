@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	QApplication a(argc, argv);
 	FvaConfiguration cfg;
 	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
-	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("param loading")
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("param loading")
 
 	LOG_INIT("#logs#/orgwizard.txt")
 	FVAOrganizerWizard w;
