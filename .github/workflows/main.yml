@@ -2,8 +2,8 @@
 name: FVA GitHub Action flow
 
 on:
-  push:
-    branches: [ master ]
+  #push:
+  #  branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -42,10 +42,11 @@ jobs:
           path: ./cppcheck_report.txt
           name: cppcheck_report.txt
 
-      - name: Run cpp style checks
-        uses: coleaeason/actions-uncrustify@v1
-
       # commented as it does not work
+      #- name: Run cpp style checks
+      #  uses: coleaeason/actions-uncrustify@v1
+      #
+      
       #- name: Python style check 
       #  uses: bulv1ne/python-style-check@v0.3
             
@@ -61,12 +62,14 @@ jobs:
             os: windows-latest,
             cc: "gcc", cxx: "g++"
           }
-        # commented to reduce billed execution time 
-        #- {
-        #    name: "Ubuntu Latest GCC", artifact: "Linux.7z",
-        #    os: ubuntu-latest,
-        #    cc: "gcc", cxx: "g++"
-        #  }
+
+        # commented to reduce billed execution time
+         
+       # - {
+       #     name: "Ubuntu Latest GCC", artifact: "Linux.7z",
+       #     os: ubuntu-latest,
+       #     cc: "gcc", cxx: "g++"
+       #   }
         
         #- {
         #    name: "macOS Latest Clang", artifact: "macOS.7z",
