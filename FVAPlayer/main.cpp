@@ -5,13 +5,13 @@
 * \version 0.29
 * \date  2014-2021
 */
-// #include "fvaplayer.h"
+#include "fvaplayer.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	// FVAPlayer w;
-	// w.show();
+	FVAPlayer w;
+	w.show();
 	return a.exec();
 }

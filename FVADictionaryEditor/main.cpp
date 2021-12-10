@@ -29,6 +29,13 @@ int main(int argc, char *argv[])
 	{
 		deviceMatchName = list.at(2);
 	}
+
+	FvaConfiguration cfg;
+	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("param loading")
+
+	LOG_INIT("#logs#/dicteditor.txt")
+
 	FVADictionaryEditor w(deviceMatchName);
 	w.show();
 	return a.exec();
