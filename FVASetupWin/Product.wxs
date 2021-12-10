@@ -35,6 +35,9 @@
             <CreateFolder />
           </Component>
         </Directory>
+        <Directory Id="logs" Name='#logs#'>
+         <CreateFolder />
+        </Directory>
         
         <Directory Id="bin" Name='#bin#'>
           <Directory Id="Icons" Name='Icons'>
