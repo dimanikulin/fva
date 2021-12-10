@@ -62,7 +62,7 @@ class FVAOrganizerWizard : public QWizard
 		*/
 		QString matchedDeviceName(){return m_deviceName;}
 
-        /*!
+        	/*!
 		* \brief it sets up a full device map loaded from dictionary
 		* \param fullDeviceMap - a full device map loaded from dictionary
 		* \return it returns nothing
