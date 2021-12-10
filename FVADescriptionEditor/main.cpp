@@ -8,6 +8,7 @@
 #include "fvadescriptioneditor.h"
 #include "fvadescriptionfile.h"
 #include "fvacommonlib.h"
+#include "fvacommonui.h"
 
 #include <QtWidgets/QApplication>
 #include <QtCore/QDir>

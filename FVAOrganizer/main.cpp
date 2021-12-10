@@ -12,6 +12,7 @@
 #include "fvadataprocessor.h"
 #include "fvacommonlib.h"
 #include "fvalogger.inl"
+#include "fvacommonui.h"
 
 LOGGER_GLOBAL
 

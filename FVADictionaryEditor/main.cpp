@@ -8,6 +8,7 @@
 #include "fvadictionaryeditor.h"
 #include <QtWidgets/QApplication>
 #include "fvacommonlib.h"
+#include "fvacommonui.h"
 #include <QtCore/qtextcodec>
 
 int main(int argc, char *argv[])

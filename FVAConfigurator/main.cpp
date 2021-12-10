@@ -5,8 +5,11 @@
 * \version 0.29
 * \date  2014-2021
 */
+
+#include "fvacommonui.h"
 #include "FVAConfigurator.h"
 #include <QtWidgets/QApplication>
+
 
 int main(int argc, char *argv[])
 {

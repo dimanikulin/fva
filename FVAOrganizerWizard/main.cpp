@@ -11,6 +11,7 @@
 #include <QtCore/qtextcodec>
 
 #include "fvalogger.inl"
+#include "fvacommonui.h"
 
 LOGGER_GLOBAL
 
