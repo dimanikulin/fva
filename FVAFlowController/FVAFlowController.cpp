@@ -29,7 +29,7 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
 	FVA_EXIT_CODE exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	
 	// show error message box and return to calling function if previous operation failed
-	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsString(Common::RootDir)")
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsString(Common::RootDir)")
 
 	context.cmdType = "CLTCheckDeviceName";
 	exitCode = m_dataProcessor.run(context, cfg);
@@ -46,13 +46,13 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
 	exitCode = fvaLoadDeviceMapFromCsv(rootSWdir, deviceContext.fullDeviceMap);
 	
 	// show error message box and return to calling function if previous operation failed
-	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadDeviceMapFromCsv")
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadDeviceMapFromCsv")
 
 	PEOPLE_MAP peopleMap;
 	exitCode = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
 	
 	// show error message box and return to calling function if previous operation failed
-	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadPeopleMapFromCsv")
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadPeopleMapFromCsv")
 
 	for (auto it = deviceContext.fullDeviceMap.begin(); it != deviceContext.fullDeviceMap.end(); ++it)
 		it.value().ownerName = peopleMap[it.value().ownerId].name;
@@ -132,7 +132,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	FVA_EXIT_CODE exitCode = m_cfg.getParamAsBoolean("Search::Device", SearchByDevice);
 
 	// show error message box and return to calling function if previous operation failed
-	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Device)")
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Device)")
 	if (SearchByDevice)
 	{
 		// perform device checks
@@ -149,7 +149,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	exitCode = m_cfg.getParamAsBoolean("Search::DateTime", SearchByDateTime);
 
 	// show error message box and return to calling function if previous operation failed
-	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::DateTime)")
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::DateTime)")
 	if (SearchByDateTime)
 	{
 		// perform date-time checks
@@ -166,7 +166,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	exitCode = m_cfg.getParamAsBoolean("Search::Location", SearchByLocation);
 
 	// show error message box and return to calling function if previous operation failed
-	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Location)")
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Location)")
 	if (SearchByLocation)
 	{
 		// perform location checks
@@ -183,7 +183,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	exitCode = m_cfg.getParamAsBoolean("Common::CheckOrientation", needCheckOrientation);
 
 	// show error message box and return to calling function if previous operation failed
-	IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean with Common::CheckOrientation")
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean with Common::CheckOrientation")
 
 	// do we need to check photo orientation?
 	if (needCheckOrientation)

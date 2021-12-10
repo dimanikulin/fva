@@ -93,15 +93,6 @@ if (exitCode != FVA_NO_ERROR)\
 	return false; \
 }
 
-#define IF_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(cmdName)\
-if (exitCode != FVA_NO_ERROR)\
-{\
-	QMessageBox msgBox; \
-	msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
-	msgBox.exec(); \
-	return exitCode; \
-}
-
 #define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET(cmdName)\
 if (exitCode != FVA_NO_ERROR)\
 {\
