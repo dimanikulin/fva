@@ -18,12 +18,15 @@
 
 #include "fvacommoncsv.h"
 #include "fvacommonui.h"
+#include "fvalogger.inl"
 #include "FVAOrganizerWizard.h"
 #include "FVAFlowController.h"
 
 FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	: deviceId (-1)
 {
+        LOG_QDEB << "FVAOrganizerDevicePage construction" 
+
 #ifdef  FVA_LANGUAGE_RUS
 	QLabel * titleLabel = new QLabel(tr("Убедитесь, что устройство, которым делались снимки, верно определилось!"));
 	deviceLbl = new QLabel(tr("Название:"));
@@ -72,6 +75,9 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	setLayout(layout);
 
 	connect (btnDct,SIGNAL(clicked()),this,SLOT(OnChangeDictPressed()));
+
+        LOG_QDEB << "FVAOrganizerDevicePage constructed" 
+
 }
 void FVAOrganizerDevicePage::setVisible(bool visible)
 {	
