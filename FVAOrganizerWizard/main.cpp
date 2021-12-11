@@ -23,6 +23,9 @@ int main(int argc, char *argv[])
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("param loading")
 
 	LOG_INIT("#logs#/orgwizard.txt")
+
+        LOG_DEB << "FVAOrganizerWizard logger started";
+
 	FVAOrganizerWizard w;
 	w.show();
 	return a.exec();

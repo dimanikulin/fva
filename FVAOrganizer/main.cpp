@@ -26,6 +26,8 @@ int main( int argc, char *argv[] )
 
 	LOG_INIT("#logs#/org.txt")
 
+        LOG_DEB << "FVAOrganizer logger started";
+
 	CLTContext context;
 	QString temp;
 	if ( a.arguments().size() < 3 || a.arguments().size() > 7 )

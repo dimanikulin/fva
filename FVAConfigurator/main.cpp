@@ -21,6 +21,8 @@ int main(int argc, char *argv[])
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("param loading")
 
 	LOG_INIT("#logs#/configurator.txt")
+	LOG_DEB << "Configurator logger started";
+
 	FVAConfigurator w;
 	w.show();
 	return a.exec();

@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("param loading")
 
 	LOG_INIT("#logs#/dicteditor.txt")
+        LOG_DEB << "Dictionary editor logger started";
 
 	FVADictionaryEditor w(deviceMatchName);
 	w.show();

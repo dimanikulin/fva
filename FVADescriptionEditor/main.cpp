@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
 
 	LOG_INIT("#logs#/desceditor.txt")
 
+	LOG_DEB << "Description editor logger started";
+
 	bool folderMode = true;
 	FVADescriptionEditor w( folderMode, nullptr);
 
