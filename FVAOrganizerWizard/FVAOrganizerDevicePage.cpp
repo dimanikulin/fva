@@ -27,6 +27,7 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 {
         LOG_DEB << "FVAOrganizerDevicePage construction"; 
 
+        btnDct = new QPushButton;
 #ifdef  FVA_LANGUAGE_RUS
 	QLabel * titleLabel = new QLabel(tr("Убедитесь, что устройство, которым делались снимки, верно определилось!"));
 	deviceLbl = new QLabel(tr("Название:"));
