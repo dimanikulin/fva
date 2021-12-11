@@ -8,6 +8,7 @@ set(HEADER_FILES
    ../FVACommonLib/fvaconstants.h
    ../FVACommonLib/FVAConfiguration.h   
    ../FVACommonLib/fvacommonui.h
+   ../FVACommonLib/fvalogger.inl
  )
 
 add_executable(fvaconfigurator fvaconfigurator.qrc fvaconfigurator.ui fvaconfigurator.cpp fvaconfigurator.h main.cpp ${HEADER_FILES})

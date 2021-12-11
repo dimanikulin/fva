@@ -7,15 +7,17 @@
 */
 
 #include "fvacommonui.h"
+#include "fvalogger.inl"
 #include "FVAConfigurator.h"
 #include <QtWidgets/QApplication>
 
+LOGGER_GLOBAL
 
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 	FvaConfiguration cfg;
-	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("param loading")
 
 	LOG_INIT("#logs#/configurator.txt")

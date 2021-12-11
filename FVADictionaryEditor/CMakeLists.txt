@@ -8,6 +8,7 @@ set(HEADER_FILES
     ../FVACommonLib/fvacommonlib.h 
     ../FVACommonLib/fvacommoncsv.h
     ../FVACommonLib/fvaconfiguration.h
+    ../FVACommonLib/fvalogger.inl
     ../FVACommonLib/fvacommonlib.h)
 
 add_executable(fvadictionaryeditor 

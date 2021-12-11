@@ -8,6 +8,7 @@ set(HEADER_FILES
     ../FVACommonLib/FVADescriptionFile.h 
     ../FVACommonLib/FVAConfiguration.h 
     ../FVACommonLib/fvacommonui.h
+    ../FVACommonLib/fvalogger.inl
     ../FVACommonLib/fvacommonlib.h)
 
 add_executable(fvadescriptioneditor 
