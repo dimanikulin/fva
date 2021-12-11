@@ -25,7 +25,7 @@
 FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	: deviceId (-1)
 {
-        LOG_QDEB << "FVAOrganizerDevicePage construction"; 
+        LOG_DEB << "FVAOrganizerDevicePage construction"; 
 
 #ifdef  FVA_LANGUAGE_RUS
 	QLabel * titleLabel = new QLabel(tr("Убедитесь, что устройство, которым делались снимки, верно определилось!"));
@@ -76,7 +76,7 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 
 	connect (btnDct,SIGNAL(clicked()),this,SLOT(OnChangeDictPressed()));
 
-        LOG_QDEB << "FVAOrganizerDevicePage constructed"; 
+        LOG_DEB << "FVAOrganizerDevicePage constructed"; 
 
 }
 void FVAOrganizerDevicePage::setVisible(bool visible)

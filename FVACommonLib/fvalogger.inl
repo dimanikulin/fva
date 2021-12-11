@@ -12,9 +12,11 @@
 #include <fstream>
 #include <QtCore/QDebug>
 
-#define LOG_QWARN qWarning()<<"[WRN]"<<QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data()
-#define LOG_QCRIT qCritical()<<"[ERR]"<<QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data()
-#define LOG_QDEB qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data()
+#include "fvaconstants.h"
+
+#define LOG_WARN qWarning()<<"[WRN]"<<QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data()
+#define LOG_CRIT qCritical()<<"[ERR]"<<QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data()
+#define LOG_DEB qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data()
 
 
 #define LOGGER_GLOBAL\

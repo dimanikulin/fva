@@ -22,16 +22,16 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	: QWizard(parent)
 {
 	FvaConfiguration cfg;
-        LOG_QDEB << "FVAOrganizerWizard construction" ;
+        LOG_DEB << "FVAOrganizerWizard construction" ;
 	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.load")
 	int index = 0;
 	
         setPage(index++, new FVAOrganizerStartPage);
 
-        LOG_QDEB << "FVAOrganizerStartPage created";
+        LOG_DEB << "FVAOrganizerStartPage created";
 	setPage(index++, new FVAOrganizerInputDirPage);
-	LOG_QDEB << "FVAOrganizerInputDirPage created";
+	LOG_DEB << "FVAOrganizerInputDirPage created";
         // do we need to show OrientPage?
 	bool temp;
 	exitCode = cfg.getParamAsBoolean("Common::CheckOrientation", temp);
@@ -39,15 +39,15 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	if (temp)
 		setPage(index++, new FVAOrganizerOrientPage);
 
-	LOG_QDEB << "FVAOrganizerOrientPage created";
+	LOG_DEB << "FVAOrganizerOrientPage created";
 	// do we need to show device page?
 	exitCode = cfg.getParamAsBoolean("Search::Device", temp);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.getParamAsBoolean")
 	if (temp)
 		setPage(index++, new FVAOrganizerDevicePage);
-        LOG_QDEB << "FVAOrganizerDevicePage created";
+        LOG_DEB << "FVAOrganizerDevicePage created";
 	setPage(index++, new FVAOrganizerOutputDirPage);
-	LOG_QDEB << "FVAOrganizerOutputDirPage created";
+	LOG_DEB << "FVAOrganizerOutputDirPage created";
         setPage(index++, new FVAOrganizerDonePage);
 	
 	setStartId( 0 );
@@ -70,5 +70,5 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-        LOG_QDEB << "FVAOrganizerWizard constructed"; 
+        LOG_DEB << "FVAOrganizerWizard constructed"; 
 }
