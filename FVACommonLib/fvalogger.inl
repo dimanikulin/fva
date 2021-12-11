@@ -34,12 +34,12 @@ void msghandler(QtMsgType type, const QMessageLogContext &, const QString & str)
 #define LOG_INIT(LOG_NAME)\
 qInstallMessageHandler(msghandler); \
 QString logPath; \
-res = cfg.getParamAsString("Common::RootDir", logPath); \
+exitCode = cfg.getParamAsString("Common::RootDir", logPath); \
 logPath += + LOG_NAME;\
 g_logfile.open(logPath.toStdString(), std::ios::app);\
 \
 uint dLogLevel = 0; \
-res = cfg.getParamAsUint("Common::LogLevel", dLogLevel); \
+exitCode = cfg.getParamAsUint("Common::LogLevel", dLogLevel); \
 g_logLevel = (QtMsgType)dLogLevel;
 
 
