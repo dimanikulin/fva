@@ -19,7 +19,7 @@ FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute(const CLTContext& context)
 			continue;
 
 		// create year dir first
-		QString yearDirPath = m_folder + "/" + m_dir.dirName().mid(0, 4)/*extract year*/;
+		QString yearFolderName = m_folder + "/" + m_dir.dirName().mid(0, 4)/*extract year*/;
 
 		if (!m_dir.exists(yearFolderName))
 		{
