@@ -159,23 +159,6 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 		RET_RES_IF_RES_IS_ERROR
 	}
 
-	// do we need to search by location?
-	bool SearchByLocation = false;
-
-	// ask configuration if we need to search by location
-	exitCode = m_cfg.getParamAsBoolean("Search::Location", SearchByLocation);
-
-	// show error message box and return to calling function if previous operation failed
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Location)")
-	if (SearchByLocation)
-	{
-		// perform location checks
-		FVA_EXIT_CODE res = performLocationChecks(context, m_cfg);
-
-		// return to calling function if previous operation failed
-		RET_RES_IF_RES_IS_ERROR
-	}
-
 	// do we need to check photo orientation?
 	bool needCheckOrientation = false;
 
@@ -303,6 +286,23 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTMoveAloneFiles")
+
+	// do we need to search by location?
+	bool SearchByLocation = false;
+
+	// ask configuration if we need to search by location
+	exitCode = m_cfg.getParamAsBoolean("Search::Location", SearchByLocation);
+
+	// show error message box and return to calling function if previous operation failed
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Location)")
+	if (SearchByLocation)
+	{
+		// perform location checks
+		FVA_EXIT_CODE res = performLocationChecks(context, m_cfg);
+
+		// return to calling function if previous operation failed
+		RET_RES_IF_RES_IS_ERROR
+	}
 
 	context.cmdType = "CLTGetFvaDirType";
 	context.recursive = false;

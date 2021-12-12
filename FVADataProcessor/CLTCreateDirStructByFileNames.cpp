@@ -18,9 +18,20 @@ FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute(const CLTContext& context)
 		if ( fvaIsInternalFile( info.fileName() ) )
 			continue;
 
+		// create year dir first
+		QString yearDirPath = m_folder + "/" + m_dir.dirName().mid(0, 4)/*extract year*/;
+
+		if (!m_dir.exists(yearFolderName))
+		{
+			if ( !context.readOnly )
+				m_dir.mkdir(yearFolderName);
+			LOG_QDEB << "year-folder:" << yearFolderName << " created";
+		}
+
 		QString subFolderName		= info.baseName().mid(0,10).replace("-",".");
-		QString fullSubFolderpath	= m_folder + "/" + subFolderName;
-			
+		QString fullSubFolderpath	= m_folder + "/" + m_dir.dirName().mid(0, 4) + "/" + subFolderName;
+
+		// and noe day name	
 		if (!m_dir.exists(subFolderName))
 		{
 			if ( !context.readOnly )
@@ -39,6 +50,7 @@ FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute(const CLTContext& context)
 				LOG_QDEB << "file renamed:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
 		}
 	}
+
 	return FVA_NO_ERROR;
 }
 
