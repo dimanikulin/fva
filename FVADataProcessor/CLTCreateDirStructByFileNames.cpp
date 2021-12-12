@@ -30,15 +30,15 @@ FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute(const CLTContext& context)
 			LOG_QDEB << "year-folder:" << yearFolderName << " created";
 		}
 
-		QString subFolderName		= info.baseName().mid(0,10).replace("-",".");
-		QString fullSubFolderpath	= m_folder + "/" + year + "/" + subFolderName;
+		QString day			= info.baseName().mid(0,10).replace("-",".");
+		QString fullSubFolderpath	= m_folder + "/" + year + "/" + day;
 
 		// and noe day name	
-		if (!m_dir.exists(subFolderName))
+		if (!m_dir.exists(fullSubFolderpath))
 		{
-			if ( !context.readOnly )
-				m_dir.mkdir( subFolderName );
-			LOG_QDEB << "sub-folder:" << subFolderName << " created";
+			if (!context.readOnly)
+				m_dir.mkdir(fullSubFolderpath);
+			LOG_QDEB << "sub-folder:" << fullSubFolderpath << " created";
 		}
 		if ( !context.readOnly ) 
 		{
