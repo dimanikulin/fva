@@ -19,7 +19,9 @@ FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute(const CLTContext& context)
 			continue;
 
 		// create year dir first
-		QString yearFolderName = m_folder + "/" + m_dir.dirName().mid(0, 4)/*extract year*/;
+		// extract year
+		QString year = info.baseName().mid(0, 4); 
+		QString yearFolderName = m_folder + "/" + year;
 
 		if (!m_dir.exists(yearFolderName))
 		{
@@ -29,7 +31,7 @@ FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute(const CLTContext& context)
 		}
 
 		QString subFolderName		= info.baseName().mid(0,10).replace("-",".");
-		QString fullSubFolderpath	= m_folder + "/" + m_dir.dirName().mid(0, 4) + "/" + subFolderName;
+		QString fullSubFolderpath	= m_folder + "/" + year + "/" + subFolderName;
 
 		// and noe day name	
 		if (!m_dir.exists(subFolderName))
