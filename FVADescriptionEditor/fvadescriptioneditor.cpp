@@ -52,8 +52,8 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	QString rootSWdir;
 	res = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	RET_IF_RES_IS_ERROR
-	fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false, rootSWdir);
-	fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false, rootSWdir);
+	//fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false, rootSWdir);
+	//fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false, rootSWdir);
 }
 
 FVADescriptionEditor::~FVADescriptionEditor()

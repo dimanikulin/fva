@@ -19,6 +19,7 @@
 
 FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)
 {
+        LOG_DEB << "FVAOrganizerEventCfgPage construction" ;
 #ifdef  FVA_LANGUAGE_RUS
 	oneEventOneDay				= new QRadioButton("Один день-одно событие");
 	severalEventsOneDay			= new QRadioButton("Один день-много событий");
@@ -53,6 +54,8 @@ FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)
 	setLayout(layout);
 
 	connect(fvaInfoButton, SIGNAL(clicked()), this, SLOT(OnFvaInfoButtonPressed()));
+
+        LOG_DEB << "FVAOrganizerEventCfgPage constructed" ;
 }
 void FVAOrganizerEventCfgPage::OnFvaInfoButtonPressed()
 {
@@ -64,6 +67,7 @@ void FVAOrganizerEventCfgPage::OnFvaInfoButtonPressed()
 }
 void FVAOrganizerEventCfgPage::setVisible(bool visible)
 {
+        LOG_DEB << "FVAOrganizerEventCfgPage set visible" ;
 	if (((FVAOrganizerWizard*)wizard())->inputDirType() == FVA_1_EVENT_1_DAY)
 		oneEventOneDay->setChecked(true);
 
@@ -84,6 +88,7 @@ bool FVAOrganizerEventCfgPage::isComplete() const
 }
 bool	FVAOrganizerEventCfgPage::validatePage()
 {
+        LOG_DEB << "FVAOrganizerEventCfgPage validate page" ;
 	FVAFlowController flow;
 	FVA_EXIT_CODE exitCode = flow.ProcessInputDirForEventCfg(((FVAOrganizerWizard*)wizard())->inputFolder(), "TODO"/*, this*/);
 	if (exitCode != FVA_NO_ERROR)
