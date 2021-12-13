@@ -16,7 +16,7 @@
 #include "FVAOrganizerInputDirPage.h"
 #include "FVAOrganizerDevicePage.h"
 #include "FVAOrganizerOutputDirPage.h"
-
+#include "FVAOrganizerEventCfgPage.h"
 
 FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	: QWizard(parent)
@@ -28,26 +28,42 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	int index = 0;
 	
         setPage(index++, new FVAOrganizerStartPage);
-
         LOG_DEB << "FVAOrganizerStartPage created";
+
 	setPage(index++, new FVAOrganizerInputDirPage);
 	LOG_DEB << "FVAOrganizerInputDirPage created";
-        // do we need to show OrientPage?
-	bool temp;
-	exitCode = cfg.getParamAsBoolean("Common::CheckOrientation", temp);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.getParamAsBoolean")
-	if (temp)
-		setPage(index++, new FVAOrganizerOrientPage);
 
-	LOG_DEB << "FVAOrganizerOrientPage created";
-	// do we need to show device page?
-	exitCode = cfg.getParamAsBoolean("Search::Device", temp);
+        // do we need to show OrientPage?
+	bool isSet;
+	exitCode = cfg.getParamAsBoolean("Common::CheckOrientation", isSet);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.getParamAsBoolean")
-	if (temp)
+	if (isSet)
+	{
+		setPage(index++, new FVAOrganizerOrientPage);
+		LOG_DEB << "FVAOrganizerOrientPage created";
+	}
+
+	// do we need to show device page?
+	exitCode = cfg.getParamAsBoolean("Search::Device", isSet);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.getParamAsBoolean")
+	if (isSet)
+	{
 		setPage(index++, new FVAOrganizerDevicePage);
-        LOG_DEB << "FVAOrganizerDevicePage created";
+        	LOG_DEB << "FVAOrganizerDevicePage created";
+	}
+
+	// do we need to show event page?
+	exitCode = cfg.getParamAsBoolean("Search::Event", isSet);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.getParamAsBoolean")
+	if (isSet)
+	{
+		setPage(index++, new FVAOrganizerEventCfgPage);
+        	LOG_DEB << "FVAOrganizerEventCfgPage created";
+	}
+
 	setPage(index++, new FVAOrganizerOutputDirPage);
 	LOG_DEB << "FVAOrganizerOutputDirPage created";
+
         setPage(index++, new FVAOrganizerDonePage);
 	
 	setStartId( 0 );
