@@ -7,6 +7,7 @@
 */
 #include "FVAOrganizerDonePage.h"
 #include "FVAconstants.h"
+#include "fvalogger.inl"
 
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QTextBrowser>

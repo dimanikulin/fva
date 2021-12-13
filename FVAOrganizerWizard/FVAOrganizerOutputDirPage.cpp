@@ -17,6 +17,7 @@
 #include "fvacommonui.h"
 #include "fvaconfiguration.h"
 #include "FVAFlowController.h"
+#include "fvalogger.inl"
 
 FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 {   

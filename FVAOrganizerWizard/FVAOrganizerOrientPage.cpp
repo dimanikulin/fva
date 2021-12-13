@@ -14,6 +14,8 @@
 #include <QtCore/QProcess>
 #include <QtCore/QCoreApplication>
 
+#include "fvalogger.inl"
+
 FVAOrganizerOrientPage::FVAOrganizerOrientPage()
 {
         LOG_DEB << "FVAOrganizerOrientPage construction" ;

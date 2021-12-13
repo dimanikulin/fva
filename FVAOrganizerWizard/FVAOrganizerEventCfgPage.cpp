@@ -15,6 +15,7 @@
 
 #include "fvaorganizerwizard.h"
 #include "fvacommonui.h"
+#include "fvalogger.inl"
 #include "FVAFlowController.h"
 
 FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)

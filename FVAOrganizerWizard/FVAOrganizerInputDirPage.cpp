@@ -17,6 +17,7 @@
 #include "FVAOrganizerWizard.h"
 
 #include "FVAFlowController.h"
+#include "fvalogger.inl"
 
 FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 {
