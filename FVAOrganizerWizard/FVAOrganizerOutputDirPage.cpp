@@ -36,7 +36,7 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	QLabel* dirLabelGP = new QLabel(tr("Please select a Google Photo dir to put the content in:"));
 	QPushButton* googlePhotoButton = new QPushButton;
 	googlePhotoButton->setText(tr("Select a folder"));
-	removeOriginDirCheckBox = new QCheckBox(tr("Remove input dir"));
+	QCheckBox* removeOriginDirCheckBox = new QCheckBox(tr("Remove input dir"));
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 

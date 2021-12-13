@@ -287,6 +287,12 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTMoveAloneFiles")
 
+	context.cmdType = "CLTAutoChecks2";
+	exitCode = m_dataProcessor.run(context, m_cfg);
+
+	// show error message box and return to calling function if previous operation failed
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTAutoChecks2")
+
 	// do we need to search by location?
 	bool SearchByLocation = false;
 
@@ -309,11 +315,6 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 	exitCode = m_dataProcessor.run(context, m_cfg);
 	context.recursive = true;
 
-	context.cmdType = "CLTAutoChecks2";
-	exitCode = m_dataProcessor.run(context, m_cfg);
-
-	// show error message box and return to calling function if previous operation failed
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTAutoChecks2")
 
 	return FVA_NO_ERROR;
 }
