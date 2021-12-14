@@ -8,7 +8,7 @@
 #include "fvadictionaryeditor.h"
 #include "fvacommonlib.h"
 #include "fvacommoncsv.h"
-
+#include "fvalogger.inl"
 
 #include "QtCore/QFile"
 #include "QtCore/QTextStream"
@@ -17,22 +17,23 @@ FVADictionaryEditor::FVADictionaryEditor(const QString& device, QWidget *parent)
 	: QDialog	(parent),
 	 m_device	(device)
 {
+	LOG_DEB << "FVADictionaryEditor construction";
 	ui.setupUi(this);
 
 	connect (ui.btnAddPerson,SIGNAL(clicked()),this,SLOT(OnAddPersonBtnPressed()));
 	connect (ui.btnAddPlace,SIGNAL(clicked()),this,SLOT(OnAddPlaceBtnPressed()));
 	connect (ui.btnAddDevice,SIGNAL(clicked()),this,SLOT(OnAddDeviceBtnPressed()));
 
-	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
-	RET_IF_RES_IS_ERROR
+	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.load.cfg")
 
 	QString rootSWdir;
-	res = cfg.getParamAsString("Common::RootDir", rootSWdir);
-	RET_IF_RES_IS_ERROR
+	exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.get.rootdir")
 
 	PEOPLE_MAP peopleMap;
-	res = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
-	RET_IF_RES_IS_ERROR
+	exitCode = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.fvaLoadPeopleMapFromCsv")
 
 	ui.cbOwner->clear();
 	ui.cbOwner->addItem ( tr("Выбирете владельца"), 0 );
@@ -47,6 +48,7 @@ FVADictionaryEditor::FVADictionaryEditor(const QString& device, QWidget *parent)
 
 	ui.groupBox->setDisabled(true);
 	ui.groupBox_2->setDisabled(true);
+	LOG_DEB << "FVADictionaryEditor constructed";
 }
 
 void FVADictionaryEditor::OnAddPersonBtnPressed()
@@ -57,12 +59,12 @@ void FVADictionaryEditor::OnAddPersonBtnPressed()
 void FVADictionaryEditor::OnAddDeviceBtnPressed()
 {
 	QString rootSWdir;
-	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
-	RET_IF_RES_IS_ERROR
+	FVA_EXIT_CODE exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.getRootDir")
 
 	DEVICE_MAP deviceMap;
 	res = fvaLoadDeviceMapFromCsv(rootSWdir, deviceMap);
-	RET_IF_RES_IS_ERROR
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.fvaLoadDeviceMapFromCsv")
 	
 	QFile file(rootSWdir + "#data#/fvadevices.csv");
 	file.open(QIODevice::Append | QIODevice::Text);
