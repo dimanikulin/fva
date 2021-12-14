@@ -114,7 +114,7 @@ private:
 	/*!
 	* \brief to call dictionary editor
 	*/
-	QPushButton*	btnDct;
+	QPushButton*		btnDct;
 };
 
 

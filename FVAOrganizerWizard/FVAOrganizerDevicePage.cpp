@@ -28,21 +28,20 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
         LOG_DEB << "FVAOrganizerDevicePage construction"; 
 
         btnDct = new QPushButton;
-        btnDct->setText(tr("Справочники"));
 
 #ifdef  FVA_LANGUAGE_RUS
 	QLabel * titleLabel = new QLabel(tr("Убедитесь, что устройство, которым делались снимки, верно определилось!"));
 	deviceLbl = new QLabel(tr("Название:"));
 	matchLbl = new QLabel(tr("Линковочное имя:"));
 	ownerLbl = new QLabel(tr("Владелец:"));
-	// btnDct->setText(tr("Справочники"));
+	btnDct->setText(tr("Справочники"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	QLabel * titleLabel = new QLabel(tr("Please make sure, that device, took the photos, is defined properly!"));
 	deviceLbl = new QLabel(tr("Device Name:"));
 	matchLbl = new QLabel(tr("Linking name:"));
 	ownerLbl = new QLabel(tr("Device owner:"));
-	// btnDct->setText(tr("Dictionary"));
+	btnDct->setText(tr("Dictionary"));
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
@@ -55,7 +54,6 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 
 	ownerName	= new QLineEdit;
 	cbDevice	= new QComboBox;
-	btnDct		= new QPushButton;
 
         LOG_DEB << "FVAOrganizerDevicePage 2";
 	QGridLayout * tableLayout = new QGridLayout;
