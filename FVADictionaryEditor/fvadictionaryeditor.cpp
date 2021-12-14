@@ -9,6 +9,7 @@
 #include "fvacommonlib.h"
 #include "fvacommoncsv.h"
 #include "fvalogger.inl"
+#include "fvacommonui.h"
 
 #include "QtCore/QFile"
 #include "QtCore/QTextStream"
@@ -63,7 +64,7 @@ void FVADictionaryEditor::OnAddDeviceBtnPressed()
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.getRootDir")
 
 	DEVICE_MAP deviceMap;
-	res = fvaLoadDeviceMapFromCsv(rootSWdir, deviceMap);
+	exitCode = fvaLoadDeviceMapFromCsv(rootSWdir, deviceMap);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.fvaLoadDeviceMapFromCsv")
 	
 	QFile file(rootSWdir + "#data#/fvadevices.csv");
