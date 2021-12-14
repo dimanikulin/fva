@@ -89,19 +89,6 @@ class FVAOrganizerWizard : public QWizard
 		DEVICE_MAP matchedDeviceMap() {return m_matchedDeviceMap;}
 
 		/*!
-		* \brief it sets up input dir type that is returned as exit code
-		* \param inputDirType - input dir type that is returned as exit code  
-		* \return it returns nothing
-		*/
-		void inputDirType(FVA_EXIT_CODE	inputDirType) { m_inputDirType = inputDirType; }
-
-		/*!
-		* \brief it returns an input dir type
-		* \return it returns an input dir type
-		*/
-		FVA_EXIT_CODE inputDirType() { return m_inputDirType; }
-
-		/*!
 		* \brief it sets up an identifier of device that matches
 		* \param matchedDeviceID - an identifier of device that matches  
 		* \return it returns nothing
@@ -140,11 +127,6 @@ class FVAOrganizerWizard : public QWizard
 		* \brief a matched device map that matches a device for this directory
 		*/
 		DEVICE_MAP		m_matchedDeviceMap;
-
-		/*!
-		* \brief a dir type is returned as exit code
-		*/
-		FVA_EXIT_CODE	m_inputDirType;  
 
 		/*!
 		* \brief an identifier of device that matches
