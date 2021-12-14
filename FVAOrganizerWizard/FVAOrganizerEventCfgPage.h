@@ -13,14 +13,11 @@
 class QPushButton;
 class QRadioButton;
 
+// TODO to update
 /*!
 * \brief FVAOrganizerEventCfgPage is a child of <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a> and implements the next UI functions:
-*
-* 1. QRadioButton to choose One-Event-One-Day as dir type;
-* 2. QRadioButton to choose several-Events-One-Day as dir type;
-* 3. QRadioButton to choose several-Events-Several-Days as dir type;
-* 4. QRadioButton to choose one-Event-Several-Days as dir type;
-* 5. QPushButton to fill up the fva Information;
+*  
+* 1. QPushButton to fill up the fva Information;
 *
 * This class implements "View" functions from MVC pattern.
 * Showing the elements and flow is based on class FvaConfiguration.
@@ -62,30 +59,12 @@ class FVAOrganizerEventCfgPage : public QWizardPage
 
 	private:
 
-		/*!
-		* \brief to choose One-Event-One-Day as dir type
-		*/
-		QRadioButton*	oneEventOneDay;
 
 		/*!
 		* \brief to fill up the fva Information
 		*/
 		QPushButton*	fvaInfoButton;
 
-		/*!
-		* \brief to choose several-Events-One-Day as dir type
-		*/
-		QRadioButton*	severalEventsOneDay;
-
-		/*!
-		* \brief to choose several-Events-Several-Days as dir type
-		*/
-		QRadioButton*	severalEventsSeveralDays;
-
-		/*!
-		* \brief to choose one-Event-Several-Days as dir type
-		*/
-		QRadioButton*	oneEventSeveralDays;
 };
 
 #endif // _FVA_ORG_EVENT_CFG_H_
