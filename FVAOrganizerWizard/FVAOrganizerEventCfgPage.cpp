@@ -52,7 +52,7 @@ void FVAOrganizerEventCfgPage::OnFvaInfoButtonPressed()
 	// TODO will work only for win OS
 	//myProcess.start(QCoreApplication::applicationDirPath() + "/FVADescriptionEditor.exe");
 	params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
-	myProcess.start("explorer");
+	myProcess.start("explorer",params);
 	myProcess.waitForFinished(-1);
 }
 void FVAOrganizerEventCfgPage::setVisible(bool visible)

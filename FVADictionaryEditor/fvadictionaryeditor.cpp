@@ -87,4 +87,6 @@ void FVADictionaryEditor::OnAddDeviceBtnPressed()
 void FVADictionaryEditor::OnAddPlaceBtnPressed()
 {
 	//addDictItem(m_dictPath, ui.editPlace->text(),this, "places" );
+	// TODO to fill up the fvaPlaces.csv you need to find the location by its name and do it at least on 2 map services 
+	// like Google Map and Yandex. (https://www.google.com/maps and 
 }

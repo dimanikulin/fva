@@ -188,7 +188,6 @@ bool FVAOrganizerDevicePage::validatePage()
 
 	FVAFlowController flow;
 	FVA_EXIT_CODE exitCode = flow.OrganizeInputDir(((FVAOrganizerWizard*)wizard())->inputFolder(), deviceId);
-	((FVAOrganizerWizard*)wizard())->inputDirType(exitCode);
 	if (exitCode != FVA_NO_ERROR)
 		return false;
 	return true;
