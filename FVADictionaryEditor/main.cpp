@@ -20,6 +20,10 @@ int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 
+	FvaConfiguration cfg;
+	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("param loading")
+
 	LOG_INIT("#logs#/dicteditor.txt")
         LOG_DEB << "Dictionary editor logger started";
 	
@@ -39,10 +43,6 @@ int main(int argc, char *argv[])
 	{
 		deviceMatchName = list.at(2);
 	}
-
-	FvaConfiguration cfg;
-	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("param loading")
 
 	FVADictionaryEditor w(deviceMatchName);
 	w.show();
