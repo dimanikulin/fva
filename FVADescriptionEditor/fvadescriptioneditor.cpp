@@ -10,6 +10,7 @@
 #include "fvapeoplelistdlg.h"
 #include "fvacommonui.h"
 #include "fvaconfiguration.h"
+#include "fvalogger.inl"
 
 #include <QtCore/QFileInfo>
 #include <QtWidgets/QListWidgetItem>
@@ -22,6 +23,8 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	QMainWindow(parent),
 	m_forFolder(forFolder)
 {
+	LOG_DEB << "FVADescriptionEditor construction";
+
 	ui.setupUi(this);
 
 	/*connect (ui.btnNext,SIGNAL(clicked()),this,SLOT(OnNextBtnPressed()) );
@@ -44,21 +47,24 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	{
 		// TODO	
 	}
-
+        LOG_DEB << "FVADescriptionEditor before loading cfg";
 	FvaConfiguration cfg;
-	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
-	RET_IF_RES_IS_ERROR
+	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.load.cfg")
 
 	QString rootSWdir;
-	res = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.get.param")
+
 	RET_IF_RES_IS_ERROR
 	//fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false, rootSWdir);
 	//fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false, rootSWdir);
+	LOG_DEB << "FVADescriptionEditor constructed";
 }
 
 FVADescriptionEditor::~FVADescriptionEditor()
 {
-
+	LOG_DEB << "FVADescriptionEditor destructed";
 }
 
 /*

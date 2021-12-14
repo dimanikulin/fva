@@ -10,6 +10,7 @@
 #include "fvacommonlib.h"
 #include "fvacommonui.h"
 #include "fvalogger.inl"
+
 #include <QtWidgets/QApplication>
 #include <QtCore/QDir>
 #include <QtWidgets/QMessageBox>
