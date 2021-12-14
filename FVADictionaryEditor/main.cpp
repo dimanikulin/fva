@@ -19,17 +19,21 @@ LOGGER_GLOBAL
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
+
+	LOG_INIT("#logs#/dicteditor.txt")
+        LOG_DEB << "Dictionary editor logger started";
 	
 	// get application input parameters into list
 	QStringList list;
 	for (int a = 0; a < argc; ++a) {
 		list << QString::fromLocal8Bit(argv[a]);
+		LOG_DEB << "Dictionary editor input param [" << a << "] = " << QString::fromLocal8Bit(argv[a]);
 	}
 
-	if (list.size() < 2)
-	{
-		return FVA_ERROR_NOT_ENOUGH_ARG;
-	}
+	//if (list.size() < 2)
+	//{
+	//	return FVA_ERROR_NOT_ENOUGH_ARG;
+	//}
 	QString deviceMatchName;
 	if (list.size() >= 3)
 	{
@@ -39,9 +43,6 @@ int main(int argc, char *argv[])
 	FvaConfiguration cfg;
 	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("param loading")
-
-	LOG_INIT("#logs#/dicteditor.txt")
-        LOG_DEB << "Dictionary editor logger started";
 
 	FVADictionaryEditor w(deviceMatchName);
 	w.show();

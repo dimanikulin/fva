@@ -23,6 +23,9 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 {
 	ui.setupUi(this);
 
+	QIcon	icon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/main.png");
+	setWindowIcon(icon);
+
 	tabs = new QTabWidget();
 
 	tabCommon = new QWidget();
