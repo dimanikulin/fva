@@ -34,8 +34,6 @@ add_library( fvadataprocessorlib
    CLTCSVFvaFiles.h
    CLTFixDuplicatedFileNames.cpp
    CLTFixDuplicatedFileNames.h
-   CLTGetFvaDirType.cpp
-   CLTGetFvaDirType.h
    CLTMerge1DayEventDir.cpp
    CLTMerge1DayEventDir.h
    CLTMerge1EventDir.cpp

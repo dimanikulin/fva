@@ -23,7 +23,6 @@
 #include "CLTFixDuplicatedFileNames.h"
 #include "CLTPrintFSStructure.h"
 
-#include "CLTGetFvaDirType.h"
 #include "CLTMerge1DayEventDir.h"
 #include "CLTMerge1EventDir.h"
 #include "CLTSetFileAtts.h"
@@ -55,7 +54,6 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
 	else if (context.cmdType == CLTMerge1EventDir::Name())			r.reset(new CLTMerge1EventDir());
 	else if (context.cmdType == CLTCSVFvaFile::Name())				r.reset(new CLTCSVFvaFile(cfg));
 	else if (context.cmdType == CLTMerge1DayEventDir::Name())		r.reset(new CLTMerge1DayEventDir(cfg));
-	else if (context.cmdType == CLTGetFvaDirType::Name())			r.reset(new CLTGetFvaDirType());
 	else if (context.cmdType == CLTAutoChecks3::Name())				r.reset(new CLTAutoChecks3(cfg));
 	else if (context.cmdType == CLTFixDuplicatedFileNames::Name())	r.reset(new CLTFixDuplicatedFileNames(cfg));
 
