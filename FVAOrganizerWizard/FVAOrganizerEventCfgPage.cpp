@@ -49,7 +49,7 @@ FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)
 
 	setLayout(layout);
 
-	connect( inputDirButton, SIGNAL( clicked() ), this, SLOT( OnDirButtonClicked() ) );
+	connect( inputDirButton, SIGNAL( clicked() ), this, SLOT( OnFvaInputDirButtonPressed ) );
         LOG_DEB << "FVAOrganizerEventCfgPage constructed" ;
 
 }
@@ -62,11 +62,11 @@ void FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed()
 	else
 		LOG_DEB << "FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed() shows input dir=" << path;
 	
-#ifdef Q_WS_WIN
-	QStringList args;
-	args << path;
-	QProcess::startDetached("explorer", args);
-#endif
+//#ifdef Q_WS_WIN
+//	QStringList args;
+//	args << path;
+//	QProcess::startDetached("explorer", args);
+//#endif
 }
 bool	FVAOrganizerEventCfgPage::validatePage()
 {
