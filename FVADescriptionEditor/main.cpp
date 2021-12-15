@@ -30,6 +30,6 @@ int main(int argc, char *argv[])
 
 	bool folderMode = true;
 	FVADescriptionEditor w( folderMode, nullptr);
-
+	w.show();
 	return a.exec();
 }
