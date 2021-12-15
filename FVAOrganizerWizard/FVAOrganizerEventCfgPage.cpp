@@ -55,7 +55,7 @@ FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)
 }
 void FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed()
 {
-	QDesktopServices::openUrl(QUrl::fromLocalFile(((FVAOrganizerWizard*)wizard())->inputFolder()))
+	QDesktopServices::openUrl(QUrl::fromLocalFile(((FVAOrganizerWizard*)wizard())->inputFolder()));
 
 	//QProcess myProcess(this);
 	//myProcess.setProcessChannelMode(QProcess::MergedChannels);
