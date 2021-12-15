@@ -49,7 +49,7 @@ FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)
 
 	setLayout(layout);
 
-	connect( inputDirButton, SIGNAL( clicked() ), this, SLOT( OnFvaInputDirButtonPressed ) );
+	connect( inputDirButton, SIGNAL( clicked() ), this, SLOT( OnFvaInputDirButtonPressed() ) );
         LOG_DEB << "FVAOrganizerEventCfgPage constructed" ;
 
 }
