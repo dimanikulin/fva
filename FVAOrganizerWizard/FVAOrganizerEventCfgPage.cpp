@@ -7,12 +7,14 @@
 */
 #include "FVAOrganizerEventCfgPage.h"
 
-#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QPushButton>
-#include <QDesktopServices>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTextBrowser>
 
 #include <QtCore/QProcess>
+#include <QUrl>
+#include <QDesktopServices>
 
 #include "fvaorganizerwizard.h"
 #include "fvacommonui.h"
@@ -63,16 +65,6 @@ void FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed()
 	//params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
 	//myProcess.start("explorer",params);
 	//myProcess.waitForFinished(-1);
-}
-void FVAOrganizerEventCfgPage::setVisible(bool visible)
-{
-        LOG_DEB << "FVAOrganizerEventCfgPage set visible" ;
-	return QWizardPage::setVisible(visible);
-}
-
-bool FVAOrganizerEventCfgPage::isComplete() const
-{
-	return true;
 }
 bool	FVAOrganizerEventCfgPage::validatePage()
 {

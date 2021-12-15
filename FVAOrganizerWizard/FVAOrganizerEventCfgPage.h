@@ -11,7 +11,9 @@
 #include <QtWidgets/QWizardPage>
 
 class QPushButton;
-class QRadioButton;
+class QLabel;
+class QTextBrowser;
+
 
 /*!
 * \brief FVAOrganizerEventCfgPage is a child of <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a> and implements the next UI functions:
