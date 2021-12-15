@@ -10,6 +10,7 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QPushButton>
+#include <QDesktopServices>
 
 #include <QtCore/QProcess>
 
@@ -22,38 +23,46 @@ FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)
 {
         LOG_DEB << "FVAOrganizerEventCfgPage construction" ;
 #ifdef  FVA_LANGUAGE_RUS
-	fvaInfoButton = new QPushButton;
-	fvaInfoButton->setText(tr("Добавить инфо"));
+	words	= new QLabel(tr("Пожалуйста, откройте входную папку\nи объедините однодневные папки в одну,\nесли они относятся к одному событию.\n Так проделайте для каждого события"));
+	inputDirButton = new QPushButton;
+	inputDirButton->setText(tr("Открыть папку"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
-	fvaInfoButton = new QPushButton;
-	fvaInfoButton->setText(tr("Add info"));
+	words = new QLabel(tr("Please open an input folder with\n and merge one-day dirs into one dir,\nif they are related to the same event.\n Please do so for each event"));
+	inputDirButton = new QPushButton;
+	inputDirButton->setText(tr("Open a folder"));
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
-    	
+			
+	QGridLayout * dirLayout = new QGridLayout;
+	dirLayout->addWidget(words,0,0);
+	dirLayout->addWidget(inputDirButton,0,1);
+
+	logOutput		= new QTextBrowser;
+	
 	QVBoxLayout * layout = new QVBoxLayout;
 
-	QGridLayout * oneEventOneDayLayout = new QGridLayout;
-	//oneEventOneDayLayout->addWidget(oneEventOneDay, 0, 0);
-	oneEventOneDayLayout->addWidget(fvaInfoButton, 0, 1);
-	layout->addLayout(oneEventOneDayLayout);
+	layout->addLayout(dirLayout);
+	layout->addWidget(logOutput);
 
 	setLayout(layout);
 
-	connect(fvaInfoButton, SIGNAL(clicked()), this, SLOT(OnFvaInfoButtonPressed()));
-
+	connect( inputDirButton, SIGNAL( clicked() ), this, SLOT( OnDirButtonClicked() ) );
         LOG_DEB << "FVAOrganizerEventCfgPage constructed" ;
+
 }
-void FVAOrganizerEventCfgPage::OnFvaInfoButtonPressed()
+void FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed()
 {
-	QProcess myProcess(this);
-	myProcess.setProcessChannelMode(QProcess::MergedChannels);
-	QStringList params;
+	QDesktopServices::openUrl(QUrl::fromLocalFile(((FVAOrganizerWizard*)wizard())->inputFolder()))
+
+	//QProcess myProcess(this);
+	//myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	//QStringList params;
 	// TODO will work only for win OS
 	//myProcess.start(QCoreApplication::applicationDirPath() + "/FVADescriptionEditor.exe");
-	params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
-	myProcess.start("explorer",params);
-	myProcess.waitForFinished(-1);
+	//params.append(((FVAOrganizerWizard*)wizard())->inputFolder());
+	//myProcess.start("explorer",params);
+	//myProcess.waitForFinished(-1);
 }
 void FVAOrganizerEventCfgPage::setVisible(bool visible)
 {

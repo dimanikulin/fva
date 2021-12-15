@@ -32,7 +32,7 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	connect (ui.btnSave,SIGNAL(clicked()),this,SLOT(OnSaveBtnPressed()) );
 	connect (ui.btnDict,SIGNAL(clicked()),this,SLOT(OnChangeDictPressed()));*/
 
-	QIcon	icon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/main.png");
+	/*QIcon	icon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/main.png");
 	setWindowIcon(icon);
 
 	if (m_forFolder)
@@ -58,6 +58,7 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 
 	//fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false, rootSWdir);
 	//fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false, rootSWdir);
+	*/
 	LOG_DEB << "FVADescriptionEditor constructed";
 }
 

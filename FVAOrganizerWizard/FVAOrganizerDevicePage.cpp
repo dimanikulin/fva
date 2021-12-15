@@ -150,10 +150,8 @@ void FVAOrganizerDevicePage::OnChangeDictPressed()
 	QProcess myProcess(this);    
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	QStringList params;
-	// TODO WHY DO WE NEED IT???
-	params.append(/*FVA_DEFAULT_ROOT_DIR +*/ FVA_DB_NAME);
-	QString		deviceName_		= ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
-	params.append(deviceName_);
+	params.append(((FVAOrganizerWizard*)wizard())->matchedDeviceName());
+	LOG_DEB << "FVAOrganizerDevicePage called FVADictionaryEditor with device=" << ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
 	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe", params);
 	myProcess.waitForFinished( -1 );
 }

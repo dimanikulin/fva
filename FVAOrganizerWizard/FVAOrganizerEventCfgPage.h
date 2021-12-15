@@ -13,15 +13,15 @@
 class QPushButton;
 class QRadioButton;
 
-// TODO to update
 /*!
 * \brief FVAOrganizerEventCfgPage is a child of <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a> and implements the next UI functions:
-*  
-* 1. QPushButton to fill up the fva Information;
 *
+* 1. "Explanation words" to user in a QLabel;
+* 2. "See input dir" button (QPushButton) to open input dir where processed files are in.
+* 3. QTextBrowser to output the logging events;
 * This class implements "View" functions from MVC pattern.
-* Showing the elements and flow is based on class FvaConfiguration.
 */
+
 class FVAOrganizerEventCfgPage : public QWizardPage
 {
 	Q_OBJECT
@@ -32,38 +32,35 @@ class FVAOrganizerEventCfgPage : public QWizardPage
 	protected:
 
 		/*!
-		* \brief calls a PerformChecksForInputDir of class FVAFlowController
+		* \brief calls a ProcessInputDirForEventCfg of class FVAFlowController
 		* \return it returns nothing
 		*/
-		virtual bool	validatePage ();
-
-		/*!
-		* \brief it validates the input data on the page
-		* \return it returns nothing
-		*/
-		virtual bool	isComplete() const;
-
-		/*!
-		* \brief it prepares the page before make it visible
-		* \return it returns nothing
-		*/
-		virtual void	setVisible(bool visible);
+		virtual bool validatePage();
 
 	private slots:
 
 		/*!
-		* \brief to call descsiption editor
+		* \brief to open input dir where processed files are in
 		* \return it returns nothing
 		*/
-		void OnFvaInfoButtonPressed();
+		void OnFvaInputDirButtonPressed();
 
 	private:
-
+	
+		/*!
+		* \brief to tell a user what to do here
+		*/
+		QLabel*		words;
 
 		/*!
-		* \brief to fill up the fva Information
+		* \brief to open input dir where processed files are in
 		*/
-		QPushButton*	fvaInfoButton;
+		QPushButton*	inputDirButton;
+
+		/*!
+		* \brief to output the logging events
+		*/
+		QTextBrowser*	logOutput;
 
 };
 
