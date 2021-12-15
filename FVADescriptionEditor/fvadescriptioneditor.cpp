@@ -56,7 +56,7 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.get.param")
 
-	efvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false, rootSWdir);
+	fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false, rootSWdir);
 	fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false, rootSWdir);
 	
 	LOG_DEB << "FVADescriptionEditor constructed";
