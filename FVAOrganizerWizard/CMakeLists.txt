@@ -23,6 +23,8 @@ add_executable(fvaorganizerwizard
     FVAOrganizerDonePage.h
     FVAOrganizerEventCfgPage.cpp
     FVAOrganizerEventCfgPage.h
+    FVAOrganizerEventInfoPage.h
+    FVAOrganizerEventInfoPage.cpp
     FVAOrganizerInputDirPage.cpp
     FVAOrganizerInputDirPage.h
     FVAOrganizerOrientPage.cpp
