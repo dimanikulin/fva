@@ -31,13 +31,6 @@ class FVAOrganizerEventCfgPage : public QWizardPage
 
 		FVAOrganizerEventCfgPage();
 
-	protected:
-
-		/*!
-		* \brief calls a ProcessInputDirForEventCfg of class FVAFlowController
-		* \return it returns nothing
-		*/
-		virtual bool validatePage();
 
 	private slots:
 

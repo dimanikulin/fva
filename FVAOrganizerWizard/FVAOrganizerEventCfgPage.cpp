@@ -60,21 +60,5 @@ void FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed()
 	if(! QDesktopServices::openUrl(QUrl::fromLocalFile(((FVAOrganizerWizard*)wizard())->inputFolder())))
 		LOG_DEB << "FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed() failed to show input dir=" << path;
 	else
-		LOG_DEB << "FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed() shows input dir=" << path;
-	
-//#ifdef Q_WS_WIN
-//	QStringList args;
-//	args << path;
-//	QProcess::startDetached("explorer", args);
-//#endif
-}
-bool	FVAOrganizerEventCfgPage::validatePage()
-{
-        LOG_DEB << "FVAOrganizerEventCfgPage validate page" ;
-	FVAFlowController flow;
-	FVA_EXIT_CODE exitCode = flow.ProcessInputDirForEventCfg(((FVAOrganizerWizard*)wizard())->inputFolder(), "TODO"/*, this*/);
-	if (exitCode != FVA_NO_ERROR)
-		return false;
-
-	return true;
+		LOG_DEB << "FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed() shows input dir=" << path;	
 }
