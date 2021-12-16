@@ -143,7 +143,7 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
 		int ID = i->first;
 		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
 		treeWidgetItem->setText(0, i->second);
-		//treeWidgetItem->setIcon(0, peopleIcon);
+		treeWidgetItem->setIcon(0, peopleIcon);
 		treeWidgetItem->setFlags(treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
 		treeWidgetItem->setCheckState(0, Qt::Unchecked);
 		for (auto index = peopleRelationsMap.begin(); index != peopleRelationsMap.end(); ++index)
