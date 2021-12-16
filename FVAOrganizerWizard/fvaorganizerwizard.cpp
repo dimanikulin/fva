@@ -17,6 +17,7 @@
 #include "FVAOrganizerDevicePage.h"
 #include "FVAOrganizerOutputDirPage.h"
 #include "FVAOrganizerEventCfgPage.h"
+#include "FVAOrganizerEventInfoPage.h"
 
 FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	: QWizard(parent)
