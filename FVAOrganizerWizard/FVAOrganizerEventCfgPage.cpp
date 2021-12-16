@@ -14,6 +14,7 @@
 
 #include <QUrl>
 #include <QDesktopServices>
+#include <QDir>
 
 #include "fvaorganizerwizard.h"
 #include "fvacommonui.h"
