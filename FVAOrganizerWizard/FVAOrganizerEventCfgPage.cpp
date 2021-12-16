@@ -12,14 +12,12 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QTextBrowser>
 
-#include <QtCore/QProcess>
 #include <QUrl>
 #include <QDesktopServices>
 
 #include "fvaorganizerwizard.h"
 #include "fvacommonui.h"
 #include "fvalogger.inl"
-#include "FVAFlowController.h"
 
 FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)
 {
