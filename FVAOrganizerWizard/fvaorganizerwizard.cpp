@@ -59,6 +59,10 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	{
 		setPage(index++, new FVAOrganizerEventCfgPage);
         	LOG_DEB << "FVAOrganizerEventCfgPage created";
+
+		setPage(index++, new FVAOrganizerEventInfoPage);
+        	LOG_DEB << "FVAOrganizerEventInfoPage created";
+
 	}
 
 	setPage(index++, new FVAOrganizerOutputDirPage);
