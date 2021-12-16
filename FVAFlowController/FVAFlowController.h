@@ -64,12 +64,12 @@ public:
 	FVA_EXIT_CODE MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput);
 
 	/*!
-	 * \brief it process input folder content as one-event or multi-events according to event cfg
+	 * \brief it process input folder content as multi-events folder according to event cfg and info
 	 * \param inputDir - directory to move content from
 	 * \param outputDir - directory to move content into
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE ProcessInputDirForEventCfg(const QString& inputDir, const QString& outputDir);
+	FVA_EXIT_CODE ProcessInputDirForEvent(const QString& inputDir, const QString& outputDir);
 
 private:
 

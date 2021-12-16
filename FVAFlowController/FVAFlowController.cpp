@@ -296,7 +296,7 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 	return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEventCfg(const QString& inputDir, const QString& outputDir)
+FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir, const QString& outputDir)
 {
 	// do we need to search by location?
 	/*bool SearchByLocation = false;
