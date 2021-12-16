@@ -155,7 +155,7 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
 
 			QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
 			childWidgetItem->setText(0, index->name);
-			//childWidgetItem->setIcon(0, peopleIcon);
+			childWidgetItem->setIcon(0, peopleIcon);
 			childWidgetItem->setFlags(childWidgetItem->flags() | Qt::ItemIsUserCheckable);
 			childWidgetItem->setCheckState(0, Qt::Unchecked);
 
@@ -174,7 +174,7 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
 				personWidgetItem->setText(0, indexp->fullName);
 				if (!devices)
 					personWidgetItem->setData(1, 1, IDp);
-				//personWidgetItem->setIcon(0, personIcon);
+				personWidgetItem->setIcon(0, personIcon);
 				personWidgetItem->setFlags(personWidgetItem->flags() | Qt::ItemIsUserCheckable);
 				personWidgetItem->setCheckState(0, Qt::Unchecked);
 
@@ -196,7 +196,7 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
 					QTreeWidgetItem* deviceWidgetItem = new QTreeWidgetItem;
 					deviceWidgetItem->setText(0, inddev->guiName);
 					deviceWidgetItem->setData(1, 1, IDdev);
-					//deviceWidgetItem->setIcon(0, photoIcon);
+					deviceWidgetItem->setIcon(0, photoIcon);
 					deviceWidgetItem->setFlags(deviceWidgetItem->flags() | Qt::ItemIsUserCheckable);
 					deviceWidgetItem->setCheckState(0, Qt::Unchecked);
 					personWidgetItem->addChild(deviceWidgetItem);
