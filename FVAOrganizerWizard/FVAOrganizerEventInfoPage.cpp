@@ -48,10 +48,13 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 
 	layout->addLayout(dirLayout);
 	layout->addWidget(dirLabel);
+	inputDirs = new QTreeWidget;
 	layout->addWidget(inputDirs);
 
 	QGridLayout * infoLayout= new QGridLayout;
+	events = new QTreeWidget; 	
 	dirLayout->addWidget(events,0,0);
+	people = new QTreeWidget;
 	dirLayout->addWidget(people,0,1);
 
 	logOutput		= new QTextBrowser;
