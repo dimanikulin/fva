@@ -46,7 +46,6 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 	QVBoxLayout * layout	= new QVBoxLayout;
 
 	layout->addWidget(words);
-	layout->addWidget(dirLabel);
 	inputDirs = new QTreeWidget;
 	layout->addWidget(inputDirs);
 
