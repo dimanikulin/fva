@@ -71,7 +71,7 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 
         setPage(index++, new FVAOrganizerDonePage);
 	
-	setStartId( 0 );
+	setStartId( 5 );
 
 #ifndef Q_OS_MACX
 	setWizardStyle(ModernStyle);    

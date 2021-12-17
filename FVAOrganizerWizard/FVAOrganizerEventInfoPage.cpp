@@ -52,10 +52,18 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 	layout->addWidget(inputDirs);
 
 	QGridLayout * infoLayout= new QGridLayout;
-	events = new QTreeWidget; 	
-	dirLayout->addWidget(events,0,0);
+
+	events = new QTreeWidget;
+	events->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	events->setMinimumSize(100,100); 	
+	infoLayout->addWidget(events,0,0);
+
 	people = new QTreeWidget;
-	dirLayout->addWidget(people,0,1);
+	people->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	people->setMinimumSize(100,100);
+	infoLayout->addWidget(people,0,1);
+
+        layout->addLayout(infoLayout);
 
 	logOutput		= new QTextBrowser;
 	layout->addWidget(logOutput);
