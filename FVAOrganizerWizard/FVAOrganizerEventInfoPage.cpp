@@ -27,26 +27,25 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
         LOG_DEB << "FVAOrganizerEventInfoPage construction" ;
 	
 #ifdef  FVA_LANGUAGE_RUS
-	words	= new QLabel(tr("Пожалуйста, заполните информацию по каждой папке(событию),\n  (помеченной красным цветом) \n типом события и причастными людьми"));
+	words	= new QLabel(tr("Пожалуйста, выделите папку нижу (событию),помеченной красным\nи выберете для нее тип события и причастных людей"));
 	inputDirButton = new QPushButton;
 	inputDirButton->setText(tr("Открыть папку"));
-	QLabel* dirLabel = new QLabel(tr("Папки (события):"));
+	QLabel * eventLbl = new QLabel(tr("Тип события:"));
+	QLabel * peopleLbl = new QLabel(tr("Причастные люди:"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
-	words = new QLabel(tr("Please fill the information up for each folder (an event),\n    (marked by red)   \n  by type and related people"));
+	words = new QLabel(tr("Please select a folder bellow (an event),marked by red\nand choose event type and related people."));
 	inputDirButton = new QPushButton;
 	inputDirButton->setText(tr("Open a folder"));
-	QLabel* dirLabel = new QLabel(tr("Folders(events):"));
+	QLabel * eventLbl = new QLabel(tr("Event type:"));
+	QLabel * peopleLbl = new QLabel(tr("Related people:"));
+
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 			
-	QGridLayout * dirLayout	= new QGridLayout;
-	dirLayout->addWidget(words,0,0);
-	dirLayout->addWidget(inputDirButton,1,0);
-
 	QVBoxLayout * layout	= new QVBoxLayout;
 
-	layout->addLayout(dirLayout);
+	layout->addWidget(words);
 	layout->addWidget(dirLabel);
 	inputDirs = new QTreeWidget;
 	layout->addWidget(inputDirs);
@@ -54,18 +53,22 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 	QGridLayout * infoLayout= new QGridLayout;
 
 	events = new QTreeWidget;
-	events->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	events->setMinimumSize(100,100); 	
-	infoLayout->addWidget(events,0,0);
+	//events->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	//events->setMinimumSize(100,100);
+	infoLayout->addWidget(eventLbl,0,0); 	
+	infoLayout->addWidget(events,1,0);
 
 	people = new QTreeWidget;
-	people->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	people->setMinimumSize(100,100);
-	infoLayout->addWidget(people,0,1);
+	//people->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	//people->setMinimumSize(100,100);
+	infoLayout->addWidget(peopleLbl,0,1);
+	infoLayout->addWidget(people,1,1);
 
         layout->addLayout(infoLayout);
 
 	logOutput		= new QTextBrowser;
+
+	layout->addWidget(inputDirButton);
 	layout->addWidget(logOutput);
 
 	setLayout(layout);
