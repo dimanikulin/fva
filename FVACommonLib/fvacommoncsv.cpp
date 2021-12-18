@@ -96,6 +96,44 @@ FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const 
 
 	return FVA_ERROR_NO_DEV_ID;
 };
+FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SIMPLE_MAP& simpleMap, const QString& dictName, int typeToFilter)
+{
+	FVADescriptionFile	fvaCsv;
+	QStringList		titles;
+	DESCRIPTIONS_MAP	decsItems;
+	FVA_EXIT_CODE res = fvaCsv.load(rootSWdir + "#data#/" + dictName, titles, decsItems);
+	RET_RES_IF_RES_IS_ERROR
+
+	// ID,Name
+	int columnId = FVADescriptionFile::getColumnIdByName(titles, "ID");
+	if (-1 == columnId)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnName = FVADescriptionFile::getColumnIdByName(titles, "Name");
+	if (-1 == columnName)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnType = FVADescriptionFile::getColumnIdByName(titles, "Type");
+	if (-1 == columnType)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
+	{
+		QStringList list = it.value();
+
+		int ID = list[columnId].remove("\t").toUInt();
+		QString Name = list[columnName].remove("\t").trimmed();
+		if ( FVA_UNDEFINED_ID==typeToFilter )
+			simpleMap[ID] = Name;
+		else
+		{
+			int Type = list[columnId].remove("\t").toInt();
+			if (Type==typeToFilter)
+				simpleMap[ID] = Name;				 
+		} 		
+	}
+	return FVA_NO_ERROR;
+}
 FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& deviceMap)
 {
 	FVADescriptionFile	fvaDeviceCsv;
@@ -103,7 +141,7 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& devi
 	DESCRIPTIONS_MAP	decsItems;
 	FVA_EXIT_CODE res = fvaDeviceCsv.load(rootSWdir + "#data#/fvaDevices.csv", titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
-	// ID,OwnerId,LinkedName,Name,fvaDeviceType
+	// ID,OwnerId,LinkedName,Name,Type
 	int columnDevId = FVADescriptionFile::getColumnIdByName(titles, "ID");
 	if (-1 == columnDevId)
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
@@ -120,7 +158,7 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& devi
 	if (-1 == columnLinkedName)
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
-	int columnfvaDeviceType = FVADescriptionFile::getColumnIdByName(titles, "fvaDeviceType");
+	int columnType = FVADescriptionFile::getColumnIdByName(titles, "Type");
 	if (-1 == columnfvaDeviceType)
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
@@ -134,7 +172,7 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& devi
 		device.guiName		= list[columnName].remove("\t").trimmed();
 		device.ownerName	= "N/A";
 		device.ownerId		= list[columnOwnerId].remove("\t").toUInt();
-		device.type		= static_cast<FVA_DEVICE_TYPE> (list[columnfvaDeviceType].remove("\t").toUInt());
+		device.type		= static_cast<FVA_DEVICE_TYPE> (list[columnType].remove("\t").toUInt());
 		deviceMap[device.deviceId] = device;
 	}
 	return FVA_NO_ERROR;
@@ -172,39 +210,12 @@ FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peop
 		QStringList list = it.value();
 
 		fvaPerson person;
-		person.Id				= list[columnId].remove("\t").toUInt();
-		person.name				= list[columnName].remove("\t").trimmed();		
+		person.Id			= list[columnId].remove("\t").toUInt();
+		person.name			= list[columnName].remove("\t").trimmed();		
 		person.fullName			= list[columnFullName].remove("\t").trimmed();
-		person.relatedPersionId	= list[columnRelPersonID].remove("\t").toUInt();
+		person.relatedPersionId		= list[columnRelPersonID].remove("\t").toUInt();
 		person.relationId		= list[columnRelationId].remove("\t").toUInt();
-		peopleMap[person.Id]	= person;
-	}
-	return FVA_NO_ERROR;
-}
-FVA_EXIT_CODE fvaLoadSimpleMapFromCsv(const QString& rootSWdir, FVA_SIMPLE_MAP& simpleMap, const QString& dictName)
-{
-	FVADescriptionFile	fvaCsv;
-	QStringList			titles;
-	DESCRIPTIONS_MAP	decsItems;
-	FVA_EXIT_CODE res = fvaCsv.load(rootSWdir + "#data#/" + dictName, titles, decsItems);
-	RET_RES_IF_RES_IS_ERROR
-
-	// ID,Name
-	int columnId = FVADescriptionFile::getColumnIdByName(titles, "ID");
-	if (-1 == columnId)
-		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-
-	int columnName = FVADescriptionFile::getColumnIdByName(titles, "Name");
-	if (-1 == columnName)
-		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-
-	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
-	{
-		QStringList list = it.value();
-
-		int ID = list[columnId].remove("\t").toUInt();
-		QString Name = list[columnName].remove("\t").trimmed();
-		simpleMap[ID] = Name;
+		peopleMap[person.Id]		= person;
 	}
 	return FVA_NO_ERROR;
 }

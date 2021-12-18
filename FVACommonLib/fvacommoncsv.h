@@ -68,13 +68,14 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& devi
 FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peopleMap);
 
 /*!
-* \brief it tries to load simple map <ID to Name> from dictionary
+* \brief it tries to load simple map <ID to Name> from dictionary with predifined type of items
 * \param rootSWdir - dir where fva SW is located
-* \param simple map <ID to Name> a map to be filled up
+* \param simpleMap - <ID to Name> a map to be filled up
 * \param dictName file name of dictionary to load from
+* \param typeToFilter - a predefined item type to be filtered out from whole scope, if typeToFilter==FVA_UNDEFINED_ID no filtering is applyed
 * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
 */
-FVA_EXIT_CODE fvaLoadSimpleMapFromCsv(const QString& rootSWdir, FVA_SIMPLE_MAP& simpleMap, const QString& dictName);
+FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SIMPLE_MAP& simpleMap, const QString& dictName, int typeToFilter=FVA_UNDEFINED_ID);
 
 /*!
 * \brief it tries to load people relations map from dictionary
