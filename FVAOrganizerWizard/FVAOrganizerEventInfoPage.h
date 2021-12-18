@@ -56,6 +56,13 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		*/
 		void OnFvaInputDirButtonPressed();
 
+		/*!
+		* \brief it updates hierachy of checks around this QTreeWidgetItem
+		* \return it returns nothing
+		*/
+		void updateChecks(QTreeWidgetItem*, int);
+
+
 	private:
 	
 		/*!
@@ -76,17 +83,17 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		/*!
 		* \brief to output the input dirs structure 
 		*/
-		QTreeWidget*	inputDirs;			
+		QTreeWidget*	inputDirsWidget;			
 
 		/*!
 		* \brief to output the structure of people caused the event 
 		*/
-		QTreeWidget*	people;
+		QTreeWidget*	peopleWidget;
 
 		/*!
 		* \brief to output the event structure 
 		*/
-		QTreeWidget*	events;	
+		QTreeWidget*	eventsWidget;	
 			
 };
 

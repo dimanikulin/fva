@@ -82,8 +82,8 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 	QVBoxLayout * layout	= new QVBoxLayout;
 
 	layout->addWidget(words);
-	inputDirs = new QTreeWidget;
-	layout->addWidget(inputDirs);
+	inputDirsWidget = new QTreeWidget;
+	layout->addWidget(inputDirsWidget);
 
 	QGridLayout * infoLayout= new QGridLayout;
 
@@ -91,13 +91,13 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 	//events->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	//events->setMinimumSize(100,100);
 	infoLayout->addWidget(eventLbl,0,0); 	
-	infoLayout->addWidget(events,1,0);
+	infoLayout->addWidget(eventsWidget,1,0);
 
 	people = new QTreeWidget;
 	//people->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	//people->setMinimumSize(100,100);
 	infoLayout->addWidget(peopleLbl,0,1);
-	infoLayout->addWidget(people,1,1);
+	infoLayout->addWidget(peopleWidget,1,1);
 
         layout->addLayout(infoLayout);
 
@@ -121,6 +121,12 @@ void FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed()
 	else
 		LOG_DEB << "FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed() shows input dir=" << path;	
 }
+
+void FVAOrganizerEventInfoPage::updateChecks(QTreeWidgetItem *item, int column)
+{
+	fvaUpdateChecks(item, column);
+}
+
 void FVAOrganizerEventInfoPage::setVisible(bool visible)
 {	
 	LOG_DEB << "FVAOrganizerEventInfoPage::setVisible";
@@ -130,8 +136,6 @@ void FVAOrganizerEventInfoPage::setVisible(bool visible)
 	{
 		LOG_DEB << "FVAOrganizerEventInfoPage::setVisible if (visible)";
 
-		populateInputDir(inputDir, nullptr, inputDirs);
-
 		FvaConfiguration cfg;
 		FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("load.cfg")
@@ -140,8 +144,14 @@ void FVAOrganizerEventInfoPage::setVisible(bool visible)
 		exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("get.param")
 
-		fvaBuildPeopleFilterTree(this, people, false, rootSWdir);
+		populateInputDir(inputDir, nullptr, inputDirsWidget);
+
+		fvaBuildPeopleFilterTree(this, peopleWidget, false, rootSWdir);
+
+		fvaBuildEventTree(this, eventWidget, rootSWdir);
 	}
+	LOG_DEB << "FVAOrganizerDevicePage::setVisible before exit";
+	return QWizardPage::setVisible(visible);
 }
 bool FVAOrganizerEventInfoPage::validatePage()
 {
