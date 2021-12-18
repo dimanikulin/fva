@@ -136,19 +136,14 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
 		treeWidgetItem->setCheckState(0, Qt::Unchecked);
 
 		FVA_SIMPLE_MAP  eventsMap;
-		res = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, eventsMap, "fvaEvents.csv");
+		// load only events for this type
+		res = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, eventsMap, "fvaEvents.csv", ID);
 		RET_RES_IF_RES_IS_ERROR
 
 		for (auto index = eventsMap.begin(); index != eventsMap.end(); ++index)
 		{
-			int ID_ = index->Id;
-			int IDrel = index->relationType;
-			if (IDrel != ID)
-				continue;
-
 			QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
 			childWidgetItem->setText(0, index->name);
-			childWidgetItem->setIcon(0, peopleIcon);
 			childWidgetItem->setFlags(childWidgetItem->flags() | Qt::ItemIsUserCheckable);
 			childWidgetItem->setCheckState(0, Qt::Unchecked);
 		} // for (auto index = eventsMap.begin(); index != eventsMap.end(); ++index) 
