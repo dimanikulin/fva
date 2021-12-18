@@ -111,6 +111,49 @@ void fvaBuildFilterTree(QWidget* pMainWnd,
 			delete treeWidgetItem;
 	}
 }
+
+void fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir)
+{
+	pMainWnd->connect(pTreeWidget, 
+			SIGNAL(itemChanged(QTreeWidgetItem*, int)), 
+			pMainWnd,
+			SLOT(updateChecks(QTreeWidgetItem*, int)));
+
+	QIcon	personIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/person.png");
+	QIcon	peopleIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/people.png");
+	QIcon	photoIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/photo.png");
+
+	FVA_SIMPLE_MAP eventTypesMap;
+	FVA_EXIT_CODE res = fvaLoadSimpleMapFromCsv(rootSWdir, eventTypesMap, "fvaEventTypes.csv");
+	RET_IF_RES_IS_ERROR
+
+	FVA_SIMPLE_MAP  eventsMap;
+	res = fvaLoadSimpleMapFromCsv(rootSWdir, eventsMap, "fvaEvents.csv");
+	RET_IF_RES_IS_ERROR
+
+	for (auto i = eventTypesMap.begin(); i != eventTypesMap.end(); ++i)
+	{
+		int ID = i->first;
+		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
+		treeWidgetItem->setText(0, i->second);
+		treeWidgetItem->setFlags(treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
+		treeWidgetItem->setCheckState(0, Qt::Unchecked);
+		for (auto index = eventsMap.begin(); index != eventsMap.end(); ++index)
+		{
+			int ID_ = index->Id;
+			int IDrel = index->relationType;
+			if (IDrel != ID)
+				continue;
+
+			QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
+			childWidgetItem->setText(0, index->name);
+			childWidgetItem->setIcon(0, peopleIcon);
+			childWidgetItem->setFlags(childWidgetItem->flags() | Qt::ItemIsUserCheckable);
+			childWidgetItem->setCheckState(0, Qt::Unchecked);
+		} // for (auto index = eventsMap.begin(); index != eventsMap.end(); ++index) 
+	} // for (auto i = eventTypesMap.begin(); i != eventTypesMap.end(); ++i)
+
+}
 void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir)
 {
 	pMainWnd->connect(pTreeWidget,
@@ -311,6 +354,7 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
 			delete treeWidgetItem;		
 	}
 }
+
 void fvaFindCheckedItem(QTreeWidgetItem *item, QList<unsigned int>& Ids)
 {
 	if (item->checkState(0) == Qt::CheckState::Checked)

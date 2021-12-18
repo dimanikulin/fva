@@ -134,7 +134,7 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& devi
 		device.guiName		= list[columnName].remove("\t").trimmed();
 		device.ownerName	= "N/A";
 		device.ownerId		= list[columnOwnerId].remove("\t").toUInt();
-		device.type			= static_cast<FVA_DEVICE_TYPE> (list[columnfvaDeviceType].remove("\t").toUInt());
+		device.type		= static_cast<FVA_DEVICE_TYPE> (list[columnfvaDeviceType].remove("\t").toUInt());
 		deviceMap[device.deviceId] = device;
 	}
 	return FVA_NO_ERROR;
