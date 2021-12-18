@@ -159,7 +159,7 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& devi
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
 	int columnType = FVADescriptionFile::getColumnIdByName(titles, "Type");
-	if (-1 == columnfvaDeviceType)
+	if (-1 == columnType)
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
 	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
