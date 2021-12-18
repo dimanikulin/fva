@@ -5,6 +5,9 @@
 * \version 0.29
 * \date  2014-2021
 */
+
+#include <cstddef> // for std::nullptr_t
+
 #include "FVAOrganizerEventInfoPage.h"
 
 #include <QtWidgets/QVBoxLayout>
@@ -16,12 +19,45 @@
 #include <QUrl>
 #include <QDesktopServices>
 #include <QDir>
+#include <QBrush>
+#include <QFont>
 
 #include "fvaorganizerwizard.h"
 #include "fvacommonui.h"
 #include "fvalogger.inl"
 #include "FVAFlowController.h"
+#include "fvaconfiguration.h"
 
+void populateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget)
+{
+	QDir dir(folder);
+	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{			
+		if ( !info.isDir() )
+			continue;
+		// just skip internal folder
+		if ( info.fileName()[0] == '#' 
+			&& info.fileName()[info.fileName().size()-1] == '#' )
+			continue;
+
+		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
+                treeWidgetItem->setText	( 0, info.fileName() );
+
+		treeWidgetItem->setData( 1, 1, (QString) info.absoluteFilePath() );
+
+		QFont font("" , 9 , QFont::Bold );	
+		treeWidgetItem->setForeground( 0 , QBrush (Qt::red) );
+		treeWidgetItem->setFont( 0,  font );
+
+		// treeWidgetItem->setIcon(0, m_folderIcon);
+		if (item)
+			item->addChild(treeWidgetItem);
+		else
+			treeWidget->addTopLevelItem (treeWidgetItem);
+
+		populateInputDir(info.absoluteFilePath(), item, treeWidget);
+	}		
+}
 FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 {
         LOG_DEB << "FVAOrganizerEventInfoPage construction" ;
@@ -85,7 +121,28 @@ void FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed()
 	else
 		LOG_DEB << "FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed() shows input dir=" << path;	
 }
+void FVAOrganizerEventInfoPage::setVisible(bool visible)
+{	
+	LOG_DEB << "FVAOrganizerEventInfoPage::setVisible";
+	QString		inputDir		= ((FVAOrganizerWizard*)wizard())->inputFolder();
 
+	if (visible)
+	{
+		LOG_DEB << "FVAOrganizerEventInfoPage::setVisible if (visible)";
+
+		populateInputDir(inputDir, nullptr, inputDirs);
+
+		FvaConfiguration cfg;
+		FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("load.cfg")
+
+		QString rootSWdir;
+		exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("get.param")
+
+		fvaBuildPeopleFilterTree(this, people, false, rootSWdir);
+	}
+}
 bool FVAOrganizerEventInfoPage::validatePage()
 {
         LOG_DEB << "FVAOrganizerEventInfoPage validate page" ;

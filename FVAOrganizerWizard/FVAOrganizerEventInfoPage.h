@@ -42,6 +42,12 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		*/
 		virtual bool validatePage();
 
+		/*!
+		* \brief it prepares the page before make it visible
+		* \return it returns nothing
+		*/
+		virtual void setVisible(bool visible);
+
 	private slots:
 
 		/*!
