@@ -9,6 +9,7 @@
 #include "fvadescriptionfile.h"
 #include "fvafile.h"
 #include "fvadevice.h"
+#include "fvalogger.inl"
 
 #include <QtCore/QTextStream>
 #include <QtCore/QFile>
@@ -49,7 +50,10 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
 	// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,EventId,ReasonPeople,reserved1
 	int columnDevId = FVADescriptionFile::getColumnIdByName(titles, "DevId");
 	if (-1 == columnDevId)
+	{
+		LOG_CRIT << "-1 == columnDevId";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+	}
 
 	int columnName = FVADescriptionFile::getColumnIdByName(titles, "Name");
 	if (-1 == columnName)
@@ -114,9 +118,13 @@ FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SI
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
 	int columnType = FVADescriptionFile::getColumnIdByName(titles, "Type");
-	if (-1 == columnType)
-		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+	if (FVA_UNDEFINED_ID==typeToFilter && -1 == columnType)
+	{
+		LOG_CRIT << "-1 == columnType";
 
+		// supress this error if we don't need to filter by type 
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+	}
 	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
 	{
 		QStringList list = it.value();
@@ -187,24 +195,34 @@ FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peop
 	// ID,Name,FullName,RelationId,RelPersonID
 	int columnId = FVADescriptionFile::getColumnIdByName(titles, "ID");
 	if (-1 == columnId)
+	{
+		LOG_CRIT << "-1 == columnId";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-
+	}
 	int columnName = FVADescriptionFile::getColumnIdByName(titles, "Name");
 	if (-1 == columnName)
+	{
+		LOG_CRIT << "-1 == columnName";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-
+	}
 	int columnFullName = FVADescriptionFile::getColumnIdByName(titles, "FullName");
 	if (-1 == columnFullName)
+	{
+		LOG_CRIT << "-1 == columnFullName";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-
+	}
 	int columnRelationId = FVADescriptionFile::getColumnIdByName(titles, "RelationId");
-	if (-1 == columnRelationId)
+	if (-1 == columnRelationId)	
+	{
+		LOG_CRIT << "-1 == columnRelationId";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-
+	}
 	int columnRelPersonID = FVADescriptionFile::getColumnIdByName(titles, "RelPersonID");
 	if (-1 == columnRelPersonID)
+	{
+		LOG_CRIT << "-1 == columnRelPersonID";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-
+	}
 	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
 	{
 		QStringList list = it.value();
@@ -230,16 +248,22 @@ FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(const QString& rootSWdir, FVA_PEOP
 	// ID,Name,RelationType
 	int columnId = FVADescriptionFile::getColumnIdByName(titles, "ID");
 	if (-1 == columnId)
+	{
+		LOG_CRIT << "fvaLoadPeopleRelationMapFromCsv:: -1 == columnId";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-
+	}
 	int columnName = FVADescriptionFile::getColumnIdByName(titles, "Name");
 	if (-1 == columnName)
+	{
+		LOG_CRIT << "fvaLoadPeopleRelationMapFromCsv::-1 == columnName";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-
+	}
 	int columnRelationType = FVADescriptionFile::getColumnIdByName(titles, "RelationType");
 	if (-1 == columnRelationType)
+	{
+		LOG_CRIT << "fvaLoadPeopleRelationMapFromCsv::-1 == columnRelationType";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
-
+	}
 	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
 	{
 		QStringList list = it.value();
