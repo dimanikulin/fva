@@ -31,6 +31,7 @@ FVA_EXIT_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QSt
  * \param pTreeWidget - widget to build tree in
  * \param rootLevel - root level dictionary
  * \param level - second level dictionary
+ * \returns it returns notning
  */
 void fvaBuildFilterTree(QWidget* pMainWnd, 
 					QTreeWidget* pTreeWidget, 
@@ -44,6 +45,7 @@ void fvaBuildFilterTree(QWidget* pMainWnd,
  * \param pMainWnd - window keeping tree widget  
  * \param pTreeWidget - widget to build tree in
  * \param devices - need to insert devices
+ * \returns it returns notning
  */
 void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QVariantMap& dict);
 
@@ -52,22 +54,23 @@ void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool 
  * \param pMainWnd - window keeping tree widget
  * \param pTreeWidget - widget to build tree in
  * \param rootSWdir - dir where FVA SW is located
+ * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
  */
-void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir);
+FVA_EXIT_CODE fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir);
 
 /*!
  * \brief it creates event tree in gui widgets
  * \param pMainWnd - window keeping tree widget
  * \param pTreeWidget - widget to build tree in
  * \param rootSWdir - dir where FVA SW is located
+ * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
  */
-void fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir);
+FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir);
 
 /*!
  * \brief it finds all checked item ID in gui widget tree
  * \param item - to search in
  * \param Ids - arrau to fill by id of checked items
- * \param devices - need to insert devices
  */
 void fvaFindCheckedItem(QTreeWidgetItem *item, QList<unsigned int>& Ids);
 
