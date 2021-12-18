@@ -14,6 +14,7 @@ class QPushButton;
 class QLabel;
 class QTextBrowser;
 class QTreeWidget;
+class QTreeWidgetItem;
 
 /*!
 * \brief FVAOrganizerEventInfoPage is a child of <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a> and implements the next UI functions:

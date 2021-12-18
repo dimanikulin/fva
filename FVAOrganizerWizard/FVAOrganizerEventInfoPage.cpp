@@ -15,6 +15,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QTreeWidget>
+#include <QtWidgets/QTreeWidgetItem>
 
 #include <QUrl>
 #include <QDesktopServices>
@@ -87,13 +88,13 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 
 	QGridLayout * infoLayout= new QGridLayout;
 
-	events = new QTreeWidget;
+	eventsWidget		= new QTreeWidget;
 	//events->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	//events->setMinimumSize(100,100);
 	infoLayout->addWidget(eventLbl,0,0); 	
 	infoLayout->addWidget(eventsWidget,1,0);
 
-	people = new QTreeWidget;
+	peopleWidget		= new QTreeWidget;
 	//people->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	//people->setMinimumSize(100,100);
 	infoLayout->addWidget(peopleLbl,0,1);
