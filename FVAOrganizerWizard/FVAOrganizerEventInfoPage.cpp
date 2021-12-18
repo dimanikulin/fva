@@ -149,7 +149,7 @@ void FVAOrganizerEventInfoPage::setVisible(bool visible)
 
 		fvaBuildPeopleFilterTree(this, peopleWidget, false, rootSWdir);
 
-		fvaBuildEventTree(this, eventWidget, rootSWdir);
+		fvaBuildEventTree(this, eventsWidget, rootSWdir);
 	}
 	LOG_DEB << "FVAOrganizerDevicePage::setVisible before exit";
 	return QWizardPage::setVisible(visible);
