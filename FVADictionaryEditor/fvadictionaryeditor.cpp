@@ -71,7 +71,7 @@ void FVADictionaryEditor::OnAddDeviceBtnPressed()
 	file.open(QIODevice::Append | QIODevice::Text);
 	QTextStream writeStream(&file);
 	writeStream.setCodec("UTF-8"); 
-	// ID,OwnerId,LinkedName,Name,fvaDeviceType
+	// ID,OwnerId,LinkedName,Name,Type
 	writeStream << "\n" 
 				<< deviceMap.lastKey() + 1										<< ","
 				<< ui.cbOwner->itemData(ui.cbOwner->currentIndex()).toString()	<< ","
