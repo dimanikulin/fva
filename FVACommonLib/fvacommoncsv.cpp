@@ -118,7 +118,7 @@ FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SI
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
 	int columnType = FVADescriptionFile::getColumnIdByName(titles, "Type");
-	if (FVA_UNDEFINED_ID==typeToFilter && -1 == columnType)
+	if (FVA_UNDEFINED_ID != typeToFilter && -1 == columnType)
 	{
 		LOG_CRIT << "-1 == columnType";
 

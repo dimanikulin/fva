@@ -41,6 +41,7 @@ const QString	FVA_BACKGROUND_MUSIC_FILE_NAME		= "bgmusic.mid";
 /*!
  * \brief id for any object that is not defined
  */
+// TODO to check whole code to find -1 so to update it to use of this constant
 const int FVA_UNDEFINED_ID	= -1;
 
 /*!
