@@ -26,7 +26,7 @@ public:
 	QString name;
 
 	/*!
-	 * relation Type from dictionary (fvaRelationTypes.csv) - full form
+	 * relation Type from dictionary (fvaPeopleRelationTypes.csv) - full form
 	 */
 	int relationType;
 

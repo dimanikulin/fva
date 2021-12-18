@@ -26,7 +26,7 @@ CREATE TABLE fvaEventrelations	(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VAR
 DROP TABLE IF EXISTS fvaRelationTypes;
 CREATE TABLE fvaRelationTypes	(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT NULL);
 .separator ,
-.import "../../#data#/fvaRelationTypes.csv" fvaRelationTypes
+.import "../../#data#/fvaPeopleRelationTypes.csv" fvaPeopleRelationTypes
 
 DROP TABLE IF EXISTS fvaPeopleRelations;
 CREATE TABLE fvaPeopleRelations	(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT NULL,
