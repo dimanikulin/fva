@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS fvaEventRelations;
 CREATE TABLE fvaEventrelations	(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT NULL, 
 				Type INTEGER NOT NULL REFERENCES fvaEventTypes (ID) ON DELETE RESTRICT MATCH SIMPLE);
 .separator ,
-.import "../../#data#/fvaEventRelations.csv" fvaEventRelations
+.import "../../#data#/fvaEvents.csv" fvaEvents
 
 DROP TABLE IF EXISTS fvaRelationTypes;
 CREATE TABLE fvaRelationTypes	(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT NULL);
