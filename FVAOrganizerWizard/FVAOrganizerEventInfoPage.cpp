@@ -147,11 +147,13 @@ void FVAOrganizerEventInfoPage::setVisible(bool visible)
 
 		populateInputDir(inputDir, nullptr, inputDirsWidget);
 
-		fvaBuildPeopleFilterTree(this, peopleWidget, false, rootSWdir);
+		exitCode = fvaBuildPeopleFilterTree(this, peopleWidget, false, rootSWdir);
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildPeopleFilterTree")
 
-		fvaBuildEventTree(this, eventsWidget, rootSWdir);
+		exitCode = fvaBuildEventTree(this, eventsWidget, rootSWdir);
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildEventTree")
 	}
-	LOG_DEB << "FVAOrganizerDevicePage::setVisible before exit";
+	LOG_DEB << "FVAOrganizerEventInfoPage::setVisible before exit";
 	return QWizardPage::setVisible(visible);
 }
 bool FVAOrganizerEventInfoPage::validatePage()
