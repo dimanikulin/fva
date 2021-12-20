@@ -147,9 +147,9 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
 			childWidgetItem->setText(0, index->second);
 			childWidgetItem->setFlags(childWidgetItem->flags() | Qt::ItemIsUserCheckable);
 			childWidgetItem->setCheckState(0, Qt::Unchecked);
-			personWidgetItem->setData(1, 1, index->first);
+			childWidgetItem->setData(1, 1, index->first);
 
-			pTreeWidget->addChild(childWidgetItem);
+			treeWidgetItem->addChild(childWidgetItem);
 		} // for (auto index = eventsMap.begin(); index != eventsMap.end(); ++index) 
 	} // for (auto i = eventTypesMap.begin(); i != eventTypesMap.end(); ++i)
 	return FVA_NO_ERROR;
