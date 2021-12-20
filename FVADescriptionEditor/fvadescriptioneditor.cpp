@@ -18,6 +18,37 @@
 #include <QtCore/QDateTime>
 #include <QtCore/QProcess>
 
+void populateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget)
+{
+	QDir dir(folder);
+	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
+	{			
+		if ( !info.isDir() )
+			continue;
+		// just skip internal folder
+		if ( info.fileName()[0] == '#' 
+			&& info.fileName()[info.fileName().size()-1] == '#' )
+			continue;
+
+		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
+                treeWidgetItem->setText	( 0, info.fileName() );
+
+		treeWidgetItem->setData( 1, 1, (QString) info.absoluteFilePath() );
+
+		QFont font("" , 9 , QFont::Bold );	
+		treeWidgetItem->setForeground( 0 , QBrush (Qt::red) );
+		treeWidgetItem->setFont( 0,  font );
+
+		// treeWidgetItem->setIcon(0, m_folderIcon);
+		if (item)
+			item->addChild(treeWidgetItem);
+		else
+			treeWidget->addTopLevelItem (treeWidgetItem);
+
+		populateInputDir(info.absoluteFilePath(), item, treeWidget);
+	}		
+}
+
 FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	:
 	QMainWindow(parent),
@@ -56,13 +87,18 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.get.param")
 
-	LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleFilterTree 1";	
-	exitCode =fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false, rootSWdir);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleFilterTree.ui.treePeopleWidget")
-	LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleFilterTree 2";	
+	//LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleFilterTree 1";	
+	//exitCode =fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false, rootSWdir);
+	//IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleFilterTree.ui.treePeopleWidget")
 
-	exitCode =fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false, rootSWdir);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleFilterTree.ui.treePEventWidget")
+	// LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleFilterTree 2";	
+	// exitCode =fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false, rootSWdir);
+	// IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleFilterTree.ui.treePEventWidget")
+
+	exitCode = fvaBuildEventTree(this, ui.treePEventWidget, rootSWdir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildEventTree")
+
+	populateInputDir("D:/fvaInput/#fromCanon", nullptr, ui.treePeopleWidget);
 
 	LOG_DEB << "FVADescriptionEditor constructed";
 }
