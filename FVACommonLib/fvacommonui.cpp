@@ -148,6 +148,7 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
 			childWidgetItem->setCheckState(0, Qt::Unchecked);
 		} // for (auto index = eventsMap.begin(); index != eventsMap.end(); ++index) 
 	} // for (auto i = eventTypesMap.begin(); i != eventTypesMap.end(); ++i)
+	return FVA_NO_ERROR;
 
 }
 // #define _SHOW_ICONS_
@@ -272,6 +273,7 @@ FVA_EXIT_CODE fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidg
 			delete treeWidgetItem;
 	}*/
 	LOG_DEB << "fvaBuildPeopleFilterTree exit";
+	return FVA_NO_ERROR;
 }
 
 void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devicesNeed, const QVariantMap& dict )
