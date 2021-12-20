@@ -178,7 +178,7 @@ FVA_EXIT_CODE fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidg
 	PEOPLE_MAP peopleMap;
 	res = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
 	RET_RES_IF_RES_IS_ERROR
-	LOG_DEB << "for (auto i = RelationsMap.begin(); i != RelationsMap.end(); ++i)";
+	/*LOG_DEB << "for (auto i = RelationsMap.begin(); i != RelationsMap.end(); ++i)";
 	for (auto i = RelationsMap.begin(); i != RelationsMap.end(); ++i)
 	{
 		int ID = i->first;
@@ -270,7 +270,7 @@ FVA_EXIT_CODE fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidg
 			pTreeWidget->addTopLevelItem(treeWidgetItem);
 		else
 			delete treeWidgetItem;
-	}
+	}*/
 	LOG_DEB << "fvaBuildPeopleFilterTree exit";
 }
 
