@@ -154,7 +154,7 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
 FVA_EXIT_CODE fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir)
 {
 	LOG_DEB << "fvaBuildPeopleFilterTree enter";
-	pMainWnd->connect(pTreeWidget,
+	/*pMainWnd->connect(pTreeWidget,
 		SIGNAL(itemChanged(QTreeWidgetItem*, int)),
 		pMainWnd,
 		SLOT(updateChecks(QTreeWidgetItem*, int)));
@@ -178,7 +178,7 @@ FVA_EXIT_CODE fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidg
 	PEOPLE_MAP peopleMap;
 	res = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
 	RET_RES_IF_RES_IS_ERROR
-	/*LOG_DEB << "for (auto i = RelationsMap.begin(); i != RelationsMap.end(); ++i)";
+	LOG_DEB << "for (auto i = RelationsMap.begin(); i != RelationsMap.end(); ++i)";
 	for (auto i = RelationsMap.begin(); i != RelationsMap.end(); ++i)
 	{
 		int ID = i->first;
