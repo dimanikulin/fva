@@ -134,6 +134,7 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
 		treeWidgetItem->setText(0, i->second);
 		treeWidgetItem->setFlags(treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
 		treeWidgetItem->setCheckState(0, Qt::Unchecked);
+		pTreeWidget->addTopLevelItem(treeWidgetItem);
 
 		FVA_SIMPLE_MAP  eventsMap;
 		// load only events for this type
@@ -146,12 +147,15 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
 			childWidgetItem->setText(0, index->second);
 			childWidgetItem->setFlags(childWidgetItem->flags() | Qt::ItemIsUserCheckable);
 			childWidgetItem->setCheckState(0, Qt::Unchecked);
+			personWidgetItem->setData(1, 1, index->first);
+
+			pTreeWidget->addChild(childWidgetItem);
 		} // for (auto index = eventsMap.begin(); index != eventsMap.end(); ++index) 
 	} // for (auto i = eventTypesMap.begin(); i != eventTypesMap.end(); ++i)
 	return FVA_NO_ERROR;
 
 }
-// #define _SHOW_ICONS_
+#define _SHOW_ICONS_
 FVA_EXIT_CODE fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir)
 {
 	LOG_DEB << "fvaBuildPeopleFilterTree enter";

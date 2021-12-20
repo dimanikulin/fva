@@ -25,8 +25,8 @@ protected slots:
 	/*void OnNextBtnPressed();
 	void OnPrevBtnPressed();
 	void OnSaveBtnPressed();
-	void OnChangeDictPressed();
-	void updateChecks(QTreeWidgetItem*, int);*/
+	void OnChangeDictPressed();*/
+	void updateChecks(QTreeWidgetItem*, int);
 
 private: // methods
 
@@ -40,7 +40,7 @@ private: // data
 
 	Ui::FVADescriptionEditorClass		ui;
 
-	bool								m_forFolder;
+	bool					m_forFolder;
 };
 
 #endif // FVADESCRIPTIONEDITOR_H

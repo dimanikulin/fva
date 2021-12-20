@@ -45,7 +45,7 @@ void populateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget*
 		else
 			treeWidget->addTopLevelItem (treeWidgetItem);
 
-		populateInputDir(info.absoluteFilePath(), item, treeWidget);
+		populateInputDir(info.absoluteFilePath(), treeWidgetItem, treeWidget);
 	}		
 }
 
@@ -87,18 +87,18 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.get.param")
 
-	//LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleFilterTree 1";	
-	//exitCode =fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false, rootSWdir);
-	//IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleFilterTree.ui.treePeopleWidget")
+	LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleFilterTree 1";	
+	exitCode =fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false, rootSWdir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleFilterTree.ui.treePeopleWidget")
 
-	// LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleFilterTree 2";	
-	// exitCode =fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false, rootSWdir);
-	// IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleFilterTree.ui.treePEventWidget")
+	LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleFilterTree 2";	
+	exitCode =fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false, rootSWdir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleFilterTree.ui.treePEventWidget")
 
-	exitCode = fvaBuildEventTree(this, ui.treePEventWidget, rootSWdir);
+	exitCode = fvaBuildEventTree(this, ui.treePlaceWidget, rootSWdir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildEventTree")
 
-	populateInputDir("D:/fvaInput/#fromCanon", nullptr, ui.treePeopleWidget);
+	populateInputDir("D:/fvaInput/#fromCanon", nullptr, ui.treeEventWidget);
 
 	LOG_DEB << "FVADescriptionEditor constructed";
 }
@@ -106,6 +106,11 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 FVADescriptionEditor::~FVADescriptionEditor()
 {
 	LOG_DEB << "FVADescriptionEditor destructed";
+}
+
+void FVADescriptionEditor::updateChecks(QTreeWidgetItem *item, int column)
+{
+	fvaUpdateChecks(item, column);
 }
 
 /*
@@ -432,10 +437,6 @@ void FVADescriptionEditor::saveCurrentDescription()
 		// RET_IF_RES_NO_ERROR
 
 	}
-}
-void FVADescriptionEditor::updateChecks(QTreeWidgetItem *item, int column)
-{
-	fvaUpdateChecks(item, column);
 }
 
 void FVADescriptionEditor::OnChangeDictPressed()
