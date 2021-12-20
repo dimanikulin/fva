@@ -135,7 +135,7 @@ FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SI
 			simpleMap[ID] = Name;
 		else
 		{
-			int Type = list[columnId].remove("\t").toInt();
+			int Type = list[columnType].remove("\t").toInt();
 			if (Type==typeToFilter)
 				simpleMap[ID] = Name;				 
 		} 		

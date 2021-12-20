@@ -35,11 +35,16 @@ void populateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget*
 
 		treeWidgetItem->setData( 1, 1, (QString) info.absoluteFilePath() );
 
-		QFont font("" , 9 , QFont::Bold );	
-		treeWidgetItem->setForeground( 0 , QBrush (Qt::red) );
-		treeWidgetItem->setFont( 0,  font );
+		if (info.fileName().length()==4)
+		{
+			QFont font("" , 9 , QFont::Bold );	
+			treeWidgetItem->setForeground( 0 , QBrush (Qt::red) );
+			treeWidgetItem->setFont( 0,  font );
+		}
+		else
+			treeWidgetItem->setForeground( 0 , QBrush (Qt::red) );
 
-		// treeWidgetItem->setIcon(0, m_folderIcon);
+		//treeWidgetItem->setIcon(0, m_folderIcon);
 		if (item)
 			item->addChild(treeWidgetItem);
 		else
