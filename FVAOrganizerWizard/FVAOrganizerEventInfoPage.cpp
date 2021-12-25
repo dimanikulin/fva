@@ -46,19 +46,22 @@ void populateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget*
 
 		treeWidgetItem->setData( 1, 1, (QString) info.absoluteFilePath() );
 
-		QFont font("" , 9 , QFont::Bold );	
-		treeWidgetItem->setForeground( 0 , QBrush (Qt::red) );
-		treeWidgetItem->setFont( 0,  font );
+		if (info.fileName().length()!=4) // not YEAR folder
+			treeWidgetItem->setForeground( 0 , QBrush (Qt::red) );
 
-		// treeWidgetItem->setIcon(0, m_folderIcon);
 		if (item)
+		{
 			item->addChild(treeWidgetItem);
+			QIcon	icon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/folder.png");
+			item->setIcon(0, icon);
+		}
 		else
 			treeWidget->addTopLevelItem (treeWidgetItem);
 
-		populateInputDir(info.absoluteFilePath(), item, treeWidget);
+		populateInputDir(info.absoluteFilePath(), treeWidgetItem, treeWidget);
 	}		
 }
+
 FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 {
         LOG_DEB << "FVAOrganizerEventInfoPage construction" ;
@@ -89,14 +92,10 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 	QGridLayout * infoLayout= new QGridLayout;
 
 	eventsWidget		= new QTreeWidget;
-	//events->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	//events->setMinimumSize(100,100);
 	infoLayout->addWidget(eventLbl,0,0); 	
 	infoLayout->addWidget(eventsWidget,1,0);
 
 	peopleWidget		= new QTreeWidget;
-	//people->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	//people->setMinimumSize(100,100);
 	infoLayout->addWidget(peopleLbl,0,1);
 	infoLayout->addWidget(peopleWidget,1,1);
 
