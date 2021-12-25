@@ -4,7 +4,11 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
-set(HEADER_FILES ../FVACommonLib/fvaconstants.h ../FVACommonLib/FVAConfiguration.h ../FVADataProcessor/FVADataProcessor.h)
+set(HEADER_FILES 
+   ../FVACommonLib/fvaconstants.h 
+   ../FVACommonLib/FVAConfiguration.h 
+   ../FVADataProcessor/FVADataProcessor.h 
+   ../FVACommonLib/fvalogger.inl)
 
 add_library(fvaflowcontrollerlib fvadevicecontext.h FVAFlowController.cpp FVAFlowController.h ${HEADER_FILES})
 
