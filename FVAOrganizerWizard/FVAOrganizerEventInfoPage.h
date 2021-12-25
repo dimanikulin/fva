@@ -9,9 +9,8 @@
 #define _FVA_ORG_EVENT_INFO_H_
 
 #include <QtWidgets/QWizardPage>
-#include <QString>
-#include <QMap>
-#include <QList>
+
+#include "FVAFlowController.h"
 
 class QPushButton;
 class QLabel;
@@ -20,24 +19,15 @@ class QTreeWidget;
 class QTreeWidgetItem;
 
 /*!
-* \brief DIR_2_EVENT_MAP maps input dir structure (folder names) to event ids got from fvaEvents.csv
-*/
-typedef QMap<QString,unsigned int> DIR_2_EVENT_MAP;
-
-/*!
-* \brief DIR_2_EVENT_PEOPLE_MAP maps input dir structure (folder names) to people ids (that caused the event) got from fvaPeople.csv
-*/
-typedef QMap<QString,QList<unsigned int>> DIR_2_EVENT_PEOPLE_MAP;
-
-/*!
 * \brief FVAOrganizerEventInfoPage is a child of <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a> and implements the next UI functions:
 *
 * 1. "Explanation words" to user in a QLabel;
 * 2. The events(aka dirs) we need to add information about, in form of a QTreeWidget;
 * 3. "Open dir" button (QPushButton) to open input dir where processed files are in to recall their content.
-* 4. a QTreeWidget to set up Event Type
-* 5. a QTreeWidget to set up the people list because this event happened of
-* 6. QTextBrowser to output the logging events;
+* 4. "Save" button (QPushButton) to save information user provided
+* 5. QTreeWidget to set up Event Type
+* 6. TreeWidget to set up the people list because this event happened of
+* 7. QTextBrowser to output the logging events;
 * This class implements "View" functions from MVC pattern.
 */
 
@@ -51,7 +41,7 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 	protected:
 
 		/*!
-		* \brief calls a ProcessInputDirForEventInfo of class FVAFlowController
+		* \brief calls a ProcessInputDirForEvent of class FVAFlowController
 		* \return it returns nothing
 		*/
 		virtual bool validatePage();
@@ -71,6 +61,12 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		void OnFvaInputDirButtonPressed();
 
 		/*!
+		* \brief to save information user provided
+		* \return it returns nothing
+		*/
+		void OnSaveButtonPressed();
+
+		/*!
 		* \brief it updates hierachy of checks around this QTreeWidgetItem
 		* \return it returns nothing
 		*/
@@ -88,6 +84,11 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		* \brief to open input dir where processed files are in
 		*/
 		QPushButton*		inputDirButton;
+
+		/*!
+		* \brief to save information user provided  
+		*/
+		QPushButton*		saveButton;
 
 		/*!
 		* \brief to output the logging events

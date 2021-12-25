@@ -26,7 +26,6 @@
 #include "fvaorganizerwizard.h"
 #include "fvacommonui.h"
 #include "fvalogger.inl"
-#include "FVAFlowController.h"
 #include "fvaconfiguration.h"
 
 void populateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget)
@@ -68,15 +67,23 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 	
 #ifdef  FVA_LANGUAGE_RUS
 	words	= new QLabel(tr("Пожалуйста, выделите папку нижу (событию),помеченной красным\nи выберете для нее тип события и причастных людей"));
+	
 	inputDirButton = new QPushButton;
 	inputDirButton->setText(tr("Открыть папку"));
+	saveButton  = new QPushButton;
+	saveButton->setText(tr("Сохранить инфо о папке"));
+	
 	QLabel * eventLbl = new QLabel(tr("Тип события:"));
 	QLabel * peopleLbl = new QLabel(tr("Причастные люди:"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	words = new QLabel(tr("Please select a folder bellow (an event),marked by red\nand choose event type and related people."));
+	
 	inputDirButton = new QPushButton;
 	inputDirButton->setText(tr("Open a folder"));
+	saveButton  = new QPushButton;
+	saveButton->setText(tr("Save dir info"));
+	
 	QLabel * eventLbl = new QLabel(tr("Event type:"));
 	QLabel * peopleLbl = new QLabel(tr("Related people:"));
 
@@ -103,18 +110,76 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 
 	logOutput		= new QTextBrowser;
 
-	layout->addWidget(inputDirButton);
+	QGridLayout * btnLayout= new QGridLayout;
+	btnLayout>addWidget(saveButton,0,0);
+	btnLayout>addWidget(inputDirButton,0,1);
+
+	layout->addLayout(btnLayout);
 	layout->addWidget(logOutput);
 
 	setLayout(layout);
 
 	connect( inputDirButton, SIGNAL( clicked() ), this, SLOT( OnFvaInputDirButtonPressed() ) );
+	connect( saveButton, SIGNAL( clicked() ), this, SLOT( OnSaveButtonPressed() ) );
+
         LOG_DEB << "FVAOrganizerEventInfoPage constructed" ;
 
 }
+void FVAOrganizerEventInfoPage::OnSaveButtonPressed()
+{
+	// check if there is a dir selected in inputDir Tree Widget
+	QList<QTreeWidgetItem *> itemList = inputDirsWidget.selectedItems();
+	if (!itemList)
+	{
+		FVA_MESSAGE_BOX("no input folder selected")
+		return;
+	}
+	if (itemList.lenght()!=1)
+	{
+		FVA_MESSAGE_BOX("too many folder selected")
+		return;
+	}
+	QString selectedInputDirPath = itemList.at(0)->data(1, 1).toString();
+	if (selectedInputDirPath.isEmpty())
+	{
+		FVA_MESSAGE_BOX("empty path for folder selected")
+		return;
+	}
+
+	QList<unsigned int> eventIds, peopleIds;
+
+	for (auto idTop = 0; idTop < peopleWidget->topLevelItemCount();++idTop)
+		fvaFindCheckedItem(peopleWidget->topLevelItem(idTop), peopleIds);
+
+	for (auto idTop = 0; idTop < eventsWidget->topLevelItemCount();++idTop)
+		fvaFindCheckedItem(eventsWidget->topLevelItem(idTop), eventIds);
+
+	if (peopleIds.lenght() == 0)
+	{
+		FVA_MESSAGE_BOX("no people are selected")
+		return;
+	}
+
+	if (eventIds.lenght() == 0)
+	{
+		FVA_MESSAGE_BOX("no event is selected")
+		return;
+	}
+
+	if (eventIds.lenght() > 1)
+	{
+		FVA_MESSAGE_BOX("too many events are selected")
+		return;
+	}
+  
+	dir2EventMap[selectedInputDirPath] = eventIds.at(0);
+
+	dir2PeopleMap[selectedInputDirPath] = peopleIds;
+}
+
 void FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed()
 {
-	QString path = QDir::toNativeSeparators(((FVAOrganizerWizard*)wizard())->inputFolder());
+	QString path = QDir::toNativeSeparatorsz(((FVAOrganizerWizard*)wizard())->inputFolder());
 	LOG_DEB << "FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed() input dir=" << path;
 	if(!QDesktopServices::openUrl(QUrl::fromLocalFile(((FVAOrganizerWizard*)wizard())->inputFolder())))
 		LOG_DEB << "FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed() failed to show input dir=" << path;
@@ -159,7 +224,8 @@ bool FVAOrganizerEventInfoPage::validatePage()
 {
         LOG_DEB << "FVAOrganizerEventInfoPage validate page" ;
 	FVAFlowController flow;
-	FVA_EXIT_CODE exitCode = flow.ProcessInputDirForEvent(((FVAOrganizerWizard*)wizard())->inputFolder(), "TODO"/*, this*/);
+
+	FVA_EXIT_CODE exitCode = flow.ProcessInputDirForEvent(dir2EventMap, dir2PeopleMap);
 	if (exitCode != FVA_NO_ERROR)
 		return false;
 
