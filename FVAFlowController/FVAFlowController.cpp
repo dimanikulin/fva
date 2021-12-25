@@ -14,6 +14,7 @@
 #include "FVAConfiguration.h"
 #include "fvacommonui.h"
 #include "fvacommoncsv.h"
+#include "fvalogger.inl"
 
 FVAFlowController::FVAFlowController()
 {
@@ -175,7 +176,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject* obj, const FvaConfiguration& cfg, const QString& dir)
+FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject* obj, const FvaConfiguration& cfg, const QStringList& params)
 {
 	QString fvaSWRootDir;
 	FVA_EXIT_CODE exitCode = cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
@@ -183,11 +184,11 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
-	QString pyScriptRunPath = "python " + fvaSWRootDir + "/#scripts#/" + scriptName + " " + dir;
+	QString pyScriptRunPath = "python " + fvaSWRootDir + "/#scripts#/" + scriptName;
 
 	QProcess myProcess(obj);
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
-	myProcess.start(pyScriptRunPath);
+	myProcess.start(pyScriptRunPath, params);
 	myProcess.waitForFinished(-1);
 
 	exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
@@ -207,14 +208,14 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, const FvaC
 	// lets check if Data Proccessor said there is no exif date time 
 	if (FVA_ERROR_NO_EXIF_DATE_TIME == exitCode)
 	{
-		// let's ask configuration if we can fix "no exif date time" issue by picture modification time 
+		// let's ask configuration if we can fixing "no exif date time" issue by picture modification time 
 		bool fixPicsByModifTime = false;
 		exitCode = cfg.getParamAsBoolean("Rename::picsByModifTime", fixPicsByModifTime);
 
 		// show error message box and return to calling function if previous operation failed
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsBoolean")
 
-		// if we can NOT fix "no exif date time" issue by picture modification time 
+		// if we can NOT fixing "no exif date time" issue by picture modification time 
 		if (false == fixPicsByModifTime)
 		{
 			// show error to user so they are aware what happened
@@ -227,8 +228,10 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, const FvaC
 			FVA_MESSAGE_BOX("Found empty date-time metadata, that will be fixed automatically")
 		}
 
-		// run command implemented in python to fix empty date-time issue
-		exitCode = runPythonCMD("CLTFixEmptyDateTime.py", obj, cfg, context.dir);
+		// run command implemented in python to fixing empty date-time issue
+		QStringList params;
+		params.append(context.dir);
+		exitCode = runPythonCMD("CLTFixEmptyDateTime.py", obj, cfg, params);
 
 		// show error message box and return to calling function if previous operation failed
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTFixEmptyDateTime")
@@ -296,8 +299,37 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 	return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir, const QString& outputDir)
+FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& eventMap, const DIR_2_EVENT_PEOPLE_MAP& peopleMap, QObject* obj)
 {
+	// for each folder in output list
+	for (STR_LIST::const_iterator it = eventMap.begin(); it != eventMap.end(); ++it)
+	{		
+		QString dir = it.first;
+		QStringList params;
+		params.append(dir);
+
+		QString eventId = QString::number(it.second);
+		params.append(eventId);
+
+		QString peopleIds;
+		for(int i=0; i < peopleMap[dir].size(); ++i)
+		{
+			peopleIds += QString::number(peopleMap[dir][i]);
+			if( i < peopleMap[dir].size()-1 )
+				peopleIds += "," ;
+		}
+
+		params.append(peopleIds);
+
+		LOG_DEB << "FVAFlowController::ProcessInputDirForEvent " << dir << " " << eventId << " " << peopleIds;
+	
+		// run command implemented in python to update the fvafile.csv for each file in folder in eventMap and peopleMap we got 
+		exitCode = runPythonCMD("CLTUpdateEventAndEvPeopleInFvaFileN.py", obj, m_cfg, params );
+
+		// show error message box and return to calling function if previous operation failed
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventAndEvPeopleInFvaFileN")
+	}
+
 	// do we need to search by location?
 	/*bool SearchByLocation = false;
 
@@ -313,14 +345,44 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir
 
 		// return to calling function if previous operation failed
 		RET_RES_IF_RES_IS_ERROR
-	}
-
-	context.cmdType = "CLTGetFvaDirType";
-	context.recursive = false;
-	exitCode = m_dataProcessor.run(context, m_cfg);
-	context.recursive = true;
-
+	}*/
 	
+
+	return FVA_NO_ERROR;
+}
+FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput)
+{
+	// get the size of folder list we received
+	uint sizeProcessed = outputDirs.size();
+
+	// for each folder in output list
+	for (STR_LIST::const_iterator it = outputDirs.begin(); it != outputDirs.end(); ++it)
+	{		
+		QString dirToMoveTo = *it;
+		// check if we got 1 folder only to integrate the multimedia data changes into 
+		// and if we need to remove the input folder as well
+		if (1 == sizeProcessed && removeInput)
+		{
+			// remove before rename if destination exists
+			fvaRemoveDirIfEmpty(dirToMoveTo);
+
+			// small optimization - do not copy to last folder if we need to remove the input one - we just rename it.
+			QDir dir(dirToMoveTo);
+
+			// move the input folder into output one that is what user selected in UI as Multimedia IR system folder
+			if (!dir.rename(inputDir, dirToMoveTo))
+			{
+				// show message if folder moving has failed
+				FVA_MESSAGE_BOX("Fva cmd MoveInputDirToOutputDirs could not rename the dir")
+				return FVA_ERROR_CANT_MOVE_DIR;
+			}
+		}
+		else
+		{
+			return FVA_ERROR_NOT_IMPLEMENTED;
+		}
+	}
+	/*
 	if (oneEventOneDay->isChecked())
 	{
 		exitCode = fvaRunCLT("CLTMerge1DayEventDir", ((FVAOrganizerWizard*)wizard())->inputFolder());
@@ -433,39 +495,5 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir
 		// TODO - apply call CLTAutoChecks3 for all merged folders
 	}*/
 
-	return FVA_NO_ERROR;
-}
-FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput)
-{
-	// get the size of folder list we received
-	uint sizeProcessed = outputDirs.size();
-
-	// for each folder in output list
-	for (STR_LIST::const_iterator it = outputDirs.begin(); it != outputDirs.end(); ++it)
-	{		
-		QString dirToMoveTo = *it;
-		// check if we got 1 folder only to integrate the multimedia data changes into 
-		// and if we need to remove the input folder as well
-		if (1 == sizeProcessed && removeInput)
-		{
-			// remove before rename if destination exists
-			fvaRemoveDirIfEmpty(dirToMoveTo);
-
-			// small optimization - do not copy to last folder if we need to remove the input one - we just rename it.
-			QDir dir(dirToMoveTo);
-
-			// move the input folder into output one that is what user selected in UI as Multimedia IR system folder
-			if (!dir.rename(inputDir, dirToMoveTo))
-			{
-				// show message if folder moving has failed
-				FVA_MESSAGE_BOX("Fva cmd MoveInputDirToOutputDirs could not rename the dir")
-				return FVA_ERROR_CANT_MOVE_DIR;
-			}
-		}
-		else
-		{
-			return FVA_ERROR_NOT_IMPLEMENTED;
-		}
-	}
 	return FVA_NO_ERROR;
 }

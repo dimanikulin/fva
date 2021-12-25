@@ -10,6 +10,7 @@
 
 #include <QtCore/QString>
 #include <QtCore/QList>
+#include <QtCore/QMap>
 
 #include "fvaexitcodes.h"
 #include "fvadevicecontext.h"
@@ -17,7 +18,20 @@
 #include "fvaconfiguration.h"
 #include "FVADataProcessor.h"
 
+// TODO to get rid of passing FvaConfiguration& cfg into each function instead of using internal member
+
+
 typedef QList<QString> STR_LIST;
+
+/*!
+* \brief DIR_2_EVENT_MAP maps input dir structure (folder names) to event ids got from fvaEvents.csv
+*/
+typedef QMap<QString,unsigned int> DIR_2_EVENT_MAP;
+
+/*!
+* \brief DIR_2_EVENT_PEOPLE_MAP maps input dir structure (folder names) to people ids (that caused the event) got from fvaPeople.csv
+*/
+typedef QMap<QString,QList<unsigned int>> DIR_2_EVENT_PEOPLE_MAP;
 
 class QObject;
 
@@ -27,7 +41,7 @@ class QObject;
  * 1. PerformChecksForInputDir - it performs the checks for input folder according to fva configuration;
  * 2. OrganizeInputDir - it performs the organization stuff for the input folder according to fva configuration;
  * 3. MoveInputDirToOutputDirs - it performs the moving input folder content to output folder with checks according to event cfg
- * 4. ProcessInputDirForEventCfg - t process input folder content as one-event or multi-events according to event cfg
+ * 4. ProcessInputDirForEvent - it process input folder content as one-event or multi-events according to event cfg and info
 
  * This class implements "Controller" functions from MVC pattern.
  * Flow control is based on class FvaConfiguration.
@@ -65,11 +79,12 @@ public:
 
 	/*!
 	 * \brief it process input folder content as multi-events folder according to event cfg and info
-	 * \param inputDir - directory to move content from
-	 * \param outputDir - directory to move content into
+	 * \param eventMap - maps input dir structure (folder names) to event ids got from fvaEvents.csv
+	 * \param peopleMap - maps input dir structure (folder names) to people ids (that caused the event) got from fvaPeople.csv
+	 * \param obj - to attach the child processes to this object
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE ProcessInputDirForEvent(const QString& inputDir, const QString& outputDir);
+	FVA_EXIT_CODE ProcessInputDirForEvent(const DIR_2_EVENT_MAP& eventMap, const DIR_2_EVENT_PEOPLE_MAP& peopleMap, QObject* obj);
 
 private:
 
@@ -120,10 +135,10 @@ private:
 	 * \param scriptName - name of script to run
 	 * \param obj - to attach the child processes to this object
 	 * \param cfg - system configuration, applicable for whole system
-	 * \param dir - directory for the python script to work on
+	 * \param params - list of params to run the cmd
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE runPythonCMD(const QString& scriptName, QObject* obj, const FvaConfiguration& cfg, const QString& dir);
+	FVA_EXIT_CODE runPythonCMD(const QString& scriptName, QObject* obj, const FvaConfiguration& cfg, const QStringList& params);
 
 private: //data
 
