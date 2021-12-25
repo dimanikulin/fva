@@ -9,12 +9,25 @@
 #define _FVA_ORG_EVENT_INFO_H_
 
 #include <QtWidgets/QWizardPage>
+#include <QString>
+#include <QMap>
+#include <QList>
 
 class QPushButton;
 class QLabel;
 class QTextBrowser;
 class QTreeWidget;
 class QTreeWidgetItem;
+
+/*!
+* \brief DIR_2_EVENT_MAP maps input dir structure (folder names) to event ids got from fvaEvents.csv
+*/
+typedef QMap<QString,unsigned int> DIR_2_EVENT_MAP;
+
+/*!
+* \brief DIR_2_EVENT_PEOPLE_MAP maps input dir structure (folder names) to people ids (that caused the event) got from fvaPeople.csv
+*/
+typedef QMap<QString,QList<unsigned int>> DIR_2_EVENT_PEOPLE_MAP;
 
 /*!
 * \brief FVAOrganizerEventInfoPage is a child of <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a> and implements the next UI functions:
@@ -69,33 +82,42 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		/*!
 		* \brief to tell a user what to do here
 		*/
-		QLabel*		words;
+		QLabel*			words;
 
 		/*!
 		* \brief to open input dir where processed files are in
 		*/
-		QPushButton*	inputDirButton;
+		QPushButton*		inputDirButton;
 
 		/*!
 		* \brief to output the logging events
 		*/
-		QTextBrowser*	logOutput;
+		QTextBrowser*		logOutput;
 		
 		/*!
 		* \brief to output the input dirs structure 
 		*/
-		QTreeWidget*	inputDirsWidget;			
+		QTreeWidget*		inputDirsWidget;			
 
 		/*!
 		* \brief to output the structure of people caused the event 
 		*/
-		QTreeWidget*	peopleWidget;
+		QTreeWidget*		peopleWidget;
 
 		/*!
 		* \brief to output the event structure 
 		*/
-		QTreeWidget*	eventsWidget;	
-			
+		QTreeWidget*		eventsWidget;	
+		
+		/*!
+		* \brief directories to event map
+		*/
+		DIR_2_EVENT_MAP		dir2EventMap;
+
+		/*!
+		* \brief directories to people map
+		*/
+		DIR_2_EVENT_PEOPLE_MAP	dir2PeopleMap;
 };
 
 #endif // _FVA_ORG_EVENT_INFO_H_
