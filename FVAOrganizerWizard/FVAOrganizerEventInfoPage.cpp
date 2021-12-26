@@ -111,8 +111,8 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 	logOutput		= new QTextBrowser;
 
 	QGridLayout * btnLayout= new QGridLayout;
-	btnLayout>addWidget(saveButton,0,0);
-	btnLayout>addWidget(inputDirButton,0,1);
+	btnLayout->addWidget(saveButton,0,0);
+	btnLayout->addWidget(inputDirButton,0,1);
 
 	layout->addLayout(btnLayout);
 	layout->addWidget(logOutput);
@@ -128,13 +128,9 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 void FVAOrganizerEventInfoPage::OnSaveButtonPressed()
 {
 	// check if there is a dir selected in inputDir Tree Widget
-	QList<QTreeWidgetItem *> itemList = inputDirsWidget.selectedItems();
-	if (!itemList)
-	{
-		FVA_MESSAGE_BOX("no input folder selected")
-		return;
-	}
-	if (itemList.lenght()!=1)
+	QList<QTreeWidgetItem *> itemList = inputDirsWidget->selectedItems();
+
+	if (itemList.length()!=1)
 	{
 		FVA_MESSAGE_BOX("too many folder selected")
 		return;
@@ -154,19 +150,19 @@ void FVAOrganizerEventInfoPage::OnSaveButtonPressed()
 	for (auto idTop = 0; idTop < eventsWidget->topLevelItemCount();++idTop)
 		fvaFindCheckedItem(eventsWidget->topLevelItem(idTop), eventIds);
 
-	if (peopleIds.lenght() == 0)
+	if (peopleIds.length() == 0)
 	{
 		FVA_MESSAGE_BOX("no people are selected")
 		return;
 	}
 
-	if (eventIds.lenght() == 0)
+	if (eventIds.length() == 0)
 	{
 		FVA_MESSAGE_BOX("no event is selected")
 		return;
 	}
 
-	if (eventIds.lenght() > 1)
+	if (eventIds.length() > 1)
 	{
 		FVA_MESSAGE_BOX("too many events are selected")
 		return;
@@ -179,7 +175,7 @@ void FVAOrganizerEventInfoPage::OnSaveButtonPressed()
 
 void FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed()
 {
-	QString path = QDir::toNativeSeparatorsz(((FVAOrganizerWizard*)wizard())->inputFolder());
+	QString path = QDir::toNativeSeparators(((FVAOrganizerWizard*)wizard())->inputFolder());
 	LOG_DEB << "FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed() input dir=" << path;
 	if(!QDesktopServices::openUrl(QUrl::fromLocalFile(((FVAOrganizerWizard*)wizard())->inputFolder())))
 		LOG_DEB << "FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed() failed to show input dir=" << path;
@@ -225,7 +221,7 @@ bool FVAOrganizerEventInfoPage::validatePage()
         LOG_DEB << "FVAOrganizerEventInfoPage validate page" ;
 	FVAFlowController flow;
 
-	FVA_EXIT_CODE exitCode = flow.ProcessInputDirForEvent(dir2EventMap, dir2PeopleMap);
+	FVA_EXIT_CODE exitCode = flow.ProcessInputDirForEvent(dir2EventMap, dir2PeopleMap, this);
 	if (exitCode != FVA_NO_ERROR)
 		return false;
 
