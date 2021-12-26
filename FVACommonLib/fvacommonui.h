@@ -71,15 +71,24 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
  * \brief it finds all checked item ID in gui widget tree
  * \param item - to search in
  * \param Ids - arrau to fill by id of checked items
+ * \returns it returns nothing
  */
 void fvaFindCheckedItem(QTreeWidgetItem *item, QList<unsigned int>& Ids);
 
 /*!
- * \brief it recursivle update checked 
+ * \brief it recursivly updates checks
  * \param item - to update in
  * \param column - column
+ * \returns it returns nothing
  */
 void fvaUpdateChecks(QTreeWidgetItem *item, int column);
+
+/*!
+ * \brief it recursivly clear checks
+ * \param item - to update in
+ * \returns it returns nothing
+ */
+void fvaClearChecks(QTreeWidgetItem *item);
 
 #define FVA_MESSAGE_BOX(message)\
 	QMessageBox msgBox; \

@@ -386,29 +386,47 @@ void fvaFindCheckedItem(QTreeWidgetItem *item, QList<unsigned int>& Ids)
 	for (auto id = 0 ; id < item->childCount(); ++id)
 		fvaFindCheckedItem(item->child(id), Ids);
 }
+void fvaClearChecks(QTreeWidgetItem *item)
+{
+	if (!item)
+		return;
+	Qt::CheckState checkState = item->checkState(0);
+	item->setCheckState(0, checkState);	
+
+	if (item->childCount())
+	{
+		for (int i = 0; i < item->childCount(); ++i) 
+			fvaClearChecks(item->child(i));
+	}
+}
 void fvaUpdateChecks(QTreeWidgetItem *item, int column)
 {
-    bool diff = false;
-    if(column != 0 && column!=-1)
-        return;
-    if(item->childCount()!=0 && item->checkState(0)!=Qt::PartiallyChecked && column!=-1){
-        Qt::CheckState checkState = item->checkState(0);
-        for (int i = 0; i < item->childCount(); ++i) {
-           item->child(i)->setCheckState(0, checkState);
-        }
-    } else if (item->childCount()==0 || column==-1) {
-        if(item->parent()==0)
-            return;
-        for (int j = 0; j < item->parent()->childCount(); ++j) {
-            if(j != item->parent()->indexOfChild(item) && item->checkState(0)!=item->parent()->child(j)->checkState(0)){
-                diff = true;
-            }
-        }
-        if(diff)
-            item->parent()->setCheckState(0,Qt::PartiallyChecked);
-        else
-            item->parent()->setCheckState(0,item->checkState(0));
-        if(item->parent()!=0)
-            fvaUpdateChecks(item->parent(),-1);
-    }
+	bool diff = false;
+	if(column != 0 && column!=-1)
+		return;
+	if(item->childCount()!=0 && item->checkState(0)!=Qt::PartiallyChecked && column!=-1)
+	{
+		Qt::CheckState checkState = item->checkState(0);
+		for (int i = 0; i < item->childCount(); ++i) 
+			item->child(i)->setCheckState(0, checkState);
+        
+	} 
+	else if (item->childCount()==0 || column==-1) 
+	{
+		if(item->parent()==0)
+			return;
+		for (int j = 0; j < item->parent()->childCount(); ++j)
+		{
+			if(j != item->parent()->indexOfChild(item) && item->checkState(0)!=item->parent()->child(j)->checkState(0))
+			{
+				diff = true;
+			}
+		}
+		if(diff)
+			item->parent()->setCheckState(0,Qt::PartiallyChecked);
+		else
+			item->parent()->setCheckState(0,item->checkState(0));
+		if(item->parent()!=0)
+			fvaUpdateChecks(item->parent(),-1);
+	}
 }

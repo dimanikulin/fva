@@ -177,6 +177,12 @@ void FVAOrganizerEventInfoPage::OnSaveButtonPressed()
 	
 	peopleWidget->selectionModel()->clearSelection();
 	eventsWidget->selectionModel()->clearSelection();
+
+	for (auto idTop = 0; idTop < peopleWidget->topLevelItemCount();++idTop)
+		fvaClearChecks(peopleWidget->topLevelItem(idTop));
+
+	for (auto idTop = 0; idTop < eventsWidget->topLevelItemCount();++idTop)
+		fvaClearChecks(eventsWidget->topLevelItem(idTop));	
 }
 
 void FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed()
