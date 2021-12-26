@@ -390,8 +390,7 @@ void fvaClearChecks(QTreeWidgetItem *item)
 {
 	if (!item)
 		return;
-	Qt::CheckState checkState = item->checkState(0);
-	item->setCheckState(0, checkState);	
+	item->setCheckState(0, Qt::Unchecked);
 
 	if (item->childCount())
 	{
