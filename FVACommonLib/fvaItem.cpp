@@ -1,6 +1,6 @@
 #include "fvaItem.h"
 #include "fvafile.h"
-#include "fvaFolder.h"
+#include "fvafolder.h"
 
 fvaItem::fvaItem ()
 {
