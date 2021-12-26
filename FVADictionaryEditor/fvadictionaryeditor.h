@@ -8,7 +8,7 @@
 #ifndef FVADICTIONARYEDITOR_H
 #define FVADICTIONARYEDITOR_H
 
-#include <QtWidgets/QDialog>
+#include <QDialog>
 #include "ui_fvadictionaryeditor.h"
 
 #include "fvaconfiguration.h"

@@ -13,7 +13,7 @@
 #include "fvalogger.inl"
 
 #include <QtCore/QFileInfo>
-#include <QtWidgets/QListWidgetItem>
+#include <QListWidgetItem>
 #include <QtCore/QDir>
 #include <QtCore/QDateTime>
 #include <QtCore/QProcess>

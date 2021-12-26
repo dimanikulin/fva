@@ -11,11 +11,11 @@
 #include "FVAOrganizerEventInfoPage.h"
 
 #include <QVBoxLayout>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QTextBrowser>
-#include <QtWidgets/QTreeWidget>
-#include <QtWidgets/QTreeWidgetItem>
+#include <QPushButton>
+#include <QLabel>
+#include <QTextBrowser>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
 
 #include <QUrl>
 #include <QDesktopServices>

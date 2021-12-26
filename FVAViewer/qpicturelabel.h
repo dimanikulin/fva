@@ -8,7 +8,7 @@
 #ifndef QPICTURELABEL_H
 #define QPICTURELABEL_H
 
-#include <QtWidgets/QLabel>
+#include <QLabel>
 #include <QtGui/QImage>
 #include <QtGui/QPixmap>
 

@@ -7,7 +7,7 @@
 */
 
 #include "fvaorganizerwizard.h"
-#include <QtWidgets/QApplication>
+#include <QApplication>
 #include <QtCore/qtextcodec>
 
 #include "fvalogger.inl"

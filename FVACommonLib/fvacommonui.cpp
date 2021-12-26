@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 
-#include <QtWidgets/QMessageBox>
+#include <QMessageBox>
 #include <QPainter>
 #include <QIcon>
 #include <QtCore/QCoreApplication>

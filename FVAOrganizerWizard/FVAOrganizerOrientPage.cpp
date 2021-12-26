@@ -7,9 +7,9 @@
 */
 #include "FVAOrganizerOrientPage.h"
 
-#include <QtWidgets/QLabel>
+#include <QLabel>
 #include <QVBoxLayout>
-#include <QtWidgets/QPushButton>
+#include <QPushButton>
 
 #include <QtCore/QProcess>
 #include <QtCore/QCoreApplication>

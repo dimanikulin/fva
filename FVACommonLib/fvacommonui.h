@@ -10,9 +10,9 @@
 #define FVACOMMONUI_H
 
 #include <QtCore/QString>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QTreeWidget>
-#include <QtWidgets/QMessageBox>
+#include <QLabel>
+#include <QTreeWidget>
+#include <QMessageBox>
 
 #include "fvaexitcodes.h"
 

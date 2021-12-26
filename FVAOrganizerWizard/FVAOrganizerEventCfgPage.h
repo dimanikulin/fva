@@ -8,7 +8,7 @@
 #ifndef _FVA_ORG_EVENT_CFG_H_
 #define _FVA_ORG_EVENT_CFG_H_
 
-#include <QtWidgets/QWizardPage>
+#include <QWizardPage>
 
 class QPushButton;
 class QLabel;

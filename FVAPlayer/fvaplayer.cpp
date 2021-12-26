@@ -11,7 +11,7 @@
 #include <QtMultimedia/QMediaService>
 #include <QtMultimedia/QMediaPlaylist>
 #include <QtMultimedia/QMediaMetaData>
-#include <QtWidgets/QtWidgets>
+#include <QtWidgets>
 
 FVAPlayer::FVAPlayer(QWidget *parent)
     : QWidget(parent)

@@ -10,7 +10,7 @@
 #include "fvalogger.inl"
 
 #include <QVBoxLayout>
-#include <QtWidgets/QTextBrowser>
+#include <QTextBrowser>
 
 FVAOrganizerDonePage::FVAOrganizerDonePage(void)
 {

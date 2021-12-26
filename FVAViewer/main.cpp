@@ -7,7 +7,7 @@
 */
 
 #include "fvaviewer.h"
-#include <QtWidgets/QApplication>
+#include <QApplication>
 #include <fstream>
 
 /*!

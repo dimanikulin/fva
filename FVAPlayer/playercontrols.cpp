@@ -7,11 +7,11 @@
 */
 #include "playercontrols.h"
 
-#include <QtWidgets/QBoxLayout>
-#include <QtWidgets/QSlider>
-#include <QtWidgets/QStyle>
-#include <QtWidgets/QToolButton>
-#include <QtWidgets/QComboBox>
+#include <QBoxLayout>
+#include <QSlider>
+#include <QStyle>
+#include <QToolButton>
+#include <QComboBox>
 
 PlayerControls::PlayerControls(QWidget *parent)
     : QWidget(parent)

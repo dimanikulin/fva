@@ -9,8 +9,8 @@
 #include "QPictureLabel.h"
 
 #include <QtCore/QString>
-#include <QtWidgets/QListWidget>
-#include <QtWidgets/QProgressDialog>
+#include <QListWidget>
+#include <QProgressDialog>
 #include <QtUiTools/QtUiTools>
 
 #include "fvacommonui.h"

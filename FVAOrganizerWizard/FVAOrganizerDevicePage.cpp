@@ -7,12 +7,12 @@
 */
 #include "FVAOrganizerDevicePage.h"
 
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QTextBrowser>
-#include <QtWidgets/QComboBox>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QPushButton>
+#include <QLabel>
+#include <QLineEdit>
+#include <QTextBrowser>
+#include <QComboBox>
+#include <QGridLayout>
+#include <QPushButton>
 
 #include <QtCore/QProcess>
 

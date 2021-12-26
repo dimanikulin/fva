@@ -9,7 +9,7 @@
 #include "fvacommonui.h"
 #include "fvalogger.inl"
 #include "fvaconfigurator.h"
-#include <QtWidgets/QApplication>
+#include <QApplication>
 
 LOGGER_GLOBAL
 

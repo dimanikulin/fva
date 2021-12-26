@@ -13,10 +13,10 @@
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
 #include <QCheckBox>
-#include <QTWidgets/QLabel>
-#include <QTWidgets/QLineEdit>
-#include <QTWidgets/QSpinBox>
-#include <QTWidgets/QComboBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QSpinBox>
+#include <QComboBox>
 
 FVAConfigurator::FVAConfigurator(QWidget *parent)
 : QDialog(parent)

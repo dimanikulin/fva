@@ -8,7 +8,7 @@
 #ifndef _FVA_ORG_OUTPUT_PAGE_H_
 #define _FVA_ORG_OUTPUT_PAGE_H_
 
-#include <QtWidgets/QWizardPage>
+#include <QWizardPage>
 
 class QLineEdit;
 class QCheckBox;

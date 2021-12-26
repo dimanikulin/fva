@@ -8,7 +8,7 @@
 #ifndef _FVA_ORG_ORIENT_PAGE_H_
 #define _FVA_ORG_ORIENT_PAGE_H_
 
-#include <QtWidgets/QWizardPage>
+#include <QWizardPage>
 
 class QLabel;
 class QPushButton;

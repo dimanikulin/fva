@@ -8,10 +8,10 @@
 #include "FVAOrganizerOutputDirPage.h"
 
 #include <QVBoxLayout>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QFileDialog>
-#include <QtWidgets/QCheckBox>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QFileDialog>
+#include <QCheckBox>
 
 #include "fvaorganizerwizard.h"
 #include "fvacommonui.h"

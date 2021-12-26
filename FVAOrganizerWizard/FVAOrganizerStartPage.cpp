@@ -10,8 +10,8 @@
 #include "fvalogger.inl"
 
 #include <QVBoxLayout>
-#include <QtWidgets/QTextBrowser>
-#include <QtWidgets/QPushButton>
+#include <QTextBrowser>
+#include <QPushButton>
 
 #include <QtCore/QProcess>
 #include <QtCore/QCoreApplication>

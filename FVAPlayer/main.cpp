@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "fvaplayer.h"
-#include <QtWidgets/QApplication>
+#include <QApplication>
 
 int main(int argc, char *argv[])
 {

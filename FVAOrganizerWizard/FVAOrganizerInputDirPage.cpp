@@ -7,12 +7,12 @@
 */
 #include "FVAOrganizerInputDirPage.h"
 
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QTextBrowser>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QFileDialog>
+#include <QLabel>
+#include <QLineEdit>
+#include <QTextBrowser>
+#include <QPushButton>
+#include <QGridLayout>
+#include <QFileDialog>
 
 #include "FVAOrganizerWizard.h"
 

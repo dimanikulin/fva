@@ -10,10 +10,10 @@
 
 #include <memory>
 
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QMainWindow>
+#include <QDialog>
+#include <QMainWindow>
 #include <QTCore/QtCore>
-#include <QtWidgets/QTreeWidget>
+#include <QTreeWidget>
 
 #include "fvacommonlib.h"
 #include "FVADescriptionFile.h"

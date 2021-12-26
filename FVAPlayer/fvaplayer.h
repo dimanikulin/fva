@@ -10,7 +10,7 @@
 
 #include "videowidget.h"
 
-#include <QtWidgets/QWidget>
+#include <QWidget>
 #include <QtMultimedia/QMediaPlayer>
 
 QT_BEGIN_NAMESPACE

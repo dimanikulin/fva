@@ -11,9 +11,9 @@
 #include "fvacommonui.h"
 #include "fvalogger.inl"
 
-#include <QtWidgets/QApplication>
+#include <QApplication>
 #include <QtCore/QDir>
-#include <QtWidgets/QMessageBox>
+#include <QMessageBox>
 
 LOGGER_GLOBAL
 

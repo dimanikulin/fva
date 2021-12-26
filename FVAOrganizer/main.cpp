@@ -6,8 +6,8 @@
 * \date  2014-2021
 */
 #include <QtCore/QDateTime>
-#include <QtWidgets/QMessageBox>
-#include <QtWidgets/QApplication>
+#include <QMessageBox>
+#include <QApplication>
 
 #include "fvadataprocessor.h"
 #include "fvacommonlib.h"

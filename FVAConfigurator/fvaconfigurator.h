@@ -7,7 +7,7 @@
 */
 #pragma once
 
-#include <QtWidgets/QDialog>
+#include <QDialog>
 #include <QtCore/QMap>
 
 #include "ui_fvaconfigurator.h"

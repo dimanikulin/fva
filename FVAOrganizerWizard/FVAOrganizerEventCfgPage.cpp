@@ -8,9 +8,9 @@
 #include "FVAOrganizerEventCfgPage.h"
 
 #include <QVBoxLayout>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QTextBrowser>
+#include <QPushButton>
+#include <QLabel>
+#include <QTextBrowser>
 
 #include <QUrl>
 #include <QDesktopServices>

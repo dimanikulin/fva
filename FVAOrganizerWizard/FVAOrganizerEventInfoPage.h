@@ -8,7 +8,7 @@
 #ifndef _FVA_ORG_EVENT_INFO_H_
 #define _FVA_ORG_EVENT_INFO_H_
 
-#include <QtWidgets/QWizardPage>
+#include <QWizardPage>
 
 #include "FVAFlowController.h"
 
