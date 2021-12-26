@@ -71,12 +71,12 @@ class fvaItem
 		/*!
 		 * folder fva specific info
 		 */
-		fvaFolder*				fvaFolder;
+		fvaFolder*				pFvaFolder;
 
 		/*!
 		 * file fva specific info
 		 */
-		fvaFile*				fvaFile;
+		fvaFile*				pFvaFile;
 };
 
 #endif //FVAITEM_H

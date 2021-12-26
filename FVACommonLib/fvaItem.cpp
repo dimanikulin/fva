@@ -6,8 +6,8 @@ fvaItem::fvaItem ()
 {
 	isFiltered			= true;
 	type				= FVA_FS_TYPE_UNKNOWN;
-	fvaFolder			= nullptr;
-	fvaFile				= nullptr;
+	pFvaFolder			= nullptr;
+	pFvaFile			= nullptr;
 }
 
 fvaItem::~fvaItem ()
@@ -20,36 +20,36 @@ fvaItem::~fvaItem ()
 		*idChild = nullptr;
 	}
 
-	if ( nullptr != fvaFolder )
-		delete fvaFolder;
+	if ( nullptr != pFvaFolder )
+		delete pFvaFolder;
 
-	if ( nullptr != fvaFile )
-		delete fvaFile;
+	if ( nullptr != pFvaFile )
+		delete pFvaFile;
 }
 QString fvaItem::getGuiName(const QVariantMap&	dictionaries)
 {
 	if (type == FVA_FS_TYPE_DIR)
 	{
 		QString desc;
-		if ( fvaFolder && fvaFolder->eventId != 0)
+		if ( pFvaFolder && pFvaFolder->eventId != 0)
 		{
 			QVariantList vlist = dictionaries["events"].toList();
 			for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
 			{
-				if ( i->toMap()["ID"].toUInt() == fvaFolder->eventId )
+				if ( i->toMap()["ID"].toUInt() == pFvaFolder->eventId )
 				{
 					desc =	 " - " + i->toMap()["fullName"].toString();
 					break;
 				}
 			}
 
-			if ( fvaFolder && !fvaFolder->eventReasonPeopleIds.isEmpty())
+			if ( pFvaFolder && !pFvaFolder->eventReasonPeopleIds.isEmpty())
 			{
 				QVariantList vlist = dictionaries["people"].toList();
 				for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
 				{
-					if ( ( i->toMap()["ID"].toUInt() == fvaFolder->eventReasonPeopleIds[0])
-					&& fvaFolder->eventReasonPeopleIds[0] )
+					if ( ( i->toMap()["ID"].toUInt() == pFvaFolder->eventReasonPeopleIds[0])
+					&& pFvaFolder->eventReasonPeopleIds[0] )
 					{
 						desc +=	 "," + i->toMap()["name"].toString();
 						break;
@@ -99,32 +99,32 @@ void fillNameByOneId(int ident, const QString& dict, const QVariantMap&	dictiona
 QString fvaItem::getGuiFullName(const QVariantMap&	dictionaries)
 {
 	QString fullName;
-	if (!fvaFolder && !fvaFile)
+	if (!pFvaFolder && !pFvaFile)
 		return "";
-	if (type != FVA_FS_TYPE_DIR && fvaFile)
+	if (type != FVA_FS_TYPE_DIR && pFvaFile)
 	{
-		if (!fvaFile->description.isEmpty())
-			fullName = fvaFile->description;
+		if (!pFvaFile->description.isEmpty())
+			fullName = pFvaFile->description;
 	}
 
-	if (type != FVA_FS_TYPE_DIR && fvaFile)
+	if (type != FVA_FS_TYPE_DIR && pFvaFile)
 	{
 		if (fullName.isEmpty())
-			fullName = fvaFile->comment;
+			fullName = pFvaFile->comment;
 		else
-			fullName += ", " + fvaFile->comment;
+			fullName += ", " + pFvaFile->comment;
 	}
-	else if (type == FVA_FS_TYPE_DIR && fvaFolder)
+	else if (type == FVA_FS_TYPE_DIR && pFvaFolder)
 	{
 		if (fullName.isEmpty())
-			fullName = fvaFolder->tags;
+			fullName = pFvaFolder->tags;
 		else
-			fullName += ", " + fvaFolder->tags;
+			fullName += ", " + pFvaFolder->tags;
 	}
 
-	if (type != FVA_FS_TYPE_DIR && fvaFile)
+	if (type != FVA_FS_TYPE_DIR && pFvaFile)
 	{
-		fillNameByOneId(fvaFile->deviceId, "devices", dictionaries, fullName);
+		fillNameByOneId(pFvaFile->deviceId, "devices", dictionaries, fullName);
 	}
 	return fullName;
 }
