@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "fvadescriptioneditor.h"
-#include "fvadescriptionfile.h"
+#include "FVADescriptionFile.h"
 #include "fvacommonlib.h"
 #include "fvacommonui.h"
 #include "fvalogger.inl"

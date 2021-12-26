@@ -8,7 +8,7 @@
 
 #include "fvacommonexif.h"
 #include "exif.h"
-#include <QtCore\QFile>
+#include <QtCore/QFile>
 #include "fvariffparser.h"
 
 QString fvaGetExifMakeAndModelFromFile(const QString& pathToFile)
