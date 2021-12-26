@@ -10,7 +10,7 @@
 #include <QtWidgets/QDialog>
 #include <QtCore/QMap>
 
-#include "ui_FVAConfigurator.h"
+#include "ui_fvaconfigurator.h"
 #include "FVAConfiguration.h"
 
 class QDialogButtonBox;
