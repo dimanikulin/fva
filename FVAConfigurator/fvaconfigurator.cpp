@@ -9,7 +9,7 @@
 #include "fvaconfigurator.h"
 #include "fvaconstants.h" 
 
-#include <QTWidgets/QTabWidget>
+#include <QTabWidget>
 #include <QTWidgets/QDialogButtonBox>
 #include <QTWidgets/QVBoxLayout>
 #include <QTWidgets/QCheckBox>
