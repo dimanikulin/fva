@@ -302,7 +302,7 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& eventMap, const DIR_2_EVENT_PEOPLE_MAP& peopleMap, QObject* obj)
 {
 	// for each folder in output list
-	for (DIR_2_EVENT_MAP::iterator it = eventMap.begin(); it != eventMap.end(); ++it)
+	for (auto it = eventMap.begin(); it != eventMap.end(); ++it)
 	{		
 		QString dir = it->first;
 		QStringList params;
