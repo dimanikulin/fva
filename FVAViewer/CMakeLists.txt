@@ -7,7 +7,7 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 set(HEADER_FILES 
     ../FVACommonLib/fvacommonui.h 
     ../FVACommonLib/fvacommonlib.h 
-    ../FVACommonLib/fvaitem.h
+    ../FVACommonLib/fvaItem.h
     ../FVACommonLib/fvafolder.h
     ../FVACommonLib/fvafile.h
     ../FVACommonLib/FVADescriptionFile.h

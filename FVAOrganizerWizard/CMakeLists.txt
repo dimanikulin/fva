@@ -8,7 +8,7 @@ set(HEADER_FILES
     ../FVACommonLib/fvacommoncsv.h
     ../FVACommonLib/fvacommonui.h
     ../FVACommonLib/fvacommonlib.h
-    ../FVACommonLib/FVAconstants.h
+    ../FVACommonLib/fvaconstants.h
     ../FVACommonLib/fvaconfiguration.h
     ../FVACommonLib/fvalogger.inl
     ../FVADataProcessor/FVADataProcessor.h
