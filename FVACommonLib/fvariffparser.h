@@ -10,7 +10,7 @@
 
 #include <memory>
 
-#include <QtCore/Qstring> 
+#include <QtCore/QString> 
 #include <QtCore/QDateTime>
 #include <QtCore/QDataStream>
 #include <QtCore/QFile>
