@@ -8,7 +8,7 @@
 
 #include <QtWidgets/QMessageBox>
 #include <QPainter>
-#include <QTGui/QIcon>
+#include <QIcon>
 #include <QtCore/QCoreApplication>
 
 #include "fvacommoncsv.h"
