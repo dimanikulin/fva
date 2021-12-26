@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 
-#include "FVAConfigurator.h"
+#include "fvaconfigurator.h"
 #include "fvaconstants.h" 
 
 #include <QTWidgets/QTabWidget>
