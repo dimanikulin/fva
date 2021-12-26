@@ -11,7 +11,7 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QDir>
 
-#include "FVAConfiguration.h"
+#include "fvaconfiguration.h"
 #include "fvacommonui.h"
 #include "fvacommoncsv.h"
 #include "fvalogger.inl"
@@ -301,11 +301,21 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 
 FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& eventMap, const DIR_2_EVENT_PEOPLE_MAP& peopleMap, QObject* obj)
 {
+	QString fvaSWRootDir;
+	FVA_EXIT_CODE exitCode = cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
+
+	// show error message box and return to calling function if previous operation failed
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
+
+	QString fvafileNPath = fvaSWRootDir + "/#data#/fvafileN.csv";
+
 	// for each folder in output list
 	for (auto it = eventMap.begin(); it != eventMap.end(); ++it)
 	{		
-		QString dir = it.key();
 		QStringList params;
+		params.append(fvafileNPath);
+
+		QString dir = it.key();
 		params.append(dir);
 
 		QString eventId = QString::number(it.value());
@@ -321,13 +331,15 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& 
 
 		params.append(peopleIds);
 
-		LOG_DEB << "FVAFlowController::ProcessInputDirForEvent " << dir << " " << eventId << " " << peopleIds;
+		QString fvafileNPath = fvaSWRootDir + "/#data#/fvafileN.csv";
+
+		LOG_DEB << "FVAFlowController::ProcessInputDirForEvent " << fvafileNPath << " " << dir << " " << eventId << " " << peopleIds;
 	
-		// run command implemented in python to update the fvafile.csv for each file in folder in eventMap and peopleMap we got 
-		FVA_EXIT_CODE exitCode = runPythonCMD("CLTUpdateEventAndEvPeopleInFvaFileN.py", obj, m_cfg, params );
+		// run command implemented in python to update the fvafile.csv for each file in folder with eventid and people we got 
+		FVA_EXIT_CODE exitCode = runPythonCMD("CLTUpdateEventAndEvPeopleInFvaFile.py", obj, m_cfg, params );
 
 		// show error message box and return to calling function if previous operation failed
-		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventAndEvPeopleInFvaFileN")
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventAndEvPeopleInFvaFile")
 	}
 
 	// do we need to search by location?

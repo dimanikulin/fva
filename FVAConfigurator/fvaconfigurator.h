@@ -11,7 +11,7 @@
 #include <QtCore/QMap>
 
 #include "ui_fvaconfigurator.h"
-#include "FVAConfiguration.h"
+#include "fvaconfiguration.h"
 
 class QDialogButtonBox;
 class QTabWidget;
