@@ -9,7 +9,7 @@
 #include "fvaconstants.h"
 #include "fvalogger.inl"
 
-#include <QtWidgets/QVBoxLayout>
+#include <QVBoxLayout>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QPushButton>
 

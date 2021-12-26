@@ -10,7 +10,7 @@
 
 #include "FVAOrganizerEventInfoPage.h"
 
-#include <QtWidgets/QVBoxLayout>
+#include <QVBoxLayout>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QTextBrowser>

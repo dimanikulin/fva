@@ -10,9 +10,9 @@
 #include "fvaconstants.h" 
 
 #include <QTabWidget>
-#include <QTWidgets/QDialogButtonBox>
-#include <QTWidgets/QVBoxLayout>
-#include <QTWidgets/QCheckBox>
+#include <QDialogButtonBox>
+#include <QVBoxLayout>
+#include <QCheckBox>
 #include <QTWidgets/QLabel>
 #include <QTWidgets/QLineEdit>
 #include <QTWidgets/QSpinBox>

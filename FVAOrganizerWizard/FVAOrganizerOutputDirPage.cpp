@@ -7,7 +7,7 @@
 */
 #include "FVAOrganizerOutputDirPage.h"
 
-#include <QtWidgets/QVBoxLayout>
+#include <QVBoxLayout>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QFileDialog>

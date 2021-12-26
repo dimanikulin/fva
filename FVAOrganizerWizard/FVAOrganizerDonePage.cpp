@@ -9,7 +9,7 @@
 #include "FVAconstants.h"
 #include "fvalogger.inl"
 
-#include <QtWidgets/QVBoxLayout>
+#include <QVBoxLayout>
 #include <QtWidgets/QTextBrowser>
 
 FVAOrganizerDonePage::FVAOrganizerDonePage(void)
