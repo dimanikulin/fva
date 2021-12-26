@@ -8,7 +8,7 @@
 
 #include "fvacommonui.h"
 #include "fvalogger.inl"
-#include "FVAConfigurator.h"
+#include "fvaconfigurator.h"
 #include <QtWidgets/QApplication>
 
 LOGGER_GLOBAL
