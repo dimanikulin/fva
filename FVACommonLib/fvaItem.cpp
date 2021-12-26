@@ -1,5 +1,5 @@
 #include "fvaItem.h"
-#include "fvaFile.h"
+#include "fvafile.h"
 #include "fvaFolder.h"
 
 fvaItem::fvaItem ()

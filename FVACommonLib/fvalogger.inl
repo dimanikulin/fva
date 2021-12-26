@@ -1,5 +1,5 @@
 /*!
-* \file Fvalogger.inl
+* \file fvalogger.inl
 * \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
 * \author Dima Nikulin.
 * \version 0.29

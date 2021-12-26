@@ -7,8 +7,8 @@
 */
 #include "CmdLineBaseExecutor.h"
 
-#include <QtCore/qdebug>
-#include <QtCore/qdir>
+#include <QtCore/QDebug>
+#include <QtCore/QDir>
 
 FVA_EXIT_CODE CmdLineBaseExecutor::run(const CLTContext& context, const FvaConfiguration& cfg)
 {

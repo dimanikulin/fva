@@ -7,7 +7,7 @@
 */
 #include "CmdLineBaseTask.h"
 
-#include <QtCore/qdebug>
+#include <QtCore/QDebug>
 
 FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly(const QString& folder, const CLTContext& context)
 {

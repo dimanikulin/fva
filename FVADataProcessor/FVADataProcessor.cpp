@@ -7,8 +7,8 @@
 */
 #include "FVADataProcessor.h"
 
-#include <QtCore/qdebug>
-#include <QtCore/qdir>
+#include <QtCore/QDebug>
+#include <QtCore/QDir>
 
 #include "CLTRenameVideoBySequence.h"
 #include "CLTCreateDirStructByDevNames.h"
