@@ -304,11 +304,11 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& 
 	// for each folder in output list
 	for (auto it = eventMap.begin(); it != eventMap.end(); ++it)
 	{		
-		QString dir = it->first;
+		QString dir = it.key();
 		QStringList params;
 		params.append(dir);
 
-		QString eventId = QString::number(it->second);
+		QString eventId = QString::number(it.value());
 		params.append(eventId);
 
 		QString peopleIds;
