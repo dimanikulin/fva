@@ -92,7 +92,11 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 			
 	QVBoxLayout * layout	= new QVBoxLayout;
 
-	layout->addWidget(words);
+	QGridLayout * headerLayout= new QGridLayout;
+	headerLayout->addWidget(words,0,0);
+	headerLayout->addWidget(inputDirButton,0,1);
+	layout->addLayout(headerLayout);
+
 	inputDirsWidget = new QTreeWidget;
 	inputDirsWidget->setHeaderHidden(true);
 	layout->addWidget(inputDirsWidget);
@@ -113,11 +117,7 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 
 	logOutput		= new QTextBrowser;
 
-	QGridLayout * btnLayout= new QGridLayout;
-	btnLayout->addWidget(saveButton,0,0);
-	btnLayout->addWidget(inputDirButton,0,1);
-
-	layout->addLayout(btnLayout);
+	layout->addWidget(saveButton);
 	layout->addWidget(logOutput);
 
 	setLayout(layout);
