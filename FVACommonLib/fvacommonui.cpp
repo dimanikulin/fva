@@ -7,7 +7,7 @@
 */
 
 #include <QtWidgets/QMessageBox>
-#include <QTGui/QPainter.h>
+#include <QPainter>
 #include <QTGui/QIcon>
 #include <QtCore/QCoreApplication>
 

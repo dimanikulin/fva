@@ -5,7 +5,7 @@
 * \version 0.29
 * \date  2014-2021
 */
-#include <QtGui/QPainter.h>
+#include <QPainter>
 
 #include "QPictureLabel.h"
 
