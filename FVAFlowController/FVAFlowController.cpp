@@ -302,7 +302,7 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& eventMap, const DIR_2_EVENT_PEOPLE_MAP& peopleMap, QObject* obj)
 {
 	// for each folder in output list
-	for (STR_LIST::const_iterator it = eventMap.begin(); it != eventMap.end(); ++it)
+	for (DIR_2_EVENT_MAP::const_iterator it = eventMap.begin(); it != eventMap.end(); ++it)
 	{		
 		QString dir = it.first;
 		QStringList params;
@@ -324,7 +324,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& 
 		LOG_DEB << "FVAFlowController::ProcessInputDirForEvent " << dir << " " << eventId << " " << peopleIds;
 	
 		// run command implemented in python to update the fvafile.csv for each file in folder in eventMap and peopleMap we got 
-		exitCode = runPythonCMD("CLTUpdateEventAndEvPeopleInFvaFileN.py", obj, m_cfg, params );
+		FVA_EXIT_CODE exitCode = runPythonCMD("CLTUpdateEventAndEvPeopleInFvaFileN.py", obj, m_cfg, params );
 
 		// show error message box and return to calling function if previous operation failed
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventAndEvPeopleInFvaFileN")
