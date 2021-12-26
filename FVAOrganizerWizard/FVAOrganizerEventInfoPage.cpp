@@ -94,15 +94,18 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 
 	layout->addWidget(words);
 	inputDirsWidget = new QTreeWidget;
+	inputDirsWidget->setHeaderHidden(true);
 	layout->addWidget(inputDirsWidget);
 
 	QGridLayout * infoLayout= new QGridLayout;
 
 	eventsWidget		= new QTreeWidget;
+	eventsWidget->setHeaderHidden(true);
 	infoLayout->addWidget(eventLbl,0,0); 	
 	infoLayout->addWidget(eventsWidget,1,0);
 
 	peopleWidget		= new QTreeWidget;
+	peopleWidget->setHeaderHidden(true);
 	infoLayout->addWidget(peopleLbl,0,1);
 	infoLayout->addWidget(peopleWidget,1,1);
 
@@ -171,6 +174,9 @@ void FVAOrganizerEventInfoPage::OnSaveButtonPressed()
 	dir2EventMap[selectedInputDirPath] = eventIds.at(0);
 
 	dir2PeopleMap[selectedInputDirPath] = peopleIds;
+	
+	peopleWidget->selectionModel()->clearSelection();
+	eventsWidget->selectionModel()->clearSelection();
 }
 
 void FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed()
