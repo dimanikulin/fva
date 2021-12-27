@@ -65,17 +65,17 @@ jobs:
 
         # commented to reduce billed execution time
          
-        - {
-            name: "Ubuntu Latest GCC", artifact: "Linux.7z",
-            os: ubuntu-latest,
-            cc: "gcc", cxx: "g++"
-          }
+        #- {
+        #    name: "Ubuntu Latest GCC", artifact: "Linux.7z",
+        #    os: ubuntu-latest,
+        #    cc: "gcc", cxx: "g++"
+        #  }
         
-        - {
-            name: "macOS Latest Clang", artifact: "macOS.7z",
-            os: macos-latest,
-            cc: "clang", cxx: "clang++"
-          }
+        #- {
+        #    name: "macOS Latest Clang", artifact: "macOS.7z",
+        #    os: macos-latest,
+        #    cc: "clang", cxx: "clang++"
+        #  }
 
     steps:
     - name: Checkout FVA repository
@@ -159,23 +159,7 @@ jobs:
         target: 'desktop'
         arch: 'win64_mingw81'
         setup-python : 'false'
-    
-    # commented out due to unuse
-    #- name: Check availability of QT libraries and Configure CMake for it
-    #  run: |
-    #   ls
-    #   ls D:/a/fva/Qt/${{ env.QT_VERSION }}/msvc2019_64/lib/
-    #   Tree D:/a/fva/Qt/5.15.2/mingw81_64 /F | Select-Object -Skip 2
-    #   Get-ChildItem -Path D:/a/fva/Qt/5.15.2/mingw81_64/lib -Recurse -Force -ErrorAction SilentlyContinue | Select-Object FullName
-    
-    # commented out due to unuse
-    #- name: Check QMake and make
-    # run: |
-    #  Write-Output (Get-Command qmake.exe).Path
-    # qmake.exe -version
-    # Write-Output (Get-Command mingw32-make.exe).Path
-    # mingw32-make.exe -version
-        
+            
     - name: Configure make files by CMake
       shell: cmake -P {0}
       env:
