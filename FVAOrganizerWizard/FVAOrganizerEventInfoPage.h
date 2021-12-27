@@ -25,8 +25,8 @@ class QTreeWidgetItem;
 * 2. The events(aka dirs) we need to add information about, in form of a QTreeWidget;
 * 3. "Open dir" button (QPushButton) to open input dir where processed files are in to recall their content.
 * 4. "Save" button (QPushButton) to save information user provided
-* 5. QTreeWidget to set up Event Type
-* 6. TreeWidget to set up the people list because this event happened of
+* 5. QTreeWidget to set up Event Type using dictionary
+* 6. TreeWidget to set up the people list because this event happened of using dictionary
 * 7. QTextBrowser to output the logging events;
 * This class implements "View" functions from MVC pattern.
 */

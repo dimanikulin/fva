@@ -308,9 +308,9 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& 
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
 	QStringList params;
-	params.append(fvafileNPath);
 
 	QString fvafileNPath = fvaSWRootDir + "/#data#/fvafileN.csv";
+	params.append(fvafileNPath);
 
 	// for each folder in output list
 	for (auto it = eventMap.begin(); it != eventMap.end(); ++it)
