@@ -7,9 +7,10 @@
 */
 #include "CLTSetFileAtts.h"
 
-// TODO to make it cross compiled and not win depent
-#include <windows.h>
-#include <winbase.h>
+#if (defined (_WIN32) || defined (_WIN64))
+	#include <windows.h>
+	#include <winbase.h>
+#endif
 
 FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/)
 {
@@ -21,15 +22,19 @@ FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/)
 		FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
 		if (FVA_FS_TYPE_UNKNOWN != type)
 		{
-			//if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), FILE_ATTRIBUTE_READONLY))
-			//	LOG_QCRIT << "can not set attr for fva file:" << info.absoluteFilePath();
+#if (defined (_WIN32) || defined (_WIN64))
+			if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), FILE_ATTRIBUTE_READONLY))
+				LOG_QCRIT << "can not set attr for fva file:" << info.absoluteFilePath();
+#endif
 		}
 		else
 		{
 			if (fvaIsInternalFile(info.fileName()))
 			{
-			//	if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY))
-			//		LOG_QCRIT << "can not set attr for internal file:" << info.absoluteFilePath();
+#if (defined (_WIN32) || defined (_WIN64))
+				if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY))
+					LOG_QCRIT << "can not set attr for internal file:" << info.absoluteFilePath();
+#endif
 			}
 			else
 			{
