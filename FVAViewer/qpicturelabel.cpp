@@ -7,7 +7,7 @@
 */
 #include <QPainter>
 
-#include "QPictureLabel.h"
+#include "qpicturelabel.h"
 
 void QPictureLabel::paintEvent(QPaintEvent *aEvent)
 {

@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "fvaviewer.h"
-#include "QPictureLabel.h"
+#include "qpicturelabel.h"
 
 #include <QtCore/QString>
 #include <QListWidget>
