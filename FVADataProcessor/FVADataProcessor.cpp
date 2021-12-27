@@ -17,7 +17,7 @@
 #include "CLTAutoChecks1.h"
 #include "CLTCheckFileFormat.h"
 #include "CLTCheckLocation.h"
-#include "CLTCheckDatetime.h"
+#include "CLTCheckDateTime.h"
 
 #include "CLTRenameFiles.h"
 #include "CLTFixDuplicatedFileNames.h"

@@ -7,7 +7,7 @@
 */
 #include "CLTSetFileAtts.h"
 
-#if (defined (_WIN32) || defined (_WIN64))
+#if (defined (Q_OS_WIN))
 	#include <windows.h>
 	#include <winbase.h>
 #endif
@@ -22,7 +22,7 @@ FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/)
 		FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
 		if (FVA_FS_TYPE_UNKNOWN != type)
 		{
-#if (defined (_WIN32) || defined (_WIN64))
+#if (defined (Q_OS_WIN))
 			if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), FILE_ATTRIBUTE_READONLY))
 				LOG_QCRIT << "can not set attr for fva file:" << info.absoluteFilePath();
 #endif
@@ -31,7 +31,7 @@ FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/)
 		{
 			if (fvaIsInternalFile(info.fileName()))
 			{
-#if (defined (_WIN32) || defined (_WIN64))
+#if (defined (Q_OS_WIN))
 				if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY))
 					LOG_QCRIT << "can not set attr for internal file:" << info.absoluteFilePath();
 #endif
