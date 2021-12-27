@@ -6,7 +6,7 @@
 * \date  2014-2021
 */
 #include "FVAOrganizerDonePage.h"
-#include "FVAconstants.h"
+#include "fvaconstants.h"
 #include "fvalogger.inl"
 
 #include <QVBoxLayout>
