@@ -9,6 +9,8 @@
 #include "qpicturelabel.h"
 
 #include <QtCore/QString>
+#include <QtCore/QDir>
+#include <QtCore/QProcess>
 #include <QListWidget>
 #include <QProgressDialog>
 
@@ -32,7 +34,7 @@ void FVAViewer::showProgress(const QString& rootDir)
 	progress.setWindowModality(Qt::ApplicationModal); 
 	int itemNumber = 0;
 	populateGUITree( m_rootItem.get(), nullptr, itemNumber, &progress );
-    progress.setValue(number);
+	progress.setValue(number);
 }
 
 void FVAViewer::prepareFilters()
