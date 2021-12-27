@@ -347,13 +347,16 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_ID_MAP& eve
 	}
 
 	// do we need to search by location?
-	*bool SearchByLocation = false;
+	bool SearchByLocation = false;
 
 	// ask configuration if we need to search by location
 	exitCode = m_cfg.getParamAsBoolean("Search::Location", SearchByLocation);
 
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Location)")
+
+	CLTContext context; // empty so far
+
 	if (SearchByLocation)
 	{
 		// perform location checks
