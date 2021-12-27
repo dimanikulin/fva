@@ -28,39 +28,6 @@
 #include "fvalogger.inl"
 #include "fvaconfiguration.h"
 
-void populateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget)
-{
-	QDir dir(folder);
-	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
-	{			
-		if ( !info.isDir() )
-			continue;
-		// just skip internal folder
-		if ( info.fileName()[0] == '#' 
-			&& info.fileName()[info.fileName().size()-1] == '#' )
-			continue;
-
-		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
-                treeWidgetItem->setText	( 0, info.fileName() );
-
-		treeWidgetItem->setData( 1, 1, (QString) info.absoluteFilePath() );
-
-		if (info.fileName().length()!=4) // not YEAR folder
-			treeWidgetItem->setForeground( 0 , QBrush (Qt::red) );
-
-		if (item)
-		{
-			item->addChild(treeWidgetItem);
-			QIcon	icon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/folder.png");
-			item->setIcon(0, icon);
-		}
-		else
-			treeWidget->addTopLevelItem (treeWidgetItem);
-
-		populateInputDir(info.absoluteFilePath(), treeWidgetItem, treeWidget);
-	}		
-}
-
 FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 {
         LOG_DEB << "FVAOrganizerEventInfoPage construction" ;
@@ -217,7 +184,7 @@ void FVAOrganizerEventInfoPage::setVisible(bool visible)
 		exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("get.param")
 
-		populateInputDir(inputDir, nullptr, inputDirsWidget);
+		fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget);
 
 		exitCode = fvaBuildPeopleFilterTree(this, peopleWidget, false, rootSWdir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildPeopleFilterTree")

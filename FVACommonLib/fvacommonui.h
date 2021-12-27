@@ -90,6 +90,15 @@ void fvaUpdateChecks(QTreeWidgetItem *item, int column);
  */
 void fvaClearChecks(QTreeWidgetItem *item);
 
+/*!
+ * \brief it shows input dir structure 
+ * \param folder - to show a folder in GUI
+ * \param item - current tree item we work with
+ * \param treeWidget - a widget we draw dir structure on
+ * \returns it returns nothing
+ */
+void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget);
+
 #define FVA_MESSAGE_BOX(message)\
 	QMessageBox msgBox; \
 	msgBox.setText(message); \
