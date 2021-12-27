@@ -10,6 +10,7 @@
 #include <QPainter>
 #include <QIcon>
 #include <QtCore/QCoreApplication>
+#include <QDir>
 
 #include "fvacommoncsv.h"
 #include "fvalogger.inl"
