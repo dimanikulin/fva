@@ -23,7 +23,7 @@ FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/)
 		if (FVA_FS_TYPE_UNKNOWN != type)
 		{
 #if (defined (Q_OS_WIN))
-			if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), FILE_ATTRIBUTE_READONLY))
+			if (!SetFileAttributes(info.absoluteFilePath().toStdString().c_str(), FILE_ATTRIBUTE_READONLY))
 				LOG_QCRIT << "can not set attr for fva file:" << info.absoluteFilePath();
 #endif
 		}
@@ -32,7 +32,7 @@ FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/)
 			if (fvaIsInternalFile(info.fileName()))
 			{
 #if (defined (Q_OS_WIN))
-				if (!SetFileAttributes(info.absoluteFilePath().toStdWString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY))
+				if (!SetFileAttributes(info.absoluteFilePath().toStdString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY))
 					LOG_QCRIT << "can not set attr for internal file:" << info.absoluteFilePath();
 #endif
 			}

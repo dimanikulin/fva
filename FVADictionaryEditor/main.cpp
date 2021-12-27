@@ -12,7 +12,7 @@
 #include "fvalogger.inl"
 
 #include <QApplication>
-#include <QtCore/qtextcodec>
+#include <QtCore/QTextCodec>
 
 LOGGER_GLOBAL
 

@@ -8,7 +8,7 @@
 
 #include "fvaorganizerwizard.h"
 #include <QApplication>
-#include <QtCore/qtextcodec>
+#include <QtCore/QTextCodec>
 
 #include "fvalogger.inl"
 #include "fvacommonui.h"
