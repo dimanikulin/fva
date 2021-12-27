@@ -210,7 +210,7 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
 	{
 		// let's ask configuration if we can fixing "no exif date time" issue by picture modification time 
 		bool fixPicsByModifTime = false;
-		exitCode = cfg.getParamAsBoolean("Rename::picsByModifTime", fixPicsByModifTime);
+		exitCode = m_cfg.getParamAsBoolean("Rename::picsByModifTime", fixPicsByModifTime);
 
 		// show error message box and return to calling function if previous operation failed
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsBoolean")
@@ -322,10 +322,10 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir
 		params.append(eventId);
 	
 		// run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got 
-		exitCode = runPythonCMD("CLTUpdateEventInFvaFile.py", obj, params);
+		exitCode = runPythonCMD("CLTUpdateEventForDir.py", obj, params);
 
 		// show error message box and return to calling function if previous operation failed
-		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventInFvaFile")
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventForDir")
 
 		params.removeLast(); // remove last param as ot was for previous cmd actual only
 		QString peopleIds;
@@ -340,10 +340,10 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir
 		LOG_DEB << "FVAFlowController::ProcessInputDirForEvent " << fvafileNPath << " " << dir << " " << eventId << " " << peopleIds;
 
 		// run command implemented in python to update the fvafile.csv for each file in folder with event people ids we got 
-		exitCode = runPythonCMD("CLTUpdateEventPeopleInFvaFile.py", obj, params);
+		exitCode = runPythonCMD("CLTUpdateEventPeopleForDir.py", obj, params);
 
 		// show error message box and return to calling function if previous operation failed
-		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventPeopleInFvaFile")
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventPeopleForDir")
 	}
 
 	// do we need to search by location?
