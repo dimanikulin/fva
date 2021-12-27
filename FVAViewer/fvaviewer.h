@@ -16,7 +16,7 @@
 
 #include "fvacommonlib.h"
 #include "FVADescriptionFile.h"
-#include "fvafilter.h"
+#include "fvaFilter.h"
 
 #include "ui_fvaviewer.h"
 #include "ui_filters.h"

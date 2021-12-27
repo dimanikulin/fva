@@ -109,16 +109,17 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		* \brief to output the event structure 
 		*/
 		QTreeWidget*		eventsWidget;	
-		
-		/*!
-		* \brief directories to event map
-		*/
-		DIR_2_EVENT_MAP		dir2EventMap;
 
 		/*!
-		* \brief directories to people map
+		* \brief maps input dir structure (folder names) to event ids got from fvaEvents.csv
+		*/		
+		DIR_2_ID_MAP		dir2EventMap;
+
+		/*!
+		* \brief  maps input dir structure (folder names) to people ids (that caused the event) got from fvaPeople.csv
 		*/
-		DIR_2_EVENT_PEOPLE_MAP	dir2PeopleMap;
+
+		DIR_2_IDS_MAP		dir2PeopleMap;
 };
 
 #endif // _FVA_ORG_EVENT_INFO_H_

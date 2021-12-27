@@ -299,7 +299,7 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 	return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& eventMap, const DIR_2_EVENT_PEOPLE_MAP& peopleMap, QObject* obj)
+FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj)
 {
 	QString fvaSWRootDir;
 	FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);

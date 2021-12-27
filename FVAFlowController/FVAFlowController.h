@@ -24,14 +24,14 @@
 typedef QList<QString> STR_LIST;
 
 /*!
-* \brief DIR_2_EVENT_MAP maps input dir structure (folder names) to event ids got from fvaEvents.csv
+* \brief DIR_2_ID_MAP maps input dir structure (folder names) to ids
 */
-typedef QMap<QString,unsigned int> DIR_2_EVENT_MAP;
+typedef QMap<QString,unsigned int> DIR_2_ID_MAP;
 
 /*!
-* \brief DIR_2_EVENT_PEOPLE_MAP maps input dir structure (folder names) to people ids (that caused the event) got from fvaPeople.csv
+* \brief DIR_2_IDS_MAP maps input dir structure (folder names) to ids
 */
-typedef QMap<QString,QList<unsigned int>> DIR_2_EVENT_PEOPLE_MAP;
+typedef QMap<QString,QList<unsigned int>> DIR_2_IDS_MAP;
 
 class QObject;
 
@@ -84,7 +84,7 @@ public:
 	 * \param obj - to attach the child processes to this object
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE ProcessInputDirForEvent(const DIR_2_EVENT_MAP& eventMap, const DIR_2_EVENT_PEOPLE_MAP& peopleMap, QObject* obj);
+	FVA_EXIT_CODE ProcessInputDirForEvent(const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj);
 
 private:
 
