@@ -163,7 +163,7 @@ void FVAOrganizerPlacePage::setVisible(bool visible)
 
 		fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget);
 
-		exitCode = fvaBuildPlaceTree(this, eventsWidget, rootSWdir);
+		exitCode = fvaBuildPlaceTree(this, placesWidget, rootSWdir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildPlaceTree")
 	}
 	LOG_DEB << "FVAOrganizerPlacePage::setVisible before exit";

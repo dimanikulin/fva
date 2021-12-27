@@ -9,6 +9,7 @@
 #define _FVA_ORG_PLACE_PAGE_H_
 
 #include <QWizardPage>
+#include "FVAFlowController.h"
 
 class QPushButton;
 class QLabel;
