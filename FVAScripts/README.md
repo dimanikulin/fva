@@ -4,8 +4,8 @@
 | CLTFixEmptyDateTime.py      | TBD |  TBD | TBD |
 | CreateFvaDBDevices.cmd      | TBD |  TBD | TBD |
 | PrintExifForDir.py          | TBD |  TBD | TBD |
-| checkCLT2.cmd               | TBD |  TBD | TBD |
-| checkCLT3.cmd               | TBD |  TBD | TBD |
+| TBD                         | TBD |  TBD | TBD |
+| TBD                         | TBD |  TBD | TBD |
 | createFvaDB.cmd             | TBD |  TBD | TBD |
 | createFvaDB.sql             | TBD |  TBD | TBD |
 | createFvaDBDevices.sql      | TBD |  TBD | TBD |
