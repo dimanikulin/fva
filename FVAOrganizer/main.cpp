@@ -9,7 +9,7 @@
 #include <QMessageBox>
 #include <QApplication>
 
-#include "fvadataprocessor.h"
+#include "FVADataProcessor.h"
 #include "fvacommonlib.h"
 #include "fvalogger.inl"
 #include "fvacommonui.h"
