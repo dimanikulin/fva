@@ -65,17 +65,17 @@ jobs:
 
         # commented to reduce billed execution time
          
-        - {
-            name: "Ubuntu Latest GCC", artifact: "Linux.7z",
-            os: ubuntu-latest,
-            cc: "gcc", cxx: "g++"
-          }
+       # - {
+       #     name: "Ubuntu Latest GCC", artifact: "Linux.7z",
+       #     os: ubuntu-latest,
+       #     cc: "gcc", cxx: "g++"
+       #   }
         
-        #- {
-        #    name: "macOS Latest Clang", artifact: "macOS.7z",
-        #    os: macos-latest,
-        #    cc: "clang", cxx: "clang++"
-        #  }
+        - {
+            name: "macOS Latest Clang", artifact: "macOS.7z",
+            os: macos-latest,
+            cc: "clang", cxx: "clang++"
+          }
 
     steps:
     - name: Checkout FVA repository
