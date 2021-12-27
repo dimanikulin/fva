@@ -31,6 +31,8 @@ add_executable(fvaorganizerwizard
     FVAOrganizerOrientPage.h
     FVAOrganizerOutputDirPage.cpp
     FVAOrganizerOutputDirPage.h
+    FVAOrganizerPlacePage.h
+    FVAOrganizerPlacePage.cpp
     FVAOrganizerStartPage.cpp
     FVAOrganizerStartPage.h
     fvaorganizerwizard.cpp

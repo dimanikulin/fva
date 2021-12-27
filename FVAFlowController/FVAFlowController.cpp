@@ -347,7 +347,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_ID_MAP& eve
 	}
 
 	// do we need to search by location?
-	/*bool SearchByLocation = false;
+	*bool SearchByLocation = false;
 
 	// ask configuration if we need to search by location
 	exitCode = m_cfg.getParamAsBoolean("Search::Location", SearchByLocation);
@@ -361,9 +361,8 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_ID_MAP& eve
 
 		// return to calling function if previous operation failed
 		RET_RES_IF_RES_IS_ERROR
-	}*/
+	}
 	
-
 	return FVA_NO_ERROR;
 }
 FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput)

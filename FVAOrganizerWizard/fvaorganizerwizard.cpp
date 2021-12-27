@@ -18,6 +18,7 @@
 #include "FVAOrganizerOutputDirPage.h"
 #include "FVAOrganizerEventCfgPage.h"
 #include "FVAOrganizerEventInfoPage.h"
+#include "FVAOrganizerPlacePage.h"
 
 FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	: QWizard(parent)
@@ -64,6 +65,15 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 		setPage(index++, new FVAOrganizerEventInfoPage);
         	LOG_DEB << "FVAOrganizerEventInfoPage created";
 
+	}
+
+	// do we need to show place page?
+	exitCode = cfg.getParamAsBoolean("Search::Location", isSet);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.getParamAsBoolean")
+	if (isSet)
+	{
+		setPage(index++, new FVAOrganizerPlacePage);
+        	LOG_DEB << "FVAOrganizerPlacePage created";
 	}
 
 	setPage(index++, new FVAOrganizerOutputDirPage);
