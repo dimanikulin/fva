@@ -186,8 +186,8 @@ void FVAOrganizerEventInfoPage::setVisible(bool visible)
 
 		fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget);
 
-		exitCode = fvaBuildPeopleFilterTree(this, peopleWidget, false, rootSWdir);
-		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildPeopleFilterTree")
+		exitCode = fvaBuildPeopleTree(this, peopleWidget, false, rootSWdir);
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildPeopleTree")
 
 		exitCode = fvaBuildEventTree(this, eventsWidget, rootSWdir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildEventTree")

@@ -26,37 +26,13 @@
 FVA_EXIT_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QString& text);
 
 /*!
- * \brief it created filter tree in gui widgets with two levels
- * \param pMainWnd - window keeping tree widget  
- * \param pTreeWidget - widget to build tree in
- * \param rootLevel - root level dictionary
- * \param level - second level dictionary
- * \returns it returns notning
- */
-void fvaBuildFilterTree(QWidget* pMainWnd, 
-					QTreeWidget* pTreeWidget, 
-					const QVariantList& rootLevel, 
-					const QVariantList& level,
-					QIcon* rootIcon,
-					QIcon* icon);
-
-/*!
- * \brief it creates filter tree in gui widgets
- * \param pMainWnd - window keeping tree widget  
- * \param pTreeWidget - widget to build tree in
- * \param devices - need to insert devices
- * \returns it returns notning
- */
-void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QVariantMap& dict);
-
-/*!
  * \brief it creates people tree in gui widgets
  * \param pMainWnd - window keeping tree widget
  * \param pTreeWidget - widget to build tree in
  * \param rootSWdir - dir where FVA SW is located
  * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
  */
-FVA_EXIT_CODE fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir);
+FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir);
 
 /*!
  * \brief it creates event tree in gui widgets
@@ -66,6 +42,15 @@ FVA_EXIT_CODE fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidg
  * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
  */
 FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir);
+
+/*!
+ * \brief it creates place tree in gui widgets
+ * \param pMainWnd - window keeping tree widget
+ * \param pTreeWidget - widget to build tree in
+ * \param rootSWdir - dir where FVA SW is located
+ * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
+ */
+FVA_EXIT_CODE fvaBuildPlaceTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir);
 
 /*!
  * \brief it finds all checked item ID in gui widget tree

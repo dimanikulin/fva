@@ -81,9 +81,9 @@ void FVAViewer::prepareFilters()
 	
 	// tabs->addTab(new QWidget(),tr("Свойства"));
 	
-	fvaBuildPeopleFilterTree(this, m_uiPeopleFilter->treeWidget, false, m_dictionaries);
-	fvaBuildPeopleFilterTree(this, m_uiDeviceFilter->treeWidget, true, m_dictionaries);
-	fvaBuildPeopleFilterTree(this, m_uiEventFilter->ptreeWidget, false, m_dictionaries);
+	fvaBuildPeopleTree(this, m_uiPeopleFilter->treeWidget, false, m_dictionaries);
+	fvaBuildPeopleTree(this, m_uiDeviceFilter->treeWidget, true, m_dictionaries);
+	fvaBuildPeopleTree(this, m_uiEventFilter->ptreeWidget, false, m_dictionaries);
 
 	fvaBuildFilterTree( this ,
 						m_uiPlaceFilter->treeWidget, 

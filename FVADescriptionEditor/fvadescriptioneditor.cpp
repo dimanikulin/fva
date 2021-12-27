@@ -56,13 +56,13 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.get.param")
 
-	LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleFilterTree 1";	
-	exitCode =fvaBuildPeopleFilterTree(this, ui.treePeopleWidget, false, rootSWdir);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleFilterTree.ui.treePeopleWidget")
+	LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleTree 1";	
+	exitCode =fvaBuildPeopleTree(this, ui.treePeopleWidget, false, rootSWdir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleTree.ui.treePeopleWidget")
 
-	LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleFilterTree 2";	
-	exitCode =fvaBuildPeopleFilterTree(this, ui.treePEventWidget, false, rootSWdir);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleFilterTree.ui.treePEventWidget")
+	LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleTree 2";	
+	exitCode =fvaBuildPeopleTree(this, ui.treePEventWidget, false, rootSWdir);
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleTree.ui.treePEventWidget")
 
 	exitCode = fvaBuildEventTree(this, ui.treeEventWidget, rootSWdir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildEventTree")

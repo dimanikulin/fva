@@ -16,7 +16,6 @@
 #include "fvalogger.inl"
 #include "fvacommonui.h"
 
-//TODO clean up code
 void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget)
 {
 	QDir dir(folder);
@@ -104,51 +103,13 @@ FVA_EXIT_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QSt
 
 	return FVA_NO_ERROR;
 }
-void fvaBuildFilterTree(QWidget* pMainWnd, 
+
+FVA_EXIT_CODE fvaBuildSimpleTree(QWidget* pMainWnd,
 			QTreeWidget* pTreeWidget, 
-			const QVariantList& rootLevel, 
-			const QVariantList& level,
-			QIcon* rootIcon,
-			QIcon* icon)
-{
-	pMainWnd->connect(pTreeWidget, 
-			SIGNAL(itemChanged(QTreeWidgetItem*, int)), 
-			pMainWnd,
-			SLOT(updateChecks(QTreeWidgetItem*, int)));
-	for ( auto i = rootLevel.begin(); i != rootLevel.end() ; ++i )
-	{
-		int ID = i->toMap()["ID"].toInt();
-		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
-		treeWidgetItem->setText		( 0, i->toMap()["name"].toString() );
-		if (rootIcon)
-			treeWidgetItem->setIcon		( 0, *rootIcon);
-		treeWidgetItem->setFlags		( treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
-		treeWidgetItem->setCheckState(0,Qt::Unchecked);
-		for (auto index = level.begin(); index != level.end(); ++index)
-		{
-			int IDc = index->toMap()["ID"].toInt();
-			int type = index->toMap()["type"].toInt();
-
-			if (type != ID)
-				continue;
-
-			QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
-			childWidgetItem->setText		( 0, index->toMap()["name"].toString() );
-			childWidgetItem->setFlags	( childWidgetItem->flags() | Qt::ItemIsUserCheckable);
-			childWidgetItem->setCheckState(0,Qt::Unchecked);
-			if (icon)
-				childWidgetItem->setIcon		( 0, *icon);
-			childWidgetItem->setData( 1, 1, IDc );
-			treeWidgetItem->addChild ( childWidgetItem );
-		}
-		if (treeWidgetItem->childCount())
-			pTreeWidget->addTopLevelItem ( treeWidgetItem );
-		else
-			delete treeWidgetItem;
-	}
-}
-
-FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir)
+			const QString& rootSWdir,
+			const QString& firstLvlDictName, 
+			const QString& secondLvlDictName 
+)
 {
 	pMainWnd->connect(pTreeWidget, 
 			SIGNAL(itemChanged(QTreeWidgetItem*, int)), 
@@ -159,11 +120,11 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
 	QIcon	peopleIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/people.png");
 	QIcon	photoIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/photo.png");
 
-	FVA_SIMPLE_MAP eventTypesMap;
-	FVA_EXIT_CODE res = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, eventTypesMap, "fvaEventTypes.csv");
+	FVA_SIMPLE_MAP firstLvlMap;
+	FVA_EXIT_CODE res = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, firstLvlMap, firstLvlDictName);
 	RET_RES_IF_RES_IS_ERROR
 
-	for (auto i = eventTypesMap.begin(); i != eventTypesMap.end(); ++i)
+	for (auto i = firstLvlMap.begin(); i != firstLvlMap.end(); ++i)
 	{
 		int ID = i->first;
 		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
@@ -172,12 +133,12 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
 		treeWidgetItem->setCheckState(0, Qt::Unchecked);
 		pTreeWidget->addTopLevelItem(treeWidgetItem);
 
-		FVA_SIMPLE_MAP  eventsMap;
+		FVA_SIMPLE_MAP  secondLvlMap;
 		// load only events for this type
-		res = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, eventsMap, "fvaEvents.csv", ID);
+		res = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, secondLvlMap, secondLvlDictName, ID);
 		RET_RES_IF_RES_IS_ERROR
 
-		for (auto index = eventsMap.begin(); index != eventsMap.end(); ++index)
+		for (auto index = secondLvlMap.begin(); index != secondLvlMap.end(); ++index)
 		{
 			QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
 			childWidgetItem->setText(0, index->second);
@@ -186,13 +147,22 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
 			childWidgetItem->setData(1, 1, index->first);
 
 			treeWidgetItem->addChild(childWidgetItem);
-		} // for (auto index = eventsMap.begin(); index != eventsMap.end(); ++index) 
-	} // for (auto i = eventTypesMap.begin(); i != eventTypesMap.end(); ++i)
+		} 
+	} 
 	return FVA_NO_ERROR;
+}
 
+FVA_EXIT_CODE fvaBuildPlaceTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir)
+{
+	return fvaBuildSimpleTree(pMainWnd, pTreeWidget, rootSWdir, "fvaPlaceTypes.csv", "fvaPlaces.csv");
+}
+
+FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir)
+{
+	return fvaBuildSimpleTree(pMainWnd, pTreeWidget, rootSWdir, "fvaEventTypes.csv", "fvaEvents.csv" );
 }
 #define _SHOW_ICONS_
-FVA_EXIT_CODE fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir)
+FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir)
 {
 	LOG_DEB << "fvaBuildPeopleFilterTree enter";
 	pMainWnd->connect(pTreeWidget,
@@ -314,100 +284,6 @@ FVA_EXIT_CODE fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidg
 	}
 	LOG_DEB << "fvaBuildPeopleFilterTree exit";
 	return FVA_NO_ERROR;
-}
-
-void fvaBuildPeopleFilterTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devicesNeed, const QVariantMap& dict )
-{
-	pMainWnd->connect(pTreeWidget, 
-			SIGNAL(itemChanged(QTreeWidgetItem*, int)), 
-			pMainWnd,
-			SLOT(updateChecks(QTreeWidgetItem*, int)));
-
-	QIcon	personIcon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/person.png");
-	QIcon	peopleIcon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/people.png");
-	QIcon	photoIcon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/photo.png");
-
-	QVariantList	vlist	= dict["relationTypes"].toList();
-	QVariantList	vlist1	= dict["relations"].toList();
-	QVariantList	people	= dict["people"].toList();
-	QVariantList	devices	= dict["devices"].toList();
-	for ( auto i = vlist.begin(); i != vlist.end() ; ++i )
-	{
-		int ID = i->toMap()["ID"].toInt();
-		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
-		treeWidgetItem->setText		( 0, i->toMap()["name"].toString() );
-		treeWidgetItem->setIcon		(0, peopleIcon);
-		treeWidgetItem->setFlags		(treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
-		treeWidgetItem->setCheckState(0,Qt::Unchecked);
-		for (auto index = vlist1.begin(); index != vlist1.end(); ++index)
-		{
-			int IDc = index->toMap()["ID"].toInt();
-			int IDrel = index->toMap()["RelationType"].toInt();
-			if (IDrel != ID)
-				continue;
-
-			QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
-			childWidgetItem->setText		( 0, index->toMap()["name"].toString() );
-			childWidgetItem->setIcon		(0, peopleIcon);
-			childWidgetItem->setFlags	(childWidgetItem->flags() | Qt::ItemIsUserCheckable);
-			childWidgetItem->setCheckState(0,Qt::Unchecked);
-		
-			for (auto indexp = people.begin(); indexp != people.end(); ++indexp)
-			{
-				int IDp = indexp->toMap()["ID"].toInt();
-				if (IDp == 0)
-					continue;
-
-				int IDrelp = indexp->toMap()["RelationId"].toInt();
-				if (IDrelp != IDc)
-					continue;
-
-				QTreeWidgetItem* personWidgetItem = new QTreeWidgetItem;
-				personWidgetItem->setText		( 0, indexp->toMap()["fullName"].toString() );
-				if (!devicesNeed)
-					personWidgetItem->setData( 1, 1, IDp );
-				personWidgetItem->setIcon(0, personIcon);
-				personWidgetItem->setFlags(personWidgetItem->flags() | Qt::ItemIsUserCheckable);
-				personWidgetItem->setCheckState(0,Qt::Unchecked);
-				
-				if (!devicesNeed)
-				{
-					childWidgetItem->addChild ( personWidgetItem );
-					continue;
-				}
-				for (auto inddev = devices.begin(); inddev != devices.end(); ++inddev)
-				{
-					int IDdev = inddev->toMap()["ID"].toInt();
-					if (IDdev == 0)
-						continue;
-
-					int IDOwner = inddev->toMap()["OwnerID"].toInt();
-					if (IDOwner != IDp)
-						continue;
-
-					QTreeWidgetItem* deviceWidgetItem = new QTreeWidgetItem;
-					deviceWidgetItem->setText		( 0, inddev->toMap()["name"].toString() );
-					deviceWidgetItem->setData( 1, 1, IDdev );
-					deviceWidgetItem->setIcon(0, photoIcon);
-					deviceWidgetItem->setFlags(deviceWidgetItem->flags() | Qt::ItemIsUserCheckable);
-					deviceWidgetItem->setCheckState(0,Qt::Unchecked);
-					personWidgetItem->addChild ( deviceWidgetItem );
-				}
-				if (personWidgetItem->childCount())
-					childWidgetItem->addChild ( personWidgetItem );
-				else
-					delete personWidgetItem;
-			}// for (auto indexp = people.begin(); indexp != people.end(); ++indexp)
-			if (childWidgetItem->childCount())
-				treeWidgetItem->addChild ( childWidgetItem );
-			else
-				delete childWidgetItem;
-		} // for (auto index = vlist1.begin(); index != vlist1.end(); ++index)
-		if (treeWidgetItem->childCount())
-			pTreeWidget->addTopLevelItem ( treeWidgetItem );
-		else
-			delete treeWidgetItem;		
-	}
 }
 
 void fvaFindCheckedItem(QTreeWidgetItem *item, QList<unsigned int>& Ids)
