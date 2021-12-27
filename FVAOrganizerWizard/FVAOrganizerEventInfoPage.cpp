@@ -199,8 +199,8 @@ bool FVAOrganizerEventInfoPage::validatePage()
 {
         LOG_DEB << "FVAOrganizerEventInfoPage validate page" ;
 	FVAFlowController flow;
-
-	FVA_EXIT_CODE exitCode = flow.ProcessInputDirForEvent(dir2EventMap, dir2PeopleMap, this);
+	QString		inputDir	= ((FVAOrganizerWizard*)wizard())->inputFolder();
+	FVA_EXIT_CODE	exitCode	= flow.ProcessInputDirForEvent(inputDir,dir2EventMap, dir2PeopleMap, this);
 	if (exitCode != FVA_NO_ERROR)
 		return false;
 

@@ -18,8 +18,6 @@
 #include "fvaconfiguration.h"
 #include "FVADataProcessor.h"
 
-// TODO to get rid of passing FvaConfiguration& cfg into each function instead of using internal member
-
 
 typedef QList<QString> STR_LIST;
 
@@ -79,12 +77,13 @@ public:
 
 	/*!
 	 * \brief it process input folder content as multi-events folder according to event cfg and info
+	 * \param inputDir - input directory to perform the actions in
 	 * \param eventMap - maps input dir structure (folder names) to event ids got from fvaEvents.csv
 	 * \param peopleMap - maps input dir structure (folder names) to people ids (that caused the event) got from fvaPeople.csv
 	 * \param obj - to attach the child processes to this object
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE ProcessInputDirForEvent(const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj);
+	FVA_EXIT_CODE ProcessInputDirForEvent(const QString& inputDir, const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj);
 
 private:
 
@@ -92,10 +91,9 @@ private:
 	 * \brief it performs the device checks for input folder
 	 * \param deviceContext - devices information got during checks, filled up by this function
 	 * \param context - one command parameters (environment)
-	 * \param cfg - system configuration, applicable for whole system
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE performDeviceChecks(DeviceContext& deviceContext, CLTContext& context, const FvaConfiguration& cfg);
+	FVA_EXIT_CODE performDeviceChecks(DeviceContext& deviceContext, CLTContext& context);
 
 	/*!
 	 * \brief it performs the orientation checks for input folder and reorientate the photos for inproper orientation
@@ -108,37 +106,33 @@ private:
 	/*!
 	 * \brief it performs the common checks for input folder
 	 * \param context - one command parameters (environment)
-	 * \param cfg - system configuration, applicable for whole system
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)	
 	 */
-	FVA_EXIT_CODE performCommonChecks(CLTContext& context, const FvaConfiguration& cfg);
+	FVA_EXIT_CODE performCommonChecks(CLTContext& context);
 
 	/*!
 	 * \brief it performs the date-time checks for input folder
 	 * \param context - one command parameters (environment)
-	 * \param cfg - system configuration, applicable for whole system
 	 * \param obj - to attach the child processes to this object
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE performDTChecks(CLTContext& context, const FvaConfiguration& cfg, QObject* obj);
+	FVA_EXIT_CODE performDTChecks(CLTContext& context, QObject* obj);
 
 	/*!
 	 * \brief it performs the location checks for input folder
 	 * \param context - one command parameters (environment)
-	 * \param cfg - system configuration, applicable for whole system
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE performLocationChecks(CLTContext& context, const FvaConfiguration& cfg);
+	FVA_EXIT_CODE performLocationChecks(CLTContext& context);
 
 	/*!
 	 * \brief it runs python command from #script dir
 	 * \param scriptName - name of script to run
 	 * \param obj - to attach the child processes to this object
-	 * \param cfg - system configuration, applicable for whole system
 	 * \param params - list of params to run the cmd
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE runPythonCMD(const QString& scriptName, QObject* obj, const FvaConfiguration& cfg, const QStringList& params);
+	FVA_EXIT_CODE runPythonCMD(const QString& scriptName, QObject* obj, const QStringList& params);
 
 private: //data
 
@@ -148,7 +142,7 @@ private: //data
 	FVADataProcessor m_dataProcessor;
 
 	/*!
-	 * brief global application configuration
+	 * brief globally application configuration
 	 */
 	FvaConfiguration m_cfg;
 };

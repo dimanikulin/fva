@@ -24,20 +24,20 @@ FVAFlowController::FVAFlowController()
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.load")
 }
 
-FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContext, CLTContext& context, const FvaConfiguration& cfg)
+FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContext, CLTContext& context)
 {
 	QString rootSWdir;
-	FVA_EXIT_CODE exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", rootSWdir);
 	
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsString(Common::RootDir)")
 
 	context.cmdType = "CLTCheckDeviceName";
-	exitCode = m_dataProcessor.run(context, cfg);
+	exitCode = m_dataProcessor.run(context, m_cfg);
 	if (FVA_ERROR_NON_UNIQUE_DEVICE_NAME == exitCode)
 	{
 		context.cmdType = "CLTCreateDirStructByDeviceName";
-		exitCode = m_dataProcessor.run(context, cfg);
+		exitCode = m_dataProcessor.run(context, m_cfg);
 		FVA_MESSAGE_BOX("Found several devices in a folder, please select other dir!");
 		return exitCode;
 	}
@@ -83,28 +83,28 @@ void FVAFlowController::performOrientationChecks(const QString& dir, QObject* ob
 	myProcess.waitForFinished(-1);
 }
 
-FVA_EXIT_CODE FVAFlowController::performCommonChecks(CLTContext& context, const FvaConfiguration& cfg)
+FVA_EXIT_CODE FVAFlowController::performCommonChecks(CLTContext& context)
 {
 	context.cmdType = "CLTCheckFileFormat";
-	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, cfg);
+	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, m_cfg);
 
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckFileFormat")
 
 	context.cmdType = "CLTRenameVideoBySequence";
-	exitCode = m_dataProcessor.run(context, cfg);
+	exitCode = m_dataProcessor.run(context, m_cfg);
 
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTRenameVideoBySequence")
 
 	context.cmdType = "CLTAutoChecks1";
-	exitCode = m_dataProcessor.run(context, cfg);
+	exitCode = m_dataProcessor.run(context, m_cfg);
 
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTAutoChecks1")
 
 	context.cmdType = "CLTSetFileAtts";
-	exitCode = m_dataProcessor.run(context, cfg);
+	exitCode = m_dataProcessor.run(context, m_cfg);
 
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTSetFileAtts")
@@ -121,7 +121,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	context.dir = dir;
 
 	// perform common checks
-	FVA_EXIT_CODE res = performCommonChecks(context, m_cfg);
+	FVA_EXIT_CODE res = performCommonChecks(context);
 
 	// return to calling function if previous operation failed
 	RET_RES_IF_RES_IS_ERROR
@@ -137,7 +137,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	if (SearchByDevice)
 	{
 		// perform device checks
-		FVA_EXIT_CODE res = performDeviceChecks(deviceContext, context, m_cfg);
+		FVA_EXIT_CODE res = performDeviceChecks(deviceContext, context);
 
 		// return to calling function if previous operation failed
 		RET_RES_IF_RES_IS_ERROR
@@ -154,7 +154,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	if (SearchByDateTime)
 	{
 		// perform date-time checks
-		FVA_EXIT_CODE res = performDTChecks(context, m_cfg, obj);
+		FVA_EXIT_CODE res = performDTChecks(context, obj);
 
 		// return to calling function if previous operation failed
 		RET_RES_IF_RES_IS_ERROR
@@ -176,10 +176,10 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject* obj, const FvaConfiguration& cfg, const QStringList& params)
+FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject* obj, const QStringList& params)
 {
 	QString fvaSWRootDir;
-	FVA_EXIT_CODE exitCode = cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
+	FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
@@ -197,13 +197,13 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(pyScriptRunPath);
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, const FvaConfiguration& cfg, QObject* obj)
+FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* obj)
 {
 	// prepare context to run CheckDataTime command
 	context.cmdType = "CLTCheckDateTime";
 
 	// run CheckDataTime command in Data Proccessor
-	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, cfg);
+	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, m_cfg);
 
 	// lets check if Data Proccessor said there is no exif date time 
 	if (FVA_ERROR_NO_EXIF_DATE_TIME == exitCode)
@@ -231,7 +231,7 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, const FvaC
 		// run command implemented in python to fixing empty date-time issue
 		QStringList params;
 		params.append(context.dir);
-		exitCode = runPythonCMD("CLTFixEmptyDateTime.py", obj, cfg, params);
+		exitCode = runPythonCMD("CLTFixEmptyDateTime.py", obj, params);
 
 		// show error message box and return to calling function if previous operation failed
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTFixEmptyDateTime")
@@ -244,10 +244,10 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, const FvaC
 	return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::performLocationChecks(CLTContext& context, const FvaConfiguration& cfg)
+FVA_EXIT_CODE FVAFlowController::performLocationChecks(CLTContext& context)
 {
 	context.cmdType = "CLTCheckLocation";
-	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, cfg);
+	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, m_cfg);
 
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckLocation")
@@ -299,7 +299,7 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 	return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj)
+FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir, const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj)
 {
 	QString fvaSWRootDir;
 	FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
@@ -322,7 +322,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_ID_MAP& eve
 		params.append(eventId);
 	
 		// run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got 
-		exitCode = runPythonCMD("CLTUpdateEventInFvaFile.py", obj, m_cfg, params);
+		exitCode = runPythonCMD("CLTUpdateEventInFvaFile.py", obj, params);
 
 		// show error message box and return to calling function if previous operation failed
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventInFvaFile")
@@ -340,7 +340,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_ID_MAP& eve
 		LOG_DEB << "FVAFlowController::ProcessInputDirForEvent " << fvafileNPath << " " << dir << " " << eventId << " " << peopleIds;
 
 		// run command implemented in python to update the fvafile.csv for each file in folder with event people ids we got 
-		exitCode = runPythonCMD("CLTUpdateEventPeopleInFvaFile.py", obj, m_cfg, params);
+		exitCode = runPythonCMD("CLTUpdateEventPeopleInFvaFile.py", obj, params);
 
 		// show error message box and return to calling function if previous operation failed
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventPeopleInFvaFile")
@@ -356,11 +356,12 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_ID_MAP& eve
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Location)")
 
 	CLTContext context; // empty so far
+	context.dir = inputDir;
 
 	if (SearchByLocation)
 	{
 		// perform location checks
-		FVA_EXIT_CODE res = performLocationChecks(context, m_cfg);
+		FVA_EXIT_CODE res = performLocationChecks(context);
 
 		// return to calling function if previous operation failed
 		RET_RES_IF_RES_IS_ERROR
