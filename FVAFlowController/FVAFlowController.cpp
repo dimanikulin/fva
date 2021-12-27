@@ -309,18 +309,29 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& 
 
 	QString fvafileNPath = fvaSWRootDir + "/#data#/fvafileN.csv";
 
+	QStringList params;
+	params.append(fvafileNPath);
+
+	QString fvafileNPath = fvaSWRootDir + "/#data#/fvafileN.csv";
+
 	// for each folder in output list
 	for (auto it = eventMap.begin(); it != eventMap.end(); ++it)
 	{		
-		QStringList params;
-		params.append(fvafileNPath);
-
 		QString dir = it.key();
 		params.append(dir);
 
 		QString eventId = QString::number(it.value());
 		params.append(eventId);
 
+		LOG_DEB << "FVAFlowController::ProcessInputDirForEvent " << fvafileNPath << " " << dir << " " << eventId << " " << peopleIds;
+	
+		// run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got 
+		FVA_EXIT_CODE exitCode = runPythonCMD("CLTUpdateEventInFvaFile.py", obj, m_cfg, params);
+
+		// show error message box and return to calling function if previous operation failed
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventInFvaFile")
+
+		params.removeLast(); // remove last param as ot was for previous cmd actual only
 		QString peopleIds;
 		for(int i=0; i < peopleMap[dir].size(); ++i)
 		{
@@ -328,18 +339,13 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& 
 			if( i < peopleMap[dir].size()-1 )
 				peopleIds += "," ;
 		}
-
 		params.append(peopleIds);
 
-		QString fvafileNPath = fvaSWRootDir + "/#data#/fvafileN.csv";
-
-		LOG_DEB << "FVAFlowController::ProcessInputDirForEvent " << fvafileNPath << " " << dir << " " << eventId << " " << peopleIds;
-	
-		// run command implemented in python to update the fvafile.csv for each file in folder with eventid and people we got 
-		FVA_EXIT_CODE exitCode = runPythonCMD("CLTUpdateEventAndEvPeopleInFvaFile.py", obj, m_cfg, params );
+		// run command implemented in python to update the fvafile.csv for each file in folder with event people ids we got 
+		FVA_EXIT_CODE exitCode = runPythonCMD("CLTUpdateEventPeopleInFvaFile.py", obj, m_cfg, params);
 
 		// show error message box and return to calling function if previous operation failed
-		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventAndEvPeopleInFvaFile")
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventPeopleInFvaFile")
 	}
 
 	// do we need to search by location?
