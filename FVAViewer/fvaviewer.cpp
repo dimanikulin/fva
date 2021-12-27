@@ -15,7 +15,7 @@
 
 #include "fvacommonui.h"
 
-#include "fvaitem.h"
+#include "fvaItem.h"
 #include "fvafolder.h"
 #include "fvafile.h"
 
