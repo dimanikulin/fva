@@ -307,8 +307,6 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& 
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
-	QString fvafileNPath = fvaSWRootDir + "/#data#/fvafileN.csv";
-
 	QStringList params;
 	params.append(fvafileNPath);
 
@@ -322,11 +320,9 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& 
 
 		QString eventId = QString::number(it.value());
 		params.append(eventId);
-
-		LOG_DEB << "FVAFlowController::ProcessInputDirForEvent " << fvafileNPath << " " << dir << " " << eventId << " " << peopleIds;
 	
 		// run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got 
-		FVA_EXIT_CODE exitCode = runPythonCMD("CLTUpdateEventInFvaFile.py", obj, m_cfg, params);
+		exitCode = runPythonCMD("CLTUpdateEventInFvaFile.py", obj, m_cfg, params);
 
 		// show error message box and return to calling function if previous operation failed
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventInFvaFile")
@@ -341,8 +337,10 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const DIR_2_EVENT_MAP& 
 		}
 		params.append(peopleIds);
 
+		LOG_DEB << "FVAFlowController::ProcessInputDirForEvent " << fvafileNPath << " " << dir << " " << eventId << " " << peopleIds;
+
 		// run command implemented in python to update the fvafile.csv for each file in folder with event people ids we got 
-		FVA_EXIT_CODE exitCode = runPythonCMD("CLTUpdateEventPeopleInFvaFile.py", obj, m_cfg, params);
+		exitCode = runPythonCMD("CLTUpdateEventPeopleInFvaFile.py", obj, m_cfg, params);
 
 		// show error message box and return to calling function if previous operation failed
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventPeopleInFvaFile")

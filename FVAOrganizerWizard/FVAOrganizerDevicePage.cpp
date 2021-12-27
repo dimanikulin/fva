@@ -19,7 +19,7 @@
 #include "fvacommoncsv.h"
 #include "fvacommonui.h"
 #include "fvalogger.inl"
-#include "FVAOrganizerWizard.h"
+#include "fvaorganizerwizard.h"
 #include "FVAFlowController.h"
 
 FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)

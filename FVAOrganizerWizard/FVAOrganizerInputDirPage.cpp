@@ -14,7 +14,7 @@
 #include <QGridLayout>
 #include <QFileDialog>
 
-#include "FVAOrganizerWizard.h"
+#include "fvaorganizerwizard.h"
 
 #include "FVAFlowController.h"
 #include "fvalogger.inl"
