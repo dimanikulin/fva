@@ -12,7 +12,6 @@
 
 #include <QDialog>
 #include <QMainWindow>
-#include <QTCore/QtCore>
 #include <QTreeWidget>
 
 #include "fvacommonlib.h"
