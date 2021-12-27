@@ -81,7 +81,7 @@ void FVAViewer::prepareFilters()
 	
 	// tabs->addTab(new QWidget(),tr("Свойства"));
 	
-	fvaBuildPeopleTree(this, m_uiPeopleFilter->treeWidget, false, m_dictionaries);
+	/*fvaBuildPeopleTree(this, m_uiPeopleFilter->treeWidget, false, m_dictionaries);
 	fvaBuildPeopleTree(this, m_uiDeviceFilter->treeWidget, true, m_dictionaries);
 	fvaBuildPeopleTree(this, m_uiEventFilter->ptreeWidget, false, m_dictionaries);
 
@@ -97,7 +97,7 @@ void FVAViewer::prepareFilters()
 						m_dictionaries["eventTypes"].toList(), 
 						m_dictionaries["events"].toList(),
 						&m_folderIcon,
-						&m_locationIcon);
+						&m_locationIcon);*/
 }
 
 FVAViewer::FVAViewer(const QString& rootDir, const QString& dictPath, QWidget *parent, Qt::WindowFlags /*flags*/)
