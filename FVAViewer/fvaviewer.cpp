@@ -11,7 +11,6 @@
 #include <QtCore/QString>
 #include <QListWidget>
 #include <QProgressDialog>
-#include <QtUiTools>
 
 #include "fvacommonui.h"
 
