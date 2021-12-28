@@ -1,8 +1,9 @@
 import csv
 import os, stat
+import sys
 
 # we save previous file with other file name
-newName =  + "_np"
+newName = sys.argv[1] + "_np"
 os.rename(sys.argv[1] , newName)
 
 # file to write updated records
@@ -20,7 +21,7 @@ with open(newName, newline='', encoding='utf-8') as csvfile:
 
            # if file name in fvaFile.csv equals to current file name in input dir
            if row[1].upper() == filename.upper(): 
-              row[9] = sys.argv[3] #update with new people ids
+              row[9] = '"' + sys.argv[3] + '"' #update with new people ids
               
        # write updated record to new fva csv file  
        f.write(','.join(row) + "\n")   

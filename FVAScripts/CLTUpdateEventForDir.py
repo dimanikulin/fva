@@ -1,8 +1,9 @@
 import csv
 import os, stat
+import sys
 
 # we save previous file with other file name
-newName =  + "_ne"
+newName = sys.argv[1] + "_ne"
 os.rename(sys.argv[1] , newName)
 
 # file to write updated records
