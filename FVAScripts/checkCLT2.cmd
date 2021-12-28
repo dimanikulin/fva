@@ -1,1 +1,0 @@
-"../FVAOrganizer.exe" CLTAutoChecks2 "c:/FVA" recursive=yes logvel=4 readonly=yes
