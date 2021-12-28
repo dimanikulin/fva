@@ -15,9 +15,9 @@
 
 #include "fvaconstants.h"
 
-#define LOG_WARN qWarning() <<"[WRN]"<< QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data() << "[" << __FILE__ << "]" << "[" __LINE__ "]"
-#define LOG_CRIT qCritical()<<"[ERR]"<< QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data() << "[" << __FILE__ << "]" << "[" __LINE__ "]"
-#define LOG_DEB qDebug()    <<"[DBG]"<< QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data() << "[" << __FILE__ << "]" << "[" __LINE__ "]"
+#define LOG_WARN qWarning() <<"[WRN]"<< QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data() << "[" << __FILE__ << "]" << "[" << __LINE__ << "]"
+#define LOG_CRIT qCritical()<<"[ERR]"<< QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data() << "[" << __FILE__ << "]" << "[" << __LINE__ << "]"
+#define LOG_DEB qDebug()    <<"[DBG]"<< QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data() << "[" << __FILE__ << "]" << "[" << __LINE__ << "]"
 
 
 #define LOGGER_GLOBAL\
