@@ -120,12 +120,6 @@ void FVAOrganizerEventInfoPage::OnSaveButtonPressed()
 	for (auto idTop = 0; idTop < eventsWidget->topLevelItemCount();++idTop)
 		fvaFindCheckedItem(eventsWidget->topLevelItem(idTop), eventIds);
 
-	if (peopleIds.length() == 0)
-	{
-		FVA_MESSAGE_BOX("no people are selected")
-		return;
-	}
-
 	if (eventIds.length() == 0)
 	{
 		FVA_MESSAGE_BOX("no event is selected")

@@ -189,7 +189,13 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject
 	QProcess myProcess(obj);
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	myProcess.start(pyScriptRunPath, params);
-	myProcess.waitForFinished(-1);
+	if (!myProcess.waitForStarted())
+		exitCode = FVA_ERROR_CANT_START_PYTHON_PROC;
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(pyScriptRunPath);
+
+	if (!myProcess.waitForFinished(-1))
+		exitCode = FVA_ERROR_CANT_START_PYTHON_PROC;
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(pyScriptRunPath);
 
 	exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
 	
@@ -324,10 +330,17 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir
 		// run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got 
 		exitCode = runPythonCMD("CLTUpdateEventForDir.py", obj, params);
 
+		LOG_DEB << "CLTUpdateEventForDir:" << fvafileNPath << " " << dir << " " << eventId;
+
 		// show error message box and return to calling function if previous operation failed
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventForDir")
 
-		params.removeLast(); // remove last param as ot was for previous cmd actual only
+		if (0 == peopleMap[dir].size())
+		{
+			LOG_WARN << "empty people list for " << fvafileNPath << " " << dir;
+			continue;
+		}
+		params.removeLast(); // remove last param as it was for previous cmd actual only
 		QString peopleIds;
 		for(int i=0; i < peopleMap[dir].size(); ++i)
 		{
@@ -337,7 +350,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir
 		}
 		params.append(peopleIds);
 
-		LOG_DEB << "FVAFlowController::ProcessInputDirForEvent " << fvafileNPath << " " << dir << " " << eventId << " " << peopleIds;
+		LOG_DEB << "CLTUpdateEventPeopleForDir:" << fvafileNPath << " " << dir << " " << eventId;
 
 		// run command implemented in python to update the fvafile.csv for each file in folder with event people ids we got 
 		exitCode = runPythonCMD("CLTUpdateEventPeopleForDir.py", obj, params);
