@@ -24,7 +24,7 @@ class CLTAutoChecks1 : public CmdLineBaseTask
 {
 public:
 	CLTAutoChecks1(const FvaConfiguration& cfg);
-	virtual ~CLTAutoChecks1() { LOG_QDEB << "cmd deleted, dir:" << m_folder; }
+	virtual ~CLTAutoChecks1() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	/*!
 	* \brief returns command name

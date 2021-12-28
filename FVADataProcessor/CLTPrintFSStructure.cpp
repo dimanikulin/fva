@@ -43,7 +43,7 @@ FVA_EXIT_CODE CLTPrintFSStructure::execute(const CLTContext& /*context*/)
 
 		if ( !file.open( QIODevice::ReadOnly ) ) 
 		{
-			LOG_QCRIT << "failed to open file:" << info.absoluteFilePath();
+			LOG_CRIT << "failed to open file:" << info.absoluteFilePath();
 			continue;
 		}
 		while (!file.atEnd())

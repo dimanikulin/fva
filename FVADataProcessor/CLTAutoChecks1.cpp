@@ -41,10 +41,10 @@ FVA_EXIT_CODE CLTAutoChecks1::execute(const CLTContext& /*context*/)
 				{
 					if (m_renameVideoByModifTime == true && info.lastModified().isValid())
 					{
-						LOG_QWARN << "skipping first video/audio file (FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true):" << info.absoluteFilePath();
+						LOG_WARN << "skipping first video/audio file (FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true):" << info.absoluteFilePath();
 						continue;
 					}
-					LOG_QCRIT << "found first video/audio file:" << info.absoluteFilePath();
+					LOG_CRIT << "found first video/audio file:" << info.absoluteFilePath();
 					return FVA_ERROR_VIDEO_FIRST;
 				}
 			}
@@ -54,7 +54,7 @@ FVA_EXIT_CODE CLTAutoChecks1::execute(const CLTContext& /*context*/)
 		QString st = info.fileName().mid(0, 2).toUpper();
 		if (st == "ST")
 		{
-			LOG_QCRIT << "found panoram file:" << info.absoluteFilePath();
+			LOG_CRIT << "found panoram file:" << info.absoluteFilePath();
 			return FVA_ERROR_PANORAM_FILE;
 		}
 	}

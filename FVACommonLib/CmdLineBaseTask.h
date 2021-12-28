@@ -14,6 +14,8 @@
 #include "fvacommonlib.h"
 #include "fvaconfiguration.h"
 #include "fvacltcontext.h"
+#include "fvalogger.inl"
+
 /*!
  * \brief keeps base functionality for one command line task
  */
@@ -68,9 +70,5 @@ class CmdLineBaseTask
 };
 
 extern QMap< unsigned int, unsigned int > sizes;
-
-#define LOG_QWARN qWarning()<<"[WRN]"<<QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data()<<"["<<Name().toUpper()<<"]"
-#define LOG_QCRIT qCritical()<<"[ERR]"<<QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data()<<"["<<Name().toUpper()<<"]"
-#define LOG_QDEB qDebug()<<"[DBG]"<<QDateTime::currentDateTime().toString(LOG_DT_FORMAT).toLatin1().data()<<"["<<Name().toUpper()<<"]"
 
 #endif //_CMD_LINE_BASE_TASK_H_

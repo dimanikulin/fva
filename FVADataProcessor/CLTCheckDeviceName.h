@@ -20,7 +20,7 @@
 class CLTCheckDeviceName : public CmdLineBaseTask
 {
 public:
-	virtual ~CLTCheckDeviceName() { LOG_QDEB << "cmd deleted, dir:" << m_folder; }
+	virtual ~CLTCheckDeviceName() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	/*!
 	* \brief returns command name

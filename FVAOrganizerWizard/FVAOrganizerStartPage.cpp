@@ -18,7 +18,7 @@
 
 FVAOrganizerStartPage::FVAOrganizerStartPage()
 {
-        LOG_DEB << "FVAOrganizerStartPage construction" ;
+        LOG_DEB << "construction" ;
 
 	helloWords = new QTextBrowser;
 	cfgButton = new QPushButton;
@@ -42,7 +42,7 @@ FVAOrganizerStartPage::FVAOrganizerStartPage()
 
 	connect(cfgButton, SIGNAL(clicked()), this, SLOT(OnCfgBtnPressed()));
 
-        LOG_DEB << "FVAOrganizerStartPage constructed" ;
+        LOG_DEB << "constructed" ;
 }
 
 void FVAOrganizerStartPage::OnCfgBtnPressed()

@@ -16,7 +16,7 @@
 class CLTMerge1EventDir : public CmdLineBaseTask
 {
 public:
-	virtual ~CLTMerge1EventDir() { LOG_QDEB << "cmd deleted, dir:" << m_folder; }
+	virtual ~CLTMerge1EventDir() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	/*!
 	* \brief returns command name

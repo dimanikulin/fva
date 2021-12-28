@@ -22,7 +22,7 @@
 
 FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)
 {
-        LOG_DEB << "FVAOrganizerEventCfgPage construction" ;
+        LOG_DEB << "construction" ;
 #ifdef  FVA_LANGUAGE_RUS
 	words	= new QLabel(tr("Пожалуйста, откройте входную папку и объедините однодневные папки в одну,\nесли они относятся к одному событию. Так проделайте для каждого события"));
 	inputDirButton = new QPushButton;
@@ -49,15 +49,15 @@ FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)
 	setLayout(layout);
 
 	connect( inputDirButton, SIGNAL( clicked() ), this, SLOT( OnFvaInputDirButtonPressed() ) );
-        LOG_DEB << "FVAOrganizerEventCfgPage constructed" ;
+        LOG_DEB << "constructed" ;
 
 }
 void FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed()
 {
 	QString path = QDir::toNativeSeparators(((FVAOrganizerWizard*)wizard())->inputFolder());
-	LOG_DEB << "FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed() input dir=" << path;
+	LOG_DEB << "OnFvaInputDirButtonPressed() input dir=" << path;
 	if(! QDesktopServices::openUrl(QUrl::fromLocalFile(((FVAOrganizerWizard*)wizard())->inputFolder())))
-		LOG_DEB << "FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed() failed to show input dir=" << path;
+		LOG_DEB << "OnFvaInputDirButtonPressed() failed to show input dir=" << path;
 	else
-		LOG_DEB << "FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed() shows input dir=" << path;	
+		LOG_DEB << "OnFvaInputDirButtonPressed() shows input dir=" << path;	
 }

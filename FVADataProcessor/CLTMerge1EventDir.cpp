@@ -21,27 +21,27 @@ FVA_EXIT_CODE CLTMerge1EventDir::execute(const CLTContext& context)
 		// check for already existing
 		if (m_dir.exists(dest))
 		{
-			LOG_QCRIT << "destination file already exists: " << dest;
+			LOG_CRIT << "destination file already exists: " << dest;
 			return FVA_ERROR_DEST_FILE_ALREADY_EXISTS;
 		}
 
 		if( !m_dir.rename( original, dest ) )
 		{						
-			LOG_QCRIT << "could not move:" << original << " into " << dest;
+			LOG_CRIT << "could not move:" << original << " into " << dest;
 			return FVA_ERROR_CANT_MOVE_DIR;
 		}
 
-		LOG_QDEB << "moved:" << original << " into " << dest;
+		LOG_DEB << "moved:" << original << " into " << dest;
 
 		if (info.isDir() && !fvaRemoveDirIfEmpty(original))
 		{
-			LOG_QCRIT << "could not remove empty original:" << original;
+			LOG_CRIT << "could not remove empty original:" << original;
 			continue;
 		}
 		else
 		{
 			if (info.isDir())
-				LOG_QDEB << "removed empty destination:" << dest;
+				LOG_DEB << "removed empty destination:" << dest;
 		}
 	}
 	return FVA_NO_ERROR;

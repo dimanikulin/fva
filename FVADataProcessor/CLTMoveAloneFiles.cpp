@@ -41,7 +41,7 @@ FVA_EXIT_CODE CLTMoveAloneFiles::execute(const CLTContext& context)
 		if (fvaIsInternalFile(info.fileName()))
 			continue;
 
-		LOG_QWARN << "to move to:" << folderUp + "/" + info.fileName()
+		LOG_WARN << "to move to:" << folderUp + "/" + info.fileName()
 			<< " from " << info.absoluteFilePath();
 
 		// move the files
@@ -49,7 +49,7 @@ FVA_EXIT_CODE CLTMoveAloneFiles::execute(const CLTContext& context)
 		{
 			if (!m_dir.rename(info.absoluteFilePath(), folderUp + "/" + info.fileName()))
 			{
-				LOG_QCRIT << "cant move file:" << info.absoluteFilePath();
+				LOG_CRIT << "cant move file:" << info.absoluteFilePath();
 				return FVA_ERROR_CANT_RENAME_FILE;
 			}
 		}

@@ -23,7 +23,7 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	QMainWindow(parent),
 	m_forFolder(forFolder)
 {
-	LOG_DEB << "FVADescriptionEditor construction";
+	LOG_DEB << "construction";
 
 	ui.setupUi(this);
 
@@ -47,7 +47,7 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	{
 		// TODO	
 	}
-        LOG_DEB << "FVADescriptionEditor before loading cfg";
+        LOG_DEB << "before loading cfg";
 	FvaConfiguration cfg;
 	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.load.cfg")
@@ -56,23 +56,23 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.get.param")
 
-	LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleTree 1";	
+	LOG_DEB << "before fvaBuildPeopleTree 1";	
 	exitCode =fvaBuildPeopleTree(this, ui.treePeopleWidget, false, rootSWdir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleTree.ui.treePeopleWidget")
 
-	LOG_DEB << "FVADescriptionEditor before fvaBuildPeopleTree 2";	
+	LOG_DEB << "before fvaBuildPeopleTree 2";	
 	exitCode =fvaBuildPeopleTree(this, ui.treePEventWidget, false, rootSWdir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleTree.ui.treePEventWidget")
 
 	exitCode = fvaBuildEventTree(this, ui.treeEventWidget, rootSWdir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildEventTree")
 
-	LOG_DEB << "FVADescriptionEditor constructed";
+	LOG_DEB << "constructed";
 }
 
 FVADescriptionEditor::~FVADescriptionEditor()
 {
-	LOG_DEB << "FVADescriptionEditor destructed";
+	LOG_DEB << "destructed";
 }
 
 void FVADescriptionEditor::updateChecks(QTreeWidgetItem *item, int column)

@@ -18,7 +18,7 @@ FVADictionaryEditor::FVADictionaryEditor(const QString& device, QWidget *parent)
 	: QDialog	(parent),
 	 m_device	(device)
 {
-	LOG_DEB << "FVADictionaryEditor construction";
+	LOG_DEB << "construction";
 	ui.setupUi(this);
 
 	connect (ui.btnAddPerson,SIGNAL(clicked()),this,SLOT(OnAddPersonBtnPressed()));
@@ -49,7 +49,7 @@ FVADictionaryEditor::FVADictionaryEditor(const QString& device, QWidget *parent)
 
 	ui.groupBox->setDisabled(true);
 	ui.groupBox_2->setDisabled(true);
-	LOG_DEB << "FVADictionaryEditor constructed";
+	LOG_DEB << "constructed";
 }
 
 void FVADictionaryEditor::OnAddPersonBtnPressed()

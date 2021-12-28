@@ -16,7 +16,7 @@
 class CLTSetFileAtts : public CmdLineBaseTask
 {
 public:
-	virtual ~CLTSetFileAtts() { LOG_QDEB << "cmd deleted, dir:" << m_folder; }
+	virtual ~CLTSetFileAtts() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	/*!
 	* \brief returns command name

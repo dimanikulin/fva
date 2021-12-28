@@ -21,7 +21,7 @@
 
 FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 {   
-        LOG_DEB << "FVAOrganizerOutputDirPage construction" ;
+        LOG_DEB << "construction" ;
 #ifdef  FVA_LANGUAGE_RUS
 	QLabel* inputDirLabel = new QLabel(tr("Укажите папку digiKam для контента:"));
 	QPushButton* digiKamButton = new QPushButton;
@@ -86,7 +86,7 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	connect(digiKamButton, SIGNAL(clicked()), this, SLOT(OnDigiKamDirButtonClicked()));
 	connect(googlePhotoButton, SIGNAL(clicked()), this, SLOT(OnGooglePhotoDirButtonClicked()));
 
-        LOG_DEB << "FVAOrganizerOutputDirPage constructed" ;
+        LOG_DEB << "constructed" ;
 }
 
 void FVAOrganizerOutputDirPage::OnDigiKamDirButtonClicked()
@@ -119,7 +119,7 @@ bool FVAOrganizerOutputDirPage::isComplete() const
 }
 bool	FVAOrganizerOutputDirPage::validatePage ()
 {
-        LOG_DEB << "FVAOrganizerOutputDirPage validate page" ;
+        LOG_DEB << "validate page" ;
 	// create the flow controller to proceed
 	FVAFlowController flow;
 

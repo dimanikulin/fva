@@ -24,7 +24,7 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute(const CLTContext& context)
 		FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);
 		if (FVA_ERROR_CANT_CREATE_DIR == res)
 		{
-			LOG_QCRIT << "could not create dest folder:" << dstDirPath;
+			LOG_CRIT << "could not create dest folder:" << dstDirPath;
 			return FVA_ERROR_CANT_CREATE_DIR;
 		}
 		else if (FVA_ERROR_DEST_DIR_ALREADY_EXISTS == res)
@@ -34,23 +34,23 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute(const CLTContext& context)
 				return FVA_ERROR_DEST_DIR_ALREADY_EXISTS;
 			else if (context.custom == "create")
 			{
-				LOG_QCRIT << "destination dir already exists: " << dstDirPath;
+				LOG_CRIT << "destination dir already exists: " << dstDirPath;
 				// lets try to create with different name
 				dstDirPath += " #1";
 				res = fvaCreateDirIfNotExists(dstDirPath);
 				if (FVA_ERROR_CANT_CREATE_DIR == res)
 				{
-					LOG_QCRIT << "could not create dest folder:" << dstDirPath;
+					LOG_CRIT << "could not create dest folder:" << dstDirPath;
 					return FVA_ERROR_CANT_CREATE_DIR;
 				}
 				else if (FVA_ERROR_DEST_DIR_ALREADY_EXISTS == res)
 				{
-					LOG_QCRIT << "not immplemented to create dest folder with #2:" << dstDirPath;
+					LOG_CRIT << "not immplemented to create dest folder with #2:" << dstDirPath;
 					return FVA_ERROR_NOT_IMPLEMENTED;
 				}
 				else if (FVA_NO_ERROR == res)
 				{
-					LOG_QDEB << "created dest folder:" << dstDirPath;
+					LOG_DEB << "created dest folder:" << dstDirPath;
 				}
 			}
 			else if (context.custom == "merge")
@@ -60,7 +60,7 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute(const CLTContext& context)
 		}
 		else if (FVA_NO_ERROR == res)
 		{
-			LOG_QDEB << "created dest folder:" << dstDirPath;
+			LOG_DEB << "created dest folder:" << dstDirPath;
 		}
 	}
 	
@@ -69,33 +69,33 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute(const CLTContext& context)
 		// skip internal folder 
 		if (fvaIsInternalDir(dir) || fvaIsInternalDir(dstDirPath))
 		{
-			LOG_QWARN << "skipped #copy for: " << info.absoluteFilePath() << " , dst: " << dstDirPath;
+			LOG_WARN << "skipped #copy for: " << info.absoluteFilePath() << " , dst: " << dstDirPath;
 			continue;
 		}
 
 		// check for already existing
 		if (m_dir.exists(dstDirPath + "/" + info.fileName()))
 		{
-			LOG_QCRIT << "destination file already exists: " << dstDirPath + "/" + info.fileName();
+			LOG_CRIT << "destination file already exists: " << dstDirPath + "/" + info.fileName();
 			return FVA_ERROR_DEST_FILE_ALREADY_EXISTS;
 		}
 
 		// we move files only
 		if (!info.isDir() && !m_dir.rename(info.absoluteFilePath(), dstDirPath + "/" + info.fileName()))
 		{
-			LOG_QCRIT << "could not move:" << info.absoluteFilePath() << " into " << dstDirPath + "/" + info.fileName();
+			LOG_CRIT << "could not move:" << info.absoluteFilePath() << " into " << dstDirPath + "/" + info.fileName();
 			return FVA_ERROR_CANT_RENAME_FILE;
 		}
 		else if (!info.isDir())
-			LOG_QDEB << "moved:" << info.absoluteFilePath() << " into " << dstDirPath + "/" + info.fileName();
+			LOG_DEB << "moved:" << info.absoluteFilePath() << " into " << dstDirPath + "/" + info.fileName();
 
 		if (info.isDir() && !fvaRemoveDirIfEmpty(info.absoluteFilePath()))
 		{
-			LOG_QCRIT << "could not remove empty source:" << info.absoluteFilePath();
+			LOG_CRIT << "could not remove empty source:" << info.absoluteFilePath();
 			return FVA_ERROR_CANT_MOVE_DIR;
 		}
 		else if (info.isDir())
-			LOG_QDEB << "removed empty destination:" << info.absoluteFilePath();
+			LOG_DEB << "removed empty destination:" << info.absoluteFilePath();
 	}
 	return FVA_NO_ERROR;
 }

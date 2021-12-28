@@ -19,7 +19,7 @@ class CLTCSVFvaFile : public CmdLineBaseTask
 public:
 	/// CmdLineBaseTask interface
 	CLTCSVFvaFile(const FvaConfiguration& cfg);
-	virtual ~CLTCSVFvaFile()		{ LOG_QDEB << "cmd deleted, dir:" << m_folder; }
+	virtual ~CLTCSVFvaFile()		{ LOG_DEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	/*!
 	* \brief returns command name

@@ -30,7 +30,7 @@
 
 FVAOrganizerPlacePage::FVAOrganizerPlacePage(void)
 {
-        LOG_DEB << "FVAOrganizerPlacePage construction" ;
+        LOG_DEB << "construction" ;
 	
 #ifdef  FVA_LANGUAGE_RUS
 	words	= new QLabel(tr("Пожалуйста, выделите папку нижу (событию),помеченной красным\nи выберете для нее место, где оно происходило"));
@@ -85,7 +85,7 @@ FVAOrganizerPlacePage::FVAOrganizerPlacePage(void)
 	connect( inputDirButton, SIGNAL( clicked() ), this, SLOT( OnFvaInputDirButtonPressed() ) );
 	connect( saveButton, SIGNAL( clicked() ), this, SLOT( OnSaveButtonPressed() ) );
 
-        LOG_DEB << "FVAOrganizerPlacePage constructed" ;
+        LOG_DEB << "constructed" ;
 
 }
 void FVAOrganizerPlacePage::OnSaveButtonPressed()
@@ -132,11 +132,11 @@ void FVAOrganizerPlacePage::OnSaveButtonPressed()
 void FVAOrganizerPlacePage::OnFvaInputDirButtonPressed()
 {
 	QString path = QDir::toNativeSeparators(((FVAOrganizerWizard*)wizard())->inputFolder());
-	LOG_DEB << "FVAOrganizerPlacePage::OnFvaInputDirButtonPressed() input dir=" << path;
+	LOG_DEB << "OnFvaInputDirButtonPressed() input dir=" << path;
 	if(!QDesktopServices::openUrl(QUrl::fromLocalFile(((FVAOrganizerWizard*)wizard())->inputFolder())))
-		LOG_DEB << "FVAOrganizerPlacePage::OnFvaInputDirButtonPressed() failed to show input dir=" << path;
+		LOG_DEB << "OnFvaInputDirButtonPressed() failed to show input dir=" << path;
 	else
-		LOG_DEB << "FVAOrganizerPlacePage::OnFvaInputDirButtonPressed() shows input dir=" << path;	
+		LOG_DEB << "OnFvaInputDirButtonPressed() shows input dir=" << path;	
 }
 
 void FVAOrganizerPlacePage::updateChecks(QTreeWidgetItem *item, int column)
@@ -146,12 +146,12 @@ void FVAOrganizerPlacePage::updateChecks(QTreeWidgetItem *item, int column)
 
 void FVAOrganizerPlacePage::setVisible(bool visible)
 {	
-	LOG_DEB << "FVAOrganizerPlacePage::setVisible";
+	LOG_DEB << "setVisible";
 	QString		inputDir		= ((FVAOrganizerWizard*)wizard())->inputFolder();
 
 	if (visible)
 	{
-		LOG_DEB << "FVAOrganizerPlacePage::setVisible if (visible)";
+		LOG_DEB << "setVisible if (visible)";
 
 		FvaConfiguration cfg;
 		FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
@@ -166,12 +166,12 @@ void FVAOrganizerPlacePage::setVisible(bool visible)
 		exitCode = fvaBuildPlaceTree(this, placesWidget, rootSWdir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildPlaceTree")
 	}
-	LOG_DEB << "FVAOrganizerPlacePage::setVisible before exit";
+	LOG_DEB << "setVisible before exit";
 	return QWizardPage::setVisible(visible);
 }
 bool FVAOrganizerPlacePage::validatePage()
 {
-        LOG_DEB << "FVAOrganizerPlacePage validate page" ;
+        LOG_DEB << "validate page" ;
 	FVAFlowController flow;
 
 	//FVA_EXIT_CODE exitCode = flow.ProcessInputDirForEvent(dir2EventMap, dir2PeopleMap, this);

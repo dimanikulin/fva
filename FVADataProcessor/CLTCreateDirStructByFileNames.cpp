@@ -27,7 +27,7 @@ FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute(const CLTContext& context)
 		{
 			if ( !context.readOnly )
 				m_dir.mkdir(yearFolderName);
-			LOG_QDEB << "year-folder:" << yearFolderName << " created";
+			LOG_DEB << "year-folder:" << yearFolderName << " created";
 		}
 
 		QString day			= info.baseName().mid(0,10).replace("-",".");
@@ -38,18 +38,18 @@ FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute(const CLTContext& context)
 		{
 			if (!context.readOnly)
 				m_dir.mkdir(fullSubFolderpath);
-			LOG_QDEB << "sub-folder:" << fullSubFolderpath << " created";
+			LOG_DEB << "sub-folder:" << fullSubFolderpath << " created";
 		}
 		if ( !context.readOnly ) 
 		{
 			// move the file
 			if ( !m_dir.rename( info.absoluteFilePath(), fullSubFolderpath + "/" + info.fileName() ) )
 			{
-				LOG_QCRIT << "can not rename file:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
+				LOG_CRIT << "can not rename file:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
 				return FVA_ERROR_CANT_RENAME_FILE;
 			}
 			else
-				LOG_QDEB << "file renamed:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
+				LOG_DEB << "file renamed:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
 		}
 	}
 

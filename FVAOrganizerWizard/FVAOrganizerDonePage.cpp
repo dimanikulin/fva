@@ -14,7 +14,7 @@
 
 FVAOrganizerDonePage::FVAOrganizerDonePage(void)
 {
-        LOG_DEB << "FVAOrganizerDonePage construction" ;
+        LOG_DEB << "construction" ;
 	finishWords		= new QTextBrowser;
 
 	QVBoxLayout * layout = new QVBoxLayout;
@@ -30,6 +30,6 @@ FVAOrganizerDonePage::FVAOrganizerDonePage(void)
 	finishWords->setText(tr("Congratulations, you are ready to finish."));
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
-        LOG_DEB << "FVAOrganizerWizard constructed" ;
+        LOG_DEB << "constructed" ;
 }
 

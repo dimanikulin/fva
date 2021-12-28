@@ -23,7 +23,7 @@ FVA_EXIT_CODE CLTCheckLocation::execute(const CLTContext& context)
 		bool present = fvaExifGeoDataPresentInFile(info.filePath());
 		if (!present)
 		{
-			LOG_QCRIT << "found file without exif location:" << info.absoluteFilePath();
+			LOG_CRIT << "found file without exif location:" << info.absoluteFilePath();
 			return FVA_ERROR_NO_EXIF_LOCATION;
 		}
 	}

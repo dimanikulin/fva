@@ -164,7 +164,7 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
 #define _SHOW_ICONS_
 FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir)
 {
-	LOG_DEB << "fvaBuildPeopleFilterTree enter";
+	LOG_DEB << "enter";
 	pMainWnd->connect(pTreeWidget,
 		SIGNAL(itemChanged(QTreeWidgetItem*, int)),
 		pMainWnd,
@@ -282,7 +282,7 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 		else
 			delete treeWidgetItem;
 	}
-	LOG_DEB << "fvaBuildPeopleFilterTree exit";
+	LOG_DEB << "exit";
 	return FVA_NO_ERROR;
 }
 

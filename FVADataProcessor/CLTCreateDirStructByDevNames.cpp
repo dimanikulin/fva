@@ -36,15 +36,15 @@ FVA_EXIT_CODE CLTCreateDirStructByDeviceName::execute(const CLTContext& /*contex
 			QString dirName;
 			if (newDeviceName.isEmpty())
 			{
-				LOG_QDEB << "no device name in picture:" << info.absoluteFilePath();
+				LOG_DEB << "no device name in picture:" << info.absoluteFilePath();
 				dirName = "EMPTY";
 			}
 			else
 			{
 				if (deviceName.isEmpty())
-					LOG_QDEB << "got first device name: " << newDeviceName << "in picture:" << info.absoluteFilePath();
+					LOG_DEB << "got first device name: " << newDeviceName << "in picture:" << info.absoluteFilePath();
 				else if (deviceName != newDeviceName)
-					LOG_QWARN << "got new device name: " << newDeviceName << "in picture:" << info.absoluteFilePath() << "old: " << deviceName;
+					LOG_WARN << "got new device name: " << newDeviceName << "in picture:" << info.absoluteFilePath() << "old: " << deviceName;
 
 				deviceName = newDeviceName;
 				dirName = deviceName;
@@ -55,19 +55,19 @@ FVA_EXIT_CODE CLTCreateDirStructByDeviceName::execute(const CLTContext& /*contex
 			if (!m_dir.exists(dirName))
 			{
 				m_dir.mkdir(dirName);
-				LOG_QDEB << "sub-folder:" << dirName << " created";
+				LOG_DEB << "sub-folder:" << dirName << " created";
 			}
 			// move the file
 			if (!m_dir.rename(info.absoluteFilePath(), fullSubFolderpath + "/" + info.fileName()))
 			{
-				LOG_QCRIT << "can not rename file:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
+				LOG_CRIT << "can not rename file:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
 				return FVA_ERROR_CANT_RENAME_FILE;
 			}
 			else
-				LOG_QDEB << "file renamed:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
+				LOG_DEB << "file renamed:" << info.absoluteFilePath() << " into:" << fullSubFolderpath + "/" + info.fileName();
 		}
 		else
-			LOG_QDEB << " no device name in:" << info.absoluteFilePath();
+			LOG_DEB << " no device name in:" << info.absoluteFilePath();
 	}
 	return FVA_NO_ERROR;
 }

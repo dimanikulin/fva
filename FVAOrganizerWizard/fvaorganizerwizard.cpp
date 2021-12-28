@@ -24,7 +24,7 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	: QWizard(parent)
 {
 	FvaConfiguration cfg;
-        LOG_DEB << "FVAOrganizerWizard construction" ;
+        LOG_DEB << "construction" ;
 	FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.load")
 	int index = 0;
@@ -102,5 +102,5 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-        LOG_DEB << "FVAOrganizerWizard constructed"; 
+        LOG_DEB << "constructed"; 
 }

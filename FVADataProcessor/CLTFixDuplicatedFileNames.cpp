@@ -33,7 +33,7 @@ FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute(const CLTContext& context)
 		// skip internal folder 
 		if (fvaIsInternalDir(dir) || fvaIsInternalDir(dstDirPath))
 		{
-			LOG_QWARN << "skipped #copy for: " << info.absoluteFilePath() << " , dst: " << dstDirPath;
+			LOG_WARN << "skipped #copy for: " << info.absoluteFilePath() << " , dst: " << dstDirPath;
 			continue;
 		}
 
@@ -59,20 +59,20 @@ FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute(const CLTContext& context)
 		// check for already existing again
 		if (m_dir.exists(newFullPath))
 		{
-			LOG_QCRIT << "destination file already exists again: " << newFullPath;
+			LOG_CRIT << "destination file already exists again: " << newFullPath;
 			return FVA_ERROR_DEST_FILE_ALREADY_EXISTS;
 		}
 		else
 		{
 			if (!m_dir.rename(info.absoluteFilePath(), newFullPath))
 			{
-				LOG_QCRIT << "could not move:" << info.absoluteFilePath() << " into " << newFullPath;
+				LOG_CRIT << "could not move:" << info.absoluteFilePath() << " into " << newFullPath;
 				return FVA_ERROR_CANT_RENAME_FILE;
 			}
 			else
 			{
-				LOG_QDEB << "renamed:" << info.absoluteFilePath() << " into " << newFullPath;
-				LOG_QDEB << "need to fix taken time for:" << newFullPath;
+				LOG_DEB << "renamed:" << info.absoluteFilePath() << " into " << newFullPath;
+				LOG_DEB << "need to fix taken time for:" << newFullPath;
 			}
 		}
 	}

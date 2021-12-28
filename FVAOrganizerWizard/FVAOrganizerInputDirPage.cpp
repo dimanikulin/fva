@@ -21,7 +21,7 @@
 
 FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 {
-        LOG_DEB << "FVAOrganizerInputDirPage construction" ;
+        LOG_DEB << "construction" ;
 #ifdef  FVA_LANGUAGE_RUS
 	inputDirLabel	= new QLabel(tr("Укажите входную папку с контентом\n (Внимание! Папка должна начинаться с символа '#'):"));
 	dirButton = new QPushButton;
@@ -53,7 +53,7 @@ FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 	setLayout(layout);
 
 	connect( dirButton, SIGNAL( clicked() ), this, SLOT( OnDirButtonClicked() ) );
-        LOG_DEB << "FVAOrganizerInputDirPage constructed" ;
+        LOG_DEB << "constructed" ;
 }
 void FVAOrganizerInputDirPage::OnDirButtonClicked()
 {
@@ -80,7 +80,7 @@ bool FVAOrganizerInputDirPage::isComplete() const
 }
 bool	FVAOrganizerInputDirPage::validatePage ()
 {
-        LOG_DEB << "FVAOrganizerInputDirPage validate page" ;
+        LOG_DEB << "validate page" ;
 	// get the directory the user selected
 	QString dir = inputDirLineEdit->text();
 

@@ -18,7 +18,7 @@
 
 FVAOrganizerOrientPage::FVAOrganizerOrientPage()
 {
-        LOG_DEB << "FVAOrganizerOrientPage construction" ;
+        LOG_DEB << "construction" ;
 	// to suggest user to run /jpegr_portable32/jpegr.exe
 #ifdef  FVA_LANGUAGE_RUS
 	rotateLabel		= new QLabel(tr("Советуем Вам проверить ориентацию контента перед началом работы:"));
@@ -41,7 +41,7 @@ FVAOrganizerOrientPage::FVAOrganizerOrientPage()
 	connect( rotateButton, SIGNAL( clicked() ), this, SLOT( OnOrientationButtonClicked() ) );
 
 	setLayout(layout);
-        LOG_DEB << "FVAOrganizerOrientPage constructed" ;
+        LOG_DEB << "constructed" ;
 }
 
 void FVAOrganizerOrientPage::OnOrientationButtonClicked()

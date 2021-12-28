@@ -25,7 +25,7 @@
 FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	: deviceId (-1)
 {
-        LOG_DEB << "FVAOrganizerDevicePage construction"; 
+        LOG_DEB << "construction"; 
 
         btnDct = new QPushButton;
 
@@ -45,8 +45,6 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
-	LOG_DEB << "FVAOrganizerDevicePage 1";
-
 	deviceName	= new QLineEdit;
 	deviceName->setMaxLength(40);
 	matchName	= new QLineEdit;
@@ -55,7 +53,6 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	ownerName	= new QLineEdit;
 	cbDevice	= new QComboBox;
 
-        LOG_DEB << "FVAOrganizerDevicePage 2";
 	QGridLayout * tableLayout = new QGridLayout;
 
 	tableLayout->addWidget(deviceLbl,0,0);
@@ -69,7 +66,6 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	tableLayout->addWidget(ownerName,2,1);
 	tableLayout->addWidget(cbDevice,2,2);
 	
-	LOG_DEB << "FVAOrganizerDevicePage 3";
 	logOutput	= new QTextBrowser;
 	QVBoxLayout * layout = new QVBoxLayout;
 
@@ -77,29 +73,28 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	layout->addLayout(tableLayout);
 	layout->addWidget(logOutput);
 
-	LOG_DEB << "FVAOrganizerDevicePage 4";
 	setLayout(layout);
 
 	connect (btnDct,SIGNAL(clicked()),this,SLOT(OnChangeDictPressed()));
 
-        LOG_DEB << "FVAOrganizerDevicePage constructed"; 
+        LOG_DEB << "constructed"; 
 
 }
 void FVAOrganizerDevicePage::setVisible(bool visible)
 {	
-	LOG_DEB << "FVAOrganizerDevicePage::setVisible";
+	LOG_DEB << "setVisible";
 	DEVICE_MAP	deviceMap		= ((FVAOrganizerWizard*)wizard())->matchedDeviceMap();
 	QString		deviceName_		= ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
 
 	if (visible)
 	{
-		LOG_DEB << "FVAOrganizerDevicePage::setVisible if (visible)";
+		LOG_DEB << "setVisible if (visible)";
 		matchName->setText(deviceName_);
 		matchName->setReadOnly(true);
 		cbDevice->setVisible(false);
 		if ( deviceMap.size() > 1 )
 		{
-			LOG_DEB << "FVAOrganizerDevicePage::setVisible deviceMap.size() > 1";
+			LOG_DEB << "setVisible deviceMap.size() > 1";
 			cbDevice->setVisible(true);
 			cbDevice->clear();
 #ifdef  FVA_LANGUAGE_RUS
@@ -122,7 +117,7 @@ void FVAOrganizerDevicePage::setVisible(bool visible)
 		}
 		else if (deviceMap.size() ==1 )
 		{	
-			LOG_DEB << "FVAOrganizerDevicePage::setVisible deviceMap.size() == 1";
+			LOG_DEB << "setVisible deviceMap.size() == 1";
 			deviceName->setText(deviceMap.begin().value().guiName);
 			ownerName->setText(deviceMap.begin().value().ownerName);
 			deviceId = deviceMap.begin().value().deviceId;
@@ -130,7 +125,7 @@ void FVAOrganizerDevicePage::setVisible(bool visible)
 		}
 		else
 		{
-			LOG_DEB << "FVAOrganizerDevicePage::setVisible deviceMap.size() != 1 and !<";
+			LOG_DEB << "setVisible deviceMap.size() != 1 and !<";
 #ifdef  FVA_LANGUAGE_RUS
 			deviceName->setText(tr("НЕОПРЕДЕЛЕННО!"));
 			ownerName->setText(tr("НЕОПРЕДЕЛЕН!"));
@@ -142,7 +137,7 @@ void FVAOrganizerDevicePage::setVisible(bool visible)
 #endif // FVA_LANGUAGE_RUS
 		}
 	}
-	LOG_DEB << "FVAOrganizerDevicePage::setVisible before exit";
+	LOG_DEB << "setVisible before exit";
 	return QWizardPage::setVisible(visible);
 }
 void FVAOrganizerDevicePage::OnChangeDictPressed()
@@ -151,13 +146,13 @@ void FVAOrganizerDevicePage::OnChangeDictPressed()
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	QStringList params;
 	params.append(((FVAOrganizerWizard*)wizard())->matchedDeviceName());
-	LOG_DEB << "FVAOrganizerDevicePage called FVADictionaryEditor with device=" << ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
+	LOG_DEB << "called FVADictionaryEditor with device=" << ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
 	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe", params);
 	myProcess.waitForFinished( -1 );
 }
 bool FVAOrganizerDevicePage::isComplete() const
 {
-	LOG_DEB << "FVAOrganizerDevicePage::isComplete";
+	LOG_DEB << "isComplete";
 	// make button next ne disabled
 	if (deviceId == -1)
 	{
@@ -168,7 +163,7 @@ bool FVAOrganizerDevicePage::isComplete() const
 
 bool FVAOrganizerDevicePage::validatePage()
 {
-	LOG_DEB << "FVAOrganizerDevicePage::validatepage";
+	LOG_DEB << "validatepage";
 	DEVICE_MAP deviceMap = ((FVAOrganizerWizard*)wizard())->matchedDeviceMap();
 	if ( deviceMap.size() > 1 )
 	{

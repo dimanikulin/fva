@@ -44,7 +44,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context)
 		FVA_EXIT_CODE res = fvaGetDeviceIdFromCsv(m_fvaFileInfo, info.fileName(), deviceID);
 		if (FVA_NO_ERROR != res)
 		{
-			LOG_QWARN << "no dev id found for file: " << info.absoluteFilePath();
+			LOG_WARN << "no dev id found for file: " << info.absoluteFilePath();
 			if (FVA_ERROR_NO_DEV_ID == res)
 				m_Issues.push_back("FVA_ERROR_NO_DEV_ID," + info.absoluteFilePath() + "," + info.fileName());
 			if (FVA_ERROR_NON_UNIQUE_FVA_INFO == res)
@@ -55,7 +55,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context)
 		DEVICE_MAP devMap = fvaGetDeviceMapForImg(m_deviceMap, info.filePath(), deviceName);
 		if (0 == devMap.size())
 		{
-			LOG_QWARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
+			LOG_WARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
 			m_Issues.push_back("FVA_ERROR_UKNOWN_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
 			if (context.readOnly)
 				continue;
@@ -64,7 +64,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context)
 		}
 		if (deviceName.isEmpty())
 		{
-			LOG_QWARN << "empty device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
+			LOG_WARN << "empty device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
 			m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
 			continue;
 		}
@@ -80,7 +80,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context)
 
 		if (!matched)
 		{
-			LOG_QWARN << "device id linked wrongly, " << info.absoluteFilePath() << ",from image-" << devMap.begin().value().deviceId << ", from fvafile=" << deviceID;
+			LOG_WARN << "device id linked wrongly, " << info.absoluteFilePath() << ",from image-" << devMap.begin().value().deviceId << ", from fvafile=" << deviceID;
 			m_Issues.push_back("FVA_ERROR_LINKED_WRONG_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
 			continue;
 		}
@@ -95,7 +95,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context)
 				PlaceId = m_fvaFileInfo[info.fileName().toUpper()].placeId;
 			}
 
-			LOG_QWARN << "GEO location is NOT preent in:" << info.absoluteFilePath() << ", PlaceId=" << PlaceId;
+			LOG_WARN << "GEO location is NOT preent in:" << info.absoluteFilePath() << ", PlaceId=" << PlaceId;
 			m_Issues.push_back("FVA_ERROR_NO_GEO," + info.absoluteFilePath() + "," + QString::number(PlaceId));
 		}
 

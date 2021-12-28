@@ -21,7 +21,7 @@ class CLTCheckDateTime : public CmdLineBaseTask
 {
 public:
 	CLTCheckDateTime(const FvaConfiguration& cfg);
-	virtual ~CLTCheckDateTime() { LOG_QDEB << "cmd deleted, dir:" << m_folder; }
+	virtual ~CLTCheckDateTime() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	/*!
 	* \brief returns command name

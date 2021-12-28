@@ -25,16 +25,16 @@ FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/)
 
 		if (newDeviceName.isEmpty())
 		{
-			LOG_QCRIT << "no device name in picture:" << info.absoluteFilePath();
+			LOG_CRIT << "no device name in picture:" << info.absoluteFilePath();
 			return FVA_ERROR_EMPTY_DEVICE_NAME;
 		}
 		else
 		{
 			if (deviceName.isEmpty())
-				LOG_QDEB << "got first device name: " << newDeviceName << "in picture:" << info.absoluteFilePath();
+				LOG_DEB << "got first device name: " << newDeviceName << "in picture:" << info.absoluteFilePath();
 			else if (deviceName != newDeviceName)
 			{
-				LOG_QCRIT << "got new device name: " << newDeviceName << "in picture:" << info.absoluteFilePath() << "old: " << deviceName;
+				LOG_CRIT << "got new device name: " << newDeviceName << "in picture:" << info.absoluteFilePath() << "old: " << deviceName;
 				return FVA_ERROR_NON_UNIQUE_DEVICE_NAME;
 			}
 			deviceName = newDeviceName;

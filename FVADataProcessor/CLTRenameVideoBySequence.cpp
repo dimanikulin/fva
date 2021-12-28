@@ -31,7 +31,7 @@ FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& /*context*/)
 				continue;
 			int index = info.baseName().indexOf("_");
 			imageFilePrefix = info.baseName().mid(0, index);
-			LOG_QDEB << "got new image prefix:" << imageFilePrefix;
+			LOG_DEB << "got new image prefix:" << imageFilePrefix;
 		}
 		else if (FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType(suffix))
 		{
@@ -49,7 +49,7 @@ FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& /*context*/)
 			}
 			if (!info.baseName().contains("_"))
 			{
-				LOG_QCRIT << "video file does not contain _:" << info.absoluteFilePath();
+				LOG_CRIT << "video file does not contain _:" << info.absoluteFilePath();
 				return FVA_ERROR_SEQUENCE;
 			}
 			int index = info.baseName().indexOf("_");
@@ -62,7 +62,7 @@ FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& /*context*/)
 				}
 				else
 				{
-					LOG_QCRIT << "still empty image prefix for path:" << info.absoluteFilePath();
+					LOG_CRIT << "still empty image prefix for path:" << info.absoluteFilePath();
 					return FVA_ERROR_SEQUENCE;
 				}
 			}
@@ -71,20 +71,20 @@ FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& /*context*/)
 			// sometimes the file names are already in state as we need
 			if (info.absoluteFilePath() == newFilePath)
 			{
-				LOG_QWARN << "file has already target name" << info.absoluteFilePath() << ", skipping";
+				LOG_WARN << "file has already target name" << info.absoluteFilePath() << ", skipping";
 				continue;
 			}
 			if (!m_dir.rename(info.absoluteFilePath(), newFilePath))
 			{
-				LOG_QCRIT << "can not rename file:" << info.absoluteFilePath() << " to:" << newFilePath;
+				LOG_CRIT << "can not rename file:" << info.absoluteFilePath() << " to:" << newFilePath;
 				return FVA_ERROR_CANT_RENAME_FILE;
 			}
 			else
-				LOG_QDEB << "renamed file:" << info.absoluteFilePath() << " to:" << newFilePath;
+				LOG_DEB << "renamed file:" << info.absoluteFilePath() << " to:" << newFilePath;
 		}
 		else if (FVA_FS_TYPE_UNKNOWN == fvaConvertFileExt2FileType(suffix))
 		{
-			LOG_QWARN << "unsupported file type:" << info.absoluteFilePath();
+			LOG_WARN << "unsupported file type:" << info.absoluteFilePath();
 			continue;
 		}
 	}

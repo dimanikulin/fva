@@ -24,7 +24,7 @@ FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/)
 		{
 #if (defined (Q_OS_WIN))
 			if (!SetFileAttributes(info.absoluteFilePath().toStdString().c_str(), FILE_ATTRIBUTE_READONLY))
-				LOG_QCRIT << "can not set attr for fva file:" << info.absoluteFilePath();
+				LOG_CRIT << "can not set attr for fva file:" << info.absoluteFilePath();
 #endif
 		}
 		else
@@ -33,12 +33,12 @@ FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/)
 			{
 #if (defined (Q_OS_WIN))
 				if (!SetFileAttributes(info.absoluteFilePath().toStdString().c_str(), /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY))
-					LOG_QCRIT << "can not set attr for internal file:" << info.absoluteFilePath();
+					LOG_CRIT << "can not set attr for internal file:" << info.absoluteFilePath();
 #endif
 			}
 			else
 			{
-				LOG_QCRIT << "found not supported file:" << info.absoluteFilePath();
+				LOG_CRIT << "found not supported file:" << info.absoluteFilePath();
 				return FVA_ERROR_NOT_SUPPORTED_FILE;
 			}
 		}
