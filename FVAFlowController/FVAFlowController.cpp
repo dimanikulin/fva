@@ -492,7 +492,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 	// merge 2 csv into one: common one and just generated - for file CSVs
 	QString pyScriptPathMerge2 = "python "
 		+ QCoreApplication::applicationDirPath()
-		+ "/scripts/merge2csv.py "
+		+ "/scripts/CLTMerge2csv.py "
 		+ fvaSWRootDir;
 	pyCmdList.append(pyScriptPathMerge2 + "#data#/fvaFile.csv " + fvaSWRootDir + "#data#/fvaFileN.csv ");
 
