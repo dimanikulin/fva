@@ -184,14 +184,17 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
-	QString pyScriptRunPath = "python " + fvaSWRootDir + "#scripts#/" + scriptName;
+	QString pyScriptRunPath =  fvaSWRootDir + "#scripts#/" + scriptName;
+
+	QStringList params_ = params;
+	params_.push_front(pyScriptRunPath);
 
 	QProcess myProcess(obj);
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
-	myProcess.start(pyScriptRunPath, params);
+	myProcess.start("python", params_);
 	LOG_DEB << "runPythonCMD:" << "pyScriptRunPath=" << pyScriptRunPath;
 
-	myProcess.waitForFinished(-1);
+	myProcess.waitForFinished();
 
 	int exitCode_ = myProcess.exitCode();
 	if (exitCode_ != 0)
