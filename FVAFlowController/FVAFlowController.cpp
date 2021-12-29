@@ -194,7 +194,7 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(pyScriptRunPath);
 
 	if (!myProcess.waitForFinished(-1))
-		exitCode = FVA_ERROR_CANT_START_PYTHON_PROC;
+		exitCode = FVA_ERROR_CANT_EXIT_PYTHON_PROC;
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(pyScriptRunPath);
 
 	exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
