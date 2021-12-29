@@ -193,10 +193,10 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject
 
 	myProcess.waitForFinished(-1);
 
-	int exitCode = myProcess.exitCode();
-	if (exitCode != 0)
+	int exitCode_ = myProcess.exitCode();
+	if (exitCode_ != 0)
 	{
-		LOG_DEB << "runPythonCMD:" << "exitCode=" << exitCode;	
+		LOG_DEB << "runPythonCMD:" << "exitCode_=" << exitCode_;	
 		return FVA_ERROR_CANT_START_PYTHON_PROC;
 	}
 
