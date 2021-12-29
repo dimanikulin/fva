@@ -189,16 +189,15 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject
 	QProcess myProcess(obj);
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	myProcess.start(pyScriptRunPath, params);
-	if (!myProcess.waitForStarted())
-		exitCode = FVA_ERROR_CANT_START_PYTHON_PROC;
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(pyScriptRunPath);
+	LOG_DEB << "runPythonCMD:" << "pyScriptRunPath=" << pyScriptRunPath;
 
 	if (!myProcess.waitForFinished(-1))
 		exitCode = FVA_ERROR_CANT_EXIT_PYTHON_PROC;
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(pyScriptRunPath);
 
 	exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
-	
+	LOG_DEB << "runPythonCMD:" << "exitCode=" << exitCode;	
+
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(pyScriptRunPath);
 	return FVA_NO_ERROR;
