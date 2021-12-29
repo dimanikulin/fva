@@ -189,19 +189,16 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 	PEOPLE_MAP peopleMap;
 	res = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
 	RET_RES_IF_RES_IS_ERROR
-	LOG_DEB << "for (auto i = RelationsMap.begin(); i != RelationsMap.end(); ++i)";
 	for (auto i = RelationsMap.begin(); i != RelationsMap.end(); ++i)
 	{
 		int ID = i->first;
 		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
 		treeWidgetItem->setText(0, i->second);
-		LOG_DEB << "treeWidgetItem->setIcon(0, peopleIcon);"; 
 #ifdef _SHOW_ICONS_
 		treeWidgetItem->setIcon(0, peopleIcon);
 #endif // _SHOW_ICONS_
 		treeWidgetItem->setFlags(treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
 		treeWidgetItem->setCheckState(0, Qt::Unchecked);
-		LOG_DEB << "for (auto index = peopleRelationsMap.begin(); index != peopleRelationsMap.end(); ++index)";
 		for (auto index = peopleRelationsMap.begin(); index != peopleRelationsMap.end(); ++index)
 		{
 			int IDc = index->Id;
@@ -211,13 +208,11 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 
 			QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
 			childWidgetItem->setText(0, index->name);
-			LOG_DEB << "childWidgetItem->setIcon(0, peopleIcon);";
 #ifdef _SHOW_ICONS_
 			childWidgetItem->setIcon(0, peopleIcon);
 #endif // #ifdef _SHOW_ICONS_
 			childWidgetItem->setFlags(childWidgetItem->flags() | Qt::ItemIsUserCheckable);
 			childWidgetItem->setCheckState(0, Qt::Unchecked);
-                        LOG_DEB << "auto indexp = peopleMap.begin(); indexp != peopleMap.end(); ++indexp";
 			for (auto indexp = peopleMap.begin(); indexp != peopleMap.end(); ++indexp)
 			{
 				int IDp = indexp->Id;
@@ -233,7 +228,6 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 				personWidgetItem->setText(0, indexp->fullName);
 				if (!devices)
 					personWidgetItem->setData(1, 1, IDp);
-				LOG_DEB << "personWidgetItem->setIcon(0, personIcon)";
 #ifdef _SHOW_ICONS_
 				personWidgetItem->setIcon(0, personIcon);
 #endif //_SHOW_ICONS_
@@ -245,7 +239,6 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 					childWidgetItem->addChild(personWidgetItem);
 					continue;
 				}
-				LOG_DEB << "for (auto inddev = deviceMap.begin(); inddev != deviceMap.end(); ++inddev)"; 
 				for (auto inddev = deviceMap.begin(); inddev != deviceMap.end(); ++inddev)
 				{
 					int IDdev = inddev->deviceId;
@@ -259,7 +252,6 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 					QTreeWidgetItem* deviceWidgetItem = new QTreeWidgetItem;
 					deviceWidgetItem->setText(0, inddev->guiName);
 					deviceWidgetItem->setData(1, 1, IDdev);
-					LOG_DEB << "deviceWidgetItem->setIcon(0, photoIcon);";
 #ifdef _SHOW_ICONS_
 					deviceWidgetItem->setIcon(0, photoIcon);
 #endif //_SHOW_ICONS_

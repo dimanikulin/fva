@@ -184,22 +184,22 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
-	QString pyScriptRunPath = "python " + fvaSWRootDir + "/#scripts#/" + scriptName;
+	QString pyScriptRunPath = "python " + fvaSWRootDir + "#scripts#/" + scriptName;
 
 	QProcess myProcess(obj);
 	myProcess.setProcessChannelMode(QProcess::MergedChannels);
 	myProcess.start(pyScriptRunPath, params);
 	LOG_DEB << "runPythonCMD:" << "pyScriptRunPath=" << pyScriptRunPath;
 
-	if (!myProcess.waitForFinished(-1))
-		exitCode = FVA_ERROR_CANT_EXIT_PYTHON_PROC;
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(pyScriptRunPath);
+	myProcess.waitForFinished(-1);
 
-	exitCode = static_cast<FVA_EXIT_CODE> (myProcess.exitCode());
-	LOG_DEB << "runPythonCMD:" << "exitCode=" << exitCode;	
+	int exitCode = myProcess.exitCode();
+	if (exitCode != 0)
+	{
+		LOG_DEB << "runPythonCMD:" << "exitCode=" << exitCode;	
+		return FVA_ERROR_CANT_START_PYTHON_PROC;
+	}
 
-	// show error message box and return to calling function if previous operation failed
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(pyScriptRunPath);
 	return FVA_NO_ERROR;
 }
 FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* obj)
@@ -314,7 +314,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir
 
 	QStringList params;
 
-	QString fvafileNPath = fvaSWRootDir + "/#data#/fvafileN.csv";
+	QString fvafileNPath = fvaSWRootDir + "#data#/fvafileN.csv";
 	params.append(fvafileNPath);
 
 	// for each folder in output list
