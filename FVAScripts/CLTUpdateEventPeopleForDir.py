@@ -25,4 +25,7 @@ with open(newName, newline='', encoding='utf-8') as csvfile:
               
        # write updated record to new fva csv file  
        f.write(','.join(row) + "\n")   
-f.close() 
+f.close()
+
+#remove prev file
+os.remove(newName) 
