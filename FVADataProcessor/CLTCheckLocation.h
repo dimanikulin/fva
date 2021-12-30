@@ -13,21 +13,29 @@
 /*!
 * \brief CLTCheckLocation is child of CmdLineBaseTask and implements the next functions:
 *
-* 1. it checks for existing location - returns FVA_ERROR_NO_EXIF_LOCATION
-* 2. TBD
+* 1. it checks for existing location - returns FVA_ERROR_NO_EXIF_LOCATION if it found empty location and if mode is read only
+* 2. if mode is not read only and it found empty location it creates file FVA_ERROR_NO_EXIF_LOCATION.csv and prints all the file pathes with no location 
 */
 class CLTCheckLocation : public CmdLineBaseTask
 {
 public:
 
-	virtual ~CLTCheckLocation() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
+	virtual ~CLTCheckLocation(); 
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
+
 	/*!
 	* \brief returns command name
 	* \return returns command name as a string
 	*/
 	static QString Name(){ return "CLTCheckLocation"; }
-	virtual bool supportReadOnly() { return false; }
+	virtual bool supportReadOnly() { return true; }
+
+private:
+
+	/*!
+	* issues found
+	*/
+	QList<QString>					m_Issues;
 
 };
 #endif // _CLT_CHECK_LOCATION_H_

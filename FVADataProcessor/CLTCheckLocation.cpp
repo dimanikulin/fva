@@ -23,9 +23,29 @@ FVA_EXIT_CODE CLTCheckLocation::execute(const CLTContext& context)
 		bool present = fvaExifGeoDataPresentInFile(info.filePath());
 		if (!present)
 		{
-			LOG_CRIT << "found file without exif location:" << info.absoluteFilePath();
-			return FVA_ERROR_NO_EXIF_LOCATION;
+			if (context.readOnly)
+			{
+				LOG_CRIT << "found file without exif location:" << info.absoluteFilePath();
+				return FVA_ERROR_NO_EXIF_LOCATION;
+			}
+			else
+			{
+				m_Issues.push_back(info.absoluteFilePath());					
+			}
 		}
 	}
 	return FVA_NO_ERROR;
+}
+CLTCheckLocation::~CLTCheckLocation()
+{
+	QFile fileNew(m_rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv");
+	fileNew.open(QIODevice::Append | QIODevice::Text);
+	QTextStream writeStream(&fileNew);
+	writeStream.setCodec("UTF-8");
+	for (auto it = m_Issues.begin(); it != m_Issues.end(); ++it)
+		writeStream << *it << "\n";
+	writeStream.flush();
+	fileNew.close();
+
+	LOG_DEB << "cmd deleted, dir:" << m_folder; 
 }
