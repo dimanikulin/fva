@@ -41,7 +41,8 @@ CLTCheckLocation::~CLTCheckLocation()
 	QString rootSWdir; 
 
 	FvaConfiguration cfg;
-	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
+	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	res = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	RET_IF_RES_IS_ERROR
 
 	fvaSaveStrListToFile(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", m_Issues);
