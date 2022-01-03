@@ -161,7 +161,14 @@ void FVAOrganizerPlacePage::setVisible(bool visible)
 		exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("get.param")
 
-		fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget);
+		FVAFlowController flow;
+
+		STR_LIST fileListToFillUp;
+		exitCode = flow.GetProblemFilesList(fileListToFillUp);
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("flow.GetProblemFilesList")
+
+		// populate inout file struture with files
+		fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget, fileListToFillUp);
 
 		exitCode = fvaBuildPlaceTree(this, placesWidget, rootSWdir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildPlaceTree")

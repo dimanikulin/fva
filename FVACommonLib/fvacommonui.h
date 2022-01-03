@@ -80,9 +80,10 @@ void fvaClearChecks(QTreeWidgetItem *item);
  * \param folder - to show a folder in GUI
  * \param item - current tree item we work with
  * \param treeWidget - a widget we draw dir structure on
+ * \param problemFileList - a list of files with some problems (if file name in this list and a file name in UI match - we will mark it by red)
  * \returns it returns nothing
  */
-void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget);
+void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget, const STR_LIST& problemFileList);
 
 #define FVA_MESSAGE_BOX(message)\
 	QMessageBox msgBox; \

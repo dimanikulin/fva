@@ -16,12 +16,12 @@
 #include "fvalogger.inl"
 #include "fvacommonui.h"
 
-void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget)
+void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget, const STR_LIST& problemFileList)
 {
 	QDir dir(folder);
 	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{			
-		if ( !info.isDir() )
+		if ( !info.isDir() && problemFileList.isEmpty() )
 			continue;
 		// just skip internal folder
 		if ( info.fileName()[0] == '#' 
@@ -33,14 +33,25 @@ void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidg
 
 		treeWidgetItem->setData( 1, 1, (QString) info.absoluteFilePath() );
 
-		if (info.fileName().length()!=4) // not YEAR folder
+		if (info.isDir() && info.fileName().length()!=4) // not YEAR folder
 			treeWidgetItem->setForeground( 0 , QBrush (Qt::red) );
-
+		if (!info.isDir()) // now it is a file
+		{
+			for (STR_LIST::const_iterator it = problemFileList.begin(); it != problemFileList.end(); ++it)
+			{		
+				QString fileName = *it;
+				if (fileName.toUpper() == info.absoluteFilePath().toUpper())
+					treeWidgetItem->setForeground( 0 , QBrush (Qt::red) );
+			}
+		}
 		if (item)
 		{
 			item->addChild(treeWidgetItem);
-			QIcon	icon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/folder.png");
-			item->setIcon(0, icon);
+			if (info.isDir())
+			{
+				QIcon	icon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/folder.png");
+				item->setIcon(0, icon);
+			}
 		}
 		else
 			treeWidget->addTopLevelItem (treeWidgetItem);
@@ -48,7 +59,6 @@ void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidg
 		fvaPopulateInputDir(info.absoluteFilePath(), treeWidgetItem, treeWidget);
 	}		
 }
-
 
 FVA_EXIT_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QString& text )
 {
