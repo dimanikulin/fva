@@ -174,12 +174,6 @@ CLTAutoChecks2::~CLTAutoChecks2()
 	}
 	if (0 == m_Issues.size())
 		return; // not to create file for no issues
-	QFile fileNew(m_rootSWdir + "#logs#/issues2.csv");
-	fileNew.open(QIODevice::Append | QIODevice::Text);
-	QTextStream writeStream(&fileNew);
-	writeStream.setCodec("UTF-8");
-	for (auto it = m_Issues.begin(); it != m_Issues.end(); ++it)
-		writeStream << *it << "\n";
-	writeStream.flush();
-	fileNew.close();
+
+	fvaSaveStrListToFile(m_rootSWdir + "#logs#/issues2.csv", m_Issues);
 }

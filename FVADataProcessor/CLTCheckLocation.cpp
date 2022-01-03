@@ -38,14 +38,7 @@ FVA_EXIT_CODE CLTCheckLocation::execute(const CLTContext& context)
 }
 CLTCheckLocation::~CLTCheckLocation()
 {
-	QFile fileNew(m_rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv");
-	fileNew.open(QIODevice::Append | QIODevice::Text);
-	QTextStream writeStream(&fileNew);
-	writeStream.setCodec("UTF-8");
-	for (auto it = m_Issues.begin(); it != m_Issues.end(); ++it)
-		writeStream << *it << "\n";
-	writeStream.flush();
-	fileNew.close();
+	fvaSaveStrListToFile(m_rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", m_Issues);
 
 	LOG_DEB << "cmd deleted, dir:" << m_folder; 
 }

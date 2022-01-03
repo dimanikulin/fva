@@ -87,6 +87,12 @@ bool fvaRemoveDirIfEmpty(const QString& dirPath);
  */
 FVA_EXIT_CODE fvaCreateDirIfNotExists(const QString& dirPath);
 
+/*!
+ * \brief it simply writes the QString list to a file  
+ * \param path - a file path to write strList into  
+ * \param strList - a list of QString to be written 
+ * \returns it returns FVA_EXIT_CODE
+ */
+FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, QList<QString>& strList);
 
 #endif // FVACOMMONLIB_H
-
