@@ -254,12 +254,6 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
 
 FVA_EXIT_CODE FVAFlowController::performLocationChecks(CLTContext& context)
 {
-	context.cmdType = "CLTCheckLocation";
-	FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, m_cfg);
-
-	// show error message box and return to calling function if previous operation failed
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckLocation")
-	return FVA_NO_ERROR;
 }
 FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int deviceId)
 {
@@ -378,8 +372,14 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir
 		// perform location checks
 		FVA_EXIT_CODE res = performLocationChecks(context);
 
-		// return to calling function if previous operation failed
-		RET_RES_IF_RES_IS_ERROR
+		context.cmdType = "CLTCheckLocation";
+		// in write  mode CLTCheckLocation checks whole content 
+		// if GPS coordinates are present and creates csv file with list of files with empty GPS coordinates  
+		context.readOnly = false; 
+		exitCode = m_dataProcessor.run(context, m_cfg);
+
+		// show error message box and return to calling function if previous operation failed
+		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
 	}
 	
 	return FVA_NO_ERROR;
