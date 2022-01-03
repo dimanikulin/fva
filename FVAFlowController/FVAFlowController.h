@@ -85,6 +85,13 @@ public:
 	 */
 	FVA_EXIT_CODE ProcessInputDirForEvent(const QString& inputDir, const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj);
 
+	/*!
+	 * \brief it returns the list of files (paths) in input folder content that have some problem inside
+	 * \param fileListToFillUp - list of files to full up
+	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	 */
+	FVA_EXIT_CODE GetProblemFilesList(STR_LIST& fileListToFillUp);
+	
 private:
 
 	/*!
