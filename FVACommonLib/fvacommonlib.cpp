@@ -287,7 +287,7 @@ FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, const QList<QString>& st
 FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, QList<QString>& strList)
 {
 	QFile file(path);
-	file.open(QIODevice::Read | QIODevice::Text);
+	file.open(QIODevice::Text);
 	
 	QTextStream readStream(&file);
 	readStream.setCodec("UTF-8");

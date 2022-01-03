@@ -56,7 +56,7 @@ void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidg
 		else
 			treeWidget->addTopLevelItem (treeWidgetItem);
 
-		fvaPopulateInputDir(info.absoluteFilePath(), treeWidgetItem, treeWidget);
+		fvaPopulateInputDir(info.absoluteFilePath(), treeWidgetItem, treeWidget, problemFileList);
 	}		
 }
 
