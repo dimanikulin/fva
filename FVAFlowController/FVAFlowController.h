@@ -126,13 +126,6 @@ private:
 	FVA_EXIT_CODE performDTChecks(CLTContext& context, QObject* obj);
 
 	/*!
-	 * \brief it performs the location checks for input folder
-	 * \param context - one command parameters (environment)
-	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
-	 */
-	FVA_EXIT_CODE performLocationChecks(CLTContext& context);
-
-	/*!
 	 * \brief it runs python command from #script dir
 	 * \param scriptName - name of script to run
 	 * \param obj - to attach the child processes to this object

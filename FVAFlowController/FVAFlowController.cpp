@@ -252,9 +252,6 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
 	return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::performLocationChecks(CLTContext& context)
-{
-}
 FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int deviceId)
 {
 	CLTContext context;
@@ -387,7 +384,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir
 FVA_EXIT_CODE FVAFlowController::GetProblemFilesList(STR_LIST& fileListToFillUp)
 {
 	QString rootSWdir;
-	FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
+	FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", rootSWdir);
 
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
