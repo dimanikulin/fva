@@ -178,7 +178,8 @@ void FVAOrganizerEventInfoPage::setVisible(bool visible)
 		exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("get.param")
 
-		fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget);
+		STR_LIST fileListToFillUp; // empty for this case as we wanna have dirs only
+		fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget,fileListToFillUp);
 
 		exitCode = fvaBuildPeopleTree(this, peopleWidget, false, rootSWdir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildPeopleTree")
