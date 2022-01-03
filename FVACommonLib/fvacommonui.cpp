@@ -16,7 +16,7 @@
 #include "fvalogger.inl"
 #include "fvacommonui.h"
 
-void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget, const STR_LIST& problemFileList)
+void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget, const QList<QString> & problemFileList)
 {
 	QDir dir(folder);
 	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
@@ -37,7 +37,7 @@ void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidg
 			treeWidgetItem->setForeground( 0 , QBrush (Qt::red) );
 		if (!info.isDir()) // now it is a file
 		{
-			for (STR_LIST::const_iterator it = problemFileList.begin(); it != problemFileList.end(); ++it)
+			for (auto it = problemFileList.begin(); it != problemFileList.end(); ++it)
 			{		
 				QString fileName = *it;
 				if (fileName.toUpper() == info.absoluteFilePath().toUpper())

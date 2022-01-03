@@ -286,7 +286,7 @@ FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, const QList<QString>& st
 
 FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, QList<QString>& strList)
 {
-	QFile fil(path);
+	QFile file(path);
 	file.open(QIODevice::Read | QIODevice::Text);
 	
 	QTextStream readStream(&file);
@@ -298,7 +298,7 @@ FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, QList<QString>& strLis
 		if (line.isNull())
 			break;
 		else
-			stringList.append(line);
+			strList.append(line);
 	}
 
 	file.close();
