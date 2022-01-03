@@ -40,6 +40,7 @@ CLTCheckLocation::~CLTCheckLocation()
 {
 	QString rootSWdir; 
 
+	FvaConfiguration cfg;
 	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	RET_IF_RES_IS_ERROR
 
