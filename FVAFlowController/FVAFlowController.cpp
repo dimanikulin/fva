@@ -366,9 +366,6 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir
 
 	if (SearchByLocation)
 	{
-		// perform location checks
-		FVA_EXIT_CODE res = performLocationChecks(context);
-
 		context.cmdType = "CLTCheckLocation";
 		// in write  mode CLTCheckLocation checks whole content 
 		// if GPS coordinates are present and creates csv file with list of files with empty GPS coordinates  
