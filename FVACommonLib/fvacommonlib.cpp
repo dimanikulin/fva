@@ -270,7 +270,7 @@ FVA_EXIT_CODE fvaCreateDirIfNotExists(const QString& dirPath)
 		return FVA_ERROR_DEST_DIR_ALREADY_EXISTS;
 }
 
-FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, QList<QString>& strList)
+FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, const QList<QString>& strList)
 {
 	QFile fileNew(path);
 	fileNew.open(QIODevice::Append | QIODevice::Text);
@@ -282,4 +282,27 @@ FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, QList<QString>& strList)
 	fileNew.close();
 
 	return FVA_NO_ERROR;
+}
+
+FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, QList<QString>& strList)
+{
+	QFile fil(path);
+	file.open(QIODevice::Read | QIODevice::Text);
+	
+	QTextStream readStream(&file);
+	readStream.setCodec("UTF-8");
+
+	while (true)
+	{
+    		QString line = readStream.readLine();
+		if (line.isNull())
+			break;
+		else
+			stringList.append(line);
+	}
+
+	file.close();
+
+	return FVA_NO_ERROR;
+
 }

@@ -93,6 +93,14 @@ FVA_EXIT_CODE fvaCreateDirIfNotExists(const QString& dirPath);
  * \param strList - a list of QString to be written 
  * \returns it returns FVA_EXIT_CODE
  */
-FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, QList<QString>& strList);
+FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, const QList<QString>& strList);
+
+/*!
+ * \brief it simply gets the QString list from a file  
+ * \param path - a file path to get strList from
+ * \param strList - a list of QString to be filledUp 
+ * \returns it returns FVA_EXIT_CODE
+ */
+FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, QList<QString>& strList);
 
 #endif // FVACOMMONLIB_H
