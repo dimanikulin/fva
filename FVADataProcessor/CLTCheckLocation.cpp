@@ -8,6 +8,8 @@
 #include "CLTCheckLocation.h"
 #include "fvacommonexif.h"
 
+#include <QApplication>
+
 FVA_EXIT_CODE CLTCheckLocation::execute(const CLTContext& context)
 {
 	QString imageFilePrefix;
@@ -42,6 +44,8 @@ CLTCheckLocation::~CLTCheckLocation()
 
 	FvaConfiguration cfg;
 	FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+	RET_IF_RES_IS_ERROR
+
 	res = cfg.getParamAsString("Common::RootDir", rootSWdir);
 	RET_IF_RES_IS_ERROR
 
