@@ -22,11 +22,13 @@ FVA_EXIT_CODE fillUpCB(const QString& rootSWdir,const QString& dictName, QComboB
 {
 	FVA_SIMPLE_MAP fvaMap;
 	FVA_EXIT_CODE exitCode = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, fvaMap, dictName);
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor." + dictName)
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("FVADictionaryEditor." + dictName)
 	
 	cb->clear();
 	for (auto i = fvaMap.begin(); i != fvaMap.end(); ++i)
-		cb->addItem(i->name, i->Id);
+		cb->addItem(i->second, i->first);
+
+	return FVA_NO_ERROR;
 }
 
 FVADictionaryEditor::FVADictionaryEditor(const QString& device, QWidget *parent)
@@ -68,7 +70,7 @@ FVADictionaryEditor::FVADictionaryEditor(const QString& device, QWidget *parent)
 	fillUpCB(rootSWdir, "fvaInstitutions.csv", ui.cbEventTypeInstit);
 
 	LOG_DEB << "location group box building"; 
-	fillUpCB(rootSWdir, "fvaPlaceTypes.csv", cbPlaceType);
+	fillUpCB(rootSWdir, "fvaPlaceTypes.csv", ui.cbPlaceType);
 
 	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/main.png");
 	setWindowIcon(icon);
@@ -113,7 +115,7 @@ void FVADictionaryEditor::OnAddPlaceBtnPressed()
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.getRootDir")
 
 	FVA_SIMPLE_MAP fvaMap;
-	FVA_EXIT_CODE exitCode = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, fvaMap, "fvaPlaces.csv");
+	exitCode = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, fvaMap, "fvaPlaces.csv");
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.fvaPlaces.csv" )
 
 	QFile file(rootSWdir + "#data#/fvaPlaces.csv");
@@ -143,7 +145,7 @@ void FVADictionaryEditor::OnAddEventBtnPressed()
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.getRootDir")
 
 	FVA_SIMPLE_MAP fvaMap;
-	FVA_EXIT_CODE exitCode = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, fvaMap, "fvaEvents.csv");
+	exitCode = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, fvaMap, "fvaEvents.csv");
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.fvaEvents.csv" )
 
 	QFile file(rootSWdir + "#data#/fvaEvents.csv");

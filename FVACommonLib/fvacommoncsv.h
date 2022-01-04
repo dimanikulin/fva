@@ -16,7 +16,7 @@
 #include "fvaperson.h"
 #include "fvaPeopleRelations.h"
 
-typedef std::map<int, QString> FVA_SIMPLE_MAP;
+typedef QMap<int, QString> FVA_SIMPLE_MAP;
 
 /*!
  * \brief it returns device ID by file name from fva information saved in CSV files
