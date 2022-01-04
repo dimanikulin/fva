@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>465</width>
-    <height>321</height>
+    <width>463</width>
+    <height>631</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>FVADictionaryEditor</string>
   </property>
-  <widget class="QGroupBox" name="groupBox">
+  <widget class="QGroupBox" name="groupBoxPerson">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -29,7 +29,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>22</y>
+      <y>20</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -49,13 +49,13 @@
     </property>
    </widget>
   </widget>
-  <widget class="QGroupBox" name="groupBox_2">
+  <widget class="QGroupBox" name="groupBoxPlace">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>80</y>
      <width>441</width>
-     <height>61</height>
+     <height>231</height>
     </rect>
    </property>
    <property name="title">
@@ -77,21 +77,143 @@
       <x>380</x>
       <y>20</y>
       <width>51</width>
-      <height>31</height>
+      <height>201</height>
      </rect>
     </property>
     <property name="text">
      <string>+</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="editGPSLatitude">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>100</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Широта:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>140</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Долгота:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="editGPSLongitude">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>140</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cbGPSLatitudeRef">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>100</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Nord</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>West</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cbGPSLongitudeRef">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>140</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>East</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>West</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Тип:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cbPlaceType">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>60</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblHelp">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>180</y>
+      <width>361</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You need to find the location by its name and&lt;/p&gt;&lt;p&gt;do it at least on 2 map services like Google Map and Yandex&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QGroupBox" name="groupBox_3">
+  <widget class="QGroupBox" name="groupBoxDevice">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>150</y>
+     <y>480</y>
      <width>441</width>
-     <height>161</height>
+     <height>141</height>
     </rect>
    </property>
    <property name="title">
@@ -101,9 +223,9 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>120</y>
+      <y>20</y>
       <width>51</width>
-      <height>31</height>
+      <height>111</height>
      </rect>
     </property>
     <property name="text">
@@ -115,7 +237,7 @@
      <rect>
       <x>100</x>
       <y>20</y>
-      <width>331</width>
+      <width>271</width>
       <height>31</height>
      </rect>
     </property>
@@ -137,7 +259,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>70</y>
+      <y>60</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -150,8 +272,8 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>70</y>
-      <width>331</width>
+      <y>60</y>
+      <width>271</width>
       <height>31</height>
      </rect>
     </property>
@@ -160,7 +282,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>120</y>
+      <y>100</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -173,10 +295,105 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>120</y>
+      <y>100</y>
       <width>271</width>
       <height>31</height>
      </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBoxEvent">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>330</y>
+     <width>441</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Добавить событие</string>
+   </property>
+   <widget class="QLineEdit" name="editEvent">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>20</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAddEvent">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>20</y>
+      <width>51</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>+</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Имя:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cbEventType">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>60</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Тип:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cbEventTypeInstit">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>100</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Учреждение:</string>
     </property>
    </widget>
   </widget>

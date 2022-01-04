@@ -16,9 +16,10 @@
 /*!
 * \brief FVADictionaryEditor is a child of <a href="https://doc.qt.io/qt-5/qdialog.html">QDialog</a> and implements the next UI functions:
 *
-* 1. adding a new person to a ditionary;
-* 2. adding a new place to a ditionary;
-* 3. adding a new device to a ditionary.
+* 1. adding a new person to a dictionary;
+* 2. adding a new place to a dictionary;
+* 3. adding a new device to a dictionary.
+* 4. adding a new event to a dictionary.
 *
 */
 class FVADictionaryEditor : public QDialog
@@ -30,22 +31,28 @@ public:
 	
 	private slots:
 		/*!
-		* \brief to add a new person to a ditionary
+		* \brief to add a new person to a dictionary
 		* \return it returns nothing
 		*/
 		void OnAddPersonBtnPressed();
 
 		/*!
-		* \brief to add a new place to a ditionary
+		* \brief to add a new place to a dictionary
 		* \return it returns nothing
 		*/
 		void OnAddPlaceBtnPressed();
 
 		/*!
-		* \brief to add a new device to a ditionary
+		* \brief to add a new device to a dictionary
 		* \return it returns nothing
 		*/
 		void OnAddDeviceBtnPressed();
+
+		/*!
+		* \brief to add a new event to a dictionary
+		* \return it returns nothing
+		*/
+		void OnAddEventBtnPressed();
 
 	private:
 

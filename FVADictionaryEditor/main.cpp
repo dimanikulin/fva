@@ -36,9 +36,7 @@ int main(int argc, char *argv[])
 
 	QString deviceMatchName;
 	if (list.size() >= 2)
-	{
 		deviceMatchName = list.at(1);
-	}
 
 	FVADictionaryEditor w(deviceMatchName);
 	w.show();
