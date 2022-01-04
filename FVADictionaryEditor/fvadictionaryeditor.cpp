@@ -65,7 +65,7 @@ FVADictionaryEditor::FVADictionaryEditor(const QString& device, QWidget *parent)
 	ui.editLinkName->setText(m_device);
 
 	LOG_DEB << "event group box building"; 
-	fillUpCB(rootSWdir, "fvaEvents.csv", ui.cbEventType);
+	fillUpCB(rootSWdir, "fvaEventTypes.csv", ui.cbEventType);
 
 	fillUpCB(rootSWdir, "fvaInstitutions.csv", ui.cbEventTypeInstit);
 
