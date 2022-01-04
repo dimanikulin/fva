@@ -26,7 +26,7 @@ FVA_EXIT_CODE fillUpCB(const QString& rootSWdir,const QString& dictName, QComboB
 	
 	cb->clear();
 	for (auto i = fvaMap.begin(); i != fvaMap.end(); ++i)
-		cb->addItem(i->second, i->first);
+		cb->addItem(i.value(), i.key());
 
 	return FVA_NO_ERROR;
 }
