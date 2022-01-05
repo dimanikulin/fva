@@ -92,8 +92,8 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 	logOutput		= new QTextBrowser;
 
 	QGridLayout * btnLayout= new QGridLayout;
-	btnLayout->addWidget(saveButton);
-	btnLayout->addWidget(addNewEventButton);
+	btnLayout->addWidget(saveButton,0,0);
+	btnLayout->addWidget(addNewEventButton,0,1);
 
 	layout->addLayout(btnLayout);
 	layout->addWidget(logOutput);

@@ -84,8 +84,8 @@ FVAOrganizerPlacePage::FVAOrganizerPlacePage(void)
 	logOutput		= new QTextBrowser;
 
 	QGridLayout * btnLayout= new QGridLayout;
-	btnLayout->addWidget(saveButton);
-	btnLayout->addWidget(addNewPlaceButton);
+	btnLayout->addWidget(saveButton,0,0);
+	btnLayout->addWidget(addNewPlaceButton,0,1);
 
 	layout->addLayout(btnLayout);
 
