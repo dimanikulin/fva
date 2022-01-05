@@ -23,6 +23,8 @@
 #include <QBrush>
 #include <QFont>
 
+#include <QtCore/QProcess>
+
 #include "fvaorganizerwizard.h"
 #include "fvacommonui.h"
 #include "fvalogger.inl"

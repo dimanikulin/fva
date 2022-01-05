@@ -23,6 +23,8 @@
 #include <QBrush>
 #include <QFont>
 
+#include <QtCore/QProcess>
+
 #include "fvaorganizerwizard.h"
 #include "fvacommonui.h"
 #include "fvalogger.inl"
@@ -93,7 +95,7 @@ FVAOrganizerPlacePage::FVAOrganizerPlacePage(void)
 
 	connect( inputDirButton, SIGNAL( clicked() ), this, SLOT( OnFvaInputDirButtonPressed() ) );
 	connect( saveButton, SIGNAL( clicked() ), this, SLOT( OnSaveButtonPressed() ) );
-	connect( OnAddPlacePressed, SIGNAL( clicked() ), this, SLOT( OnAddEventPressed() ) );
+	connect( addNewPlaceButton, SIGNAL( clicked() ), this, SLOT( OnAddPlacePressed() ) );
 
         LOG_DEB << "constructed" ;
 
