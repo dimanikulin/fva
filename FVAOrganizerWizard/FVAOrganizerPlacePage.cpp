@@ -39,6 +39,8 @@ FVAOrganizerPlacePage::FVAOrganizerPlacePage(void)
 	inputDirButton->setText(tr("Открыть папку"));
 	saveButton  = new QPushButton;
 	saveButton->setText(tr("Сохранить инфо о папке"));
+	addNewPlaceButton = new QPushButton;
+	addNewPlaceButton->setText(tr("Добавить место"));
 	
 	QLabel * placeLbl = new QLabel(tr("Место:"));
 #else 
@@ -49,6 +51,8 @@ FVAOrganizerPlacePage::FVAOrganizerPlacePage(void)
 	inputDirButton->setText(tr("Open a folder"));
 	saveButton  = new QPushButton;
 	saveButton->setText(tr("Save dir info"));
+	addNewPlaceButton = new QPushButton;
+	addNewPlaceButton->setText(tr("Add a place"));
 	
 	QLabel * placeLbl = new QLabel(tr("Place:"));
 
@@ -77,17 +81,32 @@ FVAOrganizerPlacePage::FVAOrganizerPlacePage(void)
 
 	logOutput		= new QTextBrowser;
 
-	layout->addWidget(saveButton);
+	QGridLayout * btnLayout= new QGridLayout;
+	btnLayout->addWidget(saveButton);
+	btnLayout->addWidget(addNewPlaceButton);
+
+	layout->addLayout(btnLayout);
+
 	layout->addWidget(logOutput);
 
 	setLayout(layout);
 
 	connect( inputDirButton, SIGNAL( clicked() ), this, SLOT( OnFvaInputDirButtonPressed() ) );
 	connect( saveButton, SIGNAL( clicked() ), this, SLOT( OnSaveButtonPressed() ) );
+	connect( OnAddPlacePressed, SIGNAL( clicked() ), this, SLOT( OnAddEventPressed() ) );
 
         LOG_DEB << "constructed" ;
 
 }
+
+void FVAOrganizerPlacePage::OnAddPlacePressed()
+{
+	QProcess myProcess(this);    
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe");
+	myProcess.waitForFinished( -1 );	
+}
+
 void FVAOrganizerPlacePage::OnSaveButtonPressed()
 {
 	// check if there is a dir selected in inputDir Tree Widget

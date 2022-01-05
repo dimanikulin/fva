@@ -25,9 +25,10 @@ class QTreeWidgetItem;
 * 2. The events(aka dirs) we need to add information about, in form of a QTreeWidget;
 * 3. "Open dir" button (QPushButton) to open input dir where processed files are in to recall their content.
 * 4. "Save" button (QPushButton) to save information user provided
-* 5. QTreeWidget to set up Event Type using dictionary
-* 6. TreeWidget to set up the people list because this event happened of using dictionary
-* 7. QTextBrowser to output the logging events;
+* 5. "Add Event" button (QPushButton) to add new event
+* 6. QTreeWidget to set up Event Type using dictionary
+* 7. TreeWidget to set up the people list because this event happened of using dictionary
+* 8. QTextBrowser to output the logging events;
 * This class implements "View" functions from MVC pattern.
 */
 
@@ -72,6 +73,11 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		*/
 		void updateChecks(QTreeWidgetItem*, int);
 
+		/*!
+		* \brief to call dictionary editor
+		* \return it returns nothing
+		*/
+		void OnAddEventPressed();
 
 	private:
 	
@@ -89,6 +95,11 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		* \brief to save information user provided  
 		*/
 		QPushButton*		saveButton;
+
+		/*!
+		* \brief to add new event
+		*/
+		QPushButton*		addNewEventButton;
 
 		/*!
 		* \brief to output the logging events

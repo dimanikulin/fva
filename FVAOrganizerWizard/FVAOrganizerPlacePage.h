@@ -24,8 +24,9 @@ class QTreeWidgetItem;
 * 2. The events(aka dirs) we need to add information about, in form of a QTreeWidget;
 * 3. "Open dir" button (QPushButton) to open input dir where processed files are in to recall their content.
 * 4. "Save" button (QPushButton) to save information user provided
-* 5. QTreeWidget to set up Location using dictionary
-* 6. QTextBrowser to output the logging events;
+* 5. "Add Place" button (QPushButton) to add new place
+* 6. QTreeWidget to set up Location using dictionary
+* 7. QTextBrowser to output the logging events;
 * 
 * This class implements "View" functions from MVC pattern.
 */
@@ -65,6 +66,12 @@ public:
 		void OnSaveButtonPressed();
 
 		/*!
+		* \brief to call dictionary editor
+		* \return it returns nothing
+		*/
+		void OnAddPlacePressed();
+
+		/*!
 		* \brief it updates hierachy of checks around this QTreeWidgetItem
 		* \return it returns nothing
 		*/
@@ -87,6 +94,11 @@ public:
 		* \brief to save information user provided  
 		*/
 		QPushButton*		saveButton;
+
+		/*!
+		* \brief to add new event
+		*/
+		QPushButton*		addNewPlaceButton;
 
 		/*!
 		* \brief to output the logging events

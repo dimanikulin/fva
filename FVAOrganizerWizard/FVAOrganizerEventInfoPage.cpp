@@ -39,9 +39,12 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 	inputDirButton->setText(tr("Открыть папку"));
 	saveButton  = new QPushButton;
 	saveButton->setText(tr("Сохранить инфо о папке"));
+	addNewEventButton = new QPushButton;
+	addNewEventButton->setText(tr("Добавить событие"));
 	
 	QLabel * eventLbl = new QLabel(tr("Тип события:"));
 	QLabel * peopleLbl = new QLabel(tr("Причастные люди:"));
+
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	words = new QLabel(tr("Please select a folder bellow (an event),marked by red\nand choose event type and related people."));
@@ -50,6 +53,8 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 	inputDirButton->setText(tr("Open a folder"));
 	saveButton  = new QPushButton;
 	saveButton->setText(tr("Save dir info"));
+	addNewEventButton = new QPushButton;
+	addNewEventButton->setText(tr("Add event"));
 	
 	QLabel * eventLbl = new QLabel(tr("Event type:"));
 	QLabel * peopleLbl = new QLabel(tr("Related people:"));
@@ -84,13 +89,18 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 
 	logOutput		= new QTextBrowser;
 
-	layout->addWidget(saveButton);
+	QGridLayout * btnLayout= new QGridLayout;
+	btnLayout->addWidget(saveButton);
+	btnLayout->addWidget(addNewEventButton);
+
+	layout->addLayout(btnLayout);
 	layout->addWidget(logOutput);
 
 	setLayout(layout);
 
 	connect( inputDirButton, SIGNAL( clicked() ), this, SLOT( OnFvaInputDirButtonPressed() ) );
 	connect( saveButton, SIGNAL( clicked() ), this, SLOT( OnSaveButtonPressed() ) );
+	connect( addNewEventButton, SIGNAL( clicked() ), this, SLOT( OnAddEventPressed() ) );
 
         LOG_DEB << "constructed" ;
 
@@ -190,6 +200,14 @@ void FVAOrganizerEventInfoPage::setVisible(bool visible)
 	LOG_DEB << "setVisible before exit";
 	return QWizardPage::setVisible(visible);
 }
+void FVAOrganizerEventInfoPage::OnAddEventPressed()
+{
+	QProcess myProcess(this);    
+	myProcess.setProcessChannelMode(QProcess::MergedChannels);
+	myProcess.start(QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe");
+	myProcess.waitForFinished( -1 );
+}
+
 bool FVAOrganizerEventInfoPage::validatePage()
 {
         LOG_DEB << "validate page" ;
