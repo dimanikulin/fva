@@ -176,7 +176,6 @@ void FVAOrganizerEventInfoPage::updateChecks(QTreeWidgetItem *item, int column)
 void FVAOrganizerEventInfoPage::setVisible(bool visible)
 {	
 	LOG_DEB << "setVisible";
-	QString		inputDir		= ((FVAOrganizerWizard*)wizard())->inputFolder();
 
 	if (visible)
 	{
@@ -189,6 +188,8 @@ void FVAOrganizerEventInfoPage::setVisible(bool visible)
 		QString rootSWdir;
 		exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("get.param")
+
+		QString		inputDir		= ((FVAOrganizerWizard*)wizard())->inputFolder();
 
 		STR_LIST fileListToFillUp; // empty for this case as we wanna have dirs only
 		fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget,fileListToFillUp);
@@ -214,7 +215,8 @@ bool FVAOrganizerEventInfoPage::validatePage()
 {
         LOG_DEB << "validate page" ;
 	FVAFlowController flow;
-	FVA_EXIT_CODE	exitCode	= flow.ProcessInputDirForEvents(dir2EventMap, dir2PeopleMap, this);
+	QString		inputDir	= ((FVAOrganizerWizard*)wizard())->inputFolder();
+	FVA_EXIT_CODE	exitCode	= flow.ProcessInputDirForEvents(inputDir, dir2EventMap, dir2PeopleMap, this);
 	if (exitCode != FVA_NO_ERROR)
 		return false;
 

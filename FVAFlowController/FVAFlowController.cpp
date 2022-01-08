@@ -312,7 +312,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
 	params.append(fvafileNPath);
 
 	// for each folder in input dir map
-	for (auto it = eventMap.begin(); it != placeMap.end(); ++it)
+	for (auto it = placeMap.begin(); it != placeMap.end(); ++it)
 	{		
 		QString dir = it.key();
 		params.append(dir);
@@ -327,7 +327,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
 	return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj)
+FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDir, const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj)
 {
 	QString fvaSWRootDir;
 	FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);

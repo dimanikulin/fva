@@ -77,12 +77,13 @@ public:
 
 	/*!
 	 * \brief it process input folder content as multi-events folder according to event cfg and info
+	 * \param inputDir - directory to perform the actions in
 	 * \param eventMap - maps input dir structure (folder names) to event ids got from fvaEvents.csv
 	 * \param peopleMap - maps input dir structure (folder names) to people ids (that caused the event) got from fvaPeople.csv
 	 * \param obj - to attach the child processes to this object
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE ProcessInputDirForEvents(const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj);
+	FVA_EXIT_CODE ProcessInputDirForEvents(const QString& inputDir, const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj);
 
 	/*!
 	 * \brief it process input folder content as multi-events folder according to place info
