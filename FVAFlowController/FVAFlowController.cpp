@@ -298,7 +298,7 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 	return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir, const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj)
+FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& placeMap, QObject* obj)
 {
 	QString fvaSWRootDir;
 	FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
@@ -311,7 +311,36 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvent(const QString& inputDir
 	QString fvafileNPath = fvaSWRootDir + "#data#/fvafileN.csv";
 	params.append(fvafileNPath);
 
-	// for each folder in output list
+	// for each folder in input dir map
+	for (auto it = eventMap.begin(); it != placeMap.end(); ++it)
+	{		
+		QString dir = it.key();
+		params.append(dir);
+
+		QString placeId = QString::number(it.value());
+
+		// run command implemented in python to update the fvafile.csv for each file in folder with placeid  we got 
+		exitCode = runPythonCMD("CLTUpdatePlaceForDir.py", obj, params);
+
+		LOG_DEB << "CLTUpdatePlaceForDir:" << fvafileNPath << " " << dir << " " << placeId;
+	}
+	return FVA_NO_ERROR;
+}
+
+FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj)
+{
+	QString fvaSWRootDir;
+	FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
+
+	// show error message box and return to calling function if previous operation failed
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
+
+	QStringList params;
+
+	QString fvafileNPath = fvaSWRootDir + "#data#/fvafileN.csv";
+	params.append(fvafileNPath);
+
+	// for each folder in input dir map
 	for (auto it = eventMap.begin(); it != eventMap.end(); ++it)
 	{		
 		QString dir = it.key();
