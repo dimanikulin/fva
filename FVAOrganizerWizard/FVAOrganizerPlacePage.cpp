@@ -202,9 +202,9 @@ bool FVAOrganizerPlacePage::validatePage()
         LOG_DEB << "validate page" ;
 	FVAFlowController flow;
 
-	//FVA_EXIT_CODE exitCode = flow.ProcessInputDirForEvent(dir2EventMap, dir2PeopleMap, this);
-	//if (exitCode != FVA_NO_ERROR)
-	//	return false;
+	FVA_EXIT_CODE exitCode = flow.ProcessInputDirForPlaces(dir2PlaceMap, this);
+	if (exitCode != FVA_NO_ERROR)
+		return false;
 
 	return true;
 }
