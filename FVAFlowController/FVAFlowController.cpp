@@ -427,7 +427,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 	for (STR_LIST::const_iterator it = outputDirs.begin(); it != outputDirs.end(); ++it)
 	{		
 		QString dirToMoveTo = *it;
-		// check if we got 1 folder only to integrate the multimedia data changes into 
+		// check if we got 1 folder only to integrate the multimedia data  into 
 		// and if we need to remove the input folder as well
 		if (1 == sizeProcessed && removeInput)
 		{

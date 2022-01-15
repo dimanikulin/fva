@@ -185,7 +185,7 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 	QIcon	photoIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/photo.png");
 #endif // _SHOW_ICONS_
 	FVA_SIMPLE_MAP RelationsMap;
-	FVA_EXIT_CODE res = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, RelationsMap, "fvaPeopleRelationTypes.csv");
+	FVA_EXIT_CODE res = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, RelationsMap, "fvaRelationTypes.csv");
 	RET_RES_IF_RES_IS_ERROR
 
 	FVA_PEOPLE_RELATION_MAP  peopleRelationsMap;
