@@ -211,16 +211,16 @@ FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peop
 		LOG_CRIT << "-1 == columnFullName";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 	}
-	int columnRelationId = FVADescriptionFile::getColumnIdByName(titles, "RelationId");
-	if (-1 == columnRelationId)	
+	int columnType = FVADescriptionFile::getColumnIdByName(titles, "Type");
+	if (-1 == columnType)	
 	{
-		LOG_CRIT << "-1 == columnRelationId";
+		LOG_CRIT << "-1 == columnType";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 	}
-	int columnRelPersonID = FVADescriptionFile::getColumnIdByName(titles, "RelPersonID");
-	if (-1 == columnRelPersonID)
+	int columnInstitution = FVADescriptionFile::getColumnIdByName(titles, "Institution");
+	if (-1 == columnInstitution)
 	{
-		LOG_CRIT << "-1 == columnRelPersonID";
+		LOG_CRIT << "-1 == columnInstitution";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 	}
 	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
@@ -228,11 +228,12 @@ FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peop
 		QStringList list = it.value();
 
 		fvaPerson person;
-		person.Id			= list[columnId].remove("\t").toUInt();
-		person.name			= list[columnName].remove("\t").trimmed();		
-		person.fullName			= list[columnFullName].remove("\t").trimmed();
-		person.relatedPersionId		= list[columnRelPersonID].remove("\t").toUInt();
-		person.relationId		= list[columnRelationId].remove("\t").toUInt();
+		person.Id		= list[columnId].remove("\t").toUInt();
+		person.name		= list[columnName].remove("\t").trimmed();		
+		person.fullName		= list[columnFullName].remove("\t").trimmed();
+		person.type		= list[columnType].remove("\t").toUInt();
+		person.institution	= list[columnInstitution].remove("\t").toUInt();;
+
 		peopleMap[person.Id]		= person;
 	}
 	return FVA_NO_ERROR;

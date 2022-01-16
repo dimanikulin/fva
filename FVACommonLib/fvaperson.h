@@ -33,14 +33,14 @@ public:
 	QString fullName;
 
 	/*!
-	 * relation people type identifier from a dictionary
+	 * relation people type from a dictionary(fvaRelationTypes.csv)
 	 */
-	int relationId;
+	int type;
 
 	/*!
-	* person Id that is related to this one from a dictionary
+	* institution Id that is related to this person, got from a dictionary(fvaInstitutions.csv)
 	*/
-	int relatedPersionId;
+	int institution;
 };
 
 typedef QMap<int, fvaPerson> PEOPLE_MAP;
