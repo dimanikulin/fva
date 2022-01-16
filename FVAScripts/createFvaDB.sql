@@ -23,12 +23,6 @@ CREATE TABLE fvaRelationTypes	(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARC
 .separator ,
 .import "../../#data#/fvaRelationTypes.csv" fvaRelationTypes
 
-DROP TABLE IF EXISTS fvaPeopleRelations;
-CREATE TABLE fvaPeopleRelations	(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT NULL,
-				RelationType INTEGER NOT NULL REFERENCES fvaRelationTypes (ID) ON DELETE RESTRICT MATCH SIMPLE);
-.separator ,
-.import "../../#data#/fvaPeopleRelations.csv" fvaPeopleRelations
-
 DROP TABLE IF EXISTS fvaPeople;
 CREATE TABLE fvaPeople		(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT NULL, 
 				FullName VARCHAR NOT NULL, 

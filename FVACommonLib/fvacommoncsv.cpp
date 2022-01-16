@@ -240,9 +240,9 @@ FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peop
 FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(const QString& rootSWdir, FVA_PEOPLE_RELATION_MAP& peopleRelationsMap)
 {
 	FVADescriptionFile	fvaRelationTypesCsv;
-	QStringList			titles;
+	QStringList		titles;
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_EXIT_CODE res = fvaRelationTypesCsv.load(rootSWdir + "#data#/fvaPeopleRelations.csv", titles, decsItems);
+	FVA_EXIT_CODE res = fvaRelationTypesCsv.load(rootSWdir + "#data#/fvaInstitutions.csv", titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
 
 	// ID,Name,RelationType
