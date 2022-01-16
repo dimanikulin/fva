@@ -440,7 +440,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 			context.readOnly = false; 
 
 		context.custom		= "merge";
-		exitCode		= m_dataProcessor.run(context, m_cfg);
+		FVA_EXIT_CODE exitCode		= m_dataProcessor.run(context, m_cfg);
 
 		if (exitCode == FVA_ERROR_DEST_DIR_ALREADY_EXISTS)
 		{
@@ -479,12 +479,18 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 
 	}
 
+	QString fvaSWRootDir;
+	FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
+
+	// show error message box and return to calling function if previous operation failed
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
+
 	QStringList params;
 	params.append(fvaSWRootDir + "#data#/fvaFile.csv");
 	params.append(fvaSWRootDir + "#data#/fvaFileN.csv");
 
 	// run command implemented in python to the fvafile.csv and fvafileN.csv
-	exitCode = runPythonCMD("CLTMerge2csv.py", obj, params);
+	FVA_EXIT_CODE exitCode = runPythonCMD("CLTMerge2csv.py", obj, params);
 	
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
