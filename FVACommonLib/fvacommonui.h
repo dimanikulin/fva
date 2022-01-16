@@ -42,7 +42,7 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
  * \param rootSWdir - dir where FVA SW is located
  * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
  */
-FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool const QString& rootSWdir);
+FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir);
 
 /*!
  * \brief it creates event tree in gui widgets
