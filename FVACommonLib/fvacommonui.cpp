@@ -235,7 +235,7 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 				if (IDp == 0)
 					continue;
 
-				int IDrelp = indexp->relationId;
+				/*int IDrelp = indexp->relationId;
 				if (IDrelp != IDc)
 					continue;
 
@@ -279,6 +279,7 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 					childWidgetItem->addChild(personWidgetItem);
 				else
 					delete personWidgetItem;
+				*/
 			}// for (auto indexp = people.begin(); indexp != people.end(); ++indexp)
 			if (childWidgetItem->childCount())
 				treeWidgetItem->addChild(childWidgetItem);
