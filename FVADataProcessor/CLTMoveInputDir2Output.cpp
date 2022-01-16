@@ -11,6 +11,7 @@
 CLTMoveInputDir2Output::CLTMoveInputDir2Output(const FvaConfiguration& cfg)
 {
 	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
+	LOG_CRIT << "could not get fva root dir";
 	RET_IF_RES_IS_ERROR
 }
 
