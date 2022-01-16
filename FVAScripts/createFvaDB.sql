@@ -12,11 +12,6 @@ CREATE TABLE fvaDevices		(ID INTEGER PRIMARY KEY UNIQUE NOT NULL,
 .separator ,
 .import "../../#data#/fvaDevices.csv" fvaDevices
 
-DROP TABLE IF EXISTS fvaEventTypes;
-CREATE TABLE fvaEventTypes		(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT NULL);
-.separator ,
-.import "../../#data#/fvaEventTypes.csv" fvaEventTypes
-
 DROP TABLE IF EXISTS fvaEventRelations;
 CREATE TABLE fvaEventrelations	(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT NULL, 
 				Type INTEGER NOT NULL REFERENCES fvaEventTypes (ID) ON DELETE RESTRICT MATCH SIMPLE);
@@ -26,7 +21,7 @@ CREATE TABLE fvaEventrelations	(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VAR
 DROP TABLE IF EXISTS fvaRelationTypes;
 CREATE TABLE fvaRelationTypes	(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT NULL);
 .separator ,
-.import "../../#data#/fvaeRelationTypes.csv" fvaRelationTypes
+.import "../../#data#/fvaRelationTypes.csv" fvaRelationTypes
 
 DROP TABLE IF EXISTS fvaPeopleRelations;
 CREATE TABLE fvaPeopleRelations	(ID INTEGER PRIMARY KEY UNIQUE NOT NULL, Name VARCHAR NOT NULL,

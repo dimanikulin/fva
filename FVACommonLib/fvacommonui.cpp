@@ -169,7 +169,7 @@ FVA_EXIT_CODE fvaBuildPlaceTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
 
 FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir)
 {
-	return fvaBuildSimpleTree(pMainWnd, pTreeWidget, rootSWdir, "fvaEventTypes.csv", "fvaEvents.csv" );
+	return fvaBuildSimpleTree(pMainWnd, pTreeWidget, rootSWdir, "fvaRelationTypes.csv", "fvaEvents.csv" );
 }
 #define _SHOW_ICONS_
 FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir)
