@@ -29,6 +29,11 @@ class CLTContext
 		QString dir;
 
 		/*!
+		 * \brief path to output folder of command to work in
+		 */
+		QString outputDir;
+
+		/*!
 		 * \brief does command work in read-only mode
 		 */
 		bool readOnly;

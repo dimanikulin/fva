@@ -71,9 +71,10 @@ public:
 	 * \param inputDir - directory to move content from
 	 * \param outputDir - directories to move content into (it is a list of directories to move into)
 	 * \param removeInput - flag saying do we need to remove input folder or not
+	 * \param obj - to attach the child processes to this object
 	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
 	 */
-	FVA_EXIT_CODE MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput);
+	FVA_EXIT_CODE MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput, QObject* obj);
 
 	/*!
 	 * \brief it process input folder content as multi-events folder according to event cfg and info
