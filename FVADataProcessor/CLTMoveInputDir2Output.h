@@ -1,5 +1,5 @@
 /*!
-* \file CLTMerge1DayEventDir.h
+* \file CLTMoveInputDir2Output.h
 * \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
 * \author Dima Nikulin.
 * \version 0.29
@@ -11,19 +11,19 @@
 #include "CmdLineBaseTask.h"
 
 /*!
-* \brief CLTMerge1DayEventDir is child of CmdLineBaseTask and it merges one-day-event input folder into output foder 
+* \brief CLTMoveInputDir2Output is child of CmdLineBaseTask and it moves (if readonly is YES) or copies (if readonly is NO) input folder content into output foder 
 */
-class CLTMerge1DayEventDir : public CmdLineBaseTask
+class CLTMoveInputDir2Output : public CmdLineBaseTask
 {
 public:
-	CLTMerge1DayEventDir(const FvaConfiguration& cfg);
-	virtual ~CLTMerge1DayEventDir() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
+	CLTMoveInputDir2Output(const FvaConfiguration& cfg);
+	virtual ~CLTMoveInputDir2Output() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	/*!
 	* \brief returns command name
 	* \return returns command name as a string
 	*/
-	static QString Name(){ return "CLTMerge1DayEventDir"; }
+	static QString Name(){ return "CLTMoveInputDir2Output"; }
 	virtual bool supportReadOnly() { return true; }
 
 private: // data

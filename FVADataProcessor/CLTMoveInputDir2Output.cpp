@@ -1,20 +1,20 @@
 /*!
-* \file CLTMerge1DayEventDir.cpp
+* \file CLTMoveInputDir2Output.cpp
 * \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
 * \author Dima Nikulin.
 * \version 0.29
 * \date  2014-2021
 */
-#include "CLTMerge1DayEventDir.h"
+#include "CLTMoveInputDir2Output.h"
 #include "fvacommoncsv.h"
 
-CLTMerge1DayEventDir::CLTMerge1DayEventDir(const FvaConfiguration& cfg)
+CLTMoveInputDir2Output::CLTMoveInputDir2Output(const FvaConfiguration& cfg)
 {
 	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
 	RET_IF_RES_IS_ERROR
 }
 
-FVA_EXIT_CODE CLTMerge1DayEventDir::execute(const CLTContext& context)
+FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 {
 	// get the last dir leaf in input folder
 	QString dir = m_dir.dirName();
@@ -79,6 +79,13 @@ FVA_EXIT_CODE CLTMerge1DayEventDir::execute(const CLTContext& context)
 			LOG_CRIT << "destination file already exists: " << dstDirPath + "/" + info.fileName();
 			return FVA_ERROR_DEST_FILE_ALREADY_EXISTS;
 		}
+
+
+		// TODO check mode and moce or copy
+		//else
+		//{
+		//	return FVA_ERROR_NOT_IMPLEMENTED;
+		//}*/
 
 		// we move files only
 		if (!info.isDir() && !m_dir.rename(info.absoluteFilePath(), dstDirPath + "/" + info.fileName()))
