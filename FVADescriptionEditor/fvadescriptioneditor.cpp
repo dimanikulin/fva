@@ -57,11 +57,11 @@ FVADescriptionEditor::FVADescriptionEditor(bool	forFolder, QWidget*	parent)
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.get.param")
 
 	LOG_DEB << "before fvaBuildPeopleTree 1";	
-	exitCode =fvaBuildPeopleTree(this, ui.treePeopleWidget, false, rootSWdir);
+	exitCode =fvaBuildPeopleTree(this, ui.treePeopleWidget, rootSWdir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleTree.ui.treePeopleWidget")
 
 	LOG_DEB << "before fvaBuildPeopleTree 2";	
-	exitCode =fvaBuildPeopleTree(this, ui.treePEventWidget, false, rootSWdir);
+	exitCode =fvaBuildPeopleTree(this, ui.treePEventWidget, rootSWdir);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleTree.ui.treePEventWidget")
 
 	exitCode = fvaBuildEventTree(this, ui.treeEventWidget, rootSWdir);

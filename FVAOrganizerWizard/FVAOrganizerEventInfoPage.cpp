@@ -194,7 +194,7 @@ void FVAOrganizerEventInfoPage::setVisible(bool visible)
 		STR_LIST fileListToFillUp; // empty for this case as we wanna have dirs only
 		fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget,fileListToFillUp);
 
-		exitCode = fvaBuildPeopleTree(this, peopleWidget, false, rootSWdir);
+		exitCode = fvaBuildPeopleTree(this, peopleWidget, rootSWdir);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildPeopleTree")
 
 		exitCode = fvaBuildEventTree(this, eventsWidget, rootSWdir);

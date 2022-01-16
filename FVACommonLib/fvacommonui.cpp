@@ -144,7 +144,7 @@ FVA_EXIT_CODE fvaBuildSimpleTree(QWidget* pMainWnd,
 		pTreeWidget->addTopLevelItem(treeWidgetItem);
 
 		FVA_SIMPLE_MAP  secondLvlMap;
-		// load only events for this type
+		// load only items for this type
 		res = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, secondLvlMap, secondLvlDictName, ID);
 		RET_RES_IF_RES_IS_ERROR
 
@@ -171,6 +171,12 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
 {
 	return fvaBuildSimpleTree(pMainWnd, pTreeWidget, rootSWdir, "fvaRelationTypes.csv", "fvaEvents.csv" );
 }
+
+FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir)
+{
+	return fvaBuildSimpleTree(pMainWnd, pTreeWidget, rootSWdir, "fvaRelationTypes.csv", "fvaPeople.csv" );
+}
+
 #define _SHOW_ICONS_
 FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir)
 {

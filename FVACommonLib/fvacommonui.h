@@ -29,10 +29,20 @@ FVA_EXIT_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QSt
  * \brief it creates people tree in gui widgets
  * \param pMainWnd - window keeping tree widget
  * \param pTreeWidget - widget to build tree in
+ * \param devices - shall it show devices as well?
  * \param rootSWdir - dir where FVA SW is located
  * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
  */
 FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir);
+
+/*!
+ * \brief it creates people tree in gui widgets
+ * \param pMainWnd - window keeping tree widget
+ * \param pTreeWidget - widget to build tree in
+ * \param rootSWdir - dir where FVA SW is located
+ * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
+ */
+FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool const QString& rootSWdir);
 
 /*!
  * \brief it creates event tree in gui widgets
