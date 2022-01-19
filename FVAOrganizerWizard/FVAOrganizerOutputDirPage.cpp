@@ -139,8 +139,9 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	// call the Flow Controller MoveInputDirToOutputDirs method to integrate the input data into Multimedia IR systems
 	FVA_EXIT_CODE exitCode = flow.MoveInputDirToOutputDirs(
 							((FVAOrganizerWizard*)wizard())->inputFolder(), 
-								dirList, 
-								removeOriginDirCheckBox->isChecked());
+							dirList, 
+							removeOriginDirCheckBox->isChecked(), 
+							this);
 	
 	return exitCode == FVA_NO_ERROR;
 }
