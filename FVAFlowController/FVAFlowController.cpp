@@ -490,7 +490,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 	params.append(fvaSWRootDir + "#data#/fvaFileN.csv");
 
 	// run command implemented in python to the fvafile.csv and fvafileN.csv
-	FVA_EXIT_CODE exitCode = runPythonCMD("CLTMerge2csv.py", obj, params);
+	exitCode = runPythonCMD("CLTMerge2csv.py", obj, params);
 	
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
