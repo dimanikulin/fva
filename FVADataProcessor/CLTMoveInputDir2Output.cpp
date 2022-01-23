@@ -78,7 +78,7 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		// skip internal folder 
-		if (fvaIsInternalDir(dir) || fvaIsInternalDir(dstDirPath))
+		if (fvaIsInternalDir(dirName) || fvaIsInternalDir(dstDirPath))
 		{
 			LOG_WARN << "skipped #copy for: " << info.absoluteFilePath() << " , dst: " << dstDirPath;
 			continue;
