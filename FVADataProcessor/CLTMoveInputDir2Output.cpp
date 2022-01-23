@@ -20,7 +20,7 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 	// get the last dir leaf in input folder
 	QString dirName = m_dir.dirName();
 
-	QString dstDirPath = context.outputDir + "/" + dir.mid(0, 4)/*extract year*/;
+	QString dstDirPath = context.outputDir + "/" + dirName.mid(0, 4)/*extract year*/;
 
 	if (dirName.length()==4) // YEAR folder
 	{
