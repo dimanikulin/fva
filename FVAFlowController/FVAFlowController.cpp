@@ -428,7 +428,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 		context.outputDir       = dirToMoveTo;
 
 		// remove before rename if destination exists
-		fvaRemoveDirIfEmpty(dirToMoveTo);
+		// fvaRemoveDirIfEmpty(dirToMoveTo);
 
 		// check if we got 1 folder only to integrate the multimedia data  into 
 		// and if we need to remove the input folder as well
@@ -440,7 +440,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 			context.readOnly = false; 
 
 		context.custom		= "merge";
-		FVA_EXIT_CODE exitCode		= m_dataProcessor.run(context, m_cfg);
+		FVA_EXIT_CODE exitCode	= m_dataProcessor.run(context, m_cfg);
 
 		if (exitCode == FVA_ERROR_DEST_DIR_ALREADY_EXISTS)
 		{
