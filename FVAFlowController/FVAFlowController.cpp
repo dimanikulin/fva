@@ -423,7 +423,9 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 
 	// for each folder in output list
 	for (STR_LIST::const_iterator it = outputDirs.begin(); it != outputDirs.end(); ++it)
-	{	
+	{
+		LOG_DEB << "Moving into:" << dirToMoveTo;
+	
 		QString dirToMoveTo	= *it;	
 		context.outputDir       = dirToMoveTo;
 
@@ -434,11 +436,16 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 		// and if we need to remove the input folder as well
 		if (1 == sizeProcessed && removeInput)
 			// in read only it moves the content
-			context.readOnly = true; 
+		{
+			context.readOnly = true;
+			LOG_DEB << "Moving Content";
+		} 
 		else
+		{
 			// otherwise it copies content (if readonly is NO)
-			context.readOnly = false; 
-
+			context.readOnly = false;
+			LOG_DEB << "Copying Content";	 
+		}
 		context.custom		= "merge";
 		FVA_EXIT_CODE exitCode	= m_dataProcessor.run(context, m_cfg);
 
