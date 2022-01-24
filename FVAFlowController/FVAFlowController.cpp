@@ -423,11 +423,10 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 
 	// for each folder in output list
 	for (STR_LIST::const_iterator it = outputDirs.begin(); it != outputDirs.end(); ++it)
-	{
-		LOG_DEB << "Moving into:" << dirToMoveTo;
-	
+	{	
 		QString dirToMoveTo	= *it;	
 		context.outputDir       = dirToMoveTo;
+		LOG_DEB << "Moving into:" << dirToMoveTo;
 
 		// remove before rename if destination exists
 		// fvaRemoveDirIfEmpty(dirToMoveTo);
