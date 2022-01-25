@@ -81,8 +81,8 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 
         setPage(index++, new FVAOrganizerDonePage);
 	
-	setStartId( 0 );
-	// m_inputDir = "D:/fvaInput/#fromCanon"; // for debugging
+	setStartId( 7 );
+	m_inputDir = "D:/fvaInput/#fromCanon"; // for debugging
 
 #ifndef Q_OS_MACX
 	setWizardStyle(ModernStyle);    

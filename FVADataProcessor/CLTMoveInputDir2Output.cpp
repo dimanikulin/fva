@@ -11,7 +11,6 @@
 CLTMoveInputDir2Output::CLTMoveInputDir2Output(const FvaConfiguration& cfg)
 {
 	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
-	LOG_CRIT << "could not get fva root dir";
 	RET_IF_RES_IS_ERROR
 }
 
@@ -29,7 +28,7 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 	else
 	{
 		LOG_DEB << "last leaf folder:" << dirName;
-		dstDirPath =+ "/" + dirName;
+		dstDirPath += "/" + dirName;
 	}
 
 	FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);
