@@ -23,6 +23,7 @@ FVAFlowController::FVAFlowController()
 	// show error message box and return if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.load")
 }
+
 FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContext, CLTContext& context)
 {
 	QString rootSWdir;
@@ -73,6 +74,7 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
 	}
 	return FVA_NO_ERROR;
 }
+
 void FVAFlowController::performOrientationChecks(const QString& dir, QObject* obj)
 {
 	// to run change orentation in auto mode
@@ -175,6 +177,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 
 	return FVA_NO_ERROR;
 }
+
 FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject* obj, const QStringList& params)
 {
 	QString fvaSWRootDir;
@@ -204,6 +207,7 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject
 
 	return FVA_NO_ERROR;
 }
+
 FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* obj)
 {
 	// prepare context to run CheckDataTime command
@@ -250,6 +254,7 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
 
 	return FVA_NO_ERROR;
 }
+
 FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int deviceId)
 {
 	CLTContext context;
@@ -295,6 +300,7 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int device
 
 	return FVA_NO_ERROR;
 }
+
 FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& placeMap, QObject* obj)
 {
 	QString fvaSWRootDir;
@@ -302,7 +308,6 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
 
 	// show error message box and return to calling function if previous operation failed
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
-
 
 	QString fvafileNPath = fvaSWRootDir + "#data#/fvafileN.csv";
 
@@ -324,10 +329,11 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
 		LOG_DEB << "CLTUpdatePlaceForDir:" << fvafileNPath << " " << dir << " " << placeId;
 	}
 	// clean up after processing
-	QFile::remove(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv");
+	QFile::remove(fvaSWRootDir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv");
 
 	return FVA_NO_ERROR;
 }
+
 FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDir, const DIR_2_ID_MAP& eventMap, const DIR_2_IDS_MAP& peopleMap, QObject* obj)
 {
 	QString fvaSWRootDir;
@@ -407,6 +413,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDi
 	}	
 	return FVA_NO_ERROR;
 }
+
 FVA_EXIT_CODE FVAFlowController::GetProblemFilesList(STR_LIST& fileListToFillUp)
 {
 	QString rootSWdir;
@@ -417,6 +424,7 @@ FVA_EXIT_CODE FVAFlowController::GetProblemFilesList(STR_LIST& fileListToFillUp)
 
 	return fvaLoadStrListFromFile(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", fileListToFillUp);
 }
+
 FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput, QObject* obj)
 {
 	LOG_DEB << "Enter";
