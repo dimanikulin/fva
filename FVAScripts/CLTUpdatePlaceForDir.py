@@ -21,7 +21,7 @@ with open(newName, newline='', encoding='utf-8') as csvfile:
 
            # if file name in fvaFile.csv equals to current file name in input dir
            if row[1].upper() == filename.upper(): 
-              row[2] = '"' + sys.argv[3] + '"' #update with new place
+              row[2] = sys.argv[3] #update with new place
               
        # write updated record to new fva csv file  
        f.write(','.join(row) + "\n")   
