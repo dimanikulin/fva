@@ -29,7 +29,7 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	QLabel* dirLabelGP = new QLabel(tr("Укажите папку Google Photo для контента:"));
 	QPushButton* googlePhotoButton = new QPushButton;
 	googlePhotoButton->setText(tr("Указать папку"));
-	QCheckBox* removeOriginDirCheckBox = new QCheckBox(tr("Удалить исходную папку"));
+	removeOriginDirCheckBox = new QCheckBox(tr("Удалить исходную папку"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	QLabel* dirLabelDK = new QLabel(tr("Please select a digiKam dir to put the content in:"));
@@ -38,7 +38,7 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 	QLabel* dirLabelGP = new QLabel(tr("Please select a Google Photo dir to put the content in:"));
 	QPushButton* googlePhotoButton = new QPushButton;
 	googlePhotoButton->setText(tr("Select a folder"));
-	QCheckBox* removeOriginDirCheckBox = new QCheckBox(tr("Remove input dir"));
+	removeOriginDirCheckBox = new QCheckBox(tr("Remove input dir"));
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 
