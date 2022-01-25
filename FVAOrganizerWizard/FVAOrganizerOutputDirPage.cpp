@@ -126,16 +126,29 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 	// prepare list of directories to pass later to the FVAFlowController
 	STR_LIST dirList;
 
+        LOG_DEB << "dirList is ready for filling up" ;
+
 	// if googlePhotoLineEdit is not empty 
 	if (!googlePhotoLineEdit->text().isEmpty())
+	{
+		LOG_DEB << "before dirList.append(googlePhotoLineEdit->text())" ;
+
 		// add this folder into list
 		dirList.append(googlePhotoLineEdit->text());
+	}
+
+        LOG_DEB << "before if (!digiKamLineEdit->text().isEmpty())";
 
 	// if digiKamLineEdit is not empty 
 	if (!digiKamLineEdit->text().isEmpty())
+	{
+		LOG_DEB << "dirList.append(digiKamLineEdit->text())";
+
 		// add this folder into list
 		dirList.append(digiKamLineEdit->text());
+	}
 
+	LOG_DEB << "before flow.MoveInputDirToOutputDirs";
 	// call the Flow Controller MoveInputDirToOutputDirs method to integrate the input data into Multimedia IR systems
 	FVA_EXIT_CODE exitCode = flow.MoveInputDirToOutputDirs(
 							((FVAOrganizerWizard*)wizard())->inputFolder(), 
