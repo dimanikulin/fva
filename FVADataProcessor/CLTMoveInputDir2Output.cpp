@@ -41,7 +41,7 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 	}
 
 	// lets create year/last leaf folder if it does not exist
-	FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);
+	res = fvaCreateDirIfNotExists(dstDirPath);
 	if (FVA_ERROR_CANT_CREATE_DIR == res)
 	{
 		LOG_CRIT << "could not create dest folder:" << dstDirPath;
