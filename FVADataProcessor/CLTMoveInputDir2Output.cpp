@@ -21,6 +21,14 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 
 	QString dstDirPath = context.outputDir + "/" + dirName.mid(0, 4)/*extract year*/;
 
+	// lets create year folder if it does not exist
+	FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);
+	if (FVA_ERROR_CANT_CREATE_DIR == res)
+	{
+		LOG_CRIT << "could not create dest folder:" << dstDirPath;
+		return FVA_ERROR_CANT_CREATE_DIR;
+	}
+
 	if (dirName.length()==4) // YEAR folder
 	{
 		LOG_DEB << "year folder:" << dirName;
@@ -28,9 +36,11 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 	else
 	{
 		LOG_DEB << "last leaf folder:" << dirName;
+		
 		dstDirPath += "/" + dirName;
 	}
 
+	// lets create year/last leaf folder if it does not exist
 	FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);
 	if (FVA_ERROR_CANT_CREATE_DIR == res)
 	{
