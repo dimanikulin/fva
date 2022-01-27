@@ -94,7 +94,7 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 		}
 
 		// check for already existing
-		if (m_dir.exists(dstDirPath + "/" + info.fileName()))
+		if (m_dir.exists(dstDirPath + "/" + info.fileName()) && !info.isDir())
 		{
 			LOG_CRIT << "destination file already exists: " << dstDirPath + "/" + info.fileName();
 			return FVA_ERROR_DEST_FILE_ALREADY_EXISTS;
