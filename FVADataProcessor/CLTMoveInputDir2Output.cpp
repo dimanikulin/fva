@@ -25,7 +25,7 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 	if (fvaIsInternalDir(dirName) || fvaIsInternalDir(dstDirPath))
 	{
 		LOG_WARN << "skipped internal dir : " << dirName << " , dst: " << dstDirPath;
-		continue;
+		return FVA_NO_ERROR; // goto to next dir
 	}
 
 	// lets create year folder if it does not exist
