@@ -28,6 +28,15 @@ FVA_EXIT_CODE CLTMoveAloneFiles::execute(const CLTContext& context)
 	if ((countSupportedFiles >= m_minCountSupportedFiles) || !countSupportedFiles)
 		return FVA_NO_ERROR;
 
+	// get the last dir leaf in input folder
+	QString dirName = m_dir.dirName();
+
+	if (dirName.length()==4) // YEAR folder - no need to move these files
+	{
+		LOG_DEB << "year folder:" << dirName;
+		return FVA_NO_ERROR;
+	}
+
 	m_dir.cdUp();
 	QString folderUp = m_dir.absolutePath();
 	m_dir = QDir(m_folder);

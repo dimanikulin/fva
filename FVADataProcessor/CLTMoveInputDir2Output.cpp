@@ -22,77 +22,75 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 	QString dstDirPath = context.outputDir + "/" + dirName.mid(0, 4)/*extract year*/;
 
 	// skip internal folder 
-	if (fvaIsInternalDir(dirName) || fvaIsInternalDir(dstDirPath))
+	if (!fvaIsInternalDir(dirName) && !fvaIsInternalDir(dstDirPath))
 	{
-		LOG_WARN << "skipped internal dir : " << dirName << " , dst: " << dstDirPath;
-		return FVA_NO_ERROR; // goto to next dir
-	}
+		//LOG_WARN << "skipped internal dir : " << dirName << " , dst: " << dstDirPath;
+		// return FVA_NO_ERROR; // goto to next dir
 
-	// lets create year folder if it does not exist
-	FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);
-	if (FVA_ERROR_CANT_CREATE_DIR == res)
-	{
-		LOG_CRIT << "could not create dest folder:" << dstDirPath;
-		return FVA_ERROR_CANT_CREATE_DIR;
-	}
-
-	if (dirName.length()==4) // YEAR folder
-	{
-		LOG_DEB << "year folder:" << dirName;
-	}
-	else
-	{
-		LOG_DEB << "last leaf folder:" << dirName;
-		
-		dstDirPath += "/" + dirName;
-	}
-
-	// lets create year/last leaf folder if it does not exist
-	res = fvaCreateDirIfNotExists(dstDirPath);
-	if (FVA_ERROR_CANT_CREATE_DIR == res)
-	{
-		LOG_CRIT << "could not create dest folder:" << dstDirPath;
-		return FVA_ERROR_CANT_CREATE_DIR;
-	}
-	else if (FVA_ERROR_DEST_DIR_ALREADY_EXISTS == res)
-	{
-		// it is first time run
-		if (context.custom.isEmpty())
-			return FVA_ERROR_DEST_DIR_ALREADY_EXISTS;
-		else if (context.custom == "create")
+		// lets create year folder if it does not exist
+		FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);
+		if (FVA_ERROR_CANT_CREATE_DIR == res)
 		{
-			LOG_CRIT << "destination dir already exists: " << dstDirPath;
-			// lets try to create with different name
-			dstDirPath += " #1";
-			res = fvaCreateDirIfNotExists(dstDirPath);
-			if (FVA_ERROR_CANT_CREATE_DIR == res)
+			LOG_CRIT << "could not create dest folder:" << dstDirPath;
+			return FVA_ERROR_CANT_CREATE_DIR;
+		}
+
+		if (dirName.length()==4) // YEAR folder
+			LOG_DEB << "year folder:" << dirName;
+		else
+		{
+			LOG_DEB << "last leaf folder:" << dirName;		
+			dstDirPath += "/" + dirName;
+		}
+
+		// lets create year/last leaf folder if it does not exist
+		res = fvaCreateDirIfNotExists(dstDirPath);
+		if (FVA_ERROR_CANT_CREATE_DIR == res)
+		{
+			LOG_CRIT << "could not create dest folder:" << dstDirPath;
+			return FVA_ERROR_CANT_CREATE_DIR;
+		}
+		else if (FVA_ERROR_DEST_DIR_ALREADY_EXISTS == res)
+		{
+			// it is first time run
+			if (context.custom.isEmpty())
+				return FVA_ERROR_DEST_DIR_ALREADY_EXISTS;
+			else if (context.custom == "create")
 			{
-				LOG_CRIT << "could not create dest folder:" << dstDirPath;
-				return FVA_ERROR_CANT_CREATE_DIR;
+				LOG_CRIT << "destination dir already exists: " << dstDirPath;
+				// lets try to create with different name
+				dstDirPath += " #1";
+				res 	= fvaCreateDirIfNotExists(dstDirPath);
+				if (FVA_ERROR_CANT_CREATE_DIR == res)
+				{
+					LOG_CRIT << "could not create dest folder:" << dstDirPath;
+					return FVA_ERROR_CANT_CREATE_DIR;
+				}
+				else if (FVA_ERROR_DEST_DIR_ALREADY_EXISTS == res)
+				{
+					LOG_CRIT << "not immplemented to create dest folder with #2:" << dstDirPath;
+					return FVA_ERROR_NOT_IMPLEMENTED;
+				}
+				else if (FVA_NO_ERROR == res)
+					LOG_DEB << "created dest folder:" << dstDirPath;
 			}
-			else if (FVA_ERROR_DEST_DIR_ALREADY_EXISTS == res)
+			else if (context.custom == "merge")
 			{
-				LOG_CRIT << "not immplemented to create dest folder with #2:" << dstDirPath;
-				return FVA_ERROR_NOT_IMPLEMENTED;
-			}
-			else if (FVA_NO_ERROR == res)
-			{
-				LOG_DEB << "created dest folder:" << dstDirPath;
+				// do nothing here
 			}
 		}
-		else if (context.custom == "merge")
-		{
-			// do nothing here
-		}
-	}
-	else if (FVA_NO_ERROR == res)
-	{
-		LOG_DEB << "created dest folder:" << dstDirPath;
-	}
-	
-	
+		else if (FVA_NO_ERROR == res)
+			LOG_DEB << "created dest folder:" << dstDirPath;	
+	}	
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
+		// skip internal folder 
+		if (!fvaIsInternalDir(dirName) && !fvaIsInternalDir(dstDirPath))
+		{
+			LOG_WARN << "skipped internal dir : " << dirName << " , dst: " << dstDirPath;
+			continue; // goto to next dir
+		}
+
 		// check for already existing
 		if (m_dir.exists(dstDirPath + "/" + info.fileName()) && !info.isDir())
 		{
