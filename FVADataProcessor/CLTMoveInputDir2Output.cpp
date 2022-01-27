@@ -21,6 +21,13 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 
 	QString dstDirPath = context.outputDir + "/" + dirName.mid(0, 4)/*extract year*/;
 
+	// skip internal folder 
+	if (fvaIsInternalDir(dirName) || fvaIsInternalDir(dstDirPath))
+	{
+		LOG_WARN << "skipped internal dir : " << dirName << " , dst: " << dstDirPath;
+		continue;
+	}
+
 	// lets create year folder if it does not exist
 	FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);
 	if (FVA_ERROR_CANT_CREATE_DIR == res)
@@ -86,13 +93,6 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 	
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
-		// skip internal folder 
-		if (fvaIsInternalDir(dirName) || fvaIsInternalDir(dstDirPath))
-		{
-			LOG_WARN << "skipped #copy for: " << info.absoluteFilePath() << " , dst: " << dstDirPath;
-			continue;
-		}
-
 		// check for already existing
 		if (m_dir.exists(dstDirPath + "/" + info.fileName()) && !info.isDir())
 		{
