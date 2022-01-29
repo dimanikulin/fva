@@ -63,6 +63,10 @@ FVA_EXIT_CODE CLTMoveAloneFiles::execute(const CLTContext& context)
 			}
 		}
 	}
+	if (FVA_NO_ERROR == fvaRemoveDirIfEmpty(m_folder))
+	{
+		LOG_WARN << "removed empty dir " << m_folder;
+	}
 
 	return FVA_NO_ERROR;
 }
