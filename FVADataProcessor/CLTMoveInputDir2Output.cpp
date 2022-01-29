@@ -24,9 +24,6 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 	// skip internal folder 
 	if (!fvaIsInternalDir(dirName) && !fvaIsInternalDir(dstDirPath))
 	{
-		//LOG_WARN << "skipped internal dir : " << dirName << " , dst: " << dstDirPath;
-		// return FVA_NO_ERROR; // goto to next dir
-
 		// lets create year folder if it does not exist
 		FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);
 		if (FVA_ERROR_CANT_CREATE_DIR == res)
@@ -85,9 +82,9 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		// skip internal folder 
-		if (!fvaIsInternalDir(dirName) && !fvaIsInternalDir(dstDirPath))
+		if (info.isDir() && fvaIsInternalDir(info.fileName()))
 		{
-			LOG_WARN << "skipped internal dir : " << dirName << " , dst: " << dstDirPath;
+			LOG_WARN << "skipped internal dir : " << info.fileName();
 			continue; // goto to next dir
 		}
 
@@ -122,5 +119,6 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context)
 			return FVA_ERROR_NOT_IMPLEMENTED;		
 		}
 	}
+
 	return FVA_NO_ERROR;
 }
