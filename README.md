@@ -38,6 +38,7 @@
 - [Install](#install)
 - [Support/Questions](#support)
 - [Community support](#community-support)
+- [Contributing](#contributing)
 - [Documentation](#documentation)
 - [Stay in touch](#stay-in-touch)
 - [License](#license)
@@ -60,10 +61,17 @@ You can download the [Installation packages](https://github.com/dimanikulin/fva/
 Linux (x86-64), Mac and Windows (all latest version).
 
 ## Support
+* An author does not provide any support for now but you can ask him on [Twitter](https://twitter.com/DmytroNikulin) or [Telegram](dimanikulin79)
 
 ## Community support
+* [GitHub](https://github.com/dimanikulin/fva) (Bug reports, Contributions)
+* TBD
+
+## Contributing
+TBD
 
 ## Documentation
+Please see dedicated [repository](https://github.com/dimanikulin/fva/documentation) for the documentation, or TBD:
 
 ## Stay in touch
 * Author - [Dmytro Nikulin](https://twitter.com/DmytroNikulin)
@@ -71,3 +79,4 @@ Linux (x86-64), Mac and Windows (all latest version).
 * Twitter - [@TBD](https://twitter.com/TBD)
 
 ## License
+See the [LICENSE](./LICENSE) file for licensing information.
