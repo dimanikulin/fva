@@ -1,11 +1,6 @@
 <p align="center">
   <a href="FVAIcons/main.png" target="blank"><img src="FVAIcons/main.png" width="120" alt="FVA Logo" /></a>
 </p>
-
-<p align="center">A convergent tool set to automate the process of importing the multimedia data (photo/audio/video)
-into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology Photo Station, etc. to make the multimedia more searchable
-</p>
-
 <p align="center">
   <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/dimanikulin/fva?style=social">
   <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/dimanikulin/fva">
@@ -40,20 +35,29 @@ into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology
 - [Description](#description)
 - [Features](#features)
 - [Roadmap](#roadmap)
-- [Install](#install)
-- [Quick Start](#quick-start)
-- [FAQ](#faq)
 - [Support/Questions](#support)
-- [Contributing](#contributing)
-- [Build from Source](#build-from-source)
+- [Community support](#community-support)
+- [Documentation](#documentation)
 - [Stay in touch](#stay-in-touch)
 - [License](#license)
 
 ## Description
+A convergent tool set to automate the process of importing the multimedia data (photo/audio/video)
+into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology Photo Station, etc. to make the multimedia more searchable
 
 ## Features
+
+## Roadmap
+
+## Support
+
+## Community support
+
+## Documentation
 
 ## Stay in touch
 * Author - [Dmytro Nikulin](https://twitter.com/DmytroNikulin)
 * Website - [https://TBD.com/](https://TBD.com/)
 * Twitter - [@TBD](https://twitter.com/TBD)
+
+## License
