@@ -252,7 +252,7 @@ jobs:
     - name: Upload artifact to git hub storage to use later
       uses: actions/upload-artifact@v1
       with:
-    .    path: ./${{ matrix.config.artifact }}
+        path: ./${{ matrix.config.artifact }}
         name: ${{ matrix.config.artifact }}
      
     - name: Setup MSBuild
