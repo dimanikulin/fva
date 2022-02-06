@@ -41,6 +41,7 @@
 - [Contributing](#contributing)
 - [Documentation](#documentation)
 - [Stay in touch](#stay-in-touch)
+- [Code checks](#Code-check)
 - [License](#license)
 
 ## Description
@@ -72,11 +73,16 @@ TBD
 
 ## Documentation
 Please see dedicated [repository](https://github.com/dimanikulin/fva/documentation) for the documentation, or TBD:
+To re generate the docs you need to TBD
 
 ## Stay in touch
 * Author - [Dmytro Nikulin](https://twitter.com/DmytroNikulin)
 * Website - [https://TBD.com/](https://TBD.com/)
 * Twitter - [@TBD](https://twitter.com/TBD)
+
+## Code checks
+* CodeQL
+* codeChecks 
 
 ## License
 See the [LICENSE](./LICENSE) file for licensing information.
