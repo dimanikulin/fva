@@ -6,3 +6,45 @@
 	tabs->addTab(tabFormat2, tr("Формат 2"));
 
 	setWindowTitle(tr("Конфигуратор"));
+
+
+	QLabel* fvaRootDirLbl = new QLabel(tr("Путь к корневой папке:"));
+	QCheckBox* CheckOrientationCheckBox = new QCheckBox(tr("Проверить ориентацию фото"));
+	QLabel* LanguageLbl = new QLabel(tr("Системный язык:"));
+	cbLanguage->addItem(tr("Английский"), 0);
+	cbLanguage->addItem(tr("Русский"), 0);
+	QLabel* LogLbl = new QLabel(tr("Уровень логирования:"));
+	cbLogLevel->addItem(tr("Ошибки"), 0);
+	cbLogLevel->addItem(tr("Предупрежедения"), 0);
+	cbLogLevel->addItem(tr("Отладка"), 0);
+
+	TODO
+	QCheckBox* DateTimeCheckBox			= new QCheckBox(tr("Дата и время"));
+	QCheckBox* LocationCheckBox			= new QCheckBox(tr("Место"));
+	QCheckBox* PeopleCheckBox			= new QCheckBox(tr("Люди"));
+	QCheckBox* DeviceCheckBox			= new QCheckBox(tr("Устройства"));
+	QCheckBox* DescOrCommentCheckBox	= new QCheckBox(tr("Описание или коментарий"));
+	QCheckBox* EventCheckBox			= new QCheckBox(tr("Событие"));
+	QCheckBox* EventReasonPeopleCheckBox= new QCheckBox(tr("Виновники события"));
+
+
+	TODO
+	QCheckBox* GooglePhotoCheckBox = new QCheckBox(tr("Интеграция с Гугл Фото"));
+	QCheckBox* digiKamCheckBox = new QCheckBox(tr("Интеграция с digiKam"));
+
+	перевести
+	QCheckBox* picsByModifTimeCheckBox = new QCheckBox(tr("shall be renamed pictures files using \nthe file modification time if they do not have exif taken time set"));
+	QCheckBox* videoByModifTimeCheckBox = new QCheckBox(tr("shall be renamed video files using \nthe file modification time if they do not have taken time set"));
+	QLabel* minFilesInDirLbl = new QLabel(tr("Как мало может быть файлов в папке"));
+
+	перевести
+	QLabel* fvaDirNameLbl = new QLabel(tr("format a dir name as a date:"));
+	QLabel* fvaDirNameYearLbl = new QLabel(tr("format a dir name as a year:"));
+	QLabel* fvaFileNameLbl = new QLabel(tr("format a FVA file name as a date + time:"));
+	QLabel* exifDateTimeLbl = new QLabel(tr("format an EXIF date + time:"));
+
+	перевести
+	QLabel* fvaFileName1Lbl = new QLabel(tr("file name format 1 as a date + time:"));
+	QLabel* fvaFileName2Lbl = new QLabel(tr("file name format 2 as a date + time:"));
+	QLabel* fiffDateTime1Lbl = new QLabel(tr("riff format 1 of date + time:"));
+	QLabel* fiffDateTime2Lbl = new QLabel(tr("riff format 2 of date + time:"));

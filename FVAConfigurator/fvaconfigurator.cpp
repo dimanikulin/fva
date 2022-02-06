@@ -108,15 +108,6 @@ void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
 	cbLanguage = new QComboBox;
 	cbLogLevel = new QComboBox;
 #ifdef  FVA_LANGUAGE_RUS
-	QLabel* fvaRootDirLbl = new QLabel(tr("Путь к корневой папке:"));
-	QCheckBox* CheckOrientationCheckBox = new QCheckBox(tr("Проверить ориентацию фото"));
-	QLabel* LanguageLbl = new QLabel(tr("Системный язык:"));
-	cbLanguage->addItem(tr("Английский"), 0);
-	cbLanguage->addItem(tr("Русский"), 0);
-	QLabel* LogLbl = new QLabel(tr("Уровень логирования:"));
-	cbLogLevel->addItem(tr("Ошибки"), 0);
-	cbLogLevel->addItem(tr("Предупрежедения"), 0);
-	cbLogLevel->addItem(tr("Отладка"), 0);
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	QLabel* fvaRootDirLbl = new QLabel(tr("Root folder path:"));
@@ -159,14 +150,6 @@ void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg)
 void FVAConfigurator::InitializeSearchTab(const FvaConfiguration& cfg)
 {
 #ifdef  FVA_LANGUAGE_RUS
-	TODO
-	QCheckBox* DateTimeCheckBox			= new QCheckBox(tr("Дата и время"));
-	QCheckBox* LocationCheckBox			= new QCheckBox(tr("Место"));
-	QCheckBox* PeopleCheckBox			= new QCheckBox(tr("Люди"));
-	QCheckBox* DeviceCheckBox			= new QCheckBox(tr("Устройства"));
-	QCheckBox* DescOrCommentCheckBox	= new QCheckBox(tr("Описание или коментарий"));
-	QCheckBox* EventCheckBox			= new QCheckBox(tr("Событие"));
-	QCheckBox* EventReasonPeopleCheckBox= new QCheckBox(tr("Виновники события"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	m_checkboxes.insert("Search::DateTime",			new QCheckBox(tr("Date and Time")));
@@ -191,9 +174,6 @@ void FVAConfigurator::InitializeSearchTab(const FvaConfiguration& cfg)
 void FVAConfigurator::InitializeIntegratorTab(const FvaConfiguration& cfg)
 {
 #ifdef  FVA_LANGUAGE_RUS
-	TODO
-	QCheckBox* GooglePhotoCheckBox = new QCheckBox(tr("Интеграция с Гугл Фото"));
-	QCheckBox* digiKamCheckBox = new QCheckBox(tr("Интеграция с digiKam"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	QCheckBox* GooglePhotoCheckBox = new QCheckBox(tr("Integrate with GooglePhoto"));
@@ -215,10 +195,6 @@ void FVAConfigurator::InitializeRenameTab(const FvaConfiguration& cfg)
 {
 	minFilesInDirSpin = new QSpinBox();
 #ifdef  FVA_LANGUAGE_RUS
-	перевести
-	QCheckBox* picsByModifTimeCheckBox = new QCheckBox(tr("shall be renamed pictures files using \nthe file modification time if they do not have exif taken time set"));
-	QCheckBox* videoByModifTimeCheckBox = new QCheckBox(tr("shall be renamed video files using \nthe file modification time if they do not have taken time set"));
-	QLabel* minFilesInDirLbl = new QLabel(tr("Как мало может быть файлов в папке"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	QCheckBox* picsByModifTimeCheckBox = new QCheckBox(tr("shall be renamed pictures files using \nthe file modification time \nif they do not have exif taken time set"));
@@ -246,11 +222,6 @@ void FVAConfigurator::InitializeRenameTab(const FvaConfiguration& cfg)
 void FVAConfigurator::InitializeFormatTab(const FvaConfiguration& cfg)
 {
 #ifdef  FVA_LANGUAGE_RUS
-	перевести
-	QLabel* fvaDirNameLbl = new QLabel(tr("format a dir name as a date:"));
-	QLabel* fvaDirNameYearLbl = new QLabel(tr("format a dir name as a year:"));
-	QLabel* fvaFileNameLbl = new QLabel(tr("format a FVA file name as a date + time:"));
-	QLabel* exifDateTimeLbl = new QLabel(tr("format an EXIF date + time:"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	QLabel* fvaDirNameLbl = new QLabel(tr("format a dir name as a date:"));
@@ -286,11 +257,6 @@ void FVAConfigurator::InitializeFormatTab(const FvaConfiguration& cfg)
 void FVAConfigurator::InitializeFormat2Tab(const FvaConfiguration& cfg)
 {
 #ifdef  FVA_LANGUAGE_RUS
-	перевести
-	QLabel* fvaFileName1Lbl = new QLabel(tr("file name format 1 as a date + time:"));
-	QLabel* fvaFileName2Lbl = new QLabel(tr("file name format 2 as a date + time:"));
-	QLabel* fiffDateTime1Lbl = new QLabel(tr("riff format 1 of date + time:"));
-	QLabel* fiffDateTime2Lbl = new QLabel(tr("riff format 2 of date + time:"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	QLabel* fileName1Lbl = new QLabel(tr("file name format 1 as a date + time:"));
