@@ -46,14 +46,14 @@ FVAConfigurator::FVAConfigurator(QWidget *parent)
 	setLayout(mainLayout);
 
 #ifdef  FVA_LANGUAGE_RUS
-	tabs->addTab(tabCommon, tr("Общие"));
-	tabs->addTab(tabSearch, tr("Поиск по"));
-	tabs->addTab(tabIntegrator, tr("Интеграция"));
-	tabs->addTab(tabRename, tr("Переимнование"));
-	tabs->addTab(tabFormat, tr("Формат"));
-	tabs->addTab(tabFormat2, tr("Формат 2"));
+	//tabs->addTab(tabCommon, tr("Общие"));
+	//tabs->addTab(tabSearch, tr("Поиск по"));
+	//tabs->addTab(tabIntegrator, tr("Интеграция"));
+	//tabs->addTab(tabRename, tr("Переимнование"));
+	//tabs->addTab(tabFormat, tr("Формат"));
+	//tabs->addTab(tabFormat2, tr("Формат 2"));
 
-	setWindowTitle(tr("Конфигуратор"));
+	//setWindowTitle(tr("Конфигуратор"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	tabs->addTab(tabCommon, tr("Common"));
