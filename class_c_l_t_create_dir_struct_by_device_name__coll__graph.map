@@ -1,0 +1,4 @@
+<map id="CLTCreateDirStructByDeviceName" name="CLTCreateDirStructByDeviceName">
+<area shape="rect" id="node1" title="CLTCreateDirStructByFileNames is child of CmdLineBaseTask and it creates folder structure using devic..." alt="" coords="5,204,232,340"/>
+<area shape="rect" id="node2" href="$class_cmd_line_base_task.html" title="keeps base functionality for one command line task" alt="" coords="27,5,210,156"/>
+</map>

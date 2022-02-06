@@ -1,0 +1,9 @@
+<map id="fvaBuildSimpleTree" name="fvaBuildSimpleTree">
+<area shape="rect" id="node1" title=" " alt="" coords="424,78,559,105"/>
+<area shape="rect" id="node2" href="$fvacommonui_8cpp.html#a9e3883075ab970de03b85d89aecad2c9" title="it creates event tree in gui widgets" alt="" coords="245,78,373,105"/>
+<area shape="rect" id="node5" href="$fvacommonui_8cpp.html#ada8988e3fb0049a61f9a351d98fd17c2" title="it creates people tree in gui widgets" alt="" coords="241,27,376,54"/>
+<area shape="rect" id="node6" href="$fvacommonui_8cpp.html#aac6f34e3f62bca6ac38022f0dec0e248" title="it creates place tree in gui widgets" alt="" coords="245,135,373,162"/>
+<area shape="rect" id="node3" href="$class_f_v_a_description_editor.html#a7380b3fe08722dc183eea83d7aeb02d5" title=" " alt="" coords="23,71,175,112"/>
+<area shape="rect" id="node4" href="$class_f_v_a_organizer_event_info_page.html#ac9961907a75e6b1ea99e967193adc13b" title="it prepares the page before make it visible" alt="" coords="5,5,193,47"/>
+<area shape="rect" id="node7" href="$class_f_v_a_organizer_place_page.html#aaf6e19f1b22c4cfd7358aaab3e2d473c" title="it prepares the page before make it visible" alt="" coords="16,136,183,177"/>
+</map>

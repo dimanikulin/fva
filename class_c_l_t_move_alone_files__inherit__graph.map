@@ -1,0 +1,4 @@
+<map id="CLTMoveAloneFiles" name="CLTMoveAloneFiles">
+<area shape="rect" id="node1" title="CLTMoveAloneFiles is child of CmdLineBaseTask and it moves alone (or twins) files to parent folder." alt="" coords="13,204,180,340"/>
+<area shape="rect" id="node2" href="$class_cmd_line_base_task.html" title="keeps base functionality for one command line task" alt="" coords="5,5,188,156"/>
+</map>

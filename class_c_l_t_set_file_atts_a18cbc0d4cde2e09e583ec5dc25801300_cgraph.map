@@ -1,0 +1,5 @@
+<map id="CLTSetFileAtts::execute" name="CLTSetFileAtts::execute">
+<area shape="rect" id="node1" title="it performs running of command" alt="" coords="5,31,168,57"/>
+<area shape="rect" id="node2" href="$fvacommonlib_8cpp.html#ac71cbeca4127a2d339d410524ed022c2" title="it converts file extention to file type if it is possible" alt="" coords="216,5,396,32"/>
+<area shape="rect" id="node3" href="$fvacommonlib_8cpp.html#ab8bc65f3d9f2f24202e8ec34c0bd641e" title="it answers if file is internal purpose for" alt="" coords="249,56,363,83"/>
+</map>

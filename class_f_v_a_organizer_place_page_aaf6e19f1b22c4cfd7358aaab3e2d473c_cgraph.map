@@ -1,0 +1,17 @@
+<map id="FVAOrganizerPlacePage::setVisible" name="FVAOrganizerPlacePage::setVisible">
+<area shape="rect" id="node1" title="it prepares the page before make it visible" alt="" coords="5,115,172,156"/>
+<area shape="rect" id="node2" href="$fvacommonui_8cpp.html#aac6f34e3f62bca6ac38022f0dec0e248" title="it creates place tree in gui widgets" alt="" coords="227,71,355,98"/>
+<area shape="rect" id="node11" href="$fvacommonui_8cpp.html#a644026af511fc7b3e0bbfd7d2014165e" title="it shows input dir structure" alt="" coords="223,197,359,223"/>
+<area shape="rect" id="node12" href="$class_fva_configuration.html#a11878ceab6cc33c7a966594c80b5de96" title="it returns the parameter value as string representation" alt="" coords="867,5,1048,47"/>
+<area shape="rect" id="node13" href="$class_f_v_a_flow_controller.html#a6669d3c2b848ac7d0521e2fda30d72ba" title="it returns the list of files (paths) in input folder content that have some problem inside" alt="" coords="220,248,361,289"/>
+<area shape="rect" id="node15" href="$class_fva_configuration.html#a9c3df3a95d74a6382cf37027400743b2" title="it loads configuration from file" alt="" coords="643,130,792,157"/>
+<area shape="rect" id="node3" href="$fvacommonui_8cpp.html#a0b00373b77fb65a8fee0ed46c4739671" title=" " alt="" coords="421,71,556,98"/>
+<area shape="rect" id="node4" href="$fvacommoncsv_8cpp.html#a1e1edbd6a49ee47f79b4c20b191e411d" title="it tries to load simple map &lt;ID to Name&gt; from dictionary with predifined type of items" alt="" coords="616,64,819,105"/>
+<area shape="rect" id="node5" href="$class_f_v_a_description_file.html#a5f4dd1e2d4f25ad9a3b3d21275421f4e" title="it returns id of colum by name" alt="" coords="1097,64,1248,105"/>
+<area shape="rect" id="node6" href="$class_f_v_a_description_file.html#a7c7541c5fb4a4f27f3604e2ebd7dac1b" title="it loads data from file" alt="" coords="890,173,1025,215"/>
+<area shape="rect" id="node7" href="$class_c_s_v_file.html#a44bb894823a3418c3aaec7adcc642a5f" title="it answers if file is at the end" alt="" coords="1118,282,1227,309"/>
+<area shape="rect" id="node8" href="$class_c_s_v_file.html#ad57ec0d14e984a6822553aca21c99c60" title="it open csv file for readnig" alt="" coords="1096,130,1249,157"/>
+<area shape="rect" id="node9" href="$class_c_s_v_file.html#aeb332384bf8661e605d82f636f80135b" title="it tries to parse line got" alt="" coords="1106,181,1239,207"/>
+<area shape="rect" id="node10" href="$class_c_s_v_file.html#a79e712086c57886147ed86edb7c71106" title="it reads one string terminated OA or OAOD from file" alt="" coords="1109,231,1236,258"/>
+<area shape="rect" id="node14" href="$fvacommonlib_8cpp.html#a22a1d558dcee50f641436ba512da4555" title="it simply gets the QString list from a file" alt="" coords="409,255,568,282"/>
+</map>

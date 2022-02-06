@@ -1,0 +1,8 @@
+<map id="FVAConfigurator::accept" name="FVAConfigurator::accept">
+<area shape="rect" id="node1" title="it saves all UI setting to FvaConfiguration" alt="" coords="5,68,168,95"/>
+<area shape="rect" id="node2" href="$class_fva_configuration.html#ae765d90f8ac03ddcfd8e2953f15ab7d5" title="it saves data to file" alt="" coords="230,31,383,57"/>
+<area shape="rect" id="node6" href="$class_fva_configuration.html#a9bdd771322ea5f82ebea2d8e465ae273" title="it sets the parameter value as unsigned integer for the futher saving" alt="" coords="216,105,397,132"/>
+<area shape="rect" id="node3" href="$class_f_v_a_description_file.html#a077a2c943aa70923d5f4089b930453c5" title="it saves data to file" alt="" coords="445,23,580,65"/>
+<area shape="rect" id="node4" href="$class_c_s_v_file.html#a8db2c19a2c3292a1d4317195fc3ab871" title="it open csv file for writing" alt="" coords="628,5,781,32"/>
+<area shape="rect" id="node5" href="$class_c_s_v_file.html#a3c90a235181723788a541785a44c4843" title="it writes line to a file" alt="" coords="640,56,769,83"/>
+</map>

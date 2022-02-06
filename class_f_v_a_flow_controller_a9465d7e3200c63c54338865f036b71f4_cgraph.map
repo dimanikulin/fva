@@ -1,0 +1,4 @@
+<map id="FVAFlowController::OrganizeInputDir" name="FVAFlowController::OrganizeInputDir">
+<area shape="rect" id="node1" title="it performs the organization stuff for the input folder according to fva configuration" alt="" coords="5,5,143,47"/>
+<area shape="rect" id="node2" href="$class_cmd_line_base_executor.html#a6523c47dbc45f5b21c704854fa946b21" title="performs running of command" alt="" coords="191,13,369,39"/>
+</map>

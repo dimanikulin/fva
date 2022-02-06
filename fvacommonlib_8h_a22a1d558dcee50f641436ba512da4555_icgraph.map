@@ -1,0 +1,5 @@
+<map id="fvaLoadStrListFromFile" name="fvaLoadStrListFromFile">
+<area shape="rect" id="node1" title="it simply gets the QString list from a file" alt="" coords="409,13,568,39"/>
+<area shape="rect" id="node2" href="$class_f_v_a_flow_controller.html#a6669d3c2b848ac7d0521e2fda30d72ba" title="it returns the list of files (paths) in input folder content that have some problem inside" alt="" coords="220,5,361,47"/>
+<area shape="rect" id="node3" href="$class_f_v_a_organizer_place_page.html#aaf6e19f1b22c4cfd7358aaab3e2d473c" title="it prepares the page before make it visible" alt="" coords="5,5,172,47"/>
+</map>

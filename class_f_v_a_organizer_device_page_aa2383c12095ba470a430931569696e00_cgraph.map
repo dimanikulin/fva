@@ -1,0 +1,5 @@
+<map id="FVAOrganizerDevicePage::validatePage" name="FVAOrganizerDevicePage::validatePage">
+<area shape="rect" id="node1" title="calls a PerformChecksForInputDir of class FVAFlowController" alt="" coords="5,5,179,47"/>
+<area shape="rect" id="node2" href="$class_f_v_a_flow_controller.html#a9465d7e3200c63c54338865f036b71f4" title="it performs the organization stuff for the input folder according to fva configuration" alt="" coords="227,5,364,47"/>
+<area shape="rect" id="node3" href="$class_cmd_line_base_executor.html#a6523c47dbc45f5b21c704854fa946b21" title="performs running of command" alt="" coords="412,13,591,39"/>
+</map>

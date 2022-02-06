@@ -1,0 +1,4 @@
+<map id="FVAFlowController::GetProblemFilesList" name="FVAFlowController::GetProblemFilesList">
+<area shape="rect" id="node1" title="it returns the list of files (paths) in input folder content that have some problem inside" alt="" coords="5,5,147,47"/>
+<area shape="rect" id="node2" href="$fvacommonlib_8cpp.html#a22a1d558dcee50f641436ba512da4555" title="it simply gets the QString list from a file" alt="" coords="195,13,353,39"/>
+</map>

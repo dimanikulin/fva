@@ -1,0 +1,4 @@
+<map id="fvaLoadPeopleRelationMapFromCsv" name="fvaLoadPeopleRelationMapFromCsv">
+<area shape="rect" id="node1" title="it tries to load people relations map from dictionary" alt="" coords="188,5,369,47"/>
+<area shape="rect" id="node2" href="$fvacommonui_8cpp.html#a88b377262b1433294337c282f09ebbc5" title="it creates people tree in gui widgets" alt="" coords="5,13,140,39"/>
+</map>

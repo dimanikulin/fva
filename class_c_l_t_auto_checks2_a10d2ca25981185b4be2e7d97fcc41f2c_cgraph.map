@@ -1,0 +1,7 @@
+<map id="CLTAutoChecks2::CLTAutoChecks2" name="CLTAutoChecks2::CLTAutoChecks2">
+<area shape="rect" id="node1" title=" " alt="" coords="5,71,240,98"/>
+<area shape="rect" id="node2" href="$class_fva_fmt_context.html#a4c4426b44a8afbf8e8e536cac5797373" title="it fills up the formatting context from configuration" alt="" coords="288,5,484,47"/>
+<area shape="rect" id="node3" href="$class_fva_configuration.html#a11878ceab6cc33c7a966594c80b5de96" title="it returns the parameter value as string representation" alt="" coords="532,64,713,105"/>
+<area shape="rect" id="node5" href="$class_fva_configuration.html#a0711d84dd71763cba5f67b3f5163d218" title="it returns the parameter value as unsigned integer" alt="" coords="295,123,477,164"/>
+<area shape="rect" id="node4" href="$class_f_v_a_description_file.html#a5f4dd1e2d4f25ad9a3b3d21275421f4e" title="it returns id of colum by name" alt="" coords="761,64,912,105"/>
+</map>

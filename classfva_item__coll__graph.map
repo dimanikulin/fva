@@ -1,0 +1,5 @@
+<map id="fvaItem" name="fvaItem">
+<area shape="rect" id="node1" title="it keeps whole information about a foto&#45;video&#45;audio element" alt="" coords="99,248,233,443"/>
+<area shape="rect" id="node2" href="$classfva_folder.html" title="it keeps fva specific information about a folder" alt="" coords="5,27,172,163"/>
+<area shape="rect" id="node3" href="$classfva_file.html" title="it keeps fva specific information about a file" alt="" coords="197,5,293,185"/>
+</map>

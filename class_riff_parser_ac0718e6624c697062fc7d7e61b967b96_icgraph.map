@@ -1,0 +1,7 @@
+<map id="RiffParser::convertToDate" name="RiffParser::convertToDate">
+<area shape="rect" id="node1" title="it converts string type to date&#45;time type" alt="" coords="461,56,632,83"/>
+<area shape="rect" id="node2" href="$fvacommonexif_8cpp.html#a47733a26c1f0b137470b6d0ded6aea3e" title="it tries to get time a video taken at from header" alt="" coords="255,56,413,83"/>
+<area shape="rect" id="node3" href="$class_c_l_t_auto_checks1.html#a00b6d7f4e8672704ae2cb8d94323df76" title="it performs running of command" alt="" coords="18,5,194,32"/>
+<area shape="rect" id="node4" href="$class_c_l_t_rename_files.html#a16f4b66d321e9f0a7b82ef21812b2ac4" title="it performs running of command" alt="" coords="19,56,193,83"/>
+<area shape="rect" id="node5" href="$class_c_l_t_rename_video_by_sequence.html#a64e180ff79eb497cd95ae31f9aab69f7" title="it performs running of command" alt="" coords="5,107,207,149"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="FVAFlowController::ProcessInputDirForPlaces" name="FVAFlowController::ProcessInputDirForPlaces">
+<area shape="rect" id="node1" title="it process input folder content as multi&#45;events folder according to place info" alt="" coords="220,5,395,47"/>
+<area shape="rect" id="node2" href="$class_f_v_a_organizer_place_page.html#ad65ea91a2c7dd143ec4a8a5fbac1a40c" title="calls a TODO FIX of class FVAFlowController" alt="" coords="5,5,172,47"/>
+</map>

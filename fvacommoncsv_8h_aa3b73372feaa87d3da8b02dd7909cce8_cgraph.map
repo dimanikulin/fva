@@ -1,0 +1,9 @@
+<map id="fvaLoadFvaFileInfoFromCsv" name="fvaLoadFvaFileInfoFromCsv">
+<area shape="rect" id="node1" title="it loads fva information saved in CSV files" alt="" coords="5,67,192,94"/>
+<area shape="rect" id="node2" href="$class_f_v_a_description_file.html#a5f4dd1e2d4f25ad9a3b3d21275421f4e" title="it returns id of colum by name" alt="" coords="424,5,575,47"/>
+<area shape="rect" id="node3" href="$class_f_v_a_description_file.html#a7c7541c5fb4a4f27f3604e2ebd7dac1b" title="it loads data from file" alt="" coords="240,89,375,131"/>
+<area shape="rect" id="node4" href="$class_c_s_v_file.html#a44bb894823a3418c3aaec7adcc642a5f" title="it answers if file is at the end" alt="" coords="445,71,554,98"/>
+<area shape="rect" id="node5" href="$class_c_s_v_file.html#ad57ec0d14e984a6822553aca21c99c60" title="it open csv file for readnig" alt="" coords="423,122,576,149"/>
+<area shape="rect" id="node6" href="$class_c_s_v_file.html#aeb332384bf8661e605d82f636f80135b" title="it tries to parse line got" alt="" coords="433,173,566,199"/>
+<area shape="rect" id="node7" href="$class_c_s_v_file.html#a79e712086c57886147ed86edb7c71106" title="it reads one string terminated OA or OAOD from file" alt="" coords="436,223,563,250"/>
+</map>

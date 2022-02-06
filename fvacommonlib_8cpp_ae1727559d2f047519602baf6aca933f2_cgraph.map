@@ -1,0 +1,4 @@
+<map id="fvaIsFVAFile" name="fvaIsFVAFile">
+<area shape="rect" id="node1" title="it answers if file is supported type of (by its file extention)" alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node2" href="$fvacommonlib_8cpp.html#ac71cbeca4127a2d339d410524ed022c2" title="it converts file extention to file type if it is possible" alt="" coords="152,5,332,32"/>
+</map>

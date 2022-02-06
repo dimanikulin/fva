@@ -1,0 +1,6 @@
+<map id="CSVFile::openForWrite" name="CSVFile::openForWrite">
+<area shape="rect" id="node1" title="it open csv file for writing" alt="" coords="600,13,753,39"/>
+<area shape="rect" id="node2" href="$class_f_v_a_description_file.html#a077a2c943aa70923d5f4089b930453c5" title="it saves data to file" alt="" coords="417,5,552,47"/>
+<area shape="rect" id="node3" href="$class_fva_configuration.html#ae765d90f8ac03ddcfd8e2953f15ab7d5" title="it saves data to file" alt="" coords="216,13,369,39"/>
+<area shape="rect" id="node4" href="$class_f_v_a_configurator.html#aa9beea2f0d9851199ecc18b9b88b5fc9" title="it saves all UI setting to FvaConfiguration" alt="" coords="5,13,168,39"/>
+</map>

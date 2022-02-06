@@ -1,0 +1,17 @@
+<map id="fvaConvertFileExt2FileType" name="fvaConvertFileExt2FileType">
+<area shape="rect" id="node1" title="it converts file extention to file type if it is possible" alt="" coords="479,340,659,367"/>
+<area shape="rect" id="node2" href="$class_c_l_t_auto_checks1.html#a00b6d7f4e8672704ae2cb8d94323df76" title="it performs running of command" alt="" coords="242,5,418,32"/>
+<area shape="rect" id="node3" href="$class_c_l_t_auto_checks2.html#ac5dec7700e77e344ac3e119fa6e40b8b" title="it performs running of command" alt="" coords="242,56,418,83"/>
+<area shape="rect" id="node4" href="$class_c_l_t_auto_checks3.html#a5453422e9a57ae17623c05b9d96f2aca" title="it performs running of command" alt="" coords="5,373,181,400"/>
+<area shape="rect" id="node5" href="$class_c_l_t_check_date_time.html#ac169ebb94521a47c644ebea8317613e2" title="it performs running of command" alt="" coords="235,157,425,184"/>
+<area shape="rect" id="node6" href="$class_c_l_t_check_device_name.html#ab6f83da4b9076e32737e1e28e345c81f" title="it performs running of command" alt="" coords="251,209,409,250"/>
+<area shape="rect" id="node7" href="$class_c_l_t_check_file_format.html#a95dba03aa5a9debbec7821f248ebab0a" title="it performs running of command" alt="" coords="257,274,403,315"/>
+<area shape="rect" id="node8" href="$class_c_l_t_check_location.html#aa0646035102e3e84f7b291e7a0ad199f" title="it performs running of command" alt="" coords="237,340,423,367"/>
+<area shape="rect" id="node9" href="$class_c_l_t_create_dir_struct_by_device_name.html#a094638d1c9ce290c9187bc33ed835d37" title="it performs running of command" alt="" coords="235,391,425,433"/>
+<area shape="rect" id="node10" href="$class_c_l_t_move_alone_files.html#adeceab77afd9a9f25168bcb4d01d699c" title="it performs running of command" alt="" coords="257,457,403,498"/>
+<area shape="rect" id="node11" href="$class_c_l_t_rename_files.html#a16f4b66d321e9f0a7b82ef21812b2ac4" title="it performs running of command" alt="" coords="243,523,417,549"/>
+<area shape="rect" id="node12" href="$class_c_l_t_rename_video_by_sequence.html#a64e180ff79eb497cd95ae31f9aab69f7" title="it performs running of command" alt="" coords="229,574,431,615"/>
+<area shape="rect" id="node13" href="$class_c_l_t_set_file_atts.html#a18cbc0d4cde2e09e583ec5dc25801300" title="it performs running of command" alt="" coords="249,640,411,667"/>
+<area shape="rect" id="node14" href="$fvacommonlib_8cpp.html#ae1727559d2f047519602baf6aca933f2" title="it answers if file is supported type of (by its file extention)" alt="" coords="281,691,379,717"/>
+<area shape="rect" id="node15" href="$class_c_l_t_c_s_v_fva_file.html#a0c66dcd96622f6742796f344d858e80b" title="it performs running of command" alt="" coords="9,691,177,717"/>
+</map>

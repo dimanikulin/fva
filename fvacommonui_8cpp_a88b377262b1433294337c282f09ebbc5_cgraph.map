@@ -1,0 +1,13 @@
+<map id="fvaBuildPeopleTree" name="fvaBuildPeopleTree">
+<area shape="rect" id="node1" title="it creates people tree in gui widgets" alt="" coords="5,97,140,124"/>
+<area shape="rect" id="node2" href="$fvacommoncsv_8cpp.html#ad3c1a40a2a86e9611bed78f248dec46d" title="it tries to load device map from dictionary" alt="" coords="196,188,383,215"/>
+<area shape="rect" id="node9" href="$fvacommoncsv_8cpp.html#a59946f1e110e370b2778429abda5fad6" title="it tries to load people map from dictionary" alt="" coords="196,5,383,32"/>
+<area shape="rect" id="node10" href="$fvacommoncsv_8cpp.html#ab9a7a9fed3ef27fd59929e383c60c065" title="it tries to load people relations map from dictionary" alt="" coords="199,57,380,98"/>
+<area shape="rect" id="node11" href="$fvacommoncsv_8cpp.html#a1e1edbd6a49ee47f79b4c20b191e411d" title="it tries to load simple map &lt;ID to Name&gt; from dictionary with predifined type of items" alt="" coords="188,122,391,163"/>
+<area shape="rect" id="node3" href="$class_f_v_a_description_file.html#a5f4dd1e2d4f25ad9a3b3d21275421f4e" title="it returns id of colum by name" alt="" coords="623,85,773,126"/>
+<area shape="rect" id="node4" href="$class_f_v_a_description_file.html#a7c7541c5fb4a4f27f3604e2ebd7dac1b" title="it loads data from file" alt="" coords="439,194,573,235"/>
+<area shape="rect" id="node5" href="$class_c_s_v_file.html#a44bb894823a3418c3aaec7adcc642a5f" title="it answers if file is at the end" alt="" coords="643,151,753,177"/>
+<area shape="rect" id="node6" href="$class_c_s_v_file.html#ad57ec0d14e984a6822553aca21c99c60" title="it open csv file for readnig" alt="" coords="621,201,775,228"/>
+<area shape="rect" id="node7" href="$class_c_s_v_file.html#aeb332384bf8661e605d82f636f80135b" title="it tries to parse line got" alt="" coords="631,252,765,279"/>
+<area shape="rect" id="node8" href="$class_c_s_v_file.html#a79e712086c57886147ed86edb7c71106" title="it reads one string terminated OA or OAOD from file" alt="" coords="635,303,761,329"/>
+</map>

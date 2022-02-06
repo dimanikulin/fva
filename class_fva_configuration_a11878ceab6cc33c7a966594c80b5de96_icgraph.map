@@ -1,0 +1,25 @@
+<map id="FvaConfiguration::getParamAsString" name="FvaConfiguration::getParamAsString">
+<area shape="rect" id="node1" title="it returns the parameter value as string representation" alt="" coords="555,477,736,519"/>
+<area shape="rect" id="node2" href="$class_c_l_t_auto_checks2.html#a10d2ca25981185b4be2e7d97fcc41f2c" title=" " alt="" coords="5,71,240,98"/>
+<area shape="rect" id="node3" href="$class_c_l_t_auto_checks3.html#a44000362795c3bdfd3a9587763dee260" title=" " alt="" coords="5,122,240,149"/>
+<area shape="rect" id="node4" href="$class_c_l_t_c_s_v_fva_file.html#a30fb19d7277672c280be09605db6a872" title="CmdLineBaseTask interface." alt="" coords="288,485,507,511"/>
+<area shape="rect" id="node5" href="$class_c_l_t_fix_duplicated_file_names.html#aaa352f17d950c9995c1e36c4c208e879" title=" " alt="" coords="300,536,495,577"/>
+<area shape="rect" id="node6" href="$class_c_l_t_move_input_dir2_output.html#a8b566760ce0486d97f9fb81c8a9d0348" title=" " alt="" coords="309,601,485,643"/>
+<area shape="rect" id="node7" href="$class_c_l_t_print_f_s_structure.html#adb07db391494267ef8746d37365833b4" title=" " alt="" coords="47,173,198,215"/>
+<area shape="rect" id="node8" href="$class_fva_fmt_context.html#a4c4426b44a8afbf8e8e536cac5797373" title="it fills up the formatting context from configuration" alt="" coords="299,292,495,333"/>
+<area shape="rect" id="node13" href="$class_f_v_a_configurator.html#aa45a0c2c143dc629956ad9bc861e3721" title=" " alt="" coords="13,618,232,645"/>
+<area shape="rect" id="node14" href="$class_f_v_a_description_editor.html#a7380b3fe08722dc183eea83d7aeb02d5" title=" " alt="" coords="321,667,473,708"/>
+<area shape="rect" id="node15" href="$class_f_v_a_dictionary_editor.html#a47f50794bab8008eb446e9af06ef6fa5" title=" " alt="" coords="325,732,469,773"/>
+<area shape="rect" id="node16" href="$class_fva_configuration.html#ab521e5834b4f304b41cb7ecd020fd9c9" title="it returns the parameter value as bool" alt="" coords="307,368,488,409"/>
+<area shape="rect" id="node19" href="$class_fva_configuration.html#a0711d84dd71763cba5f67b3f5163d218" title="it returns the parameter value as unsigned integer" alt="" coords="307,64,488,105"/>
+<area shape="rect" id="node21" href="$class_f_v_a_organizer_event_info_page.html#ac9961907a75e6b1ea99e967193adc13b" title="it prepares the page before make it visible" alt="" coords="303,797,491,839"/>
+<area shape="rect" id="node22" href="$class_f_v_a_organizer_place_page.html#aaf6e19f1b22c4cfd7358aaab3e2d473c" title="it prepares the page before make it visible" alt="" coords="314,863,481,904"/>
+<area shape="rect" id="node23" href="$class_c_l_t_check_location.html#a3688daa851c3909187f11e32020a5f46" title=" " alt="" coords="327,928,468,969"/>
+<area shape="rect" id="node9" href="$class_c_l_t_auto_checks1.html#a06b2c9073d279d07c276e80d085e769c" title=" " alt="" coords="5,435,240,462"/>
+<area shape="rect" id="node10" href="$class_c_l_t_check_date_time.html#a58f3d2ed2177ea1523c6892b3d8c127e" title=" " alt="" coords="19,239,227,280"/>
+<area shape="rect" id="node11" href="$class_c_l_t_rename_files.html#a614d6e84b5c68776c11d4f4a54d8382e" title=" " alt="" coords="21,304,224,345"/>
+<area shape="rect" id="node12" href="$class_c_l_t_rename_video_by_sequence.html#a506eac389d2a5f6eb5fac1d3539f8ef7" title=" " alt="" coords="19,369,226,411"/>
+<area shape="rect" id="node17" href="$class_f_v_a_organizer_output_dir_page.html#ae823f7fbd9d6b666ad63cc92d7a40a9d" title=" " alt="" coords="25,552,220,593"/>
+<area shape="rect" id="node18" href="$class_f_v_a_organizer_wizard.html#aeee21bb25385058561b0456262c160ce" title=" " alt="" coords="49,487,197,528"/>
+<area shape="rect" id="node20" href="$class_c_l_t_move_alone_files.html#a2047137ef259135353401a2151ce7d9e" title=" " alt="" coords="49,5,196,47"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="fvaGetExifMakeAndModelFromFile" name="fvaGetExifMakeAndModelFromFile">
+<area shape="rect" id="node1" title="it returns Exif camera maker plus model string" alt="" coords="468,78,691,105"/>
+<area shape="rect" id="node2" href="$class_c_l_t_check_device_name.html#ab6f83da4b9076e32737e1e28e345c81f" title="it performs running of command" alt="" coords="245,5,404,47"/>
+<area shape="rect" id="node3" href="$class_c_l_t_create_dir_struct_by_device_name.html#a094638d1c9ce290c9187bc33ed835d37" title="it performs running of command" alt="" coords="229,71,420,112"/>
+<area shape="rect" id="node4" href="$fvacommonlib_8cpp.html#af4f9c42f7cd86df3e8c84280a490dd3a" title="it returns device id from map loaded" alt="" coords="241,137,408,163"/>
+<area shape="rect" id="node5" href="$class_c_l_t_auto_checks3.html#a5453422e9a57ae17623c05b9d96f2aca" title="it performs running of command" alt="" coords="5,137,181,163"/>
+</map>

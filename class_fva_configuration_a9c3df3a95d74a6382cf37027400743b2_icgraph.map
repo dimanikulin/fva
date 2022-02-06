@@ -1,0 +1,13 @@
+<map id="FvaConfiguration::load" name="FvaConfiguration::load">
+<area shape="rect" id="node1" title="it loads configuration from file" alt="" coords="272,293,421,320"/>
+<area shape="rect" id="node2" href="$class_f_v_a_configurator.html#aa45a0c2c143dc629956ad9bc861e3721" title=" " alt="" coords="5,5,224,32"/>
+<area shape="rect" id="node3" href="$class_f_v_a_description_editor.html#a7380b3fe08722dc183eea83d7aeb02d5" title=" " alt="" coords="39,57,191,98"/>
+<area shape="rect" id="node4" href="$class_f_v_a_dictionary_editor.html#a47f50794bab8008eb446e9af06ef6fa5" title=" " alt="" coords="43,122,187,163"/>
+<area shape="rect" id="node5" href="$class_f_v_a_flow_controller.html#a6690db304865fc5f4aa506795b5eb3a2" title=" " alt="" coords="46,187,183,229"/>
+<area shape="rect" id="node6" href="$class_f_v_a_organizer_output_dir_page.html#ae823f7fbd9d6b666ad63cc92d7a40a9d" title=" " alt="" coords="17,253,212,294"/>
+<area shape="rect" id="node7" href="$class_f_v_a_organizer_wizard.html#aeee21bb25385058561b0456262c160ce" title=" " alt="" coords="41,318,189,359"/>
+<area shape="rect" id="node8" href="$_f_v_a_configurator_2main_8cpp.html#a7f042c132de58c033859a6ea2f9d2182" title=" " alt="" coords="89,384,140,411"/>
+<area shape="rect" id="node9" href="$class_f_v_a_organizer_event_info_page.html#ac9961907a75e6b1ea99e967193adc13b" title="it prepares the page before make it visible" alt="" coords="21,435,209,477"/>
+<area shape="rect" id="node10" href="$class_f_v_a_organizer_place_page.html#aaf6e19f1b22c4cfd7358aaab3e2d473c" title="it prepares the page before make it visible" alt="" coords="31,501,198,542"/>
+<area shape="rect" id="node11" href="$class_c_l_t_check_location.html#a3688daa851c3909187f11e32020a5f46" title=" " alt="" coords="44,566,185,607"/>
+</map>

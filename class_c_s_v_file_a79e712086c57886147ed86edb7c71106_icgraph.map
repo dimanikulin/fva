@@ -1,0 +1,27 @@
+<map id="CSVFile::readLine" name="CSVFile::readLine">
+<area shape="rect" id="node1" title="it reads one string terminated OA or OAOD from file" alt="" coords="1224,144,1351,171"/>
+<area shape="rect" id="node2" href="$class_f_v_a_description_file.html#a7c7541c5fb4a4f27f3604e2ebd7dac1b" title="it loads data from file" alt="" coords="1041,137,1176,178"/>
+<area shape="rect" id="node3" href="$fvacommoncsv_8cpp.html#ad3c1a40a2a86e9611bed78f248dec46d" title="it tries to load device map from dictionary" alt="" coords="799,56,985,83"/>
+<area shape="rect" id="node6" href="$fvacommoncsv_8cpp.html#aa3b73372feaa87d3da8b02dd7909cce8" title="it loads fva information saved in CSV files" alt="" coords="799,5,985,32"/>
+<area shape="rect" id="node7" href="$fvacommoncsv_8cpp.html#a59946f1e110e370b2778429abda5fad6" title="it tries to load people map from dictionary" alt="" coords="799,173,985,200"/>
+<area shape="rect" id="node9" href="$fvacommoncsv_8cpp.html#ab9a7a9fed3ef27fd59929e383c60c065" title="it tries to load people relations map from dictionary" alt="" coords="801,107,983,149"/>
+<area shape="rect" id="node10" href="$fvacommoncsv_8cpp.html#a1e1edbd6a49ee47f79b4c20b191e411d" title="it tries to load simple map &lt;ID to Name&gt; from dictionary with predifined type of items" alt="" coords="791,225,993,266"/>
+<area shape="rect" id="node19" href="$class_fva_configuration.html#a9c3df3a95d74a6382cf37027400743b2" title="it loads configuration from file" alt="" coords="551,555,700,581"/>
+<area shape="rect" id="node4" href="$class_c_l_t_auto_checks3.html#a44000362795c3bdfd3a9587763dee260" title=" " alt="" coords="508,31,743,57"/>
+<area shape="rect" id="node5" href="$fvacommonui_8cpp.html#a88b377262b1433294337c282f09ebbc5" title="it creates people tree in gui widgets" alt="" coords="558,116,693,143"/>
+<area shape="rect" id="node8" href="$class_f_v_a_dictionary_editor.html#a47f50794bab8008eb446e9af06ef6fa5" title=" " alt="" coords="279,162,423,203"/>
+<area shape="rect" id="node11" href="$fvadictionaryeditor_8cpp.html#a5b3bb7b1552eb836d3338cf6b3f26209" title=" " alt="" coords="591,223,660,249"/>
+<area shape="rect" id="node12" href="$fvacommonui_8cpp.html#a0b00373b77fb65a8fee0ed46c4739671" title=" " alt="" coords="558,277,693,304"/>
+<area shape="rect" id="node13" href="$fvacommonui_8cpp.html#a9e3883075ab970de03b85d89aecad2c9" title="it creates event tree in gui widgets" alt="" coords="287,228,415,255"/>
+<area shape="rect" id="node16" href="$fvacommonui_8cpp.html#ada8988e3fb0049a61f9a351d98fd17c2" title="it creates people tree in gui widgets" alt="" coords="283,279,418,305"/>
+<area shape="rect" id="node17" href="$fvacommonui_8cpp.html#aac6f34e3f62bca6ac38022f0dec0e248" title="it creates place tree in gui widgets" alt="" coords="287,431,415,457"/>
+<area shape="rect" id="node14" href="$class_f_v_a_description_editor.html#a7380b3fe08722dc183eea83d7aeb02d5" title=" " alt="" coords="23,311,175,353"/>
+<area shape="rect" id="node15" href="$class_f_v_a_organizer_event_info_page.html#ac9961907a75e6b1ea99e967193adc13b" title="it prepares the page before make it visible" alt="" coords="5,246,193,287"/>
+<area shape="rect" id="node18" href="$class_f_v_a_organizer_place_page.html#aaf6e19f1b22c4cfd7358aaab3e2d473c" title="it prepares the page before make it visible" alt="" coords="16,547,183,589"/>
+<area shape="rect" id="node20" href="$class_f_v_a_configurator.html#aa45a0c2c143dc629956ad9bc861e3721" title=" " alt="" coords="241,847,460,873"/>
+<area shape="rect" id="node21" href="$class_f_v_a_flow_controller.html#a6690db304865fc5f4aa506795b5eb3a2" title=" " alt="" coords="282,482,419,523"/>
+<area shape="rect" id="node22" href="$class_f_v_a_organizer_output_dir_page.html#ae823f7fbd9d6b666ad63cc92d7a40a9d" title=" " alt="" coords="253,547,448,589"/>
+<area shape="rect" id="node23" href="$class_f_v_a_organizer_wizard.html#aeee21bb25385058561b0456262c160ce" title=" " alt="" coords="277,613,425,654"/>
+<area shape="rect" id="node24" href="$_f_v_a_configurator_2main_8cpp.html#a7f042c132de58c033859a6ea2f9d2182" title=" " alt="" coords="325,729,376,756"/>
+<area shape="rect" id="node25" href="$class_c_l_t_check_location.html#a3688daa851c3909187f11e32020a5f46" title=" " alt="" coords="280,781,421,822"/>
+</map>

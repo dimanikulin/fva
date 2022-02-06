@@ -1,0 +1,16 @@
+<map id="FVAOrganizerEventInfoPage::setVisible" name="FVAOrganizerEventInfoPage::setVisible">
+<area shape="rect" id="node1" title="it prepares the page before make it visible" alt="" coords="5,107,193,148"/>
+<area shape="rect" id="node2" href="$fvacommonui_8cpp.html#a9e3883075ab970de03b85d89aecad2c9" title="it creates event tree in gui widgets" alt="" coords="245,114,373,141"/>
+<area shape="rect" id="node11" href="$fvacommonui_8cpp.html#ada8988e3fb0049a61f9a351d98fd17c2" title="it creates people tree in gui widgets" alt="" coords="242,63,377,90"/>
+<area shape="rect" id="node12" href="$fvacommonui_8cpp.html#a644026af511fc7b3e0bbfd7d2014165e" title="it shows input dir structure" alt="" coords="241,239,377,266"/>
+<area shape="rect" id="node13" href="$class_fva_configuration.html#a11878ceab6cc33c7a966594c80b5de96" title="it returns the parameter value as string representation" alt="" coords="425,5,607,47"/>
+<area shape="rect" id="node14" href="$class_fva_configuration.html#a9c3df3a95d74a6382cf37027400743b2" title="it loads configuration from file" alt="" coords="681,165,831,191"/>
+<area shape="rect" id="node3" href="$fvacommonui_8cpp.html#a0b00373b77fb65a8fee0ed46c4739671" title=" " alt="" coords="449,89,583,115"/>
+<area shape="rect" id="node4" href="$fvacommoncsv_8cpp.html#a1e1edbd6a49ee47f79b4c20b191e411d" title="it tries to load simple map &lt;ID to Name&gt; from dictionary with predifined type of items" alt="" coords="655,81,857,123"/>
+<area shape="rect" id="node5" href="$class_f_v_a_description_file.html#a5f4dd1e2d4f25ad9a3b3d21275421f4e" title="it returns id of colum by name" alt="" coords="1089,56,1240,97"/>
+<area shape="rect" id="node6" href="$class_f_v_a_description_file.html#a7c7541c5fb4a4f27f3604e2ebd7dac1b" title="it loads data from file" alt="" coords="905,165,1040,207"/>
+<area shape="rect" id="node7" href="$class_c_s_v_file.html#a44bb894823a3418c3aaec7adcc642a5f" title="it answers if file is at the end" alt="" coords="1110,274,1219,301"/>
+<area shape="rect" id="node8" href="$class_c_s_v_file.html#ad57ec0d14e984a6822553aca21c99c60" title="it open csv file for readnig" alt="" coords="1088,122,1241,149"/>
+<area shape="rect" id="node9" href="$class_c_s_v_file.html#aeb332384bf8661e605d82f636f80135b" title="it tries to parse line got" alt="" coords="1098,173,1231,199"/>
+<area shape="rect" id="node10" href="$class_c_s_v_file.html#a79e712086c57886147ed86edb7c71106" title="it reads one string terminated OA or OAOD from file" alt="" coords="1101,223,1228,250"/>
+</map>

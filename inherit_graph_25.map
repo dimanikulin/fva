@@ -1,0 +1,12 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,208,107,235"/>
+<area shape="rect" id="node2" href="$class_f_v_a_organizer_device_page.html" title="FVAOrganizerDevicePage is a child of QWizardPage and implements the next UI functions:" alt="" coords="162,5,335,32"/>
+<area shape="rect" id="node3" href="$class_f_v_a_organizer_done_page.html" title="FVAOrganizerDonePage is a child of QWizardPage and implements the next UI functions:" alt="" coords="167,56,330,83"/>
+<area shape="rect" id="node4" href="$class_f_v_a_organizer_event_cfg_page.html" title="FVAOrganizerEventCfgPage is a child of QWizardPage and implements the next UI functions:" alt="" coords="155,107,342,133"/>
+<area shape="rect" id="node5" href="$class_f_v_a_organizer_event_info_page.html" title="FVAOrganizerEventInfoPage is a child of QWizardPage and implements the next UI functions:" alt="" coords="155,157,343,184"/>
+<area shape="rect" id="node6" href="$class_f_v_a_organizer_input_dir_page.html" title="FVAOrganizerInputDirPage is a child of QWizardPage and implements the next UI functions:" alt="" coords="159,208,338,235"/>
+<area shape="rect" id="node7" href="$class_f_v_a_organizer_orient_page.html" title="FVAOrganizerOrientPage is a child of QWizardPage and implements the next UI functions:" alt="" coords="165,259,333,285"/>
+<area shape="rect" id="node8" href="$class_f_v_a_organizer_output_dir_page.html" title="FVAOrganizerOutputDirPage is a child of QWizardPage and implements the next UI functions:" alt="" coords="155,309,343,336"/>
+<area shape="rect" id="node9" href="$class_f_v_a_organizer_place_page.html" title="FVAOrganizerPlacePage is a child of QWizardPage and implements the next UI functions:" alt="" coords="165,360,332,387"/>
+<area shape="rect" id="node10" href="$class_f_v_a_organizer_start_page.html" title="FVAOrganizerStartPage is a child of QWizardPage and implements the next UI functions:" alt="" coords="168,411,329,437"/>
+</map>

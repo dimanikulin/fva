@@ -1,0 +1,5 @@
+<map id="fvaRemoveDirIfEmpty" name="fvaRemoveDirIfEmpty">
+<area shape="rect" id="node1" title="it removes the dir if there is no content inside" alt="" coords="224,46,372,73"/>
+<area shape="rect" id="node2" href="$class_c_l_t_move_alone_files.html#adeceab77afd9a9f25168bcb4d01d699c" title="it performs running of command" alt="" coords="17,5,164,47"/>
+<area shape="rect" id="node3" href="$class_c_l_t_move_input_dir2_output.html#a0b0112d44050e770818c963bd857fe12" title="it performs running of command" alt="" coords="5,71,176,112"/>
+</map>

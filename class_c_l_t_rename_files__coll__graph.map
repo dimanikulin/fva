@@ -1,0 +1,4 @@
+<map id="CLTRenameFiles" name="CLTRenameFiles">
+<area shape="rect" id="node1" title="CLTRenameFiles is child of CmdLineBaseTask and it renames files by their EXIF date&#45;time taken In read..." alt="" coords="5,204,209,384"/>
+<area shape="rect" id="node2" href="$class_cmd_line_base_task.html" title="keeps base functionality for one command line task" alt="" coords="16,5,199,156"/>
+</map>

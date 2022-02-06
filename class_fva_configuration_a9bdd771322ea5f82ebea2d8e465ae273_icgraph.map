@@ -1,0 +1,5 @@
+<map id="FvaConfiguration::setParam" name="FvaConfiguration::setParam">
+<area shape="rect" id="node1" title="it sets the parameter value as unsigned integer for the futher saving" alt="" coords="235,31,416,57"/>
+<area shape="rect" id="node2" href="$class_f_v_a_configurator.html#aa9beea2f0d9851199ecc18b9b88b5fc9" title="it saves all UI setting to FvaConfiguration" alt="" coords="15,5,177,32"/>
+<area shape="rect" id="node3" href="$class_fva_configuration.html#af8920d4c86f1e77b6e49d50d0579419d" title="it sets the parameter value as boolean for the futher saving" alt="" coords="5,56,187,83"/>
+</map>

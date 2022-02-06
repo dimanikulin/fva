@@ -1,0 +1,7 @@
+<map id="CLTCSVFvaFile::execute" name="CLTCSVFvaFile::execute">
+<area shape="rect" id="node1" title="it performs running of command" alt="" coords="5,56,173,83"/>
+<area shape="rect" id="node2" href="$fvacommoncsv_8cpp.html#abe17404aa1c189998129d34dedd3a9b8" title="it returns an ID value from file by file path provided" alt="" coords="221,5,347,32"/>
+<area shape="rect" id="node3" href="$fvacommonlib_8cpp.html#ae1727559d2f047519602baf6aca933f2" title="it answers if file is supported type of (by its file extention)" alt="" coords="235,56,333,83"/>
+<area shape="rect" id="node5" href="$fvacommoncsv_8cpp.html#abdfb00b3ddf4dbee97eff6cbcf96b457" title="it saves an ID value in file by file path provided (it will delete previous content!..." alt="" coords="227,107,341,133"/>
+<area shape="rect" id="node4" href="$fvacommonlib_8cpp.html#ac71cbeca4127a2d339d410524ed022c2" title="it converts file extention to file type if it is possible" alt="" coords="395,56,575,83"/>
+</map>

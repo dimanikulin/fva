@@ -1,0 +1,4 @@
+<map id="FVAFlowController::PerformChecksForInputDir" name="FVAFlowController::PerformChecksForInputDir">
+<area shape="rect" id="node1" title="it performs the checks for input folder according to fva configuration" alt="" coords="232,5,408,47"/>
+<area shape="rect" id="node2" href="$class_f_v_a_organizer_input_dir_page.html#a898335a6384f53d75e51805c340b6e49" title="calls a PerformChecksForInputDir of class FVAFlowController" alt="" coords="5,5,184,47"/>
+</map>

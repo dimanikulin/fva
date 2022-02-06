@@ -1,0 +1,4 @@
+<map id="FVAOrganizerStartPage::OnCfgBtnPressed" name="FVAOrganizerStartPage::OnCfgBtnPressed">
+<area shape="rect" id="node1" title="it starts the Configurator UI" alt="" coords="220,5,381,47"/>
+<area shape="rect" id="node2" href="$class_f_v_a_organizer_start_page.html#ae88fca42259784cb0e80883edaf52cfe" title=" " alt="" coords="5,5,172,47"/>
+</map>

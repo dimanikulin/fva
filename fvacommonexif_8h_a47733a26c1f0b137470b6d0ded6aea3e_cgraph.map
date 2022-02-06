@@ -1,0 +1,10 @@
+<map id="fvaGetVideoTakenTime" name="fvaGetVideoTakenTime">
+<area shape="rect" id="node1" title="it tries to get time a video taken at from header" alt="" coords="5,85,164,112"/>
+<area shape="rect" id="node2" href="$class_riff_parser.html#ac0718e6624c697062fc7d7e61b967b96" title="it converts string type to date&#45;time type" alt="" coords="218,5,389,32"/>
+<area shape="rect" id="node3" href="$class_riff_parser.html#a69314057103cd9ec1237489f42630192" title="it finds string type tag by its name" alt="" coords="240,56,367,83"/>
+<area shape="rect" id="node4" href="$fvacommonexif_8cpp.html#ad59ae60ab7107324b1c15e351f9ac383" title="it returns Exif DateTimeOriginal attribute converted to QDateTime" alt="" coords="212,107,395,149"/>
+<area shape="rect" id="node8" href="$class_riff_parser.html#a2a7ee6a8f45a0e56dd7be95f567aad4d" title=" " alt="" coords="247,173,360,200"/>
+<area shape="rect" id="node5" href="$classeasyexif_1_1_e_x_i_f_info.html#afeb3cd3d5c280b08902e2b764d2ec35a" title=" " alt="" coords="443,107,569,149"/>
+<area shape="rect" id="node6" href="$classeasyexif_1_1_e_x_i_f_info.html#a388b84c811f56c909c5428ebfe7001f2" title=" " alt="" coords="639,74,766,115"/>
+<area shape="rect" id="node7" href="$classeasyexif_1_1_e_x_i_f_info.html#a40145a1b61b1b1b2da978a8137a48793" title=" " alt="" coords="617,139,788,181"/>
+</map>

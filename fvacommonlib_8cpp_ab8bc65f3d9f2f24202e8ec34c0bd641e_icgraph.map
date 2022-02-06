@@ -1,0 +1,7 @@
+<map id="fvaIsInternalFile" name="fvaIsInternalFile">
+<area shape="rect" id="node1" title="it answers if file is internal purpose for" alt="" coords="229,97,344,124"/>
+<area shape="rect" id="node2" href="$class_c_l_t_auto_checks2.html#ac5dec7700e77e344ac3e119fa6e40b8b" title="it performs running of command" alt="" coords="5,5,181,32"/>
+<area shape="rect" id="node3" href="$class_c_l_t_create_dir_struct_by_file_names.html#a63c2b741e098ba28f68c147cbe65f6ac" title="it performs running of command" alt="" coords="7,57,179,98"/>
+<area shape="rect" id="node4" href="$class_c_l_t_move_alone_files.html#adeceab77afd9a9f25168bcb4d01d699c" title="it performs running of command" alt="" coords="20,122,167,163"/>
+<area shape="rect" id="node5" href="$class_c_l_t_set_file_atts.html#a18cbc0d4cde2e09e583ec5dc25801300" title="it performs running of command" alt="" coords="12,188,175,215"/>
+</map>

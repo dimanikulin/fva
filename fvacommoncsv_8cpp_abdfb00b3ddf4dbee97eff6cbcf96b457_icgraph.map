@@ -1,0 +1,4 @@
+<map id="fvaSaveIDInFile" name="fvaSaveIDInFile">
+<area shape="rect" id="node1" title="it saves an ID value in file by file path provided (it will delete previous content!..." alt="" coords="221,5,336,32"/>
+<area shape="rect" id="node2" href="$class_c_l_t_c_s_v_fva_file.html#a0c66dcd96622f6742796f344d858e80b" title="it performs running of command" alt="" coords="5,5,173,32"/>
+</map>

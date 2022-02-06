@@ -1,0 +1,4 @@
+<map id="PlayerControls::changeVolume" name="PlayerControls::changeVolume">
+<area shape="rect" id="node1" title=" " alt="" coords="249,5,448,32"/>
+<area shape="rect" id="node2" href="$class_player_controls.html#ab28990280e8e45114a73c11563a47b60" title=" " alt="" coords="5,5,201,32"/>
+</map>

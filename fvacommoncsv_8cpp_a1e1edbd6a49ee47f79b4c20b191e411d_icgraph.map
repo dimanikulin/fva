@@ -1,0 +1,13 @@
+<map id="fvaLoadSimpleMapFromCsvByItemType" name="fvaLoadSimpleMapFromCsvByItemType">
+<area shape="rect" id="node1" title="it tries to load simple map &lt;ID to Name&gt; from dictionary with predifined type of items" alt="" coords="616,59,819,100"/>
+<area shape="rect" id="node2" href="$fvadictionaryeditor_8cpp.html#a5b3bb7b1552eb836d3338cf6b3f26209" title=" " alt="" coords="466,14,535,41"/>
+<area shape="rect" id="node4" href="$fvacommonui_8cpp.html#a88b377262b1433294337c282f09ebbc5" title="it creates people tree in gui widgets" alt="" coords="433,66,568,93"/>
+<area shape="rect" id="node5" href="$fvacommonui_8cpp.html#a0b00373b77fb65a8fee0ed46c4739671" title=" " alt="" coords="433,118,568,145"/>
+<area shape="rect" id="node3" href="$class_f_v_a_dictionary_editor.html#a47f50794bab8008eb446e9af06ef6fa5" title=" " alt="" coords="241,5,385,47"/>
+<area shape="rect" id="node6" href="$fvacommonui_8cpp.html#a9e3883075ab970de03b85d89aecad2c9" title="it creates event tree in gui widgets" alt="" coords="249,122,377,149"/>
+<area shape="rect" id="node9" href="$fvacommonui_8cpp.html#ada8988e3fb0049a61f9a351d98fd17c2" title="it creates people tree in gui widgets" alt="" coords="246,173,381,199"/>
+<area shape="rect" id="node10" href="$fvacommonui_8cpp.html#aac6f34e3f62bca6ac38022f0dec0e248" title="it creates place tree in gui widgets" alt="" coords="249,71,377,98"/>
+<area shape="rect" id="node7" href="$class_f_v_a_description_editor.html#a7380b3fe08722dc183eea83d7aeb02d5" title=" " alt="" coords="23,115,175,156"/>
+<area shape="rect" id="node8" href="$class_f_v_a_organizer_event_info_page.html#ac9961907a75e6b1ea99e967193adc13b" title="it prepares the page before make it visible" alt="" coords="5,180,193,221"/>
+<area shape="rect" id="node11" href="$class_f_v_a_organizer_place_page.html#aaf6e19f1b22c4cfd7358aaab3e2d473c" title="it prepares the page before make it visible" alt="" coords="16,49,183,91"/>
+</map>

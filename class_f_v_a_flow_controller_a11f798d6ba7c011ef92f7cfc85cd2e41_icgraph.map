@@ -1,0 +1,4 @@
+<map id="FVAFlowController::MoveInputDirToOutputDirs" name="FVAFlowController::MoveInputDirToOutputDirs">
+<area shape="rect" id="node1" title="it performs the moving input folder content to output folder with checks according to event cfg" alt="" coords="241,5,417,47"/>
+<area shape="rect" id="node2" href="$class_f_v_a_organizer_output_dir_page.html#a9b0d7abdc1afa580ffbf47cba711d293" title="calls a MoveInputDirToOutputDirs of class FVAFlowController" alt="" coords="5,5,193,47"/>
+</map>

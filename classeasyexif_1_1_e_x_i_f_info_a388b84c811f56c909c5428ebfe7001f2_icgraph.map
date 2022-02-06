@@ -1,0 +1,19 @@
+<map id="easyexif::EXIFInfo::clear" name="easyexif::EXIFInfo::clear">
+<area shape="rect" id="node1" title=" " alt="" coords="939,258,1065,299"/>
+<area shape="rect" id="node2" href="$classeasyexif_1_1_e_x_i_f_info.html#ab283e0ccc5e9f68726724dedcf72a895" title=" " alt="" coords="764,225,891,266"/>
+<area shape="rect" id="node3" href="$classeasyexif_1_1_e_x_i_f_info.html#afeb3cd3d5c280b08902e2b764d2ec35a" title=" " alt="" coords="764,290,891,331"/>
+<area shape="rect" id="node4" href="$fvacommonexif_8cpp.html#a3764947b15a30156700d9e056f755cc2" title="it checks if Exif GEO Location is present" alt="" coords="510,297,699,324"/>
+<area shape="rect" id="node7" href="$fvacommonexif_8cpp.html#ad59ae60ab7107324b1c15e351f9ac383" title="it returns Exif DateTimeOriginal attribute converted to QDateTime" alt="" coords="513,163,696,205"/>
+<area shape="rect" id="node14" href="$fvacommonexif_8cpp.html#a771f9cdb9c4b152e024a209ca7b1cdc1" title="it returns Exif camera maker plus model string" alt="" coords="493,413,716,440"/>
+<area shape="rect" id="node5" href="$class_c_l_t_auto_checks3.html#a5453422e9a57ae17623c05b9d96f2aca" title="it performs running of command" alt="" coords="18,413,194,440"/>
+<area shape="rect" id="node6" href="$class_c_l_t_check_location.html#aa0646035102e3e84f7b291e7a0ad199f" title="it performs running of command" alt="" coords="257,272,443,299"/>
+<area shape="rect" id="node8" href="$class_c_l_t_auto_checks2.html#ac5dec7700e77e344ac3e119fa6e40b8b" title="it performs running of command" alt="" coords="262,171,438,197"/>
+<area shape="rect" id="node9" href="$class_c_l_t_check_date_time.html#ac169ebb94521a47c644ebea8317613e2" title="it performs running of command" alt="" coords="255,221,445,248"/>
+<area shape="rect" id="node10" href="$class_c_l_t_rename_files.html#a16f4b66d321e9f0a7b82ef21812b2ac4" title="it performs running of command" alt="" coords="19,123,193,149"/>
+<area shape="rect" id="node11" href="$fvacommonexif_8cpp.html#a47733a26c1f0b137470b6d0ded6aea3e" title="it tries to get time a video taken at from header" alt="" coords="271,65,429,92"/>
+<area shape="rect" id="node12" href="$class_c_l_t_auto_checks1.html#a00b6d7f4e8672704ae2cb8d94323df76" title="it performs running of command" alt="" coords="18,5,194,32"/>
+<area shape="rect" id="node13" href="$class_c_l_t_rename_video_by_sequence.html#a64e180ff79eb497cd95ae31f9aab69f7" title="it performs running of command" alt="" coords="5,57,207,98"/>
+<area shape="rect" id="node15" href="$class_c_l_t_check_device_name.html#ab6f83da4b9076e32737e1e28e345c81f" title="it performs running of command" alt="" coords="271,374,429,415"/>
+<area shape="rect" id="node16" href="$class_c_l_t_create_dir_struct_by_device_name.html#a094638d1c9ce290c9187bc33ed835d37" title="it performs running of command" alt="" coords="255,439,445,481"/>
+<area shape="rect" id="node17" href="$fvacommonlib_8cpp.html#af4f9c42f7cd86df3e8c84280a490dd3a" title="it returns device id from map loaded" alt="" coords="267,505,433,532"/>
+</map>

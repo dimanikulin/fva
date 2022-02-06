@@ -1,0 +1,12 @@
+<map id="CLTAutoChecks3::execute" name="CLTAutoChecks3::execute">
+<area shape="rect" id="node1" title="it performs running of command" alt="" coords="5,81,181,108"/>
+<area shape="rect" id="node2" href="$fvacommonlib_8cpp.html#ac71cbeca4127a2d339d410524ed022c2" title="it converts file extention to file type if it is possible" alt="" coords="465,81,645,108"/>
+<area shape="rect" id="node3" href="$fvacommonexif_8cpp.html#a3764947b15a30156700d9e056f755cc2" title="it checks if Exif GEO Location is present" alt="" coords="461,5,650,32"/>
+<area shape="rect" id="node7" href="$fvacommoncsv_8cpp.html#a97db0c67930e3d7d6abb0f1fa9e52685" title="it returns device ID by file name from fva information saved in CSV files" alt="" coords="230,81,395,108"/>
+<area shape="rect" id="node8" href="$fvacommonlib_8cpp.html#af4f9c42f7cd86df3e8c84280a490dd3a" title="it returns device id from map loaded" alt="" coords="229,183,396,209"/>
+<area shape="rect" id="node10" href="$fvacommonlib_8cpp.html#ae1727559d2f047519602baf6aca933f2" title="it answers if file is supported type of (by its file extention)" alt="" coords="263,132,362,159"/>
+<area shape="rect" id="node4" href="$classeasyexif_1_1_e_x_i_f_info.html#afeb3cd3d5c280b08902e2b764d2ec35a" title=" " alt="" coords="715,87,841,129"/>
+<area shape="rect" id="node5" href="$classeasyexif_1_1_e_x_i_f_info.html#a388b84c811f56c909c5428ebfe7001f2" title=" " alt="" coords="911,54,1038,95"/>
+<area shape="rect" id="node6" href="$classeasyexif_1_1_e_x_i_f_info.html#a40145a1b61b1b1b2da978a8137a48793" title=" " alt="" coords="889,119,1060,161"/>
+<area shape="rect" id="node9" href="$fvacommonexif_8cpp.html#a771f9cdb9c4b152e024a209ca7b1cdc1" title="it returns Exif camera maker plus model string" alt="" coords="444,157,667,184"/>
+</map>

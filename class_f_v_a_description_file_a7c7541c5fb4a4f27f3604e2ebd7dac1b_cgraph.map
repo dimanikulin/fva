@@ -1,0 +1,8 @@
+<map id="FVADescriptionFile::load" name="FVADescriptionFile::load">
+<area shape="rect" id="node1" title="it loads data from file" alt="" coords="5,115,140,157"/>
+<area shape="rect" id="node2" href="$class_c_s_v_file.html#a44bb894823a3418c3aaec7adcc642a5f" title="it answers if file is at the end" alt="" coords="210,5,319,32"/>
+<area shape="rect" id="node3" href="$class_f_v_a_description_file.html#a5f4dd1e2d4f25ad9a3b3d21275421f4e" title="it returns id of colum by name" alt="" coords="189,57,340,98"/>
+<area shape="rect" id="node4" href="$class_c_s_v_file.html#ad57ec0d14e984a6822553aca21c99c60" title="it open csv file for readnig" alt="" coords="188,123,341,149"/>
+<area shape="rect" id="node5" href="$class_c_s_v_file.html#aeb332384bf8661e605d82f636f80135b" title="it tries to parse line got" alt="" coords="198,173,331,200"/>
+<area shape="rect" id="node6" href="$class_c_s_v_file.html#a79e712086c57886147ed86edb7c71106" title="it reads one string terminated OA or OAOD from file" alt="" coords="201,224,328,251"/>
+</map>

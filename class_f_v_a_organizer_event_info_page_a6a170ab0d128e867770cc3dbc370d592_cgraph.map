@@ -1,0 +1,5 @@
+<map id="FVAOrganizerEventInfoPage::validatePage" name="FVAOrganizerEventInfoPage::validatePage">
+<area shape="rect" id="node1" title="calls a ProcessInputDirForEvent of class FVAFlowController" alt="" coords="5,5,193,47"/>
+<area shape="rect" id="node2" href="$class_f_v_a_flow_controller.html#a54ad9e719fe0fe81b505ed31d6e63ffa" title="it process input folder content as multi&#45;events folder according to event cfg and info" alt="" coords="241,5,416,47"/>
+<area shape="rect" id="node3" href="$class_cmd_line_base_executor.html#a6523c47dbc45f5b21c704854fa946b21" title="performs running of command" alt="" coords="464,13,643,39"/>
+</map>
