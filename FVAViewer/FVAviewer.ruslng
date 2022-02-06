@@ -1,0 +1,59 @@
+	/*m_ui->dockWidget->hide();
+	m_ui->dockWidget->setFloating(true);
+	QTabWidget* tabs = new QTabWidget(m_ui->dockWidget);
+	tabs->setFixedSize(600, 500);
+	m_ui->dockWidget->setFixedSize(600, 500);
+	
+	QDialog *tabCommonFilters	= new QDialog ();
+	m_uiFiltersCommon			= new Ui_commonFilter ;
+	m_uiFiltersCommon->setupUi(tabCommonFilters);
+  	tabs->addTab(tabCommonFilters,tr("Общие фильтры"));
+	connect(m_uiFiltersCommon->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
+
+	m_defFilterDataTime	= QDateTime::currentDateTime();	
+	m_uiFiltersCommon->dateTimeFrom->setDateTime ( m_defFilterDataTime );
+	m_uiFiltersCommon->dateTimeTo->setDateTime ( m_defFilterDataTime );
+
+	QDialog *tabEventFilters	= new QDialog ();
+	m_uiEventFilter				= new Ui_eventFilter;
+	m_uiEventFilter->setupUi(tabEventFilters);
+	tabs->addTab(tabEventFilters,tr("События"));
+	connect(m_uiEventFilter->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
+
+	QDialog *tabPeopleFilters	= new QDialog ();
+	m_uiPeopleFilter			= new Ui_hfilter;
+	m_uiPeopleFilter->setupUi(tabPeopleFilters);
+  	tabs->addTab(tabPeopleFilters,tr("Люди"));
+	connect(m_uiPeopleFilter->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
+
+	QDialog *tabGeoFilters		= new QDialog ();
+	m_uiPlaceFilter				= new Ui_placeFilter;
+	m_uiPlaceFilter->setupUi(tabGeoFilters);
+  	tabs->addTab(tabGeoFilters,tr("Места"));
+	connect(m_uiPlaceFilter->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
+
+	QDialog *tabDeviceFilters	= new QDialog ();
+	m_uiDeviceFilter			= new Ui_dfilter;
+	m_uiDeviceFilter->setupUi(tabDeviceFilters);
+  	tabs->addTab(tabDeviceFilters,tr("Устройства"));
+	connect(m_uiDeviceFilter->btnFilter,SIGNAL(clicked()),this,SLOT(filterClicked()));
+	
+	// tabs->addTab(new QWidget(),tr("Свойства"));
+	
+	fvaBuildPeopleTree(this, m_uiPeopleFilter->treeWidget, false, m_dictionaries);
+	fvaBuildPeopleTree(this, m_uiDeviceFilter->treeWidget, true, m_dictionaries);
+	fvaBuildPeopleTree(this, m_uiEventFilter->ptreeWidget, false, m_dictionaries);
+
+	fvaBuildFilterTree( this ,
+						m_uiPlaceFilter->treeWidget, 
+						m_dictionaries["placeTypes"].toList(), 
+						m_dictionaries["places"].toList(),
+						&m_folderIcon,
+						&m_locationIcon);
+
+	fvaBuildFilterTree( this ,
+						m_uiEventFilter->treeWidget, 
+						m_dictionaries["eventTypes"].toList(), 
+						m_dictionaries["events"].toList(),
+						&m_folderIcon,
+						&m_locationIcon);*/
