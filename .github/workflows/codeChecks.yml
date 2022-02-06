@@ -1,0 +1,42 @@
+name: "Code Checks"
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  check-code:
+     name: Checking code before build
+     runs-on: ubuntu-latest
+     strategy:
+         fail-fast: false
+     steps:
+        
+      - name: Checkout FVA repository
+        uses: actions/checkout@v2 #v2 to checkout submodules as well
+        with:
+            submodules: 'true'
+      
+      - name: Cpp Code check
+        uses: deep5050/cppcheck-action@main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN}}
+          check_library: enable
+          max_ctu_depth: 5
+                  
+      - name: Upload Cpp Code check Report to git hub storage to use later
+        uses: actions/upload-artifact@v1
+        with:
+          path: ./cppcheck_report.txt
+          name: cppcheck_report.txt
+
+      # commented as it does not work
+      - name: Run cpp style checks
+        uses: coleaeason/actions-uncrustify@v1
+      
+      
+      - name: Python style check 
+        uses: bulv1ne/python-style-check@v0.3
