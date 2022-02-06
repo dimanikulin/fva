@@ -7,8 +7,12 @@ into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/github/stars/dimanikulin/fva?style=social&label=Star&maxAge=2592000" alt="GitHub stars" />
+  <a href="https://github.com/dimanikulin/fva/actions/workflows/main.yml"><img src="https://github.com/dimanikulin/fva/actions/workflows/main.yml/badge.svg?branch=master" alt="Tests" /></a>
+  
+  <!--it seems following links only work for public repos -->
+  <img src="https://img.shields.io/github/stars/dimanikulin/fva?style=social&label=Star&maxAge=2592000" alt="GitHub stars" />
   </a>
-    <a href="https://github.com/dimanikulin/fva/actions/workflows/main.yml"><img src="https://github.com/dimanikulin/fva/actions/workflows/main.yml/badge.svg?branch=master" alt="Tests" /></a>
+  
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/dimanikulin/fva">
 </p>
+
