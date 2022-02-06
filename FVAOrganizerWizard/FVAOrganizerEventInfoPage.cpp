@@ -35,17 +35,6 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
         LOG_DEB << "construction" ;
 	
 #ifdef  FVA_LANGUAGE_RUS
-	words	= new QLabel(tr("Пожалуйста, выделите папку нижу (событию),помеченной красным\nи выберете для нее тип события и причастных людей"));
-	
-	inputDirButton = new QPushButton;
-	inputDirButton->setText(tr("Открыть папку"));
-	saveButton  = new QPushButton;
-	saveButton->setText(tr("Сохранить инфо о папке"));
-	addNewEventButton = new QPushButton;
-	addNewEventButton->setText(tr("Добавить событие"));
-	
-	QLabel * eventLbl = new QLabel(tr("Тип события:"));
-	QLabel * peopleLbl = new QLabel(tr("Причастные люди:"));
 
 #else 
 #ifdef  FVA_LANGUAGE_ENG

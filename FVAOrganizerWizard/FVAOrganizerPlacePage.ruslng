@@ -1,0 +1,10 @@
+	words	= new QLabel(tr("Пожалуйста, выделите папку нижу (событию),помеченной красным\nи выберете для нее место, где оно происходило"));
+	
+	inputDirButton = new QPushButton;
+	inputDirButton->setText(tr("Открыть папку"));
+	saveButton  = new QPushButton;
+	saveButton->setText(tr("Сохранить инфо о папке"));
+	addNewPlaceButton = new QPushButton;
+	addNewPlaceButton->setText(tr("Добавить место"));
+	
+	QLabel * placeLbl = new QLabel(tr("Место:"));

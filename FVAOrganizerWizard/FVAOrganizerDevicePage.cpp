@@ -30,11 +30,6 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
         btnDct = new QPushButton;
 
 #ifdef  FVA_LANGUAGE_RUS
-	QLabel * titleLabel = new QLabel(tr("Убедитесь, что устройство, которым делались снимки, верно определилось!"));
-	deviceLbl = new QLabel(tr("Название:"));
-	matchLbl = new QLabel(tr("Линковочное имя:"));
-	ownerLbl = new QLabel(tr("Владелец:"));
-	btnDct->setText(tr("Справочники"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	QLabel * titleLabel = new QLabel(tr("Please make sure, that device, took the photos, is defined properly!"));
@@ -98,12 +93,6 @@ void FVAOrganizerDevicePage::setVisible(bool visible)
 			cbDevice->setVisible(true);
 			cbDevice->clear();
 #ifdef  FVA_LANGUAGE_RUS
-			cbDevice->addItem ( tr("Выбирете владельца"), 0 );
-			for ( auto i = deviceMap.begin(); i != deviceMap.end() ; ++i )
-				cbDevice->addItem(i->ownerName, i->deviceId);
-
-			deviceName->setText(tr("НЕОПРЕДЕЛЕННО!"));
-			ownerName->setText(tr("НЕОПРЕДЕЛЕН!"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 			cbDevice->addItem(tr("Select the owner"), 0);
@@ -127,8 +116,6 @@ void FVAOrganizerDevicePage::setVisible(bool visible)
 		{
 			LOG_DEB << "setVisible deviceMap.size() != 1 and !<";
 #ifdef  FVA_LANGUAGE_RUS
-			deviceName->setText(tr("НЕОПРЕДЕЛЕННО!"));
-			ownerName->setText(tr("НЕОПРЕДЕЛЕН!"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 			deviceName->setText(tr("UNDEFINED!"));

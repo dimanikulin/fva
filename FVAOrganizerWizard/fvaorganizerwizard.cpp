@@ -95,7 +95,6 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	setWindowIcon(icon);
 
 #ifdef  FVA_LANGUAGE_RUS
-	setWindowTitle(tr("Cистема организации медиа-контента"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	setWindowTitle(tr("FVA Software"));

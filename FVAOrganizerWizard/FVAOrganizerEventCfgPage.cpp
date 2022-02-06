@@ -24,9 +24,6 @@ FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)
 {
         LOG_DEB << "construction" ;
 #ifdef  FVA_LANGUAGE_RUS
-	words	= new QLabel(tr("Пожалуйста, откройте входную папку и объедините однодневные папки в одну,\nесли они относятся к одному событию. Так проделайте для каждого события"));
-	inputDirButton = new QPushButton;
-	inputDirButton->setText(tr("Открыть папку"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	words = new QLabel(tr("Please open an input folder and merge one-day dirs into one dir,\nif they are related to the same event. Please do so for each event"));

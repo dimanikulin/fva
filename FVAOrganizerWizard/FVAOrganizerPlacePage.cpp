@@ -35,16 +35,6 @@ FVAOrganizerPlacePage::FVAOrganizerPlacePage(void)
         LOG_DEB << "construction" ;
 	
 #ifdef  FVA_LANGUAGE_RUS
-	words	= new QLabel(tr("Пожалуйста, выделите папку нижу (событию),помеченной красным\nи выберете для нее место, где оно происходило"));
-	
-	inputDirButton = new QPushButton;
-	inputDirButton->setText(tr("Открыть папку"));
-	saveButton  = new QPushButton;
-	saveButton->setText(tr("Сохранить инфо о папке"));
-	addNewPlaceButton = new QPushButton;
-	addNewPlaceButton->setText(tr("Добавить место"));
-	
-	QLabel * placeLbl = new QLabel(tr("Место:"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	words = new QLabel(tr("Please select a folder bellow (an event),marked by red\nand choose a place it happened in."));

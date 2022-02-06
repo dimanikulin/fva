@@ -23,9 +23,6 @@ FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void)
 {
         LOG_DEB << "construction" ;
 #ifdef  FVA_LANGUAGE_RUS
-	inputDirLabel	= new QLabel(tr("Укажите входную папку с контентом\n (Внимание! Папка должна начинаться с символа '#'):"));
-	dirButton = new QPushButton;
-	dirButton->setText(tr("Указать папку"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	inputDirLabel = new QLabel(tr("Please select a folder with a content\n (Attention! The folder name shall start with a char '#'):"));

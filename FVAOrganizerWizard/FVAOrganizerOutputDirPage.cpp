@@ -23,13 +23,6 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void)
 {   
         LOG_DEB << "construction" ;
 #ifdef  FVA_LANGUAGE_RUS
-	QLabel* inputDirLabel = new QLabel(tr("Укажите папку digiKam для контента:"));
-	QPushButton* digiKamButton = new QPushButton;
-	digiKamButton->setText(tr("Указать папку"));
-	QLabel* dirLabelGP = new QLabel(tr("Укажите папку Google Photo для контента:"));
-	QPushButton* googlePhotoButton = new QPushButton;
-	googlePhotoButton->setText(tr("Указать папку"));
-	removeOriginDirCheckBox = new QCheckBox(tr("Удалить исходную папку"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	QLabel* dirLabelDK = new QLabel(tr("Please select a digiKam dir to put the content in:"));

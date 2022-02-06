@@ -21,10 +21,6 @@ FVAOrganizerOrientPage::FVAOrganizerOrientPage()
         LOG_DEB << "construction" ;
 	// to suggest user to run /jpegr_portable32/jpegr.exe
 #ifdef  FVA_LANGUAGE_RUS
-	rotateLabel		= new QLabel(tr("Советуем Вам проверить ориентацию контента перед началом работы:"));
-	rotateLabel->setAlignment(Qt::AlignLeft);
-	rotateButton	= new QPushButton;
-	rotateButton->setText(tr("Проверить"));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	rotateLabel		= new QLabel(tr("Please check the content orientation before start:"));

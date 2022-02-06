@@ -1,0 +1,7 @@
+	QLabel* inputDirLabel = new QLabel(tr("Укажите папку digiKam для контента:"));
+	QPushButton* digiKamButton = new QPushButton;
+	digiKamButton->setText(tr("Указать папку"));
+	QLabel* dirLabelGP = new QLabel(tr("Укажите папку Google Photo для контента:"));
+	QPushButton* googlePhotoButton = new QPushButton;
+	googlePhotoButton->setText(tr("Указать папку"));
+	removeOriginDirCheckBox = new QCheckBox(tr("Удалить исходную папку"));

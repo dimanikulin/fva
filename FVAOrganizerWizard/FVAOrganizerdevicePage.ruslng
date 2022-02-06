@@ -1,0 +1,16 @@
+	QLabel * titleLabel = new QLabel(tr("Убедитесь, что устройство, которым делались снимки, верно определилось!"));
+	deviceLbl = new QLabel(tr("Название:"));
+	matchLbl = new QLabel(tr("Линковочное имя:"));
+	ownerLbl = new QLabel(tr("Владелец:"));
+	btnDct->setText(tr("Справочники"));
+
+			cbDevice->addItem ( tr("Выбирете владельца"), 0 );
+			for ( auto i = deviceMap.begin(); i != deviceMap.end() ; ++i )
+				cbDevice->addItem(i->ownerName, i->deviceId);
+
+			deviceName->setText(tr("НЕОПРЕДЕЛЕННО!"));
+			ownerName->setText(tr("НЕОПРЕДЕЛЕН!"));
+
+
+			deviceName->setText(tr("НЕОПРЕДЕЛЕННО!"));
+			ownerName->setText(tr("НЕОПРЕДЕЛЕН!"));

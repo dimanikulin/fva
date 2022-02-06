@@ -24,7 +24,6 @@ FVAOrganizerDonePage::FVAOrganizerDonePage(void)
 	setLayout(layout);
 
 #ifdef  FVA_LANGUAGE_RUS
-	finishWords->setText(tr("Поздравления! Вы в шаге о окончания процесса."));
 #else 
 #ifdef  FVA_LANGUAGE_ENG
 	finishWords->setText(tr("Congratulations, you are ready to finish."));

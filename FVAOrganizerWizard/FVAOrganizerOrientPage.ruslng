@@ -1,0 +1,4 @@
+	rotateLabel		= new QLabel(tr("Советуем Вам проверить ориентацию контента перед началом работы:"));
+	rotateLabel->setAlignment(Qt::AlignLeft);
+	rotateButton	= new QPushButton;
+	rotateButton->setText(tr("Проверить"));
