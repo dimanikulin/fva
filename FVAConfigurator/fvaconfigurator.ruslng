@@ -1,0 +1,8 @@
+	tabs->addTab(tabCommon, tr("Общие"));
+	tabs->addTab(tabSearch, tr("Поиск по"));
+	tabs->addTab(tabIntegrator, tr("Интеграция"));
+	tabs->addTab(tabRename, tr("Переимнование"));
+	tabs->addTab(tabFormat, tr("Формат"));
+	tabs->addTab(tabFormat2, tr("Формат 2"));
+
+	setWindowTitle(tr("Конфигуратор"));
