@@ -256,16 +256,16 @@ jobs:
         name: ${{ matrix.config.artifact }}
      
     - name: Setup MSBuild
-      if: matrix.os == 'windows-latest'
+      if: matrix.config.os == 'windows-latest'
       uses: microsoft/setup-msbuild@v1.0.3
     
     - name: MS package build
-      if: matrix.os == 'windows-latest'
+      if: matrix.config.os == 'windows-latest'
       run: >
         msbuild ./FVASetupWin/FVASetupWin.wixproj
         
     - name: Upload win pkg to git hub storage to use later
-      if: matrix.os == 'windows-latest'
+      if: matrix.config.os == 'windows-latest'
       uses: actions/upload-artifact@v1
       with:
         path: ./FVASetupWin/bin/FVASetupWin.msi
