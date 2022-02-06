@@ -308,11 +308,7 @@ jobs:
       matrix:
         config:
         - {
-            name: "Windows Latest MSVC", artifact: "Windows-MSVC.7z",
-            os: ubuntu-latest
-          }
-        - {
-            name: "Windows Latest MinGW", artifact: "Windows-MinGW.7z",
+            name: "Windows Latest MinGW", artifact: "FVASetupWin.msi",
             os: ubuntu-latest
           }
         - {
