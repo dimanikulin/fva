@@ -56,7 +56,7 @@ FVADictionaryEditor::FVADictionaryEditor(const QString& device, QWidget *parent)
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.fvaLoadPeopleMapFromCsv")
 
 	ui.cbOwner->clear();
-	ui.cbOwner->addItem ( tr("Выберете владельца"), 0 );
+	ui.cbOwner->addItem ( tr("Choose an owner"), 0 );
 	for (auto i = peopleMap.begin(); i != peopleMap.end(); ++i)
 		ui.cbOwner->addItem(i->name, i->Id);
 
