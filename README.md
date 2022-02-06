@@ -6,6 +6,11 @@
 into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology Photo Station, etc. to make the multimedia more searchable
 </p>
 
+<p align="center">
+    <img src="https://github.com/v/release/dimanikulin/fva?display_name=tag"/>
+    <a href="https://github.com/dimanikulin/fva/actions/workflows/main.yml"><img src="https://github.com/dimanikulin/fva/actions/workflows/main.yml/badge.svg?branch=master" alt="Tests" />  </a>
+</p>
+
 # FVA
 It is a tool set 
 
