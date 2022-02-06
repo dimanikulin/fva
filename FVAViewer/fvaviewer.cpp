@@ -39,7 +39,7 @@ void FVAViewer::showProgress(const QString& rootDir)
 
 void FVAViewer::prepareFilters()
 {
-	m_ui->dockWidget->hide();
+	/*m_ui->dockWidget->hide();
 	m_ui->dockWidget->setFloating(true);
 	QTabWidget* tabs = new QTabWidget(m_ui->dockWidget);
 	tabs->setFixedSize(600, 500);
@@ -81,7 +81,7 @@ void FVAViewer::prepareFilters()
 	
 	// tabs->addTab(new QWidget(),tr("Свойства"));
 	
-	/*fvaBuildPeopleTree(this, m_uiPeopleFilter->treeWidget, false, m_dictionaries);
+	fvaBuildPeopleTree(this, m_uiPeopleFilter->treeWidget, false, m_dictionaries);
 	fvaBuildPeopleTree(this, m_uiDeviceFilter->treeWidget, true, m_dictionaries);
 	fvaBuildPeopleTree(this, m_uiEventFilter->ptreeWidget, false, m_dictionaries);
 
