@@ -14,12 +14,3 @@ into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology
     <a href="https://github.com/dimanikulin/fva/actions/workflows/main.yml"><img src="https://github.com/dimanikulin/fva/actions/workflows/main.yml/badge.svg?branch=master" alt="Tests" /></a>
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/dimanikulin/fva">
 </p>
-
-# FVA
-It is a tool set 
-
-## Version
-0.30
- 
-## Creation date
-2021-05-23
