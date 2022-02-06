@@ -9,7 +9,7 @@ on:
 jobs:
 
   release-docs:
-      if: contains(github.ref, 'tags/v') #comment if you need to have it each commit
+      #if: contains(github.ref, 'tags/v') #comment if you need to have it each commit
       name: Releasing documentation for code (based on doxy comments) 
       runs-on: ubuntu-latest
       strategy:
