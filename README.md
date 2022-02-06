@@ -58,7 +58,7 @@ into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology
 Here is a link to a roadmap: https://github.com/dimanikulin/fva/projects/4.
 
 ## Install
-You can download the [Installation packages](https://github.com/dimanikulin/fva/downloads) that are published for 
+You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for 
 Linux (x86-64), Mac and Windows (all latest version).
 
 ## Support
@@ -72,8 +72,8 @@ Linux (x86-64), Mac and Windows (all latest version).
 TBD
 
 ## Documentation
-Please see dedicated [repository](https://github.com/dimanikulin/fva/documentation) for the documentation, or TBD:
-To re generate the docs you need to TBD
+* Please see [link](https://dimanikulin.github.io/fva/) for the documentation:
+* To re-generate the docs you need to re-execute "releaseDocs.yml" from workflow
 
 ## Stay in touch
 * Author - [Dmytro Nikulin](https://twitter.com/DmytroNikulin)
