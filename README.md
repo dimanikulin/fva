@@ -7,13 +7,12 @@ into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology
 </p>
 
 <p align="center">
-    [![GitHub stars](https://img.shields.io/github/stars/dimanikulin/fva?style=social&label=Star&maxAge=2592000)](https://GitHub.com/dimanikulin/fva/stargazers/)
-    [![License](https://img.shields.io/static/v1?label=license&message=MIT&color=brightgreen)](https://github.com/dimanikulin/fva/tree/a9b1c6c0420550ad5069aca66c295223e0d05e27/LICENSE/README.md)
-    <a href="https://github.com/strapi/strapi/actions/workflows/tests.yml">
-    <img src="https://github.com/strapi/strapi/actions/workflows/tests.yml/badge.svg?branch=master" alt="Tests" />
+    <a href="https://GitHub.com/dimanikulin/fva/stargazers/">
+    <img src="https://img.shields.io/github/stars/dimanikulin/fva?style=social&label=Star&maxAge=2592000" alt="GitHub stars" />
   </a>
     <img src="https://github.com/v/tag/dimanikulin/fva" />
     <a href="https://github.com/dimanikulin/fva/actions/workflows/main.yml"><img src="https://github.com/dimanikulin/fva/actions/workflows/main.yml/badge.svg?branch=master" alt="Tests" /></a>
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/dimanikulin/fva">
 </p>
 
 # FVA
