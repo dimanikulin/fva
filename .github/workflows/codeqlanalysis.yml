@@ -59,5 +59,5 @@ jobs:
     - name: Upload Code check Report to git hub storage to use later
       uses: actions/upload-artifact@v1
       with:
-        path: ./fva/fva/_temp/codeql_databases/python.zip
+        path: ./_temp/codeql_databases/python.zip
         name: python.zip
