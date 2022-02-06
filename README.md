@@ -14,6 +14,7 @@ into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology
   <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/dimanikulin">
   <img alt="Twitter URL" src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FDmytroNikulin">
   <img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/dimanikulin/fva">
+  <img alt="GitHub" src="https://img.shields.io/github/license/dimanikulin/fva">
   </br>
   <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/dimanikulin/fva?include_prereleases">
   <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/dimanikulin/fva/total">
