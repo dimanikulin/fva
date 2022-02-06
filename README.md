@@ -35,6 +35,7 @@
 - [Description](#description)
 - [Features](#features)
 - [Roadmap](#roadmap)
+- [Install](#install)
 - [Support/Questions](#support)
 - [Community support](#community-support)
 - [Documentation](#documentation)
@@ -46,8 +47,17 @@ A convergent tool set to automate the process of importing the multimedia data (
 into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology Photo Station, etc. to make the multimedia more searchable
 
 ## Features
+- **Organizing the mutlimedia:** Organizing the multimedia data to be more searchable
+- **Configuration:** The system flow depends on configuration.
+- **Integration:** The system is integrated with online/offline Multimedia IR systems like digiKam, Google Photo and TBD
+- **TBD:**
 
 ## Roadmap
+Here is a link to a roadmap: https://github.com/dimanikulin/fva/projects/4.
+
+## Install
+You can download the [Installation packages](https://github.com/dimanikulin/fva/downloads) that are published for 
+Linux (x86-64), Mac and Windows (all latest version).
 
 ## Support
 
