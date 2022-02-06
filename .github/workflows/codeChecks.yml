@@ -34,9 +34,8 @@ jobs:
           name: cppcheck_report.txt
 
       # commented as it does not work
-      - name: Run cpp style checks
-        uses: coleaeason/actions-uncrustify@v1
-      
-      
-      - name: Python style check 
-        uses: bulv1ne/python-style-check@v0.3
+      #- name: Run cpp style checks
+      #  uses: coleaeason/actions-uncrustify@v1
+            
+      #- name: Python style check 
+      #  uses: bulv1ne/python-style-check@v0.3
