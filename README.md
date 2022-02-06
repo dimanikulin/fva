@@ -7,10 +7,8 @@ into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology
 </p>
 
 <p align="center">
-    <a href="https://GitHub.com/dimanikulin/fva/stargazers/">
     <img src="https://img.shields.io/github/stars/dimanikulin/fva?style=social&label=Star&maxAge=2592000" alt="GitHub stars" />
   </a>
-    <img src="https://github.com/v/tag/dimanikulin/fva" />
     <a href="https://github.com/dimanikulin/fva/actions/workflows/main.yml"><img src="https://github.com/dimanikulin/fva/actions/workflows/main.yml/badge.svg?branch=master" alt="Tests" /></a>
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/dimanikulin/fva">
 </p>
