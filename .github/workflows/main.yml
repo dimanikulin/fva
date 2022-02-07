@@ -31,17 +31,17 @@ jobs:
           }
 
         # commented to reduce billed execution time         
-        - {
-            name: "Ubuntu Latest GCC", artifact: "Linux.7z",
-            os: ubuntu-latest,
-            cc: "gcc", cxx: "g++"
-          }
+        #- {
+        #    name: "Ubuntu Latest GCC", artifact: "Linux.7z",
+        #    os: ubuntu-latest,
+        #    cc: "gcc", cxx: "g++"
+        #  }
         
-        - {
-            name: "macOS Latest Clang", artifact: "macOS.7z",
-            os: macos-latest,
-            cc: "clang", cxx: "clang++"
-          }
+        #- {
+        #    name: "macOS Latest Clang", artifact: "macOS.7z",
+        #    os: macos-latest,
+        #    cc: "clang", cxx: "clang++"
+        #  }
 
     steps:
     - name: Checkout FVA repository
@@ -272,7 +272,7 @@ jobs:
         name: FVASetupWin.msi
 
   release:
-    #if: contains(github.ref, 'tags/v')
+    if: contains(github.ref, 'tags/v')
     runs-on: ubuntu-latest
     needs: build
     name: Release the product
@@ -299,7 +299,7 @@ jobs:
         name: upload_url
 
   publish:
-    #if: contains(github.ref, 'tags/v')
+    if: contains(github.ref, 'tags/v')
     name: Publish the product for ${{ matrix.config.name }}
     needs: release
     runs-on: ${{ matrix.config.os }}
