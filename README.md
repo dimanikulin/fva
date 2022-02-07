@@ -51,19 +51,20 @@ into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology
 ## Features
 - **Organizing the mutlimedia:** Organizing the multimedia data to be more searchable
 - **Configuration:** The system flow depends on configuration.
-- **Integration:** The system is integrated with online/offline Multimedia IR systems like digiKam, Google Photo and TBD
-- **TBD:**
+- **Integration:** The system is integrated with online/offline Multimedia IR systems like digiKam, Google Photo, etc.
+- **Multimedia metadata gaps identification:** It identifies the gaps and tryies to fill it up.
+- **Text search:** It is possible to search by events, photo author, places, people using text search   
 
 ## Roadmap
 Here is a link to a [roadmap](https://github.com/dimanikulin/fva/projects/4).
 
 ## Install
 You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for 
-Linux (x86-64), Mac and Windows (all latest version).
-Then you just need to install then on environment you would like to have it running on.
+Linux (x86-64), Mac and Windows (latest versions).
+Then you just need to install it on environment you would like to have it running on.
 
 ## Support
-* An author does not provide any support for now but you can ask him on [Twitter](https://twitter.com/DmytroNikulin) or [Telegram](dimanikulin79)
+* An author does not provide any support for now (because the development is in hot stage) but you can ask him on [Twitter](https://twitter.com/DmytroNikulin) or [Telegram](dimanikulin79)
 
 ## Community support
 * [GitHub](https://github.com/dimanikulin/fva) (Bug reports, Contributions)
@@ -71,8 +72,8 @@ Then you just need to install then on environment you would like to have it runn
 
 ## Contributing
 You are always welcome to contribute! There are many items to help author in. 
-For building the code you don't need to have any local environment set up. 
-As soon as any code change is pushed to GitHub the [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to test.
+For building the code you don't need to have any local environment to set up. 
+As soon as any code change is pushed to the GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to test.
 
 ## Documentation
 * Please see [link](https://dimanikulin.github.io/fva/) for the documentation:
@@ -80,12 +81,11 @@ As soon as any code change is pushed to GitHub the [main workflow](.github/workf
 
 ## Stay in touch
 * Author - [Dmytro Nikulin](https://twitter.com/DmytroNikulin)
-* Website - [https://TBD.com/](https://TBD.com/)
 * Twitter - [@TBD](https://twitter.com/TBD)
 
 ## Code checks
-* CodeQL
-* codeChecks 
+* [CodeQL](.github/workflows/codeqlanalysis.yml)
+* [codeChecks](.github/workflows/codeChecks.yml)
 
 ## License
 See the [LICENSE](./LICENSE) file for licensing information.
