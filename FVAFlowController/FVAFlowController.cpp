@@ -426,6 +426,11 @@ FVA_EXIT_CODE FVAFlowController::GetProblemFilesList(STR_LIST& fileListToFillUp)
 	return fvaLoadStrListFromFile(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", fileListToFillUp);
 }
 
+FVA_EXIT_CODE FVAFlowController::UpdateInputDirContent(const QString& inputDir,  QObject* obj)
+{
+	LOG_DEB << "Enter";
+}
+
 FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput, QObject* obj)
 {
 	LOG_DEB << "Enter";
@@ -443,9 +448,6 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 		QString dirToMoveTo	= *it;	
 		context.outputDir       = dirToMoveTo;
 		LOG_DEB << "Moving into:" << dirToMoveTo;
-
-		// remove before rename if destination exists
-		// fvaRemoveDirIfEmpty(dirToMoveTo);
 
 		// check if we got 1 folder only to integrate the multimedia data  into 
 		// and if we need to remove the input folder as well

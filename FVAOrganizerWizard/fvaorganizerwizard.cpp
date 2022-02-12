@@ -64,7 +64,6 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 
 		setPage(index++, new FVAOrganizerEventInfoPage);
         	LOG_DEB << "FVAOrganizerEventInfoPage created";
-
 	}
 
 	// do we need to show place page?

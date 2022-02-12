@@ -141,9 +141,16 @@ bool	FVAOrganizerOutputDirPage::validatePage ()
 		dirList.append(digiKamLineEdit->text());
 	}
 
+	// before we move the folders lets first update the input folder content (tags) by fva information we got so far.
+        FVA_EXIT_CODE exitCode = flow.UpdateInputDirContent(
+							((FVAOrganizerWizard*)wizard())->inputFolder(), 
+							this);
+	if (exitCode != FVA_NO_ERROR)
+		return false;
+	
 	LOG_DEB << "before flow.MoveInputDirToOutputDirs";
 	// call the Flow Controller MoveInputDirToOutputDirs method to integrate the input data into Multimedia IR systems
-	FVA_EXIT_CODE exitCode = flow.MoveInputDirToOutputDirs(
+	exitCode = flow.MoveInputDirToOutputDirs(
 							((FVAOrganizerWizard*)wizard())->inputFolder(), 
 							dirList, 
 							removeOriginDirCheckBox->isChecked(), 

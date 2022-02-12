@@ -77,6 +77,14 @@ public:
 	FVA_EXIT_CODE MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput, QObject* obj);
 
 	/*!
+	 * \brief it updates input folder content according to information got so far (fva info like event info, place info) 
+	 * \param inputDir - directory to update content in
+	 * \param obj - to attach the child processes to this object
+	 * \return it returns code of error (FVA_NO_ERROR - if no error happened)
+	 */
+	FVA_EXIT_CODE UpdateInputDirContent(const QString& inputDir,  QObject* obj);
+
+	/*!
 	 * \brief it process input folder content as multi-events folder according to event cfg and info
 	 * \param inputDir - directory to perform the actions in
 	 * \param eventMap - maps input dir structure (folder names) to event ids got from fvaEvents.csv
