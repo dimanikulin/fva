@@ -36,7 +36,7 @@ FVA_EXIT_CODE fvaSaveIDInFile(const QString& fileName, int ID)
 	file.close();
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo)
+FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFileName)
 {
 	FVADescriptionFile fvaFileCsv;
 
@@ -44,7 +44,7 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
 	QStringList			titles;
 	DESCRIPTIONS_MAP	decsItems;
 
-	FVA_EXIT_CODE res = fvaFileCsv.load(rootSWdir + "#data#/fvaFile.csv", titles, decsItems);
+	FVA_EXIT_CODE res = fvaFileCsv.load(rootSWdir + "#data#/" + fvaFileName, titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
 
 	// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,EventId,ReasonPeople,reserved1

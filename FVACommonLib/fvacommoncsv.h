@@ -31,9 +31,10 @@ FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const 
  * \brief it loads fva information saved in CSV files
  * \param rootSWdir - dir where fva SW is located
  * \param fvaFileInfo - fva file info ti fill up
+ * \param fvaFileName - fva file name to load fva info from
  * \returns it returns code of error if any or FVA_NO_ERROR if info was loaded
  */
-FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo);
+FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFileName = "fvaFile.csv");
 
 /*!
  * \brief it returns an ID value from file by file path provided
