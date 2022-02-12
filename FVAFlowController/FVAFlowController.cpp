@@ -388,20 +388,21 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDi
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventPeopleForDir")
 	}
 
-	// do we need to search by location?
-	bool SearchByLocation = false;
+	// do we need to search by place?
+	bool SearchByPlace = false;
 
-	// ask configuration if we need to search by location
-	exitCode = m_cfg.getParamAsBoolean("Search::Location", SearchByLocation);
+	// ask configuration if we need to search by place
+	exitCode = m_cfg.getParamAsBoolean("Search::Place", SearchByPlace);
 
 	// show error message box and return to calling function if previous operation failed
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Location)")
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Place)")
 
 	CLTContext context; // empty so far
 	context.dir = inputDir;
 
-	if (SearchByLocation)
+	if (SearchByPlace)
 	{
+		// we will check if location is not empty so
 		context.cmdType = "CLTCheckLocation";
 		// in write  mode CLTCheckLocation checks whole content 
 		// if GPS coordinates are present and creates csv file with list of files with empty GPS coordinates  

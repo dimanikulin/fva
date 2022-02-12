@@ -68,7 +68,7 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 	}
 
 	// do we need to show place page?
-	exitCode = cfg.getParamAsBoolean("Search::Location", isSet);
+	exitCode = cfg.getParamAsBoolean("Search::Place", isSet);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.getParamAsBoolean")
 	if (isSet)
 	{

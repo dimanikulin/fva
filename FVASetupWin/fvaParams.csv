@@ -1,6 +1,6 @@
 ID,Name,Value
 1,Search::DateTime,TRUE
-2,Search::Location,TRUE
+2,Search::Place,TRUE
 3,Search::People,TRUE
 4,Search::Device,TRUE
 5,Search::DescOrComment,TRUE
