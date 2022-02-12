@@ -10,6 +10,8 @@
 
 #include "CmdLineBaseTask.h"
 
+#include "fvafile.h"
+
 /*!
  * \brief CLTCSVGetTagsForFvaFiles is child of CmdLineBaseTask and 
  * it creates CSV file that keeps a map <path to media file> to <Tags> 
@@ -54,6 +56,12 @@ private: // data
 	* cfg flag to search by eventReasonPeople
 	*/
 	bool					m_SearchByEventReasonPeople;
+
+
+	/*!
+	* global fva file information
+	*/
+	FVA_FILE_INFO_MAP			m_fvaFileInfo;
 
 };
 
