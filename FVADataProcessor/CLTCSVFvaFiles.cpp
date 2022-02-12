@@ -28,7 +28,7 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context)
 			|| 
 			info.isFile() && !fvaIsFVAFile ( info.suffix().toUpper()))
 		{
-			qDebug() << "skipped internal fs object - " << info.absoluteFilePath() ;
+			LOG_DEB << "skipped internal fs object - " << info.absoluteFilePath() ;
 			continue;
 		}
 		// ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,EventId,ReasonPeople,reserved1

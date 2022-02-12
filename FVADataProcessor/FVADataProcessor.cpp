@@ -32,6 +32,7 @@
 #include "CLTAutoChecks3.h"
 
 #include "CLTCSVFvaFiles.h"
+#include "CLTCSVGetTagsForFvaFiles.h"
 
 std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTContext& context, const FvaConfiguration& cfg)
 {
@@ -54,6 +55,7 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
 	else if (context.cmdType == CLTCSVFvaFile::Name())		r.reset(new CLTCSVFvaFile(cfg));
 	else if (context.cmdType == CLTAutoChecks3::Name())		r.reset(new CLTAutoChecks3(cfg));
 	else if (context.cmdType == CLTFixDuplicatedFileNames::Name())	r.reset(new CLTFixDuplicatedFileNames(cfg));
+	else if (context.cmdType == CLTCSVGetTagsForFvaFiles::Name())	r.reset(new CLTCSVGetTagsForFvaFiles(cfg));
 
 	return r;
 }

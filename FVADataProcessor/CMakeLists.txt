@@ -32,6 +32,8 @@ add_library( fvadataprocessorlib
    CLTCreateDirStructByFileNames.h
    CLTCSVFvaFiles.cpp
    CLTCSVFvaFiles.h
+   CLTCSVGetTagsForFvaFiles.h
+   CLTCSVGetTagsForFvaFiles.cpp
    CLTFixDuplicatedFileNames.cpp
    CLTFixDuplicatedFileNames.h
    CLTMoveInputDir2Output.cpp
