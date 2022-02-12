@@ -40,7 +40,7 @@ CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg)
 
 FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context)
 {	
-	QList<QString>		records;	
+	/*QList<QString>		records;	
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		// just skip internal folder
@@ -70,6 +70,6 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context)
 			writeStream << *it << "\n";
 
 	writeStream.flush();
-	fileNew.close();	
+	fileNew.close();*/
 	return FVA_NO_ERROR;
 }
