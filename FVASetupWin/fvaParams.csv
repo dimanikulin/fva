@@ -2,7 +2,7 @@ ID,Name,Value
 1,Search::DateTime,TRUE
 2,Search::Place,TRUE
 3,Search::People,TRUE
-4,Search::Device,TRUE
+4,Search::Author,TRUE
 5,Search::DescOrComment,TRUE
 6,Search::Event,TRUE
 7,Search::EventReasonPeople,TRUE

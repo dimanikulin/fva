@@ -155,10 +155,10 @@ void FVAConfigurator::InitializeSearchTab(const FvaConfiguration& cfg)
 	m_checkboxes.insert("Search::DateTime",			new QCheckBox(tr("Date and Time")));
 	m_checkboxes.insert("Search::Place",			new QCheckBox(tr("Place")));
 	m_checkboxes.insert("Search::People",			new QCheckBox(tr("People")));
-	m_checkboxes.insert("Search::Device",			new QCheckBox(tr("Device")));
-	m_checkboxes.insert("Search::DescOrComment",	new QCheckBox(tr("Description Or Comment")));
+	m_checkboxes.insert("Search::Author",			new QCheckBox(tr("Author")));
+	m_checkboxes.insert("Search::DescOrComment",		new QCheckBox(tr("Description Or Comment")));
 	m_checkboxes.insert("Search::Event",			new QCheckBox(tr("Event")));
-	m_checkboxes.insert("Search::EventReasonPeople",new QCheckBox(tr("Reason event people")));
+	m_checkboxes.insert("Search::EventReasonPeople",	new QCheckBox(tr("Reason event people")));
 #endif // FVA_LANGUAGE_ENG
 #endif // FVA_LANGUAGE_RUS
 

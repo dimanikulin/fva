@@ -45,8 +45,8 @@ FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent)
 		LOG_DEB << "FVAOrganizerOrientPage created";
 	}
 
-	// do we need to show device page?
-	exitCode = cfg.getParamAsBoolean("Search::Device", isSet);
+	// do we need to show device/author page?
+	exitCode = cfg.getParamAsBoolean("Search::Author", isSet);
 	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.getParamAsBoolean")
 	if (isSet)
 	{

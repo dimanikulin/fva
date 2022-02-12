@@ -127,17 +127,17 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
 	// return to calling function if previous operation failed
 	RET_RES_IF_RES_IS_ERROR
 
-	// do we need to search by device?
-	bool SearchByDevice = false;
+	// do we need to search by author?
+	bool SearchByAuthor = false;
 
-	// ask configuration if we need to search by device
-	FVA_EXIT_CODE exitCode = m_cfg.getParamAsBoolean("Search::Device", SearchByDevice);
+	// ask configuration if we need to search by author
+	FVA_EXIT_CODE exitCode = m_cfg.getParamAsBoolean("Search::Author", SearchByAuthor);
 
 	// show error message box and return to calling function if previous operation failed
-	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Device)")
-	if (SearchByDevice)
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Author)")
+	if (SearchByAuthor)
 	{
-		// perform device checks
+		// perform device checks as author depends on device recognicion
 		FVA_EXIT_CODE res = performDeviceChecks(deviceContext, context);
 
 		// return to calling function if previous operation failed
