@@ -38,18 +38,9 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context)
 		records.append(csvRecord);
 				
 	}
-	QFile fileNew(m_rootSWdir + "#data#/fvaFileN.csv");
-	if ( !fileNew.open( QIODevice::WriteOnly | QIODevice::Text ) )	
-		return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;	
-	QTextStream writeStream( &fileNew );
-
-	for ( auto it = records.begin(); it != records.end(); ++it )
-		if (records.last() == *it) 
-			writeStream << *it;
-		else
-			writeStream << *it << "\n";
-
-	writeStream.flush();
-	fileNew.close();	
+	res = fvaSaveStrListToFile(rootSWdir + "#data#/fvaFileN.csv", records);
+	if (FVA_NO_ERROR!=res)
+		return res;
+	 
 	return fvaSaveIDInFile(m_rootSWdir + "#data#/fvaFile.id", ID);
 }

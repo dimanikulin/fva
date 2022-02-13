@@ -18,7 +18,7 @@ FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly(const QString& folder, co
 		// just skip internal folder
 		if ( info.isDir() && info.fileName()[0] == '#' && info.fileName()[info.fileName().size()-1] == '#' )
 		{
-			qDebug() << "skipped internal dir - " << info.absoluteFilePath() ;
+			LOG_DEB << "skipped internal dir - " << info.absoluteFilePath() ;
 			continue;
 		}
 
