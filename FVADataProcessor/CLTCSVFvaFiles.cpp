@@ -38,7 +38,7 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context)
 		records.append(csvRecord);
 				
 	}
-	res = fvaSaveStrListToFile(rootSWdir + "#data#/fvaFileN.csv", records);
+	res = fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileN.csv", records);
 	if (FVA_NO_ERROR!=res)
 		return res;
 	 
