@@ -36,10 +36,66 @@ CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg)
 
 	res = fvaLoadFvaFileInfoFromCsv(m_rootSWdir, m_fvaFileInfo, "fvaFileN.csv");
 	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadFvaFileInfoFromCsv" ;
+	RET_IF_RES_IS_ERROR
+
+	res = fvaLoadSimpleMapFromCsvByItemType(m_rootSWdir, m_fvaTagsTypeMap, "fvaTagTypes.csv");
+	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadSimpleMapFromCsvByItemType" ;
+	RET_IF_RES_IS_ERROR
+
+	res = fvaLoadSimpleMapFromCsvByItemType(m_rootSWdir, m_fvaPlaceMap, "fvaPlaces.csv");
+	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadSimpleMapFromCsvByItemType fvaPlaces.csv" ;
+	RET_IF_RES_IS_ERROR
+
+	res = fvaLoadSimpleMapFromCsvByItemType(m_rootSWdir, fvaPlacesTypesMap, "fvaPlaceTypes.csv");
+	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadSimpleMapFromCsvByItemType fvaPlaceTypes.csv" ;
+	RET_IF_RES_IS_ERROR
+
 }
 
-FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString fileName, QString& tags)
+FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileName, QString& tags)
 {
+	// lets try to find it first
+        fvaFile fvaFileItem;
+	auto itFvaFileItem = m_fvaFileInfo.find(fileName.toUpper());
+	if ( itFvaFileItem != m_fvaFileInfo.end())
+		fvaFileItem = *itFvaFileItem;
+	else
+	{
+		LOG_CRIT << "fva item not found in fvaFile.csv - " << fileName ;	
+		return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;	
+	}
+
+	//TODO make constant to tag types IDs
+
+	if (m_SearchByPlace)
+	{
+		if (fvaFileItem.placeId != 0 && fvaFileItem.placeId != FVA_UNDEFINED_ID)
+		{
+			auto itPlace 
+
+= fvaPlacesTypesMap.find();
+			placeType = 
+			PlaceId = m_fvaFileInfo[info.fileName().toUpper()].;
+		}
+
+		tags +=	m_fvaTagsTypeMap[1] + "/";
+	}
+
+	if (m_SearchByAuthor)
+	{
+		tags +=	m_fvaTagsTypeMap[2] + "/";
+	}
+
+	if (m_SearchByEvent)
+	{
+		tags +=	m_fvaTagsTypeMap[3] + "/";
+	}
+
+	if (m_SearchByEventReasonPeople)
+	{
+		tags +=	m_fvaTagsTypeMap[4] + "/";
+	}
+
 	return FVA_NO_ERROR;
 }
 

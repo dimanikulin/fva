@@ -76,6 +76,21 @@ private: // data
 	 */
 	QList<QString>				m_records;
 
+	/*!
+	 * map of tag types 
+	 */
+	FVA_SIMPLE_MAP 				m_fvaTagsTypeMap;
+
+	/*!
+	 * map of place types 
+	 */
+	FVA_SIMPLE_MAP 				m_fvaPlacesTypesMap;
+
+	/*!
+	 * map of places 
+	 */
+	FVA_SIMPLE_MAP 				m_fvaPlacesMap;
+
 };
 
 #endif // _CMD_CSV_GET_TAGS_FOR_FVA_FILES_H_
