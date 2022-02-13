@@ -15,22 +15,22 @@ CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg)
 	RET_IF_RES_IS_ERROR
 
 	// ask configuration if we need to search by certain serach attribute
-	exitCode = cfg.getParamAsBoolean("Search::Place", m_SearchByPlace);
+	res = cfg.getParamAsBoolean("Search::Place", m_SearchByPlace);
 	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to getParamAsBoolean(Search::Place)" ;
 	RET_IF_RES_IS_ERROR
 
 	// ask configuration if we need to search by device/author
-	exitCode = cfg.getParamAsBoolean("Search::Author", m_SearchByAuthor);
+	res = cfg.getParamAsBoolean("Search::Author", m_SearchByAuthor);
 	if (res !=FVA_NO_ERROR)  LOG_DEB << "Failed to getParamAsBoolean(Search::Author)" ;
 	RET_IF_RES_IS_ERROR
 
 	// ask configuration if we need to search by event
-	exitCode = cfg.getParamAsBoolean("Search::Event", m_SearchByEvent);
+	res = cfg.getParamAsBoolean("Search::Event", m_SearchByEvent);
 	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to getParamAsBoolean(Search::Event)" ;
 	RET_IF_RES_IS_ERROR
 
 	// ask configuration if we need to search by EventReasonPeople
-	exitCode = cfg.getParamAsBoolean("Search::EventReasonPeople", m_SearchByEventReasonPeople);
+	res = cfg.getParamAsBoolean("Search::EventReasonPeople", m_SearchByEventReasonPeople);
 	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to getParamAsBoolean(Search::EventReasonPeople)" ;
 	RET_IF_RES_IS_ERROR
 
