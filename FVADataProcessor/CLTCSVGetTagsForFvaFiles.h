@@ -14,54 +14,67 @@
 
 /*!
  * \brief CLTCSVGetTagsForFvaFiles is child of CmdLineBaseTask and 
- * it creates CSV file that keeps a map <path to media file> to <Tags> 
+ * it creates CSV file that keeps a map <Path to media file> to <Tags for this media file> 
  */
 class CLTCSVGetTagsForFvaFiles : public CmdLineBaseTask
 {
 public:
 	/// CmdLineBaseTask interface
 	CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg);
-	virtual ~CLTCSVGetTagsForFvaFiles()	{ LOG_DEB << "cmd deleted, dir:" << m_folder; }
+	virtual ~CLTCSVGetTagsForFvaFiles();
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 	/*!
 	* \brief returns command name
-	* \return returns command name as a string
+	* \return command name as a string
 	*/
 	static QString Name()			{ return "CLTCSVGetTagsForFvaFiles"; }
 	virtual bool supportReadOnly()		{ return false; }
 
+private:
+
+	/*!
+	 * \brief if fills up the tags for file with name provided
+	 * \param fileName a name of file to get tags for
+	 * \return it returns the code result 
+	 */
+	FVA_EXIT_CODE getFvaTagsForFile(const QString fileName, QString& tags);
+
 private: // data
 
 	/*!
-	* path to root fva sw folder
-	*/
+	 * path to root fva sw folder
+	 */
 	QString					m_rootSWdir;
 
 	/*!
-	* cfg flag to search by place
-	*/
+	 * cfg flag to search by place
+	 */
 	bool 					m_SearchByPlace;
 
 	/*!
-	* cfg flag to search by author
-	*/
+	 * cfg flag to search by author
+	 */
 	bool 					m_SearchByAuthor;
 
 	/*!
-	* cfg flag to search by event
-	*/
+	 * cfg flag to search by event
+	 */
 	bool 					m_SearchByEvent;
 
 	/*!
-	* cfg flag to search by eventReasonPeople
-	*/
+	 * cfg flag to search by eventReasonPeople
+	 */
 	bool					m_SearchByEventReasonPeople;
 
+	/*!
+	 * global fva file information
+	 */
+	FVA_FILE_INFO_MAP			m_fvaFileInfo;
 
 	/*!
-	* global fva file information
-	*/
-	FVA_FILE_INFO_MAP			m_fvaFileInfo;
+	 * list if records we write in the output file
+	 */
+	QList<QString>				m_records;
 
 };
 
