@@ -56,19 +56,19 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context)
 			continue;
 		}
 		QString fvaTags;
-		FVA_EXIT_CODE res = getFvaTagsForFile(); 
+		FVA_EXIT_CODE res = getFvaTagsForFile(info.fileName(), fvaTags); 
 		if (FVA_NO_ERROR != res)
 			return res;
 		// full path to tags		
-		QString csvRecord =  info.absoluteFilePath() + "," + fvaTags;
-		records.append(csvRecord);
+		QString csvRecord =  info.absoluteFilePath() + ",\"" + fvaTags + "\"";
+		m_records.append(csvRecord);
 				
 	}
 	return FVA_NO_ERROR;
 }
 CLTCSVGetTagsForFvaFiles::~CLTCSVGetTagsForFvaFiles()	
 {
-	fvaSaveStrListToFile(rootSWdir + "#data#/fvaFileTags.csv", records);
+	fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileTags.csv", m_records);
 
 	LOG_DEB << "cmd deleted, dir:" << m_folder; 
 }
