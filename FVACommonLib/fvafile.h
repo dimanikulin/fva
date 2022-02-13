@@ -20,9 +20,9 @@ class fvaFile
 	public:
 
 		fvaFile():
-			deviceId(0),
-			scanerId(0),
-			placeId(0)
+			deviceId(FVA_UNDEFINED_ID),
+			scanerId(FVA_UNDEFINED_ID),
+			placeId(FVA_UNDEFINED_ID)
 		{
 		}
 
@@ -33,17 +33,17 @@ class fvaFile
 		/*!
 		 * place id 
 		 */
-		unsigned int			placeId;
+		unsigned int		placeId;
 
 		/*!
 		 * id of device 
 		 */
-		unsigned int			deviceId;
+		unsigned int		deviceId;
 
 		/*!
 		 * id of scaner
 		 */
-		unsigned int			scanerId;
+		unsigned int		scanerId;
 
 		/*!
 		 * people list ids 
@@ -53,17 +53,17 @@ class fvaFile
 		/*!
 		 * decsription
 		 */
-		QString					description;
+		QString			description;
 
 		/*!
 		 * file comment
 		 */
-		QString					comment;
+		QString			comment;
 
 		/*!
 		 * name of file
 		 */
-		QString					name;
+		QString			name;
 
 };
 typedef QMap<QString, fvaFile> FVA_FILE_INFO_MAP;
