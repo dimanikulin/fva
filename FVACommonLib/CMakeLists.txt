@@ -12,6 +12,7 @@ add_library(fvalib
   fvaPeopleRelations.h
   fvaperson.h
   fvaItem.cpp
+  FVABaseDictionaryItem.h
 
   CmdLineBaseExecutor.h
   CmdLineBaseTask.h
