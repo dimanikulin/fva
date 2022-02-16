@@ -21,7 +21,7 @@ typedef QMap<int, QString> FVA_SIMPLE_MAP;
 /*!
  * \brief it returns device ID by file name from fva information saved in CSV files
  * \param fvaFileInfo - fva file information to search in
- * \param fvaFile - file to look information for not full path, just "1212.jpg")
+ * \param fvaFile - file to look information for (not full path, just "1212.jpg")
  * \param deviceID - output parameter to contain device ID
  * \returns it returns code of error if any or FVA_NO_ERROR if device ID has been retrieved
  */
@@ -85,5 +85,14 @@ FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SI
 * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
 */
 FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(const QString& rootSWdir, FVA_PEOPLE_RELATION_MAP& peopleRelationsMap);
+
+/*!
+* \brief it loads base item dictionary map from csv
+* \param rootSWdir - dir where FVA SW is located
+* \param dictMap - a map to be filled up
+* \param dictName file name of dictionary to load from
+* \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
+*/
+FVA_EXIT_CODE fvaLoadDictMapFromCsv(const QString& rootSWdir, BASE_DICT_ITEM_MAP& dictMap, const QString& dictName);
 
 #endif // FVACOMMONCSV_H

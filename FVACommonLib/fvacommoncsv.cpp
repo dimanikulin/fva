@@ -279,3 +279,31 @@ FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(const QString& rootSWdir, FVA_PEOP
 	}
 	return FVA_NO_ERROR;
 }
+FVA_EXIT_CODE fvaLoadDictMapFromCsv(const QString& rootSWdir, BASE_DICT_ITEM_MAP& dictMap , const QString& dictName)
+{
+	FVADescriptionFile	fvaCsv;
+	QStringList		titles;
+	DESCRIPTIONS_MAP	decsItems;
+	FVA_EXIT_CODE res = fvaCsv.load(rootSWdir + "#data#/" + dictName, titles, decsItems);
+	RET_RES_IF_RES_IS_ERROR
+
+	// ID,Name
+	int columnId = FVADescriptionFile::getColumnIdByName(titles, "ID");
+	if (-1 == columnId)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnName = FVADescriptionFile::getColumnIdByName(titles, "Name");
+	if (-1 == columnName)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnType = FVADescriptionFile::getColumnIdByName(titles, "Type");
+	if (FVA_UNDEFINED_ID != typeToFilter && -1 == columnType)
+	{
+		LOG_CRIT << "-1 == columnType";
+
+		// supress this error if we don't need to filter by type 
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+	}
+
+	return FVA_NO_ERROR;
+}

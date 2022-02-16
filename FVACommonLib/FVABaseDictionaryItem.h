@@ -39,4 +39,5 @@ class fvaBaseDictionaryItem
 		QString name;
 };
 
+typedef QMap<int, fvaBaseDictionaryItem> BASE_DICT_ITEM_MAP;
 #endif // FVA_BASE_DICTIONARY_ITEM_H
