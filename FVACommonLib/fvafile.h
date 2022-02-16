@@ -12,6 +12,8 @@
 #include <QtCore/QString>
 #include <QtCore/QVector>
 
+#include "fvaconstants.h"
+
 /*!
  * \brief it keeps fva specific information about a file
  */

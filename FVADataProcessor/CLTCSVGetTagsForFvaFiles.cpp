@@ -124,8 +124,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context)
 			return res;
 		// full path to tags		
 		QString csvRecord =  info.absoluteFilePath() + ",\"" + fvaTags + "\"";
-		m_records.append(csvRecord);
-				
+		m_records.append(csvRecord);				
 	}
 	return FVA_NO_ERROR;
 }

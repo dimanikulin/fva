@@ -15,6 +15,7 @@
 #include "fvadevice.h"
 #include "fvaperson.h"
 #include "fvaPeopleRelations.h"
+#include "FVABaseDictionaryItem.h"
 
 typedef QMap<int, QString> FVA_SIMPLE_MAP;
 
