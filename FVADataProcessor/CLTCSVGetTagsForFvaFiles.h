@@ -11,8 +11,7 @@
 #include "CmdLineBaseTask.h"
 
 #include "fvafile.h"
-
-#include "FVABaseDictionaryItem.h"
+#include "fvacommoncsv.h"
 
 /*!
  * \brief CLTCSVGetTagsForFvaFiles is child of CmdLineBaseTask and 
@@ -38,7 +37,7 @@ private:
 	 * \param fileName a name of file to get tags for
 	 * \return it returns the code result 
 	 */
-	FVA_EXIT_CODE getFvaTagsForFile(const QString fileName, QString& tags);
+	FVA_EXIT_CODE getFvaTagsForFile(const QString& fileName, QString& tags);
 
 private: // data
 	/*!
@@ -90,7 +89,6 @@ private: // data
 	 * map of places 
 	 */
 	BASE_DICT_ITEM_MAP 			m_fvaPlacesMap;
-
 };
 
 #endif // _CMD_CSV_GET_TAGS_FOR_FVA_FILES_H_

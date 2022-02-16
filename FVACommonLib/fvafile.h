@@ -20,7 +20,6 @@
 class fvaFile
 {
 	public:
-
 		fvaFile():
 			deviceId(FVA_UNDEFINED_ID),
 			scanerId(FVA_UNDEFINED_ID),

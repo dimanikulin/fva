@@ -88,7 +88,6 @@ FVAOrganizerPlacePage::FVAOrganizerPlacePage(void)
 	connect( addNewPlaceButton, SIGNAL( clicked() ), this, SLOT( OnAddPlacePressed() ) );
 
         LOG_DEB << "constructed" ;
-
 }
 
 void FVAOrganizerPlacePage::OnAddPlacePressed()
@@ -137,7 +136,6 @@ void FVAOrganizerPlacePage::OnSaveButtonPressed()
 	
 	for (auto idTop = 0; idTop < placesWidget->topLevelItemCount();++idTop)
 		fvaClearChecks(placesWidget->topLevelItem(idTop));
-
 }
 
 void FVAOrganizerPlacePage::OnFvaInputDirButtonPressed()

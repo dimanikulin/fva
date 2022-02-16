@@ -94,7 +94,6 @@ FVAOrganizerEventInfoPage::FVAOrganizerEventInfoPage(void)
 	connect( addNewEventButton, SIGNAL( clicked() ), this, SLOT( OnAddEventPressed() ) );
 
         LOG_DEB << "constructed" ;
-
 }
 void FVAOrganizerEventInfoPage::OnSaveButtonPressed()
 {

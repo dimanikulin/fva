@@ -110,7 +110,6 @@ public:
 	FVA_EXIT_CODE GetProblemFilesList(STR_LIST& fileListToFillUp);
 	
 private:
-
 	/*!
 	 * \brief it performs the device checks for input folder
 	 * \param deviceContext - devices information got during checks, filled up by this function
@@ -152,7 +151,6 @@ private:
 	FVA_EXIT_CODE runPythonCMD(const QString& scriptName, QObject* obj, const QStringList& params);
 
 private: //data
-
 	/*!
 	 * brief processor to support from the side of the low level actions
 	 */

@@ -35,8 +35,7 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context)
 		QString csvRecord =  QString::number(++ID) + "," // ID
 			+ info.fileName() + ",,," // Name
 			+ context.custom + ",,,,,,"; // m_custom here is device id
-		records.append(csvRecord);
-				
+		records.append(csvRecord);				
 	}
 	res = fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileN.csv", records);
 	if (FVA_NO_ERROR!=res)
