@@ -49,7 +49,6 @@ CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg)
 	res = fvaLoadDictMapFromCsv(m_rootSWdir, fvaPlaceMap, "fvaPlaces.csv");
 	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadDictMapFromCsv fvaPlace.csv" ;
 	RET_IF_RES_IS_ERROR
-
 }
 
 FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileName, QString& tags)

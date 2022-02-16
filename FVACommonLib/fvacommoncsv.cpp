@@ -312,7 +312,7 @@ FVA_EXIT_CODE fvaLoadDictMapFromCsv(const QString& rootSWdir, BASE_DICT_ITEM_MAP
 		dictionaryItem.name = list[columnName].remove("\t").trimmed();
 		dictionaryItem.type = list[columnType].remove("\t").toInt();
 
-		dictMap[dictionaryItem.Id] = dictionaryItem;
+		dictMap[dictionaryItem.ID] = dictionaryItem;
 	}
 	return FVA_NO_ERROR;
 }

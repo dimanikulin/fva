@@ -33,7 +33,6 @@ public:
 	virtual bool supportReadOnly()		{ return false; }
 
 private:
-
 	/*!
 	 * \brief if fills up the tags for file with name provided
 	 * \param fileName a name of file to get tags for
@@ -42,7 +41,6 @@ private:
 	FVA_EXIT_CODE getFvaTagsForFile(const QString fileName, QString& tags);
 
 private: // data
-
 	/*!
 	 * path to root fva sw folder
 	 */

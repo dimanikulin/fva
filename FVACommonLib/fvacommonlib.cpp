@@ -304,5 +304,4 @@ FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, QList<QString>& strLis
 	file.close();
 
 	return FVA_NO_ERROR;
-
 }

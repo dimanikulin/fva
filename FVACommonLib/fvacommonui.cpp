@@ -328,8 +328,7 @@ void fvaUpdateChecks(QTreeWidgetItem *item, int column)
 	{
 		Qt::CheckState checkState = item->checkState(0);
 		for (int i = 0; i < item->childCount(); ++i) 
-			item->child(i)->setCheckState(0, checkState);
-        
+			item->child(i)->setCheckState(0, checkState);        
 	} 
 	else if (item->childCount()==0 || column==-1) 
 	{

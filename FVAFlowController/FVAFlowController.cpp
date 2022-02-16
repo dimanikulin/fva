@@ -246,7 +246,6 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
 
 		// show error message box and return to calling function if previous operation failed
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTFixEmptyDateTime")
-
 	}
 	else
 		// show error message box and return to calling function if previous operation failed
@@ -484,7 +483,6 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 
 		if (FVA_ERROR_DEST_FILE_ALREADY_EXISTS == exitCode)
 		{
-
 			CLTContext contextDupl; // empty so far
 			contextDupl.dir 	= inputDir;
 			contextDupl.cmdType	= "CLTFixDuplicatedFileNames";
@@ -500,7 +498,6 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 		}
 		// show error message box and return to calling function if previous operation failed
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
-
 	}
 
 	QString fvaSWRootDir;
