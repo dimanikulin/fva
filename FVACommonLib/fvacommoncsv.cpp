@@ -118,11 +118,10 @@ FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SI
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
 	int columnType = FVADescriptionFile::getColumnIdByName(titles, "Type");
+	// supress this error if we don't need to filter by type 
 	if (FVA_UNDEFINED_ID != typeToFilter && -1 == columnType)
 	{
 		LOG_CRIT << "-1 == columnType";
-
-		// supress this error if we don't need to filter by type 
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 	}
 	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
@@ -279,7 +278,7 @@ FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(const QString& rootSWdir, FVA_PEOP
 	}
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadDictMapFromCsv(const QString& rootSWdir, BASE_DICT_ITEM_MAP& dictMap , const QString& dictName)
+FVA_EXIT_CODE fvaLoadDictMapFromCsv(const QString& rootSWdir, BASE_DICT_ITEM_MAP& dictMap, const QString& dictName)
 {
 	FVADescriptionFile	fvaCsv;
 	QStringList		titles;
@@ -297,13 +296,23 @@ FVA_EXIT_CODE fvaLoadDictMapFromCsv(const QString& rootSWdir, BASE_DICT_ITEM_MAP
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
 	int columnType = FVADescriptionFile::getColumnIdByName(titles, "Type");
-	if (FVA_UNDEFINED_ID != typeToFilter && -1 == columnType)
+	if (-1 == columnType)
 	{
 		LOG_CRIT << "-1 == columnType";
-
-		// supress this error if we don't need to filter by type 
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 	}
 
+	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
+	{
+		QStringList list = it.value();
+
+		fvaBaseDictionaryItem dictionaryItem;
+
+		dictionaryItem.ID = list[columnId].remove("\t").toUInt();
+		dictionaryItem.name = list[columnName].remove("\t").trimmed();
+		dictionaryItem.type = list[columnType].remove("\t").toInt();
+
+		dictMap[dictionaryItem.Id] = dictionaryItem;
+	}
 	return FVA_NO_ERROR;
 }
