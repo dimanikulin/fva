@@ -12,6 +12,8 @@
 
 #include "fvafile.h"
 
+#include "FVABaseDictionaryItem.h"
+
 /*!
  * \brief CLTCSVGetTagsForFvaFiles is child of CmdLineBaseTask and 
  * it creates CSV file that keeps a map <Path to media file> to <Tags for this media file> 
@@ -84,12 +86,12 @@ private: // data
 	/*!
 	 * map of place types 
 	 */
-	FVA_SIMPLE_MAP 				m_fvaPlacesTypesMap;
+	FVA_SIMPLE_MAP				m_fvaPlacesTypesMap;
 
 	/*!
 	 * map of places 
 	 */
-	FVA_SIMPLE_MAP 				m_fvaPlacesMap;
+	BASE_DICT_ITEM_MAP 			m_fvaPlacesMap;
 
 };
 

@@ -42,12 +42,12 @@ CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg)
 	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadSimpleMapFromCsvByItemType" ;
 	RET_IF_RES_IS_ERROR
 
-	res = fvaLoadSimpleMapFromCsvByItemType(m_rootSWdir, m_fvaPlaceMap, "fvaPlaces.csv");
-	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadSimpleMapFromCsvByItemType fvaPlaces.csv" ;
+	res = fvaLoadSimpleMapFromCsvByItemType(m_rootSWdir, m_fvaPlaceTypesMap, "fvaPlaceTypes.csv");
+	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadSimpleMapFromCsvByItemType fvaPlaceTypes.csv" ;
 	RET_IF_RES_IS_ERROR
 
-	res = fvaLoadSimpleMapFromCsvByItemType(m_rootSWdir, fvaPlacesTypesMap, "fvaPlaceTypes.csv");
-	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadSimpleMapFromCsvByItemType fvaPlaceTypes.csv" ;
+	res = fvaLoadDictMapFromCsv(m_rootSWdir, fvaPlaceMap, "fvaPlaces.csv");
+	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadDictMapFromCsv fvaPlace.csv" ;
 	RET_IF_RES_IS_ERROR
 
 }
@@ -57,7 +57,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 	// lets try to find it first
         fvaFile fvaFileItem;
 	auto itFvaFileItem = m_fvaFileInfo.find(fileName.toUpper());
-	if ( itFvaFileItem != m_fvaFileInfo.end())
+	if (itFvaFileItem != m_fvaFileInfo.end())
 		fvaFileItem = *itFvaFileItem;
 	else
 	{
@@ -71,14 +71,21 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 	{
 		if (fvaFileItem.placeId != 0 && fvaFileItem.placeId != FVA_UNDEFINED_ID)
 		{
-			auto itPlace 
-
-= fvaPlacesTypesMap.find();
-			placeType = 
-			PlaceId = m_fvaFileInfo[info.fileName().toUpper()].;
+			auto itPlace = fvaPlaceMap.find(fvaFileItem.placeId);
+			if (itPlace == fvaPlaceMap.end())
+			{
+				LOG_CRIT << "place item not found in fvaPlaces.csv, ID - " << fvaFileItem.placeId ;	
+				return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
+			}
+		
+			auto itPlaceType = fvaPlacesTypesMap(*itPlace.type);
+			if (itPlaceType == fvaPlacesTypesMap.end())
+			{
+				LOG_CRIT << "place type item not found in fvaPlaceTypes.csv, type - " << *itPlace.type ;	
+				return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
+			}
+			tags +=	m_fvaTagsTypeMap[1] + "/" + itPlaceType.Value() + "/" + itPlace.Value();  
 		}
-
-		tags +=	m_fvaTagsTypeMap[1] + "/";
 	}
 
 	if (m_SearchByAuthor)
