@@ -77,8 +77,8 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 				return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
 			}
 		
-			auto itPlaceType = fvaPlacesTypesMap(*itPlace.type);
-			if (itPlaceType == fvaPlacesTypesMap.end())
+			auto itPlaceType = fvaPlaceTypesMap(*itPlace.type);
+			if (itPlaceType == fvaPlaceTypesMap.end())
 			{
 				LOG_CRIT << "place type item not found in fvaPlaceTypes.csv, type - " << *itPlace.type ;	
 				return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;

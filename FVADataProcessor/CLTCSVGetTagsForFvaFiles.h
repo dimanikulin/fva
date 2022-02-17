@@ -83,12 +83,12 @@ private: // data
 	/*!
 	 * map of place types 
 	 */
-	FVA_SIMPLE_MAP				m_fvaPlacesTypesMap;
+	FVA_SIMPLE_MAP				m_fvaPlaceTypesMap;
 
 	/*!
 	 * map of places 
 	 */
-	BASE_DICT_ITEM_MAP 			m_fvaPlacesMap;
+	BASE_DICT_ITEM_MAP 			m_fvaPlaceMap;
 };
 
 #endif // _CMD_CSV_GET_TAGS_FOR_FVA_FILES_H_
