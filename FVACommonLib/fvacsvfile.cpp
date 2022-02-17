@@ -13,9 +13,7 @@
 
 CSVFile::CSVFile(  )
 {
-
 }
-
 
 CSVFile::~CSVFile(  )
 {

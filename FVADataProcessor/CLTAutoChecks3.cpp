@@ -98,7 +98,6 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context)
 			LOG_WARN << "GEO location is NOT preent in:" << info.absoluteFilePath() << ", PlaceId=" << PlaceId;
 			m_Issues.push_back("FVA_ERROR_NO_GEO," + info.absoluteFilePath() + "," + QString::number(PlaceId));
 		}
-
 	}
 	return FVA_NO_ERROR;
 }

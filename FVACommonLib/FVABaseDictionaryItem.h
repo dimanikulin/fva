@@ -15,11 +15,6 @@
  */
 class fvaBaseDictionaryItem
 {
-	public : 
-
-		fvaBaseDictionaryItem ();
-		virtual ~fvaBaseDictionaryItem ();
-
 	public : // data
 
 		/*!
