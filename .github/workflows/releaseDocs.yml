@@ -10,20 +10,20 @@ jobs:
 
   release-docs:
       #if: contains(github.ref, 'tags/v') #comment if you need to have it each commit
-      name: Releasing documentation for code (based on doxy comments) 
+      name: Releasing documentation for code (based on doxy comments)
       runs-on: ubuntu-latest
       strategy:
          fail-fast: false
       steps:
-        
+
       - name: Checkout FVA repository
         uses: actions/checkout@v2 #v2 to checkout submodules as well
         with:
             submodules: 'true'
-          
+
       - name: Setup Graphviz to draw nice graphs in doc
         uses: ts-graphviz/setup-graphviz@v1
- 
+
       - name: Generate Doxygen documentation 
         uses: mattnotmitt/doxygen-action@v1
         with:
@@ -31,16 +31,16 @@ jobs:
            doxyfile-path: './doxy.cfg'
            enable-latex: true
     
-      - name: Publish of documentation 
+      - name: Publish of documentation
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./output/html
-          
+
       - name: Pack the docs by 7zip
         working-directory: ./output/
         run: cmake -E tar cfv ../docs.zip --format=7zip .
-      
+
       - name: Upload docs artifact to git hub storage to use later
         uses: actions/upload-artifact@v1
         with:
