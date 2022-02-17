@@ -16,7 +16,7 @@ env:
     CCACHE_VERSION: 4.4
 
 jobs:
-                      
+
   build:
     name: Building the binaries for ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -30,13 +30,13 @@ jobs:
             cc: "gcc", cxx: "g++"
           }
 
-        # commented to reduce billed execution time         
+        # commented to reduce billed execution time
         #- {
         #    name: "Ubuntu Latest GCC", artifact: "Linux.7z",
         #    os: ubuntu-latest,
         #    cc: "gcc", cxx: "g++"
         #  }
-        
+
         #- {
         #    name: "macOS Latest Clang", artifact: "macOS.7z",
         #    os: macos-latest,
@@ -48,7 +48,7 @@ jobs:
       uses: actions/checkout@v2 #v2 to checkout submodules as well
       with:
         submodules: 'true'
-    
+
     - name: Download Ninja and CMake.
       shell: cmake -P {0}
       run: |
@@ -116,16 +116,16 @@ jobs:
         key: ${{ matrix.config.name }}-ccache-${{ steps.ccache_cache_timestamp.outputs.timestamp }}
         restore-keys: |
           ${{ matrix.config.name }}-ccache-
-          
+
     # https://github.com/jurplel/install-qt-action
-    - name: Install Qt 
+    - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
         version:  ${{ env.QT_VERSION }}
         target: 'desktop'
         arch: 'win64_mingw81'
         setup-python : 'false'
-            
+
     - name: Configure make files by CMake
       shell: cmake -P {0}
       env:
@@ -241,10 +241,10 @@ jobs:
           message("::error::${test_results}")
           message(FATAL_ERROR "Running tests failed!")
         endif()
-     
+
     - name: Install binaries to instdir and stripping them to make binaries smaller by CMake
       run: cmake --install build --prefix instdir --strip
-     
+
     - name: Pack the binaries by 7zip
       working-directory: instdir
       run: cmake -E tar cfv ../${{ matrix.config.artifact }} --format=7zip .
@@ -254,16 +254,16 @@ jobs:
       with:
         path: ./${{ matrix.config.artifact }}
         name: ${{ matrix.config.artifact }}
-     
+
     - name: Setup MSBuild
       if: matrix.config.os == 'windows-latest'
       uses: microsoft/setup-msbuild@v1.0.3
-    
+
     - name: MS package build
       if: matrix.config.os == 'windows-latest'
       run: >
         msbuild ./FVASetupWin/FVASetupWin.wixproj
-        
+
     - name: Upload win pkg to git hub storage to use later
       if: matrix.config.os == 'windows-latest'
       uses: actions/upload-artifact@v1

@@ -46,7 +46,7 @@ CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg)
 	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadSimpleMapFromCsvByItemType fvaPlaceTypes.csv" ;
 	RET_IF_RES_IS_ERROR
 
-	res = fvaLoadDictMapFromCsv(m_rootSWdir, fvaPlaceMap, "fvaPlaces.csv");
+	res = fvaLoadDictMapFromCsv(m_rootSWdir, m_fvaPlaceMap, "fvaPlaces.csv");
 	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadDictMapFromCsv fvaPlace.csv" ;
 	RET_IF_RES_IS_ERROR
 }
@@ -70,15 +70,15 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 	{
 		if (fvaFileItem.placeId != 0 && fvaFileItem.placeId != FVA_UNDEFINED_ID)
 		{
-			auto itPlace = fvaPlaceMap.find(fvaFileItem.placeId);
-			if (itPlace == fvaPlaceMap.end())
+			auto itPlace = m_fvaPlaceMap.find(fvaFileItem.placeId);
+			if (itPlace == m_fvaPlaceMap.end())
 			{
 				LOG_CRIT << "place item not found in fvaPlaces.csv, ID - " << fvaFileItem.placeId ;	
 				return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
 			}
 		
-			auto itPlaceType = fvaPlaceTypesMap(*itPlace.type);
-			if (itPlaceType == fvaPlaceTypesMap.end())
+			auto itPlaceType = m_fvaPlaceTypesMap(*itPlace.type);
+			if (itPlaceType == m_fvaPlaceTypesMap.end())
 			{
 				LOG_CRIT << "place type item not found in fvaPlaceTypes.csv, type - " << *itPlace.type ;	
 				return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
