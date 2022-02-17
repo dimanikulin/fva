@@ -77,13 +77,13 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 				return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
 			}
 		
-			auto itPlaceType = m_fvaPlaceTypesMap(*itPlace.type);
+			auto itPlaceType = m_fvaPlaceTypesMap(itPlace.value().type);
 			if (itPlaceType == m_fvaPlaceTypesMap.end())
 			{
-				LOG_CRIT << "place type item not found in fvaPlaceTypes.csv, type - " << *itPlace.type ;	
+				LOG_CRIT << "place type item not found in fvaPlaceTypes.csv, type - " << itPlace.value().type;	
 				return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
 			}
-			tags +=	m_fvaTagsTypeMap[1] + "/" + itPlaceType.Value() + "/" + itPlace.Value();  
+			tags +=	m_fvaTagsTypeMap[1] + "/" + itPlaceType.value() + "/" + itPlace.value().name;  
 		}
 	}
 

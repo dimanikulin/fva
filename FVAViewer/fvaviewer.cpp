@@ -202,7 +202,6 @@ void FVAViewer::populateGUITree( const fvaItem* fvaitem, QTreeWidgetItem* item,i
 				case FVA_FS_TYPE_AUDIO: 
 					treeWidgetItem->setIcon(0, m_audioIcon);
 				break;
-				
 			}
 		}
 		if ( item )

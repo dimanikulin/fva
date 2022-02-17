@@ -73,7 +73,6 @@ FVAOrganizerDevicePage::FVAOrganizerDevicePage(void)
 	connect (btnDct,SIGNAL(clicked()),this,SLOT(OnChangeDictPressed()));
 
         LOG_DEB << "constructed"; 
-
 }
 void FVAOrganizerDevicePage::setVisible(bool visible)
 {	
