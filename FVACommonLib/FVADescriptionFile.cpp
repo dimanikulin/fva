@@ -8,15 +8,12 @@
 
 #include "FVADescriptionFile.h"
 
-FVADescriptionFile::FVADescriptionFile(  ) 
+FVADescriptionFile::FVADescriptionFile( ) 
 {
 }
-
 FVADescriptionFile::~FVADescriptionFile( )
 {
-
 }
-
 FVA_EXIT_CODE FVADescriptionFile::load( const QString& path, QStringList& titles, DESCRIPTIONS_MAP& decsItems )
 {
 	if ( !openForRead( path ) )

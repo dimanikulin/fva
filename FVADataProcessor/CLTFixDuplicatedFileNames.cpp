@@ -14,8 +14,7 @@ CLTFixDuplicatedFileNames::CLTFixDuplicatedFileNames(const FvaConfiguration& cfg
 }
 
 FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute(const CLTContext& context)
-{
-        
+{        
 	// get the last dir leaf in input folder
 	QString dir = m_dir.dirName();
 

@@ -47,7 +47,6 @@ FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void)
 
 	connect( inputDirButton, SIGNAL( clicked() ), this, SLOT( OnFvaInputDirButtonPressed() ) );
         LOG_DEB << "constructed" ;
-
 }
 void FVAOrganizerEventCfgPage::OnFvaInputDirButtonPressed()
 {

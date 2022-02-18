@@ -36,7 +36,6 @@ class FVAViewer : public QDialog
 	Q_OBJECT
 
 	public:
-
 		/*!
 		 * \brief ctors-dtors section
 		 */
@@ -44,7 +43,6 @@ class FVAViewer : public QDialog
 		~FVAViewer();
 
 	private: // methods
-
 		/*!
 		 * \brief it recursivly expands GUI tree using fva tree
 		 * \param fvaitem - fvaitem to populate from
@@ -71,7 +69,6 @@ class FVAViewer : public QDialog
 		void fvaFilterTree(const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& defFilterDataTime);
 
 	private: // data
-
 		Ui::FVAViewerClass *		m_ui;
 
 		/*!
@@ -118,7 +115,6 @@ class FVAViewer : public QDialog
 		QIcon						m_locationIcon;
 
 	private slots:
-
 		void showItem( QTreeWidgetItem* item );
 
 		void editFileItem( QTreeWidgetItem* item );
