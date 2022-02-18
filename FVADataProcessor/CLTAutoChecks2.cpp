@@ -140,16 +140,25 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context)
 		}
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	}
+
+	// check for to little supported
 	m_fileCount[m_folder] = countSupportedFiles;
 	if ((countSupportedFiles < m_minCountSupportedFiles) && countSupportedFiles)
 	{
-		// check for to little supported 
-		LOG_CRIT << "too little supported files found in:" << m_folder;
-		m_Issues.push_back("FVA_ERROR_TOO_LITTLE_FILES," + m_folder + ",");
-		if (!context.readOnly)
-			return FVA_ERROR_TOO_LITTLE_FILES;
+		// get the last dir leaf in input folder
+		QString dirName = m_dir.dirName();
+		if (dirName.length()==4) // YEAR folder
+		{
+			LOG_DEB << "year folder:" << dirName << " skipping check for too little supported files";
+		}
+		else
+		{
+			LOG_CRIT << "too little supported files found in:" << m_folder;
+			m_Issues.push_back("FVA_ERROR_TOO_LITTLE_FILES," + m_folder + ",");
+			if (!context.readOnly)
+				return FVA_ERROR_TOO_LITTLE_FILES;
+		}
 	}
-
 	return FVA_NO_ERROR;
 }
 QMap< unsigned int, unsigned int > sizes;
