@@ -25,7 +25,6 @@ class RiffParser
 {
 
 	public: // methods
-
 		/*
 		 * \brief it opens file and makes premialiry checks for consitensy
 		 * \param error human-readable description of error if any
@@ -52,7 +51,6 @@ class RiffParser
 		bool convertToDate(const QString& strDate, QDateTime& value, const FvaFmtContext& ctx) const;
 
 	private: // methods
-
 		/*!
 		 * \brief it finds string type tag by its name inside of current node
 		 * \param tag - name of tag to be found
@@ -62,7 +60,6 @@ class RiffParser
 		bool processNode( const QString& tag, QString& value );
 
 	private: // data
-
 		/*!
 		 * file system object
 		 */
@@ -72,7 +69,6 @@ class RiffParser
 		 * stream object
 		 */
 		std::unique_ptr< QDataStream >	m_stream;
-
 };
 
 #endif // _RIFF_PARSER_H_

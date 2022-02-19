@@ -16,12 +16,10 @@ class FVADescriptionEditor : public QMainWindow
 	Q_OBJECT
 
 	public:
-
 		FVADescriptionEditor(bool forFolder, QWidget* parent = 0);
 		virtual ~FVADescriptionEditor();
 
 protected slots:
-
 	/*void OnNextBtnPressed();
 	void OnPrevBtnPressed();
 	void OnSaveBtnPressed();
@@ -29,7 +27,6 @@ protected slots:
 	void updateChecks(QTreeWidgetItem*, int);
 
 private: // methods
-
 	void updateGuiForItem( const QString& path );
 
 	void saveCurrentDescription();
@@ -37,7 +34,6 @@ private: // methods
 	void updateDictionaryGUI();
 
 private: // data
-
 	Ui::FVADescriptionEditorClass		ui;
 
 	bool					m_forFolder;

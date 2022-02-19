@@ -40,7 +40,6 @@ public:
 	virtual bool supportReadOnly() {return true;}
 
 private: // data
-
 	/*!
 	 * count of files in each subfolder
 	 */

@@ -28,13 +28,11 @@ public:
 	virtual bool supportReadOnly()	{	return true;								}
 
 protected:
-
 	bool checkIfParentFileExist(const QFileInfo& fileToCheck, QDateTime& renameDateTime, const QDateTime& prevRenameDateTime);
 
 	void fillRenameDateTimeFromLastModifiedIfValid(const QDir& dir, const QFileInfo& info, QDateTime& renameDateTime);
 
 private:
-
 	/*!
 	 * file pates to file name
 	 */

@@ -428,6 +428,17 @@ FVA_EXIT_CODE FVAFlowController::GetProblemFilesList(STR_LIST& fileListToFillUp)
 FVA_EXIT_CODE FVAFlowController::UpdateInputDirContent(const QString& inputDir,  QObject* obj)
 {
 	LOG_DEB << "Enter";
+
+	CLTContext context; 
+	context.dir 	= inputDir;
+	context.cmdType	= "CLTCSVGetTagsForFvaFiles";
+	FVA_EXIT_CODE exitCode	= m_dataProcessor.run(context, m_cfg);
+
+	// show error message box and return to calling function if previous operation failed
+	IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
+
+	LOG_DEB << "Exit";
+	return FVA_NO_ERROR;
 }
 
 FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput, QObject* obj)

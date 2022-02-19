@@ -28,11 +28,9 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 {
 	Q_OBJECT
 	public:
-
 		FVAOrganizerOutputDirPage();
 
 	protected:
-
 		/*!
 		* \brief calls a MoveInputDirToOutputDirs of class FVAFlowController
 		* \return it returns nothing
@@ -46,7 +44,6 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 		virtual bool	isComplete() const;
 
 	private slots:
-
 		/*!
 		* \brief opens QFileDialog to select DigiKam directory
 		* \return it returns nothing
@@ -60,7 +57,6 @@ class FVAOrganizerOutputDirPage : public QWizardPage
 		void OnGooglePhotoDirButtonClicked();
 
 	private: //data
-
 		/*!
 		* \brief to keep selected digiKam directory
 		*/

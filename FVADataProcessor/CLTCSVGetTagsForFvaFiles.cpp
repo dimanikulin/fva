@@ -10,6 +10,8 @@
 
 CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg)
 {
+	LOG_DEB << "cmd created, dir:" << m_folder;
+
 	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
 	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to load Common::RootDir" ;
 	RET_IF_RES_IS_ERROR
