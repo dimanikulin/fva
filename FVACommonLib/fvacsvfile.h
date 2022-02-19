@@ -21,7 +21,6 @@
 class CSVFile
 {
 	protected:
-
 		/*!
 		 * \brief ctors-dtors section
 		 */
@@ -29,7 +28,6 @@ class CSVFile
 		virtual ~CSVFile( );
 	
 	protected : // methods
-
 		/*!
 		 * \brief it open csv file for readnig 
 		 * \return it returns true if opening was successfull, otherwize it returns false 
@@ -70,7 +68,6 @@ class CSVFile
 		bool writeLine ( const QString& line );
 
 	private: // data
-
 		/*!
 		 * file system object
 		 */

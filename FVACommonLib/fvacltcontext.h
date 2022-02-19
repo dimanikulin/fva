@@ -17,7 +17,6 @@
 class CLTContext
 {
 	public: //data
-
 		/*!
 		 * \brief human - readable type of command
 		 */
@@ -49,7 +48,6 @@ class CLTContext
 		bool recursive;
 
 	public: //methods
-
 		/*!
 		 * \breif - default ctor
 		 */

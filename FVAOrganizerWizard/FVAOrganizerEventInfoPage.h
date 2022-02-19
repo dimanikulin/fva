@@ -36,11 +36,9 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 {
 	Q_OBJECT
 	public:
-
 		FVAOrganizerEventInfoPage();
 
 	protected:
-
 		/*!
 		* \brief calls a ProcessInputDirForEvent of class FVAFlowController
 		* \return it returns nothing
@@ -54,7 +52,6 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		virtual void setVisible(bool visible);
 
 	private slots:
-
 		/*!
 		* \brief to open input dir where processed files are in
 		* \return it returns nothing
@@ -79,8 +76,7 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		*/
 		void OnAddEventPressed();
 
-	private:
-	
+	private:	
 		/*!
 		* \brief to tell a user what to do here
 		*/

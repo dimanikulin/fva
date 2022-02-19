@@ -20,10 +20,8 @@ FVAPeopleListDlg::FVAPeopleListDlg(QVariantMap& dictionaries, const QString& dic
 
 	connect (ui.btnAddPeople,SIGNAL(clicked()),this,SLOT(OnAddPeopleBtnPressed()) );
 }
-
 FVAPeopleListDlg::~FVAPeopleListDlg()
 {
-
 }
 void FVAPeopleListDlg::updateGui()
 {

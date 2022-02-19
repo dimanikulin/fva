@@ -23,7 +23,6 @@
 class FvaConfiguration
 {
 	public: // methods
-
 		/*!
 		* \brief it loads configuration from file
 		* \param path - path to CSV file
@@ -87,7 +86,6 @@ class FvaConfiguration
 		FVA_EXIT_CODE setParam(const QString& paramName, QString paramValue);
 
 	private: // data
-
 		/*!
 		* \brief titles from CSV file that keeps whole the configuration
 		*/

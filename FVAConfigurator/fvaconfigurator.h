@@ -39,7 +39,6 @@ class FVAConfigurator : public QDialog
 	Q_OBJECT
 
 public:
-
 	FVAConfigurator(QWidget *parent = Q_NULLPTR);
 
 	/*!
@@ -48,7 +47,6 @@ public:
 	void accept();
 
 private:// methods
-
 	/*!
 	* \brief it loads common tab UI setting from FvaConfiguration
 	* \param cfg - FvaConfiguration to load from
@@ -86,7 +84,6 @@ private:// methods
 	void InitializeFormat2Tab(const FvaConfiguration& cfg);
 
 private: // data
-
 	Ui::FVAConfiguratorClass ui;
 
 	QTabWidget *tabs;

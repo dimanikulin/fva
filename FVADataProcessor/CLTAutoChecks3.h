@@ -39,7 +39,6 @@ public:
 	virtual bool supportReadOnly() { return true; }
 
 private:
-
 	/*!
 	* issues found, divided by type (in string format)
 	*/
