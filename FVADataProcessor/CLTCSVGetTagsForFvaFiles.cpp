@@ -66,6 +66,7 @@ CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg)
 FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileName, QString& tags)
 {
 	const QString TagTypeDelim = "~";
+        const QString TagDelim = "/";
 
 	// lets try to find it first
         fvaFile fvaFileItem;
@@ -95,7 +96,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 			LOG_CRIT << "place type item not found in fvaPlaceTypes.csv, type - " << itPlace.value().type;	
 			return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
 		}
-		tags +=	TagTypeDelim + m_fvaTagsTypeMap[1] + "/" + itPlaceType.value() + "/" + itPlace.value().name;  
+		tags +=	TagTypeDelim + m_fvaTagsTypeMap[1] + TagDelim + itPlaceType.value() + TagDelim + itPlace.value().name;  
 	}
 
 	if (m_SearchByAuthor
@@ -115,17 +116,17 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 			return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
 		}
 
-		tags +=	TagTypeDelim + m_fvaTagsTypeMap[2] + "/" ;
+		tags +=	TagTypeDelim + m_fvaTagsTypeMap[2] + TagDelim ;
 	}
 
 	if (m_SearchByEvent)
 	{
-		tags +=	TagTypeDelim + m_fvaTagsTypeMap[3] + "/";
+		tags +=	TagTypeDelim + m_fvaTagsTypeMap[3] + TagDelim;
 	}
 
 	if (m_SearchByEventReasonPeople)
 	{
-		tags +=	TagTypeDelim + m_fvaTagsTypeMap[4] + "/";
+		tags +=	TagTypeDelim + m_fvaTagsTypeMap[4] + TagDelim;
 	}
 
 	return FVA_NO_ERROR;
