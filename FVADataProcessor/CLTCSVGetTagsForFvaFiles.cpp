@@ -115,11 +115,11 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context)
 	Q_FOREACH(QFileInfo info, m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{
 		// just skip internal folder
-		if ( ( info.isDir() && info.fileName()[0] == '#' && info.fileName()[info.fileName().size()-1] == '#' )
+		if (	info.isDir() 
 			|| 
 			info.isFile() && !fvaIsFVAFile ( info.suffix().toUpper()))
 		{
-			LOG_DEB << "skipped internal fs object - " << info.absoluteFilePath() ;
+			LOG_DEB << "skipped dir or internal fs object - " << info.absoluteFilePath() ;
 			continue;
 		}
 		QString fvaTags;

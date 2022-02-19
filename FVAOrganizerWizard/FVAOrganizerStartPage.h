@@ -25,11 +25,9 @@ class FVAOrganizerStartPage : public QWizardPage
 {
 	Q_OBJECT
 public:
-
 	FVAOrganizerStartPage();
 
 protected slots:
-
 	/*!
 	* \brief it starts the Configurator UI
 	* \return it returns nothing
@@ -37,7 +35,6 @@ protected slots:
 	void OnCfgBtnPressed();
 
 private:
-
 	/*!
 	* \brief to tell the user the "Welcome words"
 	*/

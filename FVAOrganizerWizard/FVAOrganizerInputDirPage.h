@@ -28,11 +28,9 @@ class FVAOrganizerInputDirPage : public QWizardPage
 {
 	Q_OBJECT
 public:
-
 	FVAOrganizerInputDirPage();
 
 protected:
-
 	/*!
 	* \brief calls a PerformChecksForInputDir of class FVAFlowController
 	* \return it returns nothing
@@ -46,8 +44,6 @@ protected:
 	virtual bool isComplete() const;
 
 private slots:
-
-
 	/*!
 	* \brief opens QFileDialog to select input directory
 	* \return it returns nothing
@@ -55,7 +51,6 @@ private slots:
 	void OnDirButtonClicked();
 
 private:
-
 	/*!
 	* \brief to say where selected input directory
 	*/

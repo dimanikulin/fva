@@ -28,20 +28,16 @@ class FVAOrganizerEventCfgPage : public QWizardPage
 {
 	Q_OBJECT
 	public:
-
 		FVAOrganizerEventCfgPage();
 
-
 	private slots:
-
 		/*!
 		* \brief to open input dir where processed files are in
 		* \return it returns nothing
 		*/
 		void OnFvaInputDirButtonPressed();
 
-	private:
-	
+	private:	
 		/*!
 		* \brief to tell a user what to do here
 		*/
@@ -56,7 +52,6 @@ class FVAOrganizerEventCfgPage : public QWizardPage
 		* \brief to output the logging events
 		*/
 		QTextBrowser*	logOutput;
-
 };
 
 #endif // _FVA_ORG_EVENT_CFG_H_

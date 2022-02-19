@@ -29,7 +29,7 @@ class FVADictionaryEditor : public QDialog
 public:
 	FVADictionaryEditor(const QString& device ,QWidget *parent = 0);
 	
-	private slots:
+private slots:
 		/*!
 		* \brief to add a new person to a dictionary
 		* \return it returns nothing
@@ -55,7 +55,6 @@ public:
 		void OnAddEventBtnPressed();
 
 	private:
-
 		/*!
 		* \brief user interface QT implementation to work with
 		*/

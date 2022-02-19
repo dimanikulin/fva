@@ -27,11 +27,9 @@ class FVAOrganizerOrientPage : public QWizardPage
 {
 	Q_OBJECT
 public:
-
 	FVAOrganizerOrientPage();
 
-	private slots:
-
+private slots:
 	/*!
 	* \brief starts "/jpegr/jpegr.exe" to check orintations 
 	* \return it returns nothing
@@ -39,7 +37,6 @@ public:
 	void OnOrientationButtonClicked();
 
 private: // data 
-
 	/*!
 	* \brief to suggest a user to check orintation
 	*/
