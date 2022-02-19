@@ -89,6 +89,16 @@ private: // data
 	 * map of places 
 	 */
 	BASE_DICT_ITEM_MAP 			m_fvaPlaceMap;
+
+	/*!
+	 * map of devices 
+	 */
+	DEVICE_MAP				m_fvaDeviceMap;
+
+	/*!
+	 * map of people 
+	 */
+	PEOPLE_MAP				m_fvaPeopleMap;
 };
 
 #endif // _CMD_CSV_GET_TAGS_FOR_FVA_FILES_H_

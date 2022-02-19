@@ -54,11 +54,19 @@ CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg)
 	res = fvaLoadDictMapFromCsv(m_rootSWdir, m_fvaPlaceMap, "fvaPlaces.csv");
 	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to fvaLoadDictMapFromCsv fvaPlace.csv with erorr - " << res;
 	RET_IF_RES_IS_ERROR
-}
 
+	res = fvaLoadDeviceMapFromCsv(m_rootSWdir, m_fvaDeviceMap);
+	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to fvaLoadDeviceMapFromCsv with erorr - " << res;
+	RET_IF_RES_IS_ERROR
+
+	res = fvaLoadPeopleMapFromCsv(m_rootSWdir, m_fvaPeopleMap);
+	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to fvaLoadPeopleMapFromCsv with erorr - " << res;
+	RET_IF_RES_IS_ERROR
+}
 FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileName, QString& tags)
 {
 	const QString TagTypeDelim = "~";
+
 	// lets try to find it first
         fvaFile fvaFileItem;
 	auto itFvaFileItem = m_fvaFileInfo.find(fileName.toUpper());
@@ -71,31 +79,43 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 	}
 
 	//TODO make constant to tag types IDs
-
-	if (m_SearchByPlace)
+	if (m_SearchByPlace 
+		&& fvaFileItem.placeId != 0 && fvaFileItem.placeId != FVA_UNDEFINED_ID)
 	{
-		if (fvaFileItem.placeId != 0 && fvaFileItem.placeId != FVA_UNDEFINED_ID)
+		auto itPlace = m_fvaPlaceMap.find(fvaFileItem.placeId);
+		if (itPlace == m_fvaPlaceMap.end())
 		{
-			auto itPlace = m_fvaPlaceMap.find(fvaFileItem.placeId);
-			if (itPlace == m_fvaPlaceMap.end())
-			{
-				LOG_CRIT << "place item not found in fvaPlaces.csv, ID - " << fvaFileItem.placeId ;	
-				return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
-			}
-		
-			auto itPlaceType = m_fvaPlaceTypesMap.find(itPlace.value().type);
-			if (itPlaceType == m_fvaPlaceTypesMap.end())
-			{
-				LOG_CRIT << "place type item not found in fvaPlaceTypes.csv, type - " << itPlace.value().type;	
-				return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
-			}
-			tags +=	TagTypeDelim + m_fvaTagsTypeMap[1] + "/" + itPlaceType.value() + "/" + itPlace.value().name;  
+			LOG_CRIT << "place item not found in fvaPlaces.csv, ID - " << fvaFileItem.placeId ;	
+			return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
 		}
+		
+		auto itPlaceType = m_fvaPlaceTypesMap.find(itPlace.value().type);
+		if (itPlaceType == m_fvaPlaceTypesMap.end())
+		{
+			LOG_CRIT << "place type item not found in fvaPlaceTypes.csv, type - " << itPlace.value().type;	
+			return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
+		}
+		tags +=	TagTypeDelim + m_fvaTagsTypeMap[1] + "/" + itPlaceType.value() + "/" + itPlace.value().name;  
 	}
 
-	if (m_SearchByAuthor)
+	if (m_SearchByAuthor
+		&& fvaFileItem.deviceId != 0 && fvaFileItem.deviceId != FVA_UNDEFINED_ID)
 	{
-		tags +=	TagTypeDelim + m_fvaTagsTypeMap[2] + "/";
+		auto itDevice = m_fvaDeviceMap.find(fvaFileItem.deviceId);
+		if (itDevice == m_fvaDeviceMap.end())
+		{
+			LOG_CRIT << "device not found in fvaDevices.csv, ID - " << fvaFileItem.deviceId ;	
+			return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
+		}
+
+		auto itPerson = m_fvaPeopleMap.find(itDevice.value().ownerId);
+		if (itPerson == m_fvaPeopleMap.end())
+		{
+			LOG_CRIT << "person not found in fvaPeople.csv, ID - " << itDevice.value().ownerId ;	
+			return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
+		}
+
+		tags +=	TagTypeDelim + m_fvaTagsTypeMap[2] + "/" ;
 	}
 
 	if (m_SearchByEvent)
