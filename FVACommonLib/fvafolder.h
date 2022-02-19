@@ -17,7 +17,6 @@
 class fvaFolder
 {
 	public:
-
 		fvaFolder() { eventId = 0;};
 		virtual ~fvaFolder() {};
 

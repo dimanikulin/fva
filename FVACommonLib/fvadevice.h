@@ -19,7 +19,6 @@
 class fvaDevice
 {
 	public:
-
 		/*
 		 * device identifier from device dictionary
 		 */

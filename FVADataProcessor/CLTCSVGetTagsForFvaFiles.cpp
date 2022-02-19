@@ -13,43 +13,46 @@ CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg)
 	LOG_DEB << "cmd created, dir:" << m_folder;
 
 	FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
-	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to load Common::RootDir" ;
+	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to load Common::RootDir" ;
 	RET_IF_RES_IS_ERROR
 
 	// ask configuration if we need to search by certain serach attribute
 	res = cfg.getParamAsBoolean("Search::Place", m_SearchByPlace);
-	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to getParamAsBoolean(Search::Place)" ;
+	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to getParamAsBoolean(Search::Place)" ;
 	RET_IF_RES_IS_ERROR
 
 	// ask configuration if we need to search by device/author
 	res = cfg.getParamAsBoolean("Search::Author", m_SearchByAuthor);
-	if (res !=FVA_NO_ERROR)  LOG_DEB << "Failed to getParamAsBoolean(Search::Author)" ;
+	if (res !=FVA_NO_ERROR)  LOG_CRIT << "Failed to getParamAsBoolean(Search::Author)" ;
 	RET_IF_RES_IS_ERROR
 
 	// ask configuration if we need to search by event
 	res = cfg.getParamAsBoolean("Search::Event", m_SearchByEvent);
-	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to getParamAsBoolean(Search::Event)" ;
+	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to getParamAsBoolean(Search::Event)" ;
 	RET_IF_RES_IS_ERROR
 
 	// ask configuration if we need to search by EventReasonPeople
 	res = cfg.getParamAsBoolean("Search::EventReasonPeople", m_SearchByEventReasonPeople);
-	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to getParamAsBoolean(Search::EventReasonPeople)" ;
+	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to getParamAsBoolean(Search::EventReasonPeople)" ;
 	RET_IF_RES_IS_ERROR
 
-	res = fvaLoadFvaFileInfoFromCsv(m_rootSWdir, m_fvaFileInfo, "fvaFileN.csv");
-	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadFvaFileInfoFromCsv" ;
+	res = fvaLoadFvaFileInfoFromCsv(m_rootSWdir, m_fvaFileInfo, "fvaFileN.csv");	
+	if (res !=FVA_NO_ERROR) 
+		LOG_CRIT << "Failed to fvaLoadFvaFileInfoFromCsv" ;
+	else
+		LOG_CRIT << "fvaLoadFvaFileInfoFromCsv loaded " << m_fvaFileInfo.size() << "items" ;
 	RET_IF_RES_IS_ERROR
 
 	res = fvaLoadSimpleMapFromCsvByItemType(m_rootSWdir, m_fvaTagsTypeMap, "fvaTagTypes.csv");
-	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadSimpleMapFromCsvByItemType" ;
+	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to fvaLoadSimpleMapFromCsvByItemType" ;
 	RET_IF_RES_IS_ERROR
 
 	res = fvaLoadSimpleMapFromCsvByItemType(m_rootSWdir, m_fvaPlaceTypesMap, "fvaPlaceTypes.csv");
-	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadSimpleMapFromCsvByItemType fvaPlaceTypes.csv" ;
+	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to fvaLoadSimpleMapFromCsvByItemType fvaPlaceTypes.csv" ;
 	RET_IF_RES_IS_ERROR
 
 	res = fvaLoadDictMapFromCsv(m_rootSWdir, m_fvaPlaceMap, "fvaPlaces.csv");
-	if (res !=FVA_NO_ERROR) LOG_DEB << "Failed to fvaLoadDictMapFromCsv fvaPlace.csv" ;
+	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to fvaLoadDictMapFromCsv fvaPlace.csv" ;
 	RET_IF_RES_IS_ERROR
 }
 
@@ -62,7 +65,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 		fvaFileItem = *itFvaFileItem;
 	else
 	{
-		LOG_CRIT << "fva item not found in fvaFile.csv - " << fileName ;	
+		LOG_CRIT << "fva item not found in fvaFileN.csv - " << fileName ;	
 		return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;	
 	}
 

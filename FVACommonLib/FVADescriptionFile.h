@@ -19,8 +19,7 @@ typedef QMap< int, QStringList > DESCRIPTIONS_MAP;
  */
 class FVADescriptionFile : 	public CSVFile
 {
-	public:
-	
+	public:	
 		/*!
 		 * \brief ctors-dtors section
 		 */

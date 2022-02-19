@@ -29,7 +29,6 @@ public:
 	virtual bool supportReadOnly()	{ return true; }
 
 private: // data
-
 	/*!
 	* path to root fva sw folder
 	*/

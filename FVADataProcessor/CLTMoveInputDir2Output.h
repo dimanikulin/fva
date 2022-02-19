@@ -27,11 +27,9 @@ public:
 	virtual bool supportReadOnly() { return true; }
 
 private: // data
-
 	/*!
 	* path to root fva sw folder
 	*/
 	QString							m_rootSWdir;
-
 };
 #endif // _CLT_MERGE_1_DAY_EVENT_DIR_H_
