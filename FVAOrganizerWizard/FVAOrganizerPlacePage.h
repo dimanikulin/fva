@@ -33,9 +33,8 @@ class QTreeWidgetItem;
 class FVAOrganizerPlacePage : public QWizardPage
 {
 	Q_OBJECT
-public:
-
-	FVAOrganizerPlacePage();
+	public:
+		FVAOrganizerPlacePage();
 
 	protected:
 		/*!

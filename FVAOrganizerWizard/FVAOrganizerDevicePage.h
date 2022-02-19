@@ -33,7 +33,6 @@ class FVAOrganizerDevicePage : public QWizardPage
 {
 	Q_OBJECT
 public:
-
 	FVAOrganizerDevicePage();
 
 protected:

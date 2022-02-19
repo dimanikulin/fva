@@ -23,7 +23,6 @@
  */
 class RiffParser
 {
-
 	public: // methods
 		/*
 		 * \brief it opens file and makes premialiry checks for consitensy

@@ -52,6 +52,5 @@ class CLTContext
 		 * \breif - default ctor
 		 */
 		CLTContext() : cmdType(""), dir(""), readOnly(false), custom(""), recursive(true){}
-
 };
 #endif // CLT_CONTEXT_H_

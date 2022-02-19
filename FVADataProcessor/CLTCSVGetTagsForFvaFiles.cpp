@@ -116,7 +116,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 			return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
 		}
 
-		tags +=	TagTypeDelim + m_fvaTagsTypeMap[2] + TagDelim + m_fvaPeopleMap.value().fullName;
+		tags +=	TagTypeDelim + m_fvaTagsTypeMap[2] + TagDelim + itPerson.value().fullName;
 	}
 
 	if (m_SearchByEvent)

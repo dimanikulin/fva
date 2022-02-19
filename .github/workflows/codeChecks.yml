@@ -1,7 +1,7 @@
 name: "Code Checks"
 
 on:
-  #push: 
+  #push:
   #  branches: [ master ]
   pull_request:
     branches: [ master ]
@@ -14,19 +14,19 @@ jobs:
      strategy:
          fail-fast: false
      steps:
-        
+
       - name: Checkout FVA repository
         uses: actions/checkout@v2 #v2 to checkout submodules as well
         with:
             submodules: 'true'
-      
+
       - name: Cpp Code check
         uses: deep5050/cppcheck-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
           check_library: enable
           max_ctu_depth: 5
-                  
+
       - name: Upload Cpp Code check Report to git hub storage to use later
         uses: actions/upload-artifact@v1
         with:
