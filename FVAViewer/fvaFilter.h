@@ -80,8 +80,6 @@ class fvaFilter
 			}
 			return false;
 		}
-
-
 };
 
 #endif // FVAFILTER_H

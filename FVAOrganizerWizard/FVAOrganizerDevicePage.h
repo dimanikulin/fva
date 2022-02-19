@@ -37,7 +37,6 @@ public:
 	FVAOrganizerDevicePage();
 
 protected:
-
 	/*!
 	* \brief calls a PerformChecksForInputDir of class FVAFlowController
 	* \return it returns nothing
@@ -57,7 +56,6 @@ protected:
 	virtual void	setVisible(bool visible);
 
 protected slots:
-
 	/*!
 	* \brief to call dictionary editor
 	* \return it returns nothing
@@ -65,7 +63,6 @@ protected slots:
 	void OnChangeDictPressed();
 
 private:
-
 	/*!
 	* \brief device id matched
 	*/

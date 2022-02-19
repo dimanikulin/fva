@@ -22,7 +22,6 @@
 class CmdLineBaseTask
 {
 	public:
-
 		/*!
 		 * \brief ctors-dtors section
 		 * \param argument - command line argument
@@ -50,14 +49,12 @@ class CmdLineBaseTask
 		virtual bool supportReadOnly() {return false; }; 
 
 	protected:
-
 		/*!
 		 * \brief ctors-dtors section
 		 */
 		CmdLineBaseTask(){};
 	
 	protected: // data
-
 		/*!
 		 * it keeps folder name to work with
 		 */

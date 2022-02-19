@@ -104,7 +104,6 @@ class FVAOrganizerWizard : public QWizard
 		int matchedDeviceID() { return m_matchedDeviceID; }
 
 	private:
-
 		/*!
 		* \brief user interface QT implementation to work with
 		*/

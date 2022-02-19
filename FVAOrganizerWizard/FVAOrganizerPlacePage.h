@@ -38,7 +38,6 @@ public:
 	FVAOrganizerPlacePage();
 
 	protected:
-
 		/*!
 		* \brief calls a TODO FIX of class FVAFlowController
 		* \return it returns nothing
@@ -52,7 +51,6 @@ public:
 		virtual void setVisible(bool visible);
 
 	private slots:
-
 		/*!
 		* \brief to open input dir where processed files are in
 		* \return it returns nothing
@@ -77,9 +75,7 @@ public:
 		*/
 		void updateChecks(QTreeWidgetItem*, int);
 
-
-	private:
-	
+	private:	
 		/*!
 		* \brief to tell a user what to do here
 		*/
@@ -119,7 +115,6 @@ public:
 		* \brief maps input dir structure (folder names) to place id got from fvaPlaces.csv
 		*/
 		DIR_2_ID_MAP		dir2PlaceMap;
-
 };
 
 
