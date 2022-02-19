@@ -87,6 +87,7 @@ As soon as any code change is pushed to the GitHub, [main workflow](.github/work
 ## Code checks
 * [CodeQL](.github/workflows/codeqlanalysis.yml)
 * [codeChecks](.github/workflows/codeChecks.yml)
+* [codefactor](https://www.codefactor.io/repository/github/dimanikulin/fva/issues)
 
 ## License
 See the [LICENSE](./LICENSE) file for licensing information.
