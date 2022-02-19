@@ -23,9 +23,8 @@ public:
 	* \brief returns command name
 	* \return returns command name as a string
 	*/
-	static QString Name()			{	return "CLTCreateDirStructByDeviceName";				}
-	virtual bool supportReadOnly()	{	return false;											}
-
+	static QString Name()				{	return "CLTCreateDirStructByDeviceName";}
+	virtual bool supportReadOnly()			{	return false;				}
 }; 
 
 #endif // _CLT_CREATE_DIR_STRUCTURE_BY_DEVICE_NAMES_H_

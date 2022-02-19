@@ -22,18 +22,15 @@ public:
 	Ui::FVAPeopleListDlg& getUI() { return ui; };
 
 protected slots:
-
 	void OnAddPeopleBtnPressed();
 
 private:
-
 	void updateGui();
 
 	Ui::FVAPeopleListDlg ui;
 
 	QVariantMap&	m_dictionaries; 
-	QString			m_dictPath;
-
+	QString		m_dictPath;
 };
 
 #endif // FVAPEOPLELISTDLG_H

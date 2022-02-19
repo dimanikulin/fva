@@ -27,9 +27,7 @@ public:
 	static QString Name(){return "CLTPrintFSStructure";}
 	virtual bool supportReadOnly () {return false;}
 
-private: // data
-
-	
+private: // data	
 	/*!
 	 * \brief file to output the file stucture info into
 	 */

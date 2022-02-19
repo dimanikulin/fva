@@ -19,7 +19,6 @@
 class CLTCheckLocation : public CmdLineBaseTask
 {
 public:
-
 	virtual ~CLTCheckLocation(); 
 	virtual FVA_EXIT_CODE execute(const CLTContext& context);
 
@@ -31,11 +30,9 @@ public:
 	virtual bool supportReadOnly() { return true; }
 
 private:
-
 	/*!
 	* issues found
 	*/
 	QList<QString>					m_Issues;
-
 };
 #endif // _CLT_CHECK_LOCATION_H_

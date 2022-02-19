@@ -12,9 +12,7 @@
 
 class fvaPeopleRelation
 {
-
 public:
-
 	/*!
 	 * identifier from a dictionary
 	 */
@@ -29,7 +27,6 @@ public:
 	 * relation Type from dictionary (fvaRelationTypes.csv) - full form
 	 */
 	int relationType;
-
 };
 
 typedef QMap<int, fvaPeopleRelation> FVA_PEOPLE_RELATION_MAP;

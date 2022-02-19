@@ -17,9 +17,7 @@
  */
 class FvaFmtContext
 {
-
-	public: // data 
-	
+	public: // data 	
 		/*!
 		 * \brief format a dir name as a date
 		 */
@@ -61,7 +59,6 @@ class FvaFmtContext
 		QString		riffDateTime2;
 
 	public: //methods
-
 		/*!
 		* \brief it fills up the formatting context from configuration
 		* \param cfg - Fva Configuration to fill up from

@@ -18,7 +18,6 @@
 class DeviceContext
 {
 	public:
-
 		/*!
 		 * \brief human - readable device name
 		 */

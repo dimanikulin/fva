@@ -23,11 +23,9 @@ class FVAOrganizerDonePage : public QWizardPage
 {
 	Q_OBJECT
 	public:
-
 		FVAOrganizerDonePage();
 
 	private:
-
 		/*!
 		* \brief to tell the user the "Last words"
 		*/

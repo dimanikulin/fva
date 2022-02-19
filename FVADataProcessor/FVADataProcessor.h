@@ -22,8 +22,6 @@
 class FVADataProcessor : public CmdLineBaseExecutor
 {
 private: // method
-
 	std::unique_ptr<CmdLineBaseTask> createTaskByName(const CLTContext& context, const FvaConfiguration& cfg);
-
 };
 #endif //_FVA_DATA_PROCESSOR_H_

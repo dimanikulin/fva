@@ -5,7 +5,6 @@
 * \version 0.29
 * \date  2014-2021
 */
-
 #ifndef _CMD_LINE_BASE_EXECUTOR_H_
 #define _CMD_LINE_BASE_EXECUTOR_H_
 
@@ -14,14 +13,12 @@
 #include "fvaconfiguration.h"
 #include "fvacltcontext.h"
 
-
 /*!
 * \brief performs execution for command line tasks 
 */
 class CmdLineBaseExecutor
 {
 public:
-
 	/*!
 	* \brief performs running of command
 	* \param context - one command parameters (environment)
@@ -31,7 +28,6 @@ public:
 	FVA_EXIT_CODE run(const CLTContext& context, const FvaConfiguration& cfg);
 
 private: // method
-
 	/*!
 	* \brief factory to create the tasks
 	* \param context - one command parameters (environment)
@@ -39,6 +35,5 @@ private: // method
 	* \return pointer to created task or null if type is not supported
 	*/
 	virtual std::unique_ptr<CmdLineBaseTask> createTaskByName(const CLTContext& context, const FvaConfiguration& cfg) = 0;
-
 };
 #endif // _CMD_LINE_BASE_EXECUTOR_H_

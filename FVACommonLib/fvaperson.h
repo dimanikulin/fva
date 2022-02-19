@@ -16,7 +16,6 @@
 class fvaPerson
 {
 public:
-
 	/*!
 	 * people identifier from a dictionary
 	 */
