@@ -24,6 +24,7 @@
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/dimanikulin/fva">
   <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/dimanikulin/fva">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/dimanikulin/fva">  
+  <a href="https://www.codefactor.io/repository/github/dimanikulin/fva"><img src="https://www.codefactor.io/repository/github/dimanikulin/fva/badge" alt="CodeFactor" /></a>
   </br>
   <a href="https://github.com/dimanikulin/fva/projects/4"><img src="https://img.shields.io/badge/roadmap-view-d90368"> </a>
   <img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/dimanikulin/fva">
