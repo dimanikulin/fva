@@ -18,12 +18,12 @@
 |16 | Multimedia information retrieval | | | Wikipedia |[Web](https://en.wikipedia.org/wiki/Multimedia_information_retrieval)|
 |17 | Image retrieval      | | | Wikipedia |[Web](https://en.wikipedia.org/wiki/Image_retrieval)|
 |18 | Google Photos        | | | Wikipedia|[Web](https://en.wikipedia.org/wiki/Google_Photos)|
-|19 | | | | |[Web]() |
-|20 | | | | |[Web]() |
-|21 | | | | |[Web]() |
-|22 | | | | |[Web]() |
-|23 | | | | |[Web]() |
-|24 | | | | |[Web]() |
+|19 | Tour Mylio           | | |Mylio |[Web](https://mylio.com/) |
+|20 | A Beginner’s Guide To Google Photos | | July 08, 2020 |Sue Waters |[Web](https://www.theedublogger.com/google-photos-guide/) |
+|21 | Three Cheers for Embedded Metadata| | February 28, 2012|Lynda Schmitz Funrig |[Web](https://siarchives.si.edu/blog/three-cheers-embedded-metadata) |
+|22 | Best Practices and Tools to Create Archival Image Metadata| |June 28, 2016 |Elena Toffalori |[Web](https://digitalarch.org/blog/2017/4/7/ykag6k2fvln7g1j02923n0c7zdrryg) |
+|23 | Resolving and avoiding metadata conflicts| Lynda is now LinkedIn| | |[Web](https://www.lynda.com/Lightroom-tutorials/Resolving-avoiding-metadata-conflicts/447237/485677-4.html) |
+|24 | Adding Descriptions to Digital Photos | |October 28, 2011|Mike Ashenfelder |[Web](https://blogs.loc.gov/thesignal/2011/10/mission-possible-an-easy-way-to-add-descriptions-to-digital-photos/) |
 |25 | | | | |[Web]() |
 |26 | | | | |[Patent]()|
 |27 | | | | |[Web]() |
