@@ -1,4 +1,3 @@
-#based on https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/
 name: Main flow
 
 on:
@@ -117,7 +116,6 @@ jobs:
         restore-keys: |
           ${{ matrix.config.name }}-ccache-
 
-    # https://github.com/jurplel/install-qt-action
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
@@ -167,7 +165,6 @@ jobs:
         if (NOT result EQUAL 0)
           message(FATAL_ERROR "Bad exit status")
         endif()
-
 
     - name: Build the sources
       shell: cmake -P {0}
