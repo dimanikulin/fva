@@ -11,7 +11,11 @@
   <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/dimanikulin/fva?include_prereleases">
   <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/dimanikulin/fva/total">
   <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date-pre/dimanikulin/fva">
+  </br>
   <a href="https://github.com/dimanikulin/fva/actions/workflows/main.yml"><img src="https://github.com/dimanikulin/fva/actions/workflows/main.yml/badge.svg?branch=master" alt="Tests"/></a>
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/dimanikulin/fva">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/dimanikulin/fva">  
+  <a href="https://www.codefactor.io/repository/github/dimanikulin/fva"><img src="https://www.codefactor.io/repository/github/dimanikulin/fva/badge" alt="CodeFactor" /></a>
   </br>
   <img alt="GitHub issues" src="https://img.shields.io/github/issues/dimanikulin/fva">
   <img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/dimanikulin/fva">
@@ -22,9 +26,6 @@
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/dimanikulin/fva">
   <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/dimanikulin/fva">
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/dimanikulin/fva">
-  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/dimanikulin/fva">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/dimanikulin/fva">  
-  <a href="https://www.codefactor.io/repository/github/dimanikulin/fva"><img src="https://www.codefactor.io/repository/github/dimanikulin/fva/badge" alt="CodeFactor" /></a>
   </br>
   <a href="https://github.com/dimanikulin/fva/projects/4"><img src="https://img.shields.io/badge/roadmap-view-d90368"> </a>
   <img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/dimanikulin/fva">
@@ -35,13 +36,10 @@
 ## Quick Links
 - [Description](#description)
 - [Features](#features)
-- [Roadmap](#roadmap)
-- [Install](#install)
-- [Support/Questions](#support)
-- [Community support](#community-support)
+- [User documentation](#user-doc)
+- [Documentation](#documentation)
 - [Building the code](#building-the-code)
 - [Contributing](#contributing)
-- [Documentation](#documentation)
 - [Stay in touch](#stay-in-touch)
 - [Code checks](#Code-check)
 - [License](./LICENSE.md)
@@ -57,21 +55,18 @@ into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology
 - **Multimedia metadata gaps identification:** It identifies the gaps and tryies to fill it up.
 - **Text search:** It is possible to search by events, photo author, places, people using text search   
 - **Configuration:** The system flow depends on configuration.
+TBD to add icons of supported IR multimedia systems
 
-## Roadmap
-Here is a link to a [roadmap](https://github.com/dimanikulin/fva/projects/4).
-
-## Install
+## User documentation
 You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for 
 Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it on environment you would like to have it running on.
 
-## Support
-* An author does not provide any support for now (because the development is in hot stage) but you can ask him on [Twitter](https://twitter.com/DmytroNikulin) or [Telegram](https://t.me/dimanikulin79) 
-
-## Community support
-* [GitHub](https://github.com/dimanikulin/fva) (Bug reports, Contributions)
-* TBD
+## Documentation
+* Please see [link](https://dimanikulin.github.io/fva/) for the documentation:
+* To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow. TBD - describe how 
+* Here is a link to a [roadmap](https://github.com/dimanikulin/fva/projects/4).
+* Here is a link to a [code documentation requirements](./CODEDOCUMENTATION.md)
 
 ## Building the code
 For building the code you don't need to have any local environment to set up. 
@@ -83,16 +78,19 @@ As soon as any code change is pushed to the GitHub, [main workflow](.github/work
 You are always welcome to contribute! There are many items to help author in. 
 When commit please don't forget about putting the issue ID there. 
 
-## Documentation
-* Please see [link](https://dimanikulin.github.io/fva/) for the documentation:
-* To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow. TBD - describe how 
-
 ## Stay in touch
-* Author Twitter - [Dmytro Nikulin](https://twitter.com/DmytroNikulin)
-* Author LinkedIn - [LinkedId](https://www.linkedin.com/in/dimanikulin/)
-* Community Twitter - [@TBD](https://twitter.com/TBD)
+An author does not provide any support for now, because the development is in hot stage. 
+But you can ask him on:  
+* [Author Twitter](https://twitter.com/DmytroNikulin)
+* [Author LinkedIn](https://www.linkedin.com/in/dimanikulin/)
+* [Author Telegram](https://t.me/dimanikulin79) 
+* [Community Twitter](https://twitter.com/TBD)
+
+You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/fva/issues) to request a feature or report a bug.
+[Here](https://github.com/dimanikulin/fva/discussions) you can start a discussion. 
 
 ## Code checks
+Currently there are following automated checks to verify if the code meets code quality requirements:
 * [CodeQL](.github/workflows/codeqlanalysis.yml)
 * [codeChecks](.github/workflows/codeChecks.yml)
 * [codefactor](https://www.codefactor.io/repository/github/dimanikulin/fva/issues)
