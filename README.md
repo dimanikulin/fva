@@ -39,6 +39,7 @@
 - [Install](#install)
 - [Support/Questions](#support)
 - [Community support](#community-support)
+- [Building the code](#building-the-code)
 - [Contributing](#contributing)
 - [Documentation](#documentation)
 - [Stay in touch](#stay-in-touch)
@@ -51,10 +52,10 @@ into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology
 
 ## Features
 - **Organizing the mutlimedia:** Organizing the multimedia data to be more searchable
-- **Configuration:** The system flow depends on configuration.
 - **Integration:** The system is integrated with online/offline Multimedia IR systems like digiKam, Google Photo, etc.
 - **Multimedia metadata gaps identification:** It identifies the gaps and tryies to fill it up.
 - **Text search:** It is possible to search by events, photo author, places, people using text search   
+- **Configuration:** The system flow depends on configuration.
 
 ## Roadmap
 Here is a link to a [roadmap](https://github.com/dimanikulin/fva/projects/4).
@@ -71,10 +72,14 @@ Then you just need to install it on environment you would like to have it runnin
 * [GitHub](https://github.com/dimanikulin/fva) (Bug reports, Contributions)
 * TBD
 
+## Building the code
+For building the code you don't need to have any local environment to set up. 
+1. So building the code is already done by github. I used [this](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/) to help me to set up main GitHub action flow and [this](https://github.com/jurplel/install-qt-action) to set up QT.    
+As soon as any code change is pushed to the GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to test.
+2. But if you wish you can use [MS studio solution](./FVASW.sln) to build locally on  Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
+
 ## Contributing
 You are always welcome to contribute! There are many items to help author in. 
-For building the code you don't need to have any local environment to set up. It is already done by github. I used [this](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/) to help me to set up main GitHub action flow and [this](https://github.com/jurplel/install-qt-action) to set up.    
-As soon as any code change is pushed to the GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to test.
 When commit please don't forget about putting the issue ID there. 
 
 ## Documentation
