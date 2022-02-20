@@ -15,19 +15,19 @@
 |13 | Multimedia Data      | | 2009 | Ramesh Jain | [Web](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) |
 |14 | How Many Photos Will Be Taken in 2021? |After a pandemic-related decline, photo-taking is expected to surge back up in 2021| March 11, 2021 |Nina Pantic|[Web](https://blog.mylio.com/how-many-photos-will-be-taken-in-2021-stats/)|
 |15 | Information retrieval| | |Wikipedia |[Web](https://en.wikipedia.org/wiki/Information_retrieval)|
-|16 | | | | | |
-|17 | | | | | |
-|18 | | | | | |
-|19 | | | | | |
-|20 | | | | | |
-|21 | | | | | |
-|22 | | | | | |
-|23 | | | | | |
-|24 | | | | | |
-|25 | | | | | |
-|26 | | | | | |
-|27 | | | | | |
-|28 | | | | | |
-|29 | | | | | |
-|30 | | | | | |
-|31 | | | | | |
+|16 | Multimedia information retrieval | | | Wikipedia |[Web](https://en.wikipedia.org/wiki/Multimedia_information_retrieval)|
+|17 | Image retrieval      | | | Wikipedia |[Web](https://en.wikipedia.org/wiki/Image_retrieval)|
+|18 | Google Photos        | | | Wikipedia|[Web](https://en.wikipedia.org/wiki/Google_Photos)|
+|19 | | | | |[Web]() |
+|20 | | | | |[Web]() |
+|21 | | | | |[Web]() |
+|22 | | | | |[Web]() |
+|23 | | | | |[Web]() |
+|24 | | | | |[Web]() |
+|25 | | | | |[Web]() |
+|26 | | | | |[Patent]()|
+|27 | | | | |[Web]() |
+|28 | | | | |[Web]() |
+|29 | | | | |[Web]() |
+|30 | | | | |[Web]() |
+|31 | | | | |[Web]() |
