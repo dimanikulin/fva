@@ -24,10 +24,11 @@
 |22 | Best Practices and Tools to Create Archival Image Metadata| |June 28, 2016 |Elena Toffalori |[Web](https://digitalarch.org/blog/2017/4/7/ykag6k2fvln7g1j02923n0c7zdrryg) |
 |23 | Resolving and avoiding metadata conflicts| Lynda is now LinkedIn| | |[Web](https://www.lynda.com/Lightroom-tutorials/Resolving-avoiding-metadata-conflicts/447237/485677-4.html) |
 |24 | Adding Descriptions to Digital Photos | |October 28, 2011|Mike Ashenfelder |[Web](https://blogs.loc.gov/thesignal/2011/10/mission-possible-an-easy-way-to-add-descriptions-to-digital-photos/) |
-|25 | | | | |[Web]() |
-|26 | | | | |[Patent]()|
-|27 | | | | |[Web]() |
-|28 | | | | |[Web]() |
-|29 | | | | |[Web]() |
-|30 | | | | |[Web]() |
-|31 | | | | |[Web]() |
+|25 | Metadata Templates | | |Peter Krogh |[Web](https://dpbestflow.org/metadata/metadata-templates) |
+|26 | Metadata generation for image files | | 2013-06-25 |Google|[Patent](https://patents.google.com/patent/US8473525)|
+|27 | Google code style | | |Google |[Web](https://google.github.io/styleguide/)|
+|28 | Independent Course for Organizing Your Digital Photos | | 2021 | organizepictures |[Web](https://www.organizepictures.com/organize-digital-photos-course) |
+|29 | The Massive Growth in Unstructured Data | | Dec. 2012 |IDC The Digital Universe |[Web](https://www.researchgate.net/figure/The-Massive-Growth-in-Unstructured-Data-Source-IDC-The-Digital-Universe-Dec-2012_fig1_322058724) |
+|30 | Apple Photos | | | Wikipedia |[Web](https://en.wikipedia.org/wiki/Apple_Photos) |
+|31 | Synology Moments | |2021 |Synology |[Web](https://www.synology.com/en-global/dsm/feature/moments)|
+|32 | | | | |[Web]()|
