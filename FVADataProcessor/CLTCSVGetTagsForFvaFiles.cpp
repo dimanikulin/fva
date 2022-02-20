@@ -124,9 +124,19 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 		tags +=	TagTypeDelim + m_fvaTagsTypeMap[3] + TagDelim;
 	}
 
-	if (m_SearchByEventReasonPeople)
-	{
-		tags +=	TagTypeDelim + m_fvaTagsTypeMap[4] + TagDelim;
+	if (m_SearchByEventReasonPeople && !fvaFileItem.eventPeopleIds.IsEmpty())
+	{		
+		for (auto it = fvaFileItem.eventPeopleIds.begin();it != fvaFileItem.eventPeopleIds.begin(); ++it)
+		{
+			auto itPerson = m_fvaPeopleMap.find(*it);
+			if (itPerson == m_fvaPeopleMap.end())
+			{
+				LOG_CRIT << "person not found in fvaPeople.csv, ID - " << *it ;	
+				return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
+			}
+
+			tags +=	TagTypeDelim  + m_fvaTagsTypeMap[4]  + TagDelim + itPerson.value().fullName;	
+		}		
 	}
 
 	return FVA_NO_ERROR;
