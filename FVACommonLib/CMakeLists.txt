@@ -12,7 +12,7 @@ add_library(fvalib
   fvaperson.h
   fvaItem.cpp
   FVABaseDictionaryItem.h
-  FVAREvent.h
+  FVAEvent.h
 
   CmdLineBaseExecutor.h
   CmdLineBaseTask.h
