@@ -183,7 +183,7 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 	LOG_DEB << "enter";
 	pMainWnd->connect(pTreeWidget,
 		SIGNAL(itemChanged(QTreeWidgetItem*, int)),
-		pMainWnd,
+	pMainWnd,
 		SLOT(updateChecks(QTreeWidgetItem*, int)));
 #ifdef _SHOW_ICONS_
 	QIcon	personIcon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/person.png");
@@ -192,10 +192,6 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 #endif // _SHOW_ICONS_
 	FVA_SIMPLE_MAP RelationsMap;
 	FVA_EXIT_CODE res = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, RelationsMap, "fvaRelationTypes.csv");
-	RET_RES_IF_RES_IS_ERROR
-
-	FVA_PEOPLE_RELATION_MAP  peopleRelationsMap;
-	res = fvaLoadPeopleRelationMapFromCsv(rootSWdir, peopleRelationsMap);
 	RET_RES_IF_RES_IS_ERROR
 
 	DEVICE_MAP deviceMap;
@@ -215,77 +211,57 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 #endif // _SHOW_ICONS_
 		treeWidgetItem->setFlags(treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
 		treeWidgetItem->setCheckState(0, Qt::Unchecked);
-		for (auto index = peopleRelationsMap.begin(); index != peopleRelationsMap.end(); ++index)
+		for (auto indexp = peopleMap.begin(); indexp != peopleMap.end(); ++indexp)
 		{
-			int IDc = index->Id;
-			int IDrel = index->relationType;
-			if (IDrel != ID)
+			int IDp = indexp->Id;
+			if (IDp == 0)
 				continue;
 
-			QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
-			childWidgetItem->setText(0, index->name);
+			/*int IDrelp = indexp->relationId;
+			if (IDrelp != IDc)
+				continue;
+
+			QTreeWidgetItem* personWidgetItem = new QTreeWidgetItem;
+
+			personWidgetItem->setText(0, indexp->fullName);
+			if (!devices)
+				personWidgetItem->setData(1, 1, IDp);
 #ifdef _SHOW_ICONS_
-			childWidgetItem->setIcon(0, peopleIcon);
-#endif // #ifdef _SHOW_ICONS_
-			childWidgetItem->setFlags(childWidgetItem->flags() | Qt::ItemIsUserCheckable);
-			childWidgetItem->setCheckState(0, Qt::Unchecked);
-			for (auto indexp = peopleMap.begin(); indexp != peopleMap.end(); ++indexp)
+			personWidgetItem->setIcon(0, personIcon);
+#endif //_SHOW_ICONS_
+			personWidgetItem->setFlags(personWidgetItem->flags() | Qt::ItemIsUserCheckable);
+			personWidgetItem->setCheckState(0, Qt::Unchecked);
+
+			if (!devices)
 			{
-				int IDp = indexp->Id;
-				if (IDp == 0)
+				childWidgetItem->addChild(personWidgetItem);
+				continue;
+			}
+			for (auto inddev = deviceMap.begin(); inddev != deviceMap.end(); ++inddev)
+			{
+				int IDdev = inddev->deviceId;
+				if (IDdev == 0)
 					continue;
 
-				/*int IDrelp = indexp->relationId;
-				if (IDrelp != IDc)
+				int IDOwner = inddev->ownerId;
+				if (IDOwner != IDp)
 					continue;
-
-				QTreeWidgetItem* personWidgetItem = new QTreeWidgetItem;
-
-				personWidgetItem->setText(0, indexp->fullName);
-				if (!devices)
-					personWidgetItem->setData(1, 1, IDp);
+                        	QTreeWidgetItem* deviceWidgetItem = new QTreeWidgetItem;
+				deviceWidgetItem->setText(0, inddev->guiName);
+				deviceWidgetItem->setData(1, 1, IDdev);
 #ifdef _SHOW_ICONS_
-				personWidgetItem->setIcon(0, personIcon);
+				deviceWidgetItem->setIcon(0, photoIcon);
 #endif //_SHOW_ICONS_
-				personWidgetItem->setFlags(personWidgetItem->flags() | Qt::ItemIsUserCheckable);
-				personWidgetItem->setCheckState(0, Qt::Unchecked);
-
-				if (!devices)
-				{
-					childWidgetItem->addChild(personWidgetItem);
-					continue;
-				}
-				for (auto inddev = deviceMap.begin(); inddev != deviceMap.end(); ++inddev)
-				{
-					int IDdev = inddev->deviceId;
-					if (IDdev == 0)
-						continue;
-
-					int IDOwner = inddev->ownerId;
-					if (IDOwner != IDp)
-						continue;
-
-					QTreeWidgetItem* deviceWidgetItem = new QTreeWidgetItem;
-					deviceWidgetItem->setText(0, inddev->guiName);
-					deviceWidgetItem->setData(1, 1, IDdev);
-#ifdef _SHOW_ICONS_
-					deviceWidgetItem->setIcon(0, photoIcon);
-#endif //_SHOW_ICONS_
-					deviceWidgetItem->setFlags(deviceWidgetItem->flags() | Qt::ItemIsUserCheckable);
-					deviceWidgetItem->setCheckState(0, Qt::Unchecked);
-					personWidgetItem->addChild(deviceWidgetItem);
-				}
-				if (personWidgetItem->childCount())
-					childWidgetItem->addChild(personWidgetItem);
-				else
-					delete personWidgetItem;
-				*/
-			}// for (auto indexp = people.begin(); indexp != people.end(); ++indexp)
-			if (childWidgetItem->childCount())
-				treeWidgetItem->addChild(childWidgetItem);
+				deviceWidgetItem->setFlags(deviceWidgetItem->flags() | Qt::ItemIsUserCheckable);
+				deviceWidgetItem->setCheckState(0, Qt::Unchecked);
+				personWidgetItem->addChild(deviceWidgetItem);
+			}
+			if (personWidgetItem->childCount())
+				childWidgetItem->addChild(personWidgetItem);
 			else
-				delete childWidgetItem;
-		} // for (auto index = vlist1.begin(); index != vlist1.end(); ++index)
+				delete personWidgetItem;
+			*/
+		}// for (auto indexp = people.begin(); indexp != people.end(); ++indexp)
 		if (treeWidgetItem->childCount())
 			pTreeWidget->addTopLevelItem(treeWidgetItem);
 		else
