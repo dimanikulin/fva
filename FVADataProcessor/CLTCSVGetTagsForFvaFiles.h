@@ -99,6 +99,21 @@ private: // data
 	 * map of people 
 	 */
 	PEOPLE_MAP				m_fvaPeopleMap;
+
+	/*!
+	 * map of events
+	 */
+	FVA_EVENT_MAP 				m_fvaEventMap;
+
+	/*!
+	 * map of relation types 
+	 */
+	FVA_SIMPLE_MAP				m_fvaRelationTypesMap;
+
+	/*!
+	 * map of institution 
+	 */
+	FVA_SIMPLE_MAP				m_fvaInstitutionMap;
 };
 
 #endif // _CMD_CSV_GET_TAGS_FOR_FVA_FILES_H_

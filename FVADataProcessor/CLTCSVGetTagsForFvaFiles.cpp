@@ -62,6 +62,18 @@ CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg)
 	res = fvaLoadPeopleMapFromCsv(m_rootSWdir, m_fvaPeopleMap);
 	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to fvaLoadPeopleMapFromCsv with erorr - " << res;
 	RET_IF_RES_IS_ERROR
+
+	res = fvaLoadEventMapFromCsv(m_rootSWdir, m_fvaEventMap);
+	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to fvaLoadEventMapFromCsv with erorr - " << res;
+	RET_IF_RES_IS_ERROR
+
+	res = fvaLoadSimpleMapFromCsvByItemType(m_rootSWdir, m_fvaRelationTypesMap, "fvaRelationTypes.csv");
+	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to fvaLoadSimpleMapFromCsvByItemType fvaRelationTypes.csv with erorr - " << res;
+	RET_IF_RES_IS_ERROR
+
+	res = fvaLoadSimpleMapFromCsvByItemType(m_rootSWdir, m_fvaInstitutionMap, "fvaInstitutions.csv");
+	if (res !=FVA_NO_ERROR) LOG_CRIT << "Failed to fvaLoadSimpleMapFromCsvByItemType fvaInstitutions.csv with erorr - " << res;
+	RET_IF_RES_IS_ERROR
 }
 FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileName, QString& tags)
 {
@@ -122,7 +134,32 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 	if (m_SearchByEvent
 		&& fvaFileItem.eventId != 0 && fvaFileItem.eventId != FVA_UNDEFINED_ID)
 	{
-		tags +=	TagTypeDelim + m_fvaTagsTypeMap[3] + TagDelim;
+		auto itEvent = m_fvaEventMap.find(fvaFileItem.eventId);
+		if (itEvent == m_fvaEventMap.end())
+		{
+			LOG_CRIT << "event not found in fvaEvents.csv, ID - " << fvaFileItem.eventId ;	
+			return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
+		}
+		auto itRelationTypes = m_fvaRelationTypesMap.find(itEvent.value().type);
+		if (itRelationTypes == m_fvaRelationTypesMap.end())
+		{
+			LOG_CRIT << "event type not found in fvaRelationTypes.csv, type - " << itEvent.value().type;	
+			return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
+		}
+
+		tags +=	TagTypeDelim + m_fvaTagsTypeMap[3] 
+			+ TagDelim + itRelationTypes.name 
+			+ TagDelim + itEvent.value().name;
+		if (itEvent.value().institution !=0 && itEvent.value().institution !=FVA_UNDEFINED_ID)
+		{
+			auto itInstitution = m_fvaInstitutionMap.find(itEvent.value().institution);
+			if (itInstitution == m_fvaInstitutionMap.end())
+			{
+				LOG_CRIT << "Institution not found in fvaInstitutions.csv, type - " << itEvent.value().institution;
+				return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
+			}
+			tags +=	TagDelim  + itInstitution.value();
+		}
 	}
 
 	if (m_SearchByEventReasonPeople && !fvaFileItem.eventPeopleIds.isEmpty())
