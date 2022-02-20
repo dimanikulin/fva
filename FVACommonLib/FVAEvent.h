@@ -41,6 +41,6 @@ class fvaEvent
 		unsigned int institution;
 };
 
-typedef QMap<int, fvaEvent> EVENT_MAP;
+typedef QMap<int, fvaEvent> FVA_EVENT_MAP;
 
 #endif // FVAEVENT_H
