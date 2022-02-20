@@ -31,4 +31,9 @@
 |29 | The Massive Growth in Unstructured Data | | Dec. 2012 |IDC The Digital Universe |[Web](https://www.researchgate.net/figure/The-Massive-Growth-in-Unstructured-Data-Source-IDC-The-Digital-Universe-Dec-2012_fig1_322058724) |
 |30 | Apple Photos | | | Wikipedia |[Web](https://en.wikipedia.org/wiki/Apple_Photos) |
 |31 | Synology Moments | |2021 |Synology |[Web](https://www.synology.com/en-global/dsm/feature/moments)|
-|32 | | | | |[Web]()|
+|32 | Exif Jpeg header manipulation tool | |Nov 22 2019| |[Web](https://www.sentex.ca/~mwandel/jhead/)|
+|33 | Getting started with project planning on GitHub| |2022-02-11 | GitHub |[Web](https://github.blog/2022-02-11-getting-started-with-project-planning-on-github/)|
+|34 | Best Photo Management Software to Organize Digital Photos in 2022 |  | 2021-12-17 | Mansi Vijay |[Web](https://wethegeek.com/best-photo-management-software-organize-photos/)|
+|35 | photo-organizer | | | GitHub |[Web](https://github.com/topics/photo-organizer)|
+|36 | | | | |[Web]()|
+|37 | | | | |[Web]()|
