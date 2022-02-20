@@ -9,10 +9,10 @@ add_library(fvalib
   fvafile.h
   fvafolder.h
   fvaItem.h
-  fvaPeopleRelations.h
   fvaperson.h
   fvaItem.cpp
   FVABaseDictionaryItem.h
+  FVAREvent.h
 
   CmdLineBaseExecutor.h
   CmdLineBaseTask.h
