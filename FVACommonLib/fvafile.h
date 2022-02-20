@@ -23,6 +23,7 @@ class fvaFile
 		fvaFile():
 			deviceId(FVA_UNDEFINED_ID),
 			scanerId(FVA_UNDEFINED_ID),
+			eventId(FVA_UNDEFINED_ID),
 			placeId(FVA_UNDEFINED_ID)
 		{
 		}
@@ -30,6 +31,11 @@ class fvaFile
 		virtual ~fvaFile()
 		{
 		}
+
+		/*!
+		 * event id 
+		 */
+		unsigned int		eventId;
 
 		/*!
 		 * place id 
@@ -65,6 +71,12 @@ class fvaFile
 		 * name of file
 		 */
 		QString			name;
+
+		/*!
+		 * list of people ids that caused this event
+		 */
+		QVector<unsigned int>	eventPeopleIds;
+
 };
 typedef QMap<QString, fvaFile> FVA_FILE_INFO_MAP;
 typedef QMap<int, fvaFile*> FVA_FILE_MAP;
