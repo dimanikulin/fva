@@ -148,7 +148,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 		}
 
 		tags +=	TagTypeDelim + m_fvaTagsTypeMap[3] 
-			+ TagDelim + itRelationTypes.name 
+			+ TagDelim + itRelationTypes.value() 
 			+ TagDelim + itEvent.value().name;
 		if (itEvent.value().institution !=0 && itEvent.value().institution !=FVA_UNDEFINED_ID)
 		{
