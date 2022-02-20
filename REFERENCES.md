@@ -6,3 +6,28 @@
 | 4 | Content Based Multimedia Information Retrieval To Support Digital Libraries |  |  2012.07.18 | Mohammad Nabil Almunawar | Magazine |
 | 5 | Multimedia Retrieval |  |  | Jimmy Lin , University of Maryland, Dr. Ramesh R. Sarukkai, Yahoo! Search | [Slides](https://www.ccs.neu.edu/home/jaa/CSG339.06F/Lectures/multimedia.pdf) |
 | 6 | Multimedia Information Retrieval | Synthesis Lectures on Information Concepts, Retrieval, and Services | 2009 | Stefan Rüger, The Open University | [Book](https://www.morganclaypool.com/doi/abs/10.2200/S00244ED1V01Y200912ICR010) |
+| 7 | Content Analysis with Apache Tika | | August 14, 2019 | Nguyen Nam Thai | [Web](https://www.baeldung.com/apache-tika) |
+| 8 | 26 Best Photo Organizer Software and Apps of 2022 | | Jun 25, 2021 | Anisha Singh | [Web](https://www.pixpa.com/blog/photo-organiser) |
+| 9 | Image organizer      | | | Wikipedia | [Web](https://en.wikipedia.org/wiki/Image_organizer) |
+|10 | Tag your media       |Learn how tagging and using people, places, or events tags lets you easily organize your media by managing your files and making them more search friendly.| |Adobe |[Web](https://helpx.adobe.com/elements-organizer/using/tag-media.html) |
+|11 | | | | | |
+|12 | | | | | |
+|13 | | | | | |
+|14 | | | | | |
+|15 | | | | | |
+|16 | | | | | |
+|17 | | | | | |
+|18 | | | | | |
+|19 | | | | | |
+|20 | | | | | |
+|21 | | | | | |
+|22 | | | | | |
+|23 | | | | | |
+|24 | | | | | |
+|25 | | | | | |
+|26 | | | | | |
+|27 | | | | | |
+|28 | | | | | |
+|29 | | | | | |
+|30 | | | | | |
+|31 | | | | | |
