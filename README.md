@@ -65,7 +65,7 @@ Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it on environment you would like to have it running on.
 
 ## Support
-* An author does not provide any support for now (because the development is in hot stage) but you can ask him on [Twitter](https://twitter.com/DmytroNikulin) or [Telegram](dimanikulin79)
+* An author does not provide any support for now (because the development is in hot stage) but you can ask him on [Twitter](https://twitter.com/DmytroNikulin) or [Telegram](https://t.me/dimanikulin79) 
 
 ## Community support
 * [GitHub](https://github.com/dimanikulin/fva) (Bug reports, Contributions)
@@ -73,16 +73,18 @@ Then you just need to install it on environment you would like to have it runnin
 
 ## Contributing
 You are always welcome to contribute! There are many items to help author in. 
-For building the code you don't need to have any local environment to set up. 
+For building the code you don't need to have any local environment to set up. It is already done by github. I used [this](#based on https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/) to help me to set up main GitHub action flow and [this](https://github.com/jurplel/install-qt-action) to set up.    
 As soon as any code change is pushed to the GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to test.
+When commit please don't forget about putting the issue ID there. 
 
 ## Documentation
 * Please see [link](https://dimanikulin.github.io/fva/) for the documentation:
-* To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow.
+* To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow. TBD - describe how 
 
 ## Stay in touch
-* Author - [Dmytro Nikulin](https://twitter.com/DmytroNikulin)
-* Twitter - [@TBD](https://twitter.com/TBD)
+* Author Twitter - [Dmytro Nikulin](https://twitter.com/DmytroNikulin)
+* Author LinkedIn - [LinkedId](https://www.linkedin.com/in/dimanikulin/)
+* Community Twitter - [@TBD](https://twitter.com/TBD)
 
 ## Code checks
 * [CodeQL](.github/workflows/codeqlanalysis.yml)
