@@ -73,7 +73,7 @@ Then you just need to install it on environment you would like to have it runnin
 
 ## Contributing
 You are always welcome to contribute! There are many items to help author in. 
-For building the code you don't need to have any local environment to set up. It is already done by github. I used [this](#based on https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/) to help me to set up main GitHub action flow and [this](https://github.com/jurplel/install-qt-action) to set up.    
+For building the code you don't need to have any local environment to set up. It is already done by github. I used [this](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/) to help me to set up main GitHub action flow and [this](https://github.com/jurplel/install-qt-action) to set up.    
 As soon as any code change is pushed to the GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to test.
 When commit please don't forget about putting the issue ID there. 
 
