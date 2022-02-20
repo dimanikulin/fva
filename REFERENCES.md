@@ -10,11 +10,11 @@
 | 8 | 26 Best Photo Organizer Software and Apps of 2022 | | Jun 25, 2021 | Anisha Singh | [Web](https://www.pixpa.com/blog/photo-organiser) |
 | 9 | Image organizer      | | | Wikipedia | [Web](https://en.wikipedia.org/wiki/Image_organizer) |
 |10 | Tag your media       |Learn how tagging and using people, places, or events tags lets you easily organize your media by managing your files and making them more search friendly.| |Adobe |[Web](https://helpx.adobe.com/elements-organizer/using/tag-media.html) |
-|11 | | | | | |
-|12 | | | | | |
-|13 | | | | | |
-|14 | | | | | |
-|15 | | | | | |
+|11 | Tagging Photos       | | | digital-photo-secrets|[Web](https://www.digital-photo-secrets.com/tip/63/tagging-photos/)|
+|12 | The digiKam Handbook | | | The digiKam developers team | [Web](https://docs.kde.org/trunk5/en/digikam-doc/digikam/index.html) |
+|13 | Multimedia Data      | | 2009 | Ramesh Jain | [Web](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) |
+|14 | How Many Photos Will Be Taken in 2021? |After a pandemic-related decline, photo-taking is expected to surge back up in 2021| March 11, 2021 |Nina Pantic|[Web](https://blog.mylio.com/how-many-photos-will-be-taken-in-2021-stats/)|
+|15 | Information retrieval| | |Wikipedia |[Web](https://en.wikipedia.org/wiki/Information_retrieval)|
 |16 | | | | | |
 |17 | | | | | |
 |18 | | | | | |
