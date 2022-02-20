@@ -255,44 +255,52 @@ FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peop
 	}
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadEventMapFromCsv(const QString& rootSWdir, FVA_EVENT_MAP& peopleRelationsMap)
+FVA_EXIT_CODE fvaLoadEventMapFromCsv(const QString& rootSWdir, FVA_EVENT_MAP& eventMap)
 {
-	FVADescriptionFile	fvaRelationTypesCsv;
+	FVADescriptionFile	fvaEventTypesCsv;
 	QStringList		titles;
 	DESCRIPTIONS_MAP	decsItems;
-	FVA_EXIT_CODE res = fvaRelationTypesCsv.load(rootSWdir + "#data#/fvaInstitutions.csv", titles, decsItems);
+	FVA_EXIT_CODE res = fvaEventTypesCsv.load(rootSWdir + "#data#/fvaEvents.csv", titles, decsItems);
 	RET_RES_IF_RES_IS_ERROR
 
-	// ID,Name,RelationType
+	// ID,Name,Type,Institution
 	int columnId = FVADescriptionFile::getColumnIdByName(titles, "ID");
 	if (-1 == columnId)
 	{
-		LOG_CRIT << "fvaLoadPeopleRelationMapFromCsv:: -1 == columnId";
+		LOG_CRIT << "-1 == columnId";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 	}
 	int columnName = FVADescriptionFile::getColumnIdByName(titles, "Name");
 	if (-1 == columnName)
 	{
-		LOG_CRIT << "fvaLoadPeopleRelationMapFromCsv::-1 == columnName";
+		LOG_CRIT << "-1 == columnName";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 	}
-	int columnRelationType = FVADescriptionFile::getColumnIdByName(titles, "RelationType");
-	if (-1 == columnRelationType)
+	int columnType = FVADescriptionFile::getColumnIdByName(titles, "Type");
+	if (-1 == columnType)
 	{
-		LOG_CRIT << "fvaLoadPeopleRelationMapFromCsv::-1 == columnRelationType";
+		LOG_CRIT << "-1 == columnType";
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 	}
+	int columnIns = FVADescriptionFile::getColumnIdByName(titles, "Institution");
+	if (-1 == columnIns)
+	{
+		LOG_CRIT << "-1 == columnIns";
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+	}
+
 	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
 	{
 		QStringList list = it.value();
 		
-		fvaPeopleRelation relation;
+		fvaEvent event;
 
-		relation.Id = list[columnId].remove("\t").toUInt();
-		relation.name = list[columnName].remove("\t").trimmed();
-		relation.relationType = list[columnRelationType].remove("\t").toInt();
+		event.ID = list[columnId].remove("\t").toUInt();
+		event.name = list[columnName].remove("\t").trimmed();
+		event.type = list[columnType].remove("\t").toInt();
+		event.institution = list[columnIns].remove("\t").toInt();
 
-		peopleRelationsMap[relation.Id] = relation;
+		eventMap[event.ID] = event;
 	}
 	return FVA_NO_ERROR;
 }

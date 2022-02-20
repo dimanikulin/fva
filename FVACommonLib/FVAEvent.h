@@ -38,7 +38,7 @@ class fvaEvent
 		/*
 		 * institution type from fvaInstitutions.csv
 		 */
-		unsigned int Institution;
+		unsigned int institution;
 };
 
 typedef QMap<int, fvaEvent> EVENT_MAP;
