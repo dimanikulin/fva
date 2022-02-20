@@ -34,6 +34,6 @@
 |32 | Exif Jpeg header manipulation tool | |Nov 22 2019| |[Web](https://www.sentex.ca/~mwandel/jhead/)|
 |33 | Getting started with project planning on GitHub| |2022-02-11 | GitHub |[Web](https://github.blog/2022-02-11-getting-started-with-project-planning-on-github/)|
 |34 | Best Photo Management Software to Organize Digital Photos in 2022 |  | 2021-12-17 | Mansi Vijay |[Web](https://wethegeek.com/best-photo-management-software-organize-photos/)|
-|35 | photo-organizer | | | GitHub |[Web](https://github.com/topics/photo-organizer)|
-|36 | | | | |[Web]()|
+|35 | Photo organizer | | | GitHub |[Web](https://github.com/topics/photo-organizer)|
+|36 | How to get more engagement with your open source project| Best practices to get more stars on your GitHub repos| JANUARY 26, 2022 | navaneeth pk |[Web]()|
 |37 | | | | |[Web]()|
