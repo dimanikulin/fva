@@ -1,4 +1,8 @@
 | # | Name                 | Description           | Release date           |  Author                 | Source        |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
-| 1 | CHAPTER 8 Multimedia Information Retrieval | TBD |  2020 | e-PG Pathshala | [Web](http://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/library_and_information_science/information_storage_and_retrieval/09._multimedia_information_retrieval/et/4292_et_8.pdf)|
-| 2 | Unified concept-based multimedia information retrieval technique | TBD |  2012 | Kambau, Ridwan, Hasibuan, Zainal, 10.1109/EECSI.2017.8239086 | book |
+| 1 | CHAPTER 8 Multimedia Information Retrieval   |  |  2020 | e-PG Pathshala | [Web](http://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/library_and_information_science/information_storage_and_retrieval/09._multimedia_information_retrieval/et/4292_et_8.pdf)|
+| 2 | Unified concept-based multimedia information retrieval technique |  |  2012 | Kambau, Ridwan, Hasibuan, Zainal, 10.1109/EECSI.2017.8239086 | book |
+| 3 | How Many Photos Will Be Taken in 2020? | Research analysts crunch the statistics and come up with a mind-blowing number. |  January 10, 2020 | David Carrington | [Web](https://blog.mylio.com/how-many-photos-will-be-taken-in-2020/) |
+| 4 | Content Based Multimedia Information Retrieval To Support Digital Libraries |  |  2012.07.18 | Mohammad Nabil Almunawar | Magazine |
+| 5 | Multimedia Retrieval |  |  | Jimmy Lin , University of Maryland, Dr. Ramesh R. Sarukkai, Yahoo! Search | [Slides](https://www.ccs.neu.edu/home/jaa/CSG339.06F/Lectures/multimedia.pdf) |
+| 6 | Multimedia Information Retrieval | Synthesis Lectures on Information Concepts, Retrieval, and Services | 2009 | Stefan Rüger, The Open University | [Book](https://www.morganclaypool.com/doi/abs/10.2200/S00244ED1V01Y200912ICR010) |
