@@ -45,6 +45,7 @@
 - [Stay in touch](#stay-in-touch)
 - [Code checks](#Code-check)
 - [License](#license)
+- [Rererences](./REFERENCES.md)
 
 ## Description
 A convergent tool set to automate the process of importing the multimedia data (photo/audio/video)
