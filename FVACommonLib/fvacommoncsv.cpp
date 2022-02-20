@@ -10,6 +10,7 @@
 #include "fvafile.h"
 #include "fvadevice.h"
 #include "fvalogger.inl"
+#include "fvacommonlib.h"
 
 #include <QtCore/QTextStream>
 #include <QtCore/QFile>
