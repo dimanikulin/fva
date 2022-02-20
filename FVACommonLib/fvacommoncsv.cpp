@@ -40,8 +40,7 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
 {
 	FVADescriptionFile fvaFileCsv;
 
-	// firstly - try to get device if from fvaFile.csv as it has high priority 
-	QStringList			titles;
+	QStringList		titles;
 	DESCRIPTIONS_MAP	decsItems;
 
 	FVA_EXIT_CODE res = fvaFileCsv.load(rootSWdir + "#data#/" + fvaFileName, titles, decsItems);
@@ -67,6 +66,14 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
 	if (-1 == columnPlaceID)
 		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
+	int columnEventID = FVADescriptionFile::getColumnIdByName(titles, "EventId");
+	if (-1 == columnEventID)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
+	int columnReasonPeopleID = FVADescriptionFile::getColumnIdByName(titles, "ReasonPeople");
+	if (-1 == columnReasonPeopleID)
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+
 	for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it)
 	{
 		QStringList list = it.value();
@@ -82,11 +89,22 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
 			return FVA_ERROR_NON_UNIQUE_FVA_INFO;
 		}
 		fvaFile newFile;
-		newFile.deviceId = list[columnDevId].remove("\t").toUInt();
-		newFile.placeId = list[columnPlaceID].remove("\t").toUInt();
+		newFile.deviceId	= list[columnDevId].remove("\t").toUInt();
+		newFile.placeId		= list[columnPlaceID].remove("\t").toUInt();
+		newFile.eventId		= list[columnEventID].remove("\t").toUInt();
+		QString eventPeopleIds	= list[columnReasonPeopleID].remove("\t").trimmed(); 
+		newFile.eventPeopleIds	= fvaStringToIds(eventPeopleIds); 
+
+		// not loaded yet field yet
+		newFile.scanerId = 0;
+		newFile.peopleIds; 
+		newFile.description;
+		newFile.comment;
+
 		fvaFileInfo[fileName.toUpper()] = newFile;
 	}
 	return FVA_NO_ERROR;
+
 }
 FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID)
 {
