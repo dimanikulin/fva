@@ -80,12 +80,12 @@ FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peop
 FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SIMPLE_MAP& simpleMap, const QString& dictName, int typeToFilter=FVA_UNDEFINED_ID);
 
 /*!
-* \brief it tries to load people relations map from dictionary
+* \brief it tries to load event map from dictionary
 * \param rootSWdir - dir where FVA SW is located
-* \param peopleRelationsMap a map to be filled up
+* \param eventMap a map to be filled up
 * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
 */
-FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(const QString& rootSWdir, FVA_PEOPLE_RELATION_MAP& peopleRelationsMap);
+FVA_EXIT_CODE fvaLoadEventMapFromCsv(const QString& rootSWdir, FVA_EVENT_MAP& eventMap);
 
 /*!
 * \brief it loads base item dictionary map from csv

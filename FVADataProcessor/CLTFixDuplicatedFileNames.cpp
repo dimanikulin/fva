@@ -6,6 +6,7 @@
 * \date  2014-2021
 */
 #include "CLTFixDuplicatedFileNames.h" 
+
 //TODO to work with digiKam dir but not fva dir
 CLTFixDuplicatedFileNames::CLTFixDuplicatedFileNames(const FvaConfiguration& cfg)
 {
