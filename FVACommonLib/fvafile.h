@@ -76,7 +76,6 @@ class fvaFile
 		 * list of people ids that caused this event
 		 */
 		QVector<unsigned int>	eventPeopleIds;
-
 };
 typedef QMap<QString, fvaFile> FVA_FILE_INFO_MAP;
 typedef QMap<int, fvaFile*> FVA_FILE_MAP;

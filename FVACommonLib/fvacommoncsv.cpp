@@ -96,7 +96,7 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
 		QString eventPeopleIds	= list[columnReasonPeopleID].remove("\t").trimmed(); 
 		newFile.eventPeopleIds	= fvaStringToIds(eventPeopleIds); 
 
-		// not loaded yet field yet
+		// not loaded field yet
 		newFile.scanerId = 0;
 		newFile.peopleIds; 
 		newFile.description;
@@ -105,7 +105,6 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
 		fvaFileInfo[fileName.toUpper()] = newFile;
 	}
 	return FVA_NO_ERROR;
-
 }
 FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID)
 {
@@ -256,7 +255,7 @@ FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peop
 	}
 	return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadPeopleRelationMapFromCsv(const QString& rootSWdir, FVA_PEOPLE_RELATION_MAP& peopleRelationsMap)
+FVA_EXIT_CODE fvaLoadEventMapFromCsv(const QString& rootSWdir, FVA_EVENT_MAP& peopleRelationsMap)
 {
 	FVADescriptionFile	fvaRelationTypesCsv;
 	QStringList		titles;
