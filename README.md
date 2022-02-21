@@ -70,7 +70,7 @@ Then you just need to install it on environment you would like to have it runnin
 
 ## Building the code
 For building the code you don't need to have any local environment to set up. 
-1. So building the code is already done by github. I used [this link](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/) to help me to set up main GitHub action flow and [this link](https://github.com/jurplel/install-qt-action) to set up QT.
+1. So building the code is already done by github. I used [link37](./REFERENCES.md) to help me to set up main GitHub action flow and [this link](https://github.com/jurplel/install-qt-action) to set up QT.
 As soon as any code change is pushed to the GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to test.
 2. But if you wish you can use [MS studio solution](./FVASW.sln) to build locally on  Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
 
@@ -91,6 +91,6 @@ You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/
 
 ## Code checks
 Currently there are following automated checks to verify if the code meets code quality requirements:
-* [CodeQL](.github/workflows/codeqlanalysis.yml)
-* [codeChecks](.github/workflows/codeChecks.yml)
-* [codefactor](https://www.codefactor.io/repository/github/dimanikulin/fva/issues)
+* [CodeQL](.github/workflows/codeqlanalysis.yml) TBD what for
+* [codeChecks](.github/workflows/codeChecks.yml) TBD what for
+* [codefactor](https://www.codefactor.io/repository/github/dimanikulin/fva/issues)  TBD what for
