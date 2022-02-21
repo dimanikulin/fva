@@ -5,7 +5,7 @@
 | 3 | How Many Photos Will Be Taken in 2020? | Research analysts crunch the statistics and come up with a mind-blowing number. |  January 10, 2020 | David Carrington | [Web](https://blog.mylio.com/how-many-photos-will-be-taken-in-2020/) |
 | 4 | Content Based Multimedia Information Retrieval To Support Digital Libraries |  |  2012.07.18 | Mohammad Nabil Almunawar | Magazine |
 | 5 | Multimedia Retrieval |  |  | Jimmy Lin , University of Maryland, Dr. Ramesh R. Sarukkai, Yahoo! Search | [Slides](https://www.ccs.neu.edu/home/jaa/CSG339.06F/Lectures/multimedia.pdf) |
-| 6 | Multimedia Information Retrieval | Synthesis Lectures on Information Concepts, Retrieval, and Services | 2009 | Stefan Rüger, The Open University | [Book](https://www.morganclaypool.com/doi/abs/10.2200/S00244ED1V01Y200912ICR010) |
+| 6 | Multimedia Information Retrieval | Synthesis Lectures on Information Concepts, Retrieval, and Services | 2009 | Stefan RÃ¼ger, The Open University | [Book](https://www.morganclaypool.com/doi/abs/10.2200/S00244ED1V01Y200912ICR010) |
 | 7 | Content Analysis with Apache Tika | | August 14, 2019 | Nguyen Nam Thai | [Web](https://www.baeldung.com/apache-tika) |
 | 8 | 26 Best Photo Organizer Software and Apps of 2022 | | Jun 25, 2021 | Anisha Singh | [Web](https://www.pixpa.com/blog/photo-organiser) |
 | 9 | Image organizer      | | | Wikipedia | [Web](https://en.wikipedia.org/wiki/Image_organizer) |
@@ -19,7 +19,7 @@
 |17 | Image retrieval      | | | Wikipedia |[Web](https://en.wikipedia.org/wiki/Image_retrieval)|
 |18 | Google Photos        | | | Wikipedia|[Web](https://en.wikipedia.org/wiki/Google_Photos)|
 |19 | Tour Mylio           | | |Mylio |[Web](https://mylio.com/) |
-|20 | A Beginner’s Guide To Google Photos | | July 08, 2020 |Sue Waters |[Web](https://www.theedublogger.com/google-photos-guide/) |
+|20 | A Beginnerâ€™s Guide To Google Photos | | July 08, 2020 |Sue Waters |[Web](https://www.theedublogger.com/google-photos-guide/) |
 |21 | Three Cheers for Embedded Metadata| | February 28, 2012|Lynda Schmitz Funrig |[Web](https://siarchives.si.edu/blog/three-cheers-embedded-metadata) |
 |22 | Best Practices and Tools to Create Archival Image Metadata| |June 28, 2016 |Elena Toffalori |[Web](https://digitalarch.org/blog/2017/4/7/ykag6k2fvln7g1j02923n0c7zdrryg) |
 |23 | Resolving and avoiding metadata conflicts| Lynda is now LinkedIn| | |[Web](https://www.lynda.com/Lightroom-tutorials/Resolving-avoiding-metadata-conflicts/447237/485677-4.html) |
@@ -36,5 +36,5 @@
 |34 | Best Photo Management Software to Organize Digital Photos in 2022 |  | 2021-12-17 | Mansi Vijay |[Web](https://wethegeek.com/best-photo-management-software-organize-photos/)|
 |35 | Photo organizer | | | GitHub |[Web](https://github.com/topics/photo-organizer)|
 |36 | How to get more engagement with your open source project| Best practices to get more stars on your GitHub repos| JANUARY 26, 2022 | navaneeth pk |[Web](https://www.freecodecamp.org/news/how-to-get-more-engagement-with-your-open-source-project/)|
-|##37 | Using GitHub Actions with C++ and CMake | Providing a GitHub Actions configuration yaml file for C++ projects using CMake| DEC 22, 2019| Cristian Adam |[link37](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/)|
+| 37 | Using GitHub Actions with C++ and CMake | Providing a GitHub Actions configuration yaml file for C++ projects using CMake| DEC 22, 2019| Cristian Adam |[Web](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/)|
 |38 | | | | |[Web]()|
