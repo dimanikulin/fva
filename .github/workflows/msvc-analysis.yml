@@ -9,12 +9,12 @@
 name: Microsoft C++ Code Analysis
 
 on:
-  push:
-    branches: [ master ]
+  #push:
+  #  branches: [ master ]
   pull_request:
     branches: [ master ]
-  schedule:
-    - cron: '36 1 * * 1'
+  #schedule:
+  #  - cron: '36 1 * * 1'
 
 env:
   # Path to the CMake build directory.
@@ -52,8 +52,8 @@ jobs:
           sarif_file: ${{ steps.run-analysis.outputs.sarif }}
 
       # Upload SARIF file as an Artifact to download and view
-      # - name: Upload SARIF as an Artifact
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: sarif-file
-      #     path: ${{ steps.run-analysis.outputs.sarif }}
+       - name: Upload SARIF as an Artifact
+         uses: actions/upload-artifact@v2
+         with:
+           name: sarif-file
+           path: ${{ steps.run-analysis.outputs.sarif }}
