@@ -36,5 +36,12 @@
 |34 | Best Photo Management Software to Organize Digital Photos in 2022 |  | 2021-12-17 | Mansi Vijay |[Web](https://wethegeek.com/best-photo-management-software-organize-photos/)|
 |35 | Photo organizer | | | GitHub |[Web](https://github.com/topics/photo-organizer)|
 |36 | How to get more engagement with your open source project| Best practices to get more stars on your GitHub repos| JANUARY 26, 2022 | navaneeth pk |[Web](https://www.freecodecamp.org/news/how-to-get-more-engagement-with-your-open-source-project/)|
-| 37 | Using GitHub Actions with C++ and CMake | Providing a GitHub Actions configuration yaml file for C++ projects using CMake| DEC 22, 2019| Cristian Adam |[Web](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/)|
-|38 | | | | |[Web]()|
+|37 | Using GitHub Actions with C++ and CMake | Providing a GitHub Actions configuration yaml file for C++ projects using CMake| DEC 22, 2019| Cristian Adam |[Web](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/)|
+|38 | Code scanning finds more vulnerabilities using machine learning| | February 17, 2022 | Tiferet Gazit, Alona Hlobina |[Web](https://github.blog/2022-02-17-code-scanning-finds-vulnerabilities-using-machine-learning/)|
+|39 | | | | |[Web]() |
+|40 | | | | |[Web]() |
+|41 | | | | |[Web]() |
+|42 | | | | |[Web]() |
+|43 | | | | |[Web]() |
+|44 | | | | |[Web]() |
+|45 | | | | |[Web]() |
