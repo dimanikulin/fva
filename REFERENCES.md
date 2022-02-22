@@ -1,3 +1,5 @@
+## References to external documents like web resources, publication, patents etc. (applicable for all other documents)
+
 | # | Name                 | Description           | Release date           |  Author                 | Source        |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
 | 1 | CHAPTER 8 Multimedia Information Retrieval   |  |  2020 | e-PG Pathshala | [Web](http://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/library_and_information_science/information_storage_and_retrieval/09._multimedia_information_retrieval/et/4292_et_8.pdf)|
