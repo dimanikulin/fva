@@ -21,11 +21,8 @@ void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidg
 	QDir dir(folder);
 	Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst))
 	{			
-		if ( !info.isDir() && problemFileList.isEmpty() )
-			continue;
 		// just skip internal folder
-		if ( info.fileName()[0] == '#' 
-			&& info.fileName()[info.fileName().size()-1] == '#' )
+		if ( info.fileName()[0] == '#' && info.fileName()[info.fileName().size()-1] == '#' )
 			continue;
 
 		QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;

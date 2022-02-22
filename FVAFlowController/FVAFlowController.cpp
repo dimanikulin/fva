@@ -316,16 +316,24 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
 		QStringList params;
 		params.append(fvafileNPath);
 		
-		QString dir = it.key();
-		params.append(dir);
+		QString fsPath = it.key();
+		QFileInfo fi(fsPath);
+		if (fi.isDir())
+		{
+			params.append(fsPath);
 
-		QString placeId = QString::number(it.value());
-		params.append(placeId);
+			QString placeId = QString::number(it.value());
+			params.append(placeId);
 
-		// run command implemented in python to update the fvafile.csv for each file in folder with placeid  we got 
-		exitCode = runPythonCMD("CLTUpdatePlaceForDir.py", obj, params);
+			// run command implemented in python to update the fvafile.csv for each file in folder with placeid  we got 
+			exitCode = runPythonCMD("CLTUpdatePlaceForDir.py", obj, params);
 
-		LOG_DEB << "CLTUpdatePlaceForDir:" << fvafileNPath << " " << dir << " " << placeId;
+			LOG_DEB << "CLTUpdatePlaceForDir:" << fvafileNPath << " " << fsPath << " " << placeId;
+		}
+		if (fi.isFile())
+		{
+			return FVA_NOT_IMPLEMENTED;              
+		}
 	}
 	// clean up after processing
 	QFile::remove(fvaSWRootDir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv");
@@ -349,42 +357,51 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDi
 		QStringList params;
 		params.append(fvafileNPath);
 		
-		QString dir = it.key();
-		params.append(dir);
+		QString fsPath = it.key();
+		QFileInfo fi(fsPath);
+		if (fi.isDir())
+		{
+			params.append(fsPath);
 
-		QString eventId = QString::number(it.value());
-		params.append(eventId);
+			QString eventId = QString::number(it.value());
+			params.append(eventId);
 	
-		// run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got 
-		exitCode = runPythonCMD("CLTUpdateEventForDir.py", obj, params);
+			// run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got 
+			exitCode = runPythonCMD("CLTUpdateEventForDir.py", obj, params);
 
-		LOG_DEB << "CLTUpdateEventForDir:" << fvafileNPath << " " << dir << " " << eventId;
+			LOG_DEB << "CLTUpdateEventForDir:" << fvafileNPath << " " << fsPath << " " << eventId;
 
-		// show error message box and return to calling function if previous operation failed
-		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventForDir")
+			// show error message box and return to calling function if previous operation failed
+			IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventForDir")
 
-		if (0 == peopleMap[dir].size())
-		{
-			LOG_WARN << "empty people list for " << fvafileNPath << " " << dir;
-			continue;
+			if (0 == peopleMap[dir].size())
+			{
+				LOG_WARN << "empty people list for " << fvafileNPath << " " << fsPath;
+				continue;
+			}
+			params.removeLast(); // remove last param as it was for previous cmd actual only
+			QString peopleIds;
+			for(int i=0; i < peopleMap[dir].size(); ++i)
+			{
+				peopleIds += QString::number(peopleMap[dir][i]);
+				if( i < peopleMap[dir].size()-1 )
+					peopleIds += "," ;
+			}
+			params.append(peopleIds);
+
+			LOG_DEB << "CLTUpdateEventPeopleForDir:" << fvafileNPath << " " << fsPath << " " << eventId;
+
+			// run command implemented in python to update the fvafile.csv for each file in folder with event people ids we got 
+			exitCode = runPythonCMD("CLTUpdateEventPeopleForDir.py", obj, params);
+
+			// show error message box and return to calling function if previous operation failed
+			IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventPeopleForDir")
 		}
-		params.removeLast(); // remove last param as it was for previous cmd actual only
-		QString peopleIds;
-		for(int i=0; i < peopleMap[dir].size(); ++i)
+		if (fi.isFile())
 		{
-			peopleIds += QString::number(peopleMap[dir][i]);
-			if( i < peopleMap[dir].size()-1 )
-				peopleIds += "," ;
+			return FVA_NOT_IMPLEMENTED;
 		}
-		params.append(peopleIds);
 
-		LOG_DEB << "CLTUpdateEventPeopleForDir:" << fvafileNPath << " " << dir << " " << eventId;
-
-		// run command implemented in python to update the fvafile.csv for each file in folder with event people ids we got 
-		exitCode = runPythonCMD("CLTUpdateEventPeopleForDir.py", obj, params);
-
-		// show error message box and return to calling function if previous operation failed
-		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventPeopleForDir")
 	}
 
 	// do we need to search by place?
