@@ -176,7 +176,7 @@ void FVAOrganizerPlacePage::setVisible(bool visible)
 		exitCode = flow.GetProblemFilesList(fileListToFillUp);
 		IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("flow.GetProblemFilesList")
 
-		// populate inout file struture with files
+		// populate input file struture with files
 		fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget, fileListToFillUp);
 
 		exitCode = fvaBuildPlaceTree(this, placesWidget, rootSWdir);

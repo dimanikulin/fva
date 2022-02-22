@@ -21,7 +21,7 @@ class QTreeWidgetItem;
 * \brief FVAOrganizerPlacePage is a child of <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a> and implements the next UI functions:
 *
 * 1. "Explanation words" to user in a QLabel;
-* 2. The events(aka dirs) we need to add information about, in form of a QTreeWidget;
+* 2. The file system structure we need to add information about, in form of a QTreeWidget;
 * 3. "Open dir" button (QPushButton) to open input dir where processed files are in to recall their content.
 * 4. "Save" button (QPushButton) to save information user provided
 * 5. "Add Place" button (QPushButton) to add new place
@@ -38,7 +38,7 @@ class FVAOrganizerPlacePage : public QWizardPage
 
 	protected:
 		/*!
-		* \brief calls a TODO FIX of class FVAFlowController
+		* \brief calls a ProcessInputDirForPlaces of class FVAFlowController
 		* \return it returns nothing
 		*/
 		virtual bool validatePage();
@@ -51,7 +51,7 @@ class FVAOrganizerPlacePage : public QWizardPage
 
 	private slots:
 		/*!
-		* \brief to open input dir where processed files are in
+		* \brief to open input dir where files for processing are in
 		* \return it returns nothing
 		*/
 		void OnFvaInputDirButtonPressed();
@@ -101,7 +101,7 @@ class FVAOrganizerPlacePage : public QWizardPage
 		QTextBrowser*		logOutput;
 		
 		/*!
-		* \brief to output the input dirs structure 
+		* \brief to output the input dir FS 
 		*/
 		QTreeWidget*		inputDirsWidget;			
 
@@ -111,10 +111,8 @@ class FVAOrganizerPlacePage : public QWizardPage
 		QTreeWidget*		placesWidget;	
 		
 		/*!
-		* \brief maps input dir structure (folder names) to place id got from fvaPlaces.csv
+		* \brief maps input dir structure (folder names and file names) to place id got from fvaPlaces.csv
 		*/
 		DIR_2_ID_MAP		dir2PlaceMap;
 };
-
-
 #endif //_FVA_ORG_PLACE_PAGE_H_
