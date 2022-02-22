@@ -179,7 +179,7 @@ void FVAOrganizerEventInfoPage::setVisible(bool visible)
 
 		QString		inputDir		= ((FVAOrganizerWizard*)wizard())->inputFolder();
 
-		STR_LIST fileListToFillUp; // empty for this case as we wanna have dirs only
+		STR_LIST fileListToFillUp; // empty for this page
 		fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget,fileListToFillUp);
 
 		exitCode = fvaBuildPeopleTree(this, peopleWidget, rootSWdir);

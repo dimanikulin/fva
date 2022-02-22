@@ -22,12 +22,12 @@ class QTreeWidgetItem;
 * \brief FVAOrganizerEventInfoPage is a child of <a href="https://doc.qt.io/qt-5/qwizardpage.html">QWizardPage</a> and implements the next UI functions:
 *
 * 1. "Explanation words" to user in a QLabel;
-* 2. The events(aka dirs) we need to add information about, in form of a QTreeWidget;
+* 2. The file system structure we need to add information about, in form of a QTreeWidget;
 * 3. "Open dir" button (QPushButton) to open input dir where processed files are in to recall their content.
 * 4. "Save" button (QPushButton) to save information user provided
 * 5. "Add Event" button (QPushButton) to add new event
 * 6. QTreeWidget to set up Event Type using dictionary
-* 7. TreeWidget to set up the people list because this event happened of using dictionary
+* 7. TreeWidget to set up the people list because this event happened of, using dictionary
 * 8. QTextBrowser to output the logging events;
 * This class implements "View" functions from MVC pattern.
 */
@@ -83,7 +83,7 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		QLabel*			words;
 
 		/*!
-		* \brief to open input dir where processed files are in
+		* \brief to open input dir where files for processing are in
 		*/
 		QPushButton*		inputDirButton;
 
@@ -103,7 +103,7 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		QTextBrowser*		logOutput;
 		
 		/*!
-		* \brief to output the input dirs structure 
+		* \brief to output the input dir FS structure - dirs and files 
 		*/
 		QTreeWidget*		inputDirsWidget;			
 
@@ -118,12 +118,12 @@ class FVAOrganizerEventInfoPage : public QWizardPage
 		QTreeWidget*		eventsWidget;	
 
 		/*!
-		* \brief maps input dir structure (folder names) to event ids got from fvaEvents.csv
+		* \brief maps input dir structure (folder names and file names) to event ids got from fvaEvents.csv
 		*/		
 		DIR_2_ID_MAP		dir2EventMap;
 
 		/*!
-		* \brief  maps input dir structure (folder names) to people ids (that caused the event) got from fvaPeople.csv
+		* \brief  maps input dir structure (folder names and file names) to people ids (that caused the event) got from fvaPeople.csv
 		*/
 
 		DIR_2_IDS_MAP		dir2PeopleMap;
