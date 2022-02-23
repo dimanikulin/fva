@@ -355,20 +355,3 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-
-# QT GeneratedFiles
-GeneratedFiles
-
-# binaries
-FVASetupWin/#BIN# 
-FVASetupWin/QT5.5DebWin32bin
-FVASetupWin/QT5.5RelWin32bin
-
-#ignore submodule
-easyexif/
-
-#ignore test data
-*.jpg
-
-#ignore  old sources zip
-oldsrc.zip
