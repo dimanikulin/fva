@@ -383,7 +383,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDi
 			QString peopleIds;
 			for(int i=0; i < peopleMap[fsPath].size(); ++i)
 			{
-				peopleIds += QString::number(peopleMap[dir][i]);
+				peopleIds += QString::number(peopleMap[fsPath][i]);
 				if( i < peopleMap[fsPath].size()-1 )
 					peopleIds += "," ;
 			}
