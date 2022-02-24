@@ -332,7 +332,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
 		}
 		if (fi.isFile())
 		{
-			return FVA_NOT_IMPLEMENTED;              
+			return FVA_ERROR_NOT_IMPLEMENTED;              
 		}
 	}
 	// clean up after processing
@@ -374,7 +374,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDi
 			// show error message box and return to calling function if previous operation failed
 			IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventForDir")
 
-			if (0 == peopleMap[dir].size())
+			if (0 == peopleMap[fsPath].size())
 			{
 				LOG_WARN << "empty people list for " << fvafileNPath << " " << fsPath;
 				continue;
@@ -399,7 +399,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDi
 		}
 		if (fi.isFile())
 		{
-			return FVA_NOT_IMPLEMENTED;
+			return FVA_ERROR_NOT_IMPLEMENTED;
 		}
 
 	}
