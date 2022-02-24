@@ -381,10 +381,10 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDi
 			}
 			params.removeLast(); // remove last param as it was for previous cmd actual only
 			QString peopleIds;
-			for(int i=0; i < peopleMap[dir].size(); ++i)
+			for(int i=0; i < peopleMap[fsPath].size(); ++i)
 			{
 				peopleIds += QString::number(peopleMap[dir][i]);
-				if( i < peopleMap[dir].size()-1 )
+				if( i < peopleMap[fsPath].size()-1 )
 					peopleIds += "," ;
 			}
 			params.append(peopleIds);
