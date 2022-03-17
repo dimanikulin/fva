@@ -5,7 +5,7 @@ Time changed and right now let say almost everyone owns a camera or a smartphone
 Because of that the size of my photo album increased significally. But I don't think it is for me only.
 
 <p align="center">
-  <a href="FVAImages/Anaveragefamilyphotoalbum.gif" target="blank"><img src="FVAIcons/main.png" alt="Anaveragefamilyphotoalbum.gif" /></a>
+  <a href="FVAImages/Anaveragefamilyphotoalbum.gif" target="blank"><img src="FVAImages/Anaveragefamilyphotoalbum.gif" alt="Anaveragefamilyphotoalbum.gif" /></a>
 </p>
 
  
