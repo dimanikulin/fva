@@ -369,10 +369,4 @@ FVACodeChecks
 
 #will be used later and deleted after 
 FVADocHelpers
-
-FVA.pod
-Functional Requirements.xlsx
-SAD.docx
-SAD diagrams.drawio
-Products.pptx
-Products.docx
+FVADocX

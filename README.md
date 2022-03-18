@@ -35,8 +35,8 @@
 
 ## Quick Links
 - [Description](#description)
+- [Author History](./AUTHORHISTORY.md)
 - [Features](#features)
-- [History](./AUTHORHISTORY.md)
 - [User documentation](#user-doc)
 - [Documentation](#documentation)
 - [Building the code](#building-the-code)
