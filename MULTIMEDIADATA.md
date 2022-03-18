@@ -7,20 +7,18 @@ It usually refers to data representing multiple types of media to capture inform
 In common usage, people refer a data set as multimedia only when time-dependent data such as audio and video are involved [[13]](./REFERENCES.md).
 <img src="FVAMDImages/Multimediadata.gif" alt="Multimediadata.gif" />
 The multimedia data is divided into three subclasses: 
-## multidimensional (also called spatial) types are:
+multidimensional (also called spatial) types are:
 * Three-dimensional, four-dimensional, five-dimensional, etc.;
 * Virtual reality content.,
-## dynamic:
+dynamic:
 * Video content;
 * Animation content;
 * Audio content.
-## and static content 
+and static content 
 * Image or photo content;
 * Graphic content;
-* Text content.
- 
+* Text content. 
 The text information has been the dominant one as a way for communication between people. But other media types such as audio, image, and video are getting importance in context of growing the computing capabilities like the disk and memory space, growing processing power, etc. [[1]](./REFERENCES.md). 
-
 Since a lot of people own the phones with a camera, and there are numerous webcams, motion cameras, tablets with a camera, the global photo content amount is huge. 
 </br>
 By prediction, the humanity is going to take about 1.5 trillion photos this year [[14]](./REFERENCES.md). 
@@ -34,5 +32,4 @@ Therefore, different approaches and engines might be used depending on the type 
 </br>
 In fact, in most cases Multimedia IR systems work with text content. The examples are Google, Bing, etc. 
 Meanwhile, the other types of information are getting more and more important, because the search for any type information is the most valuable feature of human activity when it is online. 
-
 Statistics show that a huge number of resources such as photos, videos, etc. appear and disappear on the Internet every day as a source of search request.
