@@ -5,9 +5,7 @@ People interact with digital data every day and a continued growth contributes t
 It usually refers to data representing multiple types of media to capture information and experiences related to objects and events. Commonly used forms of data are numbers, alphanumeric characters, text, images, audio, and video. 
 </br>
 In common usage, people refer a data set as multimedia only when time-dependent data such as audio and video are involved [[13]](./REFERENCES.md).
-<p align="center">
-  <a href="FVAMDImages/Multimediadata.gif" target="blank"><img src="FVAMDImages/Multimediadata.gif" alt="Multimediadata.gif" /></a>
-</p>
+<img src="FVAMDImages/Multimediadata.gif" alt="Multimediadata.gif" />
 The multimedia data is divided into three subclasses: 
 ## multidimensional (also called spatial) types are:
 * Three-dimensional, four-dimensional, five-dimensional, etc.;
@@ -28,9 +26,7 @@ Since a lot of people own the phones with a camera, and there are numerous webca
 By prediction, the humanity is going to take about 1.5 trillion photos this year [[14]](./REFERENCES.md). 
 Due to enormous amount of multimedia content across the world and, often, large number of multimedia content in an average family (like photos), there is a demand to make the search among different types of media. 
 The systems that implement this market request are referred to as Multimedia Information Retrieval (Multimedia IR) systems. 
-<p align="center">
-  <a href="FVAMDImages/Multimediadatavolume.png" target="blank"><img src="FVAMDImages/Multimediadatavolume.png" alt="Multimediadatavolume.png" /></a>
-</p>
+<img src="FVAMDImages/Multimediadatavolume.png" alt="Multimediadatavolume.png" />
 Such Multimedia IR systems usually provide such functions as storage, indexing, searching and delivery of multimedia information. 
 They might also include such features as extracting descriptive features from multimedia data. 
 The non-textual information significantly differs from the textual information. 
