@@ -4,7 +4,7 @@ At that time we had film cameras only and so the amount of photos was not so big
 Time changed and right now let say almost everyone owns a camera or a smartphone with camera or even both.
 Because of that the size of my photo album increased significally. But I don't think it is for me only.
 <p align="center">
-  <a href="FVAImages/Anaveragefamilyphotoalbum.gif" target="blank"><img src="FVAImages/Anaveragefamilyphotoalbum.gif" alt="Anaveragefamilyphotoalbum.gif" /></a>
+  <a href="FVAMDImages/Anaveragefamilyphotoalbum.gif" target="blank"><img src="FVAMDImages/Anaveragefamilyphotoalbum.gif" alt="Anaveragefamilyphotoalbum.gif" /></a>
 </p>
 It is worth to say that any photo album item is multimedia data item. Please refer to [this](./MULTIMEDIADATA.md) to get more information on what is multimedia data.
 Once Me and my friend decided to recall an event we both attended to. We took my photo album and tried to search there. 
