@@ -6,7 +6,7 @@ Because of that the size of my photo album increased significally. But I don't t
 <p align="center">
   <a href="FVAMDImages/Anaveragefamilyphotoalbum.gif" target="blank"><img src="FVAMDImages/Anaveragefamilyphotoalbum.gif" alt="Anaveragefamilyphotoalbum.gif" /></a>
 </p>
-It is worth to say that any photo album item is multimedia data item. Please refer to [this](./MULTIMEDIADATA.md) to get more information on what is multimedia data.
+It is worth to say that any photo album item is multimedia data item. Please refer to [this](./MULTIMEDIADATA.md) [[38]](./REFERENCES.md) to get more information on what is multimedia data.
 Once Me and my friend decided to recall an event we both attended to. We took my photo album and tried to search there. 
 That time my album kept more than 30 thousand items inside. That looked like
 
