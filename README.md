@@ -63,7 +63,6 @@ You can download the [Installation packages](https://github.com/dimanikulin/fva/
 Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it on environment you would like to have it running on.
 [Author History is here](./AUTHORHISTORY.md)
-Please refer to [this](./MULTIMEDIADATA.md) to get information on what is multimedia data.
 
 ## Documentation
 * Please see [link](https://dimanikulin.github.io/fva/) for the documentation.
