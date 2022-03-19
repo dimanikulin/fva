@@ -5,7 +5,7 @@ People interact with digital data every day and a continued growth contributes t
 It usually refers to data representing multiple types of media to capture information and experiences related to objects and events. Commonly used forms of data are numbers, alphanumeric characters, text, images, audio, and video. 
 </br>
 In common usage, people refer a data set as multimedia only when time-dependent data such as audio and video are involved [[13]](./REFERENCES.md).
-<img src="FVAMDImages/Multimediadata.gif" alt="Multimediadata.gif" />
+<img src="FVAMDImages/Multimediadata.gif" alt="Multimediadata.gif"/>
 The multimedia data is divided into three subclasses: 
 multidimensional (also called spatial) types are:
 * Three-dimensional, four-dimensional, five-dimensional, etc.;

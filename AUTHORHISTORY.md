@@ -5,9 +5,13 @@ Time changed and right now let say almost everyone owns a camera or a smartphone
 Because of that the size of my photo album increased significally. But I don't think it is for me only.
 <img src="FVAMDImages/Anaveragefamilyphotoalbum.gif" alt="Anaveragefamilyphotoalbum.gif" />
 Once Me and my friend decided to recall an event we both attended to. We took my photo album and tried to search there. 
-That time my album kept more than 30 thousand items inside. That looked like
+That time my album kept more than 30 thousand items inside. That search process looked like
 <img src="FVAMDImages/Asearchinphotoalbumwith30thousandphotos.gif" alt="Asearchinphotoalbumwith30thousandphotos.gif" />
-Of course we found nothing that time
+Of course we found nothing that time. And I started looking for a solution to search in Multimedia Data in automatic way. 
+It is worth to say that any item in photo album is Multimedia Data.
+Please refer to [this](./MULTIMEDIADATA.md) to get information on what is Multimedia Data.
+What I found as a solution was Multimedia IR systems. Please refer to [this](./MULTIMEDIAIRSYSTEMS.md) to get information on what is Multimedia IR Systems.
+ 
 
 The current IR Multimedia systems don't provide a flexible and automated functionality to import the multimedia data into IR Multimedia systems basing on user search needs. Despite there are a lot of steps that can be automated, still a human involvement is required.
 	 So, automation for importing the new photo set into photo album might be highly required feature for IR Multimedia systems as it can identify and address some issues that shall be fixed before user starts searching the data using IR Multimedia system. It should not implement any search function like search by emotions but  it shall only support adding/fixing metadata at the import photo stage.
