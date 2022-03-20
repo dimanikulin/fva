@@ -13,7 +13,7 @@ Please refer to [this](./MULTIMEDIADATA.md) to get information on what is Multim
 What I found as a solution were the Multimedia IR systems. 
 Please refer to [this](./MULTIMEDIAIRSYSTEMS.md) to get information on what is Multimedia IR Systems. </br> 
 But there are a lot of Multimedia IR Systems and there was a long way to choose one of them to start searching in more efficient way.
-Finally [digiKam](https://www.digikam.org/) <img src="FVAMDImages/Digikam2.png" alt="Digikam2.png" width="20" height="20"/> as Offline Multimedia IR System and [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVAMDImages/SynologyMoments2.png" alt="SynologyMoments2.png" height="20" /> as Online Multimedia IR System were chosen to use. </br> </br> 
+Finally [digiKam](https://www.digikam.org/) <img src="FVAMDImages/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline Multimedia IR System and [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVAMDImages/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online Multimedia IR System were chosen to use. </br> </br> 
 Please notice they were chosen basing on author criteria only and there is no aim to advertise anyone.
 </br> </br> 
 The current IR Multimedia systems don't provide a flexible and automated functionality to import the multimedia data into IR Multimedia systems basing on user search needs. Despite there are a lot of steps that can be automated, still a human involvement is required.
