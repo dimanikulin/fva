@@ -10,11 +10,16 @@ That time my album kept more than 30 thousand items inside. That search process 
 Of course we found nothing that time. And I started looking for a solution to search in Multimedia Data in automatic way. 
 It is worth to say that any item in photo album is Multimedia Data.
 Please refer to [this](./MULTIMEDIADATA.md) to get information on what is Multimedia Data.
-What I found as a solution was Multimedia IR systems. Please refer to [this](./MULTIMEDIAIRSYSTEMS.md) to get information on what is Multimedia IR Systems.
- 
+What I found as a solution were the Multimedia IR systems. 
+Please refer to [this](./MULTIMEDIAIRSYSTEMS.md) to get information on what is Multimedia IR Systems.
+But there are a lot of Multimedia IR Systems and there was a long way to choose one of them to start searching in more efficient way.
+Finally <img src="FVAMDImages/digiKam.png" alt="digiKam.png" />  
+digiKam (as Offline Multimedia IR System) and <img src="FVAMDImages/SynologyMoments.png" alt="SynologyMoments.png" /> Synology Moments (as Online Multimedia IR System) were chosen to use.
+Please notice they were chosen basing on author criteria only and there is no aim to advertise anyone.
 
 The current IR Multimedia systems don't provide a flexible and automated functionality to import the multimedia data into IR Multimedia systems basing on user search needs. Despite there are a lot of steps that can be automated, still a human involvement is required.
-	 So, automation for importing the new photo set into photo album might be highly required feature for IR Multimedia systems as it can identify and address some issues that shall be fixed before user starts searching the data using IR Multimedia system. It should not implement any search function like search by emotions but  it shall only support adding/fixing metadata at the import photo stage.
+	So, automation for importing the new photo set into photo album might be highly required feature for IR Multimedia systems as it can identify and address some issues that shall be fixed before user starts searching the data using IR Multimedia system. 
+It should not implement any search function like search by emotions but it shall only support adding/fixing metadata at the import photo stage.
 	The set of tools in form of desktop applications shall be developed. The main functions of that tool set are 
 to automate the import (with decreasing the probability of human factor influence on the process of importing new photos into the existing photo album) 
 to make photo album more searchable (that is driven by IR Multimedia Systems) by enriching the metadata (and improving its consistency) with minimal human involvement.
@@ -24,6 +29,6 @@ The IR Multimedia Systems that are present on the market and available for end u
 The available products on the market that help the end user to address those issues were checked. 
 Those products were compared with the solution proposed.
 The approaches and the tools that can help in project implementation were checked.
-Two IR Multimedia Systems were  verified if can easily be integrated with the proposed solution.
-withot organizer serachers not so effective
+Two IR Multimedia Systems were verified if can easily be integrated with the proposed solution.
+without organizer searchers not so effective
  
