@@ -8,15 +8,14 @@ Once Me and my friend decided to recall an event we both attended to. We took my
 That time my album kept more than 30 thousand items inside. That search process looked like
 <img src="FVAMDImages/Asearchinphotoalbumwith30thousandphotos.gif" alt="Asearchinphotoalbumwith30thousandphotos.gif" />
 Of course we found nothing that time. And I started looking for a solution to search in Multimedia Data in automatic way. 
-It is worth to say that any item in photo album is Multimedia Data.
-Please refer to [this](./MULTIMEDIADATA.md) to get information on what is Multimedia Data.
+It is worth to say that any item in photo album is Multimedia Data. 
+Please refer to [this](./MULTIMEDIADATA.md) to get information on what is Multimedia Data. </br> </br>
 What I found as a solution were the Multimedia IR systems. 
-Please refer to [this](./MULTIMEDIAIRSYSTEMS.md) to get information on what is Multimedia IR Systems.
+Please refer to [this](./MULTIMEDIAIRSYSTEMS.md) to get information on what is Multimedia IR Systems. </br> 
 But there are a lot of Multimedia IR Systems and there was a long way to choose one of them to start searching in more efficient way.
-Finally <img src="FVAMDImages/digiKam.png" alt="digiKam.png" />  
-digiKam (as Offline Multimedia IR System) and <img src="FVAMDImages/SynologyMoments.png" alt="SynologyMoments.png" /> Synology Moments (as Online Multimedia IR System) were chosen to use.
+Finally [digiKam](https://www.digikam.org/) <img src="FVAMDImages/Digikam2.png" alt="Digikam2.png" width="20" height="20"/> as Offline Multimedia IR System and [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVAMDImages/SynologyMoments2.png" alt="SynologyMoments2.png" height="20" /> as Online Multimedia IR System were chosen to use. </br> </br> 
 Please notice they were chosen basing on author criteria only and there is no aim to advertise anyone.
-
+</br> </br> 
 The current IR Multimedia systems don't provide a flexible and automated functionality to import the multimedia data into IR Multimedia systems basing on user search needs. Despite there are a lot of steps that can be automated, still a human involvement is required.
 	So, automation for importing the new photo set into photo album might be highly required feature for IR Multimedia systems as it can identify and address some issues that shall be fixed before user starts searching the data using IR Multimedia system. 
 It should not implement any search function like search by emotions but it shall only support adding/fixing metadata at the import photo stage.
