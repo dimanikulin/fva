@@ -1,4 +1,3 @@
-## Here is my history on why I created this product
 When I was a child I used to observe the family photo album to take a look at my relations who I have not seen in real life.
 At that time we had film cameras only and so the amount of photos was not so big.
 Time changed and right now let say almost everyone owns a camera or a smartphone with camera or even both.
@@ -15,6 +14,7 @@ Please refer to [this](./MULTIMEDIAIRSYSTEMS.md) to get information on what is M
 But there are a lot of Multimedia IR Systems and there was a long way to choose one of them to start searching in more efficient way.
 Finally [digiKam](https://www.digikam.org/) <img src="FVAMDImages/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline Multimedia IR System and [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVAMDImages/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online Multimedia IR System were chosen to use. </br> </br> 
 Please notice they were chosen basing on author criteria only and there is no aim to advertise anyone.
+You can find [here](./MULTIMEDIAIRSYSTEMSANALYZE.md) the process of analyze and comparison for Multimedia IR Systems I have made to choose the most suitable system to me.
 </br> </br> 
 The current IR Multimedia systems don't provide a flexible and automated functionality to import the multimedia data into IR Multimedia systems basing on user search needs. Despite there are a lot of steps that can be automated, still a human involvement is required.
 	So, automation for importing the new photo set into photo album might be highly required feature for IR Multimedia systems as it can identify and address some issues that shall be fixed before user starts searching the data using IR Multimedia system. 
@@ -30,4 +30,4 @@ Those products were compared with the solution proposed.
 The approaches and the tools that can help in project implementation were checked.
 Two IR Multimedia Systems were verified if can easily be integrated with the proposed solution.
 without organizer searchers not so effective
- 
+ link to questionary

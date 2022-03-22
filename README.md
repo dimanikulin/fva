@@ -35,7 +35,6 @@
 
 ## Quick Links
 - [Description](#description)
-- [Author History](./AUTHORHISTORY.md)
 - [Features](#features)
 - [User documentation](#user-doc)
 - [Documentation](#documentation)
@@ -52,17 +51,20 @@ into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology
 
 ## Features
 - **Organizing the mutlimedia:** Organizing the multimedia data to be more searchable
-- **Integration:** The system is integrated with online/offline Multimedia IR systems like digiKam, Google Photo, etc.
+- **Integration:** The system is integrated with online/offline Multimedia IR systems:
+[digiKam](https://www.digikam.org/) <img src="FVAMDImages/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline Multimedia IR System and 
+[Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVAMDImages/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online Multimedia IR System are now supported. 
 - **Multimedia metadata gaps identification:** It identifies the gaps and tryies to fill it up.
 - **Text search:** It is possible to search by events, photo author, places, people using text search   
 - **Configuration:** The system flow depends on configuration.
-TBD to add icons of supported IR multimedia systems
 
 ## User documentation
-You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for 
-Linux (x86-64), Mac and Windows (latest versions).
+[Here is author history on why he created this product](./AUTHORHISTORY.md)
+[What is Multimedia Data?](./MULTIMEDIADATA.md)
+[What are Multimedia IR Systems?](./MULTIMEDIAIRSYSTEMS.md)
+[Multimedia IR Systems analyze](./MULTIMEDIAIRSYSTEMSANALYZE.md)
+You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it on environment you would like to have it running on.
-[Author History is here](./AUTHORHISTORY.md)
 
 ## Documentation
 * Please see [link](https://dimanikulin.github.io/fva/) for the documentation.
