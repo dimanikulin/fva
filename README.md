@@ -36,12 +36,12 @@
 ## Quick Links
 - [Description](#description)
 - [Features](#features)
-- [User documentation](#user-doc)
+- [User documentation](#user-documentation)
 - [Documentation](#documentation)
 - [Building the code](#building-the-code)
 - [Contributing](#contributing)
 - [Stay in touch](#stay-in-touch)
-- [Code checks](#Code-check)
+- [Code checks](#code-checks)
 - [License](./LICENSE.md)
 - [References](./REFERENCES.md)
 
@@ -59,11 +59,12 @@ into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology
 - **Configuration:** The system flow depends on configuration.
 
 ## User documentation
-[Here is author history on why he created this product](./AUTHORHISTORY.md)
-[What is Multimedia Data?](./MULTIMEDIADATA.md)
-[What are Multimedia IR Systems?](./MULTIMEDIAIRSYSTEMS.md)
-[Multimedia IR Systems analyze](./MULTIMEDIAIRSYSTEMSANALYZE.md)
-You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
+* [Here is author history on why he created this product](./AUTHORHISTORY.md)
+* [What is Multimedia Data?](./MULTIMEDIADATA.md)
+* [What are Multimedia IR Systems?](./MULTIMEDIAIRSYSTEMS.md)
+* [Multimedia IR Systems analyze](./MULTIMEDIAIRSYSTEMSANALYZE.md)
+
+</br> You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it on environment you would like to have it running on.
 
 ## Documentation
