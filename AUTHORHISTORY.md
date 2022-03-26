@@ -33,10 +33,10 @@ In fact, nobody has taken photos nearby Ghana.
 
 In the second case, we searched for the photos taken in 2011. 
 Actually, we got one video that, got recognized as of March 2020, which is underlined with the red color.
-<img src="FVAMDImages/AnalyzeofprivateMultimediaIRsystems.png" alt="AnalyzeofprivateMultimediaIRsystems2.png" />
+<img src="FVAMDImages/AnalyzeofprivateMultimediaIRsystems2.png" alt="AnalyzeofprivateMultimediaIRsystems2.png" />
 The system has provided such results due to incorrect metadata. 
 
-The reasons for incorrect and absent metadata are rather different – from not setting proper data on the device that takes the photos to the privacy issues. 
+The reasons for incorrect and absent metadata are rather different â€“ from not setting proper data on the device that takes the photos to the privacy issues. 
 This resource [[22]](./REFERENCES.md) describes the metadata importance in more details and there is information about other reasons of incorrect and absent metadata. 
 So, automation for importing the new photo set into photo album is highly required feature for IR Multimedia systems as it can identify and address some issues that shall be fixed before user starts searching the data using IR Multimedia system. 
 It should not implement any search function like search by emotions but it shall only support adding/fixing metadata at the import photo stage.
