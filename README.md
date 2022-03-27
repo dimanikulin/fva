@@ -49,12 +49,12 @@
 A convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)
 into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology Photo Station, etc. to make the multimedia more searchable
 
-The main functions of that tool set are: 
+The main functions(basing on user search needs) of that tool set are: 
 * to automate the import (with decreasing the probability of human factor influence on the process of importing new photos into the existing photo album). 
 * to make photo album more searchable (that is driven by IR Multimedia Systems) by enriching the metadata (and improving its consistency) with minimal human involvement.
 
 Despite there are a lot of steps that can be automated, still a human involvement is required.
-
+ 
 The solution is oriented on end users only.
 Only opensource code/tools are used as a product is opensource.
 
