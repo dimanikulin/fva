@@ -68,10 +68,12 @@ Only opensource code/tools are used as a product is opensource.
 - **Configuration:** The system flow depends on configuration.
 
 ## User documentation
+* [Questionar to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 * [Here is author history on why he created this product](./AUTHORHISTORY.md)
 * [What is Multimedia Data?](./MULTIMEDIADATA.md)
 * [What are Multimedia IR Systems?](./MULTIMEDIAIRSYSTEMS.md)
 * [Multimedia IR Systems analyze](./MULTIMEDIAIRSYSTEMSANALYZE.md)
+* [Multimedia Organizers](./MULTIMEDIAORGANIZERS.md)
 </br>
 You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it on environment you would like to have it running on.
