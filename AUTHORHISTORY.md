@@ -36,15 +36,19 @@ Actually, we got one video that, got recognized as of March 2020, which is under
 <img src="FVAMDImages/AnalyzeofprivateMultimediaIRsystems2.png" alt="AnalyzeofprivateMultimediaIRsystems2.png" />
 The system has provided such results due to incorrect metadata. 
 </br> </br>
-The reasons for incorrect and absent metadata are rather different – from not setting proper data on the device that takes the photos to the privacy issues. 
+The reasons for incorrect and absent metadata are rather different - from not setting proper data on the device that takes the photos to the privacy issues. 
 This resource [[22]](./REFERENCES.md) describes the metadata importance in more details and there is information about other reasons of incorrect and absent metadata. 
-So, automation for importing the new photo set into photo album is highly required feature for IR Multimedia systems as it can identify and address some issues that shall be fixed before user starts searching the data using IR Multimedia system. 
-It should not implement any search function like search by emotions but it shall only support adding/fixing metadata at the import photo stage.
+
+So I understood that Multimedia IR systems are not so effective without other tools, often called Multimedia Organizer.
+
+Usually, thay provide automation for importing the new photo set into photo album that is not implemented feature in IR Multimedia systems.
+Also It can identify and address some issues that shall be fixed before user starts searching the data using IR Multimedia system. 
+But it should not implement any search function like search by emotions but it shall only support adding/fixing metadata at the import photo stage.
 </br> </br>
+
+You can find [here](./MULTIMEDIAORGANIZERS.md) more information regarding Multimedia Organizers.
 
 The available products on the market that help the end user to address those issues were checked. 
 Those products were compared with the solution proposed.
 
-without organizer searchers not so effective
  link to questionary
-And also basing on user search needs. 
