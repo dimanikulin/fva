@@ -74,7 +74,7 @@ Only opensource code/tools are used as a product is opensource.
 * [What are Multimedia IR Systems?](./MULTIMEDIAIRSYSTEMS.md)
 * [Multimedia IR Systems analyze](./MULTIMEDIAIRSYSTEMSANALYZE.md)
 * [Multimedia Organizers](./MULTIMEDIAORGANIZERS.md)
-</br>
+
 You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it on environment you would like to have it running on.
 
