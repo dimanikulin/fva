@@ -44,6 +44,7 @@
 - [Code checks](#code-checks)
 - [License](./LICENSE.md)
 - [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](./REFERENCES.md)
+- [Questionar to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 
 ## Description
 A convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)
@@ -68,7 +69,6 @@ Only opensource code/tools are used as a product is opensource.
 - **Configuration:** The system flow depends on configuration.
 
 ## User documentation
-* [Questionar to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 * [Here is author history on why he created this product](./AUTHORHISTORY.md)
 * [What is Multimedia Data?](./MULTIMEDIADATA.md)
 * [What are Multimedia IR Systems?](./MULTIMEDIAIRSYSTEMS.md)
