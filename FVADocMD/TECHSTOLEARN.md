@@ -6,10 +6,10 @@
 * how to work with QWizard and QWizardPage;
 * how to work with CSV files;
 * how to create riff parser;
+* how to build the code using MS Visual Studio and CMake on local env or using GitHub on cloud env(Yml);
 
 ## You will learn - documentation chapter
 * how to create attractive README.md files (bages from shields, documents structure, required chapters, diagrams on Mermaid.js);
-* how to build the code using MS Visual Studio and CMake on local env or using GitHub on cloud env;
 * how to document the C++ code using Doxygen markdown and build documentation basing on Doxygen markdown;
 * how to buuld and release the documentation;
 * how to release the product;
