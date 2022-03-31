@@ -13,9 +13,10 @@
 |11 | GitHub Desktop client | To work with github   |   |  free | developer |  |
 |12 | CMake | To control build process  | 3.22.0  | free  | developer | Full name is cmake-3.22.0-windows-x86_64.msi |
 |13 | QT 6.1.2 | QT Library  | 6.1.2  | free  | developer |  |
-|14 | pypiwin32 | To use Win32com from it - python package to work with console  |   | free | Developer and user | To install it please use "pip install pypiwin32" |
+|14 | pypiwin32 | To use Win32com from it - python package to work with console  |   | free | developer and user | To install it please use "pip install pypiwin32" |
 |15 | exiftool | Tool to process exif metadata |   | free  | developer and user | You need to download it (exiftool(-k).exe) from somewhere |
 |16 | Ninja | TBD  | 1.10.2  | free  | developer |  |
 |17 | CCache | To speed up build  | 4.4  | free  | developer |  |
 |18 | Qt Designer | To create and update UI  |   | free  | developer |  |
 |19 | Simply Exif | C++ classes to work with exif format  |  | free  | developer | Need to publish its license file |
+|20 |  |   |   |   |  |  |
