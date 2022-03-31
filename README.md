@@ -42,8 +42,8 @@
 - [Contributing](#contributing)
 - [Stay in touch](#stay-in-touch)
 - [Code checks](#code-checks)
-- [License](./LICENSE.md)
-- [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](./REFERENCES.md)
+- [License](FVADocMD/LICENSE.md)
+- [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
 - [Questionar to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 
 ## Description
@@ -62,18 +62,18 @@ Only opensource code/tools are used as a product is opensource.
 ## Features
 - **Organizing the mutlimedia:** Organizing the multimedia data to be more searchable
 - **Integration:** The system is integrated with online/offline Multimedia IR systems:
-[digiKam](https://www.digikam.org/) <img src="FVAMDImages/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline Multimedia IR System and 
-[Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVAMDImages/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online Multimedia IR System are now supported. 
+[digiKam](https://www.digikam.org/) <img src="FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline Multimedia IR System and 
+[Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online Multimedia IR System are now supported. 
 - **Multimedia metadata gaps identification:** It identifies the gaps and tryies to fill it up.
 - **Text search:** It is possible to search by events, photo author, places, people using text search   
 - **Configuration:** The system flow depends on configuration.
 
 ## User documentation
-* [Here is author history on why he created this product](./AUTHORHISTORY.md)
-* [What is Multimedia Data?](./MULTIMEDIADATA.md)
-* [What are Multimedia IR Systems?](./MULTIMEDIAIRSYSTEMS.md)
-* [Multimedia IR Systems analyze](./MULTIMEDIAIRSYSTEMSANALYZE.md)
-* [Multimedia Organizers](./MULTIMEDIAORGANIZERS.md)
+* [Here is author history on why he created this product](FVADocMD/AUTHORHISTORY.md)
+* [What is Multimedia Data?](FVADocMD/MULTIMEDIADATA.md)
+* [What are Multimedia IR Systems?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
+* [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
+* [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
 
 You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it on environment you would like to have it running on.
@@ -82,13 +82,13 @@ Then you just need to install it on environment you would like to have it runnin
 * Please see [link](https://dimanikulin.github.io/fva/) for the documentation.
 * To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf)  TBD - describe how 
 * [Roadmap](https://github.com/dimanikulin/fva/projects/4).
-* [Documentation requirements](./CODEDOCUMENTATION.md)
-* [Tools and dependencies](./DEPENDENCIES.md)
-* [Old tools and dependencies](./DEPENDENCIES_OLD.md)
+* [Documentation requirements](FVADocMD/CODEDOCUMENTATION.md)
+* [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
+* [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
 
 ## Building the code
 For building the code you don't need to have any local environment to set up. 
-1. So building the code is already done by github. I used [[37]](./REFERENCES.md) to help me to set up main GitHub action flow and [this link](https://github.com/jurplel/install-qt-action) to set up QT.
+1. So building the code is already done by github. I used [[37]](FVADocMD/REFERENCES.md) to help me to set up main GitHub action flow and [this link](https://github.com/jurplel/install-qt-action) to set up QT.
 As soon as any code change is pushed to the GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to test.
 2. But if you wish you can use [MS studio solution](./FVASW.sln) to build locally on  Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
 
@@ -109,7 +109,7 @@ You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/
 
 ## Code checks
 Currently there are following automated checks to verify if the code meets code quality requirements:
-* [Code QL](.github/workflows/codeqlanalysis.yml) Please see [[38]](./REFERENCES.md) TBD what for
+* [Code QL](.github/workflows/codeqlanalysis.yml) Please see [[38]](FVADocMD/REFERENCES.md) TBD what for
 * [code Checks](.github/workflows/codeChecks.yml) TBD what for
 * [code factor](https://www.codefactor.io/repository/github/dimanikulin/fva/issues)  TBD what for
 * [ms vc analysis](.github/workflows/msvc-analysis.yml) TBD what for

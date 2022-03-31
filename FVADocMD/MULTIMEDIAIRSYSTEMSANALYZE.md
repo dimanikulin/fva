@@ -1,7 +1,7 @@
 Let us compare several multimedia IR systems by covering requirements and needs we identified previously. 
 Since some users might feel free to select multimedia IR systems integrated with online storages (like Cloud ones), but others want to use offline multimedia IR systems, we need to choose one offline and one online system. 
 In the same way, we need to add the proprietary and free systems to the comparison as well. 
-<img src="FVAMDImages/ComparisonoftheprivateMultimediaIRsystems.gif" alt="ComparisonoftheprivateMultimediaIRsystems.gif" />
+<img src="Images/ComparisonoftheprivateMultimediaIRsystems.gif" alt="ComparisonoftheprivateMultimediaIRsystems.gif" />
 Below is the list of them with brief descriptions:
 * Synology Moments - Gather all your photos and videos in one private place and organize them in an entirely new way. Synology Moments is the brand new photo solution for personal and home use, offering a modern browsing experience with the image recognition technique.[[31]](./REFERENCES.md)
 * Mylio - it is a free app that can be used to organize photos, videos, and other files. This program can be used on any Mac, iOS, Windows, and Android device. Mylio doesn't necessarily need the Internet to function; it can work automatically to organize the files based on the calendar app [[8]](./REFERENCES.md),[[19]](./REFERENCES.md).
@@ -9,8 +9,8 @@ Below is the list of them with brief descriptions:
 * digiKam - a free and open-source photo organizing software that can handle more than 100K images. The program has all the photo organizing functionality you will need like uploading, deleting and sorting images [[12]](./REFERENCES.md),[[8]](./REFERENCES.md)
 * Apple photo - is a photo management and editing application developed by Apple [[30]](./REFERENCES.md)
 
-<img src="FVAMDImages/ComparisonofprivateMultimediaIRsystems.png" alt="ComparisonofprivateMultimediaIRsystems.png" />
-<img src="FVAMDImages/ComparisonofprivateMultimediaIRsystems2.png" alt="ComparisonofprivateMultimediaIRsystems2.png" />
+<img src="Images/ComparisonofprivateMultimediaIRsystems.png" alt="ComparisonofprivateMultimediaIRsystems.png" />
+<img src="Images/ComparisonofprivateMultimediaIRsystems2.png" alt="ComparisonofprivateMultimediaIRsystems2.png" />
 
 ## Well implemented features
 The comparison table shows the following features as well implemented:

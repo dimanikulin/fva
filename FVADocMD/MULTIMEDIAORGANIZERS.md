@@ -5,7 +5,7 @@
 This [[8]](./REFERENCES.md) provides the list of Photo Organizer for professional photographer and those organizers can be used by a usual user with a big photo album. 
 There are even relevant online courses[[28]](./REFERENCES.md) available to guide the user how to organize the photos.
 The more detailed comparison of photo organizers is provided by Wikipedia and available here [[9]](./REFERENCES.md).
-<img src="FVAMDImages/MultimediaOrganizers.png" alt="MultimediaOrganizers.png"/>
+<img src="Images/MultimediaOrganizers.png" alt="MultimediaOrganizers.png"/>
 
 ## Multimedia Organizers overview
 * They currently perform the search in photo set by organizing the photos based on their date, location, categories, etc.;
