@@ -21,5 +21,3 @@ add_subdirectory(FVAOrganizer)
 add_subdirectory(FVAOrganizerWizard)
 add_subdirectory(FVAPlayer)
 add_subdirectory(FVAViewer)
-
-
