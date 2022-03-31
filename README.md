@@ -81,8 +81,10 @@ Then you just need to install it on environment you would like to have it runnin
 ## Documentation
 * Please see [link](https://dimanikulin.github.io/fva/) for the documentation.
 * To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf)  TBD - describe how 
-* Here is a link to a [roadmap](https://github.com/dimanikulin/fva/projects/4).
-* Here is a link to a [code documentation requirements](./CODEDOCUMENTATION.md)
+* [Roadmap](https://github.com/dimanikulin/fva/projects/4).
+* [Documentation requirements](./CODEDOCUMENTATION.md)
+* [Tools and dependencies](./DEPENDENCIES.md)
+* [Old tools and dependencies](./DEPENDENCIES_OLD.md)
 
 ## Building the code
 For building the code you don't need to have any local environment to set up. 
