@@ -42,6 +42,7 @@
 - [Contributing](#contributing)
 - [Stay in touch](#stay-in-touch)
 - [Code checks](#code-checks)
+- [What you will learn here as a SW Developer](FVADocMD/TECHSTOLEARN.md)
 - [License](FVADocMD/LICENSE.md)
 - [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
 - [Questionar to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
@@ -79,7 +80,8 @@ You can download the [Installation packages](https://github.com/dimanikulin/fva/
 Then you just need to install it on environment you would like to have it running on.
 
 ## Documentation
-* Please see [link](https://dimanikulin.github.io/fva/) for the documentation.
+* [What you will learn here as a SW Developer](FVADocMD/TECHSTOLEARN.md)
+* Please see [the documentation generated from the code](https://dimanikulin.github.io/fva/) .
 * To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf)  TBD - describe how 
 * [Roadmap](https://github.com/dimanikulin/fva/projects/4).
 * [Documentation requirements](FVADocMD/CODEDOCUMENTATION.md)
