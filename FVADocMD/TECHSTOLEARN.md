@@ -16,6 +16,6 @@
 * how to create the license;
 * how to configure Doxygen;
 
-## You will learn - code chech chapter
+## You will learn - code checks chapter
 * how to use Python to create code checks;
 * how to control code quality (from "Code checks" chapter);
