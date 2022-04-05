@@ -41,7 +41,7 @@
 - [Building the code](#building-the-code)
 - [Contributing](#contributing)
 - [Stay in touch](#stay-in-touch)
-- [Code checks](#code-checks)
+- [Code Quality](FVADocMD/CODEQUALITY.md)
 - [What you will learn here as a SW Developer](FVADocMD/TECHSTOLEARN.md)
 - [License](FVADocMD/LICENSE.md)
 - [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
@@ -111,11 +111,3 @@ But you can ask him on:
 
 You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/fva/issues) to request a feature or report a bug.
 [Here](https://github.com/dimanikulin/fva/discussions) you can start a discussion. 
-
-## Code checks
-Currently there are following automated checks to verify if the code meets code quality requirements:
-* [Code QL](.github/workflows/codeqlanalysis.yml) Please see [[38]](FVADocMD/REFERENCES.md) TBD what for
-* [code Checks](.github/workflows/codeChecks.yml) TBD what for
-* [code factor](https://www.codefactor.io/repository/github/dimanikulin/fva/issues) TBD what for
-* [ms vc analysis](.github/workflows/msvc-analysis.yml) TBD what for
-TODO - to add a bage for each code check
