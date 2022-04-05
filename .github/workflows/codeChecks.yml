@@ -39,3 +39,19 @@ jobs:
 
       #- name: Python style check
       #  uses: bulv1ne/python-style-check@v0.3
+
+      # TODO section
+      # to perform C++ Code style check;
+      # to upload a report for C++ Code style checks;
+
+      # to perform python style check
+      # to upload a report for Python style checks;
+
+      # to perform FVA C++ code style check;
+      # to upload a report for FVA C++ code style check;
+
+      # to perform FVA Code documentation check;
+      # to upload a report for FVA Code documentation check;
+
+      # to perform checking code by KDE/clazy
+      # to upload a report for Checking code by KDE/clazy;
