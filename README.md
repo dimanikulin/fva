@@ -78,6 +78,7 @@ Only opensource code/tools are used as a product is opensource.
 
 You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it on environment you would like to have it running on.
+TBD - define HARDWARE REQUIREMENTS
 
 ## Documentation
 * [What you will learn here as a SW Developer](FVADocMD/TECHSTOLEARN.md)
@@ -97,7 +98,8 @@ As soon as any code change is pushed to the GitHub, [main workflow](.github/work
 
 ## Contributing
 You are always welcome to contribute! There are many items to help author in. 
-When commit please don't forget about putting the issue ID there. 
+When commit please don't forget about putting the issue ID there.
+TBD - to define the BRANCHING STRATEGY PLAN 
 
 ## Stay in touch
 An author does not provide any support for now, because the development is in hot stage. 
@@ -114,6 +116,6 @@ You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/
 Currently there are following automated checks to verify if the code meets code quality requirements:
 * [Code QL](.github/workflows/codeqlanalysis.yml) Please see [[38]](FVADocMD/REFERENCES.md) TBD what for
 * [code Checks](.github/workflows/codeChecks.yml) TBD what for
-* [code factor](https://www.codefactor.io/repository/github/dimanikulin/fva/issues)  TBD what for
+* [code factor](https://www.codefactor.io/repository/github/dimanikulin/fva/issues) TBD what for
 * [ms vc analysis](.github/workflows/msvc-analysis.yml) TBD what for
 TODO - to add a bage for each code check
