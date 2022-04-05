@@ -81,12 +81,13 @@ Then you just need to install it on environment you would like to have it runnin
 
 ## Documentation
 * [What you will learn here as a SW Developer](FVADocMD/TECHSTOLEARN.md)
-* Please see [the documentation generated from the code](https://dimanikulin.github.io/fva/) .
+* Please see [the documentation generated from the code](https://dimanikulin.github.io/fva/)
 * To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf)  TBD - describe how 
 * [Roadmap](https://github.com/dimanikulin/fva/projects/4).
 * [Documentation requirements](FVADocMD/CODEDOCUMENTATION.md)
 * [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
 * [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
+* [Context View](FVADocMD/VIEWCONTEXT.md)
 
 ## Building the code
 For building the code you don't need to have any local environment to set up. 
