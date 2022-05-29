@@ -36,7 +36,10 @@
 ## Quick Links
 - [Description](#description)
 - [Features](#features)
+- [Functional requirements](#functional-requirements)
+- [Non-functional requirements](#non-functional-requirements)
 - [User documentation](#user-documentation)
+- [User scenarios with links to YouTube](#user-scenarios)
 - [Documentation](#documentation)
 - [Building the code](#building-the-code)
 - [Contributing](#contributing)
@@ -46,6 +49,7 @@
 - [License](FVADocMD/LICENSE.md)
 - [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
 - [Questionar to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
+- [Definitions,Acronyms,Abbreviations](FVADocMD/DEFINITIONS.MD)
 
 ## Description
 A convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)
@@ -69,12 +73,19 @@ Only opensource code/tools are used as a product is opensource.
 - **Text search:** It is possible to search by events, photo author, places, people using text search   
 - **Configuration:** The system flow depends on configuration.
 
+## Functional requirements
+TBD
+
+## Non-functional requirements
+TBD
+
 ## User documentation
 * [Here is author history on why he created this product](FVADocMD/AUTHORHISTORY.md)
 * [What is Multimedia Data?](FVADocMD/MULTIMEDIADATA.md)
 * [What are Multimedia IR Systems?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
 * [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
 * [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
+* [User Journey to understand the cadence of FVA SW in use and the interaction with the user](TBD)
 
 You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it on environment you would like to have it running on.
@@ -94,6 +105,7 @@ TBD - define HARDWARE REQUIREMENTS
 * [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
 * [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
 * [Context View](FVADocMD/VIEWCONTEXT.md)
+* [Functional Decomposition](TBD)
 
 ## Building the code
 For building the code you don't need to have any local environment to set up. 
