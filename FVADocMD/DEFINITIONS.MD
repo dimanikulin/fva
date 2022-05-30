@@ -2,6 +2,21 @@
 | - | ------------------------|:--------------:|
 | 1 | API                     |is a computing interface to a software component or a system, that defines how other components or systems can use it. It defines the kinds of calls or requests that can be made, how to make them, the data formats that should be used, the conventions to follow, etc                |
 | 2 | Q/A                     |is the process of ensuring that your product is of the highest possible quality for your customers. QA is simply the techniques used to prevent issues with your service or product and to ensure great user experience for your customers.                |
-|   | DevOps | is a set of practices that combines[software development](https://en.wikipedia.org/wiki/Software_development) (Dev) and |
-|   | | |
-|   | | |
+| 3 | DevOps                  |is a set of practices that combines [software development](https://en.wikipedia.org/wiki/Software_development) (Dev) and [information-technology operations](https://en.wikipedia.org/wiki/Information_technology_operations) (Ops) which aims to shorten the [systems development](https://en.wikipedia.org/wiki/Systems_development_life_cycle) life cycle and provide [continuous delivery](https://en.wikipedia.org/wiki/Continuous_delivery) with high [software quality](https://en.wikipedia.org/wiki/Software_quality)|
+| 4 | Apple Photo             |is a [photo management](https://en.wikipedia.org/wiki/Image_organizer) and [editing](https://en.wikipedia.org/wiki/Image_editing) application developed by [Apple](https://en.wikipedia.org/wiki/Apple_Inc.). |
+| 5 | [Aperture](https://en.wikipedia.org/wiki/Aperture) |is a hole or an opening through which [light](https://en.wikipedia.org/wiki/Light) travels. More specifically, the aperture and [focal length](https://en.wikipedia.org/wiki/Focal_length) of an [optical system](https://en.wikipedia.org/wiki/Optical_system) determine the cone angle of a bundle of [rays](https://en.wikipedia.org/wiki/Ray_(optics)) that come to a [focus](https://en.wikipedia.org/wiki/Focus_(optics)) in the [image plane](https://en.wikipedia.org/wiki/Image_plane). |
+| 6 | [Apache Tika](https://tika.apache.org/index.html)  |is a toolkit for extracting content and [metadata](https://en.wikipedia.org/wiki/Metadata) from various types of documents, such as Word, Excel, and PDF or even multimedia files like JPEG and MP4. All text-based and multimedia files can be parsed using a common interface, making Tika a powerful and versatile library for content analysis. |
+| 7 | Camera maker            |is a brand name of device manufacturer. |
+| 8 | Camera model            |is unique (shall be unique) name of device model inside of one device manufacturer |
+| 9 | [CBIR](https://en.wikipedia.org/wiki/Content-based_image_retrieval)|Content-based image retrieval, also known as query by image content ([QBIC](https://en.wikipedia.org/wiki/Content-based_image_retrieval#QBIC)) and content-based visual information retrieval (CBVIR), is the application of [computer vision](https://en.wikipedia.org/wiki/Computer_vision) techniques to the [image retrieval](https://en.wikipedia.org/wiki/Image_retrieval) problem, that is, the problem of searching for [digital images](https://en.wikipedia.org/wiki/Digital_image) in large [databases](https://en.wikipedia.org/wiki/Database) (see this survey for a recent scientific overview of the CBIR field). |
+| 10| CLT|Command Line Task |
+| 11| [curl](https://curl.haxx.se/)| A command line tool and library for transferring data with URL syntax, supporting HTTP, HTTPS, FTP, FTPS. |
+| 12| [Cpplint](https://github.com/google/styleguide/blob/gh-pages/cpplint/cpplint.py)|is a C++ static code analysis tool which looks for programming errors, helps enforcing a coding standard, sniffs for code smells and offers simple refactoring suggestions. |
+| 13| [digiKam](https://www.digikam.org/about/)|digiKam is an advanced open-source digital photo management application that runs on Linux, Windows, and MacOS. The application provides a comprehensive set of tools for importing, managing, editing, and sharing photos and raw files. |
+| 14| [Dictionary](https://en.wikibooks.org/wiki/A-level_Computing/AQA/Paper_1/Fundamentals_of_data_structures/Dictionaries)|A dictionary is a general-purpose data structure for storing a group of objects. A dictionary has a set of keys and each key has a single associated value. When presented with a key, the dictionary will return the associated value. |
+| 15| | |
+| 16| | |
+| 17| | |
+| 18| | |
+| 19| | |
+| 20| | |
