@@ -14,9 +14,15 @@
 | 12| [Cpplint](https://github.com/google/styleguide/blob/gh-pages/cpplint/cpplint.py)|is a C++ static code analysis tool which looks for programming errors, helps enforcing a coding standard, sniffs for code smells and offers simple refactoring suggestions. |
 | 13| [digiKam](https://www.digikam.org/about/)|digiKam is an advanced open-source digital photo management application that runs on Linux, Windows, and MacOS. The application provides a comprehensive set of tools for importing, managing, editing, and sharing photos and raw files. |
 | 14| [Dictionary](https://en.wikibooks.org/wiki/A-level_Computing/AQA/Paper_1/Fundamentals_of_data_structures/Dictionaries)|A dictionary is a general-purpose data structure for storing a group of objects. A dictionary has a set of keys and each key has a single associated value. When presented with a key, the dictionary will return the associated value. |
-| 15| | |
-| 16| | |
-| 17| | |
-| 18| | |
-| 19| | |
-| 20| | |
+| 15| [DOM](https://en.wikipedia.org/wiki/Document_Object_Model) |The Document Object Model (DOM) is a [cross-platform](https://en.wikipedia.org/wiki/Cross-platform) and [language-independent](https://en.wikipedia.org/wiki/Language-independent_specification) interface that treats an [XML](https://en.wikipedia.org/wiki/XML) or [HTML](https://en.wikipedia.org/wiki/HTML) document as a [tree structure](https://en.wikipedia.org/wiki/Tree_structure) wherein each [node](https://en.wikipedia.org/wiki/Node_(computer_science)) is an [object](https://en.wikipedia.org/wiki/Object_(computer_science)) representing a part of the document.  |
+| 16| [Doxygen](https://en.wikipedia.org/wiki/Doxygen)| [Doxygen](https://en.wikipedia.org/wiki/Doxygen)  is a [documentation generator](https://en.wikipedia.org/wiki/Documentation_generator) and [static analysis](https://en.wikipedia.org/wiki/Static_analysis) tool for software [source trees](https://en.wikipedia.org/wiki/Source_code#Organization). When used as a documentation generator, Doxygen extracts information from specially-formatted comments within the code.|
+| 17| [Exif](https://en.wikipedia.org/wiki/Exif)| Exchangeable image file [format](https://en.wikipedia.org/wiki/File_format) (officially Exif, according to JEIDA/JEITA/CIPA specifications) is a standard that specifies the [formats](https://en.wikipedia.org/wiki/File_format) for [images](https://en.wikipedia.org/wiki/Image), [sound](https://en.wikipedia.org/wiki/Sound), and ancillary tags used by [digital cameras](https://en.wikipedia.org/wiki/Digital_camera) (including [smartphones](https://en.wikipedia.org/wiki/Smartphone)), [scanners](https://en.wikipedia.org/wiki/Image_scanner) and other systems handling image and sound files recorded by digital cameras.|
+| 18| [exiftool](https://en.wikipedia.org/wiki/ExifTool)| ExifTool is a [free and open-source software](https://en.wikipedia.org/wiki/Free_and_open-source_software) program for reading, writing, and manipulating image, audio, video, and [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format) [metadata](https://en.wikipedia.org/wiki/Metadata)|
+| 19| [Facial recognition](https://en.wikipedia.org/wiki/Facial_recognition_system)| A facial recognition system is a technology capable of [identifying](https://en.wikipedia.org/wiki/Identification_of_human_individuals) or [verifying](https://en.wikipedia.org/wiki/Authentication) a person from a [digital image](https://en.wikipedia.org/wiki/Digital_image) or a [video frame](https://en.wikipedia.org/wiki/Film_frame) from a video source.|
+| 20| FVA Software| Photo-Video-Audio Software – proposed solution. |
+| 21| | |
+| 22| | |
+| 23| | |
+| 24| | |
+| 25| | |
+| 26| | |
