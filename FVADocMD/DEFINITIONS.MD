@@ -9,7 +9,7 @@
 | 7 | Camera maker            |is a brand name of device manufacturer. |
 | 8 | Camera model            |is unique (shall be unique) name of device model inside of one device manufacturer |
 | 9 | [CBIR](https://en.wikipedia.org/wiki/Content-based_image_retrieval)|Content-based image retrieval, also known as query by image content ([QBIC](https://en.wikipedia.org/wiki/Content-based_image_retrieval#QBIC)) and content-based visual information retrieval (CBVIR), is the application of [computer vision](https://en.wikipedia.org/wiki/Computer_vision) techniques to the [image retrieval](https://en.wikipedia.org/wiki/Image_retrieval) problem, that is, the problem of searching for [digital images](https://en.wikipedia.org/wiki/Digital_image) in large [databases](https://en.wikipedia.org/wiki/Database) (see this survey for a recent scientific overview of the CBIR field). |
-| 10| CLT|Command Line Task |
+| 10| CLT                     |Command Line Task |
 | 11| [curl](https://curl.haxx.se/)| A command line tool and library for transferring data with URL syntax, supporting HTTP, HTTPS, FTP, FTPS. |
 | 12| [Cpplint](https://github.com/google/styleguide/blob/gh-pages/cpplint/cpplint.py)|is a C++ static code analysis tool which looks for programming errors, helps enforcing a coding standard, sniffs for code smells and offers simple refactoring suggestions. |
 | 13| [digiKam](https://www.digikam.org/about/)|digiKam is an advanced open-source digital photo management application that runs on Linux, Windows, and MacOS. The application provides a comprehensive set of tools for importing, managing, editing, and sharing photos and raw files. |
@@ -19,10 +19,32 @@
 | 17| [Exif](https://en.wikipedia.org/wiki/Exif)| Exchangeable image file [format](https://en.wikipedia.org/wiki/File_format) (officially Exif, according to JEIDA/JEITA/CIPA specifications) is a standard that specifies the [formats](https://en.wikipedia.org/wiki/File_format) for [images](https://en.wikipedia.org/wiki/Image), [sound](https://en.wikipedia.org/wiki/Sound), and ancillary tags used by [digital cameras](https://en.wikipedia.org/wiki/Digital_camera) (including [smartphones](https://en.wikipedia.org/wiki/Smartphone)), [scanners](https://en.wikipedia.org/wiki/Image_scanner) and other systems handling image and sound files recorded by digital cameras.|
 | 18| [exiftool](https://en.wikipedia.org/wiki/ExifTool)| ExifTool is a [free and open-source software](https://en.wikipedia.org/wiki/Free_and_open-source_software) program for reading, writing, and manipulating image, audio, video, and [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format) [metadata](https://en.wikipedia.org/wiki/Metadata)|
 | 19| [Facial recognition](https://en.wikipedia.org/wiki/Facial_recognition_system)| A facial recognition system is a technology capable of [identifying](https://en.wikipedia.org/wiki/Identification_of_human_individuals) or [verifying](https://en.wikipedia.org/wiki/Authentication) a person from a [digital image](https://en.wikipedia.org/wiki/Digital_image) or a [video frame](https://en.wikipedia.org/wiki/Film_frame) from a video source.|
-| 20| FVA Software| Photo-Video-Audio Software – proposed solution. |
-| 21| | |
-| 22| | |
-| 23| | |
-| 24| | |
-| 25| | |
-| 26| | |
+| 20| FVA Software            | Photo-Video-Audio Software – proposed solution. |
+| 21| [Geo positions](https://en.wikipedia.org/wiki/Geographic_coordinate_system)| A geographic [coordinate system](https://en.wikipedia.org/wiki/Coordinate_system) (GCS) is a coordinate system associated with [positions](https://en.wikipedia.org/wiki/Position_(geometry)) on [Earth](https://en.wikipedia.org/wiki/Earth) (geographic position)|
+| 22| [Google](https://en.wikipedia.org/wiki/Google)| Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include [online advertising technologies](https://en.wikipedia.org/wiki/Online_advertising), a [search engine](https://en.wikipedia.org/wiki/Search_engine), [cloud computing](https://en.wikipedia.org/wiki/Cloud_computing), software, and hardware.|
+| 23| [Google Maps](https://en.wikipedia.org/wiki/Google_Maps)| Google Maps is a [web mapping](https://en.wikipedia.org/wiki/Web_mapping) service developed by [Google](https://en.wikipedia.org/wiki/Google). It offers [satellite imagery](https://en.wikipedia.org/wiki/Satellite_imagery), [aerial photography](https://en.wikipedia.org/wiki/Aerial_photography), street maps, 360° [interactive panoramic](https://en.wikipedia.org/wiki/Interactive_panorama) views of streets ([Street View](https://en.wikipedia.org/wiki/Google_Street_View)), real-time traffic conditions, and [route planning](https://en.wikipedia.org/wiki/Route_planner) for traveling by foot, car, bicycle and air (in [beta](https://en.wikipedia.org/wiki/Software_release_life_cycle#Beta)), or [public transportation](https://en.wikipedia.org/wiki/Public_transportation).|
+| 24| [Google Photos](https://en.wikipedia.org/wiki/Google_Photos)| Google Photos is a [photo sharing](https://en.wikipedia.org/wiki/Photo_sharing) and [storage service](https://en.wikipedia.org/wiki/Cloud_storage) developed by [Google](https://en.wikipedia.org/wiki/Google). The service automatically analyzes photos, identifying various visual features and subjects. Users can search for anything in photos, with the service returning results from three major categories: People, Places, and Things.|
+| 25| [GPS](https://en.wikipedia.org/wiki/Global_Positioning_System)| The Global Positioning System (GPS), originally NAVSTAR GPS, is a satellite-based [radio navigation](https://en.wikipedia.org/wiki/Radionavigation-satellite_service) system owned by the [United States](https://en.wikipedia.org/wiki/United_States) government and operated by the [United States Space Force](https://en.wikipedia.org/wiki/United_States_Space_Force).|
+| 26| [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment)| An integrated development environment (IDE) is a [software application](https://en.wikipedia.org/wiki/Application_software) that provides comprehensive facilities to [computer programmers](https://en.wikipedia.org/wiki/Computer_programmer) for [software development](https://en.wikipedia.org/wiki/Software_development). An IDE normally consists of at least a [source code editor](https://en.wikipedia.org/wiki/Source_code_editor), build [automation tools](https://en.wikipedia.org/wiki/Build_automation) and a [debugger](https://en.wikipedia.org/wiki/Debugger).|
+| 27| [HTML](https://en.wikipedia.org/wiki/HTML)|Hypertext Markup Language (HTML) is the standard [markup language](https://en.wikipedia.org/wiki/Markup_language) for documents designed to be displayed in a [web browser](https://en.wikipedia.org/wiki/Web_browser). |
+| 28| IR Multimedia Systems  |multimedia information retrieval means the process of searching for and finding multimedia documents; the corresponding research field is concerned with building multimedia search engines. |
+| 30| | |
+| 31| | |
+| 32| | |
+| 33| | |
+| 34| | |
+| 35| | |
+| 36| | |
+| 37| | |
+| 38| | |
+| 39| | |
+| 40| | |
+| 41| | |
+| 42| | |
+| 43| | |
+| 44| | |
+| 45| | |
+| 46| | |
+| 47| | |
+| 48| | |
+| 49| | |
