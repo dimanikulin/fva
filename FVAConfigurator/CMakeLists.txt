@@ -11,6 +11,7 @@ set(HEADER_FILES
    ../FVACommonLib/fvalogger.inl
  )
 
+# IMPORTANT: once you add new implementation file here please update IMPLEMENTATIONSTATUS.MD as well in the current folder 
 add_executable(fvaconfigurator fvaconfigurator.qrc fvaconfigurator.ui fvaconfigurator.cpp fvaconfigurator.h main.cpp ${HEADER_FILES})
 
 target_link_libraries(fvaconfigurator Qt5::Widgets Qt5::Core Qt5::Gui fvalib)

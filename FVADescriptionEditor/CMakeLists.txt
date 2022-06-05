@@ -11,8 +11,8 @@ set(HEADER_FILES
     ../FVACommonLib/fvalogger.inl
     ../FVACommonLib/fvacommonlib.h)
 
+# IMPORTANT: once you add new implementation file here please update IMPLEMENTATIONSTATUS.MD as well in the current folder 
 add_executable(fvadescriptioneditor 
-
     fvadescriptioneditor.cpp
     fvadescriptioneditor.h
     fvadescriptioneditor.qrc

@@ -15,6 +15,7 @@ set(HEADER_FILES
     ../FVAFlowController/FVAFlowController.h
     )
 
+# IMPORTANT: once you add new implementation file here please update IMPLEMENTATIONSTATUS.MD as well in the current folder 
 add_executable(fvaorganizerwizard 
 
     FVAOrganizerDevicePage.cpp

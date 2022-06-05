@@ -4,6 +4,7 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
+# IMPORTANT: once you add new implementation file here please update IMPLEMENTATIONSTATUS.MD as well in the current folder 
 add_library(fvalib  
   fvadevice.h
   fvafile.h

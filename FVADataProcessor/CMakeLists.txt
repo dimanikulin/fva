@@ -10,7 +10,7 @@ set(HEADER_FILES ../FVACommonLib/CmdLineBaseTask.h
    ../FVACommonLib/fvacommoncsv.h
    ../FVACommonLib/CmdLineBaseExecutor.h
 )
-
+# IMPORTANT: once you add new implementation file here please update IMPLEMENTATIONSTATUS.MD as well in the current folder 
 add_library( fvadataprocessorlib
    CLTAutoChecks1.cpp
    CLTAutoChecks1.h
