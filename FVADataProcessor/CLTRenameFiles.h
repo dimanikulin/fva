@@ -11,9 +11,9 @@
 #include "CmdLineBaseTask.h"
 
 /*!
-* \brief CLTRenameFiles is child of CmdLineBaseTask and it renames files by their EXIF date-time taken
-* In read only mode this cmd just checks if renaming is even possible
-*/
+ * \brief CLTRenameFiles is child of CmdLineBaseTask and it renames files by their metadata (like EXIF date-time taken) or modificatrion date
+ * In read only mode this cmd just checks if renaming is even possible
+ */
 class CLTRenameFiles : public CmdLineBaseTask
 {
 public:
