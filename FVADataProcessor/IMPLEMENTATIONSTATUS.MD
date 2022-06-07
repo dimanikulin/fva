@@ -5,4 +5,4 @@
 | 3 |  YES        | 1              | CLTFixDuplicatedFileNames      | During renaming the system shall check if there is already existing file with the same name |
 | 4 |  YES        | 1              | CLTRenameFiles                 | The system shall use Modification File time for empty date-time metadata during renaming If by configuration it is allowed to use. |
 | 5 |  YES        | 1              | CLTSetFileAtts                 | The systen shall make all files be read-only for Win platforms |
-| 6 | 
+| 6 |  YES        | 1              | CLTFixDuplicatedFileNames      | If there are multiple files created at the same time the system shall be able to rename them into +(1-9) seconds not to have one name |
