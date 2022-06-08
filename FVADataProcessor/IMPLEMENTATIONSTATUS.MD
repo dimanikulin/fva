@@ -1,8 +1,13 @@
-| # | Implemented | Requirement ID | Implemented in files with name | Description |
-| - | ------------| ---------------|--------------------------------|------------ |
-| 1 |  YES        | 1              | CLTCreateDirStructByFileNames  | The system shall keep multimedia files in structure root_fva_folder->year->event folder |
-| 2 |  YES        | 1              | CLTMoveInputDir2Output         | During merging the system shall check if there is already existing folder/event and ask user what to do if needs |
-| 3 |  YES        | 1              | CLTFixDuplicatedFileNames      | During renaming the system shall check if there is already existing file with the same name |
-| 4 |  YES        | 1              | CLTRenameFiles                 | The system shall use Modification File time for empty date-time metadata during renaming If by configuration it is allowed to use. |
-| 5 |  YES        | 1              | CLTSetFileAtts                 | The systen shall make all files be read-only for Win platforms |
-| 6 |  YES        | 1              | CLTFixDuplicatedFileNames      | If there are multiple files created at the same time the system shall be able to rename them into +(1-9) seconds not to have one name |
+| # | Implemented | Requirement ID | Component    | Implemented in files with name | Description |
+| - | ------------| ---------------|--------------|--------------------------------|------------ |
+| 1 |  YES        | 1              | Organizer    | CLTCreateDirStructByFileNames  | The system shall keep multimedia files in structure root_fva_folder->year->event folder |
+| 2 |  YES        | 1              | Organizer    | CLTMoveInputDir2Output         | During merging the system shall check if there is already existing folder/event and ask user what to do if needs |
+| 3 |  YES        | 1              | Organizer    | CLTFixDuplicatedFileNames      | During renaming the system shall check if there is already existing file with the same name |
+| 4 |  YES        | 1              | Organizer    | CLTRenameFiles                 | The system shall use Modification File time for empty date-time metadata during renaming If by configuration it is allowed to use. |
+| 5 |  YES        | 1              | Organizer    | CLTSetFileAtts                 | The systen shall make all files be read-only for Win platforms |
+| 6 |  YES        | 1              | Organizer    | CLTFixDuplicatedFileNames      | If there are multiple files created at the same time the system shall be able to rename them into +(1-9) seconds not to have one name |
+| 7 |  YES        | 3              |Data Validator| CLTCheckDateTime               | The system shall check the multimedia metadata for absence of the "date/time" attribute  if this attribute is set up in the configuration.| 
+| 8 |  YES        | 3              |Data Validator| CLTCheckLocation               | The system shall check the multimedia metadata for absence of the "location" attribute  if this attribute is set up in the configuration. |
+| 9 |  YES        | 3              |Data Validator| CLTCheckDeviceName             | The system shall check the multimedia metadata for inconsistency in "device" attribute  if this attribute is set up in the configuration. |
+| 10|  YES        | 3              |Data Validator| CLTCheckDeviceName             | The system shall check the multimedia metadata for absence of the "device" attribute  if this attribute is set up in the configuration. |
+| 11|  YES        | 3              |Data Validator| CLTCheckFileFormat             | The system shall check the file format. Now following are allowed: "JPG", "JPEG", "AVI", "MOV", "MPG", "MP4", "3GP", "MKV", "WAV". Any other file format shall be skipped with error "FVA_FS_TYPE_UNKNOWN" |
