@@ -11,3 +11,7 @@
 | 9 |  YES        | 3              |Data Validator| CLTCheckDeviceName             | The system shall check the multimedia metadata for inconsistency in "device" attribute  if this attribute is set up in the configuration. |
 | 10|  YES        | 3              |Data Validator| CLTCheckDeviceName             | The system shall check the multimedia metadata for absence of the "device" attribute  if this attribute is set up in the configuration. |
 | 11|  YES        | 3              |Data Validator| CLTCheckFileFormat             | The system shall check the file format. Now following are allowed: "JPG", "JPEG", "AVI", "MOV", "MPG", "MP4", "3GP", "MKV", "WAV". Any other file format shall be skipped with error "FVA_FS_TYPE_UNKNOWN" |
+| 12|  YES        | 3              |Data Validator| CLTCheckDeviceName             | The system shall check if there are multiple device in one folder it shall automatily create several folders for them and separate the multimedia content  if "device" attribute is set up in the configuration |
+| 13|  YES        | 3              |Data Validator| CLTFixDuplicatedFileNames      | The system shall check if there are multiple files created at the same time |
+| 14|  YES        | 3              |Data Validator| CLTAutoChecks1,CLTAutoChecks2, CLTAutoChecks3| The system shall split outputting the issues found during checks into separate files named by issue name |
+ 
