@@ -14,4 +14,4 @@
 | 12|  YES        | 3          |Data Validator| CLTCheckDeviceName             | The system shall check if there are multiple device in one folder it shall automatily create several folders for them and separate the multimedia content  if "device" attribute is set up in the configuration |
 | 13|  YES        | 3          |Data Validator| CLTFixDuplicatedFileNames      | The system shall check if there are multiple files created at the same time |
 | 14|  YES        | 3          |Data Validator| CLTAutoChecks1,CLTAutoChecks2, CLTAutoChecks3| The system shall split outputting the issues found during checks into separate files named by issue name |
- 
+| 15|  YES        | 5          |Data Validator| CLTCSVFvaFiles                 | The system shall be able to enrich/fix the multimedia metadata for the "author" attribute  if this attribute is set up in the configuration. |
