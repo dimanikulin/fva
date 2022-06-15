@@ -10,11 +10,11 @@ The multimedia data is divided into three subclasses:
 multidimensional (also called spatial) types are:
 * Three-dimensional, four-dimensional, five-dimensional, etc.;
 * Virtual reality content.,
-dynamic:
+dynamic types are:
 * Video content;
 * Animation content;
 * Audio content.
-and static content 
+and static content types are: 
 * Image or photo content;
 * Graphic content;
 * Text content. 
