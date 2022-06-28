@@ -13,7 +13,7 @@ That is why ordinary people would be very interested in Multimedia IR systems an
 From end user's point of view, when they are accessing the photo album, the main need is the ability to search through the photo album easily and quickly.
 In terms of searching ability, it shall also provide the cataloguing abilities and browsing the search results. Obviously, the search systems shall provide the full and correct search results.
 
-## User needs in Multimedia IR Systems
+## User's needs in Multimedia IR Systems
 * the Multimedia IR system shall provide (or be integrated with other tools) an ability to keep the different types of multimedia data;
 * it should be possible to represent any kind of multimedia information (photo, video, and audio) to user via UI;
 * it should provide a simple way to edit the multimedia data;
@@ -26,7 +26,7 @@ In terms of searching ability, it shall also provide the cataloguing abilities a
 Moreover, not ordinary people only, but also the businesses might find Multimedia IR systems useful due to their professional needs. 
 For example, there might be different professions who access the photos or images often in their everyday work activity, such as:
 
-## Professional that need in Multimedia IR systems
+## Professional's needs in Multimedia IR systems
 * photographers that provide their services to companies;
 * journalists who work with camera to create multimedia news content;
 * people of different professions who need access to images, like medical professionals searching for medical images or architects requiring the image examples to create the buildings;
