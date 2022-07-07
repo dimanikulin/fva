@@ -1,12 +1,12 @@
 We live in the digital data era, and growing of the Internet gives us a possibility to find the information really easily by one click. We are allowed now to search the information from anywhere.
 </br>
 In the world of high technology, high-speed Internet access gives everyone an opportunity to use software to search and to manage the information from any sources. 
-People interact with digital data every day and a continued growth contributes to the development of such type of information as multimedia data. Multimedia itself means data of more than one medium. 
-It usually refers to data representing multiple types of media to capture information and experiences related to objects and events. Commonly used forms of data are numbers, alphanumeric characters, text, images, audio, and video. 
+People interact with digital data every day and a continued growth contributes to the development of such type of information as **multimedia** data. **Multimedia** itself means data of more than one medium. 
+It usually refers to data representing multiple types of **media** to capture information and experiences related to objects and events. Commonly used forms of data are numbers, alphanumeric characters, text, images, audio, and video. 
 </br>
-In common usage, people refer a data set as multimedia only when time-dependent data such as audio and video are involved [[13]](./REFERENCES.md).
+In common usage, people refer a data set as **multimedia** only when time-dependent data such as audio and video are involved [[13]](./REFERENCES.md).
 <img src="Images/Multimediadata.gif" alt="Multimediadata.gif"/>
-The multimedia data is divided into three subclasses: 
+The **multimedia** data is divided into three subclasses: 
 multidimensional (also called spatial) types are:
 * Three-dimensional, four-dimensional, five-dimensional, etc.;
 * Virtual reality content.,
