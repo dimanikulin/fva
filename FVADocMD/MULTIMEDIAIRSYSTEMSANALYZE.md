@@ -14,7 +14,6 @@ Below is the list of them with brief descriptions:
 
 ## Well implemented features
 The comparison table shows the following features as well implemented:
-From the user's point of view all mentioned functions are well-developed and do not require the improvements and substitution with any other software.
 
 * keeping/browsing functions for the private photo album multimedia data;
 * wide functionality to edit the photos;
@@ -24,13 +23,16 @@ From the user's point of view all mentioned functions are well-developed and do 
 * search by rating/marks (using metadata);
 * search by feedback and by comments.
 
+From the user's point of view all mentioned functions are well-developed and do not require the improvements and substitution with any other software.
+
 ## To be developed features
 Still, the following set of searching functions needs to be developed to cover the users' needs:
-Despite the search functions can be implemented by the newest Multimedia IR systems, providing tagging shall be implemented at much earlier stage like importing
 
 * search by events (now is possible only through tagging);
 * search by objects/subjects (only a few systems can recognize the objects on the photos);
 * search by emotions;
 * similar photos search(only a few systems can make the search by a similar photo);
 * search by a photo author (is possible only by applying tagging);
-* the search by a combination of color or texture (only a few systems can do it);
+* the search by a combination of color or texture (only a few systems can do it).
+
+Despite the search functions can be implemented by the newest Multimedia IR systems, providing tagging shall be implemented at much earlier stage like importing
