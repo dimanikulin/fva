@@ -1,7 +1,7 @@
-When I was a child I used to observe the family photo album to take a look at my relations who I have not seen in real life.
-At that time we had film cameras only and so the amount of photos was not so big.
+&nbsp;&nbsp;&nbsp; When I was a child, I used to observe the family photo album to look at my relations who I have not seen in real life.
+At that time, we had film cameras only and so the amount of photos was not so big.
 Time changed and right now let say almost everyone owns a camera or a smartphone with camera or even both.
-Because of that the size of my photo album increased significally. But I don't think it is for me only.
+Because of that, the size of my photo album increased significantly. However, I do not think it is for me only.
 <img src="Images/Anaveragefamilyphotoalbum.gif" alt="Anaveragefamilyphotoalbum.gif" />
 
 Once Me and my friend decided to recall an event we both attended to. We took my photo album and tried to search there. 
