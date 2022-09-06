@@ -17,7 +17,9 @@ dynamic types are:
 and static content types are: 
 * Image or photo content;
 * Graphic content;
-* Text content. 
+* Text content.
+</br></br>
+
 The text information has been the dominant one as a way for communication between people. But other media types such as audio, image, and video are getting importance in context of growing the computing capabilities like the disk and memory space, growing processing power, etc. [[1]](./REFERENCES.md). 
 Since a lot of people own the phones with a camera, and there are numerous webcams, motion cameras, tablets with a camera, the global photo content amount is huge. 
 </br>
