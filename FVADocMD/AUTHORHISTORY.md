@@ -8,7 +8,7 @@ Because of that, the size of my photo album increased significantly. However, I 
 That time my album kept more than 30 thousand items inside. That search process looked like
 <img src="Images/Asearchinphotoalbumwith30thousandphotos.gif" alt="Asearchinphotoalbumwith30thousandphotos.gif" />
 
-&nbsp;&nbsp;&nbsp; Of course, we found nothing that time. Therefore, I started looking for a solution to search in [Multimedia Data](./MULTIMEDIADATA.md) in automatic way. 
+&nbsp;&nbsp;&nbsp; Of course, we found nothing that time. Therefore, I started looking for a solution to search in [Multimedia Data](./MULTIMEDIADATA.md) in an automatic way. 
 What I found as a solution were the [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md). 
 However, there are many Multimedia IR Systems and it was a long way to choose one of them to start searching in a way that is more efficient.
 So, the IR Multimedia Systems were analyzed that are present on the market and available for end users. 
