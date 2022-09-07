@@ -1,5 +1,5 @@
 &nbsp;&nbsp;&nbsp; Let us compare several **multimedia IR** systems by covering requirements and needs we identified previously. 
-Since some users might feel free to select **multimedia IR** systems integrated with online storages (like Cloud ones), but others want to use offline **multimedia IR** systems, we need to choose one offline and one online system. 
+Since some users might feel free to select **multimedia IR** systems integrated with online storage (like Cloud ones), but others want to use offline **multimedia IR** systems, we need to choose one offline and one online system. 
 In the same way, we need to add the proprietary and free systems to the comparison as well. 
 <img src="Images/ComparisonoftheprivateMultimediaIRsystems.gif" alt="ComparisonoftheprivateMultimediaIRsystems.gif" />
 Below is the list of them with brief descriptions:
