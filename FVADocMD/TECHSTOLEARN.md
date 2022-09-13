@@ -1,3 +1,10 @@
+Hohesly I did not expect that it will be so hard and meanwhile so interesting. I tried myself in different roles: 
+Product management 
+Delivery management 
+SW Architect  dependency 
+SW developer 
+how to work with dependencies
+
 ## You will learn - code chapter
 * how to use QT for creation the player for Multimedia content;
 * how to build package file for WinOS using Wix;
