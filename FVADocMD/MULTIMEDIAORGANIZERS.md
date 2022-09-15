@@ -3,6 +3,15 @@
 * They suggest to create a folder structure and put the files on it;
 * They make automation for the import the new photos into IR Multimedia Systems.
 
+&nbsp;&nbsp;&nbsp; 
+Also they make photo album more searchable (that is driven by IR Multimedia Systems) by enriching the metadata (and improving its consistency) with minimal human involvement.
+
+&nbsp;&nbsp;&nbsp; Therefore, they are chosen as a subject for the overview and comparison. 
+This [[8]](./REFERENCES.md) provides the list of Photo Organizer for professional photographer and those organizers can be used by a usual user with a big photo album. 
+There are even relevant online courses[[28]](./REFERENCES.md) available to guide the user how to organize the photos.
+The more detailed comparison of photo organizers is provided by Wikipedia and available here [[9]](./REFERENCES.md).
+<img src="Images/MultimediaOrganizers.png" alt="MultimediaOrganizers.png"/>
+
 
 * The folder name can be something like Date_Shoot-Type_Event Name;
 * It can also include a location or any other information the user wants;
@@ -16,14 +25,6 @@
 * A toolset available for a usual user and not for the enterprises shall be used as well.
 * They shall provide integration with such Multimedia IR Systems like digiKam and Synology Moments.
 
-&nbsp;&nbsp;&nbsp; 
-*  
-* make photo album more searchable (that is driven by IR Multimedia Systems) by enriching the metadata (and improving its consistency) with minimal human involvement.  
 
-&nbsp;&nbsp;&nbsp; Therefore, they are chosen as a subject for the overview and comparison. 
-This [[8]](./REFERENCES.md) provides the list of Photo Organizer for professional photographer and those organizers can be used by a usual user with a big photo album. 
-There are even relevant online courses[[28]](./REFERENCES.md) available to guide the user how to organize the photos.
-The more detailed comparison of photo organizers is provided by Wikipedia and available here [[9]](./REFERENCES.md).
-<img src="Images/MultimediaOrganizers.png" alt="MultimediaOrganizers.png"/>
 
 
