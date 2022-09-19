@@ -24,9 +24,3 @@ The more detailed comparison of photo organizers is provided by Wikipedia and av
 * The folder name can be something like Date_Shoot-Type_Event Name;
 * It can also include a location or any other information the user wants;
 * In such a way the user can create subfolders based on the number of photographers or cameras;
-
-
-
-
-
-
