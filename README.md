@@ -49,28 +49,28 @@
 - [FVA License](FVADocMD/LICENSE.md)
 - [Exif library license](FVACommonLib/LICENSE)
 - [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
-- [Questionar to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
+- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 - [Definitions,Acronyms,Abbreviations](FVADocMD/DEFINITIONS.MD)
 
 ## Description
-A convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)
+&nbsp;&nbsp;&nbsp; A convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)
 into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology Photo Station, etc. to make the multimedia more searchable
 
-The main functions(basing on user search needs) of that tool set are: 
+&nbsp;&nbsp;&nbsp; The main functions(basing on user search needs) of that tool set are: 
 * to automate the import (with decreasing the probability of human factor influence on the process of importing new photos into the existing photo album). 
-* to make photo album more searchable (that is driven by IR Multimedia Systems) by enriching the metadata (and improving its consistency) with minimal human involvement.
+* to make photo albums more searchable (that is driven by IR Multimedia Systems) by enriching the metadata (and improving its consistency) with minimal human involvement.
 
-Despite there are a lot of steps that can be automated, still a human involvement is required.
+Despite there are a lot of steps that can be automated, still human involvement is required.
  
 The solution is oriented on end users only.
-Only opensource code/tools are used as a product is opensource.
+Only open source code/tools are used as a product is open source.
 
 ## Features
-- **Organizing the mutlimedia:** Organizing the multimedia data to be more searchable
+- **Organizing the multimedia:** Organizing the multimedia data to be more searchable
 - **Integration:** The system is integrated with online/offline Multimedia IR systems:
 [digiKam](https://www.digikam.org/) <img src="FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline Multimedia IR System and 
 [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online Multimedia IR System are now supported. 
-- **Multimedia metadata gaps identification:** It identifies the gaps and tryies to fill it up.
+- **Multimedia metadata gaps identification:** It identifies the gaps and tries to fill it up.
 - **Text search:** It is possible to search by events, photo author, places, people using text search   
 - **Configuration:** The system flow depends on configuration.
 
@@ -82,8 +82,8 @@ Only opensource code/tools are used as a product is opensource.
 * [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
 * [User Journey to understand the cadence of FVA SW in use and the interaction with the user](TODO)
 
-You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
-Then you just need to install it on environment you would like to have it running on.
+&nbsp;&nbsp;&nbsp; You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
+Then you just need to install it in the environment you would like to have it running on.
 TBD - define HARDWARE REQUIREMENTS
 
 ## User scenarios with links to YouTube
@@ -111,18 +111,18 @@ TBD - define HARDWARE REQUIREMENTS
 TBD
 
 ## Building the code
-For building the code you don't need to have any local environment to set up. 
-1. So building the code is already done by github. I used [[37]](FVADocMD/REFERENCES.md) to help me to set up main GitHub action flow and [this link](https://github.com/jurplel/install-qt-action) to set up QT.
-As soon as any code change is pushed to the GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to test.
+&nbsp;&nbsp;&nbsp; For building the code you don't need to have any local environment to set up. 
+1. So building the code is already done by github. I used [[37]](FVADocMD/REFERENCES.md) to help me to set up the main GitHub action flow and [this link](https://github.com/jurplel/install-qt-action) to set up QT.
+As soon as any code change is pushed to GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to test.
 2. But if you wish you can use [MS studio solution](./FVASW.sln) to build locally on  Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
 
 ## Contributing
-You are always welcome to contribute! There are many items to help author in. 
-When commit please don't forget about putting the issue ID there.
+&nbsp;&nbsp;&nbsp; You are always welcome to contribute! There are many items to help the author in. 
+When you commit please don't forget about putting the issue ID there.
 TBD - to define the BRANCHING STRATEGY PLAN 
 
 ## Stay in touch
-An author does not provide any support for now, because the development is in hot stage. 
+&nbsp;&nbsp;&nbsp; An author does not provide any support for now, because the development is in a hot stage. 
 But you can ask him on:  
 * [Author Twitter](https://twitter.com/DmytroNikulin)
 * [Author LinkedIn](https://www.linkedin.com/in/dimanikulin/)
