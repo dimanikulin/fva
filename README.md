@@ -38,42 +38,35 @@
 - [Features](#features)
 - [Author history on why he created this product](FVADocMD/AUTHORHISTORY.md)
 - [User scenarios with links to YouTube](#user-scenarios)
+- [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
+- [Definitions,Acronyms,Abbreviations](FVADocMD/DEFINITIONS.MD)
 
- ################################################
-
-- [Documentation](#documentation)
+## Quick Links for architects 
+- [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
+- [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
+- [Context View](FVADocMD/VIEWCONTEXT.md)
 - [Implementation status](#impl-status)
-- [Non-functional requirements](#non-functional-requirements)
+- [TODO-Functional Decomposition](TODO)
+- [FVA License](FVADocMD/LICENSE.md)
+- [Exif library license](FVACommonLib/LICENSE)
+
+## Quick Links for developers
+- [What you will learn here](FVADocMD/TECHSTOLEARN.md)
 - [Building the code and the docs](#building-the-code)
+- [Requirements for documentation](FVADocMD/CODEDOCUMENTATION.md)
+- [Docs generated from the code](https://dimanikulin.github.io/fva/)
 - [Contributing](#contributing)
 - [Stay in touch](#stay-in-touch)
 - [Code Quality](FVADocMD/CODEQUALITY.md)
-- [What you will learn here as a SW Developer](FVADocMD/TECHSTOLEARN.md)
-- [FVA License](FVADocMD/LICENSE.md)
-- [Exif library license](FVACommonLib/LICENSE)
-- [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
-- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
-- [Definitions,Acronyms,Abbreviations](FVADocMD/DEFINITIONS.MD)
-
-
-## Quick Links for architects 
-* [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
-* [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
-* [Context View](FVADocMD/VIEWCONTEXT.md)
-* [TODO-Functional Decomposition](TODO)
-
-## Quick Links for developers
-* [What you will learn here](FVADocMD/TECHSTOLEARN.md)
-* [Requirements for documentation](FVADocMD/CODEDOCUMENTATION.md)
-* [Docs generated from the code](https://dimanikulin.github.io/fva/)
 
 ## Quick Links for product people
-* [Roadmap](https://github.com/dimanikulin/fva/projects/4).
-* [What is Multimedia Data?](FVADocMD/MULTIMEDIADATA.md)
-* [What are Multimedia IR Systems?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
-* [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
-* [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
-* [TODO-User Journey](TODO)
+- [Roadmap](https://github.com/dimanikulin/fva/projects/4).
+- [What is Multimedia Data?](FVADocMD/MULTIMEDIADATA.md)
+- [What are Multimedia IR Systems?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
+- [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
+- [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
+- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
+- [TODO-User Journey](TODO)
 
 ## Description
 &nbsp;&nbsp;&nbsp; A convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)
@@ -106,23 +99,18 @@ TBD - define HARDWARE REQUIREMENTS
 * [Scenario with FVA SW](https://youtu.be/-xnUsO7zW2s)
 * [Checking the results of processing](https://youtu.be/NIsVYyioDnM)
 
-## Documentation
-
-
 ## Implementation status
 * [Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
 * [Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
 * [Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
-
-## Non-functional requirements
-TBD
 
 ## Building the code and the docs
 &nbsp;&nbsp;&nbsp; For building the code you don't need to have any local environment to set up. 
 1. So building the code is already done by github. I used [[37]](FVADocMD/REFERENCES.md) to help me to set up the main GitHub action flow and [this link](https://github.com/jurplel/install-qt-action) to set up QT.
 As soon as any code change is pushed to GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to test.
 2. But if you wish you can use [MS studio solution](./FVASW.sln) to build locally on  Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
-3. To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf)  TBD - describe how 
+
+&nbsp;&nbsp;&nbsp; To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf)  TBD - describe how 
 
 ## Contributing
 &nbsp;&nbsp;&nbsp; You are always welcome to contribute! There are many items to help the author in. 
