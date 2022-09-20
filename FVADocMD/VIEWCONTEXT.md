@@ -12,7 +12,12 @@ flowchart LR
     D2(fa:fa-phone Phone) -->|Multimedia data| B(FVA Solution)
     D3(fa:fa-hdd-o External Disk) -->|Multimedia data| B(FVA Solution)
 ```
-The solution is used during import of new multimedia content from external devices to an existing user photo album. 
-The photo album owner is the main and only user of the solution. 
-The external devices might be: the phones with a camera, the tablets with a camera, the photo/video cameras, external storages (e.g., hard drive or flash card) with multimedia data, etc. 
-Once the multimedia data from the external devices is processed, the solution interacts with integrated online and offline Multimedia systems.
+&nbsp;&nbsp;&nbsp; The solution is used during import of new multimedia content from external devices to an existing user photo album. 
+&nbsp;&nbsp;&nbsp; The photo album owner is the main and only user of the solution. 
+&nbsp;&nbsp;&nbsp; The external devices might be: 
+the phones with a camera; 
+the tablets with a camera; 
+the photo/video cameras;
+external storages (e.g., hard drive or flash card) with multimedia data;
+etc. 
+&nbsp;&nbsp;&nbsp; Once the multimedia data from the external devices is processed, the solution interacts with integrated online and offline Multimedia systems.
