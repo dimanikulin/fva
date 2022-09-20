@@ -37,7 +37,9 @@
 - [Description](#description)
 - [Features](#features)
 - [Author history on why he created this product](FVADocMD/AUTHORHISTORY.md)
-- [User scenarios with links to YouTube](#user-scenarios)
+- [User scenario without FVA SW](https://youtu.be/_bLXFdIDZtA)
+- [User scenario with FVA SW](https://youtu.be/-xnUsO7zW2s)
+- [User scenario - checking the results of processing](https://youtu.be/NIsVYyioDnM)
 - [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
 - [Definitions,Acronyms,Abbreviations](FVADocMD/DEFINITIONS.MD)
 
@@ -45,10 +47,12 @@
 - [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
 - [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
 - [Context View](FVADocMD/VIEWCONTEXT.md)
-- [Implementation status](#impl-status)
 - [TODO-Functional Decomposition](TODO)
+- [Implementation status](#impl-status)
 - [FVA License](FVADocMD/LICENSE.md)
 - [Exif library license](FVACommonLib/LICENSE)
+- [TODO-Hardware requirements](TODO)
+- [TODO-BRANCHING STRATEGY PLAN(TODO)
 
 ## Quick Links for developers
 - [What you will learn here](FVADocMD/TECHSTOLEARN.md)
@@ -58,6 +62,9 @@
 - [Contributing](#contributing)
 - [Stay in touch](#stay-in-touch)
 - [Code Quality](FVADocMD/CODEQUALITY.md)
+- [Implementation status-Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
+- [Implementation status-Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
+- [Implementation status-Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 
 ## Quick Links for product people
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4).
@@ -92,17 +99,6 @@ Only open source code/tools are used as a product is open source.
 
 &nbsp;&nbsp;&nbsp; You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it in the environment you would like to have it running on.
-TBD - define HARDWARE REQUIREMENTS
-
-## User scenarios with links to YouTube
-* [Scenario without FVA SW](https://youtu.be/_bLXFdIDZtA)
-* [Scenario with FVA SW](https://youtu.be/-xnUsO7zW2s)
-* [Checking the results of processing](https://youtu.be/NIsVYyioDnM)
-
-## Implementation status
-* [Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
-* [Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
-* [Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 
 ## Building the code and the docs
 &nbsp;&nbsp;&nbsp; For building the code you don't need to have any local environment to set up. 
@@ -115,7 +111,6 @@ As soon as any code change is pushed to GitHub, [main workflow](.github/workflow
 ## Contributing
 &nbsp;&nbsp;&nbsp; You are always welcome to contribute! There are many items to help the author in. 
 When you commit please don't forget about putting the issue ID there.
-TBD - to define the BRANCHING STRATEGY PLAN 
 
 ## Stay in touch
 &nbsp;&nbsp;&nbsp; An author does not provide any support for now, because the development is in a hot stage. 
@@ -125,5 +120,5 @@ But you can ask him on:
 * [Author Telegram](https://t.me/dimanikulin79) 
 * [Community Twitter](https://twitter.com/TBD)
 
-You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/fva/issues) to request a feature or report a bug.
+&nbsp;&nbsp;&nbsp; You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/fva/issues) to request a feature or report a bug.
 [Here](https://github.com/dimanikulin/fva/discussions) you can start a discussion. 
