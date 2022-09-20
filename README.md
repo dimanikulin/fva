@@ -48,11 +48,13 @@
 - [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
 - [Context View](FVADocMD/VIEWCONTEXT.md)
 - [TODO-Functional Decomposition](TODO)
-- [Implementation status](#impl-status)
 - [FVA License](FVADocMD/LICENSE.md)
 - [Exif library license](FVACommonLib/LICENSE)
 - [TODO-Hardware requirements](TODO)
 - [TODO-BRANCHING STRATEGY PLAN(TODO)
+- [Implementation status-Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
+- [Implementation status-Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
+- [Implementation status-Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 
 ## Quick Links for developers
 - [What you will learn here](FVADocMD/TECHSTOLEARN.md)
@@ -62,9 +64,6 @@
 - [Contributing](#contributing)
 - [Stay in touch](#stay-in-touch)
 - [Code Quality](FVADocMD/CODEQUALITY.md)
-- [Implementation status-Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
-- [Implementation status-Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
-- [Implementation status-Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 
 ## Quick Links for product people
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4).
