@@ -51,7 +51,7 @@
 - [FVA License](FVADocMD/LICENSE.md)
 - [Exif library license](FVACommonLib/LICENSE)
 - [TODO-Hardware requirements](TODO)
-- [TODO-BRANCHING STRATEGY PLAN(TODO)
+- [TODO-Branching strategy](TODO)
 - [Implementation status-Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
 - [Implementation status-Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
 - [Implementation status-Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
@@ -66,7 +66,7 @@
 - [Code Quality](FVADocMD/CODEQUALITY.md)
 
 ## Quick Links for product people
-- [Roadmap](https://github.com/dimanikulin/fva/projects/4).
+- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
 - [What is Multimedia Data?](FVADocMD/MULTIMEDIADATA.md)
 - [What are Multimedia IR Systems?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
 - [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
