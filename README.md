@@ -55,6 +55,7 @@
 - [Implementation status-Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
 - [Implementation status-Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
 - [Implementation status-Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
+- [Solution Architecture Quality Atributes](FVADocMD/SA_QUALITYATTRIBUTES.md)
 
 ## Quick Links for developers
 - [What you will learn here](FVADocMD/TECHSTOLEARN.md)
