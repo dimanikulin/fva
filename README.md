@@ -65,6 +65,7 @@
 - [Contributing](#contributing)
 - [Stay in touch](#stay-in-touch)
 - [Code Quality](FVADocMD/CODEQUALITY.md)
+- [Build and Release](FVADocMD/BUILD&RELEASE.md)
 
 ## Quick Links for product people
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4)
