@@ -33,7 +33,7 @@
   <a href="https://github.com/dimanikulin/fva/edit/master/README.md"><img src="https://img.shields.io/badge/documentation-read-d90368"> </a>
 </p>
 
-## Quick Links
+## Links for users
 - [Description](#description)
 - [Features](#features)
 - [Author history on why he created this product](FVADocMD/AUTHORHISTORY.md)
@@ -43,7 +43,16 @@
 - [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
 - [Definitions,Acronyms,Abbreviations](FVADocMD/DEFINITIONS.MD)
 
-## Quick Links for architects 
+## Links for product people
+- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
+- [What is Multimedia Data?](FVADocMD/MULTIMEDIADATA.md)
+- [What are Multimedia IR Systems?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
+- [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
+- [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
+- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
+- [TODO-User Journey](TODO)
+
+## Links for architects 
 - [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
 - [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
 - [Context View](FVADocMD/VIEWCONTEXT.md)
@@ -56,8 +65,9 @@
 - [Implementation status-Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
 - [Implementation status-Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 - [Solution Architecture Quality Atributes](FVADocMD/QUALITYATTRIBUTES.md)
+- [Programming Languages](FVADocMD/PROGRAMMINGLANGUAGE.md)
 
-## Quick Links for developers
+## Links for developers
 - [What you will learn here](FVADocMD/TECHSTOLEARN.md)
 - [Requirements for documentation](FVADocMD/CODEDOCUMENTATION.md)
 - [Docs generated from the code](https://dimanikulin.github.io/fva/)
@@ -65,15 +75,6 @@
 - [Stay in touch](#stay-in-touch)
 - [Code Quality](FVADocMD/CODEQUALITY.md)
 - [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
-
-## Quick Links for product people
-- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
-- [What is Multimedia Data?](FVADocMD/MULTIMEDIADATA.md)
-- [What are Multimedia IR Systems?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
-- [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
-- [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
-- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
-- [TODO-User Journey](TODO)
 
 ## Description
 &nbsp;&nbsp;&nbsp; A convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)
@@ -113,4 +114,4 @@ But you can ask him on:
 * [Community Twitter](https://twitter.com/TBD)
 
 &nbsp;&nbsp;&nbsp; You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/fva/issues) to request a feature or report a bug.
-[Here](https://github.com/dimanikulin/fva/discussions) you can start a discussion. 
+[Here](https://github.com/dimanikulin/fva/discussions) you can start a discussion.
