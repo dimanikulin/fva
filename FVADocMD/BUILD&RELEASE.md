@@ -12,12 +12,17 @@ The following artifacts shall be created:
 TBD - describe naming and flow for branches.
 TBD - create picture. 
 
-## Building the code
+## Building the code 
+
+# Building the code using GitHub
 &nbsp;&nbsp;&nbsp; There are 2 environments to build – CI (git hub) and local developer one. They must have maximally same workflow for building.
+
+
 
 Building the code can be done by github. I used [[37]](FVADocMD/REFERENCES.md) to help me to set up the main GitHub action flow and [this link](https://github.com/jurplel/install-qt-action) to set up QT.
 As soon as any code change is pushed to GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to use.
 
+# Building the code locally
 Still you can use [MS studio solution](./FVASW.sln) to build locally on Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
 
 ## Building the docs
