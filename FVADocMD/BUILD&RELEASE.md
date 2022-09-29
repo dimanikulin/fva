@@ -24,11 +24,11 @@ It is selected as cross-platform [tool](https://cmake.org/) available on all tar
 All the steps are expected to be yml based only.
 I used [[37]](FVADocMD/REFERENCES.md) to help me to set up the main GitHub action flow and [this link](https://github.com/jurplel/install-qt-action) to set up QT.
 
-As soon as any code change is pushed to GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to use.
+&nbsp;&nbsp;&nbsp; Once code change is pushed to GitHub, [main workflow](https://github.com/dimanikulin/fva/blob/master/.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to use.
 
 ### Building the code locally
 Still you can use [MS studio solution](./FVASW.sln) to build locally on Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
 
 ## Building the docs
-&nbsp;&nbsp;&nbsp; To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf) 
+&nbsp;&nbsp;&nbsp; To re-generate the docs you need to re-execute [documentation workflow](https://github.com/dimanikulin/fva/blob/master/.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf) 
 TBD - describe how 
