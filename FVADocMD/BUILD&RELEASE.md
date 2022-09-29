@@ -13,11 +13,13 @@ TBD - describe naming and flow for branches.
 TBD - create picture. 
 
 ## Building the code
-&nbsp;&nbsp;&nbsp; For building the code you don't need to have any local environment to set up. 
-1. So building the code is already done by github. I used [[37]](FVADocMD/REFERENCES.md) to help me to set up the main GitHub action flow and [this link](https://github.com/jurplel/install-qt-action) to set up QT.
-As soon as any code change is pushed to GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to test.
-2. But if you wish you can use [MS studio solution](./FVASW.sln) to build locally on  Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
+&nbsp;&nbsp;&nbsp; There are 2 environments to build – CI (git hub) and local developer one. They must have maximally same workflow for building.
+
+Building the code can be done by github. I used [[37]](FVADocMD/REFERENCES.md) to help me to set up the main GitHub action flow and [this link](https://github.com/jurplel/install-qt-action) to set up QT.
+As soon as any code change is pushed to GitHub, [main workflow](.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to use.
+
+Still you can use [MS studio solution](./FVASW.sln) to build locally on Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
 
 ## Building the docs
-
-&nbsp;&nbsp;&nbsp; To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf) TODO - describe how 
+&nbsp;&nbsp;&nbsp; To re-generate the docs you need to re-execute [documentation workflow](.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf) 
+TBD - describe how 
