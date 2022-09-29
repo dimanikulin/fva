@@ -75,6 +75,7 @@
 - [Stay in touch](#stay-in-touch)
 - [Code Quality](FVADocMD/CODEQUALITY.md)
 - [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
+- [Deployment approach](FVADocMD/DEPLOYMENTAPPROACH.md)
 
 ## Description
 &nbsp;&nbsp;&nbsp; A convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)
