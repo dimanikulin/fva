@@ -48,7 +48,7 @@ jobs:
       with:
         submodules: 'true'
 
-    - name: Download Ninja and CMake.
+    - name: Download and configure Ninja and CMake.
       shell: cmake -P {0}
       run: |
         set(cmake_version $ENV{CMAKE_VERSION})
@@ -116,7 +116,7 @@ jobs:
         restore-keys: |
           ${{ matrix.config.name }}-ccache-
 
-    - name: Install Qt
+    - name: Download and install QT
       uses: jurplel/install-qt-action@v2
       with:
         version:  ${{ env.QT_VERSION }}
