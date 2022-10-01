@@ -60,12 +60,10 @@
 - [FVA License](FVADocMD/LICENSE.md)
 - [Exif library license](FVACommonLib/LICENSE)
 - [TODO-Hardware requirements](TODO)
-- [TODO-Branching strategy](TODO)
-- [Implementation status-Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
-- [Implementation status-Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
-- [Implementation status-Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 - [Solution Architecture Quality Atributes](FVADocMD/QUALITYATTRIBUTES.md)
 - [Programming Languages](FVADocMD/PROGRAMMINGLANGUAGE.md)
+- [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
+- [Deployment approach](FVADocMD/DEPLOYMENTAPPROACH.md)
 
 ## Links for developers
 - [What you will learn here](FVADocMD/TECHSTOLEARN.md)
@@ -74,8 +72,9 @@
 - [Contributing](#contributing)
 - [Stay in touch](#stay-in-touch)
 - [Code Quality](FVADocMD/CODEQUALITY.md)
-- [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
-- [Deployment approach](FVADocMD/DEPLOYMENTAPPROACH.md)
+- [Implementation status-Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
+- [Implementation status-Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
+- [Implementation status-Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 
 ## Description
 &nbsp;&nbsp;&nbsp; A convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)
