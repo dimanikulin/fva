@@ -45,10 +45,10 @@
 
 ## Links for product people
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4)
-- [Functional Requirements](FVADocX/Functional Requirements.xlsx)
+- [Functional Requirements](FVADocX/FunctionalRequirements.xlsx)
 - [Project Plan](FVADocX/FVA.pod)
 - [What is Multimedia Data?-MD Format](FVADocMD/MULTIMEDIADATA.md)
-- [What is Multimedia Data?-MS Format](FVADocX/Multimedia Data.pptx)
+- [What is Multimedia Data?-MS Format](FVADocX/MultimediaData.pptx)
 - [What are Multimedia IR Systems?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
 - [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
 - [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
