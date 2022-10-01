@@ -41,7 +41,7 @@
 - [User scenario with FVA SW](https://youtu.be/-xnUsO7zW2s)
 - [User scenario - checking the results of processing](https://youtu.be/NIsVYyioDnM)
 - [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
-- [Definitions,Acronyms,Abbreviations](FVADocMD/DEFINITIONS.MD)
+- [Definitions, Acronyms, Abbreviations](FVADocMD/DEFINITIONS.MD)
 
 ## Links for product people
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4)
@@ -66,7 +66,7 @@
 - [FVA License](FVADocMD/LICENSE.md)
 - [Exif library license](FVACommonLib/LICENSE)
 - [TODO-Hardware requirements](TODO)
-- [Solution Architecture Quality Atributes](FVADocMD/QUALITYATTRIBUTES.md)
+- [Solution Architecture Quality Attributes](FVADocMD/QUALITYATTRIBUTES.md)
 - [Programming Languages](FVADocMD/PROGRAMMINGLANGUAGE.md)
 - [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
 - [Deployment approach](FVADocMD/DEPLOYMENTAPPROACH.md)
@@ -86,14 +86,14 @@
 &nbsp;&nbsp;&nbsp; A convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)
 into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology Photo Station, etc. to make the multimedia more searchable
 
-&nbsp;&nbsp;&nbsp; The main functions(basing on user search needs) of that tool set are: 
-* to automate the import (with decreasing the probability of human factor influence on the process of importing new photos into the existing photo album). 
-* to make photo albums more searchable (that is driven by IR Multimedia Systems) by enriching the metadata (and improving its consistency) with minimal human involvement.
+&nbsp;&nbsp;&nbsp; The main functions (basing on user search needs) of that tool set are: 
+* To automate the import (with decreasing the probability of human factor influence on the process of importing new photos into the existing photo album). 
+* To make photo albums more searchable (that is driven by IR Multimedia Systems) by enriching the metadata (and improving its consistency) with minimal human involvement.
 
-Despite there are a lot of steps that can be automated, still human involvement is required.
+Despite there are many steps that can be automated, still human involvement is required.
  
 The solution is oriented on end users only.
-Only open source code/tools are used as a product is open source.
+Only open source code/tools are used, as a product is open source.
 
 ## Features
 - **Organizing the multimedia:** Organizing the multimedia data to be more searchable
@@ -109,11 +109,11 @@ Then you just need to install it in the environment you would like to have it ru
 
 ## Contributing
 &nbsp;&nbsp;&nbsp; You are always welcome to contribute! There are many items to help the author in. 
-When you commit please don't forget about putting the issue ID there.
+When you commit please do not forget about putting the issue ID there.
 
 ## Stay in touch
 &nbsp;&nbsp;&nbsp; An author does not provide any support for now, because the development is in a hot stage. 
-But you can ask him on:  
+However, you can ask him on:  
 * [Author Twitter](https://twitter.com/DmytroNikulin)
 * [Author LinkedIn](https://www.linkedin.com/in/dimanikulin/)
 * [Author Telegram](https://t.me/dimanikulin79) 
