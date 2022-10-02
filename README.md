@@ -37,18 +37,14 @@
 - [Description](#description)
 - [Features](#features)
 - [Author history on why he created this product](FVADocMD/AUTHORHISTORY.md)
+- [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
+- [Definitions, Acronyms, Abbreviations](FVADocMD/DEFINITIONS.MD)
 
-- [User scenario without FVA SW](https://youtu.be/_bLXFdIDZtA)
-- [User scenario with FVA SW](https://youtu.be/-xnUsO7zW2s)
-- [User scenario - checking the results of processing](https://youtu.be/NIsVYyioDnM)
-
+##  Multimedia and everything around
 - [What is Multimedia Data?](FVADocMD/MULTIMEDIADATA.md)
 - [What are Multimedia IR Systems?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
 - [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
 - [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
-
-- [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
-- [Definitions, Acronyms, Abbreviations](FVADocMD/DEFINITIONS.MD)
 
 ## Links for product people
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4)
@@ -68,17 +64,17 @@
 
 ## Links for architects 
 - [Solution Architecture Document](FVADocX/SAD.docx)
-- [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
-- [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
 - [Context View](FVADocMD/VIEWCONTEXT.md)
 - [TODO-Functional Decomposition](TODO)
+- [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
+- [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
 - [FVA License](FVADocMD/LICENSE.md)
 - [Exif library license](FVACommonLib/LICENSE)
 - [TODO-Hardware requirements](TODO)
-- [Solution Architecture Quality Attributes](FVADocMD/QUALITYATTRIBUTES.md)
 - [Programming Languages](FVADocMD/PROGRAMMINGLANGUAGE.md)
 - [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
 - [Deployment approach](FVADocMD/DEPLOYMENTAPPROACH.md)
+- [Solution Architecture Quality Attributes](FVADocMD/QUALITYATTRIBUTES.md)
 
 ## Links for developers
 - [What you will learn here](FVADocMD/TECHSTOLEARN.md)
@@ -87,9 +83,11 @@
 - [Contributing](#contributing)
 - [Stay in touch](#stay-in-touch)
 - [Code Quality](FVADocMD/CODEQUALITY.md)
-- [Implementation status-Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
-- [Implementation status-Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
-- [Implementation status-Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
+
+## Implementation status
+- [Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
+- [Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
+- [Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 
 ## Description
 &nbsp;&nbsp;&nbsp; A convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)
@@ -115,6 +113,11 @@ Only open source code/tools are used, as a product is open source.
 
 &nbsp;&nbsp;&nbsp; You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it in the environment you would like to have it running on.
+
+## User Scenarios 
+- [Without FVA SW](https://youtu.be/_bLXFdIDZtA)
+- [With FVA SW](https://youtu.be/-xnUsO7zW2s)
+- [Checking the results of processing](https://youtu.be/NIsVYyioDnM)
 
 ## Contributing
 &nbsp;&nbsp;&nbsp; You are always welcome to contribute! There are many items to help the author in. 
