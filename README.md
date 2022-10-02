@@ -44,8 +44,9 @@
 - [Definitions, Acronyms, Abbreviations](FVADocMD/DEFINITIONS.MD)
 
 ## Links for product people
-- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
+- [Value Proposition](FVADocX/ValueProposition.docx)
 - [Functional Requirements](FVADocX/FunctionalRequirements.xlsx)
+- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
 - [Project Plan](FVADocX/FVA.pod)
 - [What is Multimedia Data(MD Format)?](FVADocMD/MULTIMEDIADATA.md)
 - [What is Multimedia Data(MS Format)?](FVADocX/MultimediaData.pptx)
@@ -56,7 +57,7 @@
 - [Multimedia Organizers(MD Format)](FVADocMD/MULTIMEDIAORGANIZERS.md)
 - [Multimedia Organizers(MS Format)](FVADocX/MultimediaOrganizeOverview.pptx)
 - [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
-- [TODO-User Journey](TODO)
+- [TODO--User Journey](TODO)
 
 ## Links for architects 
 - [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
