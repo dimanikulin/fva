@@ -33,35 +33,38 @@
   <a href="https://github.com/dimanikulin/fva/edit/master/README.md"><img src="https://img.shields.io/badge/documentation-read-d90368"> </a>
 </p>
 
-## Links for users
+## Common Links
 - [Description](#description)
 - [Features](#features)
 - [Author history on why he created this product](FVADocMD/AUTHORHISTORY.md)
+
 - [User scenario without FVA SW](https://youtu.be/_bLXFdIDZtA)
 - [User scenario with FVA SW](https://youtu.be/-xnUsO7zW2s)
 - [User scenario - checking the results of processing](https://youtu.be/NIsVYyioDnM)
+
+- [What is Multimedia Data?](FVADocMD/MULTIMEDIADATA.md)
+- [What are Multimedia IR Systems?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
+- [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
+- [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
+
 - [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
 - [Definitions, Acronyms, Abbreviations](FVADocMD/DEFINITIONS.MD)
-- [What is Multimedia Data(MD Format)?](FVADocMD/MULTIMEDIADATA.md)
-- [What are Multimedia IR Systems(MD Format)?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
-- [Multimedia IR Systems analyze(MD Format)](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
-- [Multimedia Organizers(MD Format)](FVADocMD/MULTIMEDIAORGANIZERS.md)
 
 ## Links for product people
+- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
+- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
+- [TODO--User Journey](TODO)
 - [Sources for author history](FVADocX/AuthorHistorySrc.pptx)
 - [Value Proposition](FVADocX/ValueProposition.docx)
 - [Functional Requirements](FVADocX/FunctionalRequirements.xlsx)
-- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
 - [Project Plan](FVADocX/FVA.pod)
-- [What is Multimedia Data(MS Format)?](FVADocX/MultimediaData.pptx)
-- [What are Multimedia IR Systems(MS Format)?](FVADocX/MultimediaIRSystemOverview.pptx)
-- [Multimedia IR Systems analyze(MS Format)](FVADocX/MultimediaIRSystemComparison&Analyze.pptx)
-- [Multimedia Organizers(MS Format)](FVADocX/MultimediaOrganizeOverview.pptx)
-- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
+- [What is Multimedia Data?](FVADocX/MultimediaData.pptx)
+- [What are Multimedia IR Systems?](FVADocX/MultimediaIRSystemOverview.pptx)
+- [Multimedia IR Systems analyze](FVADocX/MultimediaIRSystemComparison&Analyze.pptx)
+- [Multimedia Organizers](FVADocX/MultimediaOrganizeOverview.pptx)
 - [Design Thinking](FVADocX/DesignThinking.pptx)
 - [FVA Tool Set Features](FVADocX/FVAToolSetFeatures.pptx)
 - [Product Information](FVADocX/Products.pptx)
-- [TODO--User Journey](TODO)
 
 ## Links for architects 
 - [Solution Architecture Document](FVADocX/SAD.docx)
