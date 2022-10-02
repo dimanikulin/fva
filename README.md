@@ -83,6 +83,7 @@
 - [Contributing](#contributing)
 - [Stay in touch](#stay-in-touch)
 - [Code Quality](FVADocMD/CODEQUALITY.md)
+- [Where to publish](FVADocMD/WHERETOPUBLISH.md)
 
 ## Implementation status
 - [Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
