@@ -47,6 +47,12 @@
 - [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
 - [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
 
+##  Multimedia and everything around in PPT format
+- [What is Multimedia Data?](FVADocX/MultimediaData.pptx)
+- [What are Multimedia IR Systems?](FVADocX/MultimediaIRSystemOverview.pptx)
+- [Multimedia IR Systems analyze](FVADocX/MultimediaIRSystemComparison&Analyze.pptx)
+- [Multimedia Organizers](FVADocX/MultimediaOrganizeOverview.pptx)
+
 ## Links for product people
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4)
 - [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
@@ -55,10 +61,6 @@
 - [Value Proposition](FVADocX/ValueProposition.docx)
 - [Functional Requirements](FVADocX/FunctionalRequirements.xlsx)
 - [Project Plan](FVADocX/FVA.pod)
-- [What is Multimedia Data?](FVADocX/MultimediaData.pptx)
-- [What are Multimedia IR Systems?](FVADocX/MultimediaIRSystemOverview.pptx)
-- [Multimedia IR Systems analyze](FVADocX/MultimediaIRSystemComparison&Analyze.pptx)
-- [Multimedia Organizers](FVADocX/MultimediaOrganizeOverview.pptx)
 - [Design Thinking](FVADocX/DesignThinking.pptx)
 - [FVA Tool Set Features](FVADocX/FVAToolSetFeatures.pptx)
 - [Product Information](FVADocX/Products.pptx)
