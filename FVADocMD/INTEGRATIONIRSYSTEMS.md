@@ -4,4 +4,11 @@ Because the Multimedia IR system performs the search by certain criteria basing 
 
 <img src="Images/Integration.png" alt="Integration.png" />
 
-## Integration With digiKam
+## Integration with digiKam
+For [digiKam](https://www.digikam.org/about/), the "Collections" setting shall be used to define how it is configured to search the [multimedia data](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) through. 
+The setting “Monitor the albums for external changes (requires restart)” shall be enabled. 
+Taking into account this setting, the [digiKam](https://www.digikam.org/about/) will pick up the external changes in the collection as soon as the proposed solution will put it in.
+
+<img src="Images/IntegrationDigiKam.png" alt="IntegrationDigiKam.png" />
+Still, from the side of FVA Software it is required to provide a possibility to configure the storage to put the [multimedia data](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) processed to be integrated with [digiKam](https://www.digikam.org/about/).
+Therefore, the separate [UI](https://en.wikipedia.org/wiki/User_interface) screen is created to ask the user what storage location, [digiKam](https://www.digikam.org/about/) should use for the incoming [multimedia data]((https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008)).
