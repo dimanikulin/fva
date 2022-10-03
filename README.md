@@ -36,6 +36,7 @@
 ## Common Links
 - [Description](#description)
 - [Features](#features)
+- [Integration with IR Systems](FVADocMD/INTEGRATIONIRSYSTEMS.md)
 - [Author history on why he created this product](FVADocMD/AUTHORHISTORY.md)
 - [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
 - [Definitions, Acronyms, Abbreviations](FVADocMD/DEFINITIONS.MD)
