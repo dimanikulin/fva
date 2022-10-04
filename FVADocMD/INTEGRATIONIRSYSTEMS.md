@@ -14,6 +14,6 @@ Taking into account this setting, the [digiKam](https://www.digikam.org/about/) 
 &nbsp;&nbsp;&nbsp; Still, from the side of FVA Software it is required to provide a possibility to configure the storage to put the [multimedia data](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) processed to be integrated with [digiKam](https://www.digikam.org/about/).
 Therefore, the separate [UI](https://en.wikipedia.org/wiki/User_interface) screen is created to ask the user what storage location, [digiKam](https://www.digikam.org/about/) should use for the incoming [multimedia data]((https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008)).
 
-&nbsp;&nbsp;&nbsp; For example, a directory “C:\FVA” is selected for “Local Collections” as shown on a picture above. 
-Therefore, when the user wants to integrate the multimedia data after processing by FVA Software, the user shall be able to select the “C:\FVA” directory as a directory in UI to put the processed multimedia data in. 
-As soon as it is done, FVA Software will put multimedia data into selected directory and Multimedia IR system will be able to search through it.
+&nbsp;&nbsp;&nbsp; For example, a directory "C:\FVA" is selected for "Local Collections" as shown on a picture above. 
+Therefore, when the user wants to integrate the [multimedia data](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) after processing by FVA Software, the user shall be able to select the "C:\FVA" directory as a directory in [UI](https://en.wikipedia.org/wiki/User_interface) to put the processed [multimedia data](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) in. 
+As soon as it is done, FVA Software will put [multimedia data](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) into selected directory and Multimedia IR system will be able to search through it.
