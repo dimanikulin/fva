@@ -1,4 +1,4 @@
-## Integration 
+# Integration 
 &nbsp;&nbsp;&nbsp; As it was mentioned before in the business requirements(aka features), the integration with offline Multimedia IR system is implemented through the integration with [digiKam](https://www.digikam.org/about/) and integration with online Multimedia IR system is implemented through the integration with [Google Photos](https://en.wikipedia.org/wiki/Google_Photos).
 Because the Multimedia IR system performs the search by certain criteria basing on multimedia [metadata](https://en.wikipedia.org/wiki/Metadata), the FVA Software shall be working with the same multimedia [metadata](https://en.wikipedia.org/wiki/Metadata) to be integrated with Multimedia IR system.
 
@@ -17,3 +17,14 @@ Therefore, the separate [UI](https://en.wikipedia.org/wiki/User_interface) scree
 &nbsp;&nbsp;&nbsp; For example, a directory "C:\FVA" is selected for "Local Collections" as shown on a picture above. 
 Therefore, when the user wants to integrate the [multimedia data](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) after processing by FVA Software, the user shall be able to select the "C:\FVA" directory as a directory in [UI](https://en.wikipedia.org/wiki/User_interface) to put the processed [multimedia data](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) in. 
 As soon as it is done, FVA Software will put [multimedia data](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) into selected directory and Multimedia IR system will be able to search through it.
+
+## Integration with Google Photos
+
+
+<img src="Images/IntegrationGooglePhoto.png" alt="IntegrationGooglePhoto.png" />
+
+
+## Integration with Synology
+
+TBD
+
