@@ -53,27 +53,21 @@
 - [Multimedia IR Systems analyze](FVADocX/MultimediaIRSystemComparison&Analyze.pptx)
 - [Multimedia Organizers](FVADocX/MultimediaOrganizeOverview.pptx)
 
-## Links for product people
+## Links for product people (FVA Tool Set)
 - [Design Thinking](FVADocX/DesignThinking.pptx)
-
-- [FVA Tool Set Information with Business Goals/Drivers/Objectives](FVADocX/FVAToolSet.pptx)
-- [FVA Tool Set Features](FVADocX/FVAToolSet.pptx)
-
-- [FVA Helpers Information with Business Goals/Drivers/Objectives](FVADocX/FVAHelpers.pptx)
-
-- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
-- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
-- [TODO--User Journey](TODO)
-- [Sources for author history](FVADocX/AuthorHistorySrc.pptx)
 - [Value Proposition](FVADocX/ValueProposition.docx)
+- [Sources for author history](FVADocX/AuthorHistorySrc.pptx)
+- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
+- [FVA Tool Set Information with Business Goals/Drivers/Objectives](FVADocX/FVAToolSet.pptx)
+- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
+- [Features](FVADocX/FVAToolSetFeatures.pptx)
+- [Stakeholders](FVADocX/FVAToolSetStakeholders.pptx)
+- [User Journey](FVADocX/FVAToolSetUserJourney.pptx)
 - [Functional Requirements](FVADocX/FunctionalRequirements.xlsx)
 - [Project Plan](FVADocX/FVA.pod)
 
-
-C:\work\fva\FVADocX\FVAToolSetFeatures.pptx
-C:\work\fva\FVADocX\FVAToolSetStakeholders.pptx
-C:\work\fva\FVADocX\FVAToolSetUserJourney.pptx
-
+## Links for product people (FVA Helpers)
+- [Information with Business Goals/Drivers/Objectives](FVADocX/FVAHelpers.pptx)
 
 ## Links for architects 
 - [Solution Architecture Document](FVADocX/SAD.docx)
