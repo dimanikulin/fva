@@ -54,6 +54,13 @@
 - [Multimedia Organizers](FVADocX/MultimediaOrganizeOverview.pptx)
 
 ## Links for product people
+- [Design Thinking](FVADocX/DesignThinking.pptx)
+
+- [FVA Tool Set Information with Business Goals/Drivers/Objectives](FVADocX/FVAToolSet.pptx)
+- [FVA Tool Set Features](FVADocX/FVAToolSet.pptx)
+
+- [FVA Helpers Information with Business Goals/Drivers/Objectives](FVADocX/FVAHelpers.pptx)
+
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4)
 - [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 - [TODO--User Journey](TODO)
@@ -61,9 +68,12 @@
 - [Value Proposition](FVADocX/ValueProposition.docx)
 - [Functional Requirements](FVADocX/FunctionalRequirements.xlsx)
 - [Project Plan](FVADocX/FVA.pod)
-- [Design Thinking](FVADocX/DesignThinking.pptx)
-- [FVA Tool Set Features](FVADocX/FVAToolSetFeatures.pptx)
-- [Product Information](FVADocX/Products.pptx)
+
+
+C:\work\fva\FVADocX\FVAToolSetFeatures.pptx
+C:\work\fva\FVADocX\FVAToolSetStakeholders.pptx
+C:\work\fva\FVADocX\FVAToolSetUserJourney.pptx
+
 
 ## Links for architects 
 - [Solution Architecture Document](FVADocX/SAD.docx)
