@@ -59,11 +59,9 @@
 - [Sources for author history](FVADocX/AuthorHistorySrc.pptx)
 - [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 - [FVA Tool Set Information with Business Goals/Drivers/Objectives](FVADocX/FVAToolSet.pptx)
+- [Requirements](REQUIREMENTS.md)
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4)
-- [Features](FVADocX/FVAToolSetFeatures.pptx)
 - [Stakeholders](FVADocX/FVAToolSetStakeholders.pptx)
-- [User Journey](FVADocX/FVAToolSetUserJourney.pptx)
-- [Functional Requirements](FVADocX/FunctionalRequirements.xlsx)
 - [Project Plan](FVADocX/FVA.pod)
 
 ## Links for product people (FVA Helpers)
@@ -71,6 +69,7 @@
 
 ## Links for architects 
 - [Solution Architecture Document](FVADocX/SAD.docx)
+- [Solution Architecture Requirements](FVADocMD/SA_REQUIREMENTS.md)
 - [Context View](FVADocMD/VIEWCONTEXT.md)
 - [TODO-Functional Decomposition](TODO)
 - [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
