@@ -4,3 +4,20 @@ For each quality attribute it provides name, description, motivation (rationale 
 The metrics show whether a particular quality attribute is achieved or not.
 The components where metric is measured is noted as well.
 
+# Conceptual Integrity
+TBD
+
+## Description
+TBD
+
+## Motivation for selecting
+TBD
+
+## Metrics
+TBD
+
+## Business value
+TBD
+
+## Architecture viewpoint
+TBD
