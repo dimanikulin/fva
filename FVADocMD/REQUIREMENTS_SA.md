@@ -24,3 +24,6 @@ This is critical to do in order to cover all the gaps in the requirements.
 | - |:--------------:|
 | 1 | It is assumed that the user, which the proposed solution is going to run under, has the write access to the [Google Photo](https://en.wikipedia.org/wiki/Google_Photos) (and other IR Multimedia systems) folder where [multimedia data](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) processed is going to be put in. | 
 | 2 | User restarted the wizard after changing the configuration (because of feature of QTWizard and QTWizardPage) |
+
+## Quality Attributes
+[Quality Attributes for the FVA are described here](QUALITYATTRIBUTES_FVA.md)
