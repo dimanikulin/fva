@@ -4,7 +4,6 @@ For each quality attribute it provides name, description, motivation (rationale 
 The metrics show whether a particular quality attribute is achieved or not.
 The components where metric is measured is noted as well.
 
-///////////////////////////////////////////////////////////////////////
 # 1 Conceptual Integrity
 
 ## Description
@@ -23,7 +22,6 @@ TBD
 TBD
 
 
-///////////////////////////////////////////////////////////////////////
 # 2 Maintainability
 
 ## Description
@@ -41,8 +39,6 @@ TBD
 ## Architecture viewpoint
 TBD
 
-
-///////////////////////////////////////////////////////////////////////
 # 3 Reusability
 
 ## Description
@@ -60,7 +56,7 @@ TBD
 ## Architecture viewpoint
 TBD
 
-///////////////////////////////////////////////////////////////////////
+
 # 4 Availability
 
 ## Description
@@ -78,7 +74,7 @@ TBD
 ## Architecture viewpoint
 TBD
 
-///////////////////////////////////////////////////////////////////////
+
 # 5 Interoperability
 
 ## Description
@@ -97,7 +93,6 @@ TBD
 TBD
 
 
-///////////////////////////////////////////////////////////////////////
 # 6 Manageability
 
 ## Description
@@ -115,7 +110,7 @@ TBD
 ## Architecture viewpoint
 TBD
 
-///////////////////////////////////////////////////////////////////////
+
 # 7 Performance
 
 ## Description
@@ -133,7 +128,7 @@ TBD
 ## Architecture viewpoint
 TBD
 
-///////////////////////////////////////////////////////////////////////
+
 # 8 Reliability
 
 ## Description
@@ -151,7 +146,6 @@ TBD
 ## Architecture viewpoint
 TBD
 
-///////////////////////////////////////////////////////////////////////
 # 9 Scalability
 
 ## Description
@@ -169,7 +163,6 @@ TBD
 ## Architecture viewpoint
 TBD
 
-///////////////////////////////////////////////////////////////////////
 # 10 Security
 
 ## Description
@@ -187,7 +180,6 @@ TBD
 ## Architecture viewpoint
 TBD
 
-///////////////////////////////////////////////////////////////////////
 # 11 Portability
 
 ## Description
@@ -205,7 +197,6 @@ TBD
 ## Architecture viewpoint
 TBD
 
-///////////////////////////////////////////////////////////////////////
 # 12 Supportability
 
 ## Description
@@ -223,8 +214,6 @@ TBD
 ## Architecture viewpoint
 TBD
 
-
-///////////////////////////////////////////////////////////////////////
 # 13 Testability
 
 ## Description
@@ -242,7 +231,6 @@ TBD
 ## Architecture viewpoint
 TBD
 
-///////////////////////////////////////////////////////////////////////
 # 14 Usability
 
 ## Description
@@ -260,7 +248,6 @@ TBD
 ## Architecture viewpoint
 TBD
 
-///////////////////////////////////////////////////////////////////////
 # 15 Learnability
 
 ## Description
@@ -278,7 +265,6 @@ TBD
 ## Architecture viewpoint
 TBD
 
-///////////////////////////////////////////////////////////////////////
 # 16 Traceability
 
 ## Description
