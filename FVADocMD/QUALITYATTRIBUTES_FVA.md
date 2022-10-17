@@ -4,10 +4,10 @@ For each quality attribute it provides name, description, motivation (rationale 
 The metrics show whether a particular quality attribute is achieved or not.
 The components where metric is measured is noted as well.
 
-- [Conceptual Integrity](#1conceptualintegrity)
-- [Maintainability](#2maintainability)
+- [Conceptual Integrity](#conceptualintegrity)
+- [Maintainability](#maintainability)
 
-# 1 Conceptual Integrity
+# Conceptual Integrity
 
 ## Description
 TBD
@@ -25,7 +25,7 @@ TBD
 TBD
 
 
-# 2 Maintainability
+# Maintainability
 
 ## Description
 TBD
