@@ -6,9 +6,10 @@ The components where metric is measured is noted as well.
 
 - [Conceptual Integrity](#conceptualintegrity)
 - [Maintainability](#maintainability)
+- [Reusability](#reusability)
+- [Availability](#availability)
 
 # Conceptual Integrity
-
 ## Description
 TBD
 
@@ -26,7 +27,6 @@ TBD
 
 
 # Maintainability
-
 ## Description
 TBD
 
@@ -42,8 +42,7 @@ TBD
 ## Architecture viewpoint
 TBD
 
-# 3 Reusability
-
+# Reusability
 ## Description
 TBD
 
@@ -59,8 +58,7 @@ TBD
 ## Architecture viewpoint
 TBD
 
-
-# 4 Availability
+# Availability
 
 ## Description
 TBD
