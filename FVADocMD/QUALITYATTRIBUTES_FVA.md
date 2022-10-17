@@ -8,6 +8,11 @@ The components where metric is measured is noted as well.
 - [Maintainability](#maintainability)
 - [Reusability](#reusability)
 - [Availability](#availability)
+- [Interoperability](#interoperability)
+- [Manageability](#manageability)
+- [Performance](#performance)
+- [Reliability](#reliability)
+- [Scalability](#scalability)
 
 # Conceptual Integrity
 ## Description
@@ -24,7 +29,6 @@ TBD
 
 ## Architecture viewpoint
 TBD
-
 
 # Maintainability
 ## Description
@@ -59,7 +63,6 @@ TBD
 TBD
 
 # Availability
-
 ## Description
 TBD
 
@@ -75,9 +78,7 @@ TBD
 ## Architecture viewpoint
 TBD
 
-
-# 5 Interoperability
-
+# Interoperability
 ## Description
 TBD
 
@@ -93,9 +94,7 @@ TBD
 ## Architecture viewpoint
 TBD
 
-
-# 6 Manageability
-
+# Manageability
 ## Description
 TBD
 
@@ -111,9 +110,7 @@ TBD
 ## Architecture viewpoint
 TBD
 
-
-# 7 Performance
-
+# Performance
 ## Description
 TBD
 
@@ -129,9 +126,7 @@ TBD
 ## Architecture viewpoint
 TBD
 
-
-# 8 Reliability
-
+# Reliability
 ## Description
 TBD
 
@@ -147,8 +142,7 @@ TBD
 ## Architecture viewpoint
 TBD
 
-# 9 Scalability
-
+# Scalability
 ## Description
 TBD
 
