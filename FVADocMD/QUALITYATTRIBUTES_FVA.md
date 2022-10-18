@@ -13,6 +13,12 @@ The components where metric is measured is noted as well.
 - [Performance](#performance)
 - [Reliability](#reliability)
 - [Scalability](#scalability)
+- [Security](#security)
+- [Portability](#portability)
+- [Supportability](#supportability)
+- [Testability](#testability)
+- [Learnability](#learnability)
+- [Traceability](#traceability)
 
 # Conceptual Integrity
 ## Description
@@ -158,7 +164,87 @@ TBD
 ## Architecture viewpoint
 TBD
 
-# 10 Security
+# Security
+## Description
+TBD
+
+## Motivation for selecting
+TBD
+
+## Metrics
+TBD
+
+## Business value
+TBD
+
+## Architecture viewpoint
+TBD
+
+# Portability
+## Description
+TBD
+
+## Motivation for selecting
+TBD
+
+## Metrics
+TBD
+
+## Business value
+TBD
+
+## Architecture viewpoint
+TBD
+
+# Supportability
+## Description
+TBD
+
+## Motivation for selecting
+TBD
+
+## Metrics
+TBD
+
+## Business value
+TBD
+
+## Architecture viewpoint
+TBD
+
+# Testability
+## Description
+TBD
+
+## Motivation for selecting
+TBD
+
+## Metrics
+TBD
+
+## Business value
+TBD
+
+## Architecture viewpoint
+TBD
+
+# Usability
+## Description
+TBD
+
+## Motivation for selecting
+TBD
+
+## Metrics
+TBD
+
+## Business value
+TBD
+
+## Architecture viewpoint
+TBD
+
+# Learnability
 
 ## Description
 TBD
@@ -175,93 +261,7 @@ TBD
 ## Architecture viewpoint
 TBD
 
-# 11 Portability
-
-## Description
-TBD
-
-## Motivation for selecting
-TBD
-
-## Metrics
-TBD
-
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
-
-# 12 Supportability
-
-## Description
-TBD
-
-## Motivation for selecting
-TBD
-
-## Metrics
-TBD
-
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
-
-# 13 Testability
-
-## Description
-TBD
-
-## Motivation for selecting
-TBD
-
-## Metrics
-TBD
-
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
-
-# 14 Usability
-
-## Description
-TBD
-
-## Motivation for selecting
-TBD
-
-## Metrics
-TBD
-
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
-
-# 15 Learnability
-
-## Description
-TBD
-
-## Motivation for selecting
-TBD
-
-## Metrics
-TBD
-
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
-
-# 16 Traceability
-
+# Traceability
 ## Description
 TBD
 
