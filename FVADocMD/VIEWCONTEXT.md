@@ -1,4 +1,4 @@
-The context diagram below shows the solution bounds and its interactions with other objects and subjects.
+&nbsp;&nbsp;&nbsp; The context diagram below shows the solution bounds and its interactions with other objects and subjects.
 
 ```mermaid
 flowchart LR

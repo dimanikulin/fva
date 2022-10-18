@@ -1,5 +1,5 @@
 ## C++ Documentation rules
-The C++ code shall be documented using [Doxygen](https://en.wikipedia.org/wiki/Doxygen) to increase testability, supportability and maintainability.
+&nbsp;&nbsp;&nbsp; The C++ code shall be documented using [Doxygen](https://en.wikipedia.org/wiki/Doxygen) to increase testability, supportability and maintainability.
 The following requirements shall be applied for the C++ code:
 -	Each source file shall have copyright header as shown below;
 ```cpp
