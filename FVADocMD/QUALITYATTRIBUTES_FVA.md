@@ -21,7 +21,6 @@ The components where metric is measured is noted as well.
 - [Traceability](#traceability)
 
 # Conceptual Integrity
-## Description
 The software shall be decomposed into well-structured modules according to functional decomposition. 
 
 ## Motivation for selecting
@@ -37,7 +36,6 @@ Low
 Middle
 
 # Maintainability
-## Description
 The system shall be able to undergo changes with a high level of easiness.
 
 ## Motivation for selecting
@@ -57,7 +55,6 @@ Middle
 High
 
 # Reusability
-## Description
 TBD
 
 ## Motivation for selecting
@@ -73,7 +70,6 @@ TBD
 TBD
 
 # Availability
-## Description
 TBD
 
 ## Motivation for selecting
@@ -89,7 +85,6 @@ TBD
 TBD
 
 # Interoperability
-## Description
 TBD
 
 ## Motivation for selecting
@@ -105,7 +100,6 @@ TBD
 TBD
 
 # Manageability
-## Description
 TBD
 
 ## Motivation for selecting
@@ -121,7 +115,6 @@ TBD
 TBD
 
 # Performance
-## Description
 TBD
 
 ## Motivation for selecting
@@ -137,7 +130,6 @@ TBD
 TBD
 
 # Reliability
-## Description
 TBD
 
 ## Motivation for selecting
@@ -153,7 +145,6 @@ TBD
 TBD
 
 # Scalability
-## Description
 TBD
 
 ## Motivation for selecting
@@ -169,7 +160,6 @@ TBD
 TBD
 
 # Security
-## Description
 TBD
 
 ## Motivation for selecting
@@ -185,7 +175,6 @@ TBD
 TBD
 
 # Portability
-## Description
 TBD
 
 ## Motivation for selecting
@@ -201,7 +190,6 @@ TBD
 TBD
 
 # Supportability
-## Description
 TBD
 
 ## Motivation for selecting
@@ -217,7 +205,6 @@ TBD
 TBD
 
 # Testability
-## Description
 TBD
 
 ## Motivation for selecting
@@ -233,7 +220,6 @@ TBD
 TBD
 
 # Usability
-## Description
 TBD
 
 ## Motivation for selecting
@@ -249,8 +235,6 @@ TBD
 TBD
 
 # Learnability
-
-## Description
 TBD
 
 ## Motivation for selecting
@@ -266,7 +250,6 @@ TBD
 TBD
 
 # Traceability
-## Description
 TBD
 
 ## Motivation for selecting
