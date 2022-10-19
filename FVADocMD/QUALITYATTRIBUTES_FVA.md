@@ -22,35 +22,39 @@ The components where metric is measured is noted as well.
 
 # Conceptual Integrity
 ## Description
-TBD
+The software shall be decomposed into well-structured modules according to functional decomposition. 
 
 ## Motivation for selecting
 TBD
 
 ## Metrics
-TBD
+The code review process shall be established to make sure the modules are structured according to functional decomposition
 
 ## Business value
-TBD
+Low
 
 ## Architecture viewpoint
-TBD
+Middle
 
 # Maintainability
 ## Description
-TBD
+The system shall be able to undergo changes with a high level of easiness.
 
 ## Motivation for selecting
-TBD
+The following changes might happen frequently:
+-changes applied to the [UI](https://en.wikipedia.org/wiki/User_interface) like adding new screen;
+-adding new multimedia formats to support;
+-new [metadata](https://en.wikipedia.org/wiki/Metadata) search criteria to handle.
+-new offline or online IR Multimedia Systems can be easily integrated
 
 ## Metrics
-TBD
+The code review process shall be defined to make sure the [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming), [SOLID](https://en.wikipedia.org/wiki/SOLID) principles and [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern are going to be used.
 
 ## Business value
-TBD
+Middle
 
 ## Architecture viewpoint
-TBD
+High
 
 # Reusability
 ## Description
