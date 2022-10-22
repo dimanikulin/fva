@@ -45,26 +45,23 @@ The following changes might happen frequently:
 ## Metrics
 The code review process shall be defined to make sure the [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming), [SOLID](https://en.wikipedia.org/wiki/SOLID) principles and [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern are going to be used.
 
-## Business value
-Middle
-
-## Architecture viewpoint
-High
+## Business value - Middle
+## Architecture viewpoint - High
                                               
 # Reusability
-TBD
+The system components shall be usable in other functionality or other flows.
 
 ## Motivation for selecting
-TBD
+It is applied for deduplication of implementation and to reduce the implementation time spent).
 
 ## Metrics
-TBD
+A common library is going to be created to keep the following functions used by several components:
+-To work with configuration;
+-Logging functions;
+-Common [UI](https://en.wikipedia.org/wiki/User_interface) functions;
 
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
+## Business value - Middle
+## Architecture viewpoint - High
 
 # Availability
 TBD
@@ -75,26 +72,20 @@ TBD
 ## Metrics
 TBD
 
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
+## Business value - TBD
+## Architecture viewpoint - TBD
 
 # Interoperability
-TBD
+The proposed solution shall have the ability to be integrated with online and offline Multimedia IR systems in the common way.
 
 ## Motivation for selecting
-TBD
+The system shall be able to be integrated to any IR Multimedia Systems with a high level of easiness.
 
 ## Metrics
-TBD
+The code review process shall be defined to make sure the [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming), [SOLID](https://en.wikipedia.org/wiki/SOLID) principles and [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern are going to be used.
 
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
+## Business value - High
+## Architecture viewpoint  - High
 
 # Manageability
 TBD
