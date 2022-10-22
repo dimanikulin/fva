@@ -141,34 +141,29 @@ TBD
 ## Architecture viewpoint - TBD
 
 # Security
-TBD
+Each multimedia file shall have “read only” attribute set up after processing on Windows.
 
 ## Motivation for selecting
-TBD
+It is applied not to allow it easily change multimedia after processing.
 
 ## Metrics
-TBD
+Functional test shall be created to check if all multimedia files after processing are marked with “read only” flag.
 
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
+## Business value - Low
+## Architecture viewpoint - Low
 
 # Portability
-TBD
+The software shall support all wide known desktop/laptop [operating systems](https://en.wikipedia.org/wiki/Operating_system) with the latest update. 
+No support of the web or mobile platform required.
 
 ## Motivation for selecting
-TBD
+Those platforms are selected to cover about 100% of desktop user.
 
 ## Metrics
 TBD
 
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
+## Business value - High
+## Architecture viewpoint - Middle
 
 # Supportability
 TBD
