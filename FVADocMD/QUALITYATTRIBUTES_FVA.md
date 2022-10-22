@@ -88,37 +88,36 @@ The code review process shall be defined to make sure the [OOP](https://en.wikip
 ## Architecture viewpoint  - High
 
 # Manageability
-TBD
+The system shall be monitorable via [UI](https://en.wikipedia.org/wiki/User_interface) and logging. The system shall support debugging as well.
 
 ## Motivation for selecting
-TBD
+It is applied to easily support the systems operations in the fields.
 
 ## Metrics
-TBD
+The code review process shall be established to make sure the  Each component shall use [UI](https://en.wikipedia.org/wiki/User_interface) and logging component:
+- to save any important events - to disk via logging;
+- to show the progress of processing in [UI](https://en.wikipedia.org/wiki/User_interface);
+- to show any important events - to user in [UI](https://en.wikipedia.org/wiki/User_interface);
+- to provide the user with an ability to cancel the processing in [UI](https://en.wikipedia.org/wiki/User_interface).
 
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
+## Business value - Middle
+## Architecture viewpoint - High
 
 # Performance
-TBD
+The same as for the whole system, the [UI](https://en.wikipedia.org/wiki/User_interface) shall respond in less than 1 second. 
+As there might be time-consuming jobs, it shall show the current progress for such operations to provide the user with a status.
 
 ## Motivation for selecting
-TBD
+It is applied to support great UX.
 
 ## Metrics
-TBD
+The regular performance test shall be performed to check it.
 
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
+## Business value - High
+## Architecture viewpoint - Low
 
 # Reliability
-TBD
+If the system is going to fail during an operation, it shall report the operation status to user with error description and roll back all applied changes for this operation.
 
 ## Motivation for selecting
 TBD
@@ -126,11 +125,8 @@ TBD
 ## Metrics
 TBD
 
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
+## Business value - High
+## Architecture viewpoint - High
 
 # Scalability
 TBD
@@ -141,11 +137,8 @@ TBD
 ## Metrics
 TBD
 
-## Business value
-TBD
-
-## Architecture viewpoint
-TBD
+## Business value - TBD
+## Architecture viewpoint - TBD
 
 # Security
 TBD
