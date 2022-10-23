@@ -5,5 +5,16 @@
 - the connections between the components; 
 - the connections between the components and photo album owner;
 - the connections between the components and external systems.
-
 </br>
+
+There are following functional components of the system:
+- Configurator;
+- Data Processor;
+- Description Editor;
+- Dictionary Editor;
+- Flow Controller;
+- Organizer;
+- OrganizerWizard;
+- Player;
+- Viewer;
+- Data.
