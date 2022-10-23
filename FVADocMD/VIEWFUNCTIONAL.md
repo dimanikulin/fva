@@ -5,7 +5,7 @@ Following layers are considered:
 - [UI](https://en.wikipedia.org/wiki/User_interface) layer; 
 
 ```mermaid
-flowchart TB
+flowchart BT
     A(Data and Configuration) --> B(Processing)
     B(Processing) --> C(UI)
 ```
