@@ -6,8 +6,8 @@ Following layers are considered:
 
 ```mermaid
 flowchart BT
-    A(Data and Configuration) --> B(Processing)
-    B(Processing) --> C(UI)
+    A(UI) --> B(Processing)
+    B(Processing) --> C(Data and Configuration)
 ```
 
 TBD – describe why layered arch </br> 
