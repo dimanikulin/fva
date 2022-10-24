@@ -24,7 +24,7 @@ There are following ([UI](https://en.wikipedia.org/wiki/User_interface))layer co
 - Organizer Wizard.
 
 ```mermaid
-flowchart DT
+graph TD
     A(UI) --> B(Configurator)
     A(UI) --> C(Description Editor)
     A(UI) --> D(Dictionary Editor)
