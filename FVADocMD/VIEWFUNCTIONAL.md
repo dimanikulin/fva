@@ -1,9 +1,10 @@
-&nbsp;&nbsp;&nbsp; The Layered Architecture shall be applied to the system. </br>
+&nbsp;&nbsp;&nbsp; The Layered Architecture shall be applied to the system. 
 Following layers are considered:
 - Data and Configuration layer;
 - Processing layer;
 - [UI](https://en.wikipedia.org/wiki/User_interface) layer; 
-TBD - describe why layered arch </br> 
+
+</br> TBD - describe why layered arch </br> 
 
 ```mermaid
 flowchart BT
@@ -11,15 +12,26 @@ flowchart BT
     B(Processing) --> C(Data and Configuration)
 ```
 
-The photo album owner interacts with the system through the user interface ([UI](https://en.wikipedia.org/wiki/User_interface)) components. 
-There are following ([UI](https://en.wikipedia.org/wiki/User_interface))layer's components:
+# ([UI](https://en.wikipedia.org/wiki/User_interface))layer
+ 
+The photo album owner interacts with the system through the user interface ([UI](https://en.wikipedia.org/wiki/User_interface)) layer components. 
+There are following ([UI](https://en.wikipedia.org/wiki/User_interface))layer components:
 - Configurator;
 - Description Editor;
 - Dictionary Editor;
 - Player;
 - Viewer;
-- OrganizerWizard.
-TBD - diagram
+- Organizer Wizard.
+
+```mermaid
+flowchart DT
+    A(UI) --> B(Configurator)
+    A(UI) --> C(Description Editor)
+    A(UI) --> D(Dictionary Editor)
+    A(UI) --> E(Player)
+    A(UI) --> F(Viewer)
+    A(UI) --> G(Organizer Wizard)  
+```
 
 ##################################################################
 &nbsp;&nbsp;&nbsp; Below is a diagram to show :
