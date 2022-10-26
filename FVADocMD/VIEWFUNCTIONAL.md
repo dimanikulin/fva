@@ -71,12 +71,67 @@ graph TD
     A(Data) --> D(FVA Software configuration)
     A(Data) --> E(FVA Software internal metadata)
     A(Data) --> E(FVA Software dictionary)
-```
-Basing on requirements FVA Software operates with five levels of data:
-- Input Multimedia Data;
-- Output Multimedia Data;
-- FVA Software configuration;
-- FVA Software internal metadata;
-- FVA Software dictionary data used along with FVA Software internal metadata;
 
+```
+## Input Multimedia Data
+TBD
+
+## Output Multimedia Data
+TBD
+
+## FVA Software configuration
+TBD
+The formatting strings shall be kept in a separated category
+
+## FVA Software internal metadata
+&nbsp;&nbsp;&nbsp; It is used to enrich Output Multimedia Data. </br> 
+&nbsp;&nbsp;&nbsp; Let describe how it was before current implementation. 
+Firstly it was kept at file system level inside of the Photo Album. 
+Each folder in the Photo Album could keep two files: “folderDescription.json” and “description.csv”. 
+“FolderDescription.json” kept information about all the files under a folder that was common. 
+For example it could be device id that was the same for all multimedia files.   “FolderDescription.json” structure was:
+</br>
+TBD to mermaid
+{
+"deviceId":"",
+"tags":"",
+"people": "",
+"place":"",
+"event":"" 
+}
+“folderDescription.json” example:
+{
+"deviceId":"3",
+"tags":"At home, with a family",
+"people": "3,6,8",
+"place":"3,4",
+"event":"45"
+}
+
+&nbsp;&nbsp;&nbsp; Description.csv has been used to keep information about files under a folder for cases if some multimedia files had different internal metadata. 
+“description.csv” structure was:
+</br>
+&nbsp;&nbsp;&nbsp; Name,Place,People,Device,WhoTook,Description,Scaner
+</br>
+&nbsp;&nbsp;&nbsp; So the FVA software created or updated these files during import new files to photo album. </br> 
+&nbsp;&nbsp;&nbsp; Keeping the internal metadata in this approach did not give good flexibility and maintainability. 
+So adding one column in “folderDescription.json” or “description.csv” could cause whole photo album file system structure to update.
+</br> 
+&nbsp;&nbsp;&nbsp; So it was decided to move all “folderDescription.json” and “description.csv” to SQLlite database. 
+The scheme has been created to keep the same information as “folderDescription.json” and “description.csv” did keep.
+The FVA software created SQL updates to DB during import new files to photo album and all those SQL updates were kept to create SQL at any time.
+</br>
+&nbsp;&nbsp;&nbsp; Again keeping the internal metadata in this approach did not give good flexibility and maintainability. 
+So merging one folder in photo album to another caused significant change of SQL updates.
+</br>
+&nbsp;&nbsp;&nbsp; So it was decided to move all information in one CSV file.
+That internal metadata file does not keep information in which folder a file is kept. 
+So merging one folder in photo album to another does not cause an issue.
+Still the duplication of information takes place because for all files in one folder common information is just copied.
+</br>
+
+TODO – need to think here on how to avoid duplication of information in several files info for one folder.
+
+## FVA Software dictionary 
+FVA Software dictionary is data used along with FVA Software internal metadata.
  
