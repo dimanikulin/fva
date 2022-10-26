@@ -60,18 +60,23 @@ graph TD
 </br>
 &nbsp;&nbsp;&nbsp; Data Processor performs such actions as checking the multimedia [Metadata](https://en.wikipedia.org/wiki/Metadata) for presence and consistency and enriching it.
 </br>
-&nbsp;&nbsp;&nbsp; TBD - Organizer
+&nbsp;&nbsp;&nbsp; Organizer makes possible to start any command in separate process from command line or in separate thread.
 </br>
 
 # Data layer
-
-
-
-##################################################################
-&nbsp;&nbsp;&nbsp; Below is a diagram to show :
-- functional decomposition of the system; 
-- the connections between the components; 
-- the connections between the components and photo album owner;
-- the connections between the components and external systems.
+```mermaid
+graph TD
+    A(Data) --> B(Input Multimedia Data)
+    A(Data) --> C(Output Multimedia Data)
+    A(Data) --> D(FVA Software configuration)
+    A(Data) --> E(FVA Software internal metadata)
+    A(Data) --> E(FVA Software dictionary)
+```
+Basing on requirements FVA Software operates with five levels of data:
+- Input Multimedia Data;
+- Output Multimedia Data;
+- FVA Software configuration;
+- FVA Software internal metadata;
+- FVA Software dictionary data used along with FVA Software internal metadata;
 
  

@@ -17,7 +17,12 @@
 #include "fvalogger.inl"
 
 /*!
- * \brief keeps base functionality for one command line task
+ * \brief keeps base functionality for one command line task (CLT)
+ *  Each CLT command is separated in class and files.
+ *  Each CLT command logs itself to see later what changes at FS level were applied.
+ *  Each CLT command shall be atomic – TBD to explain
+ *  Each CLT command shall support read only mode. TBD to explain
+ *  Each CLT command shall be repeatable. TBD to explain
  */
 class CmdLineBaseTask
 {
@@ -25,7 +30,7 @@ class CmdLineBaseTask
 		/*!
 		 * \brief ctors-dtors section
 		 * \param argument - command line argument
-		 */
+		 */                                      
 		virtual ~CmdLineBaseTask(){};
 
 		/*!
