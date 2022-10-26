@@ -16,6 +16,8 @@
 /*!
 * \brief FVAOrganizerWizard is child of <a href="https://doc.qt.io/qt-5/qwizard.html">QWizard</a> and implements the flow with a User to interact.
 *
+* Each OrganizerWizard page is separate class.
+*
 * The flow consists of following steps:
 * 1. Start Page - class FVAOrganizerStartPage;
 * 2. Input Dir Page - class FVAOrganizerInputDirPage;

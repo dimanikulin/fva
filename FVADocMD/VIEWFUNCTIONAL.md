@@ -11,7 +11,7 @@ flowchart BT
 All the main components interact with the Logging component to log the important events during processing.
 
 ## Logging 
-&nbsp;&nbsp;&nbsp; During logging the logging component shall use a "log level" setting got from FVAConfigurator.
+&nbsp;&nbsp;&nbsp; During logging the logging component uses a "log level" setting got from FVAConfigurator.
 The log shall be present as a CSV file with name of component it was created by.
 The format of log file shall be following:
 TBD
