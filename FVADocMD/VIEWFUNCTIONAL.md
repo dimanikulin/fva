@@ -99,7 +99,10 @@ For example it could be device id that was the same for all multimedia files.   
 "place":"",
 "event":"" 
 }
+```
+
 “folderDescription.json” example:
+```json
 {
 "deviceId":"3",
 "tags":"At home, with a family",
