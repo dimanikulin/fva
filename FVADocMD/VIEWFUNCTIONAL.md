@@ -91,7 +91,7 @@ Each folder in the Photo Album could keep two files: “folderDescription.json” an
 “FolderDescription.json” kept information about all the files under a folder that was common. 
 For example it could be device id that was the same for all multimedia files.   “FolderDescription.json” structure was:
 </br>
-TBD to mermaid
+```json
 {
 "deviceId":"",
 "tags":"",
@@ -107,6 +107,7 @@ TBD to mermaid
 "place":"3,4",
 "event":"45"
 }
+```
 
 &nbsp;&nbsp;&nbsp; Description.csv has been used to keep information about files under a folder for cases if some multimedia files had different internal metadata. 
 “description.csv” structure was:
