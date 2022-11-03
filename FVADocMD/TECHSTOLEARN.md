@@ -1,10 +1,13 @@
 &nbsp;&nbsp;&nbsp; Hohesly I did not expect that it will be so hard and meanwhile so interesting. I tried myself in different roles: 
-Product management 
-Delivery management 
-SW Architect  dependency 
-SW developer 
+- Product manager
+- Delivery manager
+- Application architect 
+- SoftWare developer 
+
+
 how to work with dependencies
 
+ dependency 
 Branch strategy
 Releasing the code and the docs
 Building the code 
