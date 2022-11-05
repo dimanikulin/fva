@@ -46,4 +46,4 @@ However, they do not implement any search function like search by emotions and i
 You can find [here](./MULTIMEDIAORGANIZERS.md) more information regarding **Multimedia Organizers**. 
 </br> </br>
 &nbsp;&nbsp;&nbsp; Unfortunately, I did not find a **Multimedia Organizer** that fully suited my needs (fixing problem metadata, working with **digiKam** and **Synology** etc.)
-That is why I created my own product to cover my needs.
+That is why I created my [own product](https://github.com/dimanikulin/fva) to cover my needs.
