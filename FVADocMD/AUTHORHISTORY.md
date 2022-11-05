@@ -51,6 +51,6 @@ That is why I created my [own product](https://github.com/dimanikulin/fva) to co
 &nbsp;&nbsp;&nbsp; Honestly I did not expect that it would be so hard and meanwhile so interesting. 
 And I tried myself in different roles: 
 - [Product manager](./LEARNT_AS_PM.md);
-- [Delivery manager](./LEARNT_AS_PM.md);
-- [Application architect](./LEARNT_AS_PM.md); 
-- [Software developer](./LEARNT_AS_PM.md). 
+- [Delivery manager](./LEARNT_AS_DM.md);
+- [Application architect](./LEARNT_AS_SA.md); 
+- [Software developer](./LEARNT_AS_DEV.md). 
