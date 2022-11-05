@@ -47,3 +47,9 @@ You can find [here](./MULTIMEDIAORGANIZERS.md) more information regarding **Mult
 </br> </br>
 &nbsp;&nbsp;&nbsp; Unfortunately, I did not find a **Multimedia Organizer** that fully suited my needs (fixing problem metadata, working with **digiKam** and **Synology** etc.)
 That is why I created my [own product](https://github.com/dimanikulin/fva) to cover my needs.
+&nbsp;&nbsp;&nbsp; Honestly I did not expect that it would be so hard and meanwhile so interesting. 
+And I tried myself in different roles: 
+- Product manager;
+- Delivery manager;
+- Application architect; 
+- Software developer. 
