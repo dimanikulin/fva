@@ -96,21 +96,6 @@ And I tried myself in different roles:
 - [Description](#description)
 - [Features](#features)
 - [Integration with IR Systems](FVADocMD/INTEGRATIONIRSYSTEMS.md)
-- [Author history on why he created this product](FVADocMD/AUTHORHISTORY.md)
-- [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
-- [Definitions, Acronyms, Abbreviations](FVADocMD/DEFINITIONS.MD)
-
-##  Multimedia and everything around
-- [What is Multimedia Data?](FVADocMD/MULTIMEDIADATA.md)
-- [What are Multimedia IR Systems?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
-- [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
-- [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
-
-##  Multimedia and everything around in PPT format
-- [What is Multimedia Data?](FVADocX/MultimediaData.pptx)
-- [What are Multimedia IR Systems?](FVADocX/MultimediaIRSystemOverview.pptx)
-- [Multimedia IR Systems analyze](FVADocX/MultimediaIRSystemComparison&Analyze.pptx)
-- [Multimedia Organizers](FVADocX/MultimediaOrganizeOverview.pptx)
 
 ## Links for product people (FVA Tool Set)
 - [Design Thinking](FVADocX/DesignThinking.pptx)
@@ -122,9 +107,6 @@ And I tried myself in different roles:
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4)
 - [Stakeholders](FVADocX/FVAToolSetStakeholders.pptx)
 - [Project Plan](FVADocX/FVA.pod)
-
-## Links for product people (FVA Helpers)
-- [Information with Business Goals/Drivers/Objectives](FVADocX/FVAHelpers.pptx)
 
 ## Links for architects 
 - [Solution Architecture Document](FVADocX/SAD.docx)
@@ -199,3 +181,11 @@ However, you can ask him on:
 
 &nbsp;&nbsp;&nbsp; You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/fva/issues) to request a feature or report a bug.
 [Here](https://github.com/dimanikulin/fva/discussions) you can start a discussion.
+
+## Additional links
+- [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
+- [Definitions, Acronyms, Abbreviations](FVADocMD/DEFINITIONS.MD)
+- [What is Multimedia Data?](FVADocX/MultimediaData.pptx)
+- [What are Multimedia IR Systems?](FVADocX/MultimediaIRSystemOverview.pptx)
+- [Multimedia IR Systems analyze](FVADocX/MultimediaIRSystemComparison&Analyze.pptx)
+- [Multimedia Organizers](FVADocX/MultimediaOrganizeOverview.pptx)
