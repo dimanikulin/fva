@@ -107,25 +107,31 @@ You can find [here](./FVADocMD/MULTIMEDIAORGANIZERS.md) more information regardi
 &nbsp;&nbsp;&nbsp; Unfortunately, I did not find a **Multimedia Organizer** that fully suited my needs (fixing problem metadata, working with **digiKam** and **Synology** etc.)
 That is why I created my [own product](https://github.com/dimanikulin/fva) to cover my needs.
 </br> </br>
-&nbsp;&nbsp;&nbsp; Honestly I did not expect that it would be so hard and meanwhile so interesting. 
-And I tried myself in different roles: 
-- [Product manager](./FVADocMD/LEARNT_AS_PM.md);
-- [Delivery manager](./FVADocMD/LEARNT_AS_DM.md);
-- [Application architect](./FVADocMD/LEARNT_AS_SA.md); 
-- [Software developer](../FVADocMD/LEARNT_AS_DEV.md). 
+Honestly I did not expect that it would be so hard and meanwhile so interesting.
+
+## Contributing
+&nbsp;&nbsp;&nbsp; Still the development is in a hot stage and you are always welcome to contribute.
+Anyone can try themself in different roles to learn something new as I did: 
+
+- [As a product manager](./FVADocMD/LEARNT_AS_PM.md);
+- [As a delivery manager](./FVADocMD/LEARNT_AS_DM.md);
+- [As an application architect](./FVADocMD/LEARNT_AS_SA.md); 
+- [As a Software developer](../FVADocMD/LEARNT_AS_DEV.md). 
+
+So there are many items to help the author in.
+
+&nbsp;&nbsp;&nbsp;  
 
 
 |39 | Photo Album questioner | | February, 2022 | FVA Author |[Web](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/edit) |
+ !  
 
-## Contributing
-&nbsp;&nbsp;&nbsp; You are always welcome to contribute! There are many items to help the author in. 
-When you commit please do not forget about putting the issue ID there.
 
 &nbsp;&nbsp;&nbsp; You can download the [Installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions).
 Then you just need to install it in the environment you would like to have it running on.
 
 ## Stay in touch
-&nbsp;&nbsp;&nbsp; An author does not provide any support for now, because the development is in a hot stage. 
+&nbsp;&nbsp;&nbsp; An author does not provide any support for now,  
 However, you can ask him on:  
 * [Author Twitter](https://twitter.com/DmytroNikulin)
 * [Author LinkedIn](https://www.linkedin.com/in/dimanikulin/)
