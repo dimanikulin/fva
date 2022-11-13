@@ -23,12 +23,6 @@ ValueProposition.docx
 - [Description](#description)
 - [Features](#features)
 
-##  Multimedia and everything around
-- [What is Multimedia Data?](FVADocMD/MULTIMEDIADATA.md)
-- [What are Multimedia IR Systems?](FVADocMD/MULTIMEDIAIRSYSTEMS.md)
-- [Multimedia IR Systems analyze](FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md)
-- [Multimedia Organizers](FVADocMD/MULTIMEDIAORGANIZERS.md)
-
 ## Links for product people (FVA Tool Set)
 - [Design Thinking](FVADocX/DesignThinking.pptx)
 - [Value Proposition](FVADocX/ValueProposition.docx)
