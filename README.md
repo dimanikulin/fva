@@ -107,7 +107,7 @@ You can find [here](./FVADocMD/MULTIMEDIAORGANIZERS.md) more information regardi
 &nbsp;&nbsp;&nbsp; Unfortunately, I did not find a **Multimedia Organizer** that fully suited my needs (fixing problem metadata, working with **digiKam** and **Synology** etc.)
 That is why I created my [own product](https://github.com/dimanikulin/fva) to cover my needs.
 </br> </br>
-Honestly I did not expect that it would be so hard and meanwhile so interesting.
+&nbsp;&nbsp;&nbsp; Honestly I did not expect that it would be so hard and meanwhile so interesting.
 
 ## Contributing
 &nbsp;&nbsp;&nbsp; Still the development is in a hot stage and you are always welcome to contribute.
@@ -120,9 +120,9 @@ You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/
 - [As a delivery manager](./FVADocMD/LEARNT_AS_DM.md);
 - [As an application architect](./FVADocMD/LEARNT_AS_SA.md); 
 - [As a software developer](../FVADocMD/LEARNT_AS_DEV.md). 
-- [As a Software tester you can download the installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions) to try it.
+- [As a software tester you can download the installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions) to try it.
 </br> </br>
-&nbsp;&nbsp;&nbsp;  So there are many items to help the author in.
+&nbsp;&nbsp;&nbsp; So there are many items to help the author in.
 </br> </br>  
 
 ## Stay in touch
