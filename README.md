@@ -95,47 +95,6 @@ And I tried myself in different roles:
 ## Common Links
 - [Description](#description)
 - [Features](#features)
-- [Integration with IR Systems](FVADocMD/INTEGRATIONIRSYSTEMS.md)
-
-## Links for product people (FVA Tool Set)
-- [Design Thinking](FVADocX/DesignThinking.pptx)
-- [Value Proposition](FVADocX/ValueProposition.docx)
-- [Sources for author history](FVADocX/AuthorHistorySrc.pptx)
-- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
-- [FVA Tool Set Information with Business Goals/Drivers/Objectives](FVADocX/FVAToolSet.pptx)
-- [Requirements](FVADocMD/REQUIREMENTS.md)
-- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
-- [Stakeholders](FVADocX/FVAToolSetStakeholders.pptx)
-- [Project Plan](FVADocX/FVA.pod)
-
-## Links for architects 
-- [Solution Architecture Document](FVADocX/SAD.docx)
-- [Solution Architecture Requirements](FVADocMD/REQUIREMENTS_SA.md)
-- [Context View](FVADocMD/VIEWCONTEXT.md)
-- [Functional Decomposition](FVADocMD/VIEWFUNCTIONAL.md)
-- [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
-- [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
-- [FVA License](FVADocMD/LICENSE.md)
-- [Exif library license](FVACommonLib/LICENSE)
-- [TODO-Hardware requirements](TODO)
-- [Programming Languages](FVADocMD/PROGRAMMINGLANGUAGE.md)
-- [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
-- [Deployment approach](FVADocMD/DEPLOYMENTAPPROACH.md)
-- [Solution Architecture Quality Attributes](FVADocMD/QUALITYATTRIBUTES.md)
-
-## Links for developers
-- [What you will learn here](FVADocMD/TECHSTOLEARN.md)
-- [Requirements for documentation](FVADocMD/CODEDOCUMENTATION.md)
-- [Docs generated from the code](https://dimanikulin.github.io/fva/)
-- [Contributing](#contributing)
-- [Stay in touch](#stay-in-touch)
-- [Code Quality](FVADocMD/CODEQUALITY.md)
-- [Where to publish](FVADocMD/WHERETOPUBLISH.md)
-
-## Implementation status
-- [Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
-- [Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
-- [Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 
 ## Description
 &nbsp;&nbsp;&nbsp; A convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)

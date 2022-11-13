@@ -66,3 +66,18 @@ Integration with digiKam
 Integration with Google Photos
 Integration with Synology
 
+
+## Links for architects 
+- [Solution Architecture Document](FVADocX/SAD.docx)
+- [Solution Architecture Requirements](FVADocMD/REQUIREMENTS_SA.md)
+- [Context View](FVADocMD/VIEWCONTEXT.md)
+- [Functional Decomposition](FVADocMD/VIEWFUNCTIONAL.md)
+- [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
+- [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
+- [FVA License](FVADocMD/LICENSE.md)
+- [Exif library license](FVACommonLib/LICENSE)
+- [TODO-Hardware requirements](TODO)
+- [Programming Languages](FVADocMD/PROGRAMMINGLANGUAGE.md)
+- [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
+- [Deployment approach](FVADocMD/DEPLOYMENTAPPROACH.md)
+- [Solution Architecture Quality Attributes](FVADocMD/QUALITYATTRIBUTES.md)

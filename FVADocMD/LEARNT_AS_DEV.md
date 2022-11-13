@@ -21,3 +21,13 @@ Building the docs
 * how to work with CSV files;
 * how to create riff parser;
 * how to build the code using MS Visual Studio and CMake on local env or using GitHub on cloud env(Yml);
+
+
+## Links for developers
+- [What you will learn here](FVADocMD/TECHSTOLEARN.md)
+- [Requirements for documentation](FVADocMD/CODEDOCUMENTATION.md)
+- [Docs generated from the code](https://dimanikulin.github.io/fva/)
+- [Contributing](#contributing)
+- [Stay in touch](#stay-in-touch)
+- [Code Quality](FVADocMD/CODEQUALITY.md)
+- [Where to publish](FVADocMD/WHERETOPUBLISH.md)
