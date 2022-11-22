@@ -34,12 +34,12 @@
 </p>
 
 ## Description
-&nbsp;&nbsp;&nbsp; FVA Software is a convergent tool set in form of desktop applications to automate the process of importing the multimedia data (photo/audio/video)
-into the IR multimedia systems like digiKam, Google Photo, Apple Photo, Synology Photo Station, etc. to make the multimedia more searchable.
+&nbsp;&nbsp;&nbsp; FVA Software is a convergent tool set in form of desktop applications to automate the process of importing the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) (photo/audio/video)
+into the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) like digiKam, Google Photo, Apple Photo, Synology Photo Station, etc. to make the multimedia more searchable.
 
 &nbsp;&nbsp;&nbsp; The main functions (basing on user search needs) of FVA Software are: 
 * To automate the import (with decreasing the probability of human factor influence on the process of importing new photos into the existing photo album);
-* To make photo albums more searchable (that is driven by IR Multimedia Systems) by enriching the metadata (and improving its consistency) with minimal human involvement.
+* To make photo albums more searchable (that is driven by [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md)) by enriching the metadata (and improving its consistency) with minimal human involvement.
 
 Despite many steps are automated, still human involvement is required.
  
@@ -47,10 +47,10 @@ The solution is oriented on end users only.
 Only open source code/tools are used, as a product is open source.
 
 ## Features
-- **Organizing the multimedia:** Organizing the multimedia data to be more searchable
-- **Integration:** The system is integrated with online/offline Multimedia IR systems:
-[digiKam](https://www.digikam.org/) <img src="FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline Multimedia IR System and 
-[Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online Multimedia IR System are now supported. 
+- **Organizing the multimedia:** Organizing the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) to be more searchable
+- **Integration:** The system is integrated with online/offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md):
+[digiKam](https://www.digikam.org/) <img src="FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and 
+[Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) are now supported. 
 - **Multimedia metadata gaps identification:** It identifies the gaps and tries to fill it up.
 - **Text search:** It is possible to search by events, photo author, places, people using text search   
 - **Configuration:** The system flow depends on configuration.
@@ -68,18 +68,18 @@ That time my album kept more than 30 thousand items inside. That search process 
 
 &nbsp;&nbsp;&nbsp; Of course, we found nothing that time. Therefore, I started looking for a solution to search in [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) in an automatic way. 
 What I found as a solution were the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md). 
-However, there are many **Multimedia IR Systems** and it was a long way to choose one of them to start searching in a way that is more efficient.
-So, the **IR Multimedia Systems** were analyzed that are present on the market and available for end users. 
+However, there are many [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and it was a long way to choose one of them to start searching in a way that is more efficient.
+So, the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) were analyzed that are present on the market and available for end users. 
 
-&nbsp;&nbsp;&nbsp; Finally, [digiKam](https://www.digikam.org/) <img src="./FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline **Multimedia IR System** and [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online **Multimedia IR System** were selected to use. 
+&nbsp;&nbsp;&nbsp; Finally, [digiKam](https://www.digikam.org/) <img src="./FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) were selected to use.
 Please notice they were selected based on author criteria only and there is no aim to advertise anyone.
-You can find [here](./FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md) a description of the process of analysis and comparison for **Multimedia IR Systems** I have made to choose the most suitable system for me.
+You can find [here](./FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md) a description of the process of analysis and comparison for [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) I have made to choose the most suitable system for me.
 </br> </br>
-&nbsp;&nbsp;&nbsp; Then I started using it...  What I found just immediately there, that the current **IR Multimedia systems** do not provide a flexible and automated functionality to import the **multimedia data** into **IR Multimedia systems**.
+&nbsp;&nbsp;&nbsp; Then I started using it...  What I found just immediately there, that the current [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) do not provide a flexible and automated functionality to import the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) into [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md).
 However, it was not the last issue.
 </br> </br>
-&nbsp;&nbsp;&nbsp; A short usage of these systems gave me understanding that **Multimedia IR systems** significantly rely on the **multimedia metadata** as a main information source that is used for the search by device, time, location, etc.
-Therefore, the presence and consistency of metadata is very important for **Multimedia IR systems** to work and for other purposes [[21]](./FVADocMD/REFERENCES.md).
+&nbsp;&nbsp;&nbsp; A short usage of these systems gave me understanding that [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) significantly rely on the **multimedia metadata** as a main information source that is used for the search by device, time, location, etc.
+Therefore, the presence and consistency of metadata is very important for [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) to work and for other purposes [[21]](./FVADocMD/REFERENCES.md).
 The working experience with one of those systems shows that the search results might not be full or even incorrect due to inconsistent or not-existing **multimedia metadata**.
 </br> </br>
 &nbsp;&nbsp;&nbsp; Let us provide two examples of incorrect search results. 
@@ -97,10 +97,10 @@ Actually, we got one video that was recognized as of March 2020, which is underl
 
 &nbsp;&nbsp;&nbsp; The reasons for incorrect and absent **metadata** are rather different - from not setting proper data on the device that takes the photos to the privacy issues. 
 This resource [[22]](./FVADocMD/REFERENCES.md) describes the **metadata** importance in more detail and there is information about other reasons for incorrect and absent **metadata**. 
-Therefore, I understood that **Multimedia IR systems** are not so effective without other tools, often called **Multimedia Organizers**.
+Therefore, I understood that [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) are not so effective without other tools, often called **Multimedia Organizers**.
 
-Usually, **Multimedia Organizers** provide automation for importing the new photo set into existing photo albums and it is not implemented feature in **IR Multimedia systems**.
-In addition, they might identify and address some issues that shall be fixed before the user starts searching the data using the **IR Multimedia system**. 
+Usually, **Multimedia Organizers** provide automation for importing the new photo set into existing photo albums and it is not implemented feature in [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md).
+In addition, they might identify and address some issues that shall be fixed before the user starts searching the data using the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md). 
 However, they do not implement any search function like search by emotions and it is expected.
 You can find [here](./FVADocMD/MULTIMEDIAORGANIZERS.md) more information regarding **Multimedia Organizers**. 
 </br> </br>
