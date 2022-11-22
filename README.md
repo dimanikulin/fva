@@ -43,8 +43,8 @@ into the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) like [digiKa
 
 Despite many steps are automated, still human involvement is required.
  
-The solution is oriented on end users only.
-Only open source code/tools are used, as a product is open source.
+The solution is oriented on **end users** only.
+Only open source code/tools are used, as a product is **open source**.
 
 ## Features
 - **Organizing the multimedia:** Organizing the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) to be more searchable
