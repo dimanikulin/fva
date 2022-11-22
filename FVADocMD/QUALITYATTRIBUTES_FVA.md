@@ -88,7 +88,8 @@ The code review process shall be defined to make sure the [OOP](https://en.wikip
 ## Architecture viewpoint  - High
 
 # Manageability
-The system shall be monitorable via [UI](https://en.wikipedia.org/wiki/User_interface) and logging. The system shall support debugging as well.
+The system shall be monitorable via [UI](https://en.wikipedia.org/wiki/User_interface) and logging. 
+The system shall support debugging as well.
 
 ## Motivation for selecting
 It is applied to easily support the systems operations in the fields.
@@ -153,7 +154,7 @@ Functional test shall be created to check if all multimedia files after processi
 ## Architecture viewpoint - Low
 
 # Portability
-The software shall support all wide known desktop/laptop [operating systems](https://en.wikipedia.org/wiki/Operating_system) with the latest update. 
+The software shall support all wide known desktop/laptop [operating systems](https://en.wikipedia.org/wiki/Operating_system) - Windows, MacOS, Linux Ubuntu with the latest update. 
 No support of the web or mobile platform required.
 
 ## Motivation for selecting
