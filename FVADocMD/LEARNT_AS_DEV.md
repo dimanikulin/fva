@@ -31,3 +31,14 @@ Building the docs
 - [Stay in touch](#stay-in-touch)
 - [Code Quality](FVADocMD/CODEQUALITY.md)
 - [Where to publish](FVADocMD/WHERETOPUBLISH.md)
+
+The native fast API to implement [UI](https://en.wikipedia.org/wiki/User_interface) is developed based on [QT](https://en.wikipedia.org/wiki/Qt_(software)). 
+The [QT](https://en.wikipedia.org/wiki/Qt_(software)) library is also used for the implementation to support latest Windows, MacOS, Linux Ubuntu with the latest update. 
+The QML shall be used for UI implementation and not QWidgets.
+
+the [QT](https://en.wikipedia.org/wiki/Qt_(software)) shall be used with such features as:
+[QTranslator](https://doc.qt.io/qt-5/qtranslator.html);
+[QtextCodec](https://doc.qt.io/qt-5/qtextcodec.html);
+[Qlocale](https://doc.qt.io/qt-5/qlocale.html);
+[QtextDecoder](https://doc.qt.io/qt-5/qtextdecoder.html);
+[QtextEncoder](https://doc.qt.io/qt-5/qtextencoder.html).
