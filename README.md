@@ -104,7 +104,7 @@ In addition, they might identify and address some issues that shall be fixed bef
 However, they do not implement any search function like search by emotions and it is expected.
 You can find [here](./FVADocMD/MULTIMEDIAORGANIZERS.md) more information regarding **Multimedia Organizers**. 
 </br> </br>
-&nbsp;&nbsp;&nbsp; Unfortunately, I did not find a [Multimedia Organizers](./FVADocMD/MULTIMEDIAORGANIZERS.md) that fully suited my needs (fixing problem metadata, working with **digiKam** and **Synology** etc.)
+&nbsp;&nbsp;&nbsp; Unfortunately, I did not find a [Multimedia Organizer](./FVADocMD/MULTIMEDIAORGANIZERS.md) that fully suited my needs (fixing problem metadata, working with **digiKam** and **Synology** etc.)
 That is why I created my [own product](https://github.com/dimanikulin/fva) to cover my needs.
 </br> </br>
 &nbsp;&nbsp;&nbsp; Honestly I did not expect that it would be so hard and meanwhile so interesting.
