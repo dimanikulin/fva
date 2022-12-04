@@ -1,3 +1,4 @@
+# based on https://habr.com/ru/company/skillfactory/blog/551002/
 from exif import Image
 import os, stat
 import sys
