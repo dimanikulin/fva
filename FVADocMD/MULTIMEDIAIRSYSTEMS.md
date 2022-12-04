@@ -5,8 +5,10 @@ Data sources include directly perceivable media such as audio, image and video, 
 &nbsp;&nbsp;&nbsp; An image retrieval system is a computer system for browsing, searching and retrieving images from a large database of digital images. 
 Most traditional and common methods of image retrieval utilize some method of adding information such as captioning, keywords, title or descriptions to the images so that retrieval can be performed over the annotation words [[17]](./REFERENCES.md). 
 </br></br>
-&nbsp;&nbsp;&nbsp; So, when they talk about private **Multimedia IR** that works with images and photos they talk about the search based on the metadata, tags and images/photos content [[6]](./REFERENCES.md).
-Based on market demand, the **Multimedia IR systems** additionally implement the indexing and storage functionality for the **multimedia** information. 
+&nbsp;&nbsp;&nbsp; Therefore, when they talk about private **Multimedia IR** that works with images and photos they talk about the search based on the [metadata](https://en.wikipedia.org/wiki/Metadata), tags and images/photos content using many criteria [[6]](./REFERENCES.md).
+In addition, using [metadata](https://en.wikipedia.org/wiki/Metadata) user can organize the photo album. That [metadata](https://en.wikipedia.org/wiki/Metadata) is usually kept inside of each file as a header with predefined format.
+There are a plenty of [metadata](https://en.wikipedia.org/wiki/Metadata) formats like [Exif](https://en.wikipedia.org/wiki/Exif), [IPTC](https://en.wikipedia.org/wiki/International_Press_Telecommunications_Council) or [XMP](https://en.wikipedia.org/wiki/Extensible_Metadata_Platform).
+&nbsp;&nbsp;&nbsp; Based on market demand, the **Multimedia IR systems** additionally implement the indexing and storage functionality for the **multimedia** information. 
 Still those systems might also include such functionality as extracting the descriptions for the **multimedia** data.
 It is obvious that if an average family does not have the **Multimedia IR system** to search for one item in thirty thousand photos, it would almost be impossible to find that one item if searching manually. 
 That is why ordinary people would be very interested in **Multimedia IR systems** and the opportunities they provide.
