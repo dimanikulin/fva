@@ -46,6 +46,8 @@ Despite many steps are automated, still human involvement is required.
 The solution is oriented on **end users** only.
 Only open source code/tools are used, as a product is **open source**.
 
+<img src="./FVADocMD/Images/InputAndOutputExamples.gif" alt="Input And Output Examples" />
+
 ## Features
 - **Organizing the multimedia:** Organizing the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) to be more searchable
 - **Integration:** The system is integrated with online/offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md):
