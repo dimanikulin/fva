@@ -33,6 +33,29 @@ SAD.docx
 - [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
 - [Deployment approach](FVADocMD/DEPLOYMENTAPPROACH.md)
 - [Solution Architecture Quality Attributes](FVADocMD/QUALITYATTRIBUTES.md)
+
+CODEREVIEW.md
+C:\work\fva\FVADocX\AuthorHistorySrc.pptx
+C:\work\fva\FVADocX\DesignThinking.pptx
+C:\work\fva\FVADocX\FVA.pod
+C:\work\fva\FVADocX\FVAHelpers.pptx
+C:\work\fva\FVADocX\FVAToolSet.pptx
+C:\work\fva\FVADocX\FVAToolSet-BusinessModelCanvas.docx
+C:\work\fva\FVADocX\FVAToolSet-Features.pptx
+C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
+C:\work\fva\FVADocX\FVAToolSet-Persona.pdf
+C:\work\fva\FVADocX\FVAToolSet-ProductRoadMap.pdf
+C:\work\fva\FVADocX\FVAToolSet-ProductVisionBoard.pdf
+C:\work\fva\FVADocX\FVAToolSet-SAD.docx
+C:\work\fva\FVADocX\FVAToolSet-SAD diagrams.drawio
+C:\work\fva\FVADocX\FVAToolSet-Stakeholders.pptx
+C:\work\fva\FVADocX\FVAToolSet-UserJourney.pptx
+C:\work\fva\FVADocX\FVAToolSet-ValueProposition.docx
+C:\work\fva\FVADocX\MultimediaData.pptx
+C:\work\fva\FVADocX\MultimediaIRSystemComparison&Analyze.pptx
+C:\work\fva\FVADocX\MultimediaIRSystemOverview.pptx
+C:\work\fva\FVADocX\MultimediaOrganizeOverview.pptx
+
 * how to create attractive README.md files (bages from shields, documents structure, required chapters, diagrams on Mermaid.js);
 ## You will learn - documentation chapter
 * how to document the C++ code using Doxygen markdown and build documentation basing on Doxygen markdown;
@@ -65,40 +88,3 @@ Integration
 Integration with digiKam
 Integration with Google Photos
 Integration with Synology
-
-
-## Links for architects 
-- [Solution Architecture Document](FVADocX/SAD.docx)
-- [Solution Architecture Requirements](FVADocMD/REQUIREMENTS_SA.md)
-- [Context View](FVADocMD/VIEWCONTEXT.md)
-- [Functional Decomposition](FVADocMD/VIEWFUNCTIONAL.md)
-- [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
-- [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
-- [FVA License](FVADocMD/LICENSE.md)
-- [Exif library license](FVACommonLib/LICENSE)
-- [TODO-Hardware requirements](TODO)
-- [Programming Languages](FVADocMD/PROGRAMMINGLANGUAGE.md)
-- [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
-- [Deployment approach](FVADocMD/DEPLOYMENTAPPROACH.md)
-- [Solution Architecture Quality Attributes](FVADocMD/QUALITYATTRIBUTES.md)
-CODEREVIEW.md
-C:\work\fva\FVADocX\AuthorHistorySrc.pptx
-C:\work\fva\FVADocX\DesignThinking.pptx
-C:\work\fva\FVADocX\FVA.pod
-C:\work\fva\FVADocX\FVAHelpers.pptx
-C:\work\fva\FVADocX\FVAToolSet.pptx
-C:\work\fva\FVADocX\FVAToolSet-BusinessModelCanvas.docx
-C:\work\fva\FVADocX\FVAToolSet-Features.pptx
-C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
-C:\work\fva\FVADocX\FVAToolSet-Persona.pdf
-C:\work\fva\FVADocX\FVAToolSet-ProductRoadMap.pdf
-C:\work\fva\FVADocX\FVAToolSet-ProductVisionBoard.pdf
-C:\work\fva\FVADocX\FVAToolSet-SAD.docx
-C:\work\fva\FVADocX\FVAToolSet-SAD diagrams.drawio
-C:\work\fva\FVADocX\FVAToolSet-Stakeholders.pptx
-C:\work\fva\FVADocX\FVAToolSet-UserJourney.pptx
-C:\work\fva\FVADocX\FVAToolSet-ValueProposition.docx
-C:\work\fva\FVADocX\MultimediaData.pptx
-C:\work\fva\FVADocX\MultimediaIRSystemComparison&Analyze.pptx
-C:\work\fva\FVADocX\MultimediaIRSystemOverview.pptx
-C:\work\fva\FVADocX\MultimediaOrganizeOverview.pptx
