@@ -57,6 +57,11 @@ Only open source code/tools are used, as a product is **open source**.
 - **Text search:** It is possible to search by events, photo author, places, people using text search   
 - **Configuration:** The system flow depends on configuration.
 
+## User Scenarios 
+- [Without FVA SW](https://youtu.be/_bLXFdIDZtA)
+- [With FVA SW](https://youtu.be/-xnUsO7zW2s)
+- [Checking the results of processing](https://youtu.be/NIsVYyioDnM)
+
 ## History
 &nbsp;&nbsp;&nbsp; When I was a child, I used to observe the family photo album to look at my relatives who I have not seen in real life.
 At that time, we had film cameras only and so the amount of photos was not so big.
