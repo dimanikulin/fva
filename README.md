@@ -57,7 +57,7 @@ Only open source code/tools are used, as a product is **open source**.
 - **Text search:** It is possible to search by events, photo author, places, people using text search   
 - **Configuration:** The system flow depends on configuration.
 
-## Product History
+## History
 &nbsp;&nbsp;&nbsp; When I was a child, I used to observe the family photo album to look at my relatives who I have not seen in real life.
 At that time, we had film cameras only and so the amount of photos was not so big.
 Time changed and right now let's say almost everyone owns a camera or a smartphone with a camera or even both.

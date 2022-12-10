@@ -1,3 +1,13 @@
+# What I learnt as a Product Manager
+## Design Thinking
+&nbsp;&nbsp;&nbsp; The first product I was thinking about was FVA Tools.
+Then another product came to my mind. So it started to be a Product line .
+- "Wait, wait, you started from thinking of products, right?" you will ask me.
+- "Nope, I started from... It was ages ago and whole [history](../README.md#history) is quite big. And I started (being a developer) from coding".
+- "Was it good idea to start from coding?" you will ask me. 
+- "Again No. I would start from [Design Thinking](FVADocX/DesignThinking.pptx) if I knew it." 
+&nbsp;&nbsp;&nbsp; Design Thinking is a process of preparation to create the product with seven stages.
+
 ## Common Links
 - [Description](#description)
 - [Features](#features)
@@ -12,14 +22,12 @@ FunctionalRequirements
 
 Business Goals/Drivers/Objectives
 
-Product line
 FVA Tool Set Features
 Stakeholders
 User journey
 ## Links for product people (FVA Tool Set)
-- [Design Thinking](FVADocX/DesignThinking.pptx)
+- 
 - [Value Proposition](FVADocX/ValueProposition.docx)
-- [Sources for author history](FVADocX/AuthorHistorySrc.pptx)
 - [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 - [FVA Tool Set Information with Business Goals/Drivers/Objectives](FVADocX/FVAToolSet.pptx)
 - [Requirements](FVADocMD/REQUIREMENTS.md)
