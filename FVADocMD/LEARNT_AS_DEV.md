@@ -4,7 +4,6 @@ Building the code locally
 Building the docs
 
 ## Links for developers
-- [What you will learn here](FVADocMD/TECHSTOLEARN.md)
 - [Requirements for documentation](FVADocMD/CODEDOCUMENTATION.md)
 - [Docs generated from the code](https://dimanikulin.github.io/fva/)
 - [Contributing](#contributing)
