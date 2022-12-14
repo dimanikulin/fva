@@ -20,8 +20,11 @@ Then another product came to my mind. So it started to be a Product Line.
 ## High level product documentation
 Once I came up with product ideas to implement I realized I need to create a set of documentation artifacts to keep high level product knowledge.
 
+### Value Propositions
+The first one was [Value Proposition](../FVADocX/FVAToolSet-ValueProposition.docx)
+
 ### Business Model Canvas
-The first one was [Business Model Canvas](../FVADocX/FVAToolSet-BusinessModelCanvas.docx). 
+The next one was [Business Model Canvas](../FVADocX/FVAToolSet-BusinessModelCanvas.docx). 
 I downloaded a template from [here](strategyzer.com) and filled up the following fields
 - **Key Partners** to answer the questions: **Who are the key partners? Who are the key suppliers?**
 - **Key Activities** to answer the questions: **What the main tasks that the company must do well to deliver its value?**
@@ -33,6 +36,10 @@ I downloaded a template from [here](strategyzer.com) and filled up the following
 - **Revenue Streams** to answer the questions: **For what value are our customers willing to pay? For what do they currently pay? How are they currently paying? How would they prefer to pay?**
 - **Cost Structure** to answer the questions: **Where do the costs come from?**
 
+### Product Vision Board
+The third one was [Product Vision Board](../FVADocX/FVAToolSet-ProductVisionBoard.pdf).
+
+
 ## Common Links
 - [Description](#description)
 - [Features](#features)
@@ -43,8 +50,6 @@ FVA Tool Set Features
 User journey
 
 ## Links for product people (FVA Tool Set)
-- 
-- [Value Proposition](FVADocX/ValueProposition.docx)
 - [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 - [FVA Tool Set Information with Business Goals/Drivers/Objectives](FVADocX/FVAToolSet.pptx)
 - [Requirements](FVADocMD/REQUIREMENTS.md)
@@ -61,9 +66,7 @@ C:\work\fva\FVADocX\FVAToolSet-Features.pptx
 C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
 C:\work\fva\FVADocX\FVAToolSet-Persona.pdf
 C:\work\fva\FVADocX\FVAToolSet-ProductRoadMap.pdf
-C:\work\fva\FVADocX\FVAToolSet-ProductVisionBoard.pdf
 C:\work\fva\FVADocX\FVAToolSet-UserJourney.pptx
-C:\work\fva\FVADocX\FVAToolSet-ValueProposition.docx
 C:\work\fva\FVADocX\MultimediaData.pptx
 C:\work\fva\FVADocX\MultimediaIRSystemComparison&Analyze.pptx
 C:\work\fva\FVADocX\MultimediaIRSystemOverview.pptx
