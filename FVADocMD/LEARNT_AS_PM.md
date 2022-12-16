@@ -59,6 +59,7 @@ User journey
 
 ## Links for product people (FVA Helpers)
 - [Information with Business Goals/Drivers/Objectives](FVADocX/FVAHelpers.pptx)
+FVAHelpers-BusinessModelCanvas.docx
 
 C:\work\fva\FVADocX\FVAHelpers.pptx
 C:\work\fva\FVADocX\FVAToolSet.pptx
