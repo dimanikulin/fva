@@ -9,11 +9,12 @@ It usually refers to data representing multiple types of **media** to capture in
 The **multimedia** data is divided into three subclasses: 
 **multidimensional** (also called spatial) types are:
 * Three-dimensional, four-dimensional, five-dimensional, etc.;
-* Virtual reality content.,
+* Virtual reality content., </br>
 &nbsp;&nbsp;&nbsp; **dynamic types** are:
 * Video content;
 * Animation content;
-* Audio content.
+* Audio content. </br>
+
 &nbsp;&nbsp;&nbsp; and **static content types** are: 
 
 * Image or photo content;
