@@ -2,12 +2,16 @@
 Further, according to Wikipedia [[16]](./REFERENCES.md) as well, **Multimedia information retrieval** (MMIR or MIR) is a research discipline of computer science that aims at extracting semantic information from **multimedia** data sources. 
 Data sources include directly perceivable media such as audio, image and video, indirectly perceivable sources such as text, semantic descriptions, biosignals as well as not perceivable sources such as bioinformation, stock prices, etc. 
 <img src="Images/MultimediaIRsystemsoverview.png" alt="MultimediaIRsystemsoverview.png"/>
+
 &nbsp;&nbsp;&nbsp; An image retrieval system is a computer system for browsing, searching and retrieving images from a large database of digital images. 
 Most traditional and common methods of image retrieval utilize some method of adding information such as captioning, keywords, title or descriptions to the images so that retrieval can be performed over the annotation words [[17]](./REFERENCES.md). 
 </br></br>
+
 &nbsp;&nbsp;&nbsp; Therefore, when they talk about private **Multimedia IR** that works with images and photos they talk about the search based on the [metadata](https://en.wikipedia.org/wiki/Metadata), tags and images/photos content using many criteria [[6]](./REFERENCES.md).
-In addition, using [metadata](https://en.wikipedia.org/wiki/Metadata) user can organize the photo album. That [metadata](https://en.wikipedia.org/wiki/Metadata) is usually kept inside of each file as a header with predefined format.
+In addition, using [metadata](https://en.wikipedia.org/wiki/Metadata) user can organize the photo album. 
+That [metadata](https://en.wikipedia.org/wiki/Metadata) is usually kept inside of each file as a header with predefined format.
 There are a plenty of [metadata](https://en.wikipedia.org/wiki/Metadata) formats like [Exif](https://en.wikipedia.org/wiki/Exif), [IPTC](https://en.wikipedia.org/wiki/International_Press_Telecommunications_Council) or [XMP](https://en.wikipedia.org/wiki/Extensible_Metadata_Platform).
+
 &nbsp;&nbsp;&nbsp; Based on market demand, the **Multimedia IR systems** additionally implement the indexing and storage functionality for the **multimedia** information. 
 Still those systems might also include such functionality as extracting the descriptions for the **multimedia** data.
 It is obvious that if an average family does not have the **Multimedia IR system** to search for one item in thirty thousand photos, it would almost be impossible to find that one item if searching manually. 
@@ -26,7 +30,8 @@ In terms of searching ability, it shall also provide the cataloging abilities an
 * it should include indexing and cataloging functions;
 * it should be possible to find information by example of image;
 * it should include a function of browsing through the search results.
-Moreover, not ordinary people only, but also the businesses might find Multimedia IR systems useful due to their professional needs. 
+
+&nbsp;&nbsp;&nbsp; Moreover, not ordinary people only, but also the businesses might find Multimedia IR systems useful due to their professional needs. 
 For example, there might be different professions who access the photos or images often in their everyday work activity, such as:
 
 ## Professional's needs in Multimedia IR systems

@@ -25,7 +25,9 @@ and **static content types** are:
 * Text content.
 </br></br>
 
-&nbsp;&nbsp;&nbsp; The text information has been the dominant one as a way for communication between people. But other **media** types such as audio, image, and video are getting importance in the context of growing the computing capabilities like the disk and memory space, growing processing power, etc. [[1]](./REFERENCES.md). 
+&nbsp;&nbsp;&nbsp; The text information has been the dominant one as a way for communication between people. 
+But other **media** types such as audio, image, and video are getting importance in the context of growing the computing capabilities like the disk and memory space, growing processing power, etc. [[1]](./REFERENCES.md). 
+</br>
 Since a lot of people own the phones with a camera, and there are numerous webcams, motion cameras, tablets with a camera, the global photo content amount is huge. 
 </br>
 &nbsp;&nbsp;&nbsp; By prediction, humanity is going to take about 1.5 trillion photos this year [[14]](./REFERENCES.md). 
