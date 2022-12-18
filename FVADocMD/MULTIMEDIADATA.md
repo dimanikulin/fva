@@ -7,14 +7,15 @@ It usually refers to data representing multiple types of **media** to capture in
 &nbsp;&nbsp;&nbsp; In common usage, people refer to a data set as **multimedia** only when time-dependent data such as audio and video are involved [[13]](./REFERENCES.md).
 <img src="Images/Multimediadata.gif" alt="Multimediadata.gif"/>
 The **multimedia** data is divided into three subclasses: 
-multidimensional (also called spatial) types are:
+**multidimensional** (also called spatial) types are:
 * Three-dimensional, four-dimensional, five-dimensional, etc.;
 * Virtual reality content.,
-dynamic types are:
+&nbsp;&nbsp;&nbsp; **dynamic types** are:
 * Video content;
 * Animation content;
 * Audio content.
-and static content types are: 
+&nbsp;&nbsp;&nbsp; and **static content types** are: 
+
 * Image or photo content;
 * Graphic content;
 * Text content.
