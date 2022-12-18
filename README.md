@@ -126,7 +126,8 @@ You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/
 - [As a product manager](./FVADocMD/LEARNT_AS_PM.md);
 - [As a delivery manager](./FVADocMD/LEARNT_AS_DM.md);
 - [As an application architect](./FVADocMD/LEARNT_AS_SA.md); 
-- [As a software developer](../FVADocMD/LEARNT_AS_DEV.md). 
+- [As a software developer](../FVADocMD/LEARNT_AS_DEV.md).
+- [As a subject matter expert](../FVADocMD/LEARNT_AS_SME.md). 
 - [As a software tester you can download the installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions) to try it.
 </br> </br>
 
