@@ -1,44 +1,55 @@
-&nbsp;&nbsp;&nbsp; We live in the digital data era, and the growth of the Internet gives us a possibility to find the information really easily by one click. We are now allowed to search for information from anywhere.
+&nbsp;&nbsp;&nbsp; We currently live in a digital age when finding information is incredibly simple with just one click due to the development of the Internet. 
+We are now able to conduct information searches from any place.
 </br>
-&nbsp;&nbsp;&nbsp; In the world of high technology, high-speed Internet access gives everyone an opportunity to use software to search and to manage the information from any sources. 
-People interact with digital data every day and a continued growth contributes to the development of such type of information as **multimedia** data. **Multimedia** itself means data of more than one medium. 
-It usually refers to data representing multiple types of **media** to capture information and experiences related to objects and events. Commonly used forms of data are numbers, alphanumeric characters, text, images, audio, and video. 
+
+&nbsp;&nbsp;&nbsp; High-speed Internet connection allows everyone to utilize software to search for and manage information from any sources in the high-tech world.
+Every day, people engage with digital data, and this interaction helps to produce specific types of data, such as **multimedia** data.
+Data that spans multiple mediums is referred to as **multimedia**.
+It often refers to data that represents various media formats used to record details and impressions about specific things and occasions. 
+The most widely used formats of data are numbers, alphanumeric characters, text, images, audio and video.
 </br>
+
 &nbsp;&nbsp;&nbsp; In common usage, people refer to a data set as **multimedia** only when time-dependent data such as audio and video are involved [[13]](./REFERENCES.md).
 <img src="Images/Multimediadata.gif" alt="Multimediadata.gif"/>
-The **multimedia** data is divided into three subclasses: 
-
-**multidimensional** (also called spatial) types are:
-* Three-dimensional, four-dimensional, five-dimensional, etc.;
-* Virtual reality content., 
+Three subclasses of the **multimedia** data are distinguished: multidimensional (also known as spatial), dynamic and static.
 </br>
 
-**dynamic types** are:
+**Multidimensional multimedia** includes:
+* Three-dimensional, four-dimensional, five-dimensional, etc.;
+* Virtual reality content.
+</br>
+
+**Dynamic multimedia** consists of:
 * Video content;
 * Animation content;
-* Audio content. 
+* Audio content.
 </br>
 
-and **static content types** are: 
+**Static multimedia** involves:
 * Image or photo content;
 * Graphic content;
 * Text content.
 </br></br>
 
-&nbsp;&nbsp;&nbsp; The text information has been the dominant one as a way for communication between people. 
-But other **media** types such as audio, image, and video are getting importance in the context of growing the computing capabilities like the disk and memory space, growing processing power, etc. [[1]](./REFERENCES.md). 
+&nbsp;&nbsp;&nbsp; As a medium for interpersonal communication, text information has predominated. 
+However, as computing capabilities like as disk and memory space, processor power, and other factors increase, other **media** formats, including audio, image, and video, are gaining greater value [[1]](./REFERENCES.md). 
+The amount of photo content, available worldwide, is enormous, since many individuals own smartphones with cameras, and webcams, motion cameras and tablets with cameras are widely used all over the world.
 </br>
-Since a lot of people own the phones with a camera, and there are numerous webcams, motion cameras, tablets with a camera, the global photo content amount is huge. 
-</br>
-&nbsp;&nbsp;&nbsp; By prediction, humanity is going to take about 1.5 trillion photos this year [[14]](./REFERENCES.md). 
-Due to the enormous amount of **multimedia** content across the world and, often, large amounts of **multimedia** content in an average family (like photos), there is a demand to search among different types of **media**. 
-The systems that implement this market request are referred to as **Multimedia Information Retrieval** (**Multimedia IR**) systems. 
+
+&nbsp;&nbsp;&nbsp; This year people will shoot an estimated 1.5 trillion images, according to predictions [[14]](./REFERENCES.md).
+There is a need to search among various types of **media** because there is a massive amount of **multimedia** material in the globe and frequently a lot of **multimedia** content in a typical family (i.e., images). 
+The systems that implement this market request are referred to as **Multimedia Information Retrieval (Multimedia IR)** systems. 
+
 <img src="Images/Multimediadatavolume.png" alt="Multimediadatavolume.png" />
-&nbsp;&nbsp;&nbsp; Such **Multimedia IR systems** usually provide such functions as storage, indexing, searching and delivery of **multimedia** information. 
-They might also include such features as extracting descriptive features from **multimedia** data. 
-The non-textual information significantly differs from the textual information. 
-Therefore, different approaches and engines might be used depending on the type of **multimedia** data. 
+
+&nbsp;&nbsp;&nbsp; **Multimedia IR systems** often offer services like multimedia information storage, indexing, searching and distribution.
+Additionally, they might include functions such as the extraction of descriptive information from **multimedia** data.
+The textual and non-textual information are vastly different from one another.
+Therefore, depending on the nature of **multimedia** data, several strategies and engines may be employed. 
 </br>
-&nbsp;&nbsp;&nbsp; In fact, in most cases **Multimedia IR systems** work with text content. The examples are **Google**, Bing, etc. 
-Meanwhile, the other types of information are getting more and more important, because the search for any type of information is the most valuable feature of human activity when it is online. 
-Statistics show that a huge number of resources such as photos, videos, etc. appear and disappear on the Internet every day as a source of search requests.
+
+&nbsp;&nbsp;&nbsp; In reality, text content is what **Multimedia IR systems** use most frequently.
+Examples include **Bing**, **Google** and others.
+As a result of the fact that finding information of any kind online is the most valued human activity, other sorts of information are becoming increasingly significant. 
+Statistics shows that numerous resources, including photos, videos and other content, are constantly appearing and disappearing from search requests in the **Internet**.
+</br>
