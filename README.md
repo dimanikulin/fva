@@ -105,7 +105,7 @@ That is why I created my [own product](https://github.com/dimanikulin/fva) to co
 &nbsp;&nbsp;&nbsp; Honestly I did not expect that it would be so hard and meanwhile so interesting.
 
 ## Contributing
-&nbsp;&nbsp;&nbsp;Still the development is in a hot stage and you are always welcome to contribute.
+&nbsp;&nbsp;&nbsp;Still the development is in a hot stage and anyone is always welcome to contribute.
 You can fill up this [form](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/edit) to understand your needs in Multimedia search and organizing.
 You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/fva/issues) to request a feature or report a bug.
 [Here](https://github.com/dimanikulin/fva/discussions) you can start a discussion.
