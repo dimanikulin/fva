@@ -1,12 +1,7 @@
-Let's make a brief overview of the Multimedia IR systems.
-Information retrieval (IR) is the process of finding information system resources from a collection of those resources that are pertinent to an information demand, according to Wikipedia [9]. 
-Furthermore, Multimedia information retrieval (MMIR or MIR) is a research area of computer science that aims to extract semantic information from multimedia data sources, according to Wikipedia as well [7]. 
+&nbsp;&nbsp;&nbsp; Let's make a brief overview of the **Multimedia IR systems**.
+**Information retrieval (IR)** is the process of finding information system resources from a collection of those resources that are pertinent to an information demand, according to Wikipedia [[15]](./REFERENCES.md). 
+Furthermore, **Multimedia information retrieval** (MMIR or MIR) is a research area of computer science that aims to extract semantic information from **multimedia data** sources, according to Wikipedia as well [[16]](./REFERENCES.md). 
 Information is gathered from a variety of sources, including directly perceivable media like audio, image, and video, indirectly perceivable sources like text, semantic descriptions, and biosignals, as well as not perceivable sources such as bioinformation, stock prices, etc.
-
-&nbsp;&nbsp;&nbsp; Let's briefly overview the **Multimedia IR systems**. According to Wikipedia [[15]](./REFERENCES.md), **Information retrieval (IR)** is the process of obtaining information system resources that are relevant to an information need from a collection of those resources. 
-Further, according to Wikipedia [[16]](./REFERENCES.md) as well, **Multimedia information retrieval** (MMIR or MIR) is a research discipline of computer science that aims at extracting semantic information from **multimedia** data sources. 
-Data sources include directly perceivable media such as audio, image and video, indirectly perceivable sources such as text, semantic descriptions, biosignals as well as not perceivable sources such as bioinformation, stock prices, etc. 
-
 <img src="Images/MultimediaIRsystemsoverview.png" alt="MultimediaIRsystemsoverview.png"/>
 
 &nbsp;&nbsp;&nbsp; An image retrieval system is a computer system for browsing, searching and retrieving images from a large database of digital images. 
