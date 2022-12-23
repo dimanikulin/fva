@@ -13,28 +13,33 @@ It goes without saying that if an average family does not have the **Multimedia 
 For this reason, the prospects offered by **Multimedia IR systems** would be of great interest to regular people.
 
 <img src="Images/UserneedsinMultimediaIRSystems.png" alt="UserneedsinMultimediaIRSystems.png"/>
-&nbsp;&nbsp;&nbsp; From the end user's point of view, when they are accessing the photo album, the main need is the ability to search through the photo album easily and quickly.
-In terms of searching ability, it shall also provide the cataloging abilities and browsing the search results. Obviously, the search systems shall provide the full and correct search results.
+&nbsp;&nbsp;&nbsp; The capacity to swiftly and simply search through the photo album is the essential requirement from the perspective of the end user when they are visiting the photo album.
+It will also provide cataloging and search result browsing in addition to search functionality. 
+Obviously, the search systems must deliver accurate and complete search results. 
 
 ## User's needs in Multimedia IR Systems
-* the Multimedia IR system shall provide (or be integrated with other tools) an ability to keep the different types of multimedia data;
-* it should be possible to represent any kind of multimedia information (photo, video, and audio) to user via UI;
-* it should provide a simple way to edit the multimedia data;
-* it should be possible to search through the content quickly and easily;
-* it should allow filtering of information by several sets of criteria;
-* relevance feedback shall be implemented; 
-* it should include indexing and cataloging functions;
-* it should be possible to find information by example of image;
-* it should include a function of browsing through the search results.
+&nbsp;&nbsp;&nbsp; Considering **Multimedia IR** Systems, it is appropriate to bear in mind the potential users and their information needs. 
+Therefore, the **Multimedia IR** system should:
 
-&nbsp;&nbsp;&nbsp; Moreover, not ordinary people only, but also the businesses might find Multimedia IR systems useful due to their professional needs. 
-For example, there might be different professions who access the photos or images often in their everyday work activity, such as:
+* be able to store various types of multimedia data (or be integrated with other tools to do so); 
+* be able to represent any type of multimedia information (photo, video, and audio) to the user via UI; 
+* provide a simple way to edit the multimedia data;
+* be able to quickly and easily search through the content;
+* allow filtering of information by various sets of criteria;
+* provide relevance feedback;
+* include indexing and cataloging functions;
+* provide the possibility to find information by image example;
+* include a function of browsing through search results. 
 
 ## Professional's needs in Multimedia IR systems
-* photographers that provide their services to companies;
-* journalists who work with camera to create multimedia news content;
-* people of different professions who need access to images, like medical professionals searching for medical images or architects requiring the image examples to create the buildings;
-* car engineers who need photographs and sound of car engines;
-* video content engineers, when looking for special video segments and movies by their titles.
+&nbsp;&nbsp;&nbsp; Moreover, not ordinary people only, but also the businesses might find **Multimedia IR** systems useful due to their professional needs.
+For example, there might be different professions who access the photos or images often in their everyday work activity, such as:
+
+* professional photographers who work for businesses; 
+* journalists who use cameras to produce multimedia news content; 
+* individuals in various professions who require access to images, such as doctors looking for medical images or architects needing image examples to create buildings; 
+* car engineers needing images and audio of car engines;
+* video content engineers searching for specific video segments and movies by their titles.
+
 
 See also [What is multimedia data](./MULTIMEDIADATA.md)
