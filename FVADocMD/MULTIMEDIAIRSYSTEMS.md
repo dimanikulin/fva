@@ -41,5 +41,4 @@ For example, there might be different professions who access the photos or image
 * car engineers needing images and audio of car engines;
 * video content engineers searching for specific video segments and movies by their titles.
 
-
 See also [What is multimedia data](./MULTIMEDIADATA.md)
