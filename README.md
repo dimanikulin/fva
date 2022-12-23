@@ -89,18 +89,6 @@ However, it was not the last issue.
 Therefore, the presence and consistency of metadata is very important for [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) to work and for other purposes [[21]](./FVADocMD/REFERENCES.md).
 The working experience with one of those systems shows that the search results might not be full or even incorrect due to inconsistent or not-existing **multimedia metadata**.
 </br> </br>
-&nbsp;&nbsp;&nbsp; Let us provide two examples of incorrect search results. 
-In the first case, we tried to search for the photos with the existing **Geo** positions and to see them on a map. 
-The search returned four photos taken near Ghana, marked by the red circle.
-<img src="./FVADocMD/Images/AnalyzeofprivateMultimediaIRsystems.png" alt="AnalyzeofprivateMultimediaIRsystems.png" />
-&nbsp;&nbsp;&nbsp; In fact, nobody has taken photos near Ghana.
-</br> </br>
-
-&nbsp;&nbsp;&nbsp; In the second case, we searched for the photos taken in 2011. 
-Actually, we got one video that was recognized as of March 2020, which is underlined with the red color.
-<img src="./FVADocMD/Images/AnalyzeofprivateMultimediaIRsystems2.png" alt="AnalyzeofprivateMultimediaIRsystems2.png" />
-&nbsp;&nbsp;&nbsp; The system has provided such results due to incorrect **metadata**. 
-</br> </br>
 
 &nbsp;&nbsp;&nbsp; The reasons for incorrect and absent **metadata** are rather different - from not setting proper data on the device that takes the photos to the privacy issues. 
 This resource [[22]](./FVADocMD/REFERENCES.md) describes the **metadata** importance in more detail and there is information about other reasons for incorrect and absent **metadata**. 
