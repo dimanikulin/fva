@@ -18,10 +18,10 @@ Then another product came to my mind. So it started to be a Product Line.
 - There are also other stages not meantioned here.
 
 ## High level product documentation
-Once I came up with product ideas to implement I realized I need to create a set of documentation artifacts to keep high level product knowledge.
+&nbsp;&nbsp;&nbsp; Once I came up with product ideas to implement I realized I need to create a set of documentation artifacts to keep high level product knowledge.
 
 ### Value Propositions
-The first one was [Value Proposition](../FVADocX/FVAToolSet-ValueProposition.docx)
+&nbsp;&nbsp;&nbsp; The first one was [Value Proposition](../FVADocX/FVAToolSet-ValueProposition.docx)
 It has following:
 - **Mapper** for Products and Services to Customer Jobs;
 - **Mapper** for Gain creators to Gains;
@@ -29,7 +29,7 @@ It has following:
 - **One Pager** with Value Proposition. 
 
 ### Business Model Canvas
-The next one was [Business Model Canvas](../FVADocX/FVAToolSet-BusinessModelCanvas.docx). 
+&nbsp;&nbsp;&nbsp; The next one was [Business Model Canvas](../FVADocX/FVAToolSet-BusinessModelCanvas.docx). 
 I downloaded a template from [here](strategyzer.com) and filled up the following fields
 - **Key Partners** to answer the questions: **Who are the key partners? Who are the key suppliers?**
 - **Key Activities** to answer the questions: **What the main tasks that the company must do well to deliver its value?**
@@ -42,40 +42,42 @@ I downloaded a template from [here](strategyzer.com) and filled up the following
 - **Cost Structure** to answer the questions: **Where do the costs come from?**
 
 ### Product Vision Board
-The third one was [Product Vision Board](../FVADocX/FVAToolSet-ProductVisionBoard.pdf).
+&nbsp;&nbsp;&nbsp; The third one was [Product Vision Board](../FVADocX/FVAToolSet-ProductVisionBoard.pdf).
 I downloaded a template from [here](https://www.romanpichler.com/) and filled up the following fields
 - **VISION** to answer the questions: **What is your purpose for creating the product? Which positive change should it bring about?**
 - **TARGET GROUP** to answer the questions: **Which market or market segment does the product address? Who are the target customers and users?**
 - **NEEDS** to answer the questions: **What problem does the product solve? Which benefit does it provide?**
 - **PRODUCT** to answer the questions: **What product is it? What makes it stand out? Is it feasible to develop the product?**
-- **BUSINESS GOALS** to answer the questions: **How is the product going to benet the company? What are the business goals?**
+- **BUSINESS GOALS** to answer the questions: **How is the product going to benefit the company? What are the business goals?**
+
+## Product details
+&nbsp;&nbsp;&nbsp; Once high level product documentation was ready I wanted to go deaper with more detail.
+
+### Persona 
+The first artifact I craeted was [Persona](../FVADocX/FVAToolSet-Persona.pdf)
+I downloaded a template from [here](https://www.romanpichler.com/) and filled up the following fields.
+- **PICTURE & NAME** to answer the questions: **What does the persona look like? What is its name?.** I choosen a realistic and believable picture and name.
+- **DETAILS** to answer the questions: **What are the persona’s relevant characteristics and behaviours?** I filled instance, demographics, such as age, gender, occupation, and income; psychographics, including lifestyle, social class, and personality; and behavioural attributes like usage patterns, attitudes, and brand loyalty.
+- **GOAL** to answer the questions: **What problem does the persona want to solve or which benefit does the character seek? Why would the persona want to use or buy the product?**
+
+C:\work\fva\FVADocX\FVAToolSet-Features.pptx
+C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
+- [Requirements](FVADocMD/REQUIREMENTS.md)
+
+C:\work\fva\FVADocX\FVAToolSet-ProductRoadMap.pdf
+- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
+C:\work\fva\FVADocX\FVAToolSet-UserJourney.pptx
+- [Stakeholders](FVADocX/FVAToolSet-Stakeholders.pptx)
+- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 
 ## Common Links
 - [Description](#description)
 - [Features](#features)
 
-Functional Requirements
-Business Goals/Drivers/Objectives
-FVA Tool Set Features
-User journey
-
-## Links for product people (FVA Tool Set)
-- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
-- [FVA Tool Set Information with Business Goals/Drivers/Objectives](FVADocX/FVAToolSet.pptx)
-- [Requirements](FVADocMD/REQUIREMENTS.md)
-- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
-- [Stakeholders](FVADocX/FVAToolSet-Stakeholders.pptx)
-- [Project Plan](FVADocX/FVA.pod)
-
 ## Links for product people (FVA Helpers)
 - [Information with Business Goals/Drivers/Objectives](FVADocX/FVAHelpers.pptx)
 FVAHelpers-BusinessModelCanvas.docx
 
-C:\work\fva\FVADocX\FVAToolSet-Features.pptx
-C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
-C:\work\fva\FVADocX\FVAToolSet-Persona.pdf
-C:\work\fva\FVADocX\FVAToolSet-ProductRoadMap.pdf
-C:\work\fva\FVADocX\FVAToolSet-UserJourney.pptx
 C:\work\fva\FVADocX\MultimediaData.pptx
 C:\work\fva\FVADocX\MultimediaIRSystemComparison&Analyze.pptx
 C:\work\fva\FVADocX\MultimediaIRSystemOverview.pptx
