@@ -6,8 +6,6 @@ Building the docs
 ## Links for developers
 - [Requirements for documentation](FVADocMD/CODEDOCUMENTATION.md)
 - [Docs generated from the code](https://dimanikulin.github.io/fva/)
-- [Contributing](#contributing)
-- [Stay in touch](#stay-in-touch)
 - [Code Quality](FVADocMD/CODEQUALITY.md)
 - [Where to publish](FVADocMD/WHERETOPUBLISH.md)
 
@@ -31,9 +29,3 @@ the [QT](https://en.wikipedia.org/wiki/Qt_(software)) shall be used with such fe
 [Qlocale](https://doc.qt.io/qt-5/qlocale.html);
 [QtextDecoder](https://doc.qt.io/qt-5/qtextdecoder.html);
 [QtextEncoder](https://doc.qt.io/qt-5/qtextencoder.html).
-
-C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
-C:\work\fva\FVADocX\FVAToolSet-ProductRoadMap.pdf
-C:\work\fva\FVADocX\FVAToolSet-ProductVisionBoard.pdf
-C:\work\fva\FVADocX\FVAToolSet-SAD.docx
-C:\work\fva\FVADocX\FVAToolSet-SAD diagrams.drawio

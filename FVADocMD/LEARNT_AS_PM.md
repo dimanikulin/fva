@@ -64,6 +64,11 @@ I downloaded a template from [here](https://www.romanpichler.com/) and filled up
 &nbsp;&nbsp;&nbsp; Then I tried to restore user way to achive the goals. 
 And I came up with [User Journey](../FVADocX/FVAToolSet-UserJourney.pptx)
 
+### Stakeholders
+
+ 
+
+- [Stakeholders](FVADocX/FVAToolSet-Stakeholders.pptx)
 
 ## Capabilities
 - **Organizing the multimedia:** Organizing the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) to be more searchable
@@ -73,13 +78,7 @@ And I came up with [User Journey](../FVADocX/FVAToolSet-UserJourney.pptx)
 - **Multimedia metadata gaps identification:** It identifies the gaps and tries to fill it up.
 - **Text search:** It is possible to search by events, photo author, places, people using text search 
 - **Configuration:** The system flow depends on configuration.
-
-### 
-
-
-### Short desciption
-What 
-
+ 
 &nbsp;&nbsp;&nbsp; The **main functions** (basing on user search needs) of FVA Software are: 
 * To **automate the import** (with decreasing the probability of human factor influence on the process of importing new photos into the existing photo album);
 * To **make photo albums more searchable** (that is driven by [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md)) by enriching the metadata (and improving its consistency) with minimal human involvement.
@@ -88,8 +87,6 @@ Despite many steps are automated, still human involvement is required.
  
 The solution is oriented on **end users** only.
 Only open source code/tools are used, as a product is **open source**.
-
-- [Description](#description)
 
 
 - [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
@@ -102,13 +99,6 @@ C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
 C:\work\fva\FVADocX\FVAToolSet-ProductRoadMap.pdf
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4)
 
-- [Stakeholders](FVADocX/FVAToolSet-Stakeholders.pptx)
-
 ## Links for product people (FVA Helpers)
 - [Information with Business Goals/Drivers/Objectives](FVADocX/FVAHelpers.pptx)
 FVAHelpers-BusinessModelCanvas.docx
-
-C:\work\fva\FVADocX\MultimediaData.pptx
-C:\work\fva\FVADocX\MultimediaIRSystemComparison&Analyze.pptx
-C:\work\fva\FVADocX\MultimediaIRSystemOverview.pptx
-C:\work\fva\FVADocX\MultimediaOrganizeOverview.pptx

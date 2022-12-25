@@ -1,13 +1,12 @@
 how to work with dependencies + old dependencies
 
- dependency 
+dependency 
 
 Branch strategy
 Releasing the code and the docs
 
 C++ Documentation rules
 Python Documentation rules
-DEPLOYMENTAPPROACH
 
 PROGRAMMINGLANGUAGE.md
 QUALITYATTRIBUTES
@@ -17,7 +16,19 @@ REQUIREMENTS_SA
 VIEWCONTEXT.md
 VIEWFUNCTIONAL.md
 
+BUILD&RELEASE.md
+CODEDOCUMENTATION.md
+CODEQUALITY.md
+DEPENDENCIES.md
+DEPENDENCIES_OLD.md
+DEPLOYMENTAPPROACH.md
+INTEGRATIONIRSYSTEMS.md
+LICENSE.md
+
+QUALITYATTRIBUTES_FVA.md
+
 SAD.docx
+C:\work\fva\FVADocX\FVAToolSet-SAD diagrams.drawio
 
 ## Links for architects 
 - [Solution Architecture Document](FVADocX/SAD.docx)
@@ -35,13 +46,6 @@ SAD.docx
 - [Solution Architecture Quality Attributes](FVADocMD/QUALITYATTRIBUTES.md)
 
 CODEREVIEW.md
-C:\work\fva\FVADocX\FVA.pod
-C:\work\fva\FVADocX\FVAHelpers.pptx
-C:\work\fva\FVADocX\FVAToolSet.pptx
-C:\work\fva\FVADocX\FVAToolSet-Features.pptx
-C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
-C:\work\fva\FVADocX\FVAToolSet-SAD.docx
-C:\work\fva\FVADocX\FVAToolSet-SAD diagrams.drawio
 
 * how to create attractive README.md files (bages from shields, documents structure, required chapters, diagrams on Mermaid.js);
 ## You will learn - documentation chapter
@@ -55,23 +59,7 @@ C:\work\fva\FVADocX\FVAToolSet-SAD diagrams.drawio
 * how to use Python to create code checks;
 * how to control code quality (from "Code checks" chapter);
 
-BUILD&RELEASE.md
-CODEDOCUMENTATION.md
-CODEQUALITY.md
-DEPENDENCIES.md
-DEPENDENCIES_OLD.md
-DEPLOYMENTAPPROACH.md
-INTEGRATIONIRSYSTEMS.md
-LICENSE.md
-PROGRAMMINGLANGUAGE.md
-QUALITYATTRIBUTES.md
-QUALITYATTRIBUTES_FVA.md
-REQUIREMENTS.md
-REQUIREMENTS_SA.md
-VIEWCONTEXT.md
-VIEWFUNCTIONAL.md
-- [Integration with IR Systems](FVADocMD/INTEGRATIONIRSYSTEMS.md)
-Integration
-Integration with digiKam
-Integration with Google Photos
-Integration with Synology
+## Implementation status
+- [Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
+- [Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
+- [Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)

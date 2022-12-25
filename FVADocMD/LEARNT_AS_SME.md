@@ -12,7 +12,6 @@ So, the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) were analyzed
 
 You can find [here](./FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md) a description of the process of analysis and comparison for [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) I have made to choose the most suitable system for me.
 
-
 &nbsp;&nbsp;&nbsp; A short usage of these systems gave me understanding that [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) significantly rely on the **multimedia metadata** as a main information source that is used for the search by device, time, location, etc.
 Therefore, the presence and consistency of metadata is very important for [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) to work and for other purposes [[21]](./FVADocMD/REFERENCES.md).
 The working experience with one of those systems shows that the search results might not be full or even incorrect due to inconsistent or not-existing **multimedia metadata**.
@@ -39,5 +38,11 @@ You can find [here](./FVADocMD/MULTIMEDIAORGANIZERS.md) more information regardi
 
 Usually, [Multimedia Organizers](./FVADocMD/MULTIMEDIAORGANIZERS.md) provide automation for importing the new photo set into existing photo albums and it is not implemented feature in [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md).
 In addition, they might identify and address some issues that shall be fixed before the user starts searching the data using the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md). 
-</br> </br>       
+</br> </br> 
 &nbsp;&nbsp;&nbsp;
+
+- [Integration with IR Systems](FVADocMD/INTEGRATIONIRSYSTEMS.md)
+Integration
+Integration with digiKam
+Integration with Google Photos
+Integration with Synology
