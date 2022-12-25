@@ -57,32 +57,20 @@ That time my album kept more than 30 thousand items inside. That search process 
 
 &nbsp;&nbsp;&nbsp; Of course, we found nothing that time. Therefore, I started looking for a solution to search in [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) in an automatic way. 
 What I found as a solution were the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md). 
-However, there are many [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and it was a long way to choose one of them to start searching in a way that is more efficient.
-So, the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) were analyzed that are present on the market and available for end users. 
 
-&nbsp;&nbsp;&nbsp; Finally, [digiKam](https://www.digikam.org/) <img src="./FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) were selected to use.
+&nbsp;&nbsp;&nbsp; [digiKam](https://www.digikam.org/) <img src="./FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) were selected to use.
 Please notice they were selected based on author criteria only and there is no aim to advertise anyone.
-You can find [here](./FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md) a description of the process of analysis and comparison for [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) I have made to choose the most suitable system for me.
 </br> </br>
+
 &nbsp;&nbsp;&nbsp; Then I started using it...  What I found just immediately there, that the current [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) do not provide a flexible and automated functionality to import the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) into [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md).
 However, it was not the last issue.
 </br> </br>
-&nbsp;&nbsp;&nbsp; A short usage of these systems gave me understanding that [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) significantly rely on the **multimedia metadata** as a main information source that is used for the search by device, time, location, etc.
-Therefore, the presence and consistency of metadata is very important for [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) to work and for other purposes [[21]](./FVADocMD/REFERENCES.md).
-The working experience with one of those systems shows that the search results might not be full or even incorrect due to inconsistent or not-existing **multimedia metadata**.
-</br>
-&nbsp;&nbsp;&nbsp; The reasons for incorrect and absent **metadata** are rather different - from not setting proper data on the device that takes the photos to the privacy issues. 
-This resource [[22]](./FVADocMD/REFERENCES.md) describes the **metadata** importance in more detail and there is information about other reasons for incorrect and absent **metadata**. 
-Therefore, I understood that [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) are not so effective without other tools, often called [Multimedia Organizers](./FVADocMD/MULTIMEDIAORGANIZERS.md).
 
-Usually, [Multimedia Organizers](./FVADocMD/MULTIMEDIAORGANIZERS.md) provide automation for importing the new photo set into existing photo albums and it is not implemented feature in [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md).
-In addition, they might identify and address some issues that shall be fixed before the user starts searching the data using the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md). 
-However, they do not implement any search function like search by emotions and it is expected.
-You can find [here](./FVADocMD/MULTIMEDIAORGANIZERS.md) more information regarding **Multimedia Organizers**. 
-</br> </br>
-&nbsp;&nbsp;&nbsp; Unfortunately, I did not find a [Multimedia Organizer](./FVADocMD/MULTIMEDIAORGANIZERS.md) that fully suited my needs (fixing problem metadata, working with **digiKam** and **Synology** etc.)
+&nbsp;&nbsp;&nbsp; So I understood that I aslo need [Multimedia Organizer](./FVADocMD/MULTIMEDIAORGANIZERS.md)  
+Unfortunately, I did not find a [Multimedia Organizer](./FVADocMD/MULTIMEDIAORGANIZERS.md) that fully suited my needs (fixing problem metadata, working with **digiKam** and **Synology** etc.)
 That is why I created my [own product](https://github.com/dimanikulin/fva) to cover my needs.
 </br> </br>
+
 &nbsp;&nbsp;&nbsp; Honestly I did not expect that it would be so hard and meanwhile so interesting.
 
 ## Contributing
