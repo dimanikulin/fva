@@ -36,13 +36,7 @@
 ## Description
 &nbsp;&nbsp;&nbsp; FVA Software is a convergent tool set in form of desktop applications to automate the process of importing the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) (photo/audio/video)
 into the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) like [digiKam](https://www.digikam.org/) <img src="FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/>, Google Photo, Apple Photo, [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" />, etc. to make the multimedia more searchable and to improve family photos.
-
 <img src="./FVADocMD/Images/InputAndOutputExamples.gif" alt="Input And Output Examples" />
-
-## User Scenarios 
-- [Without FVA SW](https://youtu.be/_bLXFdIDZtA)
-- [With FVA SW](https://youtu.be/-xnUsO7zW2s)
-- [Checking the results of processing](https://youtu.be/NIsVYyioDnM)
 
 ## History
 &nbsp;&nbsp;&nbsp; When I was a child, I used to observe the family photo album to look at my relatives who I have not seen in real life.
@@ -57,19 +51,20 @@ That time my album kept more than 30 thousand items inside. That search process 
 
 &nbsp;&nbsp;&nbsp; Of course, we found nothing that time. Therefore, I started looking for a solution to search in [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) in an automatic way. 
 What I found as a solution were the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md). 
+</br>
 
 &nbsp;&nbsp;&nbsp; [digiKam](https://www.digikam.org/) <img src="./FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) were selected to use.
 Please notice they were selected based on author criteria only and there is no aim to advertise anyone.
-</br> </br>
+</br> 
 
 &nbsp;&nbsp;&nbsp; Then I started using it...  What I found just immediately there, that the current [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) do not provide a flexible and automated functionality to import the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) into [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md).
 However, it was not the last issue.
-</br> </br>
+</br> 
 
 &nbsp;&nbsp;&nbsp; So I understood that I aslo need [Multimedia Organizer](./FVADocMD/MULTIMEDIAORGANIZERS.md)  
 Unfortunately, I did not find a [Multimedia Organizer](./FVADocMD/MULTIMEDIAORGANIZERS.md) that fully suited my needs (fixing problem metadata, working with **digiKam** and **Synology** etc.)
 That is why I created my [own product](https://github.com/dimanikulin/fva) to cover my needs.
-</br> </br>
+</br> 
 
 &nbsp;&nbsp;&nbsp; Honestly I did not expect that it would be so hard and meanwhile so interesting.
 
@@ -100,7 +95,3 @@ You can also leave an issue here [GitHub issues](https://github.com/dimanikulin/
 ## Additional links
 - [References to external documents like web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
 - [Definitions, Acronyms, Abbreviations](FVADocMD/DEFINITIONS.MD)
-- [What is Multimedia Data?](FVADocX/MultimediaData.pptx)
-- [What are Multimedia IR Systems?](FVADocX/MultimediaIRSystemOverview.pptx)
-- [Multimedia IR Systems analyze](FVADocX/MultimediaIRSystemComparison&Analyze.pptx)
-- [Multimedia Organizers](FVADocX/MultimediaOrganizeOverview.pptx)

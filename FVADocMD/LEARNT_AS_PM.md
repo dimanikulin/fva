@@ -88,6 +88,11 @@ Despite many steps are automated, still human involvement is required.
 The solution is oriented on **end users** only.
 Only open source code/tools are used, as a product is **open source**.
 
+## User Scenarios 
+- [Without FVA SW](https://youtu.be/_bLXFdIDZtA)
+- [With FVA SW](https://youtu.be/-xnUsO7zW2s)
+- [Checking the results of processing](https://youtu.be/NIsVYyioDnM)
+
 
 - [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 C:\work\fva\FVADocX\FVAToolSet-Features.pptx
