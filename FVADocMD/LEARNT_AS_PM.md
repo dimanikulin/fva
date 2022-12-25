@@ -22,6 +22,11 @@ Once I came up with product ideas to implement I realized I need to create a set
 
 ### Value Propositions
 The first one was [Value Proposition](../FVADocX/FVAToolSet-ValueProposition.docx)
+It has following:
+- **Mapper** for Products and Services to Customer Jobs;
+- **Mapper** for Gain creators to Gains;
+- **Mapper** for Pain relievers to Pains;
+- **One Pager** with Value Proposition. 
 
 ### Business Model Canvas
 The next one was [Business Model Canvas](../FVADocX/FVAToolSet-BusinessModelCanvas.docx). 
@@ -38,7 +43,12 @@ I downloaded a template from [here](strategyzer.com) and filled up the following
 
 ### Product Vision Board
 The third one was [Product Vision Board](../FVADocX/FVAToolSet-ProductVisionBoard.pdf).
-
+I downloaded a template from [here](https://www.romanpichler.com/) and filled up the following fields
+- **VISION** to answer the questions: **What is your purpose for creating the product? Which positive change should it bring about?**
+- **TARGET GROUP** to answer the questions: **Which market or market segment does the product address? Who are the target customers and users?**
+- **NEEDS** to answer the questions: **What problem does the product solve? Which benefit does it provide?**
+- **PRODUCT** to answer the questions: **What product is it? What makes it stand out? Is it feasible to develop the product?**
+- **BUSINESS GOALS** to answer the questions: **How is the product going to benet the company? What are the business goals?**
 
 ## Common Links
 - [Description](#description)
@@ -61,8 +71,6 @@ User journey
 - [Information with Business Goals/Drivers/Objectives](FVADocX/FVAHelpers.pptx)
 FVAHelpers-BusinessModelCanvas.docx
 
-C:\work\fva\FVADocX\FVAHelpers.pptx
-C:\work\fva\FVADocX\FVAToolSet.pptx
 C:\work\fva\FVADocX\FVAToolSet-Features.pptx
 C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
 C:\work\fva\FVADocX\FVAToolSet-Persona.pdf
