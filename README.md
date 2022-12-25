@@ -48,7 +48,7 @@ Only open source code/tools are used, as a product is **open source**.
 
 <img src="./FVADocMD/Images/InputAndOutputExamples.gif" alt="Input And Output Examples" />
 
-## Features
+## Capabilities
 - **Organizing the multimedia:** Organizing the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) to be more searchable
 - **Integration:** The system is integrated with online/offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md):
 [digiKam](https://www.digikam.org/) <img src="FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and 
