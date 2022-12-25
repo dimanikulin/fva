@@ -50,29 +50,59 @@ I downloaded a template from [here](https://www.romanpichler.com/) and filled up
 - **PRODUCT** to answer the questions: **What product is it? What makes it stand out? Is it feasible to develop the product?**
 - **BUSINESS GOALS** to answer the questions: **How is the product going to benefit the company? What are the business goals?**
 
-## Product details
-&nbsp;&nbsp;&nbsp; Once high level product documentation was ready I wanted to go deaper with more detail.
+## Product from user prospective
+&nbsp;&nbsp;&nbsp; Once high level product documentation was ready I wanted to go deaper with more detail from user point of view.
 
 ### Persona 
-The first artifact I craeted was [Persona](../FVADocX/FVAToolSet-Persona.pdf)
+&nbsp;&nbsp;&nbsp; The first artifact I craeted was [Persona](../FVADocX/FVAToolSet-Persona.pdf)
 I downloaded a template from [here](https://www.romanpichler.com/) and filled up the following fields.
 - **PICTURE & NAME** to answer the questions: **What does the persona look like? What is its name?.** I choosen a realistic and believable picture and name.
 - **DETAILS** to answer the questions: **What are the persona’s relevant characteristics and behaviours?** I filled instance, demographics, such as age, gender, occupation, and income; psychographics, including lifestyle, social class, and personality; and behavioural attributes like usage patterns, attitudes, and brand loyalty.
 - **GOAL** to answer the questions: **What problem does the persona want to solve or which benefit does the character seek? Why would the persona want to use or buy the product?**
 
+### User Journey
+&nbsp;&nbsp;&nbsp; Then I tried to restore user way to achive the goals. 
+And I came up with [User Journey](../FVADocX/FVAToolSet-UserJourney.pptx)
+
+
+## Capabilities
+- **Organizing the multimedia:** Organizing the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) to be more searchable
+- **Integration:** The system is integrated with online/offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md):
+[digiKam](https://www.digikam.org/) <img src="FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and 
+[Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) are now supported. 
+- **Multimedia metadata gaps identification:** It identifies the gaps and tries to fill it up.
+- **Text search:** It is possible to search by events, photo author, places, people using text search 
+- **Configuration:** The system flow depends on configuration.
+
+### 
+
+
+### Short desciption
+What 
+
+&nbsp;&nbsp;&nbsp; The **main functions** (basing on user search needs) of FVA Software are: 
+* To **automate the import** (with decreasing the probability of human factor influence on the process of importing new photos into the existing photo album);
+* To **make photo albums more searchable** (that is driven by [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md)) by enriching the metadata (and improving its consistency) with minimal human involvement.
+
+Despite many steps are automated, still human involvement is required.
+ 
+The solution is oriented on **end users** only.
+Only open source code/tools are used, as a product is **open source**.
+
+- [Description](#description)
+
+
+- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 C:\work\fva\FVADocX\FVAToolSet-Features.pptx
+- [Features](#features)
+
 C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
 - [Requirements](FVADocMD/REQUIREMENTS.md)
 
 C:\work\fva\FVADocX\FVAToolSet-ProductRoadMap.pdf
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4)
-C:\work\fva\FVADocX\FVAToolSet-UserJourney.pptx
-- [Stakeholders](FVADocX/FVAToolSet-Stakeholders.pptx)
-- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
 
-## Common Links
-- [Description](#description)
-- [Features](#features)
+- [Stakeholders](FVADocX/FVAToolSet-Stakeholders.pptx)
 
 ## Links for product people (FVA Helpers)
 - [Information with Business Goals/Drivers/Objectives](FVADocX/FVAHelpers.pptx)
