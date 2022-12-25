@@ -26,6 +26,6 @@ More detailed comparison of photo organizers is provided by Wikipedia and is ava
 * they shall be able to suggest ways to solve inconsistency and absence.
 
 ## Multimedia Organizer approaches to create folder structure
-The goal is to prevent duplicate photos from being stored in the same folder [[8]](./REFERENCES.md).
+&nbsp;&nbsp;&nbsp; The goal is to prevent duplicate photos from being stored in the same folder [[8]](./REFERENCES.md).
 In order to construct subfolders based on the number of photographers or cameras, the folder name may be something like Date Shoot-Type Event Name; 
 it could also contain a location or any other information the user desires.
