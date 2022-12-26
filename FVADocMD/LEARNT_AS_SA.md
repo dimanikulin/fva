@@ -1,4 +1,5 @@
 how to work with dependencies + old dependencies
+Only open source code/tools are used, as a product is **open source**.
 
 dependency 
 
