@@ -134,8 +134,6 @@ So merging one folder in photo album to another does not cause an issue.
 Still the duplication of information takes place because for all files in one folder common information is just copied.
 </br>
 
-TODO – need to think here on how to avoid duplication of information in several files info for one folder.
-
 ## FVA Software dictionary 
 FVA Software dictionary is data used along with FVA Software internal metadata.
  
