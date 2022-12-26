@@ -65,41 +65,35 @@ I downloaded a template from [here](https://www.romanpichler.com/) and filled up
 And I came up with [User Journey](../FVADocX/FVAToolSet-UserJourney.pptx)
 
 ### Stakeholders
+&nbsp;&nbsp;&nbsp; Honestly, a bit later I realized that end users are not only people for this product.
+And next artifact came - [Stakeholders](../FVADocX/FVAToolSet-Stakeholders.pptx)
+It looks like a table with columns: Group, Stakeholder Role, Concerns, View.
+In the rows there are: End users, Suppliers and Team members.
+
+## Product requirements 
+&nbsp;&nbsp;&nbsp; Having all defined from user point of view, I started thinking of what exactly the product will implement.
+
+### Questionnaire
+&nbsp;&nbsp;&nbsp; Having no clue what is important for user or what is not I created a [questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
+It is a form to ask any person on what capabilities, function and scenarious are important. 
+ 
+### Capabilities
+&nbsp;&nbsp;&nbsp; After getting me understanding on user needs I started describing with [capabilities](./REQUIREMENTS.md#capabilities)
+
+ It describes key requirements and [User Journey](FVADocX/FVAToolSetUserJourney.pptx).
+The [Features](FVADocX/FVAToolSetFeatures.pptx) represent significant, central functionality of the final system. 
+The [Functional Requirements](FVADocX/FunctionalRequirements.xlsx) define the system detail behavior.
+C:\work\fva\FVADocX\FVAToolSet-Features.pptx
+C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
 
  
-
-- [Stakeholders](FVADocX/FVAToolSet-Stakeholders.pptx)
-
-## Capabilities
-- **Organizing the multimedia:** Organizing the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) to be more searchable
-- **Integration:** The system is integrated with online/offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md):
-[digiKam](https://www.digikam.org/) <img src="FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and 
-[Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) are now supported. 
-- **Multimedia metadata gaps identification:** It identifies the gaps and tries to fill it up.
-- **Text search:** It is possible to search by events, photo author, places, people using text search 
-- **Configuration:** The system flow depends on configuration.
- 
-&nbsp;&nbsp;&nbsp; The **main functions** (basing on user search needs) of FVA Software are: 
-* To **automate the import** (with decreasing the probability of human factor influence on the process of importing new photos into the existing photo album);
-* To **make photo albums more searchable** (that is driven by [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md)) by enriching the metadata (and improving its consistency) with minimal human involvement.
-
-Despite many steps are automated, still human involvement is required.
- 
-The solution is oriented on **end users** only.
-Only open source code/tools are used, as a product is **open source**.
-
 ## User Scenarios 
 - [Without FVA SW](https://youtu.be/_bLXFdIDZtA)
 - [With FVA SW](https://youtu.be/-xnUsO7zW2s)
 - [Checking the results of processing](https://youtu.be/NIsVYyioDnM)
 
 
-- [Questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/)
-C:\work\fva\FVADocX\FVAToolSet-Features.pptx
-- [Features](#features)
 
-C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
-- [Requirements](FVADocMD/REQUIREMENTS.md)
 
 C:\work\fva\FVADocX\FVAToolSet-ProductRoadMap.pdf
 - [Roadmap](https://github.com/dimanikulin/fva/projects/4)
