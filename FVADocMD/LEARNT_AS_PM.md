@@ -64,6 +64,12 @@ I downloaded a template from [here](https://www.romanpichler.com/) and filled up
 &nbsp;&nbsp;&nbsp; Then I tried to restore user way to achive the goals. 
 And I came up with [User Journey](../FVADocX/FVAToolSet-UserJourney.pptx)
 
+### User Scenarios 
+To show value of product I created three user scenarios and put them on Youtube: 
+- [Without FVA Tool Set](https://youtu.be/_bLXFdIDZtA)
+- [With FVA Tool Set](https://youtu.be/-xnUsO7zW2s)
+- [Checking the results of processing](https://youtu.be/NIsVYyioDnM)
+
 ### Stakeholders
 &nbsp;&nbsp;&nbsp; Honestly, a bit later I realized that end users are not only people for this product.
 And next artifact came - [Stakeholders](../FVADocX/FVAToolSet-Stakeholders.pptx)
@@ -79,24 +85,32 @@ It is a form to ask any person on what capabilities, function and scenarious are
  
 ### Capabilities
 &nbsp;&nbsp;&nbsp; After getting me understanding on user needs I started describing with [capabilities](./REQUIREMENTS.md#capabilities)
+LIterally, Capabilities describe key requirements.
 
- It describes key requirements and [User Journey](FVADocX/FVAToolSetUserJourney.pptx).
-The [Features](FVADocX/FVAToolSetFeatures.pptx) represent significant, central functionality of the final system. 
-The [Functional Requirements](FVADocX/FunctionalRequirements.xlsx) define the system detail behavior.
-C:\work\fva\FVADocX\FVAToolSet-Features.pptx
-C:\work\fva\FVADocX\FVAToolSet-FunctionalRequirements.xlsx
+### Features
+&nbsp;&nbsp;&nbsp; Having capablity list defined than, I started preparing the [features](../FVADocX/FVAToolSetFeatures.pptx)
+They represent significant, central functionality of the final system. 
+I put them into the table with columns: Name, Clarification, Business Value
+The feature set helped me to create project plam and road map. 
 
- 
-## User Scenarios 
-- [Without FVA SW](https://youtu.be/_bLXFdIDZtA)
-- [With FVA SW](https://youtu.be/-xnUsO7zW2s)
-- [Checking the results of processing](https://youtu.be/NIsVYyioDnM)
+### Functional Requirements
+&nbsp;&nbsp;&nbsp; Last but not least step in defining product behavior was list of [functional Requirements](FVADocX/FunctionalRequirements.xlsx).
+They define the system detail behavior.
+I put them into the table with columns: Name, Architecture complexity, Business Value, Component, Phase, Feature ID.
 
+## Product development documents
 
+### Product Road Map
+I guess [Product Road Map](C:\work\fva\FVADocX/FVAToolSet-ProductRoadMap.pdf) is the most important document for a product at development stage. 
+I downloaded a template from [here](https://www.romanpichler.com/) and filled up the following fields as rows
+- **DATE** with **The release date or timeframe**;
+- **NAME** with **The name of the new release**;
+- **GOAL** with **The benefit the product should offer.**;
+- **FEATURES** with **The high-level features necessary to meet the goal**;
+- **METRICS** with **The metrics to determine if the goal has been met**.
+Columns there are the product different version.
 
-
-C:\work\fva\FVADocX\FVAToolSet-ProductRoadMap.pdf
-- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
+Also it is quite convinien to keep [online roadmap](https://github.com/dimanikulin/fva/projects/4)
 
 ## Links for product people (FVA Helpers)
 - [Information with Business Goals/Drivers/Objectives](FVADocX/FVAHelpers.pptx)
