@@ -53,7 +53,7 @@ That time my album kept more than 30 thousand items inside. That search process 
 What I found as a solution were the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md). 
 </br>
 
-&nbsp;&nbsp;&nbsp; [digiKam](https://www.digikam.org/) <img src="./FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) were selected to use.
+&nbsp;&nbsp;&nbsp; I selected to use [digiKam](https://www.digikam.org/) <img src="./FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md).
 Please notice they were selected based on author criteria only and there is no aim to advertise anyone.
 </br> 
 
@@ -61,9 +61,9 @@ Please notice they were selected based on author criteria only and there is no a
 However, it was not the last issue.
 </br> 
 
-&nbsp;&nbsp;&nbsp; So I understood that I aslo need [Multimedia Organizer](./FVADocMD/MULTIMEDIAORGANIZERS.md)  
+&nbsp;&nbsp;&nbsp; So I understood that I aslo need [Multimedia Organizer](./FVADocMD/MULTIMEDIAORGANIZERS.md).
 Unfortunately, I did not find a [Multimedia Organizer](./FVADocMD/MULTIMEDIAORGANIZERS.md) that fully suited my needs (fixing problem metadata, working with **digiKam** and **Synology** etc.)
-That is why I created my [own product](https://github.com/dimanikulin/fva) to cover my needs.
+That is why I started creating my [own product](https://github.com/dimanikulin/fva) to cover my needs.
 </br> 
 
 &nbsp;&nbsp;&nbsp; Honestly I did not expect that it would be so hard and meanwhile so interesting.
