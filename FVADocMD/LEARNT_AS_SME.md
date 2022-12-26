@@ -1,7 +1,4 @@
-C:\work\fva\FVADocMD\MULTIMEDIADATA.md
-C:\work\fva\FVADocMD\MULTIMEDIAIRSYSTEMS.md
-C:\work\fva\FVADocMD\MULTIMEDIAIRSYSTEMSANALYZE.md
-C:\work\fva\FVADocMD\MULTIMEDIAORGANIZERS.md
+# What I learnt as Subject Matter Expert
 
 In addition, using [metadata](https://en.wikipedia.org/wiki/Metadata) user can organize the photo album. 
 That [metadata](https://en.wikipedia.org/wiki/Metadata) is usually kept inside of each file as a header with predefined format.
