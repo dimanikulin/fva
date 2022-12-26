@@ -94,14 +94,14 @@ I put them into the table with columns: Name, Clarification, Business Value
 The feature set helped me to create project plam and road map. 
 
 ### Functional Requirements
-&nbsp;&nbsp;&nbsp; Last but not least step in defining product behavior was list of [functional Requirements](FVADocX/FunctionalRequirements.xlsx).
+&nbsp;&nbsp;&nbsp; Last but not least step in defining product behavior was list of [functional Requirements](../FVADocX/FunctionalRequirements.xlsx).
 They define the system detail behavior.
 I put them into the table with columns: Name, Architecture complexity, Business Value, Component, Phase, Feature ID.
 
 ## Product development documents
 
 ### Product Road Map
-I guess [Product Road Map](C:\work\fva\FVADocX/FVAToolSet-ProductRoadMap.pdf) is the most important document for a product at development stage. 
+I guess [Product Road Map](../FVADocX/FVAToolSet-ProductRoadMap.pdf) is the most important document for a product at development stage. 
 I downloaded a template from [here](https://www.romanpichler.com/) and filled up the following fields as rows
 - **DATE** with **The release date or timeframe**;
 - **NAME** with **The name of the new release**;
@@ -113,5 +113,5 @@ Columns there are the product different version.
 Also it is quite convinien to keep [online roadmap](https://github.com/dimanikulin/fva/projects/4)
 
 ## Links for product people (FVA Helpers)
-- [Information with Business Goals/Drivers/Objectives](FVADocX/FVAHelpers.pptx)
+- [Information with Business Goals/Drivers/Objectives](../FVADocX/FVAHelpers.pptx)
 FVAHelpers-BusinessModelCanvas.docx
