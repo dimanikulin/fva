@@ -46,8 +46,3 @@ Integration
 Integration with digiKam
 Integration with Google Photos
 Integration with Synology
-
-- [What is Multimedia Data?](FVADocX/MultimediaData.pptx)
-- [What are Multimedia IR Systems?](FVADocX/MultimediaIRSystemOverview.pptx)
-- [Multimedia IR Systems analyze](FVADocX/MultimediaIRSystemComparison&Analyze.pptx)
-- [Multimedia Organizers](FVADocX/MultimediaOrganizeOverview.pptx)
