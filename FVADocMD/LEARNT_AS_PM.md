@@ -50,6 +50,14 @@ I downloaded a template from [here](https://www.romanpichler.com/) and filled up
 - **PRODUCT** to answer the questions: **What product is it? What makes it stand out? Is it feasible to develop the product?**
 - **BUSINESS GOALS** to answer the questions: **How is the product going to benefit the company? What are the business goals?**
 
+### Competitive Analysis Matrix
+&nbsp;&nbsp;&nbsp; The last artifact in High level product documentation was [Competitive Analysis Matrix](../FVADocX/FVAToolSet-CompetetitiveAnalysisMatrix.pdf)
+I filled up the following rows for several products:
+- **Vision** with **Goal and Target segment**;
+- **Marketing** with **Pricing and  Unique value proposition**;
+- **End user support** with **Trainings, User guide and Help desk**;
+- **Features**.
+
 ## Product from user prospective
 &nbsp;&nbsp;&nbsp; Once high level product documentation was ready I wanted to go deaper with more detail from user point of view.
 
