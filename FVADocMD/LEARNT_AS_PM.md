@@ -109,7 +109,7 @@ I put them into the table with columns: Name, Architecture complexity, Business 
 ## Product development documents
 
 ### Product Road Map
-I guess [Product Road Map](../FVADocX/FVAToolSet-ProductRoadMap.pdf) is the most important document for a product at development stage. 
+&nbsp;&nbsp;&nbsp; I guess [Product Road Map](../FVADocX/FVAToolSet-ProductRoadMap.pdf) is the most important document for a product at development stage. 
 I downloaded a template from [here](https://www.romanpichler.com/) and filled up the following fields as rows
 - **DATE** with **The release date or timeframe**;
 - **NAME** with **The name of the new release**;
@@ -121,5 +121,5 @@ Columns there are the product different version.
 Also it is quite convinien to keep [online roadmap](https://github.com/dimanikulin/fva/projects/4)
 
 ## Links for product people (FVA Helpers)
-- [Information with Business Goals/Drivers/Objectives](../FVADocX/FVAHelpers.pptx)
+&nbsp;&nbsp;&nbsp; - [Information with Business Goals/Drivers/Objectives](../FVADocX/FVAHelpers.pptx)
 FVAHelpers-BusinessModelCanvas.docx
