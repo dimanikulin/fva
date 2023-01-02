@@ -1,22 +1,16 @@
 # What I learnt as a Delivery Manager
-Honestly I did not learn a lot as a Delivery Manager. But...
+&nbsp;&nbsp;&nbsp; Honestly I did not learn a lot as a Delivery Manager. But...
 
 ## Project Status tracking
-It is quite important activity of Delivery Manager to track project status
+&nbsp;&nbsp;&nbsp; It is quite important activity of Delivery Manager to track project status.
 
 ### GitHub projects
-GitHub projects is tool to track the project status online integrated into your GitHub profile.
+&nbsp;&nbsp;&nbsp; **GitHub Projects** is tool to track the project status online integrated into your GitHub profile.
 It is quite simple to use and it does not have a lot of functions. 
 Here you [are](https://github.com/dimanikulin/fva/projects/3)
 
-
-
-FVA.pod
-
-
-
-- [Roadmap](https://github.com/dimanikulin/fva/projects/4)
-- [Project Status](https://github.com/dimanikulin/fva/projects/111)
-
-- [Contributing](#contributing)
-- [Stay in touch](#stay-in-touch)
+### ProjectLibre
+&nbsp;&nbsp;&nbsp; Still more compex solution was required. 
+And I chose [ProjectLibre](https://www.projectlibre.com/product/1-alternative-microsoft-project-open-source)
+ProjectLibre desktop is a free and open-source project management software system intended ultimately as a standalone replacement for Microsoft Project.
+Despite it is a free and small application it gave me everything I needed 
