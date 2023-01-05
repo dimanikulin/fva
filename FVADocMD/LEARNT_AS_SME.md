@@ -1,43 +1,44 @@
 # What I learnt as Subject Matter Expert
+## Multimedia IR systems
+&nbsp;&nbsp; My first step as SME was knowledge on what is [Multimedia Data](./MULTIMEDIADATA.md).
+I started learning it as I undestood whole my photo album is [Multimedia Data](./MULTIMEDIADATA.md).
+Then I realised that I need a solution to search in [Multimedia Data](./MULTIMEDIADATA.md) - [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md). 
 
-Of course, we found nothing that time. Therefore, I started looking for a solution to search in [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) in an automatic way. 
-What I found as a solution were the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md).
+However, there are many [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md) and it was a long way to choose one of them to start searching in a way that is more efficient.
+So, the [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md) were analyzed that are present on the market and available for end users. 
+
+You can find [here](./MULTIMEDIAIRSYSTEMSANALYZE.md) a description of the process of analysis and comparison for [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md) I have made to choose the most suitable system for me.
 
 In addition, using [metadata](https://en.wikipedia.org/wiki/Metadata) user can organize the photo album. 
 That [metadata](https://en.wikipedia.org/wiki/Metadata) is usually kept inside of each file as a header with predefined format.
 There are a plenty of [metadata](https://en.wikipedia.org/wiki/Metadata) formats like [Exif](https://en.wikipedia.org/wiki/Exif), [IPTC](https://en.wikipedia.org/wiki/International_Press_Telecommunications_Council) or [XMP](https://en.wikipedia.org/wiki/Extensible_Metadata_Platform).
 
-However, there are many [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and it was a long way to choose one of them to start searching in a way that is more efficient.
-So, the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) were analyzed that are present on the market and available for end users. 
-
-You can find [here](./FVADocMD/MULTIMEDIAIRSYSTEMSANALYZE.md) a description of the process of analysis and comparison for [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) I have made to choose the most suitable system for me.
-
-&nbsp;&nbsp;&nbsp; A short usage of these systems gave me understanding that [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) significantly rely on the **multimedia metadata** as a main information source that is used for the search by device, time, location, etc.
-Therefore, the presence and consistency of metadata is very important for [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) to work and for other purposes [[21]](./FVADocMD/REFERENCES.md).
+&nbsp;&nbsp;&nbsp; A short usage of these systems gave me understanding that [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md) significantly rely on the **multimedia metadata** as a main information source that is used for the search by device, time, location, etc.
+Therefore, the presence and consistency of metadata is very important for [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md) to work and for other purposes [[21]](./REFERENCES.md).
 The working experience with one of those systems shows that the search results might not be full or even incorrect due to inconsistent or not-existing **multimedia metadata**.
 </br>
 &nbsp;&nbsp;&nbsp; The reasons for incorrect and absent **metadata** are rather different - from not setting proper data on the device that takes the photos to the privacy issues. 
-This resource [[22]](./FVADocMD/REFERENCES.md) describes the **metadata** importance in more detail and there is information about other reasons for incorrect and absent **metadata**. 
-Therefore, I understood that [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) are not so effective without other tools, often called [Multimedia Organizers](./FVADocMD/MULTIMEDIAORGANIZERS.md).
+This resource [[22]](./REFERENCES.md) describes the **metadata** importance in more detail and there is information about other reasons for incorrect and absent **metadata**. 
+Therefore, I understood that [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md) are not so effective without other tools, often called [Multimedia Organizers](./MULTIMEDIAORGANIZERS.md).
 
 &nbsp;&nbsp;&nbsp; Let us provide two examples of incorrect search results. 
 In the first case, we tried to search for the photos with the existing **Geo** positions and to see them on a map. 
 The search returned four photos taken near Ghana, marked by the red circle.
-<img src="./FVADocMD/Images/AnalyzeofprivateMultimediaIRsystems.png" alt="AnalyzeofprivateMultimediaIRsystems.png" />
+<img src="./Images/AnalyzeofprivateMultimediaIRsystems.png" alt="AnalyzeofprivateMultimediaIRsystems.png" />
 &nbsp;&nbsp;&nbsp; In fact, nobody has taken photos near Ghana.
 </br> </br>
 
 &nbsp;&nbsp;&nbsp; In the second case, we searched for the photos taken in 2011. 
 Actually, we got one video that was recognized as of March 2020, which is underlined with the red color.
-<img src="./FVADocMD/Images/AnalyzeofprivateMultimediaIRsystems2.png" alt="AnalyzeofprivateMultimediaIRsystems2.png" />
+<img src="./Images/AnalyzeofprivateMultimediaIRsystems2.png" alt="AnalyzeofprivateMultimediaIRsystems2.png" />
 &nbsp;&nbsp;&nbsp; The system has provided such results due to incorrect **metadata**. 
 </br> </br>
 
 However, they do not implement any search function like search by emotions and it is expected.
-You can find [here](./FVADocMD/MULTIMEDIAORGANIZERS.md) more information regarding **Multimedia Organizers**. 
+You can find [here](./MULTIMEDIAORGANIZERS.md) more information regarding **Multimedia Organizers**. 
 
-Usually, [Multimedia Organizers](./FVADocMD/MULTIMEDIAORGANIZERS.md) provide automation for importing the new photo set into existing photo albums and it is not implemented feature in [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md).
-In addition, they might identify and address some issues that shall be fixed before the user starts searching the data using the [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md). 
+Usually, [Multimedia Organizers](./MULTIMEDIAORGANIZERS.md) provide automation for importing the new photo set into existing photo albums and it is not implemented feature in [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md).
+In addition, they might identify and address some issues that shall be fixed before the user starts searching the data using the [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md). 
 </br> </br> 
 &nbsp;&nbsp;&nbsp;
 
