@@ -1,4 +1,32 @@
 # What I learnt as an Application Architect
+&nbsp;&nbsp;&nbsp; Usually the Arhitects create a big document called Solution Architecture Document (SAD)[../FVADocX/FVAToolSet-SAD.docx] that keeps everyting inside.
+I used that way but it happened to be quite hard to maintaine it due to fast changes.
+So I decided to keep every note, every doc just in text files of MD format as this one ))).
+
+## Requirements 
+&nbsp;&nbsp;&nbsp; I started learning being architect from requirement elictions, but not requirements as for [Product Manager](./LEARNT_AS_PM.md) but more technical ones.
+I divided architect requirements into 3 parts:
+- Constraints;
+- Assumptions;
+- and Quality Attributes.
+
+### Constraints
+&nbsp;&nbsp;&nbsp; The constraints are limitation for product from techical point of view.
+I listed [them](./REQUIREMENTS_SA.md#constraints) in form of table with columns:
+- **Constraint** - to tell the constraint itself;
+- **Description** - to add more details about constraint;
+- **Business value** - to say it has High, Medium or Low value for business;
+- **Architecture viewpoint** - to say if it is require High, Medium or Low resources to implement.
+
+### Assumptions
+&nbsp;&nbsp;&nbsp; Then there were the [assumptions](./REQUIREMENTS_SA.md#constraints) with explanations for them. 
+
+### Quality Attributes
+[Quality Attributes for the FVA are described here](QUALITYATTRIBUTES_FVA.md)
+
+
+
+REQUIREMENTS_SA
 
 how to work with dependencies + old dependencies
 Only open source code/tools are used, as a product is **open source**.
@@ -14,7 +42,7 @@ Python Documentation rules
 PROGRAMMINGLANGUAGE.md
 QUALITYATTRIBUTES
 REQUIREMENTS
-REQUIREMENTS_SA
+
 
 VIEWCONTEXT.md
 VIEWFUNCTIONAL.md
