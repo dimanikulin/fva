@@ -1,14 +1,14 @@
 # What I learnt as an Application Architect
-&nbsp;&nbsp;&nbsp; Usually the Arhitects create a big document called Solution Architecture Document (SAD)[../FVADocX/FVAToolSet-SAD.docx] that keeps everyting inside.
+&nbsp;&nbsp;&nbsp; Usually the Arhitects create a big document called Solution Architecture Document (SAD)[../FVADocX/FVAToolSet-SAD.docx] plus [diagrams](../FVADocX/FVAToolSet-SAD diagrams.drawio) that keeps everyting inside
 I used that way but it happened to be quite hard to maintaine it due to fast changes.
 So I decided to keep every note, every doc just in text files of MD format as this one ))).
 
 ## Requirements 
 &nbsp;&nbsp;&nbsp; I started learning being architect from requirement elictions, but not requirements as for [Product Manager](./LEARNT_AS_PM.md) but more technical ones.
 I divided architect requirements into 3 parts:
-- Constraints;
-- Assumptions;
-- and Quality Attributes.
+- **Constraints**;
+- **Assumptions**;
+- and **Quality Attributes**.
 
 ### Constraints
 &nbsp;&nbsp;&nbsp; The constraints are limitation for product from techical point of view.
@@ -22,11 +22,21 @@ I listed [them](./REQUIREMENTS_SA.md#constraints) in form of table with columns:
 &nbsp;&nbsp;&nbsp; Then there were the [assumptions](./REQUIREMENTS_SA.md#constraints) with explanations for them. 
 
 ### Quality Attributes
-[Quality Attributes for the FVA are described here](QUALITYATTRIBUTES_FVA.md)
+&nbsp;&nbsp;&nbsp; Last but no least were [quality attributes](./QUALITYATTRIBUTES_FVA.md).
+
+It is provided if form of table with columns:
+- **name**; 
+- **description**;
+- **motivation** to tell rationale for selecting;
+- **measurable metrics** to show whether a particular quality attribute is achieved or not;
+- priorities from **business** points of view;
+- and priorities from **architecture** points of view.
+
+But before filling up that table I had to understand what [Quality Attributes](./QUALITYATTRIBUTES.md) are.
 
 
 
-REQUIREMENTS_SA
+
 
 how to work with dependencies + old dependencies
 Only open source code/tools are used, as a product is **open source**.
@@ -39,30 +49,12 @@ Releasing the code and the docs
 C++ Documentation rules
 Python Documentation rules
 
-PROGRAMMINGLANGUAGE.md
-QUALITYATTRIBUTES
-REQUIREMENTS
-
-
-VIEWCONTEXT.md
-VIEWFUNCTIONAL.md
-
-BUILD&RELEASE.md
 CODEDOCUMENTATION.md
 CODEQUALITY.md
-DEPENDENCIES.md
-DEPENDENCIES_OLD.md
 DEPLOYMENTAPPROACH.md
-LICENSE.md
-
-QUALITYATTRIBUTES_FVA.md
-
-SAD.docx
-C:\work\fva\FVADocX\FVAToolSet-SAD diagrams.drawio
+CODEREVIEW.md
 
 ## Links for architects 
-- [Solution Architecture Document](FVADocX/SAD.docx)
-- [Solution Architecture Requirements](FVADocMD/REQUIREMENTS_SA.md)
 - [Context View](FVADocMD/VIEWCONTEXT.md)
 - [Functional Decomposition](FVADocMD/VIEWFUNCTIONAL.md)
 - [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
@@ -75,7 +67,6 @@ C:\work\fva\FVADocX\FVAToolSet-SAD diagrams.drawio
 - [Deployment approach](FVADocMD/DEPLOYMENTAPPROACH.md)
 - [Solution Architecture Quality Attributes](FVADocMD/QUALITYATTRIBUTES.md)
 
-CODEREVIEW.md
 
 * how to create attractive README.md files (bages from shields, documents structure, required chapters, diagrams on Mermaid.js);
 ## You will learn - documentation chapter
