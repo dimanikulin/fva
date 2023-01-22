@@ -22,12 +22,12 @@ I listed [them](./REQUIREMENTS_SA.md#constraints) in form of table with columns:
 - **Architecture viewpoint** - to say if it is require High, Medium or Low resources to implement.
 
 ### Assumptions
-&nbsp;&nbsp;&nbsp; Then there were the [assumptions](./REQUIREMENTS_SA.md#constraints) with explanations for them. 
+&nbsp;&nbsp;&nbsp; Then there were the [assumptions](./REQUIREMENTS_SA.md#assumptions) with explanations for them. 
 
 ### Quality Attributes
 &nbsp;&nbsp;&nbsp; Last but no least were [quality attributes](./QUALITYATTRIBUTES_FVA.md).
 
-It is provided if form of table with columns:
+It is provided in form of table with columns:
 - **name**; 
 - **description**;
 - **motivation** to tell rationale for selecting;
@@ -51,7 +51,9 @@ Generally, the [functional view](./VIEWFUNCTIONAL.md) shows the solution compone
 and I used Mermaid.js to create that view diagram again.
 
 ## Deployment view
-DEPLOYMENTAPPROACH.md
+&nbsp;&nbsp;&nbsp; The next architecture view had to be deployment view.
+Generally, the deployment view shows the nodes used to deploy solution components/processes.
+Because FVA Tool Set requires only one node and a few processes to deploy I decided to put it in simple text [description](./DEPLOYMENTAPPROACH.md)
 
 
 how to work with dependencies + old dependencies
@@ -69,18 +71,17 @@ CODEDOCUMENTATION.md
 CODEQUALITY.md
 
 CODEREVIEW.md
-
-## Links for architects 
-
+ 
 - [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
 - [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
+
 - [FVA License](FVADocMD/LICENSE.md)
 - [Exif library license](FVACommonLib/LICENSE)
+
 - [TODO-Hardware requirements](TODO)
 - [Programming Languages](FVADocMD/PROGRAMMINGLANGUAGE.md)
+
 - [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
-- [Deployment approach](FVADocMD/DEPLOYMENTAPPROACH.md)
-- [Solution Architecture Quality Attributes](FVADocMD/QUALITYATTRIBUTES.md)
 
 
 * how to create attractive README.md files (bages from shields, documents structure, required chapters);
