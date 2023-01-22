@@ -1,3 +1,5 @@
+Only open source code/tools are used, as a product is **open source**.
+
 | # | Name           | Purpose                                  | Version   |  License  | Environment | Comment       |
 | - | ---------------|----------------------------------------- |---------- | --------- | ----------- |:-------------:|
 | 1 | Exif | Python package to work with Exif metadata  |   | free  | developer and user | To install please call "pip install exif" |

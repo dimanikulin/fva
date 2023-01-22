@@ -25,7 +25,7 @@ I listed [them](./REQUIREMENTS_SA.md#constraints) in form of table with columns:
 &nbsp;&nbsp;&nbsp; Then there were the [assumptions](./REQUIREMENTS_SA.md#assumptions) with explanations for them. 
 
 ### Quality Attributes
-&nbsp;&nbsp;&nbsp; Last but no least were [quality attributes](./QUALITYATTRIBUTES_FVA.md).
+&nbsp;&nbsp;&nbsp; Also it was very important to define solution [quality attributes](./QUALITYATTRIBUTES_FVA.md).
 
 It is provided in form of table with columns:
 - **name**; 
@@ -37,29 +37,45 @@ It is provided in form of table with columns:
 
 But before filling up that table I had to understand what [Quality Attributes](./QUALITYATTRIBUTES.md) generally are.
 
-# Software Architecture
+### Hardware requirements
+&nbsp;&nbsp;&nbsp; Last but no least were [hardware requirements](./REQUIREMENTS_HW.md).
 
-## Context view 
+## Software Architecture
+
+### Context view 
 &nbsp;&nbsp;&nbsp; The first architecture view was context diagram.
 Generally, the [context diagram](./VIEWCONTEXT.md) shows the solution bounds and its interactions with other objects and subjects.
 I used Mermaid.js to create context view diagram.
 Mermaid.js is supported now by GitHub 
 
-## Functional view
+### Functional view
 &nbsp;&nbsp;&nbsp; The next architecture view was functional diagram.
 Generally, the [functional view](./VIEWFUNCTIONAL.md) shows the solution components divided by functional purpose and interactions between them.
 and I used Mermaid.js to create that view diagram again.
 
-## Deployment view
+### Deployment view
 &nbsp;&nbsp;&nbsp; The next architecture view had to be deployment view.
 Generally, the deployment view shows the nodes used to deploy solution components/processes.
 Because FVA Tool Set requires only one node and a few processes to deploy I decided to put it in simple text [description](./DEPLOYMENTAPPROACH.md)
 
+## Tools, libraries and languages
+&nbsp;&nbsp;&nbsp; At some moment I realized I need to manage the tools, libraries and language I use.
+ 
+### Tools and libraries 
+&nbsp;&nbsp;&nbsp; All tools and libraries I used in for development I put in form of [table](./DEPENDENCIES.md) with following columns:
+- **Name** to tell name;
+- **Purpose** to say purpose of tool/library;
+- **Version** to name the version;
+- **License** to say what license is tool/library under;
+- **Environment** to say what enriroment we can run that tool/library on;
+- **Comment** just to comment additionaly. 
 
-how to work with dependencies + old dependencies
-Only open source code/tools are used, as a product is **open source**.
+&nbsp;&nbsp;&nbsp; First, it was much bigger list of tools/slibrary but they got outdated and were moved into separate [table](./DEPENDENCIES_OLD.md) with same format.
 
-dependency 
+### Languages
+&nbsp;&nbsp;&nbsp; I used just plain text to desctibe the [programmimng languages] the FVA Software uses.
+
+
 
 Branch strategy
 Releasing the code and the docs
@@ -72,14 +88,8 @@ CODEQUALITY.md
 
 CODEREVIEW.md
  
-- [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
-- [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
-
 - [FVA License](FVADocMD/LICENSE.md)
 - [Exif library license](FVACommonLib/LICENSE)
-
-- [TODO-Hardware requirements](TODO)
-- [Programming Languages](FVADocMD/PROGRAMMINGLANGUAGE.md)
 
 - [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
 
