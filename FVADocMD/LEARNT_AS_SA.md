@@ -1,9 +1,9 @@
 # What I learnt as an Application Architect
 - "What?" - you will ask me, "Really so small applications requires the arhitect work?"
-- "Yes, yes and yes" 0 my answer will be.
+- "Yes, yes and yes", my answer will be.
 
-&nbsp;&nbsp;&nbsp; Usually the Arhitects create a big document called Solution Architecture Document (SAD)[../FVADocX/FVAToolSet-SAD.docx] plus [diagrams](../FVADocX/FVAToolSet-SAD diagrams.drawio) that keeps everyting inside.
-first I used that way but it happened to be quite hard to trace the changes due to big frequence of changes.
+&nbsp;&nbsp;&nbsp; Usually the Arhitects create a big document called Solution Architecture Document [SAD](../FVADocX/FVAToolSet-SAD.docx) plus [diagrams](../FVADocX/FVAToolSet-SAD diagrams.drawio) that keeps everyting inside.
+First I used that way but it happened to be quite hard to trace the changes due to big frequence of changes.
 So I decided to keep every note, every doc just in text files of MD format as this one ))).
 
 ## Requirements 
