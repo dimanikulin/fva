@@ -1,6 +1,9 @@
 # What I learnt as an Application Architect
-&nbsp;&nbsp;&nbsp; Usually the Arhitects create a big document called Solution Architecture Document (SAD)[../FVADocX/FVAToolSet-SAD.docx] plus [diagrams](../FVADocX/FVAToolSet-SAD diagrams.drawio) that keeps everyting inside
-I used that way but it happened to be quite hard to maintaine it due to fast changes.
+- "What?" - you will ask me, "Really so small applications requires the arhitect work?"
+- "Yes, yes and yes" 0 my answer will be.
+
+&nbsp;&nbsp;&nbsp; Usually the Arhitects create a big document called Solution Architecture Document (SAD)[../FVADocX/FVAToolSet-SAD.docx] plus [diagrams](../FVADocX/FVAToolSet-SAD diagrams.drawio) that keeps everyting inside.
+first I used that way but it happened to be quite hard to trace the changes due to big frequence of changes.
 So I decided to keep every note, every doc just in text files of MD format as this one ))).
 
 ## Requirements 
@@ -32,10 +35,23 @@ It is provided if form of table with columns:
 - priorities from **business** points of view;
 - and priorities from **architecture** points of view.
 
-But before filling up that table I had to understand what [Quality Attributes](./QUALITYATTRIBUTES.md) are.
+But before filling up that table I had to understand what [Quality Attributes](./QUALITYATTRIBUTES.md) generally are.
 
+# Software Architecture
 
+## Context view 
+&nbsp;&nbsp;&nbsp; The first architecture view was context diagram.
+Generally, the [context diagram](./VIEWCONTEXT.md) shows the solution bounds and its interactions with other objects and subjects.
+I used Mermaid.js to create context view diagram.
+Mermaid.js is supported now by GitHub 
 
+## Functional view
+&nbsp;&nbsp;&nbsp; The next architecture view was functional diagram.
+Generally, the [functional view](./VIEWFUNCTIONAL.md) shows the solution components divided by functional purpose and interactions between them.
+and I used Mermaid.js to create that view diagram again.
+
+## Deployment view
+DEPLOYMENTAPPROACH.md
 
 
 how to work with dependencies + old dependencies
@@ -51,12 +67,11 @@ Python Documentation rules
 
 CODEDOCUMENTATION.md
 CODEQUALITY.md
-DEPLOYMENTAPPROACH.md
+
 CODEREVIEW.md
 
 ## Links for architects 
-- [Context View](FVADocMD/VIEWCONTEXT.md)
-- [Functional Decomposition](FVADocMD/VIEWFUNCTIONAL.md)
+
 - [Tools and dependencies](FVADocMD/DEPENDENCIES.md)
 - [Old tools and dependencies](FVADocMD/DEPENDENCIES_OLD.md)
 - [FVA License](FVADocMD/LICENSE.md)
@@ -68,7 +83,7 @@ CODEREVIEW.md
 - [Solution Architecture Quality Attributes](FVADocMD/QUALITYATTRIBUTES.md)
 
 
-* how to create attractive README.md files (bages from shields, documents structure, required chapters, diagrams on Mermaid.js);
+* how to create attractive README.md files (bages from shields, documents structure, required chapters);
 ## You will learn - documentation chapter
 * how to document the C++ code using Doxygen markdown and build documentation basing on Doxygen markdown;
 * how to buuld and release the documentation;
