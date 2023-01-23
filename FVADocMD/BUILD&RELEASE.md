@@ -28,7 +28,7 @@ Still you can use [MS studio solution](./FVASW.sln) to build locally on Windows 
 &nbsp;&nbsp;&nbsp; To re-generate the docs you need to re-execute [documentation workflow](https://github.com/dimanikulin/fva/blob/master/.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf) 
 TBD - describe how 
 
-## Branch strategy
+# Branch strategy
 &nbsp;&nbsp;&nbsp; GitHub actions is used to implement the releasing of the product. 
 It is configured to call release flow to start the creation of release product artifacts on creation or update the release branch.
 TBD - describe naming and flow for branches.

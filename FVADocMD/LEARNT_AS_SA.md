@@ -75,10 +75,15 @@ Because FVA Tool Set requires only one node and a few processes to deploy I deci
 ### Languages
 &nbsp;&nbsp;&nbsp; I used just plain text to desctibe the [programmimng languages] the FVA Software uses.
 
+## Releasing the code and the docs & Branch strategy
+&nbsp;&nbsp;&nbsp; One more important point was definition of [building and releasing the product and documentation](./BUILD&RELEASE.md) 
 
+- [Building the code](./BUILD&RELEASE#buildingthecode.md) 
+- [Building the code using GitHub](./BUILD&RELEASE#buildingthecodeusinggithub.md)
+- [Building the code locally](./BUILD&RELEASE#buildingthecodelocally.md)
+- [Building the docs](./BUILD&RELEASE#buildingthecodedocs.md)
+- [Branch strategy](./BUILD&RELEASE#branchstrategy.md)
 
-Branch strategy
-Releasing the code and the docs
 
 C++ Documentation rules
 Python Documentation rules
@@ -90,8 +95,6 @@ CODEREVIEW.md
  
 - [FVA License](FVADocMD/LICENSE.md)
 - [Exif library license](FVACommonLib/LICENSE)
-
-- [Building and Releasing the product and documentation](FVADocMD/BUILD&RELEASE.md)
 
 
 * how to create attractive README.md files (bages from shields, documents structure, required chapters);
