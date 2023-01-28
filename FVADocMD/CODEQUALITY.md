@@ -1,4 +1,4 @@
-## Automated code checks
+# Automated code checks
 &nbsp;&nbsp;&nbsp;  Currently there are following automated checks to verify if the code meets code quality requirements:
 * [Code QL](.github/workflows/codeqlanalysis.yml) Please see [[38]](./REFERENCES.md) TBD what for
 * [code Checks](.github/workflows/codeChecks.yml) TBD what for
