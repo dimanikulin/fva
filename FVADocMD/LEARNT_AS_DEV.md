@@ -12,11 +12,13 @@ I decided to check other rules manually during [code review](./CODEREVIEW.md)
 "Nope" - my answer will be.
 
 &nbsp;&nbsp;&nbsp; Also before creating the code we need to think about [code documentation](./CODEDOCUMENTATION.md).
-Because there are two languages used to create the FVA Software, there also should be: 
+Because there are two languages used to create the **FVA Software**, there also should be: 
 - **C++** Documentation rules and
 - **Python** Documentation rules
+So I learnt how to document the C++ code using **Doxygen** markdown and build documentation basing on Doxygen markdown. 
+O my god, for sure now I know how to configure **Doxygen**.
 
-## Releasing the code and the docs & Branch strategy
+## Releasing the code and the docs
 &nbsp;&nbsp;&nbsp; One more important point was definition of [building and releasing the product and documentation](./BUILD&RELEASE.md) 
 There you can find a 
 
@@ -27,10 +29,8 @@ There you can find a
 
 
 ## You will learn - documentation chapter
-* how to document the C++ code using Doxygen markdown and build documentation basing on Doxygen markdown;
-* how to buuld and release the documentation;
-* how to release the product;
-* how to configure Doxygen;
+* how to buuld and release the documentation using GitHub;
+* how to release the product using GitHub;
 
 ## You will learn - code checks chapter
 * how to use Python to create code checks;

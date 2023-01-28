@@ -60,7 +60,7 @@ Generally, the deployment view shows the nodes used to deploy solution component
 Because FVA Tool Set requires only one node and a few processes to deploy I decided to put it in simple text [description](./DEPLOYMENTAPPROACH.md)
 
 ## Tools, libraries and languages
-&nbsp;&nbsp;&nbsp; At some moment I realized I need to manage the tools, libraries and language I use.
+&nbsp;&nbsp;&nbsp; At some moment I realized I need to manage the tools, libraries and languages I use.
  
 ### Tools and libraries 
 &nbsp;&nbsp;&nbsp; All tools and libraries I used in for development I put in form of [table](./DEPENDENCIES.md) with following columns:
