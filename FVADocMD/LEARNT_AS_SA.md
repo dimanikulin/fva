@@ -78,11 +78,11 @@ Because FVA Tool Set requires only one node and a few processes to deploy I deci
 ## Releasing the code and the docs & Branch strategy
 &nbsp;&nbsp;&nbsp; One more important point was definition of [building and releasing the product and documentation](./BUILD&RELEASE.md) 
 
-- [Building the code](./BUILD&RELEASE#buildingthecode.md) 
-- [Building the code using GitHub](./BUILD&RELEASE#buildingthecodeusinggithub.md)
-- [Building the code locally](./BUILD&RELEASE#buildingthecodelocally.md)
-- [Building the docs](./BUILD&RELEASE#buildingthedocs.md)
-- [Branch strategy](./BUILD&RELEASE#branchstrategy.md)
+- [Building the code](./BUILD_RELEASE#buildingthecode.md) 
+- [Building the code using GitHub](./BUILD_RELEASE#buildingthecodeusinggithub.md)
+- [Building the code locally](./BUILD_RELEASE#buildingthecodelocally.md)
+- [Building the docs](./BUILD_RELEASE#buildingthedocs.md)
+- [Branch strategy](./BUILD_RELEASE#branchstrategy.md)
 
 
 C++ Documentation rules
