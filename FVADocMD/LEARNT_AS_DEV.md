@@ -1,13 +1,20 @@
 # What I learnt as a Software Developer
+## Code quality
+&nbsp;&nbsp;&nbsp; Before creating the code we need to think about code quality. 
+Yes, it is first thing to start from.
+So we shall be able to check code quality. 
+It can be do automaticly by cool tools mentioned [here](./CODEQUALITY.md).
+Unfortunatly automatic tools do not check all rules I need and...
+I decided to check other rules manually during [code review](./CODEREVIEW.md) 
 
-C++ Documentation rules
-Python Documentation rules
+## Code documentation
+"Wait, wait!" - you will say, "Will we now start coding?"
+"Nope" - my answer will be.
 
-CODEDOCUMENTATION.md
-CODEQUALITY.md
-
-CODEREVIEW.md
-
+&nbsp;&nbsp;&nbsp; Also before creating the code we need to think about [code documentation](./CODEDOCUMENTATION.md).
+Because there are two languages used to create the FVA Software, there also should be: 
+- **C++** Documentation rules and
+- **Python** Documentation rules
 
 ## Releasing the code and the docs & Branch strategy
 &nbsp;&nbsp;&nbsp; One more important point was definition of [building and releasing the product and documentation](./BUILD&RELEASE.md) 
@@ -23,7 +30,6 @@ There you can find a
 * how to document the C++ code using Doxygen markdown and build documentation basing on Doxygen markdown;
 * how to buuld and release the documentation;
 * how to release the product;
-* how to create the license;
 * how to configure Doxygen;
 
 ## You will learn - code checks chapter
@@ -35,12 +41,7 @@ There you can find a
 - [Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
 - [Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 
-
-## Links for developers
-- [Requirements for documentation](FVADocMD/CODEDOCUMENTATION.md)
 - [Docs generated from the code](https://dimanikulin.github.io/fva/)
-- [Code Quality](FVADocMD/CODEQUALITY.md)
-- [Where to publish](FVADocMD/WHERETOPUBLISH.md)
 
 ## You will learn - code chapter
 * how to use QT for creation the player for Multimedia content;

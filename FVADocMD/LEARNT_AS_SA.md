@@ -82,4 +82,5 @@ Because FVA Tool Set requires only one node and a few processes to deploy I deci
 ## Licenses 
 &nbsp;&nbsp;&nbsp; For sure we must not forget about licenses.
 Because FVA Software uses third party it shall put its license in [code](../FVACommonLib/LICENSE)
-And I had to declare [FVA License](./LICENSE.md
+And I had to declare [FVA License](./LICENSE.md) so I learnt what license is and how to create the license;
+ 
