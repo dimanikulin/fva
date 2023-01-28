@@ -81,7 +81,7 @@ Because FVA Tool Set requires only one node and a few processes to deploy I deci
 - [Building the code](./BUILD&RELEASE#buildingthecode.md) 
 - [Building the code using GitHub](./BUILD&RELEASE#buildingthecodeusinggithub.md)
 - [Building the code locally](./BUILD&RELEASE#buildingthecodelocally.md)
-- [Building the docs](./BUILD&RELEASE#buildingthecodedocs.md)
+- [Building the docs](./BUILD&RELEASE#buildingthedocs.md)
 - [Branch strategy](./BUILD&RELEASE#branchstrategy.md)
 
 
