@@ -1,5 +1,4 @@
-
-## Capabilities
+# Capabilities
 - **Organizing the multimedia:** Organizing the [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) to be more searchable
 - **Multimedia metadata gaps identification:** It identifies the gaps and tries to fill it up (enriching the metadata and improving its consistency with minimal human involvement).
 - **Integration:** The system is integrated with online/offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md):
