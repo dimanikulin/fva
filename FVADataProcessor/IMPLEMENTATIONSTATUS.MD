@@ -1,4 +1,4 @@
-| # | Implemented | Feature ID | Component    | Implemented in files with name | Description |
+| # | Implemented | Feature ID | Component    | File names | Description |
 | - | ------------| -----------|--------------|--------------------------------|------------ |
 | 1 |  YES        | 1          | Organizer    | CLTCreateDirStructByFileNames  | The system shall keep multimedia files in structure root_fva_folder->year->event folder |
 | 2 |  YES        | 1          | Organizer    | CLTMoveInputDir2Output         | During merging the system shall check if there is already existing folder/event and ask user what to do if needs |
