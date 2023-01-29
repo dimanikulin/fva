@@ -22,19 +22,39 @@ So I learnt how to document the C++ code using **Doxygen** markdown and build do
 O my god, for sure now I know how to configure **Doxygen**.
 
 ## Implementation status
-Before jumping into coding I thought how I will know what requirement is covered and what is not.
+&nbsp;&nbsp;&nbsp; Before jumping into coding I thought how I will know what requirement is covered and what is not.
 So in simmply words, how tracing is going to be implemented.
 What came up to my mind is a table with following columns
-- **Implemented**
-- **Feature ID**
-- **Component**
-- **File names**
-- **Description** 
+- **Implemented**, yes or no
+- **Feature ID**, it is an identifier from [features](../FVADocX/FVAToolSetFeatures.pptx)
+- **Component**, component name
+- **File names**, file names where there is implementation for this requirement
+- **Description** functional requirement description
 
+So far I have **implementation status** for following components
 - [Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
 - [Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
 - [Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 
+## Implementation
+&nbsp;&nbsp;&nbsp; Finally we can move to coding!
+I chose [QT](https://en.wikipedia.org/wiki/Qt_(software)) as main library to use because the **FVA Software** requires [UI](https://en.wikipedia.org/wiki/User_interface) and support latest Windows, MacOS, Linux Ubuntu with the latest update.
+For start I used **QWidgets** and its children **QWizard** and **QWizardPage**. 
+But then I realized the use of **QML** will be more easier for [UI](https://en.wikipedia.org/wiki/User_interface) implementation.
+
+* how to use QT for creation the player for Multimedia content;
+* how to build package file for WinOS using Wix;
+* how to create and work with Python code from C++ application;
+* how to work with SQLlite;
+* how to work with CSV files;
+* how to create riff parser;
+* how to build the code using MS Visual Studio and CMake on local env or using GitHub on cloud env(Yml);
+                                                                
+[QTranslator](https://doc.qt.io/qt-5/qtranslator.html);
+[QtextCodec](https://doc.qt.io/qt-5/qtextcodec.html);
+[Qlocale](https://doc.qt.io/qt-5/qlocale.html);
+[QtextDecoder](https://doc.qt.io/qt-5/qtextdecoder.html);
+[QtextEncoder](https://doc.qt.io/qt-5/qtextencoder.html).
 
 ## Releasing the code and the docs
 &nbsp;&nbsp;&nbsp; One more important point was definition of [building and releasing the product and documentation](./BUILD&RELEASE.md) 
@@ -46,29 +66,5 @@ There you can find a
 - [Building the docs](./BUILD_RELEASE.md#buildingthedocs)
 
 - [Docs generated from the code](https://dimanikulin.github.io/fva/)
-
-## You will learn - documentation chapter
 * how to buuld and release the documentation using GitHub;
 * how to release the product using GitHub;
-
-
-## You will learn - code chapter
-* how to use QT for creation the player for Multimedia content;
-* how to build package file for WinOS using Wix;
-* how to create and work with Python code from C++ application;
-* how to work with SQLlite;
-* how to work with QWizard and QWizardPage;
-* how to work with CSV files;
-* how to create riff parser;
-* how to build the code using MS Visual Studio and CMake on local env or using GitHub on cloud env(Yml);
-
-The native fast API to implement [UI](https://en.wikipedia.org/wiki/User_interface) is developed based on [QT](https://en.wikipedia.org/wiki/Qt_(software)). 
-The [QT](https://en.wikipedia.org/wiki/Qt_(software)) library is also used for the implementation to support latest Windows, MacOS, Linux Ubuntu with the latest update. 
-The QML shall be used for UI implementation and not QWidgets.
-
-the [QT](https://en.wikipedia.org/wiki/Qt_(software)) shall be used with such features as:
-[QTranslator](https://doc.qt.io/qt-5/qtranslator.html);
-[QtextCodec](https://doc.qt.io/qt-5/qtextcodec.html);
-[Qlocale](https://doc.qt.io/qt-5/qlocale.html);
-[QtextDecoder](https://doc.qt.io/qt-5/qtextdecoder.html);
-[QtextEncoder](https://doc.qt.io/qt-5/qtextencoder.html).
