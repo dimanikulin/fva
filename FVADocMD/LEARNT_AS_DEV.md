@@ -41,8 +41,9 @@ So far I have **implementation status** for following components
 I chose [QT](https://en.wikipedia.org/wiki/Qt_(software)) as main library to use because the **FVA Software** requires [UI](https://en.wikipedia.org/wiki/User_interface) and support latest Windows, MacOS, Linux Ubuntu with the latest update.
 For start I used **QWidgets** and its children **QWizard** and **QWizardPage**. 
 But then I realized the use of **QML** will be more easier for [UI](https://en.wikipedia.org/wiki/User_interface) implementation.
-
-* how to use QT for creation the player for Multimedia content;
+So my plan is to move to use **QML** but not **QWidgets**. 
+Also I was suprized how it is easy to use [QT](https://en.wikipedia.org/wiki/Qt_(software)) for creation the [player](../FVAPlayer) for Multimedia content. 
+ 
 * how to build package file for WinOS using Wix;
 * how to create and work with Python code from C++ application;
 * how to work with SQLlite;
