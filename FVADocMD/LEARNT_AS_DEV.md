@@ -43,29 +43,29 @@ For start I used **QWidgets** and its children **QWizard** and **QWizardPage**.
 But then I realized the use of **QML** will be more easier for [UI](https://en.wikipedia.org/wiki/User_interface) implementation.
 So my plan is to move to use **QML** but not **QWidgets**. 
 Also I was suprized how it is easy to use [QT](https://en.wikipedia.org/wiki/Qt_(software)) for creation the [player](../FVAPlayer) for Multimedia content. 
+I am going to use several [UI](https://en.wikipedia.org/wiki/User_interface) languages and [QT](https://en.wikipedia.org/wiki/Qt_(software)) suggest to use following: 
+
+- [QTranslator](https://doc.qt.io/qt-5/qtranslator.html);
+- [QtextCodec](https://doc.qt.io/qt-5/qtextcodec.html);
+- [Qlocale](https://doc.qt.io/qt-5/qlocale.html);
+- [QtextDecoder](https://doc.qt.io/qt-5/qtextdecoder.html);
+- [QtextEncoder](https://doc.qt.io/qt-5/qtextencoder.html).
+
+I was really glad to find out how it is easy to work with SQLlite with use of [QT](https://en.wikipedia.org/wiki/Qt_(software)).
+But then I moved from SQLlite to [CSV](../FVACommonLib/fvacsvfile.h) to keep the data. 
+
+Because I use two [languages](./PROGRAMMINGLANGUAGE.md) there was a need to work with **Python** code from **C++** application.
  
-* how to build package file for WinOS using Wix;
-* how to create and work with Python code from C++ application;
-* how to work with SQLlite;
-* how to work with CSV files;
-* how to create riff parser;
-* how to build the code using MS Visual Studio and CMake on local env or using GitHub on cloud env(Yml);
+Last but not least I learnt how to create [riff parser](../FVACommonLib/fvariffparser.h).
                                                                 
-[QTranslator](https://doc.qt.io/qt-5/qtranslator.html);
-[QtextCodec](https://doc.qt.io/qt-5/qtextcodec.html);
-[Qlocale](https://doc.qt.io/qt-5/qlocale.html);
-[QtextDecoder](https://doc.qt.io/qt-5/qtextdecoder.html);
-[QtextEncoder](https://doc.qt.io/qt-5/qtextencoder.html).
-
 ## Releasing the code and the docs
-&nbsp;&nbsp;&nbsp; One more important point was definition of [building and releasing the product and documentation](./BUILD&RELEASE.md) 
-There you can find a 
-
+&nbsp;&nbsp;&nbsp; One more important point was definition of [building and releasing the product and documentation](./BUILD_RELEASE.md) 
+There you can find a description for: 
 - [Building the code](./BUILD_RELEASE.md#buildingthecode) 
 - [Building the code using GitHub](./BUILD_RELEASE.md#buildingthecodeusinggithub)
 - [Building the code locally](./BUILD_RELEASE.md#buildingthecodelocally)
 - [Building the docs](./BUILD_RELEASE.md#buildingthedocs)
 
-- [Docs generated from the code](https://dimanikulin.github.io/fva/)
-* how to buuld and release the documentation using GitHub;
-* how to release the product using GitHub;
+So I learnt
+- how to buuld and release the documentation using GitHub;
+- how to release the product using GitHub.
