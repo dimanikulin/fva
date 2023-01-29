@@ -3,24 +3,38 @@
 &nbsp;&nbsp;&nbsp; Before creating the code we need to think about code quality. 
 Yes, it is first thing to start from.
 So we shall be able to check code quality. 
-It can be do automaticly by cool tools mentioned [here](./CODEQUALITY.md).
+It can be done automaticly by cool tools (provided by third parties) mentioned [here](./CODEQUALITY.md).
 Unfortunatly automatic tools do not check all rules I need and...
 I decided to check other rules manually during [code review](./CODEREVIEW.md) 
-I spent much time on code reviewing 
-
-* how to use Python to create code checks;
-* how to control code quality (from "Code checks" chapter);
+but when I spent much time on code reviewing and trying to check code I used **Python** to create other code [checks](../FVACodeChecks). 
+Still, not every rule is checked automaticly and manual effort is excpected. 
 
 ## Code documentation
 "Wait, wait!" - you will say, "Will we now start coding?"
 "Nope" - my answer will be.
 
-&nbsp;&nbsp;&nbsp; Also before creating the code we need to think about [code documentation](./CODEDOCUMENTATION.md).
+&nbsp;&nbsp;&nbsp; Also before creating the code we need to think about code documentation.
 Because there are two languages used to create the **FVA Software**, there also should be: 
-- **C++** Documentation rules and
-- **Python** Documentation rules
+- **C++** [documentation rules](./CODEDOCUMENTATION.md) defined and
+- **Python** documentation rules defined.
+
 So I learnt how to document the C++ code using **Doxygen** markdown and build documentation basing on Doxygen markdown. 
 O my god, for sure now I know how to configure **Doxygen**.
+
+## Implementation status
+Before jumping into coding I thought how I will know what requirement is covered and what is not.
+So in simmply words, how tracing is going to be implemented.
+What came up to my mind is a table with following columns
+- **Implemented**
+- **Feature ID**
+- **Component**
+- **File names**
+- **Description** 
+
+- [Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
+- [Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
+- [Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
+
 
 ## Releasing the code and the docs
 &nbsp;&nbsp;&nbsp; One more important point was definition of [building and releasing the product and documentation](./BUILD&RELEASE.md) 
@@ -37,10 +51,6 @@ There you can find a
 * how to buuld and release the documentation using GitHub;
 * how to release the product using GitHub;
 
-## Implementation status
-- [Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
-- [Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
-- [Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 
 ## You will learn - code chapter
 * how to use QT for creation the player for Multimedia content;
