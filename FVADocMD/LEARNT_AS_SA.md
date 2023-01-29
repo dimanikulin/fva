@@ -71,7 +71,7 @@ Because FVA Tool Set requires only one node and a few processes to deploy I deci
 - **Environment** to say what enriroment we can run that tool/library on;
 - **Comment** just to comment additionaly. 
 
-&nbsp;&nbsp;&nbsp; First, it was much bigger list of tools/slibrary but they got outdated and were moved into separate [table](./DEPENDENCIES_OLD.md) with same format.
+&nbsp;&nbsp;&nbsp; First, it was much bigger list of tools/library but they got outdated and were moved into separate [table](./DEPENDENCIES_OLD.md) with same format.
 
 ### Languages
 &nbsp;&nbsp;&nbsp; I used just plain text to desctibe the [programmimng languages] the FVA Software uses.

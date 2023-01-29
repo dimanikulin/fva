@@ -6,6 +6,10 @@ So we shall be able to check code quality.
 It can be do automaticly by cool tools mentioned [here](./CODEQUALITY.md).
 Unfortunatly automatic tools do not check all rules I need and...
 I decided to check other rules manually during [code review](./CODEREVIEW.md) 
+I spent much time on code reviewing 
+
+* how to use Python to create code checks;
+* how to control code quality (from "Code checks" chapter);
 
 ## Code documentation
 "Wait, wait!" - you will say, "Will we now start coding?"
@@ -27,21 +31,16 @@ There you can find a
 - [Building the code locally](./BUILD_RELEASE.md#buildingthecodelocally)
 - [Building the docs](./BUILD_RELEASE.md#buildingthedocs)
 
+- [Docs generated from the code](https://dimanikulin.github.io/fva/)
 
 ## You will learn - documentation chapter
 * how to buuld and release the documentation using GitHub;
 * how to release the product using GitHub;
 
-## You will learn - code checks chapter
-* how to use Python to create code checks;
-* how to control code quality (from "Code checks" chapter);
-
 ## Implementation status
 - [Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
 - [Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
 - [Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
-
-- [Docs generated from the code](https://dimanikulin.github.io/fva/)
 
 ## You will learn - code chapter
 * how to use QT for creation the player for Multimedia content;
