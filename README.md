@@ -39,6 +39,7 @@ into [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) like [digiKam](h
 <img src="./FVADocMD/Images/InputAndOutputExamples.gif" alt="Input And Output Examples" />
 
 ## History
+**History** or **Why I decided to create my photo organizer**
 &nbsp;&nbsp;&nbsp; As a child, I used to flip through family photo album to see my relatives whom I had not seen in real life.
 At that time we had film cameras only, so the number of photos was not so large.
 Time has passed and currently, let's say, almost everyone owns a camera or a smartphone with a camera, or even both.
