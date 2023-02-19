@@ -1,4 +1,4 @@
-# What I learned as a Product Manager
+# What I learned as a Product Manager while creating my own product
 ## Design Thinking
 &nbsp;&nbsp;&nbsp; The first product I was thinking about was "FVA Tool Set".
 Subsequently, another product came to my mind. As a result, a Product Line came about.

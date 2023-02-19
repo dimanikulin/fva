@@ -1,4 +1,4 @@
-# What I learned as Subject Matter Expert
+# What I learned as a Subject Matter Expert while creating my own product
 ## Multimedia IR systems
 &nbsp;&nbsp; My first step in the role of an SME was getting to know what [Multimedia Data](./MULTIMEDIADATA.md) is.
 I started learning it as I understood that my whole photo album is [Multimedia Data](./MULTIMEDIADATA.md) itself.
