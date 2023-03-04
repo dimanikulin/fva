@@ -1,4 +1,4 @@
-# What I learned as a Software Developer while creating my own product
+# What I learned as a Software Developer while creating my product
 ## Code quality
 &nbsp;&nbsp;&nbsp; Before creating the code we need to think about its quality. 
 Yes, it's the first thing to start from.

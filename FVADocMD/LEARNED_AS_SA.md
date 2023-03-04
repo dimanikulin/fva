@@ -1,4 +1,4 @@
-# What I learned as an Application Architect while creating my own product
+# What I learned as an Application Architect while creating my product
 - "Are you kidding?", - you will ask me. - "Do such small applications require an arhitect to be involved?"
 - "Yes, yes, and yes!", - my answer will be.
 

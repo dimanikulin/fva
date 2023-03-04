@@ -1,4 +1,4 @@
-# What I learned as a Delivery Manager while creating my own product
+# What I learned as a Delivery Manager while creating my product
 &nbsp;&nbsp;&nbsp; Honestly, I didn't learn much as a Delivery Manager. Still, here are some points to consider...
 
 ## Project Status tracking
