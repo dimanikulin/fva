@@ -1,4 +1,4 @@
-# What I learned as a Product Manager while creating my own product
+# What I learned as a Product Manager while creating my product
 ## Design Thinking
 &nbsp;&nbsp;&nbsp; The first product I was thinking about was "FVA Tool Set".
 Subsequently, another product came to my mind. As a result, a Product Line came about.
@@ -62,7 +62,7 @@ I filled in the following rows for several products:
 &nbsp;&nbsp;&nbsp; As soon as high-level product documentation was ready, I decided to go deeper with more detail from the user's point of view.
 
 ### Persona 
-&nbsp;&nbsp;&nbsp; The first artifact I craeted was [Persona](../FVADocX/FVAToolSet-Persona.pdf)
+&nbsp;&nbsp;&nbsp; The first artifact I created was [Persona](../FVADocX/FVAToolSet-Persona.pdf)
 I downloaded a template [here](https://www.romanpichler.com/) and filled in the following fields:
 - **PICTURE & NAME** to answer the questions: **What does the persona look like? What is his/her name?.** I chose a realistic and plausible picture and name.
 - **DETAILS** to answer the questions: **What are persona’s relevant characteristics and behaviors?** I wrote in demographics, such as age, gender, occupation, and income; psychographics, including lifestyle, social class, and personality; and behavioral attributes like usage patterns, attitudes and brand loyalty.
@@ -96,7 +96,7 @@ It is a form to gather information on what capabilities, functions and scenariou
 Literally, Capabilities describe key requirements.
 
 ### Features
-&nbsp;&nbsp;&nbsp; Having capablity list defined, I started preparing [features](../FVADocX/FVAToolSetFeatures.pptx).
+&nbsp;&nbsp;&nbsp; Having capability list defined, I started preparing [features](../FVADocX/FVAToolSetFeatures.pptx).
 They represent significant, central functionality of the final system. 
 I put them into the table with the following columns: Name, Clarification, Business Value.
 The feature set helped me to create a project plan and a road map. 
