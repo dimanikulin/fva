@@ -28,6 +28,8 @@ which has the following components:
 - **Mapper** for Pain relievers to Pains;
 - **One Pager** with Value Proposition. 
 
+<img src="Images/ValueProposition.png" alt="One Pager"/>
+
 ### Business Model Canvas
 &nbsp;&nbsp;&nbsp; The next artifact was [Business Model Canvas](../FVADocX/FVAToolSet-BusinessModelCanvas.docx). 
 I downloaded a template [here](strategyzer.com) and filled in the following fields:
