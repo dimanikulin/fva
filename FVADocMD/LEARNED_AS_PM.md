@@ -70,7 +70,7 @@ I downloaded a template [here](https://www.romanpichler.com/) and filled in the 
 - **DETAILS** to answer the questions: **What are persona’s relevant characteristics and behaviors?** I wrote in demographics, such as age, gender, occupation, and income; psychographics, including lifestyle, social class, and personality; and behavioral attributes like usage patterns, attitudes and brand loyalty.
 - **GOAL** to answer the questions: **What problem does persona want to solve or which benefit does the character seek? Why would persona want to use or buy the product?**
 
-<img src="Images/Persona.png" alt="Persona.png"/>
+<img src="Images/Persona.png" alt="Persona"/>
 
 ### User Journey
 &nbsp;&nbsp;&nbsp; Then I tried to restore user way to achieve the goals. 
@@ -94,6 +94,8 @@ Table rows contain as follows: End users, Suppliers and Team members.
 ### Questionnaire
 &nbsp;&nbsp;&nbsp; Having no clue what is important for the user and what is not, I created a [questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/).
 It is a form to gather information on what capabilities, functions and scenarious are important. 
+
+img src="Images/Questioner.png" alt="Questioner"/>
  
 ### Capabilities
 &nbsp;&nbsp;&nbsp; Having gained an understanding of user needs, I started describing [Capabilities](./REQUIREMENTS.md#capabilities)
