@@ -70,7 +70,7 @@ I downloaded a template [here](https://www.romanpichler.com/) and filled in the 
 - **DETAILS** to answer the questions: **What are persona’s relevant characteristics and behaviors?** I wrote in demographics, such as age, gender, occupation, and income; psychographics, including lifestyle, social class, and personality; and behavioral attributes like usage patterns, attitudes and brand loyalty.
 - **GOAL** to answer the questions: **What problem does persona want to solve or which benefit does the character seek? Why would persona want to use or buy the product?**
 
-img src="Images/Persona.png" alt="Persona.png"/>
+<img src="Images/Persona.png" alt="Persona.png"/>
 
 ### User Journey
 &nbsp;&nbsp;&nbsp; Then I tried to restore user way to achieve the goals. 
