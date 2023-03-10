@@ -95,7 +95,7 @@ Table rows contain as follows: End users, Suppliers and Team members.
 &nbsp;&nbsp;&nbsp; Having no clue what is important for the user and what is not, I created a [questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/).
 It is a form to gather information on what capabilities, functions and scenarious are important. 
 
-img src="Images/Questioner.png" alt="Questioner"/>
+<img src="Images/Questioner.png" alt="Questioner"/>
  
 ### Capabilities
 &nbsp;&nbsp;&nbsp; Having gained an understanding of user needs, I started describing [Capabilities](./REQUIREMENTS.md#capabilities)
