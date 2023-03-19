@@ -21,6 +21,8 @@ Since there are two languages used to create the **FVA Software**, there also sh
 Therefore, I learned how to document the C++ code using **Doxygen** markdown and build documentation basing on Doxygen markdown. 
 Oh my God, now I definitely know how to configure **Doxygen**.
 
+<img src="Images/CodeDocumentation.png" alt="CodeDocumentation"/>
+
 ## Implementation status
 &nbsp;&nbsp;&nbsp; Before jumping into coding I thought about how I would know which requirement is covered and which is not.
 In simple words, how tracing is going to be implemented.
