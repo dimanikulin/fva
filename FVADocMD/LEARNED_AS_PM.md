@@ -66,7 +66,7 @@ I filled in the following rows for several products:
 ### Persona 
 &nbsp;&nbsp;&nbsp; The first artifact I created was [Persona](../FVADocX/FVAToolSet-Persona.pdf)
 I downloaded a template [here](https://www.romanpichler.com/) and filled in the following fields:
-- **PICTURE & NAME** to answer the questions: **What does the persona look like? What is his/her name?.** I chose a realistic and plausible picture and name.
+- **PICTURE & NAME** to answer the questions: **What does the persona look like? What is his/her name?** I chose a realistic and plausible picture and name.
 - **DETAILS** to answer the questions: **What are persona’s relevant characteristics and behaviors?** I wrote in demographics, such as age, gender, occupation, and income; psychographics, including lifestyle, social class, and personality; and behavioral attributes like usage patterns, attitudes and brand loyalty.
 - **GOAL** to answer the questions: **What problem does persona want to solve or which benefit does the character seek? Why would persona want to use or buy the product?**
 
@@ -77,7 +77,7 @@ I downloaded a template [here](https://www.romanpichler.com/) and filled in the 
 And I came up with [User Journey](../FVADocX/FVAToolSet-UserJourney.pptx)
 
 ### User Scenarios 
-To show the value of the product, I created three user scenarios and posted them on Youtube: 
+To show the value of the product, I created three user scenarios and posted them on YouTube: 
 - [Without FVA Tool Set](https://youtu.be/_bLXFdIDZtA)
 - [With FVA Tool Set](https://youtu.be/-xnUsO7zW2s)
 - [Checking the results of processing](https://youtu.be/NIsVYyioDnM)
@@ -93,7 +93,7 @@ Table rows contain as follows: End users, Suppliers and Team members.
 
 ### Questionnaire
 &nbsp;&nbsp;&nbsp; Having no clue what is important for the user and what is not, I created a [questionnaire to clarify user needs](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/).
-It is a form to gather information on what capabilities, functions and scenarious are important. 
+It is a form to gather information on what capabilities, functions and scenarios are important. 
 
 <img src="Images/Questioner.png" alt="Questioner"/>
  
