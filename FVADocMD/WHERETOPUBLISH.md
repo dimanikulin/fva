@@ -19,7 +19,9 @@ qt work day and rush hours
 
 Варто відстежувати що в тренді та створювати контент з цим розумінням. Ніхто не буде читати текст про карбюратори.
 
+prof read by GPT
 
+prof read by person
 
 pictures!!!!
 
@@ -40,3 +42,7 @@ https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon
 + make all profiles be consistent
 
 how to create your profile be independed on any pltform
+
+picture orientation must be album
+
+first must hacker noon as they check your connetn a lot
