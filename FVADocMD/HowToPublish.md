@@ -64,14 +64,19 @@ if you copy you content from spme format there should be any
 </br>
 &nbsp;&nbsp;
 
+## provide a Headline  
+GPT helpes here
+
+## provide na Article desription 
+
+GPT helpes here
+
 ## Tagging you article
 
-tags!!!!
-
-
+GPT helpes here
+ 
 ## links 
 Please check the links if they are 
-
 
 ## Additional sources of information 
 
