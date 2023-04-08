@@ -1,7 +1,7 @@
 # Headline
 How to publisk your content?
 GPT
-not more than 120 charactres
+to ckeck list not more than 120 charactres
 
 # Article desription 
 TBD 
@@ -13,20 +13,45 @@ TBD
 [Your ccomplete guide to writing for hacker noon](https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon)
 
 # Content
-TBD 
+## Critiear
+I published 6 puvlicateion on different sites before right this one
 
-# if you publish on different sites
+number of viewes
+
+## Must Have Chapters
+
+headline 
+descption
+tags
+content
+related links
+
+Please notice order of chapters is important
+
+## Headline chapter content
+GPT helpes here
+
+## Article Desription chapter content
+
+GPT helpes here
+
+## Tagging you article
+
+usse these tags to put in platform 
+
+GPT helpes here
+
+## Related Links chapter content
+add links in place and into sepatated chapter and check the links proper work if they 
+
+
+## if you publish on different sites
 
 first must hacker noon as they check your connetn a lot
 before publication please fill profiles
 make all profiles be consistent
 
 Read sites requrements 
-
-## Critiear
-I published 6 puvlicateion on different sites before right this one
-
-number of viewes
 
 ## Choose day and time
 Please select proper day and time for a publication. I publish usually on Monday and Thussday.
@@ -43,23 +68,12 @@ Content shall ask for an opinion. Also please answer possible all questions in t
 There should be paragraphs and proper indentation, subheadings, and bulleted or numbered lists
 
 ## Tell the story not just poor facts
-
+TBD
 
 ## Actual for this platform connet
-
 Facebook not for programming
 
-
-## order of chapter
-headline 
-descption
-tags
-
-content
-
-
 ## Pictures 
-
 No pictures - less views. pictires shall be related to content
 
 picture orientation must be album and not a book orienttaopn
@@ -75,28 +89,10 @@ prof read by word or google docs
 no grammar and formatting issues
 
 ## No formatong symbols
-
 if you copy you content from spme format there should be any
 
 </br>
 &nbsp;&nbsp;
 
-## provide a Headline  
-GPT helpes here
-
-## provide na Article desription 
-
-GPT helpes here
-
-## Tagging you article
-
-usse these tags to put in platform 
-
-GPT helpes here
-
 ## Check lists
-
-provide own check list
- 
-## related links 
-add links in place and check the links proper work if they 
+provide own check list 
