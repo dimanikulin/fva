@@ -1,4 +1,7 @@
-# What is Multimedia?
+# Headline
+What is Multimedia?
+Exploring the Complex World of Multimedia Information Retrieval: Navigating Through Vast Amounts of Images, Videos, and Texts in the Digital Age.
+
 # Article description
 The article provides an introduction to Multimedia Information Retrieval (MIR) systems, which are designed to search and retrieve information from multimedia sources like images, audio, and video. 
 
@@ -6,12 +9,10 @@ It explains the different components of MIR systems, such as feature extraction,
 
 Overall, the article offers a helpful overview for those interested in learning about MIR systems. 
 
-# Headline
-Exploring the Complex World of Multimedia Information Retrieval: Navigating Through Vast Amounts of Images, Videos, and Texts in the Digital Age.
-
 # Tags
 Multimedia, Multimedia Information Retrieval, Media Formats, Search Engines
 
+# Content
 We currently live in a digital age when finding information is incredibly simple with just one click due to the development of the Internet. 
 We are now able to conduct information searches from any place.
 
