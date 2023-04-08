@@ -41,4 +41,9 @@ For example, there might be different professions who access the photos or image
 * car engineers needing images and audio of car engines;
 * video content engineers searching for specific video segments and movies by their titles.
 
-See also [What is multimedia data](./MULTIMEDIADATA.md)
+# References
+| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 3 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md.md) |
+| 4 | Multimedia IR systems Analyze|               | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystemsAnalyze.md) |
+| 5 | What are MultimediaOrganizers?|              | 2022                   | Dmytro Nikulin | [repo](./MultimediaOrganizers.md)|
