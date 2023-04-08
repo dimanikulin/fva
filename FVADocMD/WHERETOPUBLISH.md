@@ -19,6 +19,10 @@ qt work day and rush hours
 
 Варто відстежувати що в тренді та створювати контент з цим розумінням. Ніхто не буде читати текст про карбюратори.
 
+Indentation
+
+</br>
+
 prof read by GPT
 
 prof read by person
