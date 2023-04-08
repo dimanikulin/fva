@@ -1,6 +1,14 @@
 # How to publisk your content?
 
+## Headline
+How to publisk your content?
+GPT
 
+## Article desription 
+TBD 
+
+## Tags
+TBD
 
 # if you publish on different sites
 
@@ -56,7 +64,7 @@ if you copy you content from spme format there should be any
 </br>
 &nbsp;&nbsp;
 
-## tags
+## Tagging you article
 
 tags!!!!
 
