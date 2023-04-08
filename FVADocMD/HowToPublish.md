@@ -9,9 +9,6 @@ TBD
 # Tags
 TBD
 
-# Related links
-[Your ccomplete guide to writing for hacker noon](https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon)
-
 # Content
 ## Critiear
 I published 6 puvlicateion on different sites before right this one
@@ -41,7 +38,7 @@ usse these tags to put in platform
 
 GPT helpes here
 
-## Related Links chapter content
+## References chapter content
 add links in place and into sepatated chapter and check the links proper work if they 
 
 
@@ -95,4 +92,7 @@ if you copy you content from spme format there should be any
 &nbsp;&nbsp;
 
 ## Check lists
-provide own check list 
+provide own check list
+
+# References 
+[Your ccomplete guide to writing for hacker noon](https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon)
