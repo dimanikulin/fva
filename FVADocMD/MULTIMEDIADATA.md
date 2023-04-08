@@ -39,10 +39,8 @@ The systems that implement this market request are referred to as **Multimedia I
 Additionally, they might include functions such as the extraction of descriptive information from **multimedia** data.
 The textual and non-textual information are vastly different from one another.
 Therefore, depending on the nature of **multimedia** data, several strategies and engines may be employed. 
-</br>
 
 In reality, text content is what **Multimedia IR systems** use most frequently.
 Examples include **Bing**, **Google** and others.
 As a result of the fact that finding information of any kind online is the most valued human activity, other sorts of information are becoming increasingly significant. 
 Statistics shows that numerous resources, including photos, videos and other content, are constantly appearing and disappearing from search requests in the **Internet**.
-</br>
