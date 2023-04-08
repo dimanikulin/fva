@@ -12,6 +12,14 @@ Overall, the article offers a helpful overview for those interested in learning 
 # Tags
 Multimedia, Multimedia Information Retrieval, Media Formats, Search Engines
 
+# Related links
+| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 1 | Multimedia Data      | | 2009 | Ramesh Jain | [Web](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) |
+| 2 | CHAPTER 8 Multimedia Information Retrieval   |  |  2020 | e-PG Pathshala | [Web](http://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/library_and_information_science/information_storage_and_retrieval/09._multimedia_information_retrieval/et/4292_et_8.pdf)|
+| 3 | How Many Photos Will Be Taken in 2021? |After a pandemic-related decline, photo-taking is expected to surge back up in 2021| March 11, 2021 |Nina Pantic|[Web](https://blog.mylio.com/how-many-photos-will-be-taken-in-2021-stats/)|
+
+
 # Content
 We currently live in a digital age when finding information is incredibly simple with just one click due to the development of the Internet. 
 We are now able to conduct information searches from any place.
@@ -22,7 +30,7 @@ Data that spans multiple mediums is referred to as **multimedia**.
 It often refers to data that represents various media formats used to record details and impressions about specific things and occasions. 
 The most widely used formats of data are numbers, alphanumeric characters, text, images, audio and video.
 
-In common usage, people refer to a data set as **multimedia** only when time-dependent data such as audio and video are involved [[13]](./REFERENCES.md).
+In common usage, people refer to a data set as **multimedia** only when time-dependent data such as audio and video are involved [[Multimedia Data]](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008).
 <img src="Images/Multimediadata.gif" alt="Multimediadata.gif"/>
 Three subclasses of the **multimedia** data are distinguished: multidimensional (also known as spatial), dynamic and static.
 
@@ -41,10 +49,10 @@ Three subclasses of the **multimedia** data are distinguished: multidimensional 
 * Text content.
 
 As a medium for interpersonal communication, text information has predominated. 
-However, as computing capabilities like as disk and memory space, processor power, and other factors increase, other **media** formats, including audio, image, and video, are gaining greater value [[1]](./REFERENCES.md). 
+However, as computing capabilities like as disk and memory space, processor power, and other factors increase, other **media** formats, including audio, image, and video, are gaining greater value [[CHAPTER 8 Multimedia Information Retrieval]](http://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/library_and_information_science/information_storage_and_retrieval/09._multimedia_information_retrieval/et/4292_et_8.pdf). 
 The amount of photo content, available worldwide, is enormous, since many individuals own smartphones with cameras, and webcams, motion cameras and tablets with cameras are widely used all over the world.
 
-This year people will shoot an estimated 1.5 trillion images, according to predictions [[14]](./REFERENCES.md).
+This year people will shoot an estimated 1.5 trillion images, according to predictions [[How Many Photos Will Be Taken in 2021?]](https://blog.mylio.com/how-many-photos-will-be-taken-in-2021-stats/).
 There is a need to search among various types of **media** because there is a massive amount of **multimedia** material in the globe and frequently a lot of **multimedia** content in a typical family (i.e., images). 
 The systems that implement this market request are referred to as **Multimedia Information Retrieval (Multimedia IR)** systems. 
 
