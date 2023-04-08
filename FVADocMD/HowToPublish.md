@@ -41,6 +41,12 @@ There should be paragraphs and proper indentation, subheadings, and bulleted or 
 Facebook not for programming
 
 
+## order of chapter
+headline 
+descption
+content
+tags
+
 ## Pictures 
 
 No pictures - less views. pictires shall be related to content
@@ -72,6 +78,8 @@ GPT helpes here
 GPT helpes here
 
 ## Tagging you article
+
+usse these tags to put in platform 
 
 GPT helpes here
  
