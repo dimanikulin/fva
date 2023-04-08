@@ -31,7 +31,7 @@ Content shall ask for an opinion. Also please answer possible all questions in t
 
 ## Content shall be structured
 
-There should be paragraphs and proper indentation
+There should be paragraphs and proper indentation, subheadings, and bulleted or numbered lists
 
 ## Tell the story not just poor facts
 
