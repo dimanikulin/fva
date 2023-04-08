@@ -38,7 +38,3 @@
 |39 | Photo Album questioner | | February, 2022 | FVA Author |[Web](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/edit) |
 |40 | A tool to edit diargam in mermaid-js | | | |[Web](https://mermaid-js.github.io/mermaid-live-editor/edit) |
 |41 | | | | |[Web]() |
-|42 | | | | |[Web]() |
-|43 | | | | |[Web]() |
-|44 | | | | |[Web]() |
-|45 | | | | |[Web]() |

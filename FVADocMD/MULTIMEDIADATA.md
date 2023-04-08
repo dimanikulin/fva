@@ -12,13 +12,6 @@ Overall, the article offers a helpful overview for those interested in learning 
 # Tags
 Multimedia, Multimedia Information Retrieval, Media Formats, Search Engines
 
-# Related links
-| # | Name                 | Description           | Release date           |  Author                 | Source        |
-| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
-| 1 | Multimedia Data      | | 2009 | Ramesh Jain | [Web](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) |
-| 2 | How Many Photos Will Be Taken in 2021? |After a pandemic-related decline, photo-taking is expected to surge back up in 2021| March 11, 2021 |Nina Pantic|[Web](https://blog.mylio.com/how-many-photos-will-be-taken-in-2021-stats/)|
-
-
 # Content
 We currently live in a digital age when finding information is incredibly simple with just one click due to the development of the Internet. 
 We are now able to conduct information searches from any place.
@@ -66,3 +59,9 @@ In reality, text content is what **Multimedia IR systems** use most frequently.
 Examples include **Bing**, **Google** and others.
 As a result of the fact that finding information of any kind online is the most valued human activity, other sorts of information are becoming increasingly significant. 
 Statistics shows that numerous resources, including photos, videos and other content, are constantly appearing and disappearing from search requests in the **Internet**.
+
+# Related links
+| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 1 | Multimedia Data      | | 2009 | Ramesh Jain | [Web](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) |
+| 2 | How Many Photos Will Be Taken in 2021? |After a pandemic-related decline, photo-taking is expected to surge back up in 2021| March 11, 2021 |Nina Pantic|[Web](https://blog.mylio.com/how-many-photos-will-be-taken-in-2021-stats/)|
