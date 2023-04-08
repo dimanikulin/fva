@@ -1,8 +1,7 @@
-# How to publisk your content?
-
 ## Headline
 How to publisk your content?
 GPT
+not more than 120 charactres
 
 ## Article desription 
 TBD 
@@ -44,8 +43,10 @@ Facebook not for programming
 ## order of chapter
 headline 
 descption
-content
 tags
+
+content
+
 
 ## Pictures 
 
