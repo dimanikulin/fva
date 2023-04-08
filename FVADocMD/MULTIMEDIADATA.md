@@ -1,40 +1,33 @@
 We currently live in a digital age when finding information is incredibly simple with just one click due to the development of the Internet. 
 We are now able to conduct information searches from any place.
-</br>
 
 High-speed Internet connection allows everyone to utilize software to search for and manage information from any sources in the high-tech world.
 Every day, people engage with digital data, and this interaction helps to produce specific types of data, such as **multimedia** data.
 Data that spans multiple mediums is referred to as **multimedia**.
 It often refers to data that represents various media formats used to record details and impressions about specific things and occasions. 
 The most widely used formats of data are numbers, alphanumeric characters, text, images, audio and video.
-</br>
 
 In common usage, people refer to a data set as **multimedia** only when time-dependent data such as audio and video are involved [[13]](./REFERENCES.md).
 <img src="Images/Multimediadata.gif" alt="Multimediadata.gif"/>
 Three subclasses of the **multimedia** data are distinguished: multidimensional (also known as spatial), dynamic and static.
-</br>
 
 **Multidimensional multimedia** includes:
 * Three-dimensional, four-dimensional, five-dimensional, etc.;
 * Virtual reality content.
-</br>
 
 **Dynamic multimedia** consists of:
 * Video content;
 * Animation content;
 * Audio content.
-</br>
 
 **Static multimedia** involves:
 * Image or photo content;
 * Graphic content;
 * Text content.
-</br></br>
 
 As a medium for interpersonal communication, text information has predominated. 
 However, as computing capabilities like as disk and memory space, processor power, and other factors increase, other **media** formats, including audio, image, and video, are gaining greater value [[1]](./REFERENCES.md). 
 The amount of photo content, available worldwide, is enormous, since many individuals own smartphones with cameras, and webcams, motion cameras and tablets with cameras are widely used all over the world.
-</br>
 
 This year people will shoot an estimated 1.5 trillion images, according to predictions [[14]](./REFERENCES.md).
 There is a need to search among various types of **media** because there is a massive amount of **multimedia** material in the globe and frequently a lot of **multimedia** content in a typical family (i.e., images). 
