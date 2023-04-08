@@ -1,15 +1,15 @@
-&nbsp;&nbsp;&nbsp; We currently live in a digital age when finding information is incredibly simple with just one click due to the development of the Internet. 
+We currently live in a digital age when finding information is incredibly simple with just one click due to the development of the Internet. 
 We are now able to conduct information searches from any place.
 </br>
 
-&nbsp;&nbsp;&nbsp; High-speed Internet connection allows everyone to utilize software to search for and manage information from any sources in the high-tech world.
+High-speed Internet connection allows everyone to utilize software to search for and manage information from any sources in the high-tech world.
 Every day, people engage with digital data, and this interaction helps to produce specific types of data, such as **multimedia** data.
 Data that spans multiple mediums is referred to as **multimedia**.
 It often refers to data that represents various media formats used to record details and impressions about specific things and occasions. 
 The most widely used formats of data are numbers, alphanumeric characters, text, images, audio and video.
 </br>
 
-&nbsp;&nbsp;&nbsp; In common usage, people refer to a data set as **multimedia** only when time-dependent data such as audio and video are involved [[13]](./REFERENCES.md).
+In common usage, people refer to a data set as **multimedia** only when time-dependent data such as audio and video are involved [[13]](./REFERENCES.md).
 <img src="Images/Multimediadata.gif" alt="Multimediadata.gif"/>
 Three subclasses of the **multimedia** data are distinguished: multidimensional (also known as spatial), dynamic and static.
 </br>
@@ -31,24 +31,24 @@ Three subclasses of the **multimedia** data are distinguished: multidimensional 
 * Text content.
 </br></br>
 
-&nbsp;&nbsp;&nbsp; As a medium for interpersonal communication, text information has predominated. 
+As a medium for interpersonal communication, text information has predominated. 
 However, as computing capabilities like as disk and memory space, processor power, and other factors increase, other **media** formats, including audio, image, and video, are gaining greater value [[1]](./REFERENCES.md). 
 The amount of photo content, available worldwide, is enormous, since many individuals own smartphones with cameras, and webcams, motion cameras and tablets with cameras are widely used all over the world.
 </br>
 
-&nbsp;&nbsp;&nbsp; This year people will shoot an estimated 1.5 trillion images, according to predictions [[14]](./REFERENCES.md).
+This year people will shoot an estimated 1.5 trillion images, according to predictions [[14]](./REFERENCES.md).
 There is a need to search among various types of **media** because there is a massive amount of **multimedia** material in the globe and frequently a lot of **multimedia** content in a typical family (i.e., images). 
 The systems that implement this market request are referred to as **Multimedia Information Retrieval (Multimedia IR)** systems. 
 
 <img src="Images/Multimediadatavolume.png" alt="Multimediadatavolume.png" />
 
-&nbsp;&nbsp;&nbsp; **Multimedia IR systems** often offer services like multimedia information storage, indexing, searching and distribution.
+**Multimedia IR systems** often offer services like multimedia information storage, indexing, searching and distribution.
 Additionally, they might include functions such as the extraction of descriptive information from **multimedia** data.
 The textual and non-textual information are vastly different from one another.
 Therefore, depending on the nature of **multimedia** data, several strategies and engines may be employed. 
 </br>
 
-&nbsp;&nbsp;&nbsp; In reality, text content is what **Multimedia IR systems** use most frequently.
+In reality, text content is what **Multimedia IR systems** use most frequently.
 Examples include **Bing**, **Google** and others.
 As a result of the fact that finding information of any kind online is the most valued human activity, other sorts of information are becoming increasingly significant. 
 Statistics shows that numerous resources, including photos, videos and other content, are constantly appearing and disappearing from search requests in the **Internet**.
