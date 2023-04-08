@@ -1,53 +1,70 @@
-TBD
+# How to publisk your content?
 
 
-qt work day and rush hours
 
-5) Не залучаєте до діалогу
+# if you publish on different sites
 
-Щоб отримати відповідь треба поставити питання. Де ваше питання? Також варто відповідати на коментарі. Я відповідаю майже всім.
+first must hacker noon as they check your connetn a lot
+before publication please fill profiles
+make all profiles be consistent
 
-4) Не та частота та час
+## Critiear
+number of viewes
 
-Знайдіть свою золоту середину: скільки має бути постів. На мою думку, 1-2 - це максимум в тиждень. Тут про якість. Не варто публікувати вночі чи о 6 ранку, шукайте "свій" час.
+## Choose day and time
+Please select proper day and time for a publication. I publish usually on Monday and Thussday.
+It is usually 10AM - 3PM my local time, Ukrainian. Defintly not at morning and an night 
 
-1) Не цікавий текст.
+## Choose frequency of publication
+I use 1-2 per week. 
 
-Треба вміти писати. "LinkedIn" - це про текст. Важливою є логічна побудова тексту, його простота.
+## Engage people for a dialog
+Content shall ask for an opinion. Also please answer possible all questions in the comments 
+
+## Content shall be structured
+
+There should be paragraphs and proper indentation
+
+## Tell the story not just poor facts
 
 
-3) Не актуальна тема
+## Actual for this platform connet
 
-Варто відстежувати що в тренді та створювати контент з цим розумінням. Ніхто не буде читати текст про карбюратори.
+Facebook not for programming
 
-Indentation
 
-</br>
+## Pictures 
 
+No pictures - less views. pictires shall be related to content
+
+picture orientation must be album and not a book orienttaopn
+
+
+## proof read 
 prof read by GPT
 
 prof read by person
 
-pictures!!!!
+prof read by word or google docs
 
-pictures!!!! related to content
+no grammar and formatting issues
+
+## No formatong symbols
+
+if you copy you content from spme format there should be any
+
+</br>
+&nbsp;&nbsp;
+
+## tags
 
 tags!!!!
 
-worked links!!!
 
-fill profile
-
-Note: Hi, All the links in the story are broken and there are a lot of grammar and formatting issues. 
-Kindly fix these before this can be considered for publication.
-
-https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon
+## links 
+Please check the links if they are 
 
 
-+ make all profiles be consistent
+## Additional sources of information 
 
-how to create your profile be independed on any pltform
-
-picture orientation must be album
-
-first must hacker noon as they check your connetn a lot
+[hackernoon](https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon)
