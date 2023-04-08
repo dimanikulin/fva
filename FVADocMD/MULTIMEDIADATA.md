@@ -16,8 +16,7 @@ Multimedia, Multimedia Information Retrieval, Media Formats, Search Engines
 | # | Name                 | Description           | Release date           |  Author                 | Source        |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
 | 1 | Multimedia Data      | | 2009 | Ramesh Jain | [Web](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) |
-| 2 | CHAPTER 8 Multimedia Information Retrieval   |  |  2020 | e-PG Pathshala | [Web](http://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/library_and_information_science/information_storage_and_retrieval/09._multimedia_information_retrieval/et/4292_et_8.pdf)|
-| 3 | How Many Photos Will Be Taken in 2021? |After a pandemic-related decline, photo-taking is expected to surge back up in 2021| March 11, 2021 |Nina Pantic|[Web](https://blog.mylio.com/how-many-photos-will-be-taken-in-2021-stats/)|
+| 2 | How Many Photos Will Be Taken in 2021? |After a pandemic-related decline, photo-taking is expected to surge back up in 2021| March 11, 2021 |Nina Pantic|[Web](https://blog.mylio.com/how-many-photos-will-be-taken-in-2021-stats/)|
 
 
 # Content
@@ -49,7 +48,7 @@ Three subclasses of the **multimedia** data are distinguished: multidimensional 
 * Text content.
 
 As a medium for interpersonal communication, text information has predominated. 
-However, as computing capabilities like as disk and memory space, processor power, and other factors increase, other **media** formats, including audio, image, and video, are gaining greater value [[CHAPTER 8 Multimedia Information Retrieval]](http://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/library_and_information_science/information_storage_and_retrieval/09._multimedia_information_retrieval/et/4292_et_8.pdf). 
+However, as computing capabilities like as disk and memory space, processor power, and other factors increase, other **media** formats, including audio, image, and video, are gaining greater value. 
 The amount of photo content, available worldwide, is enormous, since many individuals own smartphones with cameras, and webcams, motion cameras and tablets with cameras are widely used all over the world.
 
 This year people will shoot an estimated 1.5 trillion images, according to predictions [[How Many Photos Will Be Taken in 2021?]](https://blog.mylio.com/how-many-photos-will-be-taken-in-2021-stats/).
