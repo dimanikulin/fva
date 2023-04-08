@@ -1,5 +1,6 @@
 # Headline
 What is Multimedia?
+
 Exploring the Complex World of Multimedia Information Retrieval: Navigating Through Vast Amounts of Multimedia.
 
 # Article description
