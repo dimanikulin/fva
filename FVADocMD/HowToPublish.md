@@ -1,13 +1,19 @@
-## Headline
+# Headline
 How to publisk your content?
 GPT
 not more than 120 charactres
 
-## Article desription 
+# Article desription 
 TBD 
 
-## Tags
+# Tags
 TBD
+
+# Related links
+[Your ccomplete guide to writing for hacker noon](https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon)
+
+# Content
+TBD 
 
 # if you publish on different sites
 
@@ -15,7 +21,11 @@ first must hacker noon as they check your connetn a lot
 before publication please fill profiles
 make all profiles be consistent
 
+Read sites requrements 
+
 ## Critiear
+I published 6 puvlicateion on different sites before right this one
+
 number of viewes
 
 ## Choose day and time
@@ -83,10 +93,10 @@ GPT helpes here
 usse these tags to put in platform 
 
 GPT helpes here
+
+## Check lists
+
+provide own check list
  
-## links 
-Please check the links if they are 
-
-## Additional sources of information 
-
-[hackernoon](https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon)
+## related links 
+add links in place and check the links proper work if they 
