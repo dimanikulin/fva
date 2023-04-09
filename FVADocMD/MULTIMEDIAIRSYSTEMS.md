@@ -15,14 +15,14 @@ Multimedia Information Retrieval, Multimedia IR systems, Metadata, Search
 
 # Content
 &nbsp;&nbsp;&nbsp; Let's make a brief overview of the **Multimedia IR systems**.
-**Information retrieval (IR)** is the process of finding information system resources from a collection of those resources that are pertinent to an information demand, according to Wikipedia [[15]](./REFERENCES.md). 
-Furthermore, **Multimedia information retrieval** (MMIR or MIR) is a research area of computer science that aims to extract semantic information from **multimedia data** sources, according to Wikipedia as well [[16]](./REFERENCES.md). 
+**Information retrieval (IR)** is the process of finding information system resources from a collection of those resources that are pertinent to an information demand, according to [Wikipedia](https://en.wikipedia.org/wiki/Information_retrieval). 
+Furthermore, **Multimedia information retrieval** (MMIR or MIR) is a research area of computer science that aims to extract semantic information from **multimedia data** sources, according to [Wikipedia](https://en.wikipedia.org/wiki/Multimedia_information_retrieval) as well. 
 Information is gathered from a variety of sources, including directly perceivable media like audio, image, and video, indirectly perceivable sources like text, semantic descriptions, and biosignals, as well as not perceivable sources such as bioinformation, stock prices, etc.
 <img src="Images/MultimediaIRsystemsoverview.png" alt="MultimediaIRsystemsoverview.png"/>
 &nbsp;&nbsp;&nbsp; A computer system for browsing, searching, and retrieving images from a sizable database of digital images is called an **Image Retrieval system**. 
-In order to execute retrieval over the words annotated to the photos, the majority of conventional and traditional techniques of image retrieval employ a certain method of adding information to the images, such as captioning, keywords, titles or descriptions [[17]](./REFERENCES.md).
+In order to execute retrieval over the words annotated to the photos, the majority of conventional and traditional techniques of image retrieval employ a certain method of adding information to the images, such as captioning, keywords, titles or [descriptions](https://en.wikipedia.org/wiki/Image_retrieval).
 </br>
-&nbsp;&nbsp;&nbsp; Therefore, when they discuss private **Multimedia IR** that searches through images and photos, they refer to the search based on the [metadata](https://en.wikipedia.org/wiki/Metadata), tags and content of the images and photos [[6]](./REFERENCES.md). 
+&nbsp;&nbsp;&nbsp; Therefore, when they discuss private **Multimedia IR** that searches through images and photos, they refer to the search based on the [metadata](https://en.wikipedia.org/wiki/Metadata), tags and content of the images and photos. 
 The indexing and storage functionality for the **multimedia** information is also implemented by the **Multimedia IR** systems in response to market demand.
 However, those systems might also have features like the ability to extract descriptions from **multimedia data**.
 It goes without saying that if an average family does not have the **Multimedia IR** system to search for one item in thirty thousand photos, it would almost be impossible to find that one item by means of manual search. 
@@ -63,3 +63,6 @@ For example, there might be different professions who access the photos or image
 | 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md) |
 | 2 | Multimedia IR systems Analyze|               | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystemsAnalyze.md) |
 | 3 | What are MultimediaOrganizers?|              | 2022                   | Dmytro Nikulin | [repo](./MultimediaOrganizers.md)|
+| 4 | Information retrieval|                       |                        | Wikipedia      | [Web](https://en.wikipedia.org/wiki/Information_retrieval)|
+| 5 | Multimedia information retrieval |           |                        | Wikipedia      | [Web](https://en.wikipedia.org/wiki/Multimedia_information_retrieval)|
+| 6 | Image retrieval      |                       |                        | Wikipedia      | [Web](https://en.wikipedia.org/wiki/Image_retrieval)|

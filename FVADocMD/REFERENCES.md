@@ -4,16 +4,12 @@
 | 3 | How Many Photos Will Be Taken in 2020? | Research analysts crunch the statistics and come up with a mind-blowing number. |  January 10, 2020 | David Carrington | [Web](https://blog.mylio.com/how-many-photos-will-be-taken-in-2020/) |
 | 4 | Content Based Multimedia Information Retrieval To Support Digital Libraries |  |  2012.07.18 | Mohammad Nabil Almunawar | Magazine |
 | 5 | Multimedia Retrieval |  |  | Jimmy Lin , University of Maryland, Dr. Ramesh R. Sarukkai, Yahoo! Search | [Slides](https://www.ccs.neu.edu/home/jaa/CSG339.06F/Lectures/multimedia.pdf) |
-| 6 | Multimedia Information Retrieval | Synthesis Lectures on Information Concepts, Retrieval, and Services | 2009 | Stefan Rüger, The Open University | [Book](https://www.morganclaypool.com/doi/abs/10.2200/S00244ED1V01Y200912ICR010) |
 | 7 | Content Analysis with Apache Tika | | August 14, 2019 | Nguyen Nam Thai | [Web](https://www.baeldung.com/apache-tika) |
 | 8 | 26 Best Photo Organizer Software and Apps of 2022 | | Jun 25, 2021 | Anisha Singh | [Web](https://www.pixpa.com/blog/photo-organiser) |
 | 9 | Image organizer      | | | Wikipedia | [Web](https://en.wikipedia.org/wiki/Image_organizer) |
 |10 | Tag your media       |Learn how tagging and using people, places, or events tags lets you easily organize your media by managing your files and making them more search friendly.| |Adobe |[Web](https://helpx.adobe.com/elements-organizer/using/tag-media.html) |
 |11 | Tagging Photos       | | | digital-photo-secrets|[Web](https://www.digital-photo-secrets.com/tip/63/tagging-photos/)|
 |12 | The digiKam Handbook | | | The digiKam developers team | [Web](https://docs.kde.org/trunk5/en/digikam-doc/digikam/index.html) |
-|15 | Information retrieval| | |Wikipedia |[Web](https://en.wikipedia.org/wiki/Information_retrieval)|
-|16 | Multimedia information retrieval | | | Wikipedia |[Web](https://en.wikipedia.org/wiki/Multimedia_information_retrieval)|
-|17 | Image retrieval      | | | Wikipedia |[Web](https://en.wikipedia.org/wiki/Image_retrieval)|
 |18 | Google Photos        | | | Wikipedia|[Web](https://en.wikipedia.org/wiki/Google_Photos)|
 |19 | Tour Mylio           | | |Mylio |[Web](https://mylio.com/) |
 |20 | A Beginner’s Guide To Google Photos | | July 08, 2020 |Sue Waters |[Web](https://www.theedublogger.com/google-photos-guide/) |
