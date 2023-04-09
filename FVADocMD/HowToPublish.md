@@ -1,7 +1,6 @@
 # Headline
 How to publisk your content?
 GPT
-to ckeck list not more than 120 charactres
 
 # Article desription 
 TBD 
@@ -25,20 +24,20 @@ references
 
 Please notice order of chapters is important
 
-## "Headline" chapter content
+## "Headline" chapter
 GPT helpes here
 
-## "Article Desription" content
+## "Article Desription" chapter
 
 GPT helpes here
 
-## Tagging you article
+## "Tags" chapter
 
 usse these tags to put in platform 
 
 GPT helpes here
 
-## "Content" chapter content
+## "Content" chapter
 
 ### Content shall be structured
 
@@ -58,7 +57,6 @@ No pictures - less views. pictires shall be related to content
 
 picture orientation must be album and not a book orienttaopn
 
-
 ### if you publish on different sites
 
 first must hacker noon as they check your connetn a lot
@@ -74,7 +72,7 @@ It is usually 10AM - 3PM my local time, Ukrainian. Defintly not at morning and a
 ### Choose frequency of publication
 I use 1-2 per week. 
 
-## Make proof read 
+### Make proof read 
 prof read by GPT
 
 prof read by person
@@ -93,14 +91,17 @@ if you copy you content from spme format there should be any
 provide own check list
 My is 
 - if there is "headline"?
+- is "headline" less than 120 charactres?
 - if there is "Article descption"?
 - if there is "Tags" ?
 - if there is "Content"?
 - if there is "References"?
+- if there is no formatting symbols?
+- Has it been proof read?
+- Are there any pictures?
 
-## "References" chapter content
+## "References" chapter
 add links in place and into sepatated chapter and check the links proper work if they 
-
 
 # References 
 [Your ccomplete guide to writing for hacker noon](https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon)
