@@ -1,5 +1,6 @@
 # Headline
 What are Multimedia Organizers?
+
 Exploring the Main Functions and Requirements of Multimedia Organizers for Efficient Photo Management
 
 # Article description
@@ -15,7 +16,7 @@ Multimedia organizers, Photo management, Photo organizer software, Metadata, IR 
 # Content
 
 ## Multimedia Organizers functions
-&nbsp;&nbsp;&nbsp; A program that helps organizing photos is known as a **photo organizer**.
+A program that helps organizing photos is known as a **photo organizer**.
 There are a variety of **photo organizer** software programs available on the market, and each one provides various features and tools to assist in organizing photos.
 Thus, let’s consider main functions multimedia organizers perform:
 
@@ -23,10 +24,9 @@ Thus, let’s consider main functions multimedia organizers perform:
 * they offer an option of creating a folder structure and place the files in it;
 * they automate the import of new photos into **IR Multimedia Systems**.
 
-&nbsp;&nbsp;&nbsp; Additionally, they make photo albums more searchable (that is driven by **IR Multimedia Systems**) by enriching the **metadata** (and improving its consistency) with minimal human involvement.
-</br>
+Additionally, they make photo albums more searchable (that is driven by **IR Multimedia Systems**) by enriching the **metadata** (and improving its consistency) with minimal human involvement.
 
-&nbsp;&nbsp;&nbsp; Therefore, they are chosen as a subject for the overview and comparison.
+Therefore, they are chosen as a subject for the overview and comparison.
 A list of **Photo Organizers** for professional photographers is created, and those [organizers](https://www.pixpa.com/blog/photo-organiser) can also be used by an ordinary user with a big photo album.
 Pertinent online [courses](https://www.organizepictures.com/organize-digital-photos-course) are available to instruct users on how to arrange the photos.
 More detailed comparison of photo organizers is provided by Wikipedia and is available [here](https://en.wikipedia.org/wiki/Image_organizer).
@@ -42,7 +42,7 @@ More detailed comparison of photo organizers is provided by Wikipedia and is ava
 * they shall be able to suggest ways to solve inconsistency and absence.
 
 ## Multimedia Organizer approaches to create folder structure
-&nbsp;&nbsp;&nbsp; The goal is to prevent duplicate photos from being stored in the same folder.
+The goal is to prevent duplicate photos from being stored in the same folder.
 In order to construct subfolders based on the number of photographers or cameras, the folder name may be something like Date Shoot-Type Event Name; 
 it could also contain a location or any other information the user desires.
 
