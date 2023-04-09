@@ -10,7 +10,7 @@ Similarly, we compare both proprietary and open systems.
 Multimedia IR systems, Synology Moments, Mylio, Google Photos, digiKam, Apple photo
 
 # Content
-&nbsp;&nbsp;&nbsp; Let's compare several **multimedia IR** systems by going over the above-mentioned requirements and needs.
+Let's compare several **multimedia IR** systems by going over the above-mentioned requirements and needs.
 The best approach here would be to choose one offline and one online system, since some users could feel free to use **multimedia IR** systems that are integrated with online storage (like Cloud ones), while others want to utilize offline **Multimedia IR** systems.
 Similarly, the proprietary and open systems should be included in the comparison.
 <img src="Images/ComparisonoftheprivateMultimediaIRsystems.gif" alt="ComparisonoftheprivateMultimediaIRsystems.gif" />
@@ -24,7 +24,7 @@ Below is the list of them with brief descriptions:
 <img src="Images/ComparisonofprivateMultimediaIRsystems2.png" alt="ComparisonofprivateMultimediaIRsystems2.png" />
 
 ## Well implemented features
-&nbsp;&nbsp;&nbsp; The comparison table demonstrates, how well the following features have been implemented: 
+The comparison table demonstrates, how well the following features have been implemented: 
 
 * keeping/browsing functions for the multimedia content of private photo albums; 
 * extensive photo editing capabilities;
@@ -34,7 +34,7 @@ Below is the list of them with brief descriptions:
 * search by rating/marks (using metadata);
 * search by feedback and by comments. 
 
-&nbsp;&nbsp;&nbsp; From the user's perspective, all of the aforementioned features are well-developed and do not need to be improved upon or replaced by any other software.
+From the user's perspective, all of the aforementioned features are well-developed and do not need to be improved upon or replaced by any other software.
 
 ## To be developed features
 In order to meet user demands, the following set of searching features must be developed:
@@ -46,12 +46,12 @@ In order to meet user demands, the following set of searching features must be d
 * search by a photo author (is possible by applying tagging only);
 * search by a combination of color or texture (only a few systems can perform this).
 
-&nbsp;&nbsp;&nbsp; Although the most recent **multimedia IR** systems may provide search operations, providing tagging must be implemented at a much earlier level than import.
+Although the most recent **multimedia IR** systems may provide search operations, providing tagging must be implemented at a much earlier level than import.
 
 # References
 | # | Name                 | Description           | Release date           |  Author                 | Source        |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
-| 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md) |
+| 1 | What is Multimedia Data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md) |
 | 2 | What are Multimedia IR systems?|             | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystems.md) |
 | 3 | What are MultimediaOrganizers?|              | 2022                   | Dmytro Nikulin | [repo](./MultimediaOrganizers.md)|
 | 4 | Synology Moments     |                       | 2021                   | Synology       | [Web](https://www.synology.com/en-global/dsm/feature/moments)|
