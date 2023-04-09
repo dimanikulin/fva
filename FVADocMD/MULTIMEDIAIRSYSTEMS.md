@@ -1,11 +1,17 @@
 # Headline
 What are Multimedia IR systems?
 
-# Article desription 
-TBD 
+Overview of Multimedia Information Retrieval (IR) Systems and User Needs
+
+# Article description
+This article discusses the concept of Multimedia Information Retrieval (IR) systems and their potential uses for both ordinary users and professionals. 
+The article provides an overview of Multimedia IR systems, explaining how they extract semantic information from various sources, such as audio, image, and video.
+The article also highlights the importance of metadata, tags, and content in the search process, and how the indexing and storage functionality for multimedia information is implemented by these systems.
+Additionally, the article outlines the key needs of users when it comes to Multimedia IR systems, including the ability to store, represent, edit, and search multimedia data, as well as the provision of relevance feedback, indexing, and cataloging functions.
+Finally, the article examines how professionals in various industries can benefit from these systems, providing examples such as professional photographers, journalists, doctors, architects, and engineers. 
 
 # Tags
-TBD
+Multimedia Information Retrieval, Multimedia IR systems, Metadata, Search
 
 # Content
 &nbsp;&nbsp;&nbsp; Let's make a brief overview of the **Multimedia IR systems**.
