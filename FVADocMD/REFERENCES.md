@@ -5,7 +5,6 @@
 | 4 | Content Based Multimedia Information Retrieval To Support Digital Libraries |  |  2012.07.18 | Mohammad Nabil Almunawar | Magazine |
 | 5 | Multimedia Retrieval |  |  | Jimmy Lin , University of Maryland, Dr. Ramesh R. Sarukkai, Yahoo! Search | [Slides](https://www.ccs.neu.edu/home/jaa/CSG339.06F/Lectures/multimedia.pdf) |
 | 7 | Content Analysis with Apache Tika | | August 14, 2019 | Nguyen Nam Thai | [Web](https://www.baeldung.com/apache-tika) |
-| 9 | Image organizer      | | | Wikipedia | [Web](https://en.wikipedia.org/wiki/Image_organizer) |
 |10 | Tag your media       |Learn how tagging and using people, places, or events tags lets you easily organize your media by managing your files and making them more search friendly.| |Adobe |[Web](https://helpx.adobe.com/elements-organizer/using/tag-media.html) |
 |11 | Tagging Photos       | | | digital-photo-secrets|[Web](https://www.digital-photo-secrets.com/tip/63/tagging-photos/)|
 |21 | Three Cheers for Embedded Metadata| | February 28, 2012|Lynda Schmitz Funrig |[Web](https://siarchives.si.edu/blog/three-cheers-embedded-metadata) |
@@ -15,7 +14,6 @@
 |25 | Metadata Templates | | |Peter Krogh |[Web](https://dpbestflow.org/metadata/metadata-templates) |
 |26 | Metadata generation for image files | | 2013-06-25 |Google|[Patent](https://patents.google.com/patent/US8473525)|
 |27 | Google code style | | |Google |[Web](https://google.github.io/styleguide/)|
-|28 | Independent Course for Organizing Your Digital Photos | | 2021 | organizepictures |[Web](https://www.organizepictures.com/organize-digital-photos-course) |
 |29 | The Massive Growth in Unstructured Data | | Dec. 2012 |IDC The Digital Universe |[Web](https://www.researchgate.net/figure/The-Massive-Growth-in-Unstructured-Data-Source-IDC-The-Digital-Universe-Dec-2012_fig1_322058724) |
 |32 | Exif Jpeg header manipulation tool | |Nov 22 2019| |[Web](https://www.sentex.ca/~mwandel/jhead/)|
 |33 | Getting started with project planning on GitHub| |2022-02-11 | GitHub |[Web](https://github.blog/2022-02-11-getting-started-with-project-planning-on-github/)|
