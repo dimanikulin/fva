@@ -1,3 +1,15 @@
+# Headline
+The Comparison of Private Multimedia IR Systems
+
+# Article description
+In this article, we compare several private multimedia information retrieval (IR) systems based on the requirements and needs of users.
+We recommend choosing one offline and one online system, as some users prefer multimedia IR systems integrated with online storage while others prefer offline ones.
+Similarly, we compare both proprietary and open systems. 
+
+# Tags
+Multimedia IR systems, Synology Moments, Mylio, Google Photos, digiKam, Apple photo
+
+# Content
 &nbsp;&nbsp;&nbsp; Let's compare several **multimedia IR** systems by going over the above-mentioned requirements and needs.
 The best approach here would be to choose one offline and one online system, since some users could feel free to use **multimedia IR** systems that are integrated with online storage (like Cloud ones), while others want to utilize offline **Multimedia IR** systems.
 Similarly, the proprietary and open systems should be included in the comparison.
