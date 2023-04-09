@@ -93,6 +93,26 @@ You can also post an issue here [GitHub issues](https://github.com/dimanikulin/f
 * [Author Telegram](https://t.me/dimanikulin79) 
 * [Community Telegram](https://t.me/+XqWdomi90-00Yzgy) 
 
+## References
+| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+|10 | Tag your media       |Learn how tagging and using people, places, or events tags lets you easily organize your media by managing your files and making them more search friendly.| |Adobe |[Web](https://helpx.adobe.com/elements-organizer/using/tag-media.html) |
+|11 | Tagging Photos       | | | digital-photo-secrets|[Web](https://www.digital-photo-secrets.com/tip/63/tagging-photos/)|
+|21 | Three Cheers for Embedded Metadata| | February 28, 2012|Lynda Schmitz Funrig |[Web](https://siarchives.si.edu/blog/three-cheers-embedded-metadata) |
+|22 | Best Practices and Tools to Create Archival Image Metadata| |June 28, 2016 |Elena Toffalori |[Web](https://digitalarch.org/blog/2017/4/7/ykag6k2fvln7g1j02923n0c7zdrryg) |
+|23 | Resolving and avoiding metadata conflicts| Lynda is now LinkedIn| | |[Web](https://www.lynda.com/Lightroom-tutorials/Resolving-avoiding-metadata-conflicts/447237/485677-4.html) |
+|24 | Adding Descriptions to Digital Photos | |October 28, 2011|Mike Ashenfelder |[Web](https://blogs.loc.gov/thesignal/2011/10/mission-possible-an-easy-way-to-add-descriptions-to-digital-photos/) |
+|25 | Metadata Templates | | |Peter Krogh |[Web](https://dpbestflow.org/metadata/metadata-templates) |
+|26 | Metadata generation for image files | | 2013-06-25 |Google|[Patent](https://patents.google.com/patent/US8473525)|
+|27 | Google code style | | |Google |[Web](https://google.github.io/styleguide/)|
+|32 | Exif Jpeg header manipulation tool | |Nov 22 2019| |[Web](https://www.sentex.ca/~mwandel/jhead/)|
+|33 | Getting started with project planning on GitHub| |2022-02-11 | GitHub |[Web](https://github.blog/2022-02-11-getting-started-with-project-planning-on-github/)|
+|36 | How to get more engagement with your open source project| Best practices to get more stars on your GitHub repos| JANUARY 26, 2022 | navaneeth pk |[Web](https://www.freecodecamp.org/news/how-to-get-more-engagement-with-your-open-source-project/)|
+|37 | Using GitHub Actions with C++ and CMake | Providing a GitHub Actions configuration yaml file for C++ projects using CMake| DEC 22, 2019| Cristian Adam |[Web](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/)|
+|38 | Code scanning finds more vulnerabilities using machine learning| | February 17, 2022 | Tiferet Gazit, Alona Hlobina |[Web](https://github.blog/2022-02-17-code-scanning-finds-vulnerabilities-using-machine-learning/)|
+|39 | Photo Album questioner | | February, 2022 | FVA Author |[Web](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/edit) |
+|40 | A tool to edit diargam in mermaid-js | | | |[Web](https://mermaid-js.github.io/mermaid-live-editor/edit) |
+|41 | | | | |[Web]() |
+
 ## Additional links
-- [References to external documents, i.e. web resources, publication, patents etc. (applicable for all other documents)](FVADocMD/REFERENCES.md)
 - [Definitions, Acronyms, Abbreviations](FVADocMD/DEFINITIONS.MD)
