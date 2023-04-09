@@ -33,6 +33,6 @@ it could also contain a location or any other information the user desires.
 # References
 | # | Name                 | Description           | Release date           |  Author                 | Source        |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
-| 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md.md) |
+| 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md) |
 | 2 | What are Multimedia IR systems?|             | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystems.md) |
 | 3 | Multimedia IR systems Analyze|               | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystemsAnalyze.md) |

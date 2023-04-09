@@ -44,6 +44,6 @@ For example, there might be different professions who access the photos or image
 # References
 | # | Name                 | Description           | Release date           |  Author                 | Source        |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
-| 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md.md) |
+| 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md) |
 | 2 | Multimedia IR systems Analyze|               | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystemsAnalyze.md) |
 | 3 | What are MultimediaOrganizers?|              | 2022                   | Dmytro Nikulin | [repo](./MultimediaOrganizers.md)|

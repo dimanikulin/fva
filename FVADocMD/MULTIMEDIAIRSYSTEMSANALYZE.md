@@ -39,6 +39,6 @@ In order to meet user demands, the following set of searching features must be d
 # References
 | # | Name                 | Description           | Release date           |  Author                 | Source        |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
-| 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md.md) |
+| 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md) |
 | 2 | What are Multimedia IR systems?|             | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystems.md) |
 | 3 | What are MultimediaOrganizers?|              | 2022                   | Dmytro Nikulin | [repo](./MultimediaOrganizers.md)|
