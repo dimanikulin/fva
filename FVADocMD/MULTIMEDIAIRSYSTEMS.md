@@ -1,3 +1,13 @@
+# Headline
+What are Multimedia IR systems?
+
+# Article desription 
+TBD 
+
+# Tags
+TBD
+
+# Content
 &nbsp;&nbsp;&nbsp; Let's make a brief overview of the **Multimedia IR systems**.
 **Information retrieval (IR)** is the process of finding information system resources from a collection of those resources that are pertinent to an information demand, according to Wikipedia [[15]](./REFERENCES.md). 
 Furthermore, **Multimedia information retrieval** (MMIR or MIR) is a research area of computer science that aims to extract semantic information from **multimedia data** sources, according to Wikipedia as well [[16]](./REFERENCES.md). 
