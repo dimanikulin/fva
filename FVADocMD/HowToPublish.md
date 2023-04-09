@@ -1,12 +1,12 @@
 # Headline
 How to publisk your content?
-GPT
+TODO GPT from content
 
 # Article desription 
-TBD 
+TODO GPT from content 
 
 # Tags
-TBD
+TODO GPT from connet
 
 # Content
 ## Critiear
