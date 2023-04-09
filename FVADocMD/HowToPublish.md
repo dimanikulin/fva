@@ -18,10 +18,10 @@ number of viewes
 ## Must Have Chapters
 
 headline 
-descption
+Article descption
 tags
 content
-related links
+references
 
 Please notice order of chapters is important
 
@@ -37,6 +37,8 @@ GPT helpes here
 usse these tags to put in platform 
 
 GPT helpes here
+
+## "Content" chapter content
 
 ## References chapter content
 add links in place and into sepatated chapter and check the links proper work if they 
