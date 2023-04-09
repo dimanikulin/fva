@@ -16,10 +16,10 @@ Similarly, the proprietary and open systems should be included in the comparison
 <img src="Images/ComparisonoftheprivateMultimediaIRsystems.gif" alt="ComparisonoftheprivateMultimediaIRsystems.gif" />
 Below is the list of them with brief descriptions:
 * **[Synology Moments](https://www.synology.com/en-global/dsm/feature/moments)** – a system that is aimed at collecting all user’s images and videos in one secure location and organizing them in an entirely new way. Synology Moments is the brand-new photo solution for personal and home and personal use, offering a modern browsing experience with the image recognition technique.
-* **Mylio** – a free application that can be used to organize images, videos and other data types. This program can be used on any Mac, iOS, Windows and Android device. Mylio can automatically arrange the files depending on the calendar app and can run without the Internet to operate. [[19]](./REFERENCES.md).
-* **Google Photos** – a photo sharing and storage service, developed by Google. The service automatically analyzes photos, identifying various visual features and subjects. Users can search for anything in photos, with the service returning results in three major categories: People, Places, and Things. [[18]](./REFERENCES.md),[[20]](./REFERENCES.md).
-* **digiKam** – a free and open-source photo organizing software that can handle more than 100K images. The program has all the photo organizing functionality needed, such as uploading, deleting and sorting images. [[12]](./REFERENCES.md)
-* **Apple photo** – a photo management and editing application, developed by Apple. [[30]](./REFERENCES.md)
+* **[Mylio](https://mylio.com/)** – a free application that can be used to organize images, videos and other data types. This program can be used on any Mac, iOS, Windows and Android device. Mylio can automatically arrange the files depending on the calendar app and can run without the Internet to operate.
+* **[Google Photos](https://en.wikipedia.org/wiki/Google_Photos)** – a photo sharing and storage service, developed by Google. The service automatically analyzes photos, identifying various visual features and subjects. Users can search for anything in photos, with the service returning results in three major categories: People, Places, and Things.
+* **[digiKam](https://docs.kde.org/trunk5/en/digikam-doc/digikam/index.html)** – a free and open-source photo organizing software that can handle more than 100K images. The program has all the photo organizing functionality needed, such as uploading, deleting and sorting images.
+* **[Apple photo](https://en.wikipedia.org/wiki/Apple_Photos)** – a photo management and editing application, developed by Apple.
 <img src="Images/ComparisonofprivateMultimediaIRsystems.png" alt="ComparisonofprivateMultimediaIRsystems.png" />
 <img src="Images/ComparisonofprivateMultimediaIRsystems2.png" alt="ComparisonofprivateMultimediaIRsystems2.png" />
 
@@ -54,9 +54,9 @@ In order to meet user demands, the following set of searching features must be d
 | 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md) |
 | 2 | What are Multimedia IR systems?|             | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystems.md) |
 | 3 | What are MultimediaOrganizers?|              | 2022                   | Dmytro Nikulin | [repo](./MultimediaOrganizers.md)|
-|31 | Synology Moments     |                       | 2021                   | Synology       | [Web](https://www.synology.com/en-global/dsm/feature/moments)|
-|19 | Tour Mylio           |                       |                        | Mylio          | [Web](https://mylio.com/) |
-|18 | Google Photos        |                       |                        | Wikipedia      | [Web](https://en.wikipedia.org/wiki/Google_Photos)|
-|20 | A Beginner’s Guide To Google Photos  |       | July 08, 2020          | Sue Waters     | [Web](https://www.theedublogger.com/google-photos-guide/) |
-|12 | The digiKam Handbook |                       |                        | The digiKam developers team | [Web](https://docs.kde.org/trunk5/en/digikam-doc/digikam/index.html) |
-|30 | Apple Photos         |                       |                        | Wikipedia      | [Web](https://en.wikipedia.org/wiki/Apple_Photos) |
+| 4 | Synology Moments     |                       | 2021                   | Synology       | [Web](https://www.synology.com/en-global/dsm/feature/moments)|
+| 5 | Tour Mylio           |                       |                        | Mylio          | [Web](https://mylio.com/) |
+| 6 | Google Photos        |                       |                        | Wikipedia      | [Web](https://en.wikipedia.org/wiki/Google_Photos)|
+| 7 | A Beginner’s Guide To Google Photos  |       | July 08, 2020          | Sue Waters     | [Web](https://www.theedublogger.com/google-photos-guide/) |
+| 8 | The digiKam Handbook |                       |                        | The digiKam developers team | [Web](https://docs.kde.org/trunk5/en/digikam-doc/digikam/index.html) |
+| 9 | Apple Photos         |                       |                        | Wikipedia      | [Web](https://en.wikipedia.org/wiki/Apple_Photos) |
