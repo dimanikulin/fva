@@ -29,3 +29,10 @@ More detailed comparison of photo organizers is provided by Wikipedia and is ava
 &nbsp;&nbsp;&nbsp; The goal is to prevent duplicate photos from being stored in the same folder [[8]](./REFERENCES.md).
 In order to construct subfolders based on the number of photographers or cameras, the folder name may be something like Date Shoot-Type Event Name; 
 it could also contain a location or any other information the user desires.
+
+# References
+| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md.md) |
+| 2 | What are Multimedia IR systems?|             | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystems.md) |
+| 3 | Multimedia IR systems Analyze|               | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystemsAnalyze.md) |

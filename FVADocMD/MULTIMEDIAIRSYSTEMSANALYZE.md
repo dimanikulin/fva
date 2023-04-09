@@ -35,3 +35,10 @@ In order to meet user demands, the following set of searching features must be d
 * search by a combination of color or texture (only a few systems can perform this).
 
 &nbsp;&nbsp;&nbsp; Although the most recent **multimedia IR** systems may provide search operations, providing tagging must be implemented at a much earlier level than import.
+
+# References
+| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md.md) |
+| 2 | What are Multimedia IR systems?|             | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystems.md) |
+| 3 | What are MultimediaOrganizers?|              | 2022                   | Dmytro Nikulin | [repo](./MultimediaOrganizers.md)|
