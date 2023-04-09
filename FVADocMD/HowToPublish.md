@@ -96,12 +96,13 @@ My is
 - if there is "Tags" ?
 - if there is "Content"?
 - if there is "References"?
+- Are all references actual?
 - if there is no formatting symbols?
 - Has it been proof read?
 - Are there any pictures?
 
 ## "References" chapter
-add links in place and into sepatated chapter and check the links proper work if they 
+add links in place and into sepatated chapter 
 
 # References 
 [Your ccomplete guide to writing for hacker noon](https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon)
