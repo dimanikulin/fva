@@ -36,3 +36,5 @@ it could also contain a location or any other information the user desires.
 | 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md) |
 | 2 | What are Multimedia IR systems?|             | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystems.md) |
 | 3 | Multimedia IR systems Analyze|               | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystemsAnalyze.md) |
+
+| 8 | 26 Best Photo Organizer Software and Apps of 2022 | | Jun 25, 2021 | Anisha Singh | [Web](https://www.pixpa.com/blog/photo-organiser) |
