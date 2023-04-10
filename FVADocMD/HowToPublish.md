@@ -39,6 +39,8 @@ GPT helpes here
 
 ## "Content" chapter
 
+### Plagiarism
+
 ### Content shall be structured
 
 There should be paragraphs and proper indentation, subheadings, and bulleted or numbered lists
