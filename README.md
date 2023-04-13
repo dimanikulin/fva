@@ -33,44 +33,12 @@
   <a href="https://github.com/dimanikulin/fva/edit/master/README.md"><img src="https://img.shields.io/badge/documentation-read-d90368"> </a>
 </p>
 
-## Description
+# Description
 &nbsp;&nbsp;&nbsp; FVA Software is a convergent tool set in a form of desktop applications aimed at automating importing process of [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) (photo/audio/video)
 into [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) like [digiKam](https://www.digikam.org/) <img src="FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/>, Google Photo, Apple Photo, [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" />, etc. to make multimedia more fully-searchable as well as to refine family photos.
 <img src="./FVADocMD/Images/InputAndOutputExamples.gif" alt="Input And Output Examples" />
 
-## History
-or **Why I decided to create my photo organizer**
-</br>
-&nbsp;&nbsp;&nbsp; As a child, I used to flip through family photo album to see my relatives whom I had not seen in real life.
-At that time we had film cameras only, so the number of photos was not so large.
-Time has passed and currently, let's say, almost everyone owns a camera or a smartphone with a camera, or even both.
-Given that, the size of my photo album increased significantly. However, I think it's not just for me.
-<img src="./FVADocMD/Images/Anaveragefamilyphotoalbum.gif" alt="Anaveragefamilyphotoalbum.gif" />
-
-&nbsp;&nbsp;&nbsp; Once my friend and me decided to recall an event we both attended. We took my photo album and tried to search there. 
-That time my album kept more than 30 thousand items inside. That search process looked like
-<img src="./FVADocMD/Images/Asearchinphotoalbumwith30thousandphotos.gif" alt="Asearchinphotoalbumwith30thousandphotos.gif" />
-
-&nbsp;&nbsp;&nbsp; Of course, we didn't find anything. Therefore, I started looking for a solution to be able to search in [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) in an automatic way. 
-The solution I found were [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md). 
-</br>
-
-&nbsp;&nbsp;&nbsp; I decided to use [digiKam](https://www.digikam.org/) <img src="./FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) and [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md).
-Please note, that they were selected solely based on author's criteria, and there is no aim to advertise anyone.
-</br> 
-
-&nbsp;&nbsp;&nbsp; Then I started using it...  What I discovered in a flash is that current [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) do not provide a flexible and automated functionality to import [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) into [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md).
-But that wasn't the only problem.
-</br> 
-
-&nbsp;&nbsp;&nbsp; I realized that I need [Multimedia Organizer](./FVADocMD/MULTIMEDIAORGANIZERS.md) as well.
-Unfortunately, I didn't find a [Multimedia Organizer](./FVADocMD/MULTIMEDIAORGANIZERS.md) that could fully satisfy my needs (fixing problem metadata, working with **digiKam** and **Synology** etc.)
-That's why I started creating my [own product](https://github.com/dimanikulin/fva) to cover my needs.
-</br> 
-
-&nbsp;&nbsp;&nbsp; Honestly, I didn't expect that it would be so hard and in the meantime so interesting.
-
-## Contributing
+# Contributing
 &nbsp;&nbsp;&nbsp;So far, the development is in a hot stage, and everyone is welcome to contribute anytime.
 You can fill in this [form](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/edit) to understand your needs in Multimedia search and organizing.
 You can also post an issue here [GitHub issues](https://github.com/dimanikulin/fva/issues) to request a feature or report a bug.
@@ -87,13 +55,13 @@ You can also post an issue here [GitHub issues](https://github.com/dimanikulin/f
 
 &nbsp;&nbsp;&nbsp;So, there are many items to help the author with.
   
-## Stay in touch
+# Stay in touch
 * [Twitter](https://twitter.com/DmytroNikulin)
 * [LinkedIn](https://www.linkedin.com/in/dimanikulin/)
 * [Author Telegram](https://t.me/dimanikulin79) 
 * [Community Telegram](https://t.me/+XqWdomi90-00Yzgy) 
 
-## References
+# References
 | # | Name                 | Description           | Release date           |  Author                 | Source        |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
 |10 | Tag your media       |Learn how tagging and using people, places, or events tags lets you easily organize your media by managing your files and making them more search friendly.| |Adobe |[Web](https://helpx.adobe.com/elements-organizer/using/tag-media.html) |
@@ -114,7 +82,7 @@ You can also post an issue here [GitHub issues](https://github.com/dimanikulin/f
 |40 | A tool to edit diargam in mermaid-js | | | |[Web](https://mermaid-js.github.io/mermaid-live-editor/edit) |
 |41 | | | | |[Web]() |
 
-## Definitions, Acronyms, Abbreviations
+# Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
 | - | ------------------------|:--------------:|
 | 1 | API                     |is a computing interface to a software component or a system, that defines how other components or systems can use it. It defines the kinds of calls or requests that can be made, how to make them, the data formats that should be used, the conventions to follow, etc                |
