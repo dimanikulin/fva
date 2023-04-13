@@ -67,6 +67,10 @@ No pictures - less views. pictires shall be related to content
 
 picture orientation must be album and not a book orienttaopn
 
+### Size
+
+not less not more
+
 ### if you publish on different sites
 
 first must hacker noon as they check your connetn a lot
