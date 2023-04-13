@@ -41,9 +41,13 @@ usse these tags to put in platform
 
 GPT helpes here
 
+## "Definitions, Acronyms, Abbreviations" chapter
+TBD
+
 ## "Content" chapter
 
 ### Plagiarism
+TBD
 
 ### Content shall be structured
 
@@ -102,15 +106,17 @@ My is
 - is "headline" less than 120 charactres?
 - if there is "Article descption"?
 - if there is "Tags" ?
-- if there is "Content"? it might be no
-- if there is "References"?
-- Are all references actual?
+- if there is "Content"? 
+- if there is "References"? it might be no
 - if there is no formatting symbols?
+- Are all references actual?
 - Has it been proof read?
 - Are there any pictures?
 
 ## "References" chapter
 add links in place and into sepatated chapter 
+
+# Definitions, Acronyms, Abbreviations
 
 # References 
 [Your ccomplete guide to writing for hacker noon](https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon)
