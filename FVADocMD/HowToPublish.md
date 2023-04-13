@@ -22,6 +22,10 @@ tags
 content
 references
 
+## Optional chapters
+Definitions, Acronyms, Abbreviations
+
+
 Please notice order of chapters is important
 
 ## "Headline" chapter
@@ -98,7 +102,7 @@ My is
 - is "headline" less than 120 charactres?
 - if there is "Article descption"?
 - if there is "Tags" ?
-- if there is "Content"?
+- if there is "Content"? it might be no
 - if there is "References"?
 - Are all references actual?
 - if there is no formatting symbols?
