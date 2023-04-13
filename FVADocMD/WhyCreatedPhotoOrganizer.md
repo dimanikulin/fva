@@ -16,7 +16,7 @@ At that time we had film cameras only, so the number of photos was not so large.
 Time has passed and currently, let's say, almost everyone owns a camera or a smartphone with a camera, or even both.
 Given that, the size of my photo album increased significantly. However, I think it's not just for me.
 
-<img src="./FVADocMD/Images/Anaveragefamilyphotoalbum.gif" alt="Anaveragefamilyphotoalbum.gif" />
+<img src="./Images/Anaveragefamilyphotoalbum.gif" alt="Anaveragefamilyphotoalbum.gif" />
 
 Once my friend and me decided to recall an event we both attended. We took my photo album and tried to search there. 
 That time my album kept more than 30 thousand items inside. That search process looked like
