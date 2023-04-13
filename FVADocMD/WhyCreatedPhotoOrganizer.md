@@ -1,12 +1,14 @@
 # Headline
-Why I decided to create my photo organizer?
-TBD
+"Why I decided to create my photo organizer?"
+"How I Created My Own Multimedia Organizer to Tackle the Challenges of Managing a Growing Photo Album"
 
 # Article description
-TBD 
+In this article, the author shares their personal experience of managing a growing photo album in the digital age.
+They highlight the challenges they faced in searching and organizing multimedia data and their quest to find a suitable multimedia information retrieval (IR) system.
+The author also discusses their journey of creating their own multimedia organizer to address their needs and the challenges they encountered along the way. 
 
 # Tags
-TBD
+Multimedia data, Photo album, Multimedia information retrieval (IR) systems, Multimedia organizer, Metadata
 
 # Content
 As a child, I used to flip through family photo album to see my relatives whom I had not seen in real life.
@@ -39,7 +41,17 @@ That's why I started creating my [own product](https://github.com/dimanikulin/fv
 Honestly, I didn't expect that it would be so hard and in the meantime so interesting.
 
 # References
-TBD
+| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 1 | What is multimedia data?|                    | 2022                   | Dmytro Nikulin | [repo](./MultimediaData.md) |
+| 2 | What are Multimedia IR systems?|             | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystems.md) |
+| 3 | Multimedia IR systems Analyze|               | 2022                   | Dmytro Nikulin | [repo](./MultimediaIRSystemsAnalyze.md) |
+| 4 | What are MultimediaOrganizers?|              | 2022                   | Dmytro Nikulin | [repo](./MultimediaOrganizers.md)|
+| 5 | 26 Best Photo Organizer Software and Apps of 2022 | | Jun 25, 2021    | Anisha Singh   | [Web](https://www.pixpa.com/blog/photo-organiser) |
+| 6 | Independent Course for Organizing Your Digital Photos | | 2021        | organizepictures |[Web](https://www.organizepictures.com/organize-digital-photos-course) |
+| 7 | Image organizer      |                       |                        | Wikipedia      | [Web](https://en.wikipedia.org/wiki/Image_organizer) |
+| 8 | Best Photo Management Software to Organize Digital Photos in 2022 |  | 2021-12-17 | Mansi Vijay |[Web](https://wethegeek.com/best-photo-management-software-organize-photos/)|
+| 9 | Photo organizer | | | GitHub |[Web](https://github.com/topics/photo-organizer)|
 
 # Definitions, Acronyms, Abbreviations
 TBD
