@@ -1,4 +1,14 @@
-# What I learned as a Delivery Manager while creating my product
+# Headline
+TBD
+What I learned as a Delivery Manager while creating my product
+
+# Article description
+TBD 
+
+# Tags
+TBD
+
+# Content
 &nbsp;&nbsp;&nbsp; Honestly, I didn't learn much as a Delivery Manager. Still, here are some points to consider...
 
 ## Project Status tracking
@@ -16,3 +26,10 @@ ProjectLibre desktop is a free and open-source project management software syste
 Despite being a free and small app, it gave me everything I needed.
 
 TBD openproject
+
+# References
+
+| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 1 | Getting started with project planning on GitHub| |2022-02-11 | GitHub |[Web](https://github.blog/2022-02-11-getting-started-with-project-planning-on-github/)|
+| 2 | How to get more engagement with your open source project| Best practices to get more stars on your GitHub repos| JANUARY 26, 2022 | navaneeth pk |[Web](https://www.freecodecamp.org/news/how-to-get-more-engagement-with-your-open-source-project/)|
