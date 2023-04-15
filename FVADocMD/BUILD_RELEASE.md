@@ -1,4 +1,14 @@
-# Releasing the code and the docs
+# Headline
+TBD
+
+# Article description
+TBD 
+
+# Tags
+TBD
+
+# Content
+## Releasing the code and the docs
 &nbsp;&nbsp;&nbsp; The release of product shall be on demand as soon as peace of product functionality is ready for release.
 Thus the release branch is being created or updated to keep added/updated product functionality.
 
@@ -11,13 +21,13 @@ The following artifacts shall be created:
 Please notice the installation packages for Windows is built using Wix;
 Once a release happened the current [documentation generated from the code](https://dimanikulin.github.io/fva/) appeared.
 
-## Building the code 
+### Building the code 
 &nbsp;&nbsp;&nbsp; There are 2 environments to build – CI (git hub) and local developer one. 
 [CMake](https://gitlab.kitware.com/cmake/community/-/wikis/Home) is used as a tool to control build process. 
 It is selected as cross-platform [tool](https://cmake.org/) available on all target platforms to build the package. 
 [This link](https://doc.qt.io/qt-5/cmake-get-started.html) was used to make a build of QT code with a help of [CMake](https://gitlab.kitware.com/cmake/community/-/wikis/Home).
 
-### Building the code using GitHub
+#### Building the code using GitHub
 &nbsp;&nbsp;&nbsp; The tool installation, configuration and processing are automated and based on GitHub actions with [main.yml](https://github.com/dimanikulin/fva/blob/master/.github/workflows/main.yml)
 All the steps are expected to be yml based only.
 I used [[37]](FVADocMD/REFERENCES.md) to help me to set up the main GitHub action flow and [this link](https://github.com/jurplel/install-qt-action) to set up QT.
@@ -25,14 +35,19 @@ I used [[37]](FVADocMD/REFERENCES.md) to help me to set up the main GitHub actio
 All steps to build a package are called on any push to master or TBD branch.
 More details are located in comments and step names [here](https://github.com/dimanikulin/fva/blob/master/.github/workflows/main.yml).
 
-### Building the code locally
+#### Building the code locally
 Still you can use [MS studio solution](./FVASW.sln) to build locally on Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
 
-## Building the docs
+### Building the docs
 &nbsp;&nbsp;&nbsp; To re-generate the docs you need to re-execute [documentation workflow](https://github.com/dimanikulin/fva/blob/master/.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf)
 
-# Branch strategy
+## Branch strategy
 &nbsp;&nbsp;&nbsp; GitHub actions is used to implement the releasing of the product. 
 It is configured to call release flow to start the creation of release product artifacts on creation or update the release branch.
 TBD - describe naming and flow for branches.
 TBD - create picture. 
+
+# References
+| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 1 | Using GitHub Actions with C++ and CMake | Providing a GitHub Actions configuration yaml file for C++ projects using CMake| DEC 22, 2019| Cristian Adam |[Web](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/)|
