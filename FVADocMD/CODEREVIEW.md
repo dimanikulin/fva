@@ -1,4 +1,15 @@
-# Rules to check code during code review 
+# Headline
+TBD
+
+# Article description
+TBD 
+
+# Tags
+TBD
+
+# Content
+
+## Rules to check code during code review 
 
 * The code shall be developed using Google code style [[27]](./REFERENCES.md) 
 * The "Return Code" and not "Exception" approach shall be used to provide a result to calling code.
@@ -9,3 +20,8 @@
 * The file names shall be in lower case to make cross-compilation simpler.
 * The constants shall be placed in separate file/files.
 * Commit mesage shall start from the issue ID.
+
+# References
+| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 1 | Google code style | | |Google |[Web](https://google.github.io/styleguide/)|
