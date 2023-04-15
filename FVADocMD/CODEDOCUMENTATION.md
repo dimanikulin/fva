@@ -1,3 +1,14 @@
+# Headline
+TBD
+
+# Article description
+TBD 
+
+# Tags
+TBD
+
+# Content
+
 ## C++ Documentation rules
 &nbsp;&nbsp;&nbsp; The C++ code shall be documented using [Doxygen](https://en.wikipedia.org/wiki/Doxygen) to increase testability, supportability and maintainability.
 The following requirements shall be applied for the C++ code:
