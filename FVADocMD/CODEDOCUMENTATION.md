@@ -51,3 +51,8 @@ The following requirements shall be applied for the python code:
 README.MD file must be present in each source folder to describe the directory sources.
 [This](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) resource might help
 
+# Definitions, Acronyms, Abbreviations
+| # | Abbreviation or Acronym | Definition     |
+| - | ------------------------|:--------------:|
+| 1 | [Doxygen](https://en.wikipedia.org/wiki/Doxygen)| [Doxygen](https://en.wikipedia.org/wiki/Doxygen)  is a [documentation generator](https://en.wikipedia.org/wiki/Documentation_generator) and [static analysis](https://en.wikipedia.org/wiki/Static_analysis) tool for software [source trees](https://en.wikipedia.org/wiki/Source_code#Organization). When used as a documentation generator, Doxygen extracts information from specially-formatted comments within the code.|
+| 2 | [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)| Model–view–controller (usually known as MVC) is a [software design pattern](https://en.wikipedia.org/wiki/Software_design_pattern) commonly used for developing [user interfaces](https://en.wikipedia.org/wiki/User_interface) that divides the related program logic into three interconnected elements. This is done to separate internal representations of information from the ways information is presented to and accepted from the user|
