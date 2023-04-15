@@ -1,4 +1,14 @@
-# What I learned as an Application Architect while creating my product
+# Headline
+TBD
+What I learned as an Application Architect while creating my product
+
+# Article description
+TBD 
+
+# Tags
+TBD
+
+# Content
 - "Are you kidding?", - you will ask me. - "Do such small applications require an arhitect to be involved?"
 - "Yes, yes, and yes!", - my answer will be.
 
@@ -84,3 +94,7 @@ Because FVA Tool Set requires only one node and a few processes to deploy I deci
 As FVA Software uses third party, it shall contain its license in the [code](../FVACommonLib/LICENSE).
 And I had to declare [FVA License](./LICENSE.md), so I gained an understanding of what license is and how to create it.
  
+# References
+| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 1 | A tool to edit diargam in mermaid-js | | | |[Web](https://mermaid-js.github.io/mermaid-live-editor/edit) |
