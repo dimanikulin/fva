@@ -21,6 +21,4 @@ TBD
 |24 | Adding Descriptions to Digital Photos | |October 28, 2011|Mike Ashenfelder |[Web](https://blogs.loc.gov/thesignal/2011/10/mission-possible-an-easy-way-to-add-descriptions-to-digital-photos/) |
 |25 | Metadata Templates | | |Peter Krogh |[Web](https://dpbestflow.org/metadata/metadata-templates) |
 |26 | Metadata generation for image files | | 2013-06-25 |Google|[Patent](https://patents.google.com/patent/US8473525)|
-
-# Definitions, Acronyms, Abbreviations
-Optional chapter
+|32 | Exif Jpeg header manipulation tool | |Nov 22 2019| |[Web](https://www.sentex.ca/~mwandel/jhead/)|
