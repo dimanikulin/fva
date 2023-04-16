@@ -1,4 +1,14 @@
-how to manage is not big deal
+# Headline
+TBD
+
+# Article description
+TBD 
+
+# Tags
+TBD
+
+# Content
+how to manage - is not big deal - to descrive 
 table with columns resources adn lines like publication 
 
 main question why are you doing that? it will help you to choose the right platform to publish 
@@ -59,3 +69,9 @@ CSS-Tricks - https://css-tricks.com/
 A List Apart - https://alistapart.com/
 Echo JS - https://www.echojs.com/
 These sites also focus on programming and offer opportunities for developers to share their knowledge and connect with others in the industry. Some of these sites have specific focuses, such as frontend development or design, while others cover a broad range of programming-related topics.
+
+# References
+TBD
+
+# Definitions, Acronyms, Abbreviations
+TBD
