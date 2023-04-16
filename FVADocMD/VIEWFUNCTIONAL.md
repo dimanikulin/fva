@@ -1,4 +1,15 @@
-# Layers
+# Headline
+TBD
+
+# Article description
+TBD 
+
+# Tags
+TBD
+
+# Content
+
+## Layers
 &nbsp;&nbsp;&nbsp; The Layered Architecture shall be applied to the system. 
 TBD why not SOA
 Following layers are considered:
@@ -11,13 +22,13 @@ flowchart BT
 </br> TBD - describe why layered arch </br> 
 All the main components interact with the Logging component to log the important events during processing.
 
-## Logging 
+### Logging 
 &nbsp;&nbsp;&nbsp; During logging the logging component uses a "log level" setting got from FVAConfigurator.
 The log shall be present as a CSV file with name of component it was created by.
 The format of log file shall be following:
 TBD
  
-# ([UI](https://en.wikipedia.org/wiki/User_interface))layer 
+### ([UI](https://en.wikipedia.org/wiki/User_interface))layer 
 The photo album owner interacts with the system through the user interface ([UI](https://en.wikipedia.org/wiki/User_interface)) layer components. 
 Basing on flow and user needs, [UI](https://en.wikipedia.org/wiki/User_interface) interacts with other components described later.
 
@@ -30,27 +41,27 @@ graph TD
     A(UI) --> F(Viewer)
     A(UI) --> G(Organizer Wizard)  
 ```
-## Configurator
+#### Configurator
 The main function of the Configurator is to provide the settings to other components when requested and to save/load them to/from data layer.
 Configurator works directly with saved in the disk settings. 
 Instead, it uses FvaConfiguration.
 
-## Description Editor
+#### Description Editor
 TBD 
 
-## Dictionary Editor
+#### Dictionary Editor
 TBD 
 
-## Player
+#### Player
 TBD 
 
-## Viewer
+#### Viewer
 TBD 
 
-## Organizer Wizard
+#### Organizer Wizard
 TBD 
 
-# Processing layer
+### Processing layer
 ```mermaid
 graph TD
     A(Processing) --> B(Data Processor)
@@ -64,7 +75,7 @@ graph TD
 &nbsp;&nbsp;&nbsp; Organizer makes possible to start any command in separate process from command line or in separate thread.
 </br>
 
-# Data layer
+## Data layer
 ```mermaid
 graph TD
     A(Data) --> B(Input Multimedia Data)
@@ -74,17 +85,17 @@ graph TD
     A(Data) --> E(FVA Software dictionary)
 
 ```
-## Input Multimedia Data
+### Input Multimedia Data
 TBD
 
-## Output Multimedia Data
+### Output Multimedia Data
 TBD
 
-## FVA Software configuration
+### FVA Software configuration
 TBD
 The formatting strings shall be kept in a separated category
 
-## FVA Software internal metadata
+### FVA Software internal metadata
 &nbsp;&nbsp;&nbsp; It is used to enrich Output Multimedia Data. </br> 
 &nbsp;&nbsp;&nbsp; Let describe how it was before current implementation. 
 Firstly it was kept at file system level inside of the Photo Album. 
@@ -135,8 +146,11 @@ So merging one folder in photo album to another does not cause an issue.
 Still the duplication of information takes place because for all files in one folder common information is just copied.
 </br>
 
-## FVA Software dictionary 
+### FVA Software dictionary 
 FVA Software dictionary is data used along with FVA Software internal metadata.
+
+# References
+TBD
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
