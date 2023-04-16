@@ -1,4 +1,15 @@
-# What I learned as a Product Manager while creating my product
+# Headline
+TBD
+What I learned as a Product Manager while creating my product
+
+# Article description
+TBD 
+
+# Tags
+TBD
+
+# Content
+
 ## Design Thinking
 &nbsp;&nbsp;&nbsp; The first product I was thinking about was "FVA Tool Set".
 Subsequently, another product came to my mind. As a result, a Product Line came about.
@@ -129,3 +140,9 @@ On the top of that, it is quite convenient to keep an [online roadmap](https://g
 ## Links for product people (FVA Helpers)
 &nbsp;&nbsp;&nbsp; - [Information with Business Goals/Drivers/Objectives](../FVADocX/FVAHelpers.pptx)
 FVAHelpers-BusinessModelCanvas.docx
+
+# Definitions, Acronyms, Abbreviations
+| # | Abbreviation or Acronym | Definition     |
+| - | ------------------------|:--------------:|
+| 53| [User Journey](https://en.wikipedia.org/wiki/User_journey)|A user journey is the experiences a person has when interacting with something, typically [software](https://en.wikipedia.org/wiki/Software). |
+| 22| [Google](https://en.wikipedia.org/wiki/Google)| Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include [online advertising technologies](https://en.wikipedia.org/wiki/Online_advertising), a [search engine](https://en.wikipedia.org/wiki/Search_engine), [cloud computing](https://en.wikipedia.org/wiki/Cloud_computing), software, and hardware.|
