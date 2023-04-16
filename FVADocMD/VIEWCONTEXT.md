@@ -1,3 +1,14 @@
+# Headline
+TBD
+
+# Article description
+TBD 
+
+# Tags
+TBD
+
+# Content
+
 &nbsp;&nbsp;&nbsp; The context diagram below shows the solution bounds and its interactions with other objects and subjects.
 
 ```mermaid
@@ -24,6 +35,9 @@ flowchart LR
 * etc.
 </br> 
 &nbsp;&nbsp;&nbsp; Once the multimedia data from the external devices is processed, the solution interacts with integrated online and offline Multimedia systems.
+
+# References
+TBD
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
