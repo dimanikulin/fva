@@ -98,3 +98,8 @@ And I had to declare [FVA License](./LICENSE.md), so I gained an understanding o
 | # | Name                 | Description           | Release date           |  Author                 | Source        |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
 | 1 | A tool to edit diargam in mermaid-js | | | |[Web](https://mermaid-js.github.io/mermaid-live-editor/edit) |
+
+# Definitions, Acronyms, Abbreviations
+| # | Abbreviation or Acronym | Definition     |
+| - | ------------------------|:--------------:|
+| 1 | [Quality Attribute](https://www.codementor.io/@antoniopfesilva/how-to-write-meaningful-quality-attributes-for-software-development-ez8y90wyo)|is a measurable or testable property of a system that is used to indicate how well the system satisfies the needs of its stakeholders |
