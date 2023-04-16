@@ -57,6 +57,11 @@ Despite many steps are automated, still human involvement is required.
 ## Hardware requirements
 TBD
 
+## Programming Languages
+Now C++ and Python are considered as main languages to implement FVA Software.
+TBD - to describe for which cases C++ and for which Python.
+
+
 # Contributing
 So far, the development is in a hot stage, and everyone is welcome to contribute anytime.
 You can fill in this [form](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/edit) to understand your needs in Multimedia search and organizing.
