@@ -51,10 +51,10 @@ etc. to make multimedia more fully-searchable as well as to refine family photos
 - **Supporting text search for [Multimedia IR systems](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaIRSystems.md):** It is possible to search by events, photo author, places, people using text search 
 - **Configuration:** The system flow depends on configuration.
 - **Automating the import:** to decrease the probability of human factor influence on the process of importing new photos into the existing photo album;
-
 Despite many steps are automated, still human involvement is required. 
 
-# Hardware requirements
+# SA Requirements
+## Hardware requirements
 TBD
 
 # Contributing
