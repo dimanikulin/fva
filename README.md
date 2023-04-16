@@ -38,9 +38,9 @@
 # Description
 &nbsp;&nbsp;&nbsp; FVA Software is a convergent tool set in a form of desktop applications aimed at automating importing process of [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) (photo/audio/video)
 into [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) like [digiKam](https://www.digikam.org/) 
-<img src="github.com/dimanikulin/dimanikulin/blob/master/content/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/>,
+<img src="./FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/>,
  Google Photo, Apple Photo, [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) 
-<img src="github.com/dimanikulin/dimanikulin/blob/master/content/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" />, 
+<img src="./FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" />, 
 etc. to make multimedia more fully-searchable as well as to refine family photos.
 <img src="./FVADocMD/Images/InputAndOutputExamples.gif" alt="Input And Output Examples" />
 
