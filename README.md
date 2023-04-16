@@ -54,6 +54,9 @@ etc. to make multimedia more fully-searchable as well as to refine family photos
 
 Despite many steps are automated, still human involvement is required. 
 
+# Hardware requirements
+TBD
+
 # Contributing
 So far, the development is in a hot stage, and everyone is welcome to contribute anytime.
 You can fill in this [form](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/edit) to understand your needs in Multimedia search and organizing.
