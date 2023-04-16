@@ -33,11 +33,9 @@
   <a href="https://github.com/dimanikulin/fva/edit/master/README.md"><img src="https://img.shields.io/badge/documentation-read-d90368"> </a>
 </p>
 
-| 20| FVA Software            | Photo-Video-Audio Software – proposed solution. |
-
 # Description
-&nbsp;&nbsp;&nbsp; FVA Software is a convergent tool set in a form of desktop applications aimed at automating importing process of [Multimedia Data](./FVADocMD/MULTIMEDIADATA.md) (photo/audio/video)
-into [Multimedia IR systems](./FVADocMD/MULTIMEDIAIRSYSTEMS.md) like [digiKam](https://www.digikam.org/) 
+&nbsp;&nbsp;&nbsp; FVA Software (Photo-Video-Audio Software) is a convergent tool set in a form of desktop applications aimed at automating importing process of [Multimedia Data](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaData.md) (photo/audio/video)
+into [Multimedia IR systems](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaIRSystems.md) like [digiKam](https://www.digikam.org/) 
 <img src="./FVADocMD/Images/digiKam.png" alt="digiKam.png" width="20" height="20"/>,
  Google Photo, Apple Photo, [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) 
 <img src="./FVADocMD/Images/SynologyMoments.png" alt="SynologyMoments.png" height="20" />, 
@@ -54,7 +52,7 @@ etc. to make multimedia more fully-searchable as well as to refine family photos
 - **Configuration:** The system flow depends on configuration.
 - **Automating the import:** to decrease the probability of human factor influence on the process of importing new photos into the existing photo album;
 
-Yes, I understood that despite many steps are automated, still human involvement is required. 
+Despite many steps are automated, still human involvement is required. 
 
 # Contributing
 &nbsp;&nbsp;&nbsp;So far, the development is in a hot stage, and everyone is welcome to contribute anytime.
