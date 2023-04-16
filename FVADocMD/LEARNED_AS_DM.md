@@ -28,7 +28,6 @@ Despite being a free and small app, it gave me everything I needed.
 TBD openproject
 
 # References
-
 | # | Name                 | Description           | Release date           |  Author                 | Source        |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
 | 1 | Getting started with project planning on GitHub| |2022-02-11 | GitHub |[Web](https://github.blog/2022-02-11-getting-started-with-project-planning-on-github/)|
