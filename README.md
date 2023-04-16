@@ -61,6 +61,9 @@ TBD
 Now C++ and Python are considered as main languages to implement FVA Software.
 TBD - to describe for which cases C++ and for which Python.
 
+## License
+we use 3-rd party code here 
+and own licence is TBD
 
 # Contributing
 So far, the development is in a hot stage, and everyone is welcome to contribute anytime.
