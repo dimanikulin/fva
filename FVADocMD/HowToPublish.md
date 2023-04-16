@@ -67,6 +67,9 @@ No pictures - less views. pictires shall be related to content
 
 picture orientation must be album and not a book orienttaopn
 
+### Tables 
+if you provide tables please make sure that less filled columns are the end of table and wiseversa
+
 ### Size
 
 not less not more
@@ -113,6 +116,8 @@ My is
 - if there is "Content"? 
 - if there is "References"? it might be no
 - if there is no formatting symbols?
+- if there is no empty chapters?
+- Are "Definitions, Acronyms, Abbreviations" sorted?
 - Are all references actual?
 - Has it been proof read?
 - Are there any pictures?
@@ -121,6 +126,7 @@ My is
 add links in place and into sepatated chapter 
 
 # Definitions, Acronyms, Abbreviations
+| 22| [Google](https://en.wikipedia.org/wiki/Google)| Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include [online advertising technologies](https://en.wikipedia.org/wiki/Online_advertising), a [search engine](https://en.wikipedia.org/wiki/Search_engine), [cloud computing](https://en.wikipedia.org/wiki/Cloud_computing), software, and hardware.|
 
 # References 
 [Your ccomplete guide to writing for hacker noon](https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon)
