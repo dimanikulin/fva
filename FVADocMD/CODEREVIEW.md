@@ -22,9 +22,9 @@ TBD
 * Commit mesage shall start from the issue ID.
 
 # References
-| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| # | Name                 | Source                | Release date           |  Author                 | Description   |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
-| 1 | Google code style | | |Google |[Web](https://google.github.io/styleguide/)|
+| 1 | Google code style | [Web](https://google.github.io/styleguide/) | |Google ||
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
