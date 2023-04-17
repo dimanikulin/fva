@@ -143,15 +143,13 @@ Columns there are the product different version.
 
 On the top of that, it is quite convenient to keep an [online roadmap](https://github.com/dimanikulin/fva/projects/4).
 
-## Links for product people (FVA Helpers)
- [Information with Business Goals/Drivers/Objectives](../FVADocX/FVAHelpers.pptx)
-FVAHelpers-BusinessModelCanvas.docx
-
 # References
 | # | Name                 | Source                | Release date           |  Author                 | Description   |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
 | 1 | Roman Pichler Product Manager templates| [web](https://www.romanpichler.com/) | | Roman Pichler | |
 | 2 | Business Model Canvas template | [web](strategyzer.com) | | |
+| 3 | Business Model Canvas for FVAHelpers | [local resource](./FVADocX/FVAHelpers.pptx) | | | 
+| 4 | Information with Business Goals/Drivers/Objectives | [local resource](./FVADocX/FVAHelpers-BusinessModelCanvas.docx) | | |
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
