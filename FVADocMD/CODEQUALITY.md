@@ -18,9 +18,9 @@ TBD
 TODO - to add a bage for each code check
 
 # References
-| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| # | Name                 | Source                | Release date           |  Author                 | Description   |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
-| 1 | Code scanning finds more vulnerabilities using machine learning| | February 17, 2022 | Tiferet Gazit, Alona Hlobina |[Web](https://github.blog/2022-02-17-code-scanning-finds-vulnerabilities-using-machine-learning/)|
+| 1 | Code scanning finds more vulnerabilities using machine learning|[Web](https://github.blog/2022-02-17-code-scanning-finds-vulnerabilities-using-machine-learning/)| February 17, 2022 | Tiferet Gazit, Alona Hlobina | |
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
