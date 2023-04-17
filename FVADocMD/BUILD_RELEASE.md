@@ -48,9 +48,9 @@ TBD - describe naming and flow for branches.
 TBD - create picture. 
 
 # References
-| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| # | Name                 | Source                | Release date           |  Author                 | Description   |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
-| 1 | Using GitHub Actions with C++ and CMake | Providing a GitHub Actions configuration yaml file for C++ projects using CMake| DEC 22, 2019| Cristian Adam |[Web](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/)|
+| 1 | Using GitHub Actions with C++ and CMake | [Web](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/) | DEC 22, 2019| Cristian Adam |Providing a GitHub Actions configuration yaml file for C++ projects using CMake|
 
 
 # Definitions, Acronyms, Abbreviations
