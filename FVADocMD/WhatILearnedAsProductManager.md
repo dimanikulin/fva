@@ -1,12 +1,18 @@
 # Headline
-TBD
+
 What I learned as a Product Manager while creating my product
 
+Creating a High-Level Product Documentation and Requirements: A Journey from Design Thinking to User Scenarios.
+
 # Article description
-TBD 
+It have described author's journey of creating a product line, which started with the idea of developing a single product, the FVA Tool Set, and ended up with the creation of a set of high-level product documentation, a detailed understanding of the product from the user's perspective, and product requirements. 
+Author mentioned that he started from coding but realized later that it would have been better to start from Design Thinking, a process that consists of seven stages for creating a product. 
+Author also mentioned that he established a set of documentation artifacts to keep high-level product knowledge, such as Value Propositions, Business Model Canvas, Product Vision Board, and Competitive Analysis Matrix. 
+Additionally, author focused on the product from the user's perspective and created a Persona, a User Journey, and User Scenarios to show the value of the product. 
+Finally, author identified stakeholders and created a table with their roles, concerns, and views, and created a questionnaire to clarify user needs. 
 
 # Tags
-TBD
+User persona, Value proposition, Business model canvas, Product vision, Requirements, Stakeholders, Competitor analysis
 
 # Content
 
@@ -140,6 +146,9 @@ On the top of that, it is quite convenient to keep an [online roadmap](https://g
 ## Links for product people (FVA Helpers)
 &nbsp;&nbsp;&nbsp; - [Information with Business Goals/Drivers/Objectives](../FVADocX/FVAHelpers.pptx)
 FVAHelpers-BusinessModelCanvas.docx
+
+# References
+TBD
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
