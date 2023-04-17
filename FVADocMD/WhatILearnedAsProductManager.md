@@ -149,6 +149,8 @@ FVAHelpers-BusinessModelCanvas.docx
 
 # References
 TBD
+| # | Name                 | Source                | Release date           |  Author                 | Description   |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
