@@ -148,8 +148,8 @@ On the top of that, it is quite convenient to keep an [online roadmap](https://g
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
 | 1 | Roman Pichler Product Manager templates| [web](https://www.romanpichler.com/) | | Roman Pichler | |
 | 2 | Business Model Canvas template | [web](strategyzer.com) | | |
-| 3 | Business Model Canvas for FVAHelpers | [local resource](./FVADocX/FVAHelpers.pptx) | | | 
-| 4 | Information with Business Goals/Drivers/Objectives | [local resource](./FVADocX/FVAHelpers-BusinessModelCanvas.docx) | | |
+| 3 | Business Model Canvas for FVAHelpers | [local resource](./FVADocX/FVAHelpers.pptx) | December 2022 | Dmytro Nikulin | | 
+| 4 | Information with Business Goals/Drivers/Objectives | [local resource](./FVADocX/FVAHelpers-BusinessModelCanvas.docx) | December 2022 |  Dmytro Nikulin | |
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
