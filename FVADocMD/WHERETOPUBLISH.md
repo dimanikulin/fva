@@ -71,6 +71,9 @@ Echo JS - https://www.echojs.com/
 These sites also focus on programming and offer opportunities for developers to share their knowledge and connect with others in the industry. Some of these sites have specific focuses, such as frontend development or design, while others cover a broad range of programming-related topics.
 
 # References
+| # | Name                 | Source                | Release date           |  Author                 | Description   |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+
 TBD
 
 # Definitions, Acronyms, Abbreviations
