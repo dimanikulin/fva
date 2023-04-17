@@ -62,6 +62,12 @@ The following requirements shall be applied for the python code:
 README.MD file must be present in each source folder to describe the directory sources.
 [This](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) resource might help
 
+# References
+| # | Name                 | Source                | Release date           |  Author                 | Description   |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 1 | Markdown Cheatsheet | [Web](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) | | | |
+| 2 | Documenting python code | [Web](https://realpython.com/documenting-python-code/) | | | |
+
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
 | - | ------------------------|:--------------:|
