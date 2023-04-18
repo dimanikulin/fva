@@ -121,6 +121,7 @@ My is
 - Are all references actual?
 - Has it been proof read?
 - Are there any pictures?
+- Is it asking for an opinion?
 
 ## "References" chapter
 add links in place and into sepatated chapter 
