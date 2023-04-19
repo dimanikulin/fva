@@ -78,7 +78,7 @@ TBD describe dependencies installed along with FVA Software.
 TBD fvaParams.csv
 
 # Dependencies
-Only open source [code/tools](./Dependencies) are used, as a product is **open source**.
+Only open source [code/tools](./Dependencies.md) are used, as a product is **open source**.
 
 # Contributing
 So far, the development is in a hot stage, and everyone is welcome to contribute anytime.
