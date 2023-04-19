@@ -84,8 +84,8 @@ Only open source code/tools are used, as a product is **open source**.
 | - | ---------------|----------------------------------------- |---------- | --------- | ----------- |:-------------:|
 | 1 | Exif | Python package to work with Exif metadata  |   | free  | developer and user | To install please call "pip install exif" |
 | 2 | doxygen | Documentation generator based on code notation and markup | 1.9.0 | free | developer | Full name is "doxygen-1.9.0-setup.exe" |
-| 3 | graphviz | Helper for documentation generation  |   | free  | developer | Link is "http://www.graphviz.org/" |
-| 4 | TeX Live | Helper for documentation generation  |   | free  | developer | Link is "https://www.tug.org/texlive/acquire-netinstall.html" |
+| 3 | graphviz | Helper for documentation generation  |   | free  | developer | [Link](http://www.graphviz.org/) |
+| 4 | TeX Live | Helper for documentation generation  |   | free  | developer | [Link](https://www.tug.org/texlive/acquire-netinstall.html) |
 | 5 | jupyter-lab | Engine for online coding of data processing  |   | free  | developer | Is optional, "pip install jupyter", python -m notebook  to start notebook server |
 | 6 | Pandas | Python module to work with data (CSV)  |   |  free | developer | Is optional, "pip install pandas" |
 | 7 | GitHub Desktop client | To work with github   |   |  free | developer |  |
