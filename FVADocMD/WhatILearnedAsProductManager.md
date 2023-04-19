@@ -132,7 +132,7 @@ I settled them into the table with the following columns: Name, Architecture com
 ## Product development documents
 
 ### Product Road Map
-I believe, [Product Road Map](../FVADocX/FVAToolSet-ProductRoadMap.pdf) is the most important document for a product at the development stage. 
+I believe, **Product Road Map** is the most important document for a product at the development stage. 
 I downloaded a template [here](https://www.romanpichler.com/) and filled in the following fields and rows:
 - **DATE** with **Release date or timeframe**;
 - **NAME** with **Name of new release**;
@@ -150,6 +150,12 @@ On the top of that, it is quite convenient to keep an [online roadmap](https://g
 | 2 | Business Model Canvas template | [web](strategyzer.com) | | |
 | 3 | Business Model Canvas for FVAHelpers | [local resource](./FVADocX/FVAHelpers.pptx) | December 2022 | Dmytro Nikulin | | 
 | 4 | Information with Business Goals/Drivers/Objectives | [local resource](./FVADocX/FVAHelpers-BusinessModelCanvas.docx) | December 2022 |  Dmytro Nikulin | |
+| 5 | Product Road Map | [local resource](./FVADocX//FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
+| 5 | Product Road Map | [local resource](./FVADocX//FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
+| 5 | Product Road Map | [local resource](./FVADocX//FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
+| 5 | Product Road Map | [local resource](./FVADocX//FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
+| 5 | Product Road Map | [local resource](./FVADocX//FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
+
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
