@@ -101,7 +101,7 @@ To show the value of the product, I created three user scenarios and posted them
 
 ### Stakeholders
 Honestly, a bit later I realized that end users are not the only target audience for this product.
-And next artifact - [Stakeholders](../FVADocX/FVAToolSet-Stakeholders.pptx) - came into sight.
+And next artifact - Stakeholders - came into sight.
 It looks like a table with the following columns: Group, Stakeholder Role, Concerns, View.
 Table rows contain as follows: End users, Suppliers and Team members.
 
@@ -119,7 +119,7 @@ Having gained an understanding of user needs, I started describing [Capabilities
 Literally, Capabilities describe key requirements.
 
 ### Features
-Having capability list defined, I started preparing [features](../FVADocX/FVAToolSetFeatures.pptx).
+Having capability list defined, I started preparing features.
 They represent significant, central functionality of the final system. 
 I put them into the table with the following columns: Name, Clarification, Business Value.
 The feature set helped me to create a project plan and a road map. 
@@ -148,11 +148,11 @@ On the top of that, it is quite convenient to keep an [online roadmap](https://g
 | 1 | Roman Pichler Product Manager templates| [web](https://www.romanpichler.com/) | | Roman Pichler | |
 | 2 | Business Model Canvas template | [web](strategyzer.com) | | |
 | 3 | Business Model Canvas for FVAHelpers | [local resource](./FVADocX/FVAHelpers.pptx) | December 2022 | Dmytro Nikulin | | 
-| 4 | Information with Business Goals/Drivers/Objectives | [local resource](./FVADocX/FVAHelpers-BusinessModelCanvas.docx) | December 2022 |  Dmytro Nikulin | |
+| 4 | Information with Business Goals/Drivers/Objectives for FVAHelpers | [local resource](./FVADocX/FVAHelpers-BusinessModelCanvas.docx) | December 2022 |  Dmytro Nikulin | |
 | 5 | Product Road Map | [local resource](./FVADocX/FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
 | 6 | Functional Requirements | [local resource](./FVADocX/FunctionalRequirements.xlsx) | December 2022 | Dmytro Nikulin | |
-| 7 | Product Road Map | [local resource](./FVADocX/FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
-| 8 | Product Road Map | [local resource](./FVADocX/FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
+| 7 | Features | [local resource](./FVADocX/FVAToolSetFeatures.pptx) | December 2022 | Dmytro Nikulin | |
+| 8 | Stakeholders | [local resource](./FVADocX/FVAToolSet-Stakeholders.pptx) | December 2022 | Dmytro Nikulin | |
 | 9 | Product Road Map | [local resource](./FVADocX/FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
 
 
