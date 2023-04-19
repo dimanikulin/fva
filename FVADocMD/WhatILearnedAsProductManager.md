@@ -125,9 +125,8 @@ I put them into the table with the following columns: Name, Clarification, Busin
 The feature set helped me to create a project plan and a road map. 
 
 ### Functional Requirements
-Last but not least step in defining product behavior was a list of [Functional Requirements](../FVADocX/FunctionalRequirements.xlsx),
-that define system detail behavior.
-I settled them into the table with the following columns: Name, Architecture complexity, Business Value, Component, Phase, Feature ID.
+Last but not least step in defining product behavior was a list of **Functional Requirements**, that define system detail behavior.
+I settled them into the table with the following columns: **Name**, **Architecture complexity**, **Business Value**, **Component**, **Phase**, **Feature ID**.
 
 ## Product development documents
 
@@ -150,11 +149,11 @@ On the top of that, it is quite convenient to keep an [online roadmap](https://g
 | 2 | Business Model Canvas template | [web](strategyzer.com) | | |
 | 3 | Business Model Canvas for FVAHelpers | [local resource](./FVADocX/FVAHelpers.pptx) | December 2022 | Dmytro Nikulin | | 
 | 4 | Information with Business Goals/Drivers/Objectives | [local resource](./FVADocX/FVAHelpers-BusinessModelCanvas.docx) | December 2022 |  Dmytro Nikulin | |
-| 5 | Product Road Map | [local resource](./FVADocX//FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
-| 5 | Product Road Map | [local resource](./FVADocX//FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
-| 5 | Product Road Map | [local resource](./FVADocX//FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
-| 5 | Product Road Map | [local resource](./FVADocX//FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
-| 5 | Product Road Map | [local resource](./FVADocX//FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
+| 5 | Product Road Map | [local resource](./FVADocX/FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
+| 6 | Functional Requirements | [local resource](./FVADocX/FunctionalRequirements.xlsx) | December 2022 | Dmytro Nikulin | |
+| 7 | Product Road Map | [local resource](./FVADocX/FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
+| 8 | Product Road Map | [local resource](./FVADocX/FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
+| 9 | Product Road Map | [local resource](./FVADocX/FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
 
 
 # Definitions, Acronyms, Abbreviations
