@@ -122,6 +122,8 @@ My is
 - Has it been proof read?
 - Are there any pictures?
 - Is it asking for an opinion?
+- if there is no PII ?
+- if there is no TBD and TODO?
 
 ## "References" chapter
 add links in place and into sepatated chapter 
@@ -135,3 +137,4 @@ add links in place and into sepatated chapter
 | # | Abbreviation or Acronym | Definition     |
 | - | ------------------------|:--------------:|
 | 1 | [Google](https://en.wikipedia.org/wiki/Google)| Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include [online advertising technologies](https://en.wikipedia.org/wiki/Online_advertising), a [search engine](https://en.wikipedia.org/wiki/Search_engine), [cloud computing](https://en.wikipedia.org/wiki/Cloud_computing), software, and hardware.|
+| 2 | PII | TODO |
