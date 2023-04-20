@@ -153,7 +153,7 @@ On the top of that, it is quite convenient to keep an [online roadmap](https://g
 | 6 | Functional Requirements | [local resource](./FVADocX/FunctionalRequirements.xlsx) | December 2022 | Dmytro Nikulin | |
 | 7 | Features | [local resource](./FVADocX/FVAToolSetFeatures.pptx) | December 2022 | Dmytro Nikulin | |
 | 8 | Stakeholders | [local resource](./FVADocX/FVAToolSet-Stakeholders.pptx) | December 2022 | Dmytro Nikulin | |
-| 9 | Product Road Map | [local resource](./FVADocX/FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
+| 9 | User Journey | [local resource](./FVADocX/FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
 
 
 # Definitions, Acronyms, Abbreviations
