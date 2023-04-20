@@ -81,7 +81,7 @@ I filled in the following rows for several products:
 As soon as high-level product documentation was ready, I decided to go deeper with more detail from the user's point of view.
 
 ### Persona 
-The first artifact I created was [Persona](../FVADocX/FVAToolSet-Persona.pdf)
+The first artifact I created was Persona
 I downloaded a template [here](https://www.romanpichler.com/) and filled in the following fields:
 - **PICTURE & NAME** to answer the questions: **What does the persona look like? What is his/her name?** I chose a realistic and plausible picture and name.
 - **DETAILS** to answer the questions: **What are persona’s relevant characteristics and behaviors?** I wrote in demographics, such as age, gender, occupation, and income; psychographics, including lifestyle, social class, and personality; and behavioral attributes like usage patterns, attitudes and brand loyalty.
@@ -153,6 +153,8 @@ On the top of that, it is quite convenient to keep an [online roadmap](https://g
 | 10| User Scenario without FVA Tool Set | [YouTube](https://youtu.be/_bLXFdIDZtA) | June 2021 | Dmytro Nikulin | |
 | 11| User Scenario with FVA Tool Set | [YouTube](https://youtu.be/-xnUsO7zW2s) | June 2021 | Dmytro Nikulin | |
 | 12| User Scenario - Checking the results of processing | [YouTube](https://youtu.be/NIsVYyioDnM) | June 2021 | Dmytro Nikulin | |
+| 13| Persona | [local resource](./FVADocX/FVAToolSet-Persona.pdf) | November 2021 | Dmytro Nikulin | |
+
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
