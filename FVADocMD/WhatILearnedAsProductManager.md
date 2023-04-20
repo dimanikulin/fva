@@ -89,15 +89,11 @@ I downloaded a template [here](https://www.romanpichler.com/) and filled in the 
 
 <img src="Images/Persona.png" alt="Persona"/>
 
-### User Journey
+### User Journey and User Scenarios
 Then I tried to restore user way to achieve the goals. 
-And I came up with [User Journey](../FVADocX/FVAToolSet-UserJourney.pptx)
+And I came up with User Journey.
 
-### User Scenarios 
-To show the value of the product, I created three user scenarios and posted them on YouTube: 
-- [Without FVA Tool Set](https://youtu.be/_bLXFdIDZtA)
-- [With FVA Tool Set](https://youtu.be/-xnUsO7zW2s)
-- [Checking the results of processing](https://youtu.be/NIsVYyioDnM)
+To show the value of the product, I created three user scenarios and posted them on YouTube. Please see the reference to watch them.
 
 ### Stakeholders
 Honestly, a bit later I realized that end users are not the only target audience for this product.
@@ -153,8 +149,10 @@ On the top of that, it is quite convenient to keep an [online roadmap](https://g
 | 6 | Functional Requirements | [local resource](./FVADocX/FunctionalRequirements.xlsx) | December 2022 | Dmytro Nikulin | |
 | 7 | Features | [local resource](./FVADocX/FVAToolSetFeatures.pptx) | December 2022 | Dmytro Nikulin | |
 | 8 | Stakeholders | [local resource](./FVADocX/FVAToolSet-Stakeholders.pptx) | December 2022 | Dmytro Nikulin | |
-| 9 | User Journey | [local resource](./FVADocX/FVAToolSet-ProductRoadMap.pdf) | December 2022 | Dmytro Nikulin | |
-
+| 9 | User Journey | [local resource](./FVADocX/FVAToolSet-UserJourney.pptx) | December 2021 | Dmytro Nikulin | |
+| 10| User Scenario without FVA Tool Set | [YouTube](https://youtu.be/_bLXFdIDZtA) | June 2021 | Dmytro Nikulin | |
+| 11| User Scenario with FVA Tool Set | [YouTube](https://youtu.be/-xnUsO7zW2s) | June 2021 | Dmytro Nikulin | |
+| 12| User Scenario - Checking the results of processing | [YouTube](https://youtu.be/NIsVYyioDnM) | June 2021 | Dmytro Nikulin | |
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
