@@ -61,7 +61,7 @@ I downloaded a template [here](strategyzer.com) and filled in the following fiel
 - **Cost Structure** to answer the questions: **Where do the costs come from?**
 
 ### Product Vision Board
-The third artifact was [Product Vision Board](../FVADocX/FVAToolSet-ProductVisionBoard.pdf).
+The third artifact was Product Vision Board.
 I downloaded a template [here](https://www.romanpichler.com/) and filled in the following fields:
 - **VISION** to answer the questions: **What is your purpose for creating the product? Which positive change should it bring about?**
 - **TARGET GROUP** to answer the questions: **Which market or market segment does the product address? Who are target customers and users?**
@@ -70,7 +70,7 @@ I downloaded a template [here](https://www.romanpichler.com/) and filled in the 
 - **BUSINESS GOALS** to answer the questions: **How is the product going to benefit the company? What are business goals?**
 
 ### Competitive Analysis Matrix
-The last artifact in High-level product documentation was [Competitive Analysis Matrix](../FVADocX/FVAToolSet-CompetetitiveAnalysisMatrix.pdf)
+The last artifact in High-level product documentation was Competitive Analysis Matrix
 I filled in the following rows for several products:
 - **Vision** with **Goal and Target segment**;
 - **Marketing** with **Pricing and  Unique value proposition**;
@@ -153,8 +153,10 @@ On the top of that, it is quite convenient to keep an [online roadmap](https://g
 | 10| User Scenario without FVA Tool Set | [YouTube](https://youtu.be/_bLXFdIDZtA) | June 2021 | Dmytro Nikulin | |
 | 11| User Scenario with FVA Tool Set | [YouTube](https://youtu.be/-xnUsO7zW2s) | June 2021 | Dmytro Nikulin | |
 | 12| User Scenario - Checking the results of processing | [YouTube](https://youtu.be/NIsVYyioDnM) | June 2021 | Dmytro Nikulin | |
-| 13| Persona | [local resource](./FVADocX/FVAToolSet-Persona.pdf) | November 2021 | Dmytro Nikulin | |
-
+| 13| Persona | [local resource](./FVADocX/FVAToolSet-Persona.pdf) | December 2022 | Dmytro Nikulin | |
+| 14| Competitive Analysis Matrix | [local resource](./FVADocX/FVAToolSet-CompetetitiveAnalysisMatrix.pdf) | December 2022 | Dmytro Nikulin | |
+| 15| Product Vision Board | [local resource](./FVADocX/FVAToolSet-ProductVisionBoard.pdf) | December 2022 | Dmytro Nikulin | | 
+| 16| Business Model Canvas | [local resource](./FVADocX/FVAToolSet-BusinessModelCanvas.docx) | December 2022 | Dmytro Nikulin | | 
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
