@@ -23,7 +23,7 @@ Subsequently, another product came to my mind. As a result, a Product Line came 
 - "Hold on, you started from thinking of products, right?", - you will ask me.
 - "Nope, I started from... It was ages ago and a whole [history](../README.md#history) is quite big. Being a developer, I started from coding".
 - "Was it a good idea to start from coding?", - you will ask me. 
-- "Again no. I would have started from [Design Thinking](../FVADocX/DesignThinking.pptx), if I was familiar with it." 
+- "Again no. I would have started from Design Thinking, if I was familiar with it." 
 
 Design Thinking is a process of preparation, which consists of seven stages of creating a product:
 
@@ -38,7 +38,7 @@ Design Thinking is a process of preparation, which consists of seven stages of c
 Once I came up with product ideas to implement, I realized that a set of documentation artifacts to keep high-level product knowledge had to be established.
 
 ### Value Propositions
-The first artifact to consider was [Value Proposition](../FVADocX/FVAToolSet-ValueProposition.docx)
+The first artifact to consider was Value Proposition.
 which has the following components:
 - **Mapper** for Products and Services to Customer Jobs;
 - **Mapper** for Gain creators to Gains;
@@ -48,7 +48,7 @@ which has the following components:
 <img src="Images/ValueProposition.png" alt="One Pager"/>
 
 ### Business Model Canvas
-The next artifact was [Business Model Canvas](../FVADocX/FVAToolSet-BusinessModelCanvas.docx). 
+The next artifact was Business Model Canvas. 
 I downloaded a template [here](strategyzer.com) and filled in the following fields:
 - **Key Partners** to answer the questions: **Who are the key partners? Who are the key suppliers?**
 - **Key Activities** to answer the questions: **What are the main tasks that the company must do well to deliver its value?**
@@ -157,6 +157,8 @@ On the top of that, it is quite convenient to keep an [online roadmap](https://g
 | 14| Competitive Analysis Matrix | [local resource](./FVADocX/FVAToolSet-CompetetitiveAnalysisMatrix.pdf) | December 2022 | Dmytro Nikulin | |
 | 15| Product Vision Board | [local resource](./FVADocX/FVAToolSet-ProductVisionBoard.pdf) | December 2022 | Dmytro Nikulin | | 
 | 16| Business Model Canvas | [local resource](./FVADocX/FVAToolSet-BusinessModelCanvas.docx) | December 2022 | Dmytro Nikulin | | 
+| 17| Value Proposition | [local resource](./FVADocX/FVAToolSet-ValueProposition.docx) | December 2022 | Dmytro Nikulin | |
+| 18| Design Thinking | [local resource](./FVADocX/DesignThinking.pptx) | December 2022 | Dmytro Nikulin | |
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
