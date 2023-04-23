@@ -54,8 +54,6 @@ etc. to make multimedia more fully-searchable as well as to refine family photos
 Despite many steps are automated, still human involvement is required. 
 
 # SA Requirements
-## Hardware requirements
-TBD
 
 ## Context Diagram
 The context diagram below shows the solution bounds and its interactions with other objects and subjects.
@@ -90,9 +88,8 @@ Now C++ and Python are considered as main languages to implement FVA Software.
 
 TBD - to describe for which cases C++ and for which Python.
 
-## License
-we use 3-rd party code here 
-and own licence is TBD
+## Hardware requirements
+TBD
 
 ## Deployment Approach
 The target installation folder shall have next folder structure:
@@ -105,6 +102,10 @@ Installation must be possible at any target directory but not only in root folde
 
 TBD describe dependencies installed along with FVA Software.
 TBD fvaParams.csv
+
+## License
+we use 3-rd party code here 
+and own licence is TBD
 
 # Dependencies
 Only open source [code/tools](./Dependencies.md) are used, as a product is **open source**.
