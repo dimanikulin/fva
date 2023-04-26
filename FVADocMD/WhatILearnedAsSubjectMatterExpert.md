@@ -23,14 +23,14 @@ Consequently, I was able to choose the most suitable system for me.
 
 ## Metadata
 &nbsp;&nbsp;&nbsp; A short usage of these systems gave me an understanding that [Multimedia IR systems](./MultimediaSystems.md) significantly rely on the [metadata](https://en.wikipedia.org/wiki/Metadata) as a main information source that is used for a search following different criteria, like device, time, location, etc.
-Therefore, a presence and consistency of [metadata](https://en.wikipedia.org/wiki/Metadata) is very important for [Multimedia IR systems](./MultimediaSystems.md) to operate, as well as for other purposes [[21]](./REFERENCES.md).
+Therefore, a presence and consistency of [metadata](https://en.wikipedia.org/wiki/Metadata) is very important for [Multimedia IR systems](./MultimediaSystems.md) to operate, as well as for other purposes, [Three Cheers for Embedded Metadata](https://siarchives.si.edu/blog/three-cheers-embedded-metadata).
 Working experience with one of those systems shows that search results might be incomplete or even incorrect due to inconsistent or not-existing [metadata](https://en.wikipedia.org/wiki/Metadata).
 [Metadata](https://en.wikipedia.org/wiki/Metadata) is usually kept inside of each file as a header with predefined format.
 There are a plenty of [metadata](https://en.wikipedia.org/wiki/Metadata) formats like [Exif](https://en.wikipedia.org/wiki/Exif), [IPTC](https://en.wikipedia.org/wiki/International_Press_Telecommunications_Council) or [XMP](https://en.wikipedia.org/wiki/Extensible_Metadata_Platform).
 </br>
 
 &nbsp;&nbsp;&nbsp; The reasons for incorrect and absent [metadata](https://en.wikipedia.org/wiki/Metadata) are quite different - from not setting proper data on the device that takes photos to privacy issues. 
-This resource [[22]](./REFERENCES.md) describes [metadata](https://en.wikipedia.org/wiki/Metadata) importance in more detail and there is information about other reasons for incorrect and absent [metadata](https://en.wikipedia.org/wiki/Metadata). 
+This [resource](https://digitalarch.org/blog/2017/4/7/ykag6k2fvln7g1j02923n0c7zdrryg) describes [metadata](https://en.wikipedia.org/wiki/Metadata) importance in more detail and there is information about other reasons for incorrect and absent [metadata](https://en.wikipedia.org/wiki/Metadata). 
 
 ## Examples of incorrect search results 
 &nbsp;&nbsp;&nbsp; Let's consider two examples of incorrect search results. 
@@ -89,6 +89,8 @@ As soon as it is done, **FVA Tool Set** will put [multimedia data](https://link.
 | 2 | What are Multimedia IR systems?|[repo](./MultimediaIRSystems.md)|2022 | Dmytro Nikulin |  |
 | 3 | Multimedia IR systems Analyze|[repo](./MultimediaIRSystemsAnalyze.md)|2022| Dmytro Nikulin |  |
 | 4 | What are MultimediaOrganizers?|[repo](./MultimediaOrganizers.md)|2022 | Dmytro Nikulin | |
+| 5 | Three Cheers for Embedded Metadata|[Web](https://siarchives.si.edu/blog/three-cheers-embedded-metadata) | February 28, 2012|Lynda Schmitz Funrig | |
+| 6 | Best Practices and Tools to Create Archival Image Metadata| [Web](https://digitalarch.org/blog/2017/4/7/ykag6k2fvln7g1j02923n0c7zdrryg) |June 28, 2016 |Elena Toffalori | |
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
