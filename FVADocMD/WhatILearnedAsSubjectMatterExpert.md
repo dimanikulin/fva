@@ -1,7 +1,7 @@
 # Headline
 What I learned as a Subject Matter Expert while creating my product
 
-TBD
+Maximizing the Efficiency of Multimedia Data Search: Analyzing Multimedia IR Systems and the Importance of Metadata
 
 # Article description
 TBD 
