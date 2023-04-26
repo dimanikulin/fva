@@ -91,6 +91,11 @@ As soon as it is done, **FVA Tool Set** will put [multimedia data](https://link.
 | 4 | What are MultimediaOrganizers?|[repo](./MultimediaOrganizers.md)|2022 | Dmytro Nikulin | |
 | 5 | Three Cheers for Embedded Metadata|[Web](https://siarchives.si.edu/blog/three-cheers-embedded-metadata) | February 28, 2012|Lynda Schmitz Funrig | |
 | 6 | Best Practices and Tools to Create Archival Image Metadata| [Web](https://digitalarch.org/blog/2017/4/7/ykag6k2fvln7g1j02923n0c7zdrryg) |June 28, 2016 |Elena Toffalori | |
+| 7 | Metadata | [Wikipedia](https://en.wikipedia.org/wiki/Metadata) | | | |
+| 8 | Exif | [Wikipedia](https://en.wikipedia.org/wiki/Exif) | | | |
+| 9 | Google Photos | [Wikipedia](https://en.wikipedia.org/wiki/Google_Photos) | | | |
+| 10| Multimedia Data | [Web](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) | | | |
+| 11| About digiKam | [Web](https://www.digikam.org/about/) | | | |
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
