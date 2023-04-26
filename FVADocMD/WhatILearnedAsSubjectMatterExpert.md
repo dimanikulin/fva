@@ -46,8 +46,8 @@ Literally, we got one video that was recognized as **March 2020**, underlined in
 </br>
 
 ## Multimedia Organizers
-&nbsp;&nbsp;&nbsp; That being the case, I understood that [Multimedia IR systems](./MultimediaSystems.md) are not so effective without other tools, often called [Multimedia Organizers](./MULTIMEDIAORGANIZERS.md).
-Usually, [Multimedia Organizers](./MULTIMEDIAORGANIZERS.md) provide automation for importing a new photo set into existing photo albums and it is not an implemented feature in [Multimedia IR systems](./MultimediaSystems.md).
+&nbsp;&nbsp;&nbsp; That being the case, I understood that [Multimedia IR systems](./MultimediaSystems.md) are not so effective without other tools, often called [Multimedia Organizers](./MultimediaOrganizers.md).
+Usually, [Multimedia Organizers](./MultimediaOrganizers.md) provide automation for importing a new photo set into existing photo albums and it is not an implemented feature in [Multimedia IR systems](./MultimediaSystems.md).
 In addition, they might identify and address some issues that shall be fixed before a user starts searching data using the [Multimedia IR systems](./MultimediaSystems.md).
 </br> </br> 
 
