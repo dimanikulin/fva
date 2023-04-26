@@ -1,5 +1,6 @@
 # Headline
 What I learned as a Subject Matter Expert while creating my product
+
 TBD
 
 # Article description
@@ -11,9 +12,9 @@ TBD
 # Content
 
 ## Multimedia IR systems
-&nbsp;&nbsp; My first step in the role of an SME was getting to know what [Multimedia Data](./MULTIMEDIADATA.md) is.
-I started learning it as I understood that my whole photo album is [Multimedia Data](./MULTIMEDIADATA.md) itself.
-Then I realised that I need to use a solution to search in [Multimedia Data](./MULTIMEDIADATA.md) - [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md). 
+&nbsp;&nbsp; My first step in the role of an SME was getting to know what [Multimedia Data](./MultimediaData.md) is.
+I started learning it as I understood that my whole photo album is [Multimedia Data](./MultimediaData.md) itself.
+Then I realised that I need to use a solution to search in [Multimedia Data](./MultimediaData.md) - [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md). 
 However, there are many [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md), and it was a long way to select one of them to start searching in a more efficient way.
 Thus, several [Multimedia IR systems](./MULTIMEDIAIRSYSTEMS.md), that are present on the market and available for end users, were analyzed. 
 
@@ -82,7 +83,12 @@ It means that when a user wants to integrate [multimedia data]((https://link.spr
 As soon as it is done, **FVA Tool Set** will put [multimedia data](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008) into a selected directory and [Google Photos](https://en.wikipedia.org/wiki/Google_Photos) will be able to search through it as soon as it synchronizes [multimedia data](https://link.springer.com/referenceworkentry/10.1007%2F978-0-387-39940-9_1008).
 
 # References
-TBD
+| # | Name                 | Source                | Release date           |  Author                 | Description   |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 1 | What is multimedia data?|[repo](./MultimediaData.md)| 2022            | Dmytro Nikulin |  |
+| 2 | What are Multimedia IR systems?|[repo](./MultimediaIRSystems.md)|2022 | Dmytro Nikulin |  |
+| 3 | Multimedia IR systems Analyze|[repo](./MultimediaIRSystemsAnalyze.md)|2022| Dmytro Nikulin |  |
+| 4 | What are MultimediaOrganizers?|[repo](./MultimediaOrganizers.md)|2022 | Dmytro Nikulin | |
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
