@@ -12,7 +12,7 @@ The author also highlights the role of Multimedia Organizers and their integrati
 Finally, the article discusses the FVA Tool Set's integration with offline Multimedia IR systems through digiKam and online Multimedia IR systems through Google Photos. 
 
 # Tags
-TBD
+Multimedia IR Systems, Metadata, Multimedia Organizers, digiKam, Google Photos, Multimedia Data, Photo Album.
 
 # Content
 
