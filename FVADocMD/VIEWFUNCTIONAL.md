@@ -1,14 +1,3 @@
-# Headline
-TBD
-
-# Article description
-TBD 
-
-# Tags
-TBD
-
-# Content
-
 ## Layers
 &nbsp;&nbsp;&nbsp; The Layered Architecture shall be applied to the system. 
 TBD why not SOA
@@ -100,9 +89,6 @@ The formatting strings shall be kept in a separated category
 
 ### FVA Software dictionary 
 FVA Software dictionary is data used along with FVA Software internal metadata.
-
-# References
-TBD
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
