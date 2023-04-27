@@ -8,13 +8,6 @@ flowchart BT
     B(Processing) --> C(Data and Configuration)
 ```
 TBD - describe why layered arch and why not SOA
-
-## Logging 
-All the main components interact with the Logging component to log the important events during processing.
-During logging the logging component uses a "log level" setting got from FVAConfigurator.
-The log shall be present as a CSV file with name of component it was created by.
-The format of log file shall be following:
-TBD
  
 ### ([UI](https://en.wikipedia.org/wiki/User_interface))layer 
 The photo album owner interacts with the system through the user interface ([UI](https://en.wikipedia.org/wiki/User_interface)) layer components. 
@@ -87,6 +80,13 @@ It is used to enrich Output Multimedia Data. </br>
 
 ### FVA Software dictionary 
 FVA Software dictionary is data used along with FVA Software internal metadata.
+
+## Logging 
+All the main components interact with the Logging component to log the important events during processing.
+During logging the logging component uses a "log level" setting got from FVAConfigurator.
+The log shall be present as a CSV file with name of component it was created by.
+The format of log file shall be following:
+TBD
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
