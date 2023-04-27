@@ -1,6 +1,5 @@
 ## Layers
-&nbsp;&nbsp;&nbsp; The Layered Architecture shall be applied to the system. 
-TBD why not SOA
+The Layered Architecture shall be applied to the system. 
 Following layers are considered:
 
 ```mermaid
@@ -8,11 +7,11 @@ flowchart BT
     A(UI) --> B(Processing)
     B(Processing) --> C(Data and Configuration)
 ```
-</br> TBD - describe why layered arch </br> 
-All the main components interact with the Logging component to log the important events during processing.
+TBD - describe why layered arch and why not SOA
 
-### Logging 
-&nbsp;&nbsp;&nbsp; During logging the logging component uses a "log level" setting got from FVAConfigurator.
+## Logging 
+All the main components interact with the Logging component to log the important events during processing.
+During logging the logging component uses a "log level" setting got from FVAConfigurator.
 The log shall be present as a CSV file with name of component it was created by.
 The format of log file shall be following:
 TBD
@@ -57,12 +56,11 @@ graph TD
     A(Processing) --> C(Flow Controller)
     A(Processing) --> D(Organizer)
 ```
-&nbsp;&nbsp;&nbsp; The purpose of Flow Controller is to manage the action flows between [UI](https://en.wikipedia.org/wiki/User_interface) and the Data processor. The flows can be configured by the Configurator component.
-</br>
-&nbsp;&nbsp;&nbsp; Data Processor performs such actions as checking the multimedia [Metadata](https://en.wikipedia.org/wiki/Metadata) for presence and consistency and enriching it.
-</br>
-&nbsp;&nbsp;&nbsp; Organizer makes possible to start any command in separate process from command line or in separate thread.
-</br>
+The purpose of Flow Controller is to manage the action flows between [UI](https://en.wikipedia.org/wiki/User_interface) and the Data processor. The flows can be configured by the Configurator component.
+
+Data Processor performs such actions as checking the multimedia [Metadata](https://en.wikipedia.org/wiki/Metadata) for presence and consistency and enriching it.
+
+Organizer makes possible to start any command in separate process from command line or in separate thread.
 
 ## Data layer
 ```mermaid
@@ -85,7 +83,7 @@ TBD
 The formatting strings shall be kept in a separated category
 
 ### FVA Software internal metadata
-&nbsp;&nbsp;&nbsp; It is used to enrich Output Multimedia Data. </br> 
+It is used to enrich Output Multimedia Data. </br> 
 
 ### FVA Software dictionary 
 FVA Software dictionary is data used along with FVA Software internal metadata.
