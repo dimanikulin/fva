@@ -1,24 +1,3 @@
-# Quality attributes
-&nbsp;&nbsp;&nbsp; This section lists quality attributes for target architecture.
-For each quality attribute it provides name, description, motivation (rationale for selecting), measurable metrics and priorities from business and architecture points of view.
-The metrics show whether a particular quality attribute is achieved or not.
-The components where metric is measured is noted as well.
-
-- [Conceptual Integrity](#conceptualintegrity)
-- [Maintainability](#maintainability)
-- [Reusability](#reusability)
-- [Availability](#availability)
-- [Interoperability](#interoperability)
-- [Manageability](#manageability)
-- [Performance](#performance)
-- [Reliability](#reliability)
-- [Scalability](#scalability)
-- [Security](#security)
-- [Portability](#portability)
-- [Supportability](#supportability)
-- [Testability](#testability)
-- [Learnability](#learnability)
-- [Traceability](#traceability)
 
 # Conceptual Integrity
 The software shall be decomposed into well-structured modules according to functional decomposition. 

@@ -67,7 +67,6 @@ This section lists constrains and explanations for them.
 | 5 | One format for pictures should be used (jpeg) as a widely used with EXIF support, any other format must be converted to this one with adding EXIF when needed | It simplifies implementation of solution | L | H |
 | 6 | One folder shall keep multimedia data for one event only | It simplifies organization structure of photo album, implementation of solution and make photo album more searchable  | L | H |
 | 7 | The solution shall use open source tools only | As it is going to be open source as well | H | M |
-| 8 |  |  |  |  |
 
 ## Assumptions
 This section lists all the assumptions with explanations for them. 
@@ -79,6 +78,27 @@ This is critical to do in order to cover all the gaps in the requirements.
 | 2 | User restarted the wizard after changing the configuration (because of feature of QTWizard and QTWizardPage) |
 
 ## Quality Attributes
+This section lists quality attributes for target architecture.
+For each quality attribute it provides name, description, motivation (rationale for selecting), measurable metrics and priorities from business and architecture points of view.
+The metrics show whether a particular quality attribute is achieved or not.
+The components where metric is measured is noted as well.
+So there are following Quality Attributes:
+- Conceptual Integrity
+- Maintainability
+- Reusability
+- Availability
+- Interoperability
+- Manageability
+- Performance
+- Reliability
+- Scalability
+- Security
+- Portability
+- Supportability
+- Testability  
+- Learnability 
+- Traceability 
+
 [Quality Attributes for the FVA are described hereTBD](QUALITYATTRIBUTES_FVA.md)
 
 ## Hardware requirements
