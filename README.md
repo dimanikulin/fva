@@ -83,6 +83,17 @@ The external devices might be:
 
 Once the multimedia data from the external devices is processed, the solution interacts with integrated online and offline Multimedia systems.
 
+## Functional Diagram 
+
+The Layered Architecture shall be applied to the system. 
+Following layers are considered:
+
+```mermaid
+flowchart BT
+    A(UI) --> B(Processing)
+    B(Processing) --> C(Data and Configuration)
+```
+
 ## Programming Languages
 Now C++ and Python are considered as main languages to implement FVA Software.
 

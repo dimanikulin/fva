@@ -1,12 +1,4 @@
 ## Layers
-The Layered Architecture shall be applied to the system. 
-Following layers are considered:
-
-```mermaid
-flowchart BT
-    A(UI) --> B(Processing)
-    B(Processing) --> C(Data and Configuration)
-```
 TBD - describe why layered arch and why not SOA
  
 ### ([UI](https://en.wikipedia.org/wiki/User_interface))layer 
