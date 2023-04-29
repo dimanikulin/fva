@@ -93,8 +93,9 @@ flowchart BT
     A(UI) --> B(Processing)
     B(Processing) --> C(Data and Configuration)
 ```
+For more detail please [see](./FunctionalView.md)
 
-## Programming Languages
+## Programming Languages                         
 Now C++ and Python are considered as main languages to implement FVA Software.
 
 TBD - to describe for which cases C++ and for which Python.
