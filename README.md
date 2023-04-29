@@ -53,7 +53,7 @@ etc. to make multimedia more fully-searchable as well as to refine family photos
 - **Automating the import:** to decrease the probability of human factor influence on the process of importing new photos into the existing photo album;
 Despite many steps are automated, still human involvement is required. 
 
-# SA Requirements
+# Software Architecture Requirements
 
 ## Context Diagram
 The context diagram below shows the solution bounds and its interactions with other objects and subjects.
@@ -93,7 +93,7 @@ flowchart BT
     A(UI) --> B(Processing)
     B(Processing) --> C(Data and Configuration)
 ```
-For more detail please [see](./FunctionalView.md)
+For more details please [see](./FunctionalView.md)
 
 ## Programming Languages                         
 Now C++ and Python are considered as main languages to implement FVA Software.
