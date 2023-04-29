@@ -82,7 +82,7 @@ This is critical to do in order to cover all the gaps in the requirements.
 [Quality Attributes for the FVA are described hereTBD](QUALITYATTRIBUTES_FVA.md)
 
 
-# Software Architecture View
+# Software Architecture Views
 
 ## Context View
 The context diagram below shows the solution bounds and its interactions with other objects and subjects.
@@ -112,7 +112,7 @@ The external devices might be:
 
 Once the multimedia data from the external devices is processed, the solution interacts with integrated online and offline Multimedia systems.
 
-## Functional Diagram 
+## Functional View
 
 The Layered Architecture shall be applied to the system. 
 Following layers are considered:
@@ -124,15 +124,7 @@ flowchart BT
 ```
 For more details please [see](./FunctionalView.md)
 
-## Programming Languages                         
-Now C++ and Python are considered as main languages to implement FVA Software.
-
-TBD - to describe for which cases C++ and for which Python.
-
-## Hardware requirements
-TBD
-
-## Deployment Approach
+## Deployment View
 The target installation folder shall have next folder structure:
 *  “#bin#” – a directory with all binaries (product one either third party);
 *  “#data#” - a directory to keep user populated dictionaries and application data;
@@ -142,10 +134,19 @@ The target installation folder shall have next folder structure:
 Installation must be possible at any target directory but not only in root folder.
 
 TBD describe dependencies installed along with FVA Software.
+
 TBD fvaParams.csv
 
+## Programming Languages                         
+Now C++ and Python are considered as main languages to implement FVA Software.
+
+TBD - to describe for which cases C++ and for which Python.
+
+## Hardware requirements
+TBD
+
 ## License
-we use 3-rd party code here 
+we use 3-rd party code here TBD link
 and own licence is TBD
 
 # Dependencies
