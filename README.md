@@ -99,7 +99,7 @@ So there are following Quality Attributes:
 - Learnability 
 - Traceability 
 
-[Quality Attributes for the FVA are described hereTBD](QUALITYATTRIBUTES_FVA.md)
+For more details please [see](./QualityAttributes.md)
 
 ## Hardware requirements
 TBD

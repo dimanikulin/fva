@@ -1,16 +1,3 @@
-
-# Conceptual Integrity
-The software shall be decomposed into well-structured modules according to functional decomposition. 
-
-## Motivation for selecting
-TBD
-
-## Metrics
-The code review process shall be established to make sure the modules are structured according to functional decomposition
-
-## Business value - Low
-## Architecture viewpoint - Middle
-
 # Maintainability
 The system shall be able to undergo changes with a high level of easiness.
 

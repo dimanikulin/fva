@@ -1,0 +1,4 @@
+# Quality Attributes
+|Name                |Explanation                                                                                        |Motivation for selecting|Metrics                                                                                                                   |Business value|Architecture viewpoint|
+|--------------------|---------------------------------------------------------------------------------------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------|--------------|:--------------------:|
+|Conceptual Integrity|The software shall be decomposed into well-structured modules according to functional decomposition|TBD                     |The code review process shall be established to make sure the modules are structured according to functional decomposition|Low           |Middle                |
