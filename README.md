@@ -81,6 +81,8 @@ This is critical to do in order to cover all the gaps in the requirements.
 ## Quality Attributes
 [Quality Attributes for the FVA are described hereTBD](QUALITYATTRIBUTES_FVA.md)
 
+## Hardware requirements
+TBD
 
 # Software Architecture Views
 
@@ -137,15 +139,12 @@ TBD describe dependencies installed along with FVA Software.
 
 TBD fvaParams.csv
 
-## Programming Languages                         
+# Programming Languages                         
 Now C++ and Python are considered as main languages to implement FVA Software.
 
 TBD - to describe for which cases C++ and for which Python.
 
-## Hardware requirements
-TBD
-
-## License
+# License
 we use 3-rd party code here TBD link
 and own licence is TBD
 
