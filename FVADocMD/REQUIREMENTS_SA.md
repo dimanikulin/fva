@@ -24,7 +24,7 @@ This section lists constrains and explanations for them.
 | 8 |  |  |  |  |
 
 ## Assumptions
-&nbsp;&nbsp;&nbsp; This section lists all the assumptions with explanations for them. 
+This section lists all the assumptions with explanations for them. 
 This is critical to do in order to cover all the gaps in the requirements.
 
 | # | Assumption Description  | 
