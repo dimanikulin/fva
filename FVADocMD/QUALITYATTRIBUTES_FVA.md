@@ -1,33 +1,3 @@
-# Maintainability
-The system shall be able to undergo changes with a high level of easiness.
-
-## Motivation for selecting
-The following changes might happen frequently:
-- changes applied to the [UI](https://en.wikipedia.org/wiki/User_interface) like adding new screen;
-- adding new multimedia formats to support;
-- new [metadata](https://en.wikipedia.org/wiki/Metadata) search criteria to handle.
-- new offline or online IR Multimedia Systems can be easily integrated
-
-## Metrics
-The code review process shall be defined to make sure the [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming), [SOLID](https://en.wikipedia.org/wiki/SOLID) principles and [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern are going to be used.
-
-## Business value - Middle
-## Architecture viewpoint - High
-                                              
-# Reusability
-The system components shall be usable in other functionality or other flows.
-
-## Motivation for selecting
-It is applied for deduplication of implementation and to reduce the implementation time spent).
-
-## Metrics
-A common library is going to be created to keep the following functions used by several components:
-- To work with configuration;
-- Logging functions;
-- Common [UI](https://en.wikipedia.org/wiki/User_interface) functions;
-
-## Business value - Middle
-## Architecture viewpoint - High
 
 # Availability
 TBD
