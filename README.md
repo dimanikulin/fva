@@ -80,6 +80,7 @@ This is critical to do in order to cover all the gaps in the requirements.
 ## Quality Attributes
 This section lists quality attributes for target architecture.
 So there are following Quality Attributes: **Conceptual Integrity**, **Maintainability**, **Reusability**, **Availability**, **Interoperability**, **Manageability**, **Performance**, **Reliability**, **Scalability**, **Security**, **Portability**, **Supportability**, **Testability**, **Learnability**, **Traceability**.
+
 For more details please [see](./QualityAttributes.md)
 
 ## Hardware requirements
