@@ -1,43 +1,4 @@
 
-
-# Usability
-The system shall be intuitive, easy to localize (to support multiple time zones, languages, etc.) and globalize. 
-In addition, the installation package must be provided for each supportable platform to increase the usability of product.
-
-## Motivation for selecting
-TBD
-
-## Metrics
-TBD
-
-## Business value - High 
-## Architecture viewpoint - Middle
-
-# Learnability
-The system shall have the [UI](https://en.wikipedia.org/wiki/User_interface) allowing users to quickly become familiar with it and be able to make good use of all their features and capabilities.
-The user guideline and working instruction shall be available.
-
-## Motivation for selecting
-It is required to help the user to get familiar with the system.
-
-## Metrics
-TBD
-
-## Business value - High
-## Architecture viewpoint  - High
-
-# Traceability
-The system code shall be traceable to the requirements.
-
-## Motivation for selecting
-To make possible to measure the product readiness.
-
-## Metrics
-TBD
-
-## Business value - Low
-## Architecture viewpoint - Low
-
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
 | - | ------------------------|:--------------:|
