@@ -1,33 +1,4 @@
 
-# Supportability
-During abnormal function, the software shall provide the information to find and to solve the issues via prompting user in [UI](https://en.wikipedia.org/wiki/User_interface) and saving detailed information into the log file. Also it has 
-- to show the progress of processing in [UI](https://en.wikipedia.org/wiki/User_interface);
-- to show any important events to user in [UI](https://en.wikipedia.org/wiki/User_interface);
-- to provide the user with an ability to cancel the processing in [UI](https://en.wikipedia.org/wiki/User_interface). 
-
-The user shall be able to change a log level as configurable parameter.
-
-## Motivation for selecting
-It is applied to easily support the systems operations in the fields and for monitoring. 
-TBD - Add a description for Administration tools and specific deployment aspects
-
-## Metrics
-TBD
-
-## Business value - High
-## Architecture viewpoint - Middle
-
-# Testability
-TBD
-
-## Motivation for selecting
-TBD
-
-## Metrics
-TBD
-
-## Business value - TBD
-## Architecture viewpoint - TBD
 
 # Usability
 The system shall be intuitive, easy to localize (to support multiple time zones, languages, etc.) and globalize. 
