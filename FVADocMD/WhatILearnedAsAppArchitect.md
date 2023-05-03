@@ -1,12 +1,15 @@
 # Headline
-TBD
 What I learned as an Application Architect while creating my product
 
+Creating Effective Documentation for Small Applications: Lessons Learned from a Solution Architect
+
 # Article description
-TBD 
+In this article, we explore the importance of solution architecture in small applications, and why having an architect involved can make a significant difference. 
+The author shares their experience in creating a solution architecture document, and how they decided to keep all notes and documents in the form of text files in MD format, providing insights on how to create attractive README.md files with a use of badges from shields, providing document structure and required chapters. 
+The article also covers topics such as defining requirements, managing development tools and libraries, and creating effective documentation for small applications. 
 
 # Tags
-TBD
+Solution Architecture, Development Tools, Quality Attributes, Requirements, Branch Strategy, Licenses, Text-Based Documentation, Mermaid.js
 
 # Content
 - "Are you kidding?", - you will ask me. - "Do such small applications require an arhitect to be involved?"
