@@ -69,7 +69,8 @@ Nevertheless, I then moved from SQLlite to [CSV](../FVACommonLib/fvacsvfile.h) t
 As I use two [languages](./PROGRAMMINGLANGUAGE.md), there was a need to work with **Python** code from **C++** application.
  
 Last but not least, I learned how to create [riff parser](../FVACommonLib/fvariffparser.h).
-                                                                
+
+TODO following is for DEVOPS 
 ## Releasing code and docs
 <img src="Images/BuildingCode.png" alt="BuildingCode"/>
 
