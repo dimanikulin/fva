@@ -155,6 +155,9 @@ Only open source [code/tools](./Dependencies.md) are used, as a product is **ope
 
 There were other [dependencies](./DependenciesOld.md) but they got outdated.
 
+# Code Documentation
+Please see [here](./CodeDocumentation.md) for the rules to document the code.
+
 # Contributing
 So far, the development is in a hot stage, and everyone is welcome to contribute anytime.
 You can fill in this [form](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6PFB-AMfV5plLtuV2r5S8BYn_g/edit) to understand your needs in Multimedia search and organizing.
@@ -166,6 +169,7 @@ Everyone can try themselves in different roles to learn something new:
 - [As a delivery manager](./FVADocMD/LEARNT_AS_DM.md);
 - [As an application architect](./FVADocMD/LEARNT_AS_SA.md); 
 - [As a software developer](./FVADocMD/LEARNED_AS_DEV.md).
+- [As a DevOps](./FVADocMD/WhatILearnedAsDevOps.md).
 - [As a subject matter expert](./FVADocMD/LEARNT_AS_SME.md). 
 - [As a software tester you can download installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions) to try it.
 
