@@ -144,6 +144,9 @@ Only open source [code/tools](./Dependencies.md) are used, as a product is **ope
 
 There were other [dependencies](./DependenciesOld.md) but they got outdated.
 
+# Code Style
+Please see [here](./CodeStyle.md) for the rules to create and review the code.
+
 # Code Documentation
 Please see [here](./CodeDocumentation.md) for the rules to document the code.
 
