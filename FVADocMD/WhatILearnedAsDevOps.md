@@ -8,6 +8,15 @@ TBD
 TBD
 
 # Content
+## Code Quality
+## Automated code checks
+&nbsp;&nbsp;&nbsp;  Currently there are following automated checks to verify if the code meets code quality requirements:
+* [Code QL](.github/workflows/codeqlanalysis.yml) Please see [[38]](./REFERENCES.md) TBD what for
+* [code Checks](.github/workflows/codeChecks.yml) TBD what for
+* [code factor](https://www.codefactor.io/repository/github/dimanikulin/fva/issues) TBD what for
+* [ms vc analysis](.github/workflows/msvc-analysis.yml) TBD what for
+TODO - to add a bage for each code check
+
 ## Releasing the code and the docs
 &nbsp;&nbsp;&nbsp; The release of product shall be on demand as soon as peace of product functionality is ready for release.
 Thus the release branch is being created or updated to keep added/updated product functionality.
@@ -51,9 +60,12 @@ TBD - create picture.
 | # | Name                 | Source                | Release date           |  Author                 | Description   |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
 | 1 | Using GitHub Actions with C++ and CMake | [Web](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/) | DEC 22, 2019| Cristian Adam |Providing a GitHub Actions configuration yaml file for C++ projects using CMake|
+| 2 | Code scanning finds more vulnerabilities using machine learning|[Web](https://github.blog/2022-02-17-code-scanning-finds-vulnerabilities-using-machine-learning/)| February 17, 2022 | Tiferet Gazit, Alona Hlobina | |
 
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
 | - | ------------------------|:--------------:|
 | 1 | [Qt](https://en.wikipedia.org/wiki/Qt_(software))|is a [widget toolkit](https://en.wikipedia.org/wiki/Widget_toolkit) for creating [graphical user interfaces](https://en.wikipedia.org/wiki/Graphical_user_interfaces) as well as [cross-platform applications](https://en.wikipedia.org/wiki/Cross-platform) that run on various software and hardware platforms such as [Linux](https://en.wikipedia.org/wiki/Linux), [Windows](https://en.wikipedia.org/wiki/Windows), [macOS](https://en.wikipedia.org/wiki/MacOS), [Android](https://en.wikipedia.org/wiki/Android_(operating_system)) or [embedded systems](https://en.wikipedia.org/wiki/Embedded_system) with little or no change in the underlying codebase while still being a native application with native capabilities and speed. |
+| 2 | [Cpplint](https://github.com/google/styleguide/blob/gh-pages/cpplint/cpplint.py)|is a C++ static code analysis tool which looks for programming errors, helps enforcing a coding standard, sniffs for code smells and offers simple refactoring suggestions. |
+| 3 | [Pylint](https://pypi.org/project/pylint/)| is a Python static code analysis tool which looks for programming errors, helps enforcing a coding standard, sniffs for code smells and offers simple refactoring suggestions.|
