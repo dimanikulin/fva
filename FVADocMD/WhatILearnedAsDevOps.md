@@ -44,7 +44,7 @@ I used [[37]](FVADocMD/REFERENCES.md) to help me to set up the main GitHub actio
 &nbsp;&nbsp;&nbsp; Once code change is pushed to GitHub, [main workflow](https://github.com/dimanikulin/fva/blob/master/.github/workflows/main.yml) is being executed and you will have new [Installation packages](https://github.com/dimanikulin/fva/releases) to use.
 All steps to build a package are called on any push to master or TBD branch.
 More details are located in comments and step names [here](https://github.com/dimanikulin/fva/blob/master/.github/workflows/main.yml).
-
+TODO explain how to install and cfg on github site
 #### Building the code locally
 Still you can use [MS studio solution](./FVASW.sln) to build locally on Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
 
