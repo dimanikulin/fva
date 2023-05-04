@@ -15,7 +15,7 @@ Yes, it's the first thing to start from.
 So, we should be able to check code quality. 
 It can be done automatically by cool tools (provided by third parties) mentioned [here](./CODEQUALITY.md).
 Unfortunately, automatic tools do not check all rules I need and...
-I decided to check other rules manually during [code review](./CODEREVIEW.md).
+I decided to check other rules manually during [code review](./CodeStyle.md) to follow code style.
 However, when I spent a lot of time on code reviewing and trying to check the code, I used **Python** to create other code [checks](../FVACodeChecks). 
 Still, not every rule can be checked automatically, and manual effort is excpected. 
 
