@@ -42,7 +42,10 @@
 - [License](./README.md#license)
 - [Dependencies](./README.md#dependencies)
 - [Code Style](./README.md#code-style)
-
+- [Code Documentation](./README.md#code-documentation)
+- [Contributing](./README.md#contributing)
+- [Stay in touch](./README.md#stay-in-touch)
+- [Definitions, Acronyms, Abbreviations](./README.md#definitions-acronyms-abbreviations) 
 
 # Description
 FVA Software (Photo-Video-Audio Software) is a convergent tool set in a form of desktop applications aimed at automating importing process of [Multimedia Data](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaData.md) (photo/audio/video)
