@@ -42,6 +42,9 @@ into [Multimedia IR systems](https://github.com/dimanikulin/dimanikulin/blob/mas
 etc. to make multimedia more fully-searchable as well as to refine family photos.
 <img src="./img_InputAndOutputExamples.gif" alt="Input And Output Examples" />
 
+# Quick Links
+- [Description](./README.md#description)
+
 # Capabilities
 - **Organizing the multimedia:** Organizing the [Multimedia Data](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaData.md) to be more searchable
 - **Multimedia metadata gaps identification:** It identifies the gaps and tries to fill it up (enriching the metadata and improving its consistency with minimal human involvement).
