@@ -33,6 +33,18 @@
   <a href="https://github.com/dimanikulin/fva/edit/master/README.md"><img src="https://img.shields.io/badge/documentation-read-d90368"> </a>
 </p>
 
+# Quick Links
+- [Description](./README.md#description)
+- [Capabilities](./README.md#capabilities)
+- [Software Architecture Requirements](./README.md#software-architecture-requirements)
+- [Software Architecture Views](./README.md#software-architecture-views)
+
+- [Description](./README.md#description)
+- [Description](./README.md#description)
+- [Description](./README.md#description)
+- [Description](./README.md#description)
+
+
 # Description
 FVA Software (Photo-Video-Audio Software) is a convergent tool set in a form of desktop applications aimed at automating importing process of [Multimedia Data](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaData.md) (photo/audio/video)
 into [Multimedia IR systems](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaIRSystems.md) like [digiKam](https://www.digikam.org/) 
@@ -41,9 +53,6 @@ into [Multimedia IR systems](https://github.com/dimanikulin/dimanikulin/blob/mas
 <img src="./img_SynologyMoments.png" alt="SynologyMoments.png" height="20" />, 
 etc. to make multimedia more fully-searchable as well as to refine family photos.
 <img src="./img_InputAndOutputExamples.gif" alt="Input And Output Examples" />
-
-# Quick Links
-- [Description](./README.md#description)
 
 # Capabilities
 - **Organizing the multimedia:** Organizing the [Multimedia Data](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaData.md) to be more searchable
