@@ -38,11 +38,10 @@
 - [Capabilities](./README.md#capabilities)
 - [Software Architecture Requirements](./README.md#software-architecture-requirements)
 - [Software Architecture Views](./README.md#software-architecture-views)
-
-- [Description](./README.md#description)
-- [Description](./README.md#description)
-- [Description](./README.md#description)
-- [Description](./README.md#description)
+- [Programming Languages](./README.md#programming-languages)
+- [License](./README.md#license)
+- [Dependencies](./README.md#dependencies)
+- [Code Style](./README.md#code-style)
 
 
 # Description
