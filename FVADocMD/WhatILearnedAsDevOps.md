@@ -9,6 +9,9 @@ TBD
 
 # Content
 ## Code Quality
+## 
+to speak main readm file sttucute, git hubm bages
+
 
 ### Automated code checks
 &nbsp;&nbsp;&nbsp;  Currently there are following automated checks to verify if the code meets code quality requirements:
