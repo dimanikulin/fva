@@ -173,6 +173,8 @@ You can fill in this [form](https://docs.google.com/forms/d/1EI3oOumRnHxDjEYgV6P
 You can also post an issue here [GitHub issues](https://github.com/dimanikulin/fva/issues) to request a feature or report a bug.
 
 [Here](https://github.com/dimanikulin/fva/discussions) you can start a discussion.
+
+You can also download [installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions) to try it.
   
 # Stay in touch
 * [Twitter](https://twitter.com/DmytroNikulin)
