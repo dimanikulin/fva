@@ -70,18 +70,25 @@ These requirements are based on the needs of the software and the expected workl
 
 It is important to consider hardware requirements during the architecture design phase to ensure that the solution is designed to work within the limitations and capabilities of the hardware that will be used to support it.
 
-## Software Architecture
+## Software Architecture Views
+**Software architecture views** are representations of different aspects of the software system that are designed to communicate specific information to different stakeholders. 
+They provide a structured way to organize and present information about the architecture of the software system.
+By using **software architecture views**, architects can ensure that all stakeholders have a clear understanding of the system and its architecture, which can help to avoid misunderstandings and ensure that the system is designed to meet the needs of all stakeholders.
+
+I created three **Software architecture views**:
+- Context view,
+- Functional view,
+- and Deployment view.
+
+I used [Mermaid.js](https://mermaid-js.github.io/mermaid-live-editor/edit) as it is supported now by GitHub.
 
 ### Context view 
 The first architecture view was a context diagram.
 Generally, [context diagram](https://github.com/dimanikulin/fva#context-view) shows the solution bounds and its interactions with other objects and subjects.
-I used Mermaid.js to create context view diagram.
-Mermaid.js is supported now by GitHub.
 
 ### Functional view
 The next architecture view was a functional diagram.
 Generally, [functional view](https://github.com/dimanikulin/fva#functional-view) shows solution components divided by functional purpose and interactions between them.
-and I used Mermaid.js to create that view diagram again.
 
 ### Deployment view
 The next architecture view had to be a deployment one.
