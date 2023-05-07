@@ -21,7 +21,8 @@ So, I decided to keep every note, every doc just in the form of text files in MD
 And I learned how to create attractive README.md files with a use of badges from shields, providing document structure and required chapters.
 
 ## Requirements 
-I started my learning as an architect from requirements selection. It is worth noting here, that my requirements selection approach was not the same as it was for [Product Manager](./LEARNT_AS_PM.md), because I needed more technical ones.
+I started my learning as an architect from requirements selection. 
+It is worth noting here, that my requirements selection approach was not the same as it was for [Product Manager](https://github.com/dimanikulin/dimanikulin/blob/main/WhatILearnedAsProductManager.md), because I needed more technical ones.
 I divided architect requirements into 3 parts:
 - **Constraints**;
 - **Assumptions**;
