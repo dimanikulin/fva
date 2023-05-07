@@ -55,12 +55,12 @@ Quality attributes are important to consider during requirements selection becau
 
 The **quality attributes** are provided in the form of a [table](https://github.com/dimanikulin/fva#quality-attributes) with the following columns:
 
-**Name**: to describe the quality attribute
-**Description**: to provide additional details about the quality attribute
-**Motivation**: to explain the rationale for selecting the quality attribute
-**Measurable Metrics**: to indicate the metrics used to measure whether the quality attribute has been achieved or not
-**Business Priorities**: to indicate the business priorities for the quality attribute
-**Architecture Priorities**: to indicate the architecture priorities for the quality attribute
+- **Name**: to describe the quality attribute
+- **Description**: to provide additional details about the quality attribute
+- **Motivation**: to explain the rationale for selecting the quality attribute
+- **Measurable Metrics**: to indicate the metrics used to measure whether the quality attribute has been achieved or not
+- **Business Priorities**: to indicate the business priorities for the quality attribute
+- **Architecture Priorities**: to indicate the architecture priorities for the quality attribute
 
 ### Hardware requirements
 Last but no least were [hardware requirements](https://github.com/dimanikulin/fva#hardware-requirements).
