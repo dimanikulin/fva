@@ -65,6 +65,11 @@ The **quality attributes** are provided in the form of a [table](https://github.
 ### Hardware requirements
 Last but no least were [hardware requirements](https://github.com/dimanikulin/fva#hardware-requirements).
 
+**Hardware requirements** refer to the physical components, such as servers, storage devices, and networking equipment, that are necessary to support the software solution. 
+These requirements are based on the needs of the software and the expected workload or usage patterns.
+
+It is important to consider hardware requirements during the architecture design phase to ensure that the solution is designed to work within the limitations and capabilities of the hardware that will be used to support it.
+
 ## Software Architecture
 
 ### Context view 
