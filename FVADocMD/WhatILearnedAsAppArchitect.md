@@ -83,8 +83,11 @@ I created three **Software architecture views**:
 I used [Mermaid.js](https://mermaid-js.github.io/mermaid-live-editor/edit) as it is supported now by GitHub.
 
 ### Context view 
-The first architecture view was a context diagram.
-Generally, [context diagram](https://github.com/dimanikulin/fva#context-view) shows the solution bounds and its interactions with other objects and subjects.
+A **Context view** is a type of software architecture view that provides a high-level overview of the software system and its external environment. 
+
+[It](https://github.com/dimanikulin/fva#context-view) shows the relationships between the software system and its users, other systems, and external entities.
+
+The Context view is useful for stakeholders who need a high-level understanding of the software system and its context, such as business analysts, project managers, or system owners.
 
 ### Functional view
 The next architecture view was a functional diagram.
