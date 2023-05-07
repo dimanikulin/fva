@@ -15,7 +15,7 @@ Solution Architecture, Development Tools, Quality Attributes, Requirements, Bran
 - "Are you kidding?", - you will ask me. - "Do such small applications require an arhitect to be involved?"
 - "Yes, yes, and yes!", - my answer will be.
 
-Generally, Architects create a huge document known as Solution Architecture Document [SAD](../FVADocX/FVAToolSet-SAD.docx) plus [diagrams](../FVADocX/FVAToolSet-SAD diagrams.drawio) that keeps everything inside.
+Generally, Architects create a huge document known as Solution Architecture Document that keeps everything inside.
 Initially, I followed the same way, but it turned out to be quite hard to track changes due to high frequency of modifications.
 So, I decided to keep every note, every doc just in the form of text files in MD format like this one ))).
 And I learned how to create attractive README.md files with a use of badges from shields, providing document structure and required chapters.
@@ -101,6 +101,8 @@ And I had to declare [FVA License](./LICENSE.md), so I gained an understanding o
 | # | Name                 | Source                | Release date           |  Author                 | Description   |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
 | 1 | A tool to edit diargam in mermaid-js | [Web](https://mermaid-js.github.io/mermaid-live-editor/edit) | | | |
+| 2 | Solution Architecture Document | [local resource](./FVADocX/FVAToolSet-SAD.docx) | | | |
+| 3 | Solution Architecture Document diagrams| [local resource](./FVADocX/FVAToolSet-SAD diagrams.drawio) | | | |
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
