@@ -20,10 +20,12 @@ Initially, I followed the same approach, but it turned out to be quite difficult
 So, I decided to keep every note and document in the form of text files in **MD format**, like this one.
 I also learned how to create attractive **README.md** files with the use of **badges** from shields, providing document structure and required chapters.
 
-## Requirements 
-I started my learning as an architect from requirements selection. 
-It is worth noting here, that my requirements selection approach was not the same as it was for [Product Manager](https://github.com/dimanikulin/dimanikulin/blob/main/WhatILearnedAsProductManager.md), because I needed more technical ones.
-I divided architect requirements into 3 parts:
+## Requirements
+I began my journey as an architect with **requirements** selection. 
+By selecting the right **requirements**, an architect can ensure that the software is designed to meet specific **business** goals and objectives, as well as technical and operational requirements. 
+This helps ensure that the software is scalable, maintainable, and meets the needs of both the **end-users** and the **stakeholders**.
+It's worth noting that my approach to selecting **requirements** differed from that of a [product manager](https://github.com/dimanikulin/dimanikulin/blob/main/WhatILearnedAsProductManager.md) because I needed more technical requirements. 
+I divided architect requirements into three parts:
 - **Constraints**;
 - **Assumptions**;
 - and **Quality Attributes**.
