@@ -51,7 +51,8 @@ By identifying assumptions early in the development process, the architect can t
 ### Quality Attributes
 [Quality Attributes](https://github.com/dimanikulin/dimanikulin/blob/main/QualityAttributes.md), also known as non-functional requirements, are the characteristics of a software solution that describe how well it performs in terms of its operation, maintenance, and evolution. 
 **Quality attributes** are not directly related to the functionality of the software, but rather to how well it meets certain standards or requirements.
-Quality attributes are important to consider during requirements selection because they can impact the user experience, the cost of ownership, and the long-term success of the software solution.
+
+**Quality attributes** are important to consider during requirements selection because they can impact the user experience, the cost of ownership, and the long-term success of the software solution.
 
 The **quality attributes** are provided in the form of a [table](https://github.com/dimanikulin/fva#quality-attributes) with the following columns:
 
@@ -85,9 +86,9 @@ I used [Mermaid.js](https://mermaid-js.github.io/mermaid-live-editor/edit) as it
 ### Context view 
 A **Context view** is a type of software architecture view that provides a high-level overview of the software system and its external environment. 
 
-[It](https://github.com/dimanikulin/fva#context-view) shows the relationships between the software system and its users, other systems, and external entities.
+It shows the relationships between the software system and its users, other systems, and external entities.
 
-The Context view is useful for stakeholders who need a high-level understanding of the software system and its context, such as business analysts, project managers, or system owners.
+The [Context](https://github.com/dimanikulin/fva#context-view) view is useful for stakeholders who need a high-level understanding of the software system and its context, such as business analysts, project managers, or system owners.
 
 ### Functional view
 The next architecture view was a functional diagram.
