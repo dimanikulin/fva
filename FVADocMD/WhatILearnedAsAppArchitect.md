@@ -31,12 +31,14 @@ I divided architect requirements into three parts:
 - and **Quality Attributes**.
 
 ### Constraints
-Constraints are a limitation for a product from techical perspective.
-I listed [them](https://github.com/dimanikulin/fva#constraints) in the form of a table with the following columns:
-- **Constraint** - to describe a constraint itself;
-- **Description** - to add more details about constraint;
-- **Business value** - to say it has High, Medium or Low value for business;
-- **Architecture viewpoint** - to say if it requires High, Medium or Low resources to implement.
+**Constraints** are factors that limit the architect's ability to design and implement a software solution.
+These factors may include technical, business, or organizational constraints that impact the development process.
+
+I have listed them on the following [page](https://github.com/dimanikulin/fva#constraints) in the form of a table with the following columns:
+- **Constraint** - to describe the constraint itself;
+- **Description** - to provide more details about the constraint;
+- **Business value** - to indicate the business value of the constraint (High, Medium, or Low);
+- **Architecture viewpoint** - to indicate the resources required to implement the constraint (High, Medium, or Low).
 
 ### Assumptions
 Then there were [assumptions](https://github.com/dimanikulin/fva#assumptions) with explanations to them. 
