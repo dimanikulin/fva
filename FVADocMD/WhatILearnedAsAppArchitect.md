@@ -102,7 +102,7 @@ And I had to declare [FVA License](./LICENSE.md), so I gained an understanding o
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
 | 1 | A tool to edit diargam in mermaid-js | [Web](https://mermaid-js.github.io/mermaid-live-editor/edit) | | | |
 | 2 | Solution Architecture Document | [local resource](./FVADocX/FVAToolSet-SAD.docx) | | | |
-| 3 | Solution Architecture Document diagrams| [local resource](./FVADocX/FVAToolSet-SAD diagrams.drawio) | | | |
+| 3 | Solution Architecture Document diagrams | [local resource](./FVADocX/FVAToolSet-SADdiagrams.drawio) | | | |
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
