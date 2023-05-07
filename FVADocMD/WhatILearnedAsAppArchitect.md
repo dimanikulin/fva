@@ -12,13 +12,13 @@ The article also covers topics such as defining requirements, managing developme
 Solution Architecture, Development Tools, Quality Attributes, Requirements, Branch Strategy, Licenses, Text-Based Documentation, Mermaid.js
 
 # Content
-- "*Are you kidding?*", - you will ask me. - "*Do such small applications require an arhitect to be involved?*"
-- "*Yes, yes, and yes!*", - my answer will be.
+- "*Are you kidding?*"  you might ask. "*Do such small applications really require an architect to be involved?*"
+- "*Yes, yes, and yes!*" I would answer.
 
-Generally, Architects create a huge document known as Solution Architecture Document that keeps everything inside.
-Initially, I followed the same way, but it turned out to be quite hard to track changes due to high frequency of modifications.
-So, I decided to keep every note, every doc just in the form of text files in MD format like this one ))).
-And I learned how to create attractive README.md files with a use of badges from shields, providing document structure and required chapters.
+Generally, architects create a huge document known as a **Solution Architecture Document** that includes everything. 
+Initially, I followed the same approach, but it turned out to be quite difficult to track changes due to the high frequency of modifications. 
+So, I decided to keep every note and document in the form of text files in **MD format**, like this one.
+I also learned how to create attractive **README.md** files with the use of **badges** from shields, providing document structure and required chapters.
 
 ## Requirements 
 I started my learning as an architect from requirements selection. 
@@ -40,7 +40,7 @@ I listed [them](https://github.com/dimanikulin/fva#constraints) in the form of a
 Then there were [assumptions](https://github.com/dimanikulin/fva#assumptions) with explanations to them. 
 
 ### Quality Attributes
-On top of that, it was very important to define a solution for [quality attributes](https://github.com/dimanikulin/fva#quality-attributes).
+On top of that, it was very important to define [quality attributes](https://github.com/dimanikulin/fva#quality-attributes).
 
 It is provided in the form of a table with the following columns:
 - **name**; 
