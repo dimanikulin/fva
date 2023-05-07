@@ -48,17 +48,18 @@ These statements are made based on available information, but they **are not** n
 By identifying assumptions early in the development process, the architect can take steps to verify the assumptions and adjust the design as needed to ensure that the solution will function as intended.
 
 ### Quality Attributes
-On top of that, it was very important to define [quality attributes](https://github.com/dimanikulin/fva#quality-attributes).
+[Quality Attributes](https://github.com/dimanikulin/dimanikulin/blob/main/QualityAttributes.md), also known as non-functional requirements, are the characteristics of a software solution that describe how well it performs in terms of its operation, maintenance, and evolution. 
+**Quality attributes** are not directly related to the functionality of the software, but rather to how well it meets certain standards or requirements.
+Quality attributes are important to consider during requirements selection because they can impact the user experience, the cost of ownership, and the long-term success of the software solution.
 
-It is provided in the form of a table with the following columns:
-- **name**; 
-- **description**;
-- **motivation** to tell rationale for selecting;
-- **measurable metrics** to show whether a particular quality attribute is achieved or not;
-- priorities from **business** points of view;
-- and priorities from **architecture** points of view.
+The **quality attributes** are provided in the form of a [table](https://github.com/dimanikulin/fva#quality-attributes) with the following columns:
 
-But before filling in that table I needed to understand what [Quality Attributes](https://github.com/dimanikulin/dimanikulin/blob/main/QualityAttributes.md) generally are.
+**Name**: to describe the quality attribute
+**Description**: to provide additional details about the quality attribute
+**Motivation**: to explain the rationale for selecting the quality attribute
+**Measurable Metrics**: to indicate the metrics used to measure whether the quality attribute has been achieved or not
+**Business Priorities**: to indicate the business priorities for the quality attribute
+**Architecture Priorities**: to indicate the architecture priorities for the quality attribute
 
 ### Hardware requirements
 Last but no least were [hardware requirements](https://github.com/dimanikulin/fva#hardware-requirements).
