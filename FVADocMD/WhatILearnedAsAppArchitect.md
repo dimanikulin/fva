@@ -25,10 +25,11 @@ I began my journey as an architect with **requirements** selection.
 By selecting the right **requirements**, an architect can ensure that the software is designed to meet specific **business** goals and objectives, as well as technical and operational requirements. 
 This helps ensure that the software is scalable, maintainable, and meets the needs of both the **end-users** and the **stakeholders**.
 It's worth noting that my approach to selecting **requirements** differed from that of a [product manager](https://github.com/dimanikulin/dimanikulin/blob/main/WhatILearnedAsProductManager.md) because I needed more technical requirements. 
-I divided architect requirements into three parts:
+I divided architect requirements into four parts:
 - **Constraints**;
 - **Assumptions**;
-- and **Quality Attributes**.
+- **Quality Attributes**;
+- and **Hardware requirements**.
 
 ### Constraints
 **Constraints** are factors that limit the architect's ability to design and implement a software solution.
