@@ -29,17 +29,17 @@ I divided architect requirements into 3 parts:
 
 ### Constraints
 Constraints are a limitation for a product from techical perspective.
-I listed [them](./REQUIREMENTS_SA.md#constraints) in the form of a table with the following columns:
+I listed [them](https://github.com/dimanikulin/fva#constraints) in the form of a table with the following columns:
 - **Constraint** - to describe a constraint itself;
 - **Description** - to add more details about constraint;
 - **Business value** - to say it has High, Medium or Low value for business;
 - **Architecture viewpoint** - to say if it requires High, Medium or Low resources to implement.
 
 ### Assumptions
-Then there were [assumptions](./REQUIREMENTS_SA.md#assumptions) with explanations to them. 
+Then there were [assumptions](https://github.com/dimanikulin/fva#assumptions) with explanations to them. 
 
 ### Quality Attributes
-On top of that, it was very important to define a solution for [quality attributes](./QUALITYATTRIBUTES_FVA.md).
+On top of that, it was very important to define a solution for [quality attributes](https://github.com/dimanikulin/fva#quality-attributes).
 
 It is provided in the form of a table with the following columns:
 - **name**; 
@@ -49,34 +49,34 @@ It is provided in the form of a table with the following columns:
 - priorities from **business** points of view;
 - and priorities from **architecture** points of view.
 
-But before filling in that table I needed to understand what [Quality Attributes](./QUALITYATTRIBUTES.md) generally are.
+But before filling in that table I needed to understand what [Quality Attributes](https://github.com/dimanikulin/dimanikulin/blob/main/QualityAttributes.md) generally are.
 
 ### Hardware requirements
-Last but no least were [hardware requirements](./REQUIREMENTS_HW.md).
+Last but no least were [hardware requirements](https://github.com/dimanikulin/fva#hardware-requirements).
 
 ## Software Architecture
 
 ### Context view 
 The first architecture view was a context diagram.
-Generally, [context diagram](./VIEWCONTEXT.md) shows the solution bounds and its interactions with other objects and subjects.
+Generally, [context diagram](https://github.com/dimanikulin/fva#context-view) shows the solution bounds and its interactions with other objects and subjects.
 I used Mermaid.js to create context view diagram.
 Mermaid.js is supported now by GitHub.
 
 ### Functional view
 The next architecture view was a functional diagram.
-Generally, [functional view](./VIEWFUNCTIONAL.md) shows solution components divided by functional purpose and interactions between them.
+Generally, [functional view](https://github.com/dimanikulin/fva#functional-view) shows solution components divided by functional purpose and interactions between them.
 and I used Mermaid.js to create that view diagram again.
 
 ### Deployment view
 The next architecture view had to be a deployment one.
 As a rule, deployment view shows nodes used to deploy solution components/processes.
-Because FVA Tool Set requires only one node and a few processes to deploy I decided to put it in a simple text [description](./DEPLOYMENTAPPROACH.md).
+Because FVA Tool Set requires only one node and a few processes to deploy I decided to put it in a simple text [description](https://github.com/dimanikulin/fva#deployment-view).
 
 ## Tools, libraries and languages
 At some point I realized I need to manage the tools, libraries and languages I use.
  
 ### Tools and libraries 
-All the tools and libraries I used for development I put in the form of a [table](./DEPENDENCIES.md) with the following columns:
+All the tools and libraries I used for development I put in the form of a [table](https://github.com/dimanikulin/fva#dependencies) with the following columns:
 - **Name** to designate name;
 - **Purpose** to set up a purpose of a tool/library;
 - **Version** to name the version;
@@ -84,18 +84,15 @@ All the tools and libraries I used for development I put in the form of a [table
 - **Environment** to say what environment we can run that tool/library on;
 - **Comment** just to add additional comment. 
 
-Initially, it was a much longer list of tools/libraries, but they got outdated and were moved into a separate [table](./DEPENDENCIES_OLD.md) with the same format.
+Initially, it was a much longer list of tools/libraries, but they got outdated and were moved into a separate [table](https://github.com/dimanikulin/fva/blob/master/DependenciesOld.md) with the same format.
 
 ### Languages
-I just used plain text to describe [programmimng languages] the FVA Software uses.
-
-## Branch strategy
-One more important point was a definition of [branch strategy](./BUILD_RELEASE.md#branchstrategy) 
+I just used plain text to describe [programmimng languages](https://github.com/dimanikulin/fva#programming-languages) the FVA Software uses.
 
 ## Licenses 
 Undeniably, we should remember about licenses.
-As FVA Software uses third party, it shall contain its license in the [code](../FVACommonLib/LICENSE).
-And I had to declare [FVA License](./LICENSE.md), so I gained an understanding of what license is and how to create it.
+As FVA Software uses third party, it shall contain its [license](https://github.com/dimanikulin/fva/blob/master/FVACommonLib/LICENSE) in the code.
+And I had to declare FVA License, so I gained an understanding of what license is and how to create it.
  
 # References
 | # | Name                 | Source                | Release date           |  Author                 | Description   |
