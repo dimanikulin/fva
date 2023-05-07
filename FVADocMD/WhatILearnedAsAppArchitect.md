@@ -41,7 +41,11 @@ I have listed them on the following [page](https://github.com/dimanikulin/fva#co
 - **Architecture viewpoint** - to indicate the resources required to implement the constraint (High, Medium, or Low).
 
 ### Assumptions
-Then there were [assumptions](https://github.com/dimanikulin/fva#assumptions) with explanations to them. 
+**Assumptions** are [statements](https://github.com/dimanikulin/fva#assumptions) made by the architect about the environment, conditions, or factors that are expected to be true for the software solution to function as intended. 
+These statements are made based on available information, but they **are not** necessarily proven to be true.
+
+**Assumptions** are important to consider during requirements selection because they can impact the design and implementation of the software solution. 
+By identifying assumptions early in the development process, the architect can take steps to verify the assumptions and adjust the design as needed to ensure that the solution will function as intended.
 
 ### Quality Attributes
 On top of that, it was very important to define [quality attributes](https://github.com/dimanikulin/fva#quality-attributes).
