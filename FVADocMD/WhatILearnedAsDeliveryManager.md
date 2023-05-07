@@ -9,6 +9,9 @@ TBD
 TBD
 
 # Content
+to speak main readm file sttucute, git hubm bages
+and How to get more engagement with your open source project
+
 &nbsp;&nbsp;&nbsp; Honestly, I didn't learn much as a Delivery Manager. Still, here are some points to consider...
 
 ## Project Status tracking
