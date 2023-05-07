@@ -12,8 +12,8 @@ The article also covers topics such as defining requirements, managing developme
 Solution Architecture, Development Tools, Quality Attributes, Requirements, Branch Strategy, Licenses, Text-Based Documentation, Mermaid.js
 
 # Content
-- "Are you kidding?", - you will ask me. - "Do such small applications require an arhitect to be involved?"
-- "Yes, yes, and yes!", - my answer will be.
+- "*Are you kidding?*", - you will ask me. - "*Do such small applications require an arhitect to be involved?*"
+- "*Yes, yes, and yes!*", - my answer will be.
 
 Generally, Architects create a huge document known as Solution Architecture Document that keeps everything inside.
 Initially, I followed the same way, but it turned out to be quite hard to track changes due to high frequency of modifications.
