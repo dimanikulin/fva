@@ -121,7 +121,7 @@ Initially, the list was much longer, but as some of the tools/libraries became o
 You can find the old dependencies list [here](https://github.com/dimanikulin/fva/blob/master/DependenciesOld.md).
 
 ### Languages
-I just used plain text to describe [programmimng languages](https://github.com/dimanikulin/fva#programming-languages) the FVA Software uses.
+I just used plain text to describe [programming languages](https://github.com/dimanikulin/fva#programming-languages) the FVA Software uses.
 
 ## Licenses 
 Undeniably, we should remember about licenses.
