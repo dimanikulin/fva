@@ -91,13 +91,18 @@ It shows the relationships between the software system and its users, other syst
 The [Context](https://github.com/dimanikulin/fva#context-view) view is useful for stakeholders who need a high-level understanding of the software system and its context, such as business analysts, project managers, or system owners.
 
 ### Functional view
-The next architecture view was a functional diagram.
-Generally, [functional view](https://github.com/dimanikulin/fva#functional-view) shows solution components divided by functional purpose and interactions between them.
+A **Functional view** is a type of software architecture view that focuses on the functional or behavioral aspects of the software system.
+It describes the functional elements or components of the system and how they interact with each other to perform the desired tasks or functions.
+
+The [Functional view](https://github.com/dimanikulin/fva#functional-view) is useful for software architects, developers, and testers who need to understand the functional requirements of the system and how they are implemented.
 
 ### Deployment view
-The next architecture view had to be a deployment one.
-As a rule, deployment view shows nodes used to deploy solution components/processes.
-Because FVA Tool Set requires only one node and a few processes to deploy I decided to put it in a simple text [description](https://github.com/dimanikulin/fva#deployment-view).
+A **Deployment view** is a type of software architecture view that describes how the software system is deployed or installed in the computing environment. 
+It shows the physical elements of the system, such as servers, networks, and storage devices, and how they are connected and configured to support the software system.
+
+The **Deployment view** is useful for system administrators, operations teams, and infrastructure specialists who need to understand how the software system is deployed and managed in the computing environment.
+
+Since the FVA Tool Set can be deployed using only one node and a few processes, I provided a simple text [description](https://github.com/dimanikulin/fva#deployment-view) for the Deployment view.
 
 ## Tools, libraries and languages
 At some point I realized I need to manage the tools, libraries and languages I use.
