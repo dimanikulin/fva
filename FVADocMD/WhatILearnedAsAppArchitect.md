@@ -124,9 +124,9 @@ You can find the old dependencies list [here](https://github.com/dimanikulin/fva
 I just used plain text to describe [programming languages](https://github.com/dimanikulin/fva#programming-languages) the FVA Software uses.
 
 ## Licenses 
-Undeniably, we should remember about licenses.
-As FVA Software uses third party, it shall contain its [license](https://github.com/dimanikulin/fva/blob/master/FVACommonLib/LICENSE) in the code.
-And I had to declare FVA License, so I gained an understanding of what license is and how to create it.
+Undeniably, we should remember about licenses. 
+As FVA Software uses third-party tools and libraries, their respective [licenses](https://github.com/dimanikulin/fva/blob/master/FVACommonLib/LICENSE) should be included in the code. 
+In addition, I had to create the FVA License and gained an understanding of what a license is and how to create one.
  
 # References
 | # | Name                 | Source                | Release date           |  Author                 | Description   |
