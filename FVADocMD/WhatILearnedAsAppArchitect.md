@@ -108,15 +108,17 @@ Since the FVA Tool Set can be deployed using only one node and a few processes, 
 At some point, I realized that I needed a better way to manage the various IDEs, UI and command line tools, libraries, and languages that I use.
  
 ### Tools and libraries 
-All the tools and libraries I used for development I put in the form of a [table](https://github.com/dimanikulin/fva#dependencies) with the following columns:
-- **Name** to designate name;
-- **Purpose** to set up a purpose of a tool/library;
-- **Version** to name the version;
-- **License** to say what license is a tool/library under;
-- **Environment** to say what environment we can run that tool/library on;
-- **Comment** just to add additional comment. 
+I compiled a list of all the tools and libraries that I used for development and presented them in a table on the project's GitHub [page](https://github.com/dimanikulin/fva#dependencies).
+The table includes the following columns: 
+- **Name** the name of the tool/library, 
+- **Purpose**: its intended purpose, 
+- **Version**: the version I used, 
+- **License**: the license it is distributed under, 
+- **Environment**: the platform on which it can be run, 
+- and **Comment**: any additional information I wanted to provide.
 
-Initially, it was a much longer list of tools/libraries, but they got outdated and were moved into a separate [table](https://github.com/dimanikulin/fva/blob/master/DependenciesOld.md) with the same format.
+Initially, the list was much longer, but as some of the tools/libraries became outdated, I moved them to a separate table using the same format. 
+You can find the old dependencies list [here](https://github.com/dimanikulin/fva/blob/master/DependenciesOld.md).
 
 ### Languages
 I just used plain text to describe [programmimng languages](https://github.com/dimanikulin/fva#programming-languages) the FVA Software uses.
@@ -137,4 +139,4 @@ And I had to declare FVA License, so I gained an understanding of what license i
 | # | Abbreviation or Acronym | Definition     |
 | - | ------------------------|:--------------:|
 | 1 | [Quality Attribute](https://www.codementor.io/@antoniopfesilva/how-to-write-meaningful-quality-attributes-for-software-development-ez8y90wyo)|is a measurable or testable property of a system that is used to indicate how well the system satisfies the needs of its stakeholders |
-| 2 | IDE | TBD |
+| 2 | [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment)| An integrated development environment (IDE) is a [software application](https://en.wikipedia.org/wiki/Application_software) that provides comprehensive facilities to [computer programmers](https://en.wikipedia.org/wiki/Computer_programmer) for [software development](https://en.wikipedia.org/wiki/Software_development). An IDE normally consists of at least a [source code editor](https://en.wikipedia.org/wiki/Source_code_editor), build [automation tools](https://en.wikipedia.org/wiki/Build_automation) and a [debugger](https://en.wikipedia.org/wiki/Debugger).|
