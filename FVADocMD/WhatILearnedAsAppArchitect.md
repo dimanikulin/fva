@@ -102,10 +102,10 @@ It shows the physical elements of the system, such as servers, networks, and sto
 
 The **Deployment view** is useful for system administrators, operations teams, and infrastructure specialists who need to understand how the software system is deployed and managed in the computing environment.
 
-Since the FVA Tool Set can be deployed using only one node and a few processes, I provided a simple text [description](https://github.com/dimanikulin/fva#deployment-view) for the Deployment view.
+Since the FVA Tool Set can be deployed using only one node and a few processes, I provided a simple text [description](https://github.com/dimanikulin/fva#deployment-view) for the **Deployment view**.
 
 ## Tools, libraries and languages
-At some point I realized I need to manage the tools, libraries and languages I use.
+At some point, I realized that I needed a better way to manage the various IDEs, UI and command line tools, libraries, and languages that I use.
  
 ### Tools and libraries 
 All the tools and libraries I used for development I put in the form of a [table](https://github.com/dimanikulin/fva#dependencies) with the following columns:
@@ -137,3 +137,4 @@ And I had to declare FVA License, so I gained an understanding of what license i
 | # | Abbreviation or Acronym | Definition     |
 | - | ------------------------|:--------------:|
 | 1 | [Quality Attribute](https://www.codementor.io/@antoniopfesilva/how-to-write-meaningful-quality-attributes-for-software-development-ez8y90wyo)|is a measurable or testable property of a system that is used to indicate how well the system satisfies the needs of its stakeholders |
+| 2 | IDE | TBD |
