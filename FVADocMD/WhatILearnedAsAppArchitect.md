@@ -31,6 +31,8 @@ I divided architect requirements into four parts:
 - **Quality Attributes**;
 - and **Hardware requirements**.
 
+<img src="Images/SARequirements.png" alt="SA Requirements"/>
+
 ### Constraints
 **Constraints** are factors that limit the architect's ability to design and implement a software solution.
 These factors may include technical, business, or organizational constraints that impact the development process.
@@ -83,6 +85,8 @@ I created three **Software architecture views**:
 
 I used [Mermaid.js](https://mermaid-js.github.io/mermaid-live-editor/edit) as it is supported now by GitHub.
 
+<img src="Images/SAViews.png" alt="SA Views"/>
+
 ### Context view 
 A **Context view** is a type of software architecture view that provides a high-level overview of the software system and its external environment. 
 
@@ -106,6 +110,8 @@ Since the FVA Tool Set can be deployed using only one node and a few processes, 
 
 ## Tools, libraries and languages
 At some point, I realized that I needed a better way to manage the various IDEs, UI and command line tools, libraries, and languages that I use.
+
+<img src="Images/SADependencies.png" alt="SA Dependencies"/>
  
 ### Tools and libraries 
 I compiled a list of all the tools and libraries that I used for development and presented them in a table on the project's GitHub [page](https://github.com/dimanikulin/fva#dependencies).
