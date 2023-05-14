@@ -70,21 +70,6 @@ As I use two [languages](./PROGRAMMINGLANGUAGE.md), there was a need to work wit
  
 Last but not least, I learned how to create [riff parser](../FVACommonLib/fvariffparser.h).
 
-TODO following is for DEVOPS 
-## Releasing code and docs
-<img src="Images/BuildingCode.png" alt="BuildingCode"/>
-
-&nbsp;&nbsp;&nbsp; One more important point was a definition of [building and releasing the product and documentation](./BUILD_RELEASE.md) 
-Here you can find a description for: 
-- [Building the code](./BUILD_RELEASE.md#buildingthecode) 
-- [Building the code using GitHub](./BUILD_RELEASE.md#buildingthecodeusinggithub)
-- [Building the code locally](./BUILD_RELEASE.md#buildingthecodelocally)
-- [Building the docs](./BUILD_RELEASE.md#buildingthedocs)
-
-Thus, I learned:
-- how to build and release documentation using GitHub;
-- how to release product using GitHub.
-
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
 | - | ------------------------|:--------------:|

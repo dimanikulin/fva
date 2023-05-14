@@ -54,6 +54,21 @@ Still you can use [MS studio solution](./FVASW.sln) to build locally on Windows 
 ### Building the docs
 &nbsp;&nbsp;&nbsp; To re-generate the docs you need to re-execute [documentation workflow](https://github.com/dimanikulin/fva/blob/master/.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf)
 
+TODO following is for DEVOPS 
+## Releasing code and docs
+<img src="Images/BuildingCode.png" alt="BuildingCode"/>
+
+&nbsp;&nbsp;&nbsp; One more important point was a definition of [building and releasing the product and documentation](./BUILD_RELEASE.md) 
+Here you can find a description for: 
+- [Building the code](./BUILD_RELEASE.md#buildingthecode) 
+- [Building the code using GitHub](./BUILD_RELEASE.md#buildingthecodeusinggithub)
+- [Building the code locally](./BUILD_RELEASE.md#buildingthecodelocally)
+- [Building the docs](./BUILD_RELEASE.md#buildingthedocs)
+
+Thus, I learned:
+- how to build and release documentation using GitHub;
+- how to release product using GitHub.
+
 ## Branch strategy
 One more important point was a definition of [branch strategy](./BUILD_RELEASE.md#branchstrategy) 
 &nbsp;&nbsp;&nbsp; GitHub actions is used to implement the releasing of the product. 
