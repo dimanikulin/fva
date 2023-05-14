@@ -13,10 +13,10 @@ TBD
 &nbsp;&nbsp;&nbsp; Before creating the code we need to think about its quality. 
 Yes, it's the first thing to start from.
 So, we should be able to check code quality. 
-It can be done automatically by cool tools (provided by third parties) mentioned [here](./CODEQUALITY.md).
-Unfortunately, automatic tools do not check all rules I need and...
-I decided to check other rules manually during [code review](./CodeStyle.md) to follow code style.
-However, when I spent a lot of time on code reviewing and trying to check the code, I used **Python** to create other code [checks](../FVACodeChecks). 
+It can be done automatically by cool tools.
+Unfortunately, automatic tools do not check all rules we need and...
+I decided to check some rules manually during code review to follow [code style](./CodeStyle.md).
+However, when I spent a lot of time on code reviewing and trying to check the code, I used **Python** to create other code checks. 
 Still, not every rule can be checked automatically, and manual effort is excpected. 
 
 ## Code documentation
@@ -25,7 +25,7 @@ Still, not every rule can be checked automatically, and manual effort is excpect
 
 &nbsp;&nbsp;&nbsp; Additionally, before creating the code we need to think about code documentation.
 Since there are two languages used to create the **FVA Software**, there also should be: 
-- **C++** [documentation rules](./CODEDOCUMENTATION.md) defined and
+- **C++** [documentation rules](https://github.com/dimanikulin/fva/blob/master/CodeDocumentation.md) defined and
 - **Python** documentation rules defined.
 
 Therefore, I learned how to document the C++ code using **Doxygen** markdown and build documentation basing on Doxygen markdown. 
