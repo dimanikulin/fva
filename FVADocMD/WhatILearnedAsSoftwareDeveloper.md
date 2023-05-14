@@ -70,6 +70,9 @@ As I use two [languages](./PROGRAMMINGLANGUAGE.md), there was a need to work wit
  
 Last but not least, I learned how to create [riff parser](../FVACommonLib/fvariffparser.h).
 
+#### Building the code locally
+Still you can use [MS studio solution](./FVASW.sln) to build locally on Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
+
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
 | - | ------------------------|:--------------:|

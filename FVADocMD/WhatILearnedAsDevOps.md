@@ -48,13 +48,10 @@ I used [[37]](FVADocMD/REFERENCES.md) to help me to set up the main GitHub actio
 All steps to build a package are called on any push to master or TBD branch.
 More details are located in comments and step names [here](https://github.com/dimanikulin/fva/blob/master/.github/workflows/main.yml).
 TODO explain how to install and cfg on github site
-#### Building the code locally
-Still you can use [MS studio solution](./FVASW.sln) to build locally on Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
 
 ### Building the docs
 &nbsp;&nbsp;&nbsp; To re-generate the docs you need to re-execute [documentation workflow](https://github.com/dimanikulin/fva/blob/master/.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf)
 
-TODO following is for DEVOPS 
 ## Releasing code and docs
 <img src="Images/BuildingCode.png" alt="BuildingCode"/>
 
