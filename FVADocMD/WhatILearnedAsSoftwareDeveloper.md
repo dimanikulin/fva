@@ -9,16 +9,6 @@ TBD
 
 # Content
 
-## Code quality
-&nbsp;&nbsp;&nbsp; Before creating the code we need to think about its quality. 
-Yes, it's the first thing to start from.
-So, we should be able to check code quality. 
-It can be done automatically by cool tools.
-Unfortunately, automatic tools do not check all rules we need and...
-I decided to check some rules manually during code review to follow [code style](https://github.com/dimanikulin/fva/blob/master/CodeStyle.md).
-However, when I spent a lot of time on code reviewing and trying to check the code, I used **Python** to create other code checks. 
-Still, not every rule can be checked automatically, and manual effort is excpected. 
-
 ## Code documentation
 "Hold on!", - you'll say. - "Are we going to start coding now?".
 "Nope", - my answer will be.
