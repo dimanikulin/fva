@@ -64,14 +64,14 @@ I'm going to use several [UI](https://en.wikipedia.org/wiki/User_interface) lang
 - [QtextEncoder](https://doc.qt.io/qt-5/qtextencoder.html).
 
 I was really glad to find out how easy it is to work with SQLlite with a help of [QT](https://en.wikipedia.org/wiki/Qt_(software)).
-Nevertheless, I then moved from SQLlite to [CSV](../FVACommonLib/fvacsvfile.h) to keep the data. 
+Nevertheless, I then moved from SQLlite to [CSV](https://github.com/dimanikulin/fva/blob/master/FVACommonLib/fvacsvfile.h) to keep the data. 
 
-As I use two [languages](./PROGRAMMINGLANGUAGE.md), there was a need to work with **Python** code from **C++** application.
+As I use two [languages](https://github.com/dimanikulin/fva/blob/master/README.md#programming-languages), there was a need to work with **Python** code from **C++** application.
  
-Last but not least, I learned how to create [riff parser](../FVACommonLib/fvariffparser.h).
+Last but not least, I learned how to create [riff parser](https://github.com/dimanikulin/fva/blob/master/FVACommonLib/fvariffparser.h).
 
 #### Building the code locally
-Still you can use [MS studio solution](./FVASW.sln) to build locally on Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
+Still you can use [MS studio solution](https://github.com/dimanikulin/fva/blob/master/FVASW.sln) to build locally on Windows or [CMake](https://github.com/dimanikulin/fva/blob/master/CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
 
 # References
 | # | Name                 | Source                | Release date           |  Author                 | Description   |
