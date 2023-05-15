@@ -15,7 +15,7 @@ Yes, it's the first thing to start from.
 So, we should be able to check code quality. 
 It can be done automatically by cool tools.
 Unfortunately, automatic tools do not check all rules we need and...
-I decided to check some rules manually during code review to follow [code style](./CodeStyle.md).
+I decided to check some rules manually during code review to follow [code style](https://github.com/dimanikulin/fva/blob/master/CodeStyle.md).
 However, when I spent a lot of time on code reviewing and trying to check the code, I used **Python** to create other code checks. 
 Still, not every rule can be checked automatically, and manual effort is excpected. 
 
@@ -38,15 +38,15 @@ Oh my God, now I definitely know how to configure **Doxygen**.
 In simple words, how tracing is going to be implemented.
 What came up to my mind was a table with the following columns
 - **Implemented**, yes or no
-- **Feature ID**, an identifier from [features](../FVADocX/FVAToolSetFeatures.pptx)
+- **Feature ID**, an identifier from features
 - **Component**, component name
 - **File names**, file names where implementation for this requirement is present
 - **Description**, functional requirement description
 
 Up to this point, I have **implementation status** for the following components:
-- [Data processor](FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
-- [Configurator](FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
-- [Dictionary editor](FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
+- [Data processor](https://github.com/dimanikulin/fva/blob/master/FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
+- [Configurator](https://github.com/dimanikulin/fva/blob/master/FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
+- [Dictionary editor](https://github.com/dimanikulin/fva/blob/master/FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 
 ## Implementation
 &nbsp;&nbsp;&nbsp; Finally, we can move to coding!
@@ -54,7 +54,7 @@ I chose [QT](https://en.wikipedia.org/wiki/Qt_(software)) as the main library to
 To begin with, I used **QWidgets** and its children - **QWizard** and **QWizardPage**. 
 But then I realized that using **QML** will be easier for [UI](https://en.wikipedia.org/wiki/User_interface) implementation.
 Thus, my plan is to move to using **QML** but not **QWidgets**. 
-I was suprised how easy it is to use [QT](https://en.wikipedia.org/wiki/Qt_(software)) for creation of the [player](../FVAPlayer) for Multimedia content. 
+I was suprised how easy it is to use [QT](https://en.wikipedia.org/wiki/Qt_(software)) for creation of the [player](https://github.com/dimanikulin/fva/blob/master/FVAPlayer) for Multimedia content. 
 I'm going to use several [UI](https://en.wikipedia.org/wiki/User_interface) languages, and [QT](https://en.wikipedia.org/wiki/Qt_(software)) suggests to use the following: 
 
 - [QTranslator](https://doc.qt.io/qt-5/qtranslator.html);
@@ -72,6 +72,11 @@ Last but not least, I learned how to create [riff parser](../FVACommonLib/fvarif
 
 #### Building the code locally
 Still you can use [MS studio solution](./FVASW.sln) to build locally on Windows or [CMake](./CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
+
+# References
+| # | Name                 | Source                | Release date           |  Author                 | Description   |
+| - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
+| 1 | FVA Tool Set features | [local resource](./FVADocX/FVAToolSetFeatures.pptx) | June 2022 | Dmytro Nikulin | | 
 
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
