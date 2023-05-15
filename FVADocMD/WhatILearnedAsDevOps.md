@@ -10,16 +10,6 @@ TBD
 # Content
 TBD to speak main readm file sttucute, git hubm bages
 
-## Code quality
-&nbsp;&nbsp;&nbsp; Before creating the code we need to think about its quality. 
-Yes, it's the first thing to start from.
-So, we should be able to check code quality. 
-It can be done automatically by cool tools.
-Unfortunately, automatic tools do not check all rules we need and...
-I decided to check some rules manually during code review to follow [code style](https://github.com/dimanikulin/fva/blob/master/CodeStyle.md).
-However, when I spent a lot of time on code reviewing and trying to check the code, I used **Python** to create other code checks. 
-Still, not every rule can be checked automatically, and manual effort is excpected. 
-
 ### Automated code checks
 &nbsp;&nbsp;&nbsp;  Currently there are following automated checks to verify if the code meets code quality requirements:
 * [Code QL](.github/workflows/codeqlanalysis.yml) Please see [[38]](./REFERENCES.md) TBD what for
@@ -55,6 +45,10 @@ I used [[37]](FVADocMD/REFERENCES.md) to help me to set up the main GitHub actio
 All steps to build a package are called on any push to master or TBD branch.
 More details are located in comments and step names [here](https://github.com/dimanikulin/fva/blob/master/.github/workflows/main.yml).
 TODO explain how to install and cfg on github site
+
+#### Building the code locally
+Still you can use [MS studio solution](https://github.com/dimanikulin/fva/blob/master/FVASW.sln) to build locally on Windows or [CMake](https://github.com/dimanikulin/fva/blob/master/CMakeLists.txt) to build locally on any Windows, Mac or Linux. 
+
 
 ### Building the docs
 &nbsp;&nbsp;&nbsp; To re-generate the docs you need to re-execute [documentation workflow](https://github.com/dimanikulin/fva/blob/master/.github/workflows/releaseDocs.yml) from workflow. As result you will have [this](./DoxyGeneratedDoc.pdf)
