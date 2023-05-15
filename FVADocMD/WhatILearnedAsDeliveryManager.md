@@ -31,7 +31,7 @@ Despite being a free and small app, it gave me everything I needed.
 TBD openproject
 
 # References
-| # | Name                 | Description           | Release date           |  Author                 | Source        |
+| # | Name                 | Source           | Release date           |  Author                 | Description |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
-| 1 | Getting started with project planning on GitHub| |2022-02-11 | GitHub |[Web](https://github.blog/2022-02-11-getting-started-with-project-planning-on-github/)|
-| 2 | How to get more engagement with your open source project| Best practices to get more stars on your GitHub repos| JANUARY 26, 2022 | navaneeth pk |[Web](https://www.freecodecamp.org/news/how-to-get-more-engagement-with-your-open-source-project/)|
+| 1 | Getting started with project planning on GitHub| [Web](https://github.blog/2022-02-11-getting-started-with-project-planning-on-github/) |2022-02-11 | GitHub | |
+| 2 | How to get more engagement with your open source project| [freecodecamp](https://www.freecodecamp.org/news/how-to-get-more-engagement-with-your-open-source-project/) | JANUARY 26, 2022 | navaneeth pk |Best practices to get more stars on your GitHub repos|
