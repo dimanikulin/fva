@@ -18,15 +18,6 @@ TBD to speak main readm file sttucute, git hubm bages
 * [ms vc analysis](.github/workflows/msvc-analysis.yml) TBD what for
 TODO - to add a bage for each code check
 
-## Releasing the code and the docs
-&nbsp;&nbsp;&nbsp; The release of product shall be on demand as soon as peace of product functionality is ready for release.
-Thus the release branch is being created or updated to keep added/updated product functionality.
-
-&nbsp;&nbsp;&nbsp; Regardless of incremental approach to add or update product functions, the artifacts shall accumulate whole product installation packages and not increments even really small piece of functions is released.
-
-The following artifacts shall be created:
-- The documentation for code (based on doxy comments);
-- The installation packages for Windows, Mac and Linux latest version. 
 
 Please notice the installation packages for Windows is built using Wix;
 Once a release happened the current [documentation generated from the code](https://dimanikulin.github.io/fva/) appeared.
