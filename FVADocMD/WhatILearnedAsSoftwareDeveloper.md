@@ -18,7 +18,7 @@ Software development, code quality, code review, coding standards, documentation
 # Content
 
 ## Code quality
-&nbsp;&nbsp;&nbsp; Before creating the code we need to think about its quality. 
+Before creating the code we need to think about its quality. 
 Yes, it's the first thing to start from.
 So, we should be able to check code quality. 
 It can be done automatically by cool tools.
@@ -31,7 +31,7 @@ Still, not every rule can be checked automatically, and manual effort is excpect
 "Hold on!", - you'll say. - "Are we going to start coding now?".
 "Nope", - my answer will be.
 
-&nbsp;&nbsp;&nbsp; Additionally, before creating the code we need to think about code documentation.
+Additionally, before creating the code we need to think about code documentation.
 Since there are two languages used to create the **FVA Software**, there also should be: 
 - **C++** [documentation rules](https://github.com/dimanikulin/fva/blob/master/CodeDocumentation.md) defined and
 - **Python** documentation rules defined.
@@ -57,7 +57,7 @@ Up to this point, I have **implementation status** for the following components:
 - [Dictionary editor](https://github.com/dimanikulin/fva/blob/master/FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
 
 ## Implementation
-&nbsp;&nbsp;&nbsp; Finally, we can move to coding!
+Finally, we can move to coding!
 I chose [QT](https://en.wikipedia.org/wiki/Qt_(software)) as the main library to use as **FVA Software** requires [UI](https://en.wikipedia.org/wiki/User_interface) and supports Windows, MacOS, Linux Ubuntu with the latest update.
 To begin with, I used **QWidgets** and its children - **QWizard** and **QWizardPage**. 
 But then I realized that using **QML** will be easier for [UI](https://en.wikipedia.org/wiki/User_interface) implementation.
