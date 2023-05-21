@@ -28,8 +28,8 @@ However, when I spent a lot of time on code reviewing and trying to check the co
 Still, not every rule can be checked automatically, and manual effort is excpected. 
 
 ## Code documentation
-"Hold on!", - you'll say. - "Are we going to start coding now?".
-"Nope", - my answer will be.
+"*Hold on*!", - you'll say. - "*Are we going to start coding now?*".
+"*Nope*", - my answer will be.
 
 Additionally, before creating the code we need to think about code documentation.
 Since there are two languages used to create the **FVA Software**, there also should be: 
