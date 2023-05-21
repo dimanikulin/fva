@@ -1,12 +1,19 @@
 # Headline
-TBD
+Code Quality, Documentation, and Implementation: Building a Solid Foundation for Software Development
+
 What I learned as a Software Developer while creating my product
+
 # Article description
-TBD 
+Here you will
+- Discover the essential aspects of software development, including code quality, documentation practices, and implementation strategies 
+- Explore the importance of checking code quality using automated tools while also recognizing the value of manual code review for adherence to coding standards
+- Learn about effective code documentation techniques in both C++ and Python languages, and uncover the significance of tracking implementation status for better requirement coverage
+- Dive into the implementation phase using the versatile QT library for user interface development, exploring the transition from QWidgets to QML
+- Gain insights into leveraging various UI languages, working with databases like SQLite and CSV, and bridging the gap between C++ and Python code
+- Lastly, explore the creation of a riff parser, adding an additional skill set to your software development toolkit 
 
 # Tags
-TBD
-
+Software development, code quality, code review, coding standards, documentation practices, C++, Python, implementation status, user interface development, QT library, QWidgets, QML, UI languages, SQLite, CSV, C++ and Python integration, riff parser
 
 # Content
 
