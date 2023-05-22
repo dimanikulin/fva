@@ -43,7 +43,7 @@ Oh my God, now I definitely know how to configure **Doxygen**.
 <img src="CodeDocumentation.png" alt="CodeDocumentation"/>
 
 ## Implementation status
-&nbsp;&nbsp;&nbsp; Before jumping into coding I thought about how I would know which requirement is covered and which is not.
+Before jumping into coding I thought about how I would know which requirement is covered and which is not.
 In simple words, how tracing is going to be implemented.
 What came up to my mind was a table with the following columns
 - **Implemented**, yes or no
