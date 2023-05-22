@@ -18,7 +18,6 @@ Software development, code quality, code review, coding standards, documentation
 # Content
 
 ## Code quality
-
 Before creating the code, it is crucial to prioritize its quality.
 It should be the foremost consideration in the development process.
 To ensure code quality, we can utilize automated tools that help with code analysis.
@@ -29,16 +28,15 @@ I have employed **Python** to create additional code checks.
 It is worth mentioning that not all rules can be checked automatically, requiring manual effort in certain cases.
 
 ## Code documentation
-"*Hold on*!", - you'll say. - "*Are we going to start coding now?*".
-"*Nope*", - my answer will be.
+"*Now, hold on*!" you might ask, 
+"*Are we jumping straight into coding?*". 
+My answer is a resounding "*Nope*".
 
-Additionally, before creating the code we need to think about code documentation.
-Since there are two languages used to create the **FVA Software**, there also should be: 
-- **C++** [documentation rules](https://github.com/dimanikulin/fva/blob/master/CodeDocumentation.md) defined and
-- **Python** documentation rules defined.
-
-Therefore, I learned how to document the C++ code using **Doxygen** markdown and build documentation basing on Doxygen markdown. 
-Oh my God, now I definitely know how to configure **Doxygen**.
+Before embarking on the coding phase, it is vital to consider code documentation. 
+Since the **FVA Software** employs two programming languages, it is imperative to establish clear documentation rules for both [C++](https://github.com/dimanikulin/fva/blob/master/CodeDocumentation.md) and **Python**.
+ 
+Consequently, I have familiarized myself with documenting **C++** code using **Doxygen** markdown and have gained proficiency in generating documentation based on Doxygen markdown.
+It's quite remarkable how confident I am now in configuring **Doxygen**.
 
 <img src="CodeDocumentation.png" alt="CodeDocumentation"/>
 
