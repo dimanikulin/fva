@@ -59,13 +59,15 @@ As of now, I have the **implementation status** for the following components:
 These references will give you an overview of the implementation status for each respective component.
 
 ## Implementation
-Finally, we can move to coding!
-I chose [QT](https://en.wikipedia.org/wiki/Qt_(software)) as the main library to use as **FVA Software** requires [UI](https://en.wikipedia.org/wiki/User_interface) and supports Windows, MacOS, Linux Ubuntu with the latest update.
-To begin with, I used **QWidgets** and its children - **QWizard** and **QWizardPage**. 
-But then I realized that using **QML** will be easier for [UI](https://en.wikipedia.org/wiki/User_interface) implementation.
-Thus, my plan is to move to using **QML** but not **QWidgets**. 
-I was suprised how easy it is to use [QT](https://en.wikipedia.org/wiki/Qt_(software)) for creation of the [player](https://github.com/dimanikulin/fva/blob/master/FVAPlayer) for Multimedia content. 
-I'm going to use several [UI](https://en.wikipedia.org/wiki/User_interface) languages, and [QT](https://en.wikipedia.org/wiki/Qt_(software)) suggests to use the following: 
+Finally, we can proceed to the coding phase!
+For the development of **FVA Software**, I have chosen the versatile [QT](https://en.wikipedia.org/wiki/Qt_(software)) library, which supports multiple operating systems such as Windows, MacOS, and Linux Ubuntu. 
+Since the software requires a user interface ([UI](https://en.wikipedia.org/wiki/User_interface)), I initially utilized **QWidgets**, including components like **QWizard** and **QWizardPage**.
+However, I soon realized that employing **QML** would offer a more streamlined approach for [UI](https://en.wikipedia.org/wiki/User_interface) implementation.
+Therefore, my plan is to transition from **QWidgets** to **QML**.
+
+I was pleasantly surprised by the ease of utilizing **QT** for creating a multimedia content [player](https://github.com/dimanikulin/fva/blob/master/FVAPlayer). 
+The flexibility of [QT](https://en.wikipedia.org/wiki/Qt_(software)) allows me to work with multiple [UI](https://en.wikipedia.org/wiki/User_interface) languages.
+To facilitate this, [QT](https://en.wikipedia.org/wiki/Qt_(software)) suggests using the following components:
 
 - [QTranslator](https://doc.qt.io/qt-5/qtranslator.html);
 - [QtextCodec](https://doc.qt.io/qt-5/qtextcodec.html);
@@ -73,13 +75,13 @@ I'm going to use several [UI](https://en.wikipedia.org/wiki/User_interface) lang
 - [QtextDecoder](https://doc.qt.io/qt-5/qtextdecoder.html);
 - [QtextEncoder](https://doc.qt.io/qt-5/qtextencoder.html).
 
-I was really glad to find out how easy it is to work with SQLlite with a help of [QT](https://en.wikipedia.org/wiki/Qt_(software)).
-Nevertheless, I then moved from SQLlite to [CSV](https://github.com/dimanikulin/fva/blob/master/FVACommonLib/fvacsvfile.h) to keep the data. 
+Additionally, I discovered that working with **SQLite** using [QT](https://en.wikipedia.org/wiki/Qt_(software)) is remarkably straightforward. 
+However, I later made the decision to switch from **SQLite** to [CSV](https://github.com/dimanikulin/fva/blob/master/FVACommonLib/fvacsvfile.h) for data storage.
 
-As I use two [languages](https://github.com/dimanikulin/fva/blob/master/README.md#programming-languages), there was a need to work with **Python** code from **C++** application.
+As my project involves working with two programming [languages](https://github.com/dimanikulin/fva/blob/master/README.md#programming-languages), I needed to establish a means of integrating **Python** code into the **C++** application.
+
+Last but not least, I acquired knowledge on how to create a [riff parser](https://github.com/dimanikulin/fva/blob/master/FVACommonLib/fvariffparser.h), adding another valuable capability to the project.
  
-Last but not least, I learned how to create [riff parser](https://github.com/dimanikulin/fva/blob/master/FVACommonLib/fvariffparser.h).
-
 # References
 | # | Name                 | Source                | Release date           |  Author                 | Description   |
 | - | ---------------------|---------------------- |----------------------- | ----------------------- |:-------------:|
