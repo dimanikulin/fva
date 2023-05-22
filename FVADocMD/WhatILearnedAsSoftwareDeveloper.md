@@ -18,14 +18,15 @@ Software development, code quality, code review, coding standards, documentation
 # Content
 
 ## Code quality
-Before creating the code we need to think about its quality. 
-Yes, it's the first thing to start from.
-So, we should be able to check code quality. 
-It can be done automatically by cool tools.
-Unfortunately, automatic tools do not check all rules we need and...
-I decided to check some rules manually during code review to follow [code style](https://github.com/dimanikulin/fva/blob/master/CodeStyle.md).
-However, when I spent a lot of time on code reviewing and trying to check the code, I used **Python** to create other code checks. 
-Still, not every rule can be checked automatically, and manual effort is excpected. 
+
+Before creating the code, it is crucial to prioritize its quality.
+It should be the foremost consideration in the development process.
+To ensure code quality, we can utilize automated tools that help with code analysis.
+ owever, it's important to note that automated tools may not cover all the necessary rules. 
+As a result, manual code review becomes essential to enforce coding standards.
+Personally, I have dedicated significant time to code reviewing and checking for adherence to [code style](https://github.com/dimanikulin/fva/blob/master/CodeStyle.md). Additionally, 
+I have employed **Python** to create additional code checks.
+It is worth mentioning that not all rules can be checked automatically, requiring manual effort in certain cases.
 
 ## Code documentation
 "*Hold on*!", - you'll say. - "*Are we going to start coding now?*".
