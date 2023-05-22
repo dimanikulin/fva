@@ -41,19 +41,22 @@ It's quite remarkable how confident I am now in configuring **Doxygen**.
 <img src="CodeDocumentation.png" alt="CodeDocumentation"/>
 
 ## Implementation status
-Before jumping into coding I thought about how I would know which requirement is covered and which is not.
-In simple words, how tracing is going to be implemented.
-What came up to my mind was a table with the following columns
-- **Implemented**, yes or no
-- **Feature ID**, an identifier from features
-- **Component**, component name
-- **File names**, file names where implementation for this requirement is present
-- **Description**, functional requirement description
+Before diving into the coding phase, I considered how I could effectively track the coverage of requirements. 
+I needed a way to implement tracing and determine which requirements were covered and which ones were not. 
+To address this, I devised a table with the following columns:
 
-Up to this point, I have **implementation status** for the following components:
+**Implemented**: Indicates whether the requirement has been implemented, marked as either "yes" or "no."
+**Feature ID**: An identifier sourced from the features.
+**Component**: Specifies the name of the component.
+**File names**: Lists the file names where the implementation for the requirement can be found.
+**Description**: Provides a description of the functional requirement.
+
+As of now, I have the **implementation status** for the following components:
 - [Data processor](https://github.com/dimanikulin/fva/blob/master/FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
 - [Configurator](https://github.com/dimanikulin/fva/blob/master/FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
 - [Dictionary editor](https://github.com/dimanikulin/fva/blob/master/FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
+
+These references will give you an overview of the implementation status for each respective component.
 
 ## Implementation
 Finally, we can move to coding!
