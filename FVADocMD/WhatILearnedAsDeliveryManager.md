@@ -9,6 +9,11 @@ TBD
 TBD
 
 # Content
+## 
+I started thinking how to get more engagement with my open source project
+1. to cre
+
+
 ## Releasing the code and the docs
 &nbsp;&nbsp;&nbsp; The release of product shall be on demand as soon as peace of product functionality is ready for release.
 Thus the release branch is being created or updated to keep added/updated product functionality.
