@@ -44,8 +44,8 @@ jobs:
 
     steps:
     - name: Checkout FVA repository
-      uses: actions/checkout@v2 #v2 to checkout submodules as well
-      with:
+      uses: actions/checkout@v3 
+      with:  #to checkout submodules as well
         submodules: 'true'
 
     - name: Download and configure Ninja and CMake.
@@ -109,7 +109,7 @@ jobs:
         message("::set-output name=timestamp::${current_date}")
 
     - name: Call the ccache to cache files
-      uses: actions/cache@v1.1.0
+      uses: actions/cache@v3
       with:
         path: .ccache
         key: ${{ matrix.config.name }}-ccache-${{ steps.ccache_cache_timestamp.outputs.timestamp }}
@@ -117,7 +117,7 @@ jobs:
           ${{ matrix.config.name }}-ccache-
 
     - name: Download and install QT
-      uses: jurplel/install-qt-action@v2
+      uses: jurplel/install-qt-action@v3
       with:
         version:  ${{ env.QT_VERSION }}
         target: 'desktop'
@@ -247,14 +247,14 @@ jobs:
       run: cmake -E tar cfv ../${{ matrix.config.artifact }} --format=7zip .
 
     - name: Upload artifact to git hub storage to use later
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         path: ./${{ matrix.config.artifact }}
         name: ${{ matrix.config.artifact }}
 
     - name: Setup MSBuild
       if: matrix.config.os == 'windows-latest'
-      uses: microsoft/setup-msbuild@v1.0.3
+      uses: microsoft/setup-msbuild@v1.3.1
 
     - name: MS package build
       if: matrix.config.os == 'windows-latest'
@@ -263,7 +263,7 @@ jobs:
 
     - name: Upload win pkg to git hub storage to use later
       if: matrix.config.os == 'windows-latest'
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         path: ./FVASetupWin/bin/FVASetupWin.msi
         name: FVASetupWin.msi
@@ -290,7 +290,7 @@ jobs:
       run: |
         echo "${{ steps.create_release.outputs.upload_url }}" > ./upload_url
 
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v3
       with:
         path: ./upload_url
         name: upload_url
