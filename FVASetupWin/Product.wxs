@@ -42,14 +42,14 @@
         <Directory Id="bin" Name='#bin#'>
           <Directory Id="Icons" Name='Icons'>
             <Component Id="icons" Guid="1af1fda7-a0f8-41f3-979f-07cf8ca5a411">
-              <File Id="audio" Name="audio.png"  Source="..\FVAIcons\audio.png"  Vital="yes" KeyPath="no"/>
-              <File Id="folder" Name="folder.png" Source="..\FVAIcons\folder.png"  Vital="yes" KeyPath="no"/>
-              <File Id="photo" Name="photo.png"  Source="..\FVAIcons\photo.png"  Vital="yes" KeyPath="no"/>
-              <File Id="video" Name="video.png"  Source="..\FVAIcons\video.png"  Vital="yes" KeyPath="no"/>
-              <File Id="main" Name="main.png"  Source="..\FVAIcons\main.png"  Vital="yes" KeyPath="no"/>
-              <File Id="people" Name="people.png"  Source="..\FVAIcons\people.png"  Vital="yes" KeyPath="no"/>
-              <File Id="person" Name="person.png"  Source="..\FVAIcons\person.png"  Vital="yes" KeyPath="no"/>
-              <File Id="location" Name="location.png"  Source="..\FVAIcons\location.PNG"  Vital="yes" KeyPath="no"/>
+              <File Id="audio" Name="audio.png"       Source="..\resources\icons\audio.png"  Vital="yes" KeyPath="no"/>
+              <File Id="folder" Name="folder.png"     Source="..\resources\icons\folder.png"  Vital="yes" KeyPath="no"/>
+              <File Id="photo" Name="photo.png"       Source="..\resources\icons\photo.png"  Vital="yes" KeyPath="no"/>
+              <File Id="video" Name="video.png"       Source="..\resources\icons\video.png"  Vital="yes" KeyPath="no"/>
+              <File Id="main" Name="main.png"         Source="..\resources\icons\main.png"  Vital="yes" KeyPath="no"/>
+              <File Id="people" Name="people.png"     Source="..\resources\icons\people.png"  Vital="yes" KeyPath="no"/>
+              <File Id="person" Name="person.png"     Source="..\resources\icons\person.png"  Vital="yes" KeyPath="no"/>
+              <File Id="location" Name="location.png" Source="..\resources\icons\location.PNG"  Vital="yes" KeyPath="no"/>
             </Component>
           </Directory>
            
