@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="FVAIcons/main.png" target="blank"><img src="FVAIcons/main.png" width="120" alt="FVA Logo" /></a>
+  <a href="./resources/icons/main.png" target="blank"><img src="./resources/icons/main.png" width="120" alt="FVA Logo" /></a>
 </p>
 <p align="center">
   <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/dimanikulin/fva?style=social">
