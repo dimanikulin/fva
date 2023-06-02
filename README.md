@@ -164,6 +164,14 @@ Please see [here](./CodeStyle.md) for the rules to create and review the code.
 # Code Documentation
 Please see [here](./CodeDocumentation.md) for the rules to document the code.
 
+## Implementation status
+As of now, I have the **implementation status** for the following components:
+- [Data processor](./FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
+- [Configurator](./FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
+- [Dictionary editor](./FVADictionaryEditor/IMPLEMENTATIONSTATUS.MD)
+
+These references will give you an overview of the implementation status for each respective component.
+
 # Contributing
 
 There are many items to help the author with.
