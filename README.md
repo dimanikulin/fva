@@ -165,6 +165,7 @@ Please see [here](./CodeStyle.md) for the rules to create and review the code.
 Please see [here](./CodeDocumentation.md) for the rules to document the code.
 
 ## Implementation status
+TODO to add a link to quacik links
 As of now, I have the **implementation status** for the following components:
 - [Data processor](./FVADataProcessor/IMPLEMENTATIONSTATUS.MD)
 - [Configurator](./FVAConfigurator/IMPLEMENTATIONSTATUS.MD)
