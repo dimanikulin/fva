@@ -54,7 +54,7 @@ graph TD
     A(Data) --> C(Output Multimedia Data)
     A(Data) --> D(FVA Software configuration)
     A(Data) --> E(FVA Software internal metadata)
-    A(Data) --> E(FVA Software dictionary)
+    A(Data) --> F(FVA Software dictionary)
 
 ```
 ### Input Multimedia Data
