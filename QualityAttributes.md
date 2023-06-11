@@ -1,3 +1,12 @@
+# Definitions, Acronyms, Abbreviations
+| # | Abbreviation or Acronym | Definition     |
+| - | ------------------------|:--------------:|
+| 1 | IR Multimedia Systems |multimedia information retrieval means the process of searching for and finding multimedia documents; the corresponding research field is concerned with building multimedia search engines|
+| 2 | [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming)| Object-oriented programming (OOP) is a [programming paradigm](https://en.wikipedia.org/wiki/Programming_paradigm) based on the concept of “[objects](https://en.wikipedia.org/wiki/Object_(computer_science))”, which can contain [data](https://en.wikipedia.org/wiki/Data) and code: data in the form of [fields](https://en.wikipedia.org/wiki/Field_(computer_science)) (often known as attributes or properties), and code, in the form of procedures (often known as [methods](https://en.wikipedia.org/wiki/Method_(computer_science)))|
+| 3 | [Operating systems](https://en.wikipedia.org/wiki/Operating_system)| is system software that manages computer hardware, software resources, and provides common services for computer programs|
+| 4 | [Quality Attribute](https://www.codementor.io/@antoniopfesilva/how-to-write-meaningful-quality-attributes-for-software-development-ez8y90wyo)|is a measurable or testable property of a system that is used to indicate how well the system satisfies the needs of its stakeholders|
+| 5 | [SOLID](https://en.wikipedia.org/wiki/SOLID)|In [object-oriented computer programming](https://en.wikipedia.org/wiki/Object-oriented_programming), SOLID is a [mnemonic acronym](https://en.wikipedia.org/wiki/Acronym) for five design principles intended to make software designs more understandable, flexible, and [maintainable](https://en.wikipedia.org/wiki/Software_maintenance)|
+
 # Quality Attributes
 For each quality attribute it provides name, description, motivation (rationale for selecting), measurable metrics and priorities from business and architecture points of view.
 
@@ -23,12 +32,3 @@ The components where metric is measured is noted as well.
 |Testability         |TBD|TBD|TBD|TBD|TBD|
 |Traceability        |The system code shall be traceable to the requirements|To make possible to measure the product readiness|TBD|Low|Low|
 |Usability           |The system shall be intuitive, easy to localize (to support multiple time zones, languages, etc.) and globalize. In addition, the installation package must be provided for each supportable platform to increase the usability of product|TBD|TBD|High|Middle|
-
-# Definitions, Acronyms, Abbreviations
-| # | Abbreviation or Acronym | Definition     |
-| - | ------------------------|:--------------:|
-| 1 | IR Multimedia Systems |multimedia information retrieval means the process of searching for and finding multimedia documents; the corresponding research field is concerned with building multimedia search engines|
-| 2 | [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming)| Object-oriented programming (OOP) is a [programming paradigm](https://en.wikipedia.org/wiki/Programming_paradigm) based on the concept of “[objects](https://en.wikipedia.org/wiki/Object_(computer_science))”, which can contain [data](https://en.wikipedia.org/wiki/Data) and code: data in the form of [fields](https://en.wikipedia.org/wiki/Field_(computer_science)) (often known as attributes or properties), and code, in the form of procedures (often known as [methods](https://en.wikipedia.org/wiki/Method_(computer_science)))|
-| 3 | [Operating systems](https://en.wikipedia.org/wiki/Operating_system)| is system software that manages computer hardware, software resources, and provides common services for computer programs|
-| 4 | [Quality Attribute](https://www.codementor.io/@antoniopfesilva/how-to-write-meaningful-quality-attributes-for-software-development-ez8y90wyo)|is a measurable or testable property of a system that is used to indicate how well the system satisfies the needs of its stakeholders|
-| 5 | [SOLID](https://en.wikipedia.org/wiki/SOLID)|In [object-oriented computer programming](https://en.wikipedia.org/wiki/Object-oriented_programming), SOLID is a [mnemonic acronym](https://en.wikipedia.org/wiki/Acronym) for five design principles intended to make software designs more understandable, flexible, and [maintainable](https://en.wikipedia.org/wiki/Software_maintenance)|
