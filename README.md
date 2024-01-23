@@ -2,12 +2,6 @@
   <a href="./resources/icons/main.png" target="blank"><img src="./resources/icons/main.png" width="120" alt="FVA Logo" /></a>
 </p>
 <p align="center">
-  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/dimanikulin/fva?style=social">
-  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/dimanikulin/fva">
-  <img alt="GitHub followers" src="https://img.shields.io/github/followers/dimanikulin?style=social">
-  <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/dimanikulin">
-  <img alt="Twitter URL" src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FDmytroNikulin" href="https%3A%2F%2Ftwitter.com%2FDmytroNikulin">
-  </br>
   <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/dimanikulin/fva?include_prereleases">
   <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/dimanikulin/fva/total">
   <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date-pre/dimanikulin/fva">
