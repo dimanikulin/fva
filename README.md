@@ -174,12 +174,6 @@ You can also post an issue here [GitHub issues](https://github.com/dimanikulin/f
 
 You can also download [installation packages](https://github.com/dimanikulin/fva/releases) that are published for Linux (x86-64), Mac and Windows (latest versions) to try it.
   
-# Stay in touch
-* [Twitter](https://twitter.com/DmytroNikulin)
-* [LinkedIn](https://www.linkedin.com/in/dimanikulin/)
-* [Author Telegram](https://t.me/dimanikulin79) 
-* [Community Telegram](https://t.me/+XqWdomi90-00Yzgy) 
-
 # Definitions, Acronyms, Abbreviations
 | # | Abbreviation or Acronym | Definition     |
 | - | ------------------------|:--------------:|
