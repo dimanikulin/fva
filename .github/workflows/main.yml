@@ -48,11 +48,6 @@ jobs:
       with:  #to checkout submodules as well
         submodules: 'true'
 
-    - name: Install GoogleTest
-      uses: Bacondish2023/setup-googletest@v1
-      with:
-        tag: v1.14.0
-
     - name: Download and configure Ninja and CMake.
       shell: cmake -P {0}
       run: |
@@ -112,6 +107,11 @@ jobs:
       run: |
         string(TIMESTAMP current_date "%Y-%m-%d-%H;%M;%S" UTC)
         message("::set-output name=timestamp::${current_date}")
+
+    - name: Install GoogleTest
+      uses: Bacondish2023/setup-googletest@v1
+      with:
+        tag: v1.14.0
 
     - name: Call the ccache to cache files
       uses: actions/cache@v3

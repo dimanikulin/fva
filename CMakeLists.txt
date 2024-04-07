@@ -10,8 +10,7 @@ project(fva)
 # Enable testing for the project
 enable_testing()
 
-# Add GoogleTest as a subdirectory. You need to have gtest in your project directory.
-add_subdirectory(googletest)
+find_package(GTest REQUIRED)
 
 add_subdirectory(FVACommonLib)
 add_subdirectory(FVAConfigurator)
