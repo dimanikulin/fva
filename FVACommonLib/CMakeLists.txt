@@ -54,7 +54,7 @@ add_executable(fvalibtests
 )
 
 # Link GoogleTest to your tests
-target_link_libraries(fvalibtests gtest gtest_main)
+target_link_libraries(fvalibtests Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main)
 
 # Add the tests to CTest's test runner
 add_test(NAME fvalibtests COMMAND fvalibtests)
