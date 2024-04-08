@@ -10,6 +10,9 @@ project(fva)
 # Enable testing for the project
 enable_testing()
 
+# Add GoogleTest as a subdirectory. 
+add_subdirectory(googletest)
+
 add_subdirectory(FVACommonLib)
 add_subdirectory(FVAConfigurator)
 add_subdirectory(FVADataProcessor)

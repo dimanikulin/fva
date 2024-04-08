@@ -46,6 +46,18 @@ add_library(fvalib
   exif.cpp
 )
 
-target_link_libraries(fvalib Qt5::Widgets Qt5::Core Qt5::Gui)
+target_link_libraries(fvalib Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main)
+
+# Add your tests source files here
+add_executable(fvalibtests
+  test_CmdLineBaseExecutor.cpp
+  test_CmdLineBaseExecutor.h
+)
+
+# Link GoogleTest to your tests
+target_link_libraries(fvalibtests gtest gtest_main)
+
+# Add the tests to CTest's test runner
+add_test(NAME fvalibtests COMMAND fvalibtests)
 
 install(TARGETS fvalib)
