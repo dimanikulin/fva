@@ -10,8 +10,6 @@ project(fva)
 # Enable testing for the project
 enable_testing()
 
-find_package(GTest REQUIRED)
-
 add_subdirectory(FVACommonLib)
 add_subdirectory(FVAConfigurator)
 add_subdirectory(FVADataProcessor)
