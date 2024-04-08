@@ -51,7 +51,6 @@ target_link_libraries(fvalib Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main)
 # Add your tests source files here
 add_executable(fvalibtests
   test_CmdLineBaseExecutor.cpp
-  test_CmdLineBaseExecutor.h
 )
 
 # Link GoogleTest to your tests
