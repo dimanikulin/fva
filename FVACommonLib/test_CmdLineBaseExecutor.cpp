@@ -6,7 +6,7 @@
 class MockCmdLineBaseTask : public CmdLineBaseTask
 {
 public:
-    MOCK_METHOD(void, execute, (), (override));
+    MOCK_METHOD(FVA_EXIT_CODE, execute, (const CLTContext&), (override));
 };
 
 // Test fixture for CmdLineBaseExecutor tests
