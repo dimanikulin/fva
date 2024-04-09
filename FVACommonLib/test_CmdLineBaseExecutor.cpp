@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include "CmdLineBaseExecutor.h"
+#include "../FVADataProcessor/FVADataProcessor.h"
 
 // Mock implementation of CmdLineBaseTask for testing purposes
 class MockCmdLineBaseTask : public CmdLineBaseTask
@@ -32,7 +32,7 @@ protected:
     // Helper function to create a test instance of CmdLineBaseExecutor
     std::unique_ptr<CmdLineBaseExecutor> createExecutor()
     {
-        return std::make_unique<CmdLineBaseExecutor>();
+        return std::make_unique<FVADataProcessor>();
     }
 };
 
@@ -42,7 +42,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest)
     // Arrange
     CLTContext context;
     FvaConfiguration cfg;
-    CmdLineBaseExecutor executor;
+    FVADataProcessor executor;
     MockCmdLineBaseTask mockTask;
 
     // Set up expectations on the mock task
@@ -66,7 +66,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_InputFolderNotExist)
     // Arrange
     CLTContext context;
     FvaConfiguration cfg;
-    CmdLineBaseExecutor executor;
+    FVADataProcessor executor;
     MockCmdLineBaseTask mockTask;
 
     // Set up expectations on the mock task
@@ -85,7 +85,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_UnknownCommand)
     // Arrange
     CLTContext context;
     FvaConfiguration cfg;
-    CmdLineBaseExecutor executor;
+    FVADataProcessor executor;
     MockCmdLineBaseTask mockTask;
 
     // Set up expectations on the mock task
@@ -107,7 +107,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_CommandDoesNotSupportReadOnly)
     // Arrange
     CLTContext context;
     FvaConfiguration cfg;
-    CmdLineBaseExecutor executor;
+    FVADataProcessor executor;
     MockCmdLineBaseTask mockTask;
 
     // Set up expectations on the mock task
@@ -129,7 +129,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_RecursiveMode)
     // Arrange
     CLTContext context;
     FvaConfiguration cfg;
-    CmdLineBaseExecutor executor;
+    FVADataProcessor executor;
     MockCmdLineBaseTask mockTask;
 
     // Set up expectations on the mock task
@@ -151,7 +151,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_NonRecursiveMode)
     // Arrange
     CLTContext context;
     FvaConfiguration cfg;
-    CmdLineBaseExecutor executor;
+    FVADataProcessor executor;
     MockCmdLineBaseTask mockTask;
 
     // Set up expectations on the mock task
