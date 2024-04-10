@@ -248,11 +248,12 @@ jobs:
           message(FATAL_ERROR "Running tests failed!")
         endif()
 
-    - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v1
-      if: always()
-      with:
-        files:  build/results.xml
+    # Container action is only supported on Linux
+    #- name: Publish Test Results
+    #  uses: EnricoMi/publish-unit-test-result-action@v1
+    #  if: always()
+    #  with:
+    #    files:  build/results.xml
     
     - name: Install binaries to instdir and stripping them to make binaries smaller by CMake
       run: cmake --install build --prefix instdir --strip
