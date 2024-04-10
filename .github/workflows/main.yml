@@ -23,18 +23,18 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - {
-            name: "Windows Latest MinGW", artifact: "Windows-MinGW.7z",
-            os: windows-latest,
-            cc: "gcc", cxx: "g++"
-          }
-
-        # commented to reduce billed execution time
         #- {
-        #    name: "Ubuntu Latest GCC", artifact: "Linux.7z",
-        #    os: ubuntu-latest,
+        #    name: "Windows Latest MinGW", artifact: "Windows-MinGW.7z",
+        #    os: windows-latest,
         #    cc: "gcc", cxx: "g++"
         #  }
+
+        # commented to reduce billed execution time
+        - {
+            name: "Ubuntu Latest GCC", artifact: "Linux.7z",
+            os: ubuntu-latest,
+            cc: "gcc", cxx: "g++"
+          }
 
         #- {
         #    name: "macOS Latest Clang", artifact: "macOS.7z",
@@ -236,7 +236,7 @@ jobs:
         execute_process(
           COMMAND ctest -j ${N}
           WORKING_DIRECTORY build
-          RESULT_VARIABLE result.xml
+          RESULT_VARIABLE result
           OUTPUT_VARIABLE output
           ERROR_VARIABLE output
           ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
