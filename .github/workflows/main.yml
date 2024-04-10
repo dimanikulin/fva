@@ -236,7 +236,7 @@ jobs:
         execute_process(
           COMMAND ctest -j ${N}
           WORKING_DIRECTORY build
-          RESULT_VARIABLE result
+          RESULT_VARIABLE result.xml
           OUTPUT_VARIABLE output
           ERROR_VARIABLE output
           ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
@@ -248,6 +248,12 @@ jobs:
           message(FATAL_ERROR "Running tests failed!")
         endif()
 
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: always()
+      with:
+        files:  build/results.xml
+    
     - name: Install binaries to instdir and stripping them to make binaries smaller by CMake
       run: cmake --install build --prefix instdir --strip
 
