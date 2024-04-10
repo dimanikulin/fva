@@ -23,18 +23,18 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        #- {
-        #    name: "Windows Latest MinGW", artifact: "Windows-MinGW.7z",
-        #    os: windows-latest,
-        #    cc: "gcc", cxx: "g++"
-        #  }
-
-        # commented to reduce billed execution time
         - {
-            name: "Ubuntu Latest GCC", artifact: "Linux.7z",
-            os: ubuntu-latest,
+            name: "Windows Latest MinGW", artifact: "Windows-MinGW.7z",
+            os: windows-latest,
             cc: "gcc", cxx: "g++"
           }
+
+        # commented to reduce billed execution time
+        #- {
+        #    name: "Ubuntu Latest GCC", artifact: "Linux.7z",
+        #    os: ubuntu-latest,
+        #    cc: "gcc", cxx: "g++"
+        #  }
 
         #- {
         #    name: "macOS Latest Clang", artifact: "macOS.7z",
