@@ -4,6 +4,8 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
+add_subdirectory(test)
+
 # IMPORTANT: once you add new implementation file here please update IMPLEMENTATIONSTATUS.MD as well in the current folder 
 add_library(fvalib  
   fvadevice.h
@@ -47,16 +49,5 @@ add_library(fvalib
 )
 
 target_link_libraries(fvalib Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main gmock gmock_main)
-
-# Add your tests source files here
-add_executable(fvalibtests
-  test_FVABaseDictionaryItem.h
-)
-
-# Link GoogleTest to your tests
-target_link_libraries(fvalibtests Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main gmock gmock_main)
-
-# Add the tests to CTest's test runner
-add_test(NAME fvalibtests COMMAND fvalibtests)
 
 install(TARGETS fvalib)
