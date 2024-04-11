@@ -1,3 +1,6 @@
+#include <gtest/gtest.h>
+#include "../FVACommonLib/fvacltcontext.h"
+
 // Test case for default constructor
 TEST(CLTContextTests, DefaultConstructor)
 {
@@ -34,4 +37,11 @@ TEST(CLTContextTests, SetValues)
     EXPECT_TRUE(context.readOnly);
     EXPECT_EQ(context.custom, "custom_value");
     EXPECT_FALSE(context.recursive);
+}
+
+// Run all the tests
+int main(int argc, char** argv)
+{
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
