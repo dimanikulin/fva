@@ -241,15 +241,13 @@ jobs:
           ERROR_VARIABLE output
           ECHO_OUTPUT_VARIABLE ECHO_ERROR_VARIABLE
         )
-        
+        dir build /d
         if (NOT result EQUAL 0)
           string(REGEX MATCH "[0-9]+% tests.*[0-9.]+ sec.*$" test_results "${output}")
           string(REPLACE "\n" "%0A" test_results "${test_results}")
           message("::error::${test_results}")
           message(FATAL_ERROR "Running tests failed!")
         endif()
-    - name: List dir
-      run: ls build
 
     # Container action is only supported on Linux
     #- name: Publish Test Results
