@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../FVACommonLib/fvacltcontext.h"
+#include "../fvacltcontext.h"
 
 // Test case for default constructor
 TEST(CLTContextTests, DefaultConstructor)

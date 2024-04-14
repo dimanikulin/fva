@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
-#include "../FVACommonLib/FVABaseDictionaryItem.h"
-#include <iostream>
+#include "../FVABaseDictionaryItem.h"
 
 // Test fixture for fvaBaseDictionaryItem tests
 class FVABaseDictionaryItemTests : public ::testing::Test
@@ -20,8 +19,6 @@ protected:
 // Test case for default constructor
 TEST_F(FVABaseDictionaryItemTests, DefaultConstructor)
 {
-    cout << "FVABaseDictionaryItemTests ";
-    sdsdd
     // Arrange
     fvaBaseDictionaryItem item;
 
