@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../FVACommonLib/fvacommoncsv.h"
+#include "../fvacommoncsv.h"
 
 // Test case for loading a simple map from CSV with a specific item type filter
 TEST(fvaLoadSimpleMapFromCsvByItemTypeTest, LoadMapWithItemTypeFilter)
