@@ -48,6 +48,6 @@ add_library(fvalib
   exif.cpp
 )
 
-target_link_libraries(fvalib Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main gmock gmock_main)
+target_link_libraries(fvalib Qt5::Widgets Qt5::Core Qt5::Gui)
 
 install(TARGETS fvalib)
