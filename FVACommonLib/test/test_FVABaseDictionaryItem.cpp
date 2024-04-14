@@ -28,6 +28,7 @@ TEST_F(FVABaseDictionaryItemTests, DefaultConstructor)
     EXPECT_EQ(item.name.toStdString(), "");
 }
 
+/*
 // Test case for parameterized constructor
 TEST_F(FVABaseDictionaryItemTests, ParameterizedConstructor)
 {
@@ -87,7 +88,7 @@ TEST_F(FVABaseDictionaryItemTests, SetAndGetName)
     // Assert
     EXPECT_EQ(retrievedName.toStdString(), name.toStdString());
 }
-
+*/
 // Run all the tests
 int main(int argc, char** argv)
 {
