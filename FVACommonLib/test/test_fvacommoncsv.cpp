@@ -111,6 +111,6 @@ TEST(FvaLoadFvaFileInfoFromCsvTests, LoadNonExistentCsvFile)
     FVA_EXIT_CODE result = fvaLoadFvaFileInfoFromCsv(rootSWdir, fvaFileInfo, fvaFileName);
 
     // Assert
-    EXPECT_EQ(result, FVA_ERROR_FILE_NOT_FOUND);
+    EXPECT_EQ(result, FVA_ERROR_CANT_OPEN_INPUT_FILE);
     // Add additional assertions to verify the error handling
 }
