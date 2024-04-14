@@ -249,14 +249,8 @@ jobs:
           message(FATAL_ERROR "Running tests failed!")
         endif()
 
-    - name: Temp1
-      run: dir D:/a/fva/fva/build/bin
-
-    - name: Temp2
-      run: dir D:/a/fva/fva/build/FVACommonLib/test
-
-    - name: Temp3
-      run: dir D:/a/fva/fva/build/Testing/Temporary
+    #- name: Temp3
+    #  run: dir D:/a/fva/fva/build/Testing/Temporary
 
     # Container action is only supported on Linux
     #- name: Publish Test Results
