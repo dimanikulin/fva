@@ -250,7 +250,7 @@ jobs:
         endif()
 
     - name: Temp
-      run: dir D:\a\fva\build
+      run: dir D:/a/fva/fva/build
 
     # Container action is only supported on Linux
     #- name: Publish Test Results
