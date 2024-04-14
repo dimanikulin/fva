@@ -6,8 +6,8 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 # Add your tests source files here
 add_executable(fvalibtests
-  test_FVABaseDictionaryItem.h
-  test_fvacltcontext.h
+  test_FVABaseDictionaryItem.cpp
+  test_fvacltcontext.cpp
 )
 
 # Link GoogleTest to your tests
