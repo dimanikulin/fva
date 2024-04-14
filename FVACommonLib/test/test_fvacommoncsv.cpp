@@ -14,7 +14,7 @@ TEST(fvaLoadSimpleMapFromCsvByItemTypeTest, LoadMapWithItemTypeFilter)
     FVA_EXIT_CODE result = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, simpleMap, dictName, typeToFilter);
 
     // Assert
-    EXPECT_EQ(result, FVA_SUCCESS);
+    EXPECT_EQ(result, FVA_NO_ERROR);
     // Add additional assertions to verify the contents of the simpleMap
 }
 
@@ -30,7 +30,7 @@ TEST(fvaLoadSimpleMapFromCsvByItemTypeTest, LoadMapWithoutItemTypeFilter)
     FVA_EXIT_CODE result = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, simpleMap, dictName);
 
     // Assert
-    EXPECT_EQ(result, FVA_SUCCESS);
+    EXPECT_EQ(result, FVA_NO_ERROR);
     // Add additional assertions to verify the contents of the simpleMap
 }
 
@@ -47,7 +47,7 @@ TEST(fvaLoadSimpleMapFromCsvByItemTypeTest, LoadMapWithInvalidItemTypeFilter)
     FVA_EXIT_CODE result = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, simpleMap, dictName, typeToFilter);
 
     // Assert
-    EXPECT_EQ(result, FVA_INVALID_ARGUMENT);
+    EXPECT_EQ(result, FVA_ERROR_WRONG_PARAMETERS);
     // Add additional assertions to verify the contents of the simpleMap (should be empty)
 }
 
@@ -93,7 +93,7 @@ TEST(FvaLoadFvaFileInfoFromCsvTests, LoadCsvFileWithNonUniqueFileNames)
 
     // Act
     FVA_EXIT_CODE result = fvaLoadFvaFileInfoFromCsv(rootSWdir, fvaFileInfo, fvaFileName);
-
+                                                
     // Assert
     EXPECT_EQ(result, FVA_ERROR_NON_UNIQUE_FVA_INFO);
     // Add additional assertions to verify the error handling
