@@ -32,6 +32,12 @@ class fvaBaseDictionaryItem
 		 * item name
 		 */		
 		QString name;
+
+	/*!
+	 * \brief constructor
+ 	*/
+	fvaBaseDictionaryItem():ID(0), type(0) {};
+
 };
 
 typedef QMap<int, fvaBaseDictionaryItem> BASE_DICT_ITEM_MAP;
