@@ -294,6 +294,20 @@ jobs:
         path: ./FVASetupWin/bin/FVASetupWin.msi
         name: FVASetupWin.msi
 
+    - name: Upload LastTest.log to git hub storage to use later
+      if: matrix.config.os == 'windows-latest'
+      uses: actions/upload-artifact@v3
+      with:
+        path: ./build/Testing/Temporary/LastTest.log
+        name: LastTest.log
+
+    - name: Upload CTestCostData.txt to git hub storage to use later
+      if: matrix.config.os == 'windows-latest'
+      uses: actions/upload-artifact@v3
+      with:
+        path: ./build/Testing/Temporary/CTestCostData.txt
+        name: CTestCostData.txt
+
   release:
     if: contains(github.ref, 'tags/v')
     runs-on: ubuntu-latest
