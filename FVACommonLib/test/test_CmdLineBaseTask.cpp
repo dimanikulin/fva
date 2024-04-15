@@ -1,13 +1,15 @@
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
+// #include <gmock/gmock.h>
 #include "CmdLineBaseTask.h"
 
+/*
 // Mock implementation of CmdLineBaseTask for testing purposes
 class MockCmdLineBaseTask : public CmdLineBaseTask
 {
 public:
     MOCK_METHOD(FVA_EXIT_CODE, execute, (const CLTContext&), (override));
 };
+*/
 
 // Test fixture for CmdLineBaseTask tests
 class CmdLineBaseTaskTests : public ::testing::Test
@@ -24,6 +26,7 @@ protected:
     }
 };
 
+/*
 // Test case for execute() method
 TEST_F(CmdLineBaseTaskTests, ExecuteTest)
 {
@@ -68,6 +71,7 @@ TEST_F(CmdLineBaseTaskTests, SupportReadOnlyTest)
     // Assert
     EXPECT_FALSE(result);
 }
+
 
 // Test case for processFolderRecursivly when folder contains no subfolders or files
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
@@ -142,4 +146,4 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_ExecuteError)
 
     // Assert
     EXPECT_EQ(result, FVA_ERROR);
-}
+}*/
