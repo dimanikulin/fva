@@ -29,13 +29,13 @@ protected:
     /*std::unique_ptr<CmdLineBaseTask> createMockTask()
     {
         return std::make_unique<MockCmdLineBaseTask>();
-    }*/
+    }
 
     // Helper function to create a test instance of CmdLineBaseExecutor
     std::unique_ptr<CmdLineBaseExecutor> createExecutor()
     {
         return std::make_unique<FVADataProcessor>();
-    }
+    }*/
 };
 /*
 // Test case for the run() method
