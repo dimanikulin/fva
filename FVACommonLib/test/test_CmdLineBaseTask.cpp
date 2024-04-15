@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 // #include <gmock/gmock.h>
-#include "CmdLineBaseTask.h"
+#include "../CmdLineBaseTask.h"
 
 /*
 // Mock implementation of CmdLineBaseTask for testing purposes
