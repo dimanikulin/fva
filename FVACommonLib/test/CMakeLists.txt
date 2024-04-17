@@ -17,6 +17,7 @@ add_executable(fvalibtests
   test_fvaconfiguration.cpp
   test_fvaconstants.cpp
   test_fvacsvfile.cpp
+  test_FVADescriptionFile.cpp
 )
 
 # Link GoogleTest to your tests
