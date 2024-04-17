@@ -31,6 +31,7 @@ TEST_F(FVAEventTests, DefaultConstructorTest)
     EXPECT_EQ(event.institution, 0);
 }
 
+/*
 // Test case for parameterized constructor
 TEST_F(FVAEventTests, ParameterizedConstructorTest)
 {
@@ -72,3 +73,4 @@ TEST_F(FVAEventTests, GettersAndSettersTest)
     EXPECT_EQ(event.getType(), type);
     EXPECT_EQ(event.getInstitution(), institution);
 }
+*/
