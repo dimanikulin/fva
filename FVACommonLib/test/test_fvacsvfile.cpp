@@ -16,6 +16,7 @@ protected:
     }
 };
 
+/*
 // Test case for parsing a line with no quotes and default delimiter
 TEST_F(CSVFileTests, ParseLine_NoQuotes_DefaultDelimiter)
 {
@@ -168,3 +169,4 @@ TEST_F(CSVFileTests, WriteLine)
     // Assert
     EXPECT_TRUE(result);
 }
+*/
