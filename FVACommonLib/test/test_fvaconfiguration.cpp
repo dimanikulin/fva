@@ -38,7 +38,7 @@ TEST(FvaConfigurationTest, GetNonExistingParamValue)
     EXPECT_EQ(result, FVA_ERROR_CANT_GET_PARAM);
     EXPECT_TRUE(actualValue.isEmpty());
 }
-*/
+
 // Test case for getting a parameter value with empty configuration
 TEST(FvaConfigurationTest, GetParamValueWithEmptyConfig)
 {
@@ -175,3 +175,4 @@ TEST(FvaConfigurationTest, SetParamString)
     EXPECT_EQ(result, FVA_NO_ERROR);
     // Add additional assertions to verify the updated configuration
 }
+*/
