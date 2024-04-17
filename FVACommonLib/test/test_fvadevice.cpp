@@ -15,7 +15,7 @@ TEST(fvaDeviceTests, InitializationTest)
     EXPECT_EQ(device.ownerId, 0);
     EXPECT_EQ(device.linkedName, "");
     EXPECT_EQ(device.guiName, "");
-    EXPECT_EQ(device.type, FVA_DEVICE_TYPE::UNKNOWN);
+    EXPECT_EQ(device.type, FVA_DEVICE_TYPE::DEVICE_TYPE_PHOTO_UKNOWN);
 }
 
 // Test case for setting and getting the device identifier
@@ -93,7 +93,7 @@ TEST(fvaDeviceTests, DeviceTypeTest)
 {
     // Arrange
     fvaDevice device;
-    FVA_DEVICE_TYPE type = FVA_DEVICE_TYPE::CAMERA;
+    FVA_DEVICE_TYPE type = FVA_DEVICE_TYPE::DEVICE_TYPE_PHOTO_VIDEO;
 
     // Act
     device.type = type;
