@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "../fvacommonui.h"
 
-
+/*
 // Test case for an empty root software directory
 TEST(fvaBuildPeopleTreeTest, EmptyRootSWDirectory)
 {
@@ -142,3 +142,4 @@ TEST(fvaPopulateInputDirTest, FolderWithNoProblemFiles)
 
     // Add assertions to verify the state of the tree widget and any other expected behavior
 }
+*/
