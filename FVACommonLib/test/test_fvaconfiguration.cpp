@@ -1,3 +1,6 @@
+#include <gtest/gtest.h>
+#include "../fvaconfiguration.h"
+
 // Test case for getting an existing parameter value
 TEST(FvaConfigurationTest, GetExistingParamValue)
 {
