@@ -1,3 +1,6 @@
+#include <gtest/gtest.h>
+#include "../FVADescriptionFile.h"
+
 // Test case for saving an empty description file
 TEST(FVADescriptionFileTests, SaveEmptyFile)
 {
