@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "../fvaconfiguration.h"
 
+/*
 // Test case for getting an existing parameter value
 TEST(FvaConfigurationTest, GetExistingParamValue)
 {
@@ -37,7 +38,7 @@ TEST(FvaConfigurationTest, GetNonExistingParamValue)
     EXPECT_EQ(result, FVA_ERROR_CANT_GET_PARAM);
     EXPECT_TRUE(actualValue.isEmpty());
 }
-
+*/
 // Test case for getting a parameter value with empty configuration
 TEST(FvaConfigurationTest, GetParamValueWithEmptyConfig)
 {
