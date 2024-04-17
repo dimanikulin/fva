@@ -16,7 +16,6 @@ protected:
     }
 };
 
-/*
 // Test case for default constructor
 TEST_F(FVAEventTests, DefaultConstructorTest)
 {
@@ -32,6 +31,7 @@ TEST_F(FVAEventTests, DefaultConstructorTest)
     EXPECT_EQ(event.institution, 0);
 }
 
+/*
 // Test case for parameterized constructor
 TEST_F(FVAEventTests, ParameterizedConstructorTest)
 {

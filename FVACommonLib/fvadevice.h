@@ -48,19 +48,6 @@ class fvaDevice
 		 * device type
 		 */
 		FVA_DEVICE_TYPE type;
-
-		/*
-		 * cons
-		 */
-		fvaDevice(){}
-		
-    EXPECT_EQ(device.deviceId, 0);
-    EXPECT_EQ(device.ownerName, "");
-    EXPECT_EQ(device.ownerId, 0);
-    EXPECT_EQ(device.linkedName, "");
-    EXPECT_EQ(device.guiName, "");
-    EXPECT_EQ(device.type, FVA_DEVICE_TYPE::DEVICE_TYPE_PHOTO_UKNOWN);
-
 };
 
 typedef QMap<int, fvaDevice> DEVICE_MAP;
