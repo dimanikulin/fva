@@ -21,6 +21,7 @@ add_executable(fvalibtests
   test_fvadevice.cpp
   test_FVAEvent.cpp
   test_fvafile.cpp
+  test_fvafmtcontext.cpp
 )
 
 # Link GoogleTest to your tests
