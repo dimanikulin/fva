@@ -25,6 +25,7 @@ add_executable(fvalibtests
   test_fvafolder.cpp
   test_fvaItem.cpp
   test_fvaperson.cpp
+  test_fvariffparser.cpp
 )
 
 # Link GoogleTest to your tests
