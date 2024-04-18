@@ -50,16 +50,13 @@ class fvaDevice
 		FVA_DEVICE_TYPE type;
 
 		/*
-		 * cons
+		 * constructor
 		 */
-		fvaDevice(){}
-		
-    EXPECT_EQ(device.deviceId, 0);
-    EXPECT_EQ(device.ownerName, "");
-    EXPECT_EQ(device.ownerId, 0);
-    EXPECT_EQ(device.linkedName, "");
-    EXPECT_EQ(device.guiName, "");
-    EXPECT_EQ(device.type, FVA_DEVICE_TYPE::DEVICE_TYPE_PHOTO_UKNOWN);
+		fvaDevice():
+		  deviceId(0),
+		  ownerId(0),
+		  type (FVA_DEVICE_TYPE::DEVICE_TYPE_PHOTO_UKNOWN)
+		{}
 
 };
 

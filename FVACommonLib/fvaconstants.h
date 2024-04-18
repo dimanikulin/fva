@@ -26,6 +26,7 @@ enum FVA_FS_TYPE
 /*!
 * \brief it enumerates internal valuable device types
 */
+// TODO - to rename DEVICE_TYPE_PHOTO_UKNOWN withpit PHOTO and DEVICE_TYPE_PHOTO_SCANER without PHOTO
 enum FVA_DEVICE_TYPE
 {
 	DEVICE_TYPE_PHOTO_UKNOWN	= 0,
