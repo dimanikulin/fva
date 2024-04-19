@@ -4,7 +4,7 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
-# Add your tests source files here
+# tests source files here
 add_executable(fvalibtests
   test_CmdLineBaseExecutor.cpp
   test_CmdLineBaseTask.cpp
@@ -28,7 +28,7 @@ add_executable(fvalibtests
   test_fvariffparser.cpp
 )
 
-# Link GoogleTest to your tests
+# Link GoogleTest to tests
 target_link_libraries(fvalibtests Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main fvalib)
 
 # Add the tests to CTest's test runner
