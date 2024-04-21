@@ -10,8 +10,11 @@ add_executable(fvadataprocessorlibtests
   test_CLTAutoChecks2.cpp
 )
 
-# Link GoogleTest tests
+# Link GoogleTest tests and other libs
 target_link_libraries(fvadataprocessorlibtests Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main fvalib)
+
+# add includes
+target_include_directories(fvadataprocessorlibtests PRIVATE ../../FVACommonLib)
 
 # Add the tests to CTest's test runner
 add_test(NAME fvadataprocessorlibtests COMMAND fvadataprocessorlibtests)
