@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "CLTAutoChecks2.h"
+#include "../CLTAutoChecks2.h"
 
 // Test fixture for CLTAutoChecks2 tests
 class CLTAutoChecks2Tests : public ::testing::Test

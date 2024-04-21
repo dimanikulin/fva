@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 // #include <gmock/gmock.h>
-#include "CLTAutoChecks1.h"
+#include "../CLTAutoChecks1.h"
 
 /*// Mocking the dependencies
 class MockQDir : public QDir
