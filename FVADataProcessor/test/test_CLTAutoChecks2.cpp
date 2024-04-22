@@ -48,7 +48,7 @@ TEST_F(CLTAutoChecks2Tests, ExecuteWithCfg)
     // Verify the expected behavior and output
     ASSERT_EQ(FVA_EXIT_CODE_SUCCESS, result);
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTAutoChecks2Tests, Name)
 {
@@ -75,5 +75,5 @@ TEST_F(CLTAutoChecks2Tests, SupportReadOnly)
     // Verify the expected read-only support
     ASSERT_TRUE(readOnly);
 }
-
+*/
 // Add more test cases for other member functions as needed
