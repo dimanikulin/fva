@@ -9,6 +9,7 @@ add_executable(fvadataprocessorlibtests
   test_CLTAutoChecks1.cpp
   test_CLTAutoChecks2.cpp
   test_CLTAutoChecks3.cpp
+  test_CLTCheckDateTime.cpp
 )
 
 # Link GoogleTest tests and other libs
