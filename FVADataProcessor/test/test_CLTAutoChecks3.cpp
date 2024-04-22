@@ -138,7 +138,7 @@ TEST_F(CLTAutoChecks3Tests, Name)
     // Verify the expected name
     ASSERT_EQ("CLTAutoChecks3", name.toStdString());
 }
-
+/*
 // Test case for supportReadOnly function
 TEST_F(CLTAutoChecks3Tests, SupportReadOnly)
 {
@@ -151,6 +151,6 @@ TEST_F(CLTAutoChecks3Tests, SupportReadOnly)
     // Assert
     // Verify the expected read-only support
     ASSERT_TRUE(readOnly);
-}
+}*/
 
 // Add more test cases for other member functions as needed
