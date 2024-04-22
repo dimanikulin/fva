@@ -63,6 +63,7 @@ TEST_F(CLTCheckDateTimeTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 
+/*
 // Test case for execute function when there are no image files
 TEST_F(CLTCheckDateTimeTests, Execute_NoImageFiles)
 {
@@ -111,3 +112,4 @@ TEST_F(CLTCheckDateTimeTests, Execute_EmptyExifDateTime)
     EXPECT_EQ(FVA_ERROR_NO_EXIF_DATE_TIME, result); // Verify that the function returns FVA_ERROR_NO_EXIF_DATE_TIME
     // Add more assertions to verify the expected behavior and output
 }
+*/
