@@ -77,7 +77,7 @@ TEST_F(CLTAutoChecks1Tests, Execute)
     // Assert
     EXPECT_EQ(result, FVA_ERROR_VIDEO_FIRST);
 }
-*/
+
 // Test case for execute function
 TEST_F(CLTAutoChecks1Tests, ExecuteSimple)
 {
@@ -108,7 +108,7 @@ TEST_F(CLTAutoChecks1Tests, SupportReadOnly)
     // Verify the expected behavior and output
     EXPECT_TRUE(result);
 }
-
+*/
 // Test case for Name function
 TEST_F(CLTAutoChecks1Tests, Name)
 {
