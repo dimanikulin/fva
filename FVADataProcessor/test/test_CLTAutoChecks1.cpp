@@ -91,7 +91,7 @@ TEST_F(CLTAutoChecks1Tests, ExecuteSimple)
 
     // Assert
     // Verify the expected behavior and output
-    EXPECT_EQ(result, FVA_EXIT_CODE_SUCCESS);
+    EXPECT_EQ(result, FVA_NO_ERROR);
 }
 
 // Test case for supportReadOnly function
