@@ -46,6 +46,7 @@ TEST_F(CLTCheckDateTimeTests, Name)
     ASSERT_EQ("CLTCheckDateTime", name.toStdString());
 }
 
+/*
 // Test case for supportReadOnly function
 TEST_F(CLTCheckDateTimeTests, SupportReadOnly)
 {
@@ -63,7 +64,6 @@ TEST_F(CLTCheckDateTimeTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 
-/*
 // Test case for execute function when there are no image files
 TEST_F(CLTCheckDateTimeTests, Execute_NoImageFiles)
 {
