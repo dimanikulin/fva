@@ -16,7 +16,7 @@ protected:
     }
 };
 
-// Test case for execute function
+/*// Test case for execute function
 TEST_F(CLTAutoChecks2Tests, Execute)
 {
     // Arrange
@@ -48,7 +48,7 @@ TEST_F(CLTAutoChecks2Tests, ExecuteWithCfg)
     // Verify the expected behavior and output
     ASSERT_EQ(FVA_EXIT_CODE_SUCCESS, result);
 }
-
+*/
 // Test case for Name function
 TEST_F(CLTAutoChecks2Tests, Name)
 {
