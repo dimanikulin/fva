@@ -10,6 +10,10 @@ add_executable(fvadataprocessorlibtests
   test_CLTAutoChecks2.cpp
   test_CLTAutoChecks3.cpp
   test_CLTCheckDateTime.cpp
+  test_CLTCheckDeviceName.cpp
+  test_CLTCheckFileFormat.cpp
+  test_CLTCheckLocation.cpp
+  test_CLTCreateDirStructByDevNames.cpp
 )
 
 # Link GoogleTest tests and other libs
