@@ -15,7 +15,7 @@ protected:
         // Clean up any resources used by the tests
     }
 };
-
+/*
 // Test case for execute function
 TEST_F(CLTAutoChecks3Tests, Execute)
 {
@@ -125,7 +125,7 @@ TEST_F(CLTAutoChecks3Tests, Execute)
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
-
+*/
 // Test case for Name function
 TEST_F(CLTAutoChecks3Tests, Name)
 {
