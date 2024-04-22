@@ -11,7 +11,7 @@ add_executable(fvadataprocessorlibtests
 )
 
 # Link GoogleTest tests and other libs
-target_link_libraries(fvadataprocessorlibtests Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main fvalib)
+target_link_libraries(fvadataprocessorlibtests Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main fvalib fvadataprocessorlib)
 
 # add includes
 target_include_directories(fvadataprocessorlibtests PRIVATE ../../FVACommonLib)
