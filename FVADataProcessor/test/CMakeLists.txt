@@ -8,6 +8,7 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 add_executable(fvadataprocessorlibtests
   test_CLTAutoChecks1.cpp
   test_CLTAutoChecks2.cpp
+  test_CLTAutoChecks3.cpp
 )
 
 # Link GoogleTest tests and other libs
