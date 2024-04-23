@@ -14,6 +14,9 @@ add_executable(fvadataprocessorlibtests
   test_CLTCheckFileFormat.cpp
   test_CLTCheckLocation.cpp
   test_CLTCreateDirStructByDevNames.cpp
+  test_CLTCreateDirStructByFileNames.cpp
+  test_CLTCSVFvaFiles.cpp
+  test_CLTCSVGetTagsForFvaFiles.cpp
 )
 
 # Link GoogleTest tests and other libs
