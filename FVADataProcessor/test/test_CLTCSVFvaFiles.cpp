@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTCSVFvaFile.h"
+#include "../CLTCSVFvaFiles.h"
 
 // Test fixture for CLTCSVFvaFile tests
 class CLTCSVFvaFileTests : public ::testing::Test
