@@ -17,6 +17,9 @@ add_executable(fvadataprocessorlibtests
   test_CLTCreateDirStructByFileNames.cpp
   test_CLTCSVFvaFiles.cpp
   test_CLTCSVGetTagsForFvaFiles.cpp
+  test_CLTFixDuplicatedFileNames.cpp
+  test_CLTMoveAloneFiles.cpp
+  test_CLTMoveInputDir2Output.cpp
 )
 
 # Link GoogleTest tests and other libs
