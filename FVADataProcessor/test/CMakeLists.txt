@@ -20,6 +20,8 @@ add_executable(fvadataprocessorlibtests
   test_CLTFixDuplicatedFileNames.cpp
   test_CLTMoveAloneFiles.cpp
   test_CLTMoveInputDir2Output.cpp
+  test_CLTPrintFSStructure.cpp
+  test_CLTRenameFiles.cpp
 )
 
 # Link GoogleTest tests and other libs
