@@ -22,6 +22,9 @@ add_executable(fvadataprocessorlibtests
   test_CLTMoveInputDir2Output.cpp
   test_CLTPrintFSStructure.cpp
   test_CLTRenameFiles.cpp
+  test_CLTRenameVideoBySequence.cpp
+  test_CLTSetFileAtts.cpp
+  test_FVADataProcessor.cpp
 )
 
 # Link GoogleTest tests and other libs
