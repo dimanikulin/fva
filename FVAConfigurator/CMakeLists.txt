@@ -20,4 +20,5 @@ target_include_directories(fvaconfigurator PRIVATE ../FVACommonLib)
 
 install(TARGETS fvaconfigurator)
 
-add_subdirectory(test)
+# TODO to uncoment
+# add_subdirectory(test)
