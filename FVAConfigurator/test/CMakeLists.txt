@@ -13,5 +13,5 @@ add_executable(fvaconfiguratortest
 target_link_libraries(fvaconfiguratortest Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main fvaconfigurator fvalib)
 
 # Add the tests to CTest's test runner
-add_test(NAME fvaconfiguratortest COMMAND fvaconfigurator)
+add_test(NAME fvaconfiguratortest COMMAND fvaconfiguratortest)
 
