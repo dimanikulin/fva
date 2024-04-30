@@ -10,6 +10,9 @@ add_executable(fvaflowcontrollerlibtests
   test_FVAFlowController.cpp
 )
 
+# add includes
+target_include_directories(fvaflowcontrollerlibtests PRIVATE ../../FVACommonLib)
+
 # Link GoogleTest tests and other libs
 target_link_libraries(fvaflowcontrollerlibtests Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main fvalib fvaflowcontrollerlib)
 
