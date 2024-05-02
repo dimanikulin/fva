@@ -50,3 +50,5 @@ target_link_libraries(fvaorganizerwizard Qt5::Widgets Qt5::Core Qt5::Gui fvalib 
 target_include_directories(fvaorganizerwizard PRIVATE ../FVACommonLib ../FVADataProcessor ../FVAFlowController)
 
 install(TARGETS fvaorganizerwizard)
+
+add_subdirectory(test)
