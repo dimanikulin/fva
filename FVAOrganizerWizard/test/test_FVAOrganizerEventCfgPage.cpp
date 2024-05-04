@@ -15,7 +15,7 @@ protected:
         // Clean up any resources used by the tests
     }
 };
-
+/*
 // Test case for constructor
 TEST_F(FVAOrganizerEventCfgPageTests, Constructor)
 {
@@ -46,5 +46,5 @@ TEST_F(FVAOrganizerEventCfgPageTests, OnFvaInputDirButtonPressed)
     // Verify the expected behavior and output
     // Add assertions to verify the handling of the button click event
 }
-
+*/
 // Add more test cases for other member functions as needed

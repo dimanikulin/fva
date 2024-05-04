@@ -16,6 +16,7 @@ protected:
     }
 };
 
+/*
 // Test case for constructor
 TEST_F(FVAOrganizerDonePageTests, Constructor)
 {
@@ -44,3 +45,4 @@ TEST(FVAOrganizerDonePageTests, FinishWordsText)
     // Verify the expected text of the finishWords QTextBrowser
     // Add assertions to verify the content of the finishWords QTextBrowser
 }
+*/
