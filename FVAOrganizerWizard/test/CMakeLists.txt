@@ -9,6 +9,9 @@ add_executable(fvaorganizerwizardtests
   test_FVAOrganizerDevicePage.cpp
   test_FVAOrganizerDonePage.cpp
   test_FVAOrganizerEventCfgPage.cpp
+  test_FVAOrganizerEventInfoPage.cpp
+  test_FVAOrganizerInputDirPage.cpp
+  test_FVAOrganizerOrientPage.cpp
 )
 
 # add includes
