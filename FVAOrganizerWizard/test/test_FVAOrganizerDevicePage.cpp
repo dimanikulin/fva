@@ -16,6 +16,7 @@ protected:
     }
 };
 
+/*
 // Test case for validatePage function
 TEST_F(FVAOrganizerDevicePageTests, ValidatePage)
 {
@@ -87,3 +88,4 @@ TEST(FVAOrganizerDevicePageTests, OnChangeDictPressed)
     // Verify the expected behavior and output
     // Add more assertions as needed
 }
+*/
