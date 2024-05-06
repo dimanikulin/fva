@@ -12,6 +12,8 @@ add_executable(fvaorganizerwizardtests
   test_FVAOrganizerEventInfoPage.cpp
   test_FVAOrganizerInputDirPage.cpp
   test_FVAOrganizerOrientPage.cpp
+  test_FVAOrganizerOutputDirPage.cpp
+  test_FVAOrganizerPlacePage.cpp
 )
 
 # add includes
