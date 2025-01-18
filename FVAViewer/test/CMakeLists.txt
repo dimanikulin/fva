@@ -10,7 +10,7 @@ add_executable(fvaviewertests
 )
 
 # add includes
-target_include_directories(fvaviewerlibtests PRIVATE 
+target_include_directories(fvaviewertests PRIVATE 
 ../../FVACommonLib
 ../../FVAFlowController)
 
