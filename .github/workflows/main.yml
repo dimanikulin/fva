@@ -111,7 +111,7 @@ jobs:
     - name: install GoogleTest
       if: ${{ steps.cache.output.cache-hit != 'true' }}
       run: |
-        git clone https://github.com/google/googletest.git --branch release-1.15.0
+        git clone https://github.com/google/googletest.git --branch release-1.12.1
         cd googletest
         cmake -Bbuild -DCMAKE_INSTALL_PREFIX="$HOME/.local" -Dgtest_force_shared_crt=1
         cmake --build build --config Release
