@@ -3,6 +3,7 @@
 
 // #include "fvaviewer.h"
 
+/*
 // Mock class for QDir
 class MockQDir : public QDir {
 public:
@@ -14,7 +15,7 @@ class MockQProgressDialog : public QProgressDialog {
 public:
     MOCK_METHOD2(setValue, void(int));
 };
-
+*/
 /*
 // Test fixture for FVAViewer tests
 class FVAViewerTest : public ::testing::Test {
