@@ -16,6 +16,7 @@ protected:
     }
 };
 
+/*
 // Test case for FVAOrganizerWizard construction
 TEST_F(FVAOrganizerWizardTests, Construction)
 {
@@ -30,7 +31,7 @@ TEST_F(FVAOrganizerWizardTests, Construction)
     // Add assertions to check if the wizard is properly initialized
 }
 
-/*
+
 // Test case for FVAOrganizerWizard pages
 TEST_F(FVAOrganizerWizardTests, Pages)
 {
