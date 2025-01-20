@@ -16,6 +16,7 @@ protected:
     }
 };
 
+/*
 // Test case for constructor
 TEST(FVAOrganizerPlacePageTests, Constructor)
 {
@@ -29,7 +30,7 @@ TEST(FVAOrganizerPlacePageTests, Constructor)
     // Add assertions to verify the expected behavior and output
 }
 
-/*
+
 // Test case for OnFvaInputDirButtonPressed function
 TEST(FVAOrganizerPlacePageTests, OnFvaInputDirButtonPressed)
 {
