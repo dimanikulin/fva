@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../fvadevice.h"
+#include "fvadevice.h"
 
 // Test case for verifying the initialization of fvaDevice object
 TEST(fvaDeviceTests, InitializationTest)
