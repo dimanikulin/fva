@@ -267,7 +267,7 @@ jobs:
       run: cmake -E tar cfv ../${{ matrix.config.artifact }} --format=7zip .
 
     - name: Upload artifact to git hub storage to use later
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         path: ./${{ matrix.config.artifact }}
         name: ${{ matrix.config.artifact }}
@@ -283,21 +283,21 @@ jobs:
 
     - name: Upload win pkg to git hub storage to use later
       if: matrix.config.os == 'windows-latest'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         path: ./FVASetupWin/bin/FVASetupWin.msi
         name: FVASetupWin.msi
 
     - name: Upload LastTest.log to git hub storage to use later
       if: matrix.config.os == 'windows-latest'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         path: ./build/Testing/Temporary/LastTest.log
         name: LastTest.log
 
     - name: Upload CTestCostData.txt to git hub storage to use later
       if: matrix.config.os == 'windows-latest'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         path: ./build/Testing/Temporary/CTestCostData.txt
         name: CTestCostData.txt
@@ -324,7 +324,7 @@ jobs:
       run: |
         echo "${{ steps.create_release.outputs.upload_url }}" > ./upload_url
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         path: ./upload_url
         name: upload_url
