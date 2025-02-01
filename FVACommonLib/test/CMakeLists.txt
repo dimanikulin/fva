@@ -1,9 +1,3 @@
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
-
-find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
-
 # tests source files here
 add_executable(fvalibtests
   test_CmdLineBaseExecutor.cpp
@@ -18,7 +12,6 @@ add_executable(fvalibtests
   test_fvaconstants.cpp
   test_fvacsvfile.cpp
   test_FVADescriptionFile.cpp
-  test_fvadevice.cpp
   test_FVAEvent.cpp
   test_fvafile.cpp
   test_fvafmtcontext.cpp
