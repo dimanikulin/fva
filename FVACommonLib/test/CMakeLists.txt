@@ -3,7 +3,6 @@ add_executable(fvalibtests
   test_CmdLineBaseExecutor.cpp
   test_CmdLineBaseTask.cpp
   test_FVABaseDictionaryItem.cpp
-  test_fvacltcontext.cpp
   test_fvacommoncsv.cpp
   test_fvacommonexif.cpp
   test_fvacommonlib.cpp
