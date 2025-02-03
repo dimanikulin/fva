@@ -1,5 +1,6 @@
 # tests source files here
 add_executable(libtests
+  test_fvacltcontext.cpp
   test_fvadevice.cpp
 )
 
