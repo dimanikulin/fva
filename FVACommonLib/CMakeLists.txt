@@ -48,6 +48,10 @@ add_library(fvalib
   exif.cpp
 )
 
+target_include_directories(fvalib INTERFACE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
 target_link_libraries(fvalib Qt5::Widgets Qt5::Core Qt5::Gui)
 
 install(TARGETS fvalib)
