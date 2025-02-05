@@ -28,7 +28,7 @@ jobs:
         uses: mattnotmitt/doxygen-action@v1
         with:
            #working-directory: '' # now default one
-           doxyfile-path: './doxy.cfg'
+           doxyfile-path: './configuration/doxy.cfg'
            enable-latex: true
 
       - name: Publish of documentation
