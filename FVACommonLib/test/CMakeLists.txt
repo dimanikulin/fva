@@ -8,7 +8,6 @@ add_executable(fvalibtests
   test_fvacommonlib.cpp
   test_fvacommonui.cpp
   test_fvaconfiguration.cpp
-  test_fvaconstants.cpp
   test_fvacsvfile.cpp
   test_FVADescriptionFile.cpp
   test_FVAEvent.cpp

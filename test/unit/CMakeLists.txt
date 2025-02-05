@@ -2,6 +2,7 @@
 add_executable(libtests
   test_fvacltcontext.cpp
   test_fvadevice.cpp
+  test_fvaconstants.cpp
 )
 
 # Link GoogleTest to tests
