@@ -11,7 +11,6 @@ add_executable(fvalibtests
   test_fvacsvfile.cpp
   test_FVADescriptionFile.cpp
   test_FVAEvent.cpp
-  test_fvafile.cpp
   test_fvafmtcontext.cpp
   test_fvafolder.cpp
   test_fvaItem.cpp
