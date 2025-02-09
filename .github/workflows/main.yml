@@ -248,16 +248,6 @@ jobs:
           message("::error::${test_results}")
           message(FATAL_ERROR "Running tests failed!")
         endif()
-
-    #- name: Temp3
-    #  run: dir D:/a/fva/fva/build/Testing/Temporary
-
-    # Container action is only supported on Linux
-    #- name: Publish Test Results
-    #  uses: EnricoMi/publish-unit-test-result-action@v1
-    #  if: always()
-    #  with:
-    #    files:  build/results.xml
     
     - name: Install binaries to instdir and stripping them to make binaries smaller by CMake
       run: cmake --install build --prefix instdir --strip
