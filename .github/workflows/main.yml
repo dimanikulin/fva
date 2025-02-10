@@ -269,14 +269,14 @@ jobs:
     - name: MS package build
       if: matrix.config.os == 'windows-latest'
       run: >
-        msbuild ./FVASetupWin/FVASetupWin.wixproj
+        msbuild ./packaging/ms.wixproj
 
     - name: Upload win pkg to git hub storage to use later
       if: matrix.config.os == 'windows-latest'
       uses: actions/upload-artifact@v4
       with:
-        path: ./FVASetupWin/bin/FVASetupWin.msi
-        name: FVASetupWin.msi
+        path: ./packaging/bin/ms.msi
+        name: ms.msi
 
     - name: Upload LastTest.log to git hub storage to use later
       if: matrix.config.os == 'windows-latest'

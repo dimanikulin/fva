@@ -23,7 +23,7 @@
     <LinkerAdditionalOptions>-ext WixUIExtension</LinkerAdditionalOptions>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Product.wxs" />
+    <Compile Include="ms.wxs" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--
