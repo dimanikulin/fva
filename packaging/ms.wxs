@@ -23,15 +23,15 @@
       <Directory Id="PRODUCTDIR"> 
         <Directory Id="scripts" Name='#scripts#'>
           <Component Id="scripts" Guid="D4AE1F4B-9CDC-424A-B757-1A970DF59665">
-            <File Id="CLTFixEmptyDateTime" Name="CLTFixEmptyDateTime.py" Source="..\FVAScripts\CLTFixEmptyDateTime.py"  Vital="yes" KeyPath="no"/>
-            <File Id="CLTMerge2csv" Name="CLTMerge2csv.py" Source="..\FVAScripts\CLTMerge2csv.py"  Vital="yes" KeyPath="no"/>
-            <File Id="CLTUpdateEventForDir" Name="CLTUpdateEventForDir.py" Source="..\FVAScripts\CLTUpdateEventForDir.py"  Vital="yes" KeyPath="no"/>
-            <File Id="CLTUpdateEventPeopleForDir" Name="CLTUpdateEventPeopleForDir.py" Source="..\FVAScripts\CLTUpdateEventPeopleForDir.py"  Vital="yes" KeyPath="no"/>
-            <File Id="CLTUpdatePlaceForDir" Name="CLTUpdatePlaceForDir.py"  Source="..\FVAScripts\CLTUpdatePlaceForDir.py"  Vital="yes" KeyPath="no"/>
-            <File Id="fixCLT2Issues" Name="fixCLT2Issues.py"  Source="..\FVAScripts\fixCLT2Issues.py"  Vital="yes" KeyPath="no"/>
-            <File Id="fixNoGeoIssues" Name="fixNoGeoIssues.py"  Source="..\FVAScripts\fixNoGeoIssues.py"  Vital="yes" KeyPath="no"/>
-            <File Id="createFvaDB" Name="createFvaDB.sql" Source="..\FVAScripts\createFvaDB.sql"  Vital="yes" KeyPath="no"/>
-            <File Id="createFvaDBDevices" Name="createFvaDBDevices.sql"  Source="..\FVAScripts\createFvaDBDevices.sql"  Vital="yes" KeyPath="no"/>
+            <File Id="CLTFixEmptyDateTime" Name="CLTFixEmptyDateTime.py" Source="..\sripts\CLTFixEmptyDateTime.py"  Vital="yes" KeyPath="no"/>
+            <File Id="CLTMerge2csv" Name="CLTMerge2csv.py" Source="..\scripts\CLTMerge2csv.py"  Vital="yes" KeyPath="no"/>
+            <File Id="CLTUpdateEventForDir" Name="CLTUpdateEventForDir.py" Source="..\scripts\CLTUpdateEventForDir.py"  Vital="yes" KeyPath="no"/>
+            <File Id="CLTUpdateEventPeopleForDir" Name="CLTUpdateEventPeopleForDir.py" Source="..\scripts\CLTUpdateEventPeopleForDir.py"  Vital="yes" KeyPath="no"/>
+            <File Id="CLTUpdatePlaceForDir" Name="CLTUpdatePlaceForDir.py"  Source="..\scripts\CLTUpdatePlaceForDir.py"  Vital="yes" KeyPath="no"/>
+            <File Id="fixCLT2Issues" Name="fixCLT2Issues.py"  Source="..\scripts\fixCLT2Issues.py"  Vital="yes" KeyPath="no"/>
+            <File Id="fixNoGeoIssues" Name="fixNoGeoIssues.py"  Source="..\scripts\fixNoGeoIssues.py"  Vital="yes" KeyPath="no"/>
+            <File Id="createFvaDB" Name="createFvaDB.sql" Source="..\scripts\createFvaDB.sql"  Vital="yes" KeyPath="no"/>
+            <File Id="createFvaDBDevices" Name="createFvaDBDevices.sql"  Source="..\scripts\createFvaDBDevices.sql"  Vital="yes" KeyPath="no"/>
             <CreateFolder />
           </Component>
         </Directory>
