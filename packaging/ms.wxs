@@ -23,7 +23,7 @@
       <Directory Id="PRODUCTDIR"> 
         <Directory Id="scripts" Name='#scripts#'>
           <Component Id="scripts" Guid="D4AE1F4B-9CDC-424A-B757-1A970DF59665">
-            <File Id="CLTFixEmptyDateTime" Name="CLTFixEmptyDateTime.py" Source="..\sripts\CLTFixEmptyDateTime.py"  Vital="yes" KeyPath="no"/>
+            <File Id="CLTFixEmptyDateTime" Name="CLTFixEmptyDateTime.py" Source="..\scripts\CLTFixEmptyDateTime.py"  Vital="yes" KeyPath="no"/>
             <File Id="CLTMerge2csv" Name="CLTMerge2csv.py" Source="..\scripts\CLTMerge2csv.py"  Vital="yes" KeyPath="no"/>
             <File Id="CLTUpdateEventForDir" Name="CLTUpdateEventForDir.py" Source="..\scripts\CLTUpdateEventForDir.py"  Vital="yes" KeyPath="no"/>
             <File Id="CLTUpdateEventPeopleForDir" Name="CLTUpdateEventPeopleForDir.py" Source="..\scripts\CLTUpdateEventPeopleForDir.py"  Vital="yes" KeyPath="no"/>
