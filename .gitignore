@@ -356,13 +356,6 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-#dirs with test images  
-testimages
-
-# not ready for commit
-FVACodeChecks
-
-#will be used later and deleted after 
-FVADocX
-
 ToFVAData/
+
+docsx/
