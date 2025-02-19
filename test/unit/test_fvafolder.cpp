@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../fvafolder.h"
+#include "fvafolder.h"
 
 // Test fixture for fvaFolder tests
 class fvaFolderTests : public ::testing::Test
