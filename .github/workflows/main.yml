@@ -248,6 +248,24 @@ jobs:
           message("::error::${test_results}")
           message(FATAL_ERROR "Running tests failed!")
         endif()
+
+    - name: Code coverage using Codecov 
+      if: matrix.config.os == 'ubuntu-latest'  
+      run: |
+         echo "==================Installing coverage tool====================================="
+         sudo apt-get update
+         sudo apt-get -y install lcov
+         echo "==================Run capture for coverage====================================="
+         lcov --capture --directory ./build --output-file ./build/coverage.info --ignore-errors mismatch
+         echo "==================Filtering coverage====================================="
+         lcov --remove ./build/coverage.info --directory ./build -o ./build/filtered_coverage.info \
+         '/usr/include/*' \
+         '/include/gtest/*' \
+         '*/test/*' \
+         '*/googletest/*'
+         echo "================================= Conversion coverage====================================="
+         genhtml ./build/filtered_coverage.info --output-directory coverage_report
+         echo "=========================================================================================="
     
     - name: Install binaries to instdir and stripping them to make binaries smaller by CMake
       run: cmake --install build --prefix instdir --strip
@@ -291,6 +309,19 @@ jobs:
       with:
         path: ./build/Testing/Temporary/CTestCostData.txt
         name: CTestCostData.txt
+
+    - name: Pack Coverage Info by 7zip
+      if: matrix.config.os == 'ubuntu-latest'  
+      working-directory: coverage_report
+      run: cmake -E tar cfv ../coverage_report.zip --format=7zip .
+
+    - name: Upload Coverage Info to github storage
+      if: matrix.config.os == 'ubuntu-latest'  
+      uses: actions/upload-artifact@v4
+      with:
+        path: ./coverage_report.zip
+        name: coverage_report.zip
+
 
   release:
     if: contains(github.ref, 'tags/v')

@@ -30,3 +30,9 @@ add_subdirectory(FVAOrganizerWizard)
 add_subdirectory(FVAPlayer)
 add_subdirectory(FVAViewer)
 add_subdirectory(test)
+
+# Code coverage
+if(ENABLE_COVERAGE)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g -fprofile-arcs -ftest-coverage")
+    message("Code coverage is enabled and provided with GCC.")
+endif()
