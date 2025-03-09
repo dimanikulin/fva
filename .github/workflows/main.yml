@@ -125,6 +125,7 @@ jobs:
           ${{ matrix.config.name }}-ccache-
 
     - name: Download and install QT
+      if: matrix.config.os == 'ubuntu-latest'
       uses: jurplel/install-qt-action@v3
       with:
         version:  ${{ env.QT_VERSION }}
