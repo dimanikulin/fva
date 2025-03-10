@@ -35,11 +35,11 @@ jobs:
             cc: "gcc", cxx: "g++"
           }
 
-        - {
-            name: "macOS Latest Clang", artifact: "macOS.7z",
-            os: macos-latest,
-            cc: "clang", cxx: "clang++"
-          }
+        #- {
+        #    name: "macOS Latest Clang", artifact: "macOS.7z",
+        #    os: macos-latest,
+        #    cc: "clang", cxx: "clang++"
+        #  }
 
     steps:
     - name: Checkout FVA repository
@@ -125,12 +125,21 @@ jobs:
           ${{ matrix.config.name }}-ccache-
 
     - name: Download and install QT
-      #if: matrix.config.os == 'windows-latest'
+      if: matrix.config.os == 'windows-latest'
       uses: jurplel/install-qt-action@v3
       with:
         version:  ${{ env.QT_VERSION }}
         target: 'desktop'
-        #arch: 'win64_mingw81'
+        arch: 'win64_mingw81'
+        setup-python : 'false'
+
+    - name: Download and install QT
+      if: matrix.config.os == 'linux-latest'
+      uses: jurplel/install-qt-action@v3
+      with:
+        version:  ${{ env.QT_VERSION }}
+        target: 'desktop'
+        arch: 'gcc_64'
         setup-python : 'false'
 
     - name: Configure make files by CMake
