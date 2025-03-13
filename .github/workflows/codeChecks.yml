@@ -28,7 +28,7 @@ jobs:
           max_ctu_depth: 5
 
       - name: Upload Cpp Code check Report to git hub storage to use later
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           path: ./cppcheck_report.txt
           name: cppcheck_report.txt
