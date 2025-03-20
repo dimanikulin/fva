@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../FVAEvent.h"
+#include "FVAEvent.h"
 
 // Test fixture for fvaEvent tests
 class FVAEventTests : public ::testing::Test
