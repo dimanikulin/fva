@@ -16,7 +16,6 @@ protected:
     }
 };
 
-/*
 // Test case for default constructor
 TEST_F(FVAEventTests, DefaultConstructorTest)
 {
@@ -73,4 +72,3 @@ TEST_F(FVAEventTests, GettersAndSettersTest)
     EXPECT_EQ(event.getType(), type);
     EXPECT_EQ(event.getInstitution(), institution);
 }
-*/
