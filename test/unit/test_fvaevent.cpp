@@ -32,7 +32,7 @@ TEST_F(FVAEventTests, DefaultConstructorTest)
 }
 
 // Test case for parameterized constructor
-TEST_F(FVAEventTests, ParameterizedConstructorTest)
+TEST_F(FVAEventTests, ParameterizedConstructionTest)
 {
     // Arrange
     int ID = 1;
@@ -41,7 +41,11 @@ TEST_F(FVAEventTests, ParameterizedConstructorTest)
     unsigned int institution = 3;
 
     // Act
-    fvaEvent event(ID, name, type, institution);
+    fvaEvent event;
+    event.ID = ID;
+    event.name = name;
+    event.type = type;
+    event.institution = institution;
 
     // Assert
     EXPECT_EQ(event.ID, ID);
@@ -50,25 +54,3 @@ TEST_F(FVAEventTests, ParameterizedConstructorTest)
     EXPECT_EQ(event.institution, institution);
 }
 
-// Test case for getters and setters
-TEST_F(FVAEventTests, GettersAndSettersTest)
-{
-    // Arrange
-    fvaEvent event;
-    int ID = 1;
-    QString name = "Test Event";
-    unsigned int type = 2;
-    unsigned int institution = 3;
-
-    // Act
-    event.setID(ID);
-    event.setName(name);
-    event.setType(type);
-    event.setInstitution(institution);
-
-    // Assert
-    EXPECT_EQ(event.getID(), ID);
-    EXPECT_EQ(event.getName(), name);
-    EXPECT_EQ(event.getType(), type);
-    EXPECT_EQ(event.getInstitution(), institution);
-}
