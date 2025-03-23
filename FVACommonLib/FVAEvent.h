@@ -23,7 +23,7 @@ class fvaEvent
 		/*
 		 * event identifier from event dictionary - fvaEvents.csv
 		 */
-		int ID;
+		int ID = 0;
 
 		/*
 		 * name 
@@ -33,12 +33,12 @@ class fvaEvent
 		/*
 		 * relation type from fvaRelationTypes.csv
 		 */
-		unsigned int type;
+		unsigned int type = 0;
 
 		/*
 		 * institution type from fvaInstitutions.csv
 		 */
-		unsigned int institution;
+		unsigned int institution = 0;
 };
 
 typedef QMap<int, fvaEvent> FVA_EVENT_MAP;
