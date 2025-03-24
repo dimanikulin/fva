@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
-#include "../fvaItem.h"
+#include "fvaItem.h"
 
-/*
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder
 TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
 {
@@ -301,4 +300,3 @@ TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries)
     // Clean up
     delete item.pFvaFile;
 }
-*/

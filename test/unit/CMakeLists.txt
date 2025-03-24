@@ -6,6 +6,7 @@ add_executable(libtests
   test_fvafile.cpp
   test_fvafolder.cpp
   test_fvaevent.cpp
+  test_fvaItem.cpp
 )
 
 # Link GoogleTest to tests
