@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../fvaperson.h"
+#include "fvaperson.h"
 
 // Test fixture for fvaPerson tests
 class FVAPersonTests : public ::testing::Test
@@ -16,7 +16,7 @@ protected:
     }
 };
 
-/*
+
 // Test case for fvaPerson class
 TEST_F(FVAPersonTests, Constructor)
 {
@@ -62,4 +62,3 @@ TEST_F(FVAPersonTests, GettersAndSetters)
     EXPECT_EQ(person.getType(), type);
     EXPECT_EQ(person.getInstitution(), institution);
 }
-*/
