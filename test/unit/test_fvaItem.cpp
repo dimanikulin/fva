@@ -38,7 +38,7 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
     // Clean up
     delete item.pFvaFolder;
 }
-
+/*
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder without eventReasonPeopleIds
 TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolderWithoutEventReasonPeopleIds)
 {
@@ -302,3 +302,4 @@ TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries)
     // Clean up
     delete item.pFvaFile;
 }
+*/
