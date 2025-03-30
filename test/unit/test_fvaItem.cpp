@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "fvaItem.h"
-№include "fvaFolder.h"
+#include "fvaFolder.h"
 #include "fvaFile.h"
 
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder
