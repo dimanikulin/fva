@@ -11,7 +11,7 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
     item.type = FVA_FS_TYPE_DIR;
     item.dateFrom = QDate(2022, 1, 1);
     item.dateTo = QDate(2022, 1, 31);
-    item.pFvaFolder = new FvaFolder;
+    item.pFvaFolder = new fvaFolder;
     item.pFvaFolder->eventId = 1;
     item.pFvaFolder->eventReasonPeopleIds.append(2);
 
@@ -47,7 +47,7 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolderWithoutEventReasonPe
     item.type = FVA_FS_TYPE_DIR;
     item.dateFrom = QDate(2022, 1, 1);
     item.dateTo = QDate(2022, 1, 31);
-    item.pFvaFolder = new FvaFolder();
+    item.pFvaFolder = new fvaFolder;
     item.pFvaFolder->eventId = 1;
 
     QVariantMap dictionaries;
