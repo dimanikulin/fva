@@ -35,7 +35,7 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
     // Act
     QString guiName = item.getGuiName(dictionaries);
 
-    std::cout << "guiName - " << guiName.toStdString() << std::endl;
+    // std::cout << "guiName - " << guiName.toStdString() << std::endl;
 
     // Assert
     EXPECT_EQ(guiName, "2022/01/01-2022/01/31 - Event 1,Person 1");
