@@ -3,7 +3,7 @@
 #include "fvaFolder.h"
 #include "fvaFile.h"
 
-#include "fvalogger.inl"
+#include <iostream>
 
 
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder
@@ -35,7 +35,7 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
     // Act
     QString guiName = item.getGuiName(dictionaries);
 
-    LOG_DEB << "guiName - " << guiName;
+    std::cout << "guiName - " << guiName.toStdString() << std::endl;
 
     // Assert
     EXPECT_EQ(guiName, "2022/01/01-2022/01/31 - Event 1,Person 1");
