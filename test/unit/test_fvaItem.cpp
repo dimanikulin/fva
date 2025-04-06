@@ -12,8 +12,8 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDateTime::fromString("2022, 1, 1" , "yyyy, MM, dd");
-    item.dateTo = QDateTime::fromString("2022, 1, 31" , "yyyy, MM, dd");
+    item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
+    item.dateTo = QDateTime::fromString("2022/01/31" , "yyyy/MM/dd");
     item.pFvaFolder = new fvaFolder;
     item.pFvaFolder->eventId = 1;
     item.pFvaFolder->eventReasonPeopleIds.append(2);
