@@ -35,13 +35,17 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
     // Act
     QString guiName = item.getGuiName(dictionaries);
 
-    // std::cout << "guiName - " << guiName.toStdString() << std::endl;
+    std::cout << "guiName - " << guiName.toStdString() << std::endl;
 
     // Assert
     EXPECT_EQ(guiName, "2022/01/01-2022/01/31 - Event 1,Person 1");
 
+    std::cout << "guiName 1 - " << guiName.toStdString() << std::endl;
+
     // Clean up
     delete item.pFvaFolder;
+
+    std::cout << "guiName 2 - " << guiName.toStdString() << std::endl;
 }
 /*
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder without eventReasonPeopleIds
