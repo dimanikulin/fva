@@ -3,9 +3,13 @@
 #include "fvaFolder.h"
 #include "fvaFile.h"
 
+#include <iostream>
+
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder
 TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
 {
+    std::cout << "Running test: GetGuiName_Directory_ValidDateToAndFolder" << std::endl;
+
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_DIR;
@@ -34,6 +38,10 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
 
     // Assert
     ASSERT_STREQ(guiName.toStdString().c_str(), "2022/01/01-2022/01/31 - Event 1,Person 1");
+
+    // Clean up
+    delete item.pFvaFolder;
+    std::cout << "Test completed: GetGuiName_Directory_ValidDateToAndFolder" << std::endl;
 }
 /*
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder without eventReasonPeopleIds

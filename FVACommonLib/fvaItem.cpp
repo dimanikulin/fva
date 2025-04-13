@@ -2,9 +2,6 @@
 #include "fvafile.h"
 #include "fvafolder.h"
 
-#include <iostream>
-
-
 fvaItem::fvaItem ()
 {
 	isFiltered			= true;
@@ -15,7 +12,6 @@ fvaItem::fvaItem ()
 
 fvaItem::~fvaItem ()
 {
-	std::cout << "fvaItem destructor" << std::endl;
 	for (auto idChild = children.begin(); idChild != children.end(); ++idChild)
 	{
 		if (*idChild == nullptr)
@@ -29,8 +25,7 @@ fvaItem::~fvaItem ()
 
 	if ( nullptr != pFvaFile )
 		delete pFvaFile;
-		
-	std::cout << "fvaItem destructor end" << std::endl;
+
 }
 QString fvaItem::getGuiName(const QVariantMap&	dictionaries)
 {
