@@ -41,6 +41,7 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
 
     // Clean up
     delete item.pFvaFolder;
+    item.pFvaFolder = nullptr;
     std::cout << "Test completed: GetGuiName_Directory_ValidDateToAndFolder" << std::endl;
 }
 /*
