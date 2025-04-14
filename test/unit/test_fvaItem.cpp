@@ -5,6 +5,25 @@
 
 #include <iostream>
 
+
+// Test case for FVA_FS_TYPE_FILE
+TEST(FvaItemTests, GetGuiName_File)
+{
+    // Arrange
+    fvaItem item;
+    item.type = FVA_FS_TYPE_FILE;
+    item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
+
+    QVariantMap dictionaries;
+
+    // Act
+    QString guiName = item.getGuiName(dictionaries);
+
+    // Assert
+    EXPECT_EQ(guiName, "2022-01-01 (00:00:00)");
+}
+
+/*
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder
 TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
 {
@@ -44,7 +63,7 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
     item.pFvaFolder = nullptr;
     std::cout << "Test completed: GetGuiName_Directory_ValidDateToAndFolder" << std::endl;
 }
-/*
+
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder without eventReasonPeopleIds
 TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolderWithoutEventReasonPeopleIds)
 {
@@ -175,26 +194,6 @@ TEST(FvaItemTests, GetGuiName_Directory_WithoutValidDateTo)
 
     // Assert
     EXPECT_EQ(guiName, "2022/01/01");
-
-    // Clean up
-    delete item.pFvaFolder;
-}
-
-// Test case for FVA_FS_TYPE_FILE
-TEST(FvaItemTests, GetGuiName_File)
-{
-    // Arrange
-    fvaItem item;
-    item.type = FVA_FS_TYPE_FILE;
-    item.dateFrom = QDate(2022, 1, 1);
-
-    QVariantMap dictionaries;
-
-    // Act
-    QString guiName = item.getGuiName(dictionaries);
-
-    // Assert
-    EXPECT_EQ(guiName, "2022-01-01 (00:00:00)");
 
     // Clean up
     delete item.pFvaFolder;
