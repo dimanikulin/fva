@@ -11,7 +11,7 @@ TEST(FvaItemTests, GetGuiName_File)
 {
     // Arrange
     fvaItem item;
-    item.type = FVA_FS_TYPE_FILE;
+    item.type = FVA_FS_TYPE_IMG;
     item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
 
     QVariantMap dictionaries;
