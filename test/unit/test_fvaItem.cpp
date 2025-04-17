@@ -23,6 +23,41 @@ TEST(FvaItemTests, GetGuiName_File)
     EXPECT_EQ(guiName, "2022-01-01 (00:00:00)");
 }
 
+// Test case for FVA_FS_TYPE_DIR with valid dateTo and without pFvaFolder
+TEST(FvaItemTests, GetGuiName_Directory_ValidDateToWithoutFolder)
+{
+    // Arrange
+    fvaItem item;
+    item.type = FVA_FS_TYPE_DIR;
+    item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
+    item.dateTo = QDateTime::fromString("2022/01/31" , "yyyy/MM/dd");
+
+    QVariantMap dictionaries;
+
+    // Act
+    QString guiName = item.getGuiName(dictionaries);
+
+    // Assert
+    EXPECT_EQ(guiName, "2022/01/01-2022/01/31");
+}
+
+// Test case for FVA_FS_TYPE_DIR without valid dateTo
+TEST(FvaItemTests, GetGuiName_Directory_WithoutValidDateTo)
+{
+    // Arrange
+    fvaItem item;
+    item.type = FVA_FS_TYPE_DIR;
+    item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
+
+    QVariantMap dictionaries;
+
+    // Act
+    QString guiName = item.getGuiName(dictionaries);
+
+    // Assert
+    EXPECT_EQ(guiName, "2022/01/01");
+}
+
 /*
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder
 TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
@@ -153,47 +188,6 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolderWithInvalidEventReas
 
     // Assert
     EXPECT_EQ(guiName, "2022/01/01-2022/01/31 - Event 1");
-
-    // Clean up
-    delete item.pFvaFolder;
-}
-
-// Test case for FVA_FS_TYPE_DIR with valid dateTo and without pFvaFolder
-TEST(FvaItemTests, GetGuiName_Directory_ValidDateToWithoutFolder)
-{
-    // Arrange
-    fvaItem item;
-    item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDate(2022, 1, 1);
-    item.dateTo = QDate(2022, 1, 31);
-
-    QVariantMap dictionaries;
-
-    // Act
-    QString guiName = item.getGuiName(dictionaries);
-
-    // Assert
-    EXPECT_EQ(guiName, "2022/01/01-2022/01/31");
-
-    // Clean up
-    delete item.pFvaFolder;
-}
-
-// Test case for FVA_FS_TYPE_DIR without valid dateTo
-TEST(FvaItemTests, GetGuiName_Directory_WithoutValidDateTo)
-{
-    // Arrange
-    fvaItem item;
-    item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDate(2022, 1, 1);
-
-    QVariantMap dictionaries;
-
-    // Act
-    QString guiName = item.getGuiName(dictionaries);
-
-    // Assert
-    EXPECT_EQ(guiName, "2022/01/01");
 
     // Clean up
     delete item.pFvaFolder;
