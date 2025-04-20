@@ -97,7 +97,7 @@ TEST(FvaItemTests, GetGuiName_EmptyDictionaries)
     QString guiName = item.getGuiName(dictionaries);
 
     // Assert
-    EXPECT_EQ(guiName, "2022/01/01-2022/01/31");
+    ASSERT_STREQ(guiName.toStdString().c_str(), "2022/01/01-2022/01/31");
 }
 
 /*
