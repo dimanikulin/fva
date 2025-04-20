@@ -58,6 +58,51 @@ TEST(FvaItemTests, GetGuiName_Directory_WithoutValidDateTo)
     EXPECT_EQ(guiName, "2022/01/01");
 }
 
+// Test case for getGuiFullName with empty dictionaries
+TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries)
+{
+    // Arrange
+    fvaItem item;
+    item.type = FVA_FS_TYPE_IMG;
+    item.dateFrom = QDate::fromString("2022/01/01" , "yyyy/MM/dd");
+    item.dateTo = QDate::fromString("2022/01/31" , "yyyy/MM/dd");
+    item.fsFullPath = "/path/to/file.txt";
+    item.isFiltered = false;
+    item.pFvaFile = new fvaFile();
+
+    QVariantMap dictionaries;
+
+    // Act
+    QString guiFullName = item.getGuiFullName(dictionaries);
+
+    // Assert
+    EXPECT_EQ(guiFullName, "2022-01-01 (00:00:00)");
+}
+
+// Test case for getGuiName with empty dictionaries
+TEST(FvaItemTests, GetGuiName_EmptyDictionaries)
+{
+    // Arrange
+    fvaItem item;
+    item.type = FVA_FS_TYPE_DIR;
+    item.dateFrom = QDate::fromString("2022/01/01" , "yyyy/MM/dd");
+    item.dateTo = QDate::fromString("2022/01/31" , "yyyy/MM/dd");
+    item.fsFullPath = "/path/to/folder";
+    item.isFiltered = false;
+    item.pFvaFolder = new fvaFolder();
+
+    QVariantMap dictionaries;
+
+    // Act
+    QString guiName = item.getGuiName(dictionaries);
+
+    // Assert
+    EXPECT_EQ(guiName, "2022/01/01-2022/01/31");
+
+    // Clean up
+    delete item.pFvaFolder;
+}
+
 /*
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder
 TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
@@ -223,31 +268,6 @@ TEST(FvaItemTests, GetGuiName_ValidDictionaries)
     delete item.pFvaFile;
 }
 
-// Test case for getGuiName with empty dictionaries
-TEST(FvaItemTests, GetGuiName_EmptyDictionaries)
-{
-    // Arrange
-    fvaItem item;
-    item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDateTime(QDate(2022, 1, 1));
-    item.dateTo = QDateTime(QDate(2022, 1, 31));
-    item.fsFullPath = "/path/to/folder";
-    item.isFiltered = false;
-    item.pFvaFolder = new fvaFolder();
-
-    QVariantMap dictionaries;
-
-    // Act
-    QString guiName = item.getGuiName(dictionaries);
-
-    // Assert
-    EXPECT_EQ(guiName, "2022/01/01-2022/01/31");
-
-    // Clean up
-    delete item.pFvaFolder;
-}
-
-
 // Test case for getGuiFullName with valid dictionaries
 TEST(FvaItemTests, GetGuiFullName_ValidDictionaries)
 {
@@ -276,29 +296,5 @@ TEST(FvaItemTests, GetGuiFullName_ValidDictionaries)
 
     // Clean up
     delete item.pFvaFolder;
-}
-
-// Test case for getGuiFullName with empty dictionaries
-TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries)
-{
-    // Arrange
-    fvaItem item;
-    item.type = FVA_FS_TYPE_FILE;
-    item.dateFrom = QDateTime(QDate(2022, 1, 1));
-    item.dateTo = QDateTime(QDate(2022, 1, 31));
-    item.fsFullPath = "/path/to/file.txt";
-    item.isFiltered = false;
-    item.pFvaFile = new fvaFile();
-
-    QVariantMap dictionaries;
-
-    // Act
-    QString guiFullName = item.getGuiFullName(dictionaries);
-
-    // Assert
-    EXPECT_EQ(guiFullName, "2022-01-01 (00:00:00)");
-
-    // Clean up
-    delete item.pFvaFile;
 }
 */
