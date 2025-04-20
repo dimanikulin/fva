@@ -64,8 +64,8 @@ TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries)
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_IMG;
-    item.dateFrom = QDate::fromString("2022/01/01" , "yyyy/MM/dd");
-    item.dateTo = QDate::fromString("2022/01/31" , "yyyy/MM/dd");
+    item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
+    item.dateTo = QDateTime::fromString("2022/01/31" , "yyyy/MM/dd");
     item.fsFullPath = "/path/to/file.txt";
     item.isFiltered = false;
     item.pFvaFile = new fvaFile();
@@ -85,8 +85,8 @@ TEST(FvaItemTests, GetGuiName_EmptyDictionaries)
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDate::fromString("2022/01/01" , "yyyy/MM/dd");
-    item.dateTo = QDate::fromString("2022/01/31" , "yyyy/MM/dd");
+    item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
+    item.dateTo = QDateTime::fromString("2022/01/31" , "yyyy/MM/dd");
     item.fsFullPath = "/path/to/folder";
     item.isFiltered = false;
     item.pFvaFolder = new fvaFolder();
@@ -98,9 +98,6 @@ TEST(FvaItemTests, GetGuiName_EmptyDictionaries)
 
     // Assert
     EXPECT_EQ(guiName, "2022/01/01-2022/01/31");
-
-    // Clean up
-    delete item.pFvaFolder;
 }
 
 /*
