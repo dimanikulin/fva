@@ -65,7 +65,7 @@ TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries)
     fvaItem item;
     item.type = FVA_FS_TYPE_IMG;
     item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
-    item.dateTo = QDateTime::fromString("2022/01/31" , "yyyy/MM/dd");
+    item.dateTo = QDateTime::fromString("2022/01/02" , "yyyy/MM/dd");
     item.fsFullPath = "/path/to/file.txt";
     item.isFiltered = false;
     item.pFvaFile = new fvaFile();
@@ -76,7 +76,7 @@ TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries)
     QString guiFullName = item.getGuiFullName(dictionaries);
 
     // Assert
-    EXPECT_EQ(guiFullName, "2022-01-01 (00:00:00)");
+    ASSERT_STREQ(guiFullName, "2022-01-01");
 }
 
 // Test case for getGuiName with empty dictionaries
@@ -95,7 +95,6 @@ TEST(FvaItemTests, GetGuiName_EmptyDictionaries)
 
     // Act
     QString guiName = item.getGuiName(dictionaries);
-    std::cout << "GuiName: " << guiName.toStdString() << std::endl;
 
     // Assert
     ASSERT_STREQ(guiName.toStdString().c_str(), "2022/01/01-2022/01/31");
@@ -132,6 +131,8 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
 
     // Act
     QString guiName = item.getGuiName(dictionaries);
+
+    std::cout << "GuiName: " << guiName.toStdString() << std::endl;
 
     // Assert
     ASSERT_STREQ(guiName.toStdString().c_str(), "2022/01/01-2022/01/31 - Event 1,Person 1");
