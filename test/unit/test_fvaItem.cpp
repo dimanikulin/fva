@@ -76,7 +76,7 @@ TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries)
     QString guiFullName = item.getGuiFullName(dictionaries);
 
     // Assert
-    ASSERT_STREQ(guiFullName, "2022-01-01");
+    ASSERT_STREQ(guiFullName.toStdString().c_str(), "2022-01-01");
 }
 
 // Test case for getGuiName with empty dictionaries
