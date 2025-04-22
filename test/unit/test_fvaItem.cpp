@@ -75,6 +75,8 @@ TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries)
     // Act
     QString guiFullName = item.getGuiFullName(dictionaries);
 
+    std::cout << "GuiName: " << guiName.toStdString() << std::endl;
+
     // Assert
     ASSERT_STREQ(guiFullName.toStdString().c_str(), "2022-01-01");
 }
@@ -95,8 +97,6 @@ TEST(FvaItemTests, GetGuiName_EmptyDictionaries)
 
     // Act
     QString guiName = item.getGuiName(dictionaries);
-
-    std::cout << "GuiName: " << guiName.toStdString() << std::endl;
 
     // Assert
     ASSERT_STREQ(guiName.toStdString().c_str(), "2022/01/01-2022/01/31");
