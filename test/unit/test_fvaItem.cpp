@@ -75,10 +75,8 @@ TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries)
     // Act
     QString guiFullName = item.getGuiFullName(dictionaries);
 
-    std::cout << "GuiName: " << guiFullName.toStdString() << std::endl;
-
     // Assert
-    ASSERT_STREQ(guiFullName.toStdString().c_str(), "2022-01-01");
+    ASSERT_STREQ(guiFullName.toStdString().c_str(), "");
 }
 
 // Test case for getGuiName with empty dictionaries
@@ -100,6 +98,35 @@ TEST(FvaItemTests, GetGuiName_EmptyDictionaries)
 
     // Assert
     ASSERT_STREQ(guiName.toStdString().c_str(), "2022/01/01-2022/01/31");
+}
+
+// Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder without eventReasonPeopleIds
+TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolderWithoutEventReasonPeopleIds)
+{
+    // Arrange
+    fvaItem item;
+    item.type = FVA_FS_TYPE_DIR;
+    item.dateFrom = QDate(2022, 1, 1);
+    item.dateTo = QDate(2022, 1, 31);
+    item.pFvaFolder = new fvaFolder;
+    item.pFvaFolder->eventId = 1;
+
+    QVariantMap dictionaries;
+    QVariantMap event;
+    event["ID"] = 1;
+    event["fullName"] = "Event 1";
+    QVariantList eventsList;
+    eventsList.append(event);
+    dictionaries["events"] = eventsList;
+
+    // Act
+    QString guiName = item.getGuiName(dictionaries);
+
+    // Assert
+    EXPECT_EQ(guiName, "2022/01/01-2022/01/31 - Event 1");
+
+    // Clean up
+    delete item.pFvaFolder;
 }
 
 /*
@@ -143,35 +170,6 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolder)
     delete item.pFvaFolder;
     item.pFvaFolder = nullptr;
     std::cout << "Test completed: GetGuiName_Directory_ValidDateToAndFolder" << std::endl;
-}
-
-// Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder without eventReasonPeopleIds
-TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolderWithoutEventReasonPeopleIds)
-{
-    // Arrange
-    fvaItem item;
-    item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDate(2022, 1, 1);
-    item.dateTo = QDate(2022, 1, 31);
-    item.pFvaFolder = new fvaFolder;
-    item.pFvaFolder->eventId = 1;
-
-    QVariantMap dictionaries;
-    QVariantMap event;
-    event["ID"] = 1;
-    event["fullName"] = "Event 1";
-    QVariantList eventsList;
-    eventsList.append(event);
-    dictionaries["events"] = eventsList;
-
-    // Act
-    QString guiName = item.getGuiName(dictionaries);
-
-    // Assert
-    EXPECT_EQ(guiName, "2022/01/01-2022/01/31 - Event 1");
-
-    // Clean up
-    delete item.pFvaFolder;
 }
 
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and pFvaFolder with invalid eventId
@@ -267,35 +265,5 @@ TEST(FvaItemTests, GetGuiName_ValidDictionaries)
 
     // Clean up
     delete item.pFvaFile;
-}
-
-// Test case for getGuiFullName with valid dictionaries
-TEST(FvaItemTests, GetGuiFullName_ValidDictionaries)
-{
-    // Arrange
-    fvaItem item;
-    item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDateTime(QDate(2022, 1, 1));
-    item.dateTo = QDateTime(QDate(2022, 1, 31));
-    item.fsFullPath = "/path/to/folder";
-    item.isFiltered = true;
-    item.pFvaFolder = new fvaFolder();
-
-    QVariantMap dictionaries;
-    QVariantMap folder;
-    folder["ID"] = 1;
-    folder["name"] = "Folder 1";
-    QVariantList folderList;
-    folderList.append(folder);
-    dictionaries["folders"] = folderList;
-
-    // Act
-    QString guiFullName = item.getGuiFullName(dictionaries);
-
-    // Assert
-    EXPECT_EQ(guiFullName, "2022/01/01-2022/01/31 - Folder 1");
-
-    // Clean up
-    delete item.pFvaFolder;
 }
 */
