@@ -20,16 +20,16 @@ protected:
 // Test case for fvaPerson class
 TEST_F(FVAPersonTests, Constructor)
 {
-    // Arrange
-    int id = 1;
-    QString name = "John";
-    QString fullName = "John Doe";
-    int type = 2;
-    int institution = 3;
-
     // Act
-    fvaPerson person(id, name, fullName, type, institution);
+    fvaPerson person();
 
+    // Arrange
+    person.Id = 1;
+    person.name = "John";
+    person.fullName = "John Doe";
+    person.type = 2;
+    person.institution = 3;
+    
     // Assert
     EXPECT_EQ(person.Id, id);
     EXPECT_EQ(person.name, name);
