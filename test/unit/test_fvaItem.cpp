@@ -106,9 +106,9 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolderWithoutEventReasonPe
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDate(2022, 1, 1);
-    item.dateTo = QDate(2022, 1, 31);
-    item.pFvaFolder = new fvaFolder;
+    item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
+    item.dateTo = QDateTime::fromString("2022/01/31" , "yyyy/MM/dd");
+    item.pFvaFolder = new fvaFolder();
     item.pFvaFolder->eventId = 1;
 
     QVariantMap dictionaries;
@@ -124,9 +124,6 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToAndFolderWithoutEventReasonPe
 
     // Assert
     EXPECT_EQ(guiName, "2022/01/01-2022/01/31 - Event 1");
-
-    // Clean up
-    delete item.pFvaFolder;
 }
 
 /*
