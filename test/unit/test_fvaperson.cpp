@@ -21,7 +21,7 @@ protected:
 TEST_F(FVAPersonTests, Constructor)
 {
     // Act
-    fvaPerson person();
+    fvaPerson person;
 
     // Arrange
     person.Id = 1;
