@@ -31,9 +31,9 @@ TEST_F(FVAPersonTests, Constructor)
     person.institution = 3;
     
     // Assert
-    EXPECT_EQ(person.Id, id);
-    EXPECT_EQ(person.name, name);
-    EXPECT_EQ(person.fullName, fullName);
-    EXPECT_EQ(person.type, type);
-    EXPECT_EQ(person.institution, institution);
+    EXPECT_EQ(person.Id, 1);
+    EXPECT_EQ(person.name, "John");
+    EXPECT_EQ(person.fullName, "John Doe");
+    EXPECT_EQ(person.type, 2);
+    EXPECT_EQ(person.institution, 3);
 }
