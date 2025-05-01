@@ -1,15 +1,14 @@
 #include <gtest/gtest.h>
-// #include <gmock/gmock.h>
-#include "../CmdLineBaseExecutor.h"
-//#include "../../FVADataProcessor/FVADataProcessor.h"
+#include <gmock/gmock.h>
+#include "CmdLineBaseExecutor.h"
+#include "FVADataProcessor/FVADataProcessor.h"
 
 // Mock implementation of CmdLineBaseTask for testing purposes
-/*class MockCmdLineBaseTask : public CmdLineBaseTask
+class MockCmdLineBaseTask : public CmdLineBaseTask
 {
 public:
     MOCK_METHOD(FVA_EXIT_CODE, execute, (const CLTContext&), (override));
 };
-*/
 
 // Test fixture for CmdLineBaseExecutor tests
 class CmdLineBaseExecutorTests : public ::testing::Test
@@ -26,7 +25,7 @@ protected:
     }
 
     // Helper function to create a mock task
-    /*std::unique_ptr<CmdLineBaseTask> createMockTask()
+    std::unique_ptr<CmdLineBaseTask> createMockTask()
     {
         return std::make_unique<MockCmdLineBaseTask>();
     }
@@ -35,7 +34,7 @@ protected:
     std::unique_ptr<CmdLineBaseExecutor> createExecutor()
     {
         return std::make_unique<FVADataProcessor>();
-    }*/
+    }
 };
 /*
 // Test case for the run() method
