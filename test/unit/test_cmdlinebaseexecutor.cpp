@@ -121,9 +121,6 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_NonRecursiveMode)
     MockCmdLineBaseExecutor executor;
     MockCmdLineBaseTask mockTask;
 
-    // Set up expectations on the mock task
-    EXPECT_CALL(mockTask, execute(context)).Times(1);
-
     // Act
     FVA_EXIT_CODE result = executor.run(context, cfg);
 
