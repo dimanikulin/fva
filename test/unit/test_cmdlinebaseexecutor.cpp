@@ -33,18 +33,6 @@ protected:
     {
         // Clean up any resources used by the tests
     }
-
-    // Helper function to create a mock task
-    std::unique_ptr<CmdLineBaseTask> createMockTask()
-    {
-        return std::make_unique<MockCmdLineBaseTask>();
-    }
-
-    // Helper function to create a test instance of CmdLineBaseExecutor
-    std::unique_ptr<CmdLineBaseExecutor> createExecutor()
-    {
-        return std::make_unique<FVADataProcessor>();
-    }
 };
 
 // Test case for the run() method
@@ -52,15 +40,10 @@ TEST_F(CmdLineBaseExecutorTests, RunTest)
 {
     // Arrange
     CLTContext context;
+    context.dir = "D:/a/fva/fva/build"; // Set the directory to a test value, somewhere on your system
     FvaConfiguration cfg;
     MockCmdLineBaseExecutor executor;
     MockCmdLineBaseTask mockTask;
-
-    /*
-        EXPECT_CALL(mockNetworkRequestInterface,
-                sendRequest(testing::Eq(endpoint), requestAsn))
-        .WillOnce(Return(Utils::GetByteStringFromHexString("BF4103810105")));
-    */
 
     // Set up expectations on the mock task
     EXPECT_CALL(mockTask, execute(context)).WillOnce(
