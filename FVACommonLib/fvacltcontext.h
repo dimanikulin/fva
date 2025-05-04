@@ -53,14 +53,19 @@ class CLTContext
 		 */
 		CLTContext() : cmdType(""), dir(""), readOnly(false), custom(""), recursive(true){}
 
-		operator=(const CLTContext& other)
+		CLTContext& operator=(const CLTContext& other)
 		{
+			if (this == &other) {
+				return *this; // handle self-assignment
+			}
 			cmdType = other.cmdType;
 			dir = other.dir;
 			outputDir = other.outputDir;
 			readOnly = other.readOnly;
 			custom = other.custom;
 			recursive = other.recursive;
+
+			return *this; // return the current object
 		}
 };
 #endif // CLT_CONTEXT_H_
