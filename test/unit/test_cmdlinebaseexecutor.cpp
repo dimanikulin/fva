@@ -36,7 +36,7 @@ protected:
         return std::make_unique<FVADataProcessor>();
     }
 };
-/*
+
 // Test case for the run() method
 TEST_F(CmdLineBaseExecutorTests, RunTest)
 {
@@ -164,5 +164,3 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_NonRecursiveMode)
     // Assert
     EXPECT_EQ(result, 0);
 }
-
-*/
