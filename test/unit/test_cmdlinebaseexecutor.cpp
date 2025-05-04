@@ -1,24 +1,7 @@
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
 #include "CmdLineBaseExecutor.h"
 #include "FVADataProcessor.h"
-
-// Mock implementation of CmdLineBaseTask for testing purposes
-class MockCmdLineBaseTask : public CmdLineBaseTask
-{
-public:
-    MOCK_METHOD(FVA_EXIT_CODE, execute, (const CLTContext&), (override));
-};
-
-// Mock implementation of CmdLineBaseExecutor for testing purposes
-class MockCmdLineBaseExecutor : public CmdLineBaseExecutor
-{
-public:
-    std::unique_ptr<CmdLineBaseTask> createTaskByName(const CLTContext& context, const FvaConfiguration& cfg) override
-    {
-        return std::make_unique<MockCmdLineBaseTask>();
-    }
-};
+#include "mocks.h"
 
 // Test fixture for CmdLineBaseExecutor tests
 class CmdLineBaseExecutorTests : public ::testing::Test
@@ -55,14 +38,14 @@ TEST_F(CmdLineBaseExecutorTests, RunTest)
     // Assert
     EXPECT_EQ(result, FVA_NO_ERROR);
 }
-/*
+
 // Test case for run() when input folder does not exist
 TEST_F(CmdLineBaseExecutorTests, RunTest_InputFolderNotExist)
 {
     // Arrange
     CLTContext context;
     FvaConfiguration cfg;
-    FVADataProcessor executor;
+    MockCmdLineBaseExecutor executor;
     MockCmdLineBaseTask mockTask;
 
     // Set up expectations on the mock task
@@ -80,12 +63,10 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_UnknownCommand)
 {
     // Arrange
     CLTContext context;
+    context.dir = "D:/a/fva/fva/build"; // Set the directory to a test value, somewhere on your system
     FvaConfiguration cfg;
-    FVADataProcessor executor;
+    MockCmdLineBaseExecutor executor;
     MockCmdLineBaseTask mockTask;
-
-    // Set up expectations on the mock task
-    EXPECT_CALL(mockTask, execute()).Times(0); // The task should not be executed
 
     // Set up the context with an unknown command
     context.cmdType = "unknown_command";
@@ -102,12 +83,10 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_CommandDoesNotSupportReadOnly)
 {
     // Arrange
     CLTContext context;
+    context.dir = "D:/a/fva/fva/build"; // Set the directory to a test value, somewhere on your system
     FvaConfiguration cfg;
-    FVADataProcessor executor;
+    MockCmdLineBaseExecutor executor;
     MockCmdLineBaseTask mockTask;
-
-    // Set up expectations on the mock task
-    EXPECT_CALL(mockTask, execute()).Times(0); // The task should not be executed
 
     // Set up the context with readonly mode enabled
     context.readOnly = true;
@@ -124,12 +103,10 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_RecursiveMode)
 {
     // Arrange
     CLTContext context;
+    context.dir = "D:/a/fva/fva/build"; // Set the directory to a test value, somewhere on your system
     FvaConfiguration cfg;
-    FVADataProcessor executor;
+    MockCmdLineBaseExecutor executor;
     MockCmdLineBaseTask mockTask;
-
-    // Set up expectations on the mock task
-    EXPECT_CALL(mockTask, processFolderRecursivly(context.dir, context)).Times(1);
 
     // Set up the context with recursive mode enabled
     context.recursive = true;
@@ -146,8 +123,9 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_NonRecursiveMode)
 {
     // Arrange
     CLTContext context;
+    context.dir = "D:/a/fva/fva/build"; // Set the directory to a test value, somewhere on your system
     FvaConfiguration cfg;
-    FVADataProcessor executor;
+    MockCmdLineBaseExecutor executor;
     MockCmdLineBaseTask mockTask;
 
     // Set up expectations on the mock task
@@ -159,4 +137,3 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_NonRecursiveMode)
     // Assert
     EXPECT_EQ(result, 0);
 }
-    */
