@@ -67,5 +67,14 @@ class CLTContext
 
 			return *this; // return the current object
 		}
+		bool operator==(const CLTContext& other) const
+		{
+			return cmdType == other.cmdType &&
+				dir == other.dir &&
+				outputDir == other.outputDir &&
+				readOnly == other.readOnly &&
+				custom == other.custom &&
+				recursive == other.recursive;
+		}
 };
 #endif // CLT_CONTEXT_H_
