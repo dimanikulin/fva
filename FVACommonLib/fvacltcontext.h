@@ -52,5 +52,15 @@ class CLTContext
 		 * \breif - default ctor
 		 */
 		CLTContext() : cmdType(""), dir(""), readOnly(false), custom(""), recursive(true){}
+
+		operator=(const CLTContext& other)
+		{
+			cmdType = other.cmdType;
+			dir = other.dir;
+			outputDir = other.outputDir;
+			readOnly = other.readOnly;
+			custom = other.custom;
+			recursive = other.recursive;
+		}
 };
 #endif // CLT_CONTEXT_H_
