@@ -1,15 +1,6 @@
 #include <gtest/gtest.h>
-// #include <gmock/gmock.h>
-#include "../CmdLineBaseTask.h"
-
-/*
-// Mock implementation of CmdLineBaseTask for testing purposes
-class MockCmdLineBaseTask : public CmdLineBaseTask
-{
-public:
-    MOCK_METHOD(FVA_EXIT_CODE, execute, (const CLTContext&), (override));
-};
-*/
+#include "CmdLineBaseTask.h"
+#include "mocks.h"
 
 // Test fixture for CmdLineBaseTask tests
 class CmdLineBaseTaskTests : public ::testing::Test
@@ -26,7 +17,6 @@ protected:
     }
 };
 
-/*
 // Test case for execute() method
 TEST_F(CmdLineBaseTaskTests, ExecuteTest)
 {
@@ -146,4 +136,4 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_ExecuteError)
 
     // Assert
     EXPECT_EQ(result, FVA_ERROR);
-}*/
+}
