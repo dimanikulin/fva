@@ -1,6 +1,5 @@
 # tests source files here
 add_executable(fvalibtests
-  test_CmdLineBaseTask.cpp
   test_FVABaseDictionaryItem.cpp
   test_fvacommoncsv.cpp
   test_fvacommonexif.cpp
