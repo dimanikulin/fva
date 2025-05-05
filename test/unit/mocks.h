@@ -24,5 +24,13 @@ public:
         return std::make_unique<MockCmdLineBaseTask>();
     }
 };
-
+// Mock implementation of CmdLineBaseExecutor for testing purposes
+class MockCmdLineBaseExecutorEmptyCmd : public CmdLineBaseExecutor
+{
+public:
+    std::unique_ptr<CmdLineBaseTask> createTaskByName(const CLTContext& context, const FvaConfiguration& cfg) override
+    {
+        return std::nullptr; // Return null to simulate an unknown command
+    }
+};
 #endif // UNIT_MOCKS_H

@@ -58,7 +58,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_UnknownCommand)
     CLTContext context;
     context.dir = "D:/a/fva/fva/build"; // Set the directory to a test value, somewhere on your system
     FvaConfiguration cfg;
-    MockCmdLineBaseExecutor executor;
+    MockCmdLineBaseExecutorEmptyCmd executor;
     MockCmdLineBaseTask mockTask;
 
     // Set up the context with an unknown command
