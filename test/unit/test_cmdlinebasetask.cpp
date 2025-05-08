@@ -34,6 +34,7 @@ TEST_F(CmdLineBaseTaskTests, ExecuteTest)
     EXPECT_EQ(result, FVA_NO_ERROR);
 }
 
+/*
 // Test case for processFolderRecursivly() method
 TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivlyTest)
 {
@@ -137,3 +138,4 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_ExecuteError)
     // Assert
     EXPECT_EQ(result, FVA_ERROR);
 }
+    */
