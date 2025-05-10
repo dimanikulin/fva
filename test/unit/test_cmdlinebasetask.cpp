@@ -34,7 +34,6 @@ TEST_F(CmdLineBaseTaskTests, ExecuteTest)
     EXPECT_EQ(result, FVA_NO_ERROR);
 }
 
-/*
 // Test case for processFolderRecursivly() method
 TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivlyTest)
 {
@@ -50,6 +49,7 @@ TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivlyTest)
     EXPECT_EQ(result, FVA_NO_ERROR);
 }
 
+/*
 // Test case for supportReadOnly() method
 TEST_F(CmdLineBaseTaskTests, SupportReadOnlyTest)
 {
