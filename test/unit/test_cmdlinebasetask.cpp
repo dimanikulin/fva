@@ -49,7 +49,7 @@ TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivlyTest)
     EXPECT_EQ(result, FVA_NO_ERROR);
 }
 
-/*
+
 // Test case for supportReadOnly() method
 TEST_F(CmdLineBaseTaskTests, SupportReadOnlyTest)
 {
@@ -79,6 +79,7 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
     EXPECT_EQ(result, 0);
 }
 
+/*
 // Test case for processFolderRecursivly when folder contains subfolders and files
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
 {
