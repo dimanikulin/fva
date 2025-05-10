@@ -39,7 +39,8 @@ FVA_EXIT_CODE CmdLineBaseExecutor::run(const CLTContext& context, const FvaConfi
 	if (context.recursive)
 	{
 		LOG_WARN << "RECURSIVE mode for cmd:" << context.cmdType;
-		return task->processFolderRecursivly(context.dir, context);
+		// TODO to make right conversion from QString to std::string
+		return task->processFolderRecursivly(context.dir.toStdString(), context);
 	}
 	else
 		return task->execute(context);

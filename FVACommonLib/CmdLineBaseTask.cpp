@@ -32,7 +32,7 @@ FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly(const std::string& folder
 			continue;
 		}
 	}
-	m_folder = QDir::toNativeSeparators(folder);
+	m_folder = QDir::toNativeSeparators(folder.c_str());
 	m_dir = QDir( m_folder );
 
 	return execute(context);
