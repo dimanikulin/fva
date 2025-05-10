@@ -38,7 +38,7 @@ TEST_F(CmdLineBaseTaskTests, ExecuteTest)
 TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivlyTest)
 {
     // Arrange
-    QString folder = TEST_DIR;
+    std::string folder = TEST_DIR;
     CLTContext context;
     MockCmdLineBaseTask task;
 
@@ -68,7 +68,7 @@ TEST_F(CmdLineBaseTaskTests, SupportReadOnlyTest)
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
 {
     // Arrange
-    QString folder = TEST_DIR;
+    std::string folder = TEST_DIR;
     CLTContext context;
     MockCmdLineBaseTask task;
 
@@ -83,7 +83,7 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
 {
     // Arrange
-    QString folder = TEST_DIR;
+    std::string folder = TEST_DIR;
     CLTContext context;
     MockCmdLineBaseTask task;
 
@@ -104,7 +104,7 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_SkipInternalFolders)
 {
     // Arrange
-    QString folder = TEST_DIR;
+    std::string folder = TEST_DIR;
     CLTContext context;
     MockCmdLineBaseTask task;
 
@@ -123,7 +123,7 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_SkipInternalFolders)
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_ExecuteError)
 {
     // Arrange
-    QString folder = "/path/to/folder";
+    std::string folder = "/path/to/folder";
     CLTContext context;
     MockCmdLineBaseTask task;
 

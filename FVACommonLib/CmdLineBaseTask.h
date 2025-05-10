@@ -20,7 +20,7 @@
  * \brief keeps base functionality for one command line task (CLT)
  *  Each CLT command is separated in class and files.
  *  Each CLT command logs itself to see later what changes at FS level were applied.
- *  Each CLT command shall be atomic – TBD to explain
+ *  Each CLT command shall be atomic ï¿½ TBD to explain
  *  Each CLT command shall support read only mode. TBD to explain
  *  Each CLT command shall be repeatable. TBD to explain
  */
@@ -46,7 +46,7 @@ class CmdLineBaseTask
 		 * \param context - one command parameters (environment)
 		 * \return it returns error code (not 0 if error happened, 0 - if no error happened) 
 		 */		
-		FVA_EXIT_CODE processFolderRecursivly(const QString& folder, const CLTContext& context);
+		FVA_EXIT_CODE processFolderRecursivly(const std::string& folder, const CLTContext& context);
 
 		/*!
 		 * \brief it answers if task supports read only mode
