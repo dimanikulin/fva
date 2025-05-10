@@ -23,7 +23,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest)
 {
     // Arrange
     CLTContext context;
-    context.dir = "D:/a/fva/fva/build"; // Set the directory to a test value, somewhere on your system
+    context.dir = TEST_DIR;
     FvaConfiguration cfg;
     MockCmdLineBaseExecutor executor;
     MockCmdLineBaseTask mockTask;
@@ -56,7 +56,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_UnknownCommand)
 {
     // Arrange
     CLTContext context;
-    context.dir = "D:/a/fva/fva/build"; // Set the directory to a test value, somewhere on your system
+    context.dir = TEST_DIR;
     FvaConfiguration cfg;
     MockCmdLineBaseExecutorEmptyCmd executor;
     MockCmdLineBaseTask mockTask;
@@ -76,7 +76,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_CommandDoesNotSupportReadOnly)
 {
     // Arrange
     CLTContext context;
-    context.dir = "D:/a/fva/fva/build"; // Set the directory to a test value, somewhere on your system
+    context.dir = TEST_DIR;
     FvaConfiguration cfg;
     MockCmdLineBaseExecutor executor;
     MockCmdLineBaseTask mockTask;
@@ -96,7 +96,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_RecursiveMode)
 {
     // Arrange
     CLTContext context;
-    context.dir = "D:/a/fva/fva/build"; // Set the directory to a test value, somewhere on your system
+    context.dir = TEST_DIR;
     FvaConfiguration cfg;
     MockCmdLineBaseExecutor executor;
     MockCmdLineBaseTask mockTask;
@@ -116,7 +116,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_NonRecursiveMode)
 {
     // Arrange
     CLTContext context;
-    context.dir = "D:/a/fva/fva/build"; // Set the directory to a test value, somewhere on your system
+    context.dir = TEST_DIR;
     FvaConfiguration cfg;
     MockCmdLineBaseExecutor executor;
     MockCmdLineBaseTask mockTask;

@@ -38,7 +38,7 @@ TEST_F(CmdLineBaseTaskTests, ExecuteTest)
 TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivlyTest)
 {
     // Arrange
-    QString folder = "/path/to/folder";
+    QString folder = TEST_DIR;
     CLTContext context;
     MockCmdLineBaseTask task;
 
@@ -68,7 +68,7 @@ TEST_F(CmdLineBaseTaskTests, SupportReadOnlyTest)
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
 {
     // Arrange
-    QString folder = "/path/to/folder";
+    QString folder = TEST_DIR;
     CLTContext context;
     MockCmdLineBaseTask task;
 
@@ -83,7 +83,7 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
 {
     // Arrange
-    QString folder = "/path/to/folder";
+    QString folder = TEST_DIR;
     CLTContext context;
     MockCmdLineBaseTask task;
 
@@ -104,7 +104,7 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_SkipInternalFolders)
 {
     // Arrange
-    QString folder = "/path/to/folder";
+    QString folder = TEST_DIR;
     CLTContext context;
     MockCmdLineBaseTask task;
 

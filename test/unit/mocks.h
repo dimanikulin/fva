@@ -8,6 +8,8 @@
 #include "FvaConfiguration.h"
 #include "fvacltcontext.h"
 
+constexpr std::string_view TEST_DIR = "D:/a/fva/fva/build"; // Set the directory to a test value, somewhere on your system
+
 // Mock implementation of CmdLineBaseTask for testing purposes
 class MockCmdLineBaseTask : public CmdLineBaseTask
 {
