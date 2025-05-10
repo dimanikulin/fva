@@ -70,7 +70,7 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
     // Arrange
     QString folder = "/path/to/folder";
     CLTContext context;
-    CmdLineBaseTask task;
+    MockCmdLineBaseTask task;
 
     // Act
     FVA_EXIT_CODE result = task.processFolderRecursivly(folder, context);
@@ -79,14 +79,13 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
     EXPECT_EQ(result, 0);
 }
 
-/*
 // Test case for processFolderRecursivly when folder contains subfolders and files
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
 {
     // Arrange
     QString folder = "/path/to/folder";
     CLTContext context;
-    CmdLineBaseTask task;
+    MockCmdLineBaseTask task;
 
     // Create subfolders and files
     QDir().mkpath(folder + "/subfolder1");
@@ -107,7 +106,7 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_SkipInternalFolders)
     // Arrange
     QString folder = "/path/to/folder";
     CLTContext context;
-    CmdLineBaseTask task;
+    MockCmdLineBaseTask task;
 
     // Create internal folders to skip
     QDir().mkpath(folder + "/#internal1#");
@@ -126,17 +125,11 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_ExecuteError)
     // Arrange
     QString folder = "/path/to/folder";
     CLTContext context;
-    CmdLineBaseTask task;
-
-    // Mock the execute function to return an error code
-    task.execute = [&](const CLTContext&) {
-        return FVA_ERROR;
-    };
+    MockCmdLineBaseTask task;
 
     // Act
     FVA_EXIT_CODE result = task.processFolderRecursivly(folder, context);
 
     // Assert
-    EXPECT_EQ(result, FVA_ERROR);
+    EXPECT_EQ(result, FVA_ERROR_INPUT_DIR_NOT_EXIST_ARG);
 }
-    */
