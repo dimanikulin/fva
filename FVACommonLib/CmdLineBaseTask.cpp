@@ -27,7 +27,8 @@ FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly(const std::string& folder
 			// change folder context on each iteration
 			m_folder = QDir::toNativeSeparators(info.filePath());
 			m_dir = QDir( m_folder );
-			FVA_EXIT_CODE res = processFolderRecursivly(QDir::toNativeSeparators(info.filePath()), context);
+			// TODO to make right conversion from QString to std::string
+			FVA_EXIT_CODE res = processFolderRecursivly(QDir::toNativeSeparators(info.filePath()).toStdString(), context);
 			RET_RES_IF_RES_IS_ERROR
 			continue;
 		}
