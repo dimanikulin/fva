@@ -11,7 +11,7 @@
 
 FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly(const std::string& folder, const CLTContext& context)
 {
-	QDir recurDir(folder);
+	QDir recurDir(folder.c_str());
 	// qDebug() << "[BASE_CMD]dir for rec:" << folder;
 	Q_FOREACH(QFileInfo info, recurDir.entryInfoList(QDir::NoDotAndDotDot|QDir::System|QDir::Hidden|QDir::AllDirs|QDir::Files,QDir::DirsFirst))
 	{
