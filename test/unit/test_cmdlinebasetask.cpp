@@ -82,19 +82,17 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
 // Test case for processFolderRecursivly when folder contains subfolders and files
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
 {
-    // Arrange
-    std::string folder = ;
     CLTContext context;
     MockCmdLineBaseTask task;
 
     // Create subfolders and files
     QDir().mkpath(QString(TEST_DIR) + "/subfolder1");
     QDir().mkpath(QString(TEST_DIR) + "/subfolder2");
-    QFile().open(QString(folder + "/file1.txt"), QIODevice::WriteOnly);
-    QFile().open(QString(folder + "/file2.txt"), QIODevice::WriteOnly);
+    QFile().open(QString(TEST_DIR) + "/file1.txt", QIODevice::WriteOnly);
+    QFile().open(QString(TEST_DIR) + "/file2.txt", QIODevice::WriteOnly);
 
     // Act
-    FVA_EXIT_CODE result = task.processFolderRecursivly(folder, context);
+    FVA_EXIT_CODE result = task.processFolderRecursivly(TEST_DIR, context);
 
     // Assert
     EXPECT_EQ(result, 0);
@@ -103,17 +101,15 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
 // Test case for processFolderRecursivly when folder contains internal folders to skip
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_SkipInternalFolders)
 {
-    // Arrange
-    std::string folder = TEST_DIR;
     CLTContext context;
     MockCmdLineBaseTask task;
 
     // Create internal folders to skip
-    QDir().mkpath(folder + "/#internal1#");
-    QDir().mkpath(folder + "/#internal2#");
+    QDir().mkpath(QString(TEST_DIR) + "/#internal1#");
+    QDir().mkpath(QString(TEST_DIR) + "/#internal2#");
 
     // Act
-    FVA_EXIT_CODE result = task.processFolderRecursivly(folder, context);
+    FVA_EXIT_CODE result = task.processFolderRecursivly(TEST_DIR, context);
 
     // Assert
     EXPECT_EQ(result, 0);
