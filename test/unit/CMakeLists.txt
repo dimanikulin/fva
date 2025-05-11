@@ -10,6 +10,7 @@ add_executable(libtests
   test_fvaperson.cpp
   test_cmdlinebaseexecutor.cpp
   test_cmdlinebasetask.cpp
+  test_fvabasedictionaryitem.cpp
 )
 
 # Link GoogleTest to tests
