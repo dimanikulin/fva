@@ -83,13 +83,13 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
 TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
 {
     // Arrange
-    std::string folder = TEST_DIR;
+    std::string folder = ;
     CLTContext context;
     MockCmdLineBaseTask task;
 
     // Create subfolders and files
-    QDir().mkpath(QString(folder + "/subfolder1"));
-    QDir().mkpath(QString(folder + "/subfolder2"));
+    QDir().mkpath(QString(TEST_DIR) + "/subfolder1");
+    QDir().mkpath(QString(TEST_DIR) + "/subfolder2");
     QFile().open(QString(folder + "/file1.txt"), QIODevice::WriteOnly);
     QFile().open(QString(folder + "/file2.txt"), QIODevice::WriteOnly);
 
