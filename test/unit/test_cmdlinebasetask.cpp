@@ -65,7 +65,7 @@ TEST_F(CmdLineBaseTaskTests, SupportReadOnlyTest)
 
 
 // Test case for processFolderRecursivly when folder contains no subfolders or files
-TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
+TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
 {
     // Arrange
     std::string folder = TEST_DIR;
@@ -80,7 +80,7 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
 }
 
 // Test case for processFolderRecursivly when folder contains subfolders and files
-TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
+TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
 {
     CLTContext context;
     MockCmdLineBaseTask task;
@@ -101,7 +101,7 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
 }
 
 // Test case for processFolderRecursivly when folder contains internal folders to skip
-TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_SkipInternalFolders)
+TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_SkipInternalFolders)
 {
     CLTContext context;
     MockCmdLineBaseTask task;
@@ -118,7 +118,7 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_SkipInternalFolders)
 }
 
 // Test case for processFolderRecursivly when execute returns an error code
-TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_ExecuteError)
+TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_ExecuteError)
 {
     // Arrange
     std::string folder = "/path/to/folder";
