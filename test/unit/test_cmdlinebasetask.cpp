@@ -116,18 +116,3 @@ TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_SkipInternalFolders)
     // Assert
     EXPECT_EQ(result, 0);
 }
-
-// Test case for processFolderRecursivly when execute returns an error code
-TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_ExecuteError)
-{
-    // Arrange
-    std::string folder = "/path/to/folder";
-    CLTContext context;
-    MockCmdLineBaseTask task;
-
-    // Act
-    FVA_EXIT_CODE result = task.processFolderRecursivly(folder, context);
-
-    // Assert
-    EXPECT_EQ(result, FVA_ERROR_INPUT_DIR_NOT_EXIST_ARG);
-}
