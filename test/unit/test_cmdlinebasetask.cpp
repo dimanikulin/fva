@@ -88,10 +88,10 @@ TEST(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
     MockCmdLineBaseTask task;
 
     // Create subfolders and files
-    QDir().mkpath(folder + "/subfolder1");
-    QDir().mkpath(folder + "/subfolder2");
-    QFile().open(folder + "/file1.txt", QIODevice::WriteOnly);
-    QFile().open(folder + "/file2.txt", QIODevice::WriteOnly);
+    QDir().mkpath(QString(folder + "/subfolder1"));
+    QDir().mkpath(QString(folder + "/subfolder2"));
+    QFile().open(QString(folder + "/file1.txt"), QIODevice::WriteOnly);
+    QFile().open(QString(folder + "/file2.txt"), QIODevice::WriteOnly);
 
     // Act
     FVA_EXIT_CODE result = task.processFolderRecursivly(folder, context);
