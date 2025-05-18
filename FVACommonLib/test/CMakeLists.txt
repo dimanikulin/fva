@@ -7,7 +7,6 @@ add_executable(fvalibtests
   test_fvaconfiguration.cpp
   test_fvacsvfile.cpp
   test_FVADescriptionFile.cpp
-  test_fvafmtcontext.cpp
   test_fvariffparser.cpp
 )
 
