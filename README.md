@@ -134,6 +134,13 @@ TBD describe dependencies installed along with FVA Software.
 
 TBD fvaParams.csv
 
+## Source View
+
+<img src="./resources/images/sourceView.png" alt="digiKam.png">
+
+Was created with a help of [gitdiagram](https://gitdiagram.com/)
+
+
 # Programming Languages                         
 Now C++ and Python are considered as main languages to implement FVA Software.
 
