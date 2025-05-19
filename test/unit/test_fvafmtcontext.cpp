@@ -23,14 +23,14 @@ TEST_F(FvaFmtContextTests, FillFmtContextFromCfg_AllParametersValid)
     FvaConfiguration cfg;
     FvaFmtContext fmtContext;
 
-    cfg.setParamAsString("Format::fvaDirName", "fvaDir");
-    cfg.setParamAsString("Format::fvaDirNameYear", "fvaDirYear");
-    cfg.setParamAsString("Format::fvaFileName", "fvaFile");
-    cfg.setParamAsString("Format::exifDateTime", "exifDateTime");
-    cfg.setParamAsString("Format::fileName1", "file1");
-    cfg.setParamAsString("Format::fileName2", "file2");
-    cfg.setParamAsString("Format::riffDateTime1", "riffDateTime1");
-    cfg.setParamAsString("Format::riffDateTime2", "riffDateTime2");
+    cfg.setParam("Format::fvaDirName", "fvaDir");
+    cfg.setParam("Format::fvaDirNameYear", "fvaDirYear");
+    cfg.setParam("Format::fvaFileName", "fvaFile");
+    cfg.setParam("Format::exifDateTime", "exifDateTime");
+    cfg.setParam("Format::fileName1", "file1");
+    cfg.setParam("Format::fileName2", "file2");
+    cfg.setParam("Format::riffDateTime1", "riffDateTime1");
+    cfg.setParam("Format::riffDateTime2", "riffDateTime2");
 
     // Act
     FVA_EXIT_CODE result = fmtContext.fillFmtContextFromCfg(cfg);
@@ -54,10 +54,10 @@ TEST_F(FvaFmtContextTests, FillFmtContextFromCfg_SomeParametersMissing)
     FvaConfiguration cfg;
     FvaFmtContext fmtContext;
 
-    cfg.setParamAsString("Format::fvaDirName", "fvaDir");
-    cfg.setParamAsString("Format::fvaDirNameYear", "fvaDirYear");
-    cfg.setParamAsString("Format::fvaFileName", "fvaFile");
-    cfg.setParamAsString("Format::exifDateTime", "exifDateTime");
+    cfg.setParam("Format::fvaDirName", "fvaDir");
+    cfg.setParam("Format::fvaDirNameYear", "fvaDirYear");
+    cfg.setParam("Format::fvaFileName", "fvaFile");
+    cfg.setParam("Format::exifDateTime", "exifDateTime");
 
     // Act
     FVA_EXIT_CODE result = fmtContext.fillFmtContextFromCfg(cfg);
