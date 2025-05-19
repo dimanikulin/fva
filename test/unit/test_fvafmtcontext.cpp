@@ -36,7 +36,7 @@ TEST_F(FvaFmtContextTests, FillFmtContextFromCfg_AllParametersValid)
     FVA_EXIT_CODE result = fmtContext.fillFmtContextFromCfg(cfg);
 
     // Assert
-    EXPECT_EQ(result, FVA_EXIT_CODE_SUCCESS);
+    EXPECT_EQ(result, FVA_NO_ERROR);
     EXPECT_EQ(fmtContext.fvaDirName, "fvaDir");
     EXPECT_EQ(fmtContext.fvaDirNameYear, "fvaDirYear");
     EXPECT_EQ(fmtContext.fvaFileName, "fvaFile");
@@ -63,7 +63,7 @@ TEST_F(FvaFmtContextTests, FillFmtContextFromCfg_SomeParametersMissing)
     FVA_EXIT_CODE result = fmtContext.fillFmtContextFromCfg(cfg);
 
     // Assert
-    EXPECT_EQ(result, FVA_ERROR_MISSING_PARAMETER);
+    EXPECT_EQ(result, FVA_ERROR_CANT_GET_PARAM);
     // Check that the parameters that were set are correctly filled in the fmtContext object
     EXPECT_EQ(fmtContext.fvaDirName, "fvaDir");
     EXPECT_EQ(fmtContext.fvaDirNameYear, "fvaDirYear");
