@@ -136,7 +136,7 @@ TBD fvaParams.csv
 
 ## Source View
 
-<img src="./resources/images/sourceView.png" alt="digiKam.png">
+<img src="./resources/images/sourceView.png" alt="Source View">
 
 Was created with a help of [gitdiagram](https://gitdiagram.com/)
 
