@@ -42,7 +42,7 @@ FVA_EXIT_CODE FvaConfiguration::getParamAsString(const QString& paramName, QStri
 
 	int columnValue = FVADescriptionFile::getColumnIdByName(m_cfgtitles, "Value");
 	if (-1 == columnValue)
-		FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
 	for (DESCRIPTIONS_MAP::const_iterator it = m_cfgItems.begin(); it != m_cfgItems.end(); ++it)
 	{
@@ -90,7 +90,7 @@ FVA_EXIT_CODE FvaConfiguration::setParam(const QString& paramName, QString param
 	// ID,Name,Value
 	int columnName = FVADescriptionFile::getColumnIdByName(m_cfgtitles, "Name");
 	if (-1 == columnName)
-		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS
+		return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
 	int columnValue = FVADescriptionFile::getColumnIdByName(m_cfgtitles, "Value");
 	if (-1 == columnValue)
