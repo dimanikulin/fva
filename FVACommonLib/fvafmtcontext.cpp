@@ -7,6 +7,7 @@
 */
 
 #include "fvafmtcontext.h"
+#include "fvalogger.inl"
 
 FVA_EXIT_CODE FvaFmtContext::fillFmtContextFromCfg(const FvaConfiguration& cfg)
 {
