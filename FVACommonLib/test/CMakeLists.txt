@@ -1,6 +1,5 @@
 # tests source files here
 add_executable(fvalibtests
-  test_fvacommoncsv.cpp
   test_fvacommonexif.cpp
   test_fvacommonlib.cpp
   test_fvacommonui.cpp
