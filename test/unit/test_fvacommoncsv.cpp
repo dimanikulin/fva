@@ -27,7 +27,7 @@ protected:
 TEST_F(fvacommoncsvTests, LoadMapWithItemTypeFilter)
 {
     // Arrange
-    QString rootSWdir = "./test_data/";
+    QString rootSWdir = TEST_DIR + "/test_data/";
     FVA_SIMPLE_MAP simpleMap;
     QString dictName = "dictionary.csv";
     int typeToFilter = 1;
@@ -44,7 +44,7 @@ TEST_F(fvacommoncsvTests, LoadMapWithItemTypeFilter)
 TEST_F(fvacommoncsvTests, LoadMapWithoutItemTypeFilter)
 {
     // Arrange
-    QString rootSWdir = "./test_data/";
+    QString rootSWdir = TEST_DIR +"/test_data/";
     FVA_SIMPLE_MAP simpleMap;
     QString dictName = "dictionary.csv";
 
@@ -60,7 +60,7 @@ TEST_F(fvacommoncsvTests, LoadMapWithoutItemTypeFilter)
 TEST_F(fvacommoncsvTests, LoadMapWithInvalidItemTypeFilter)
 {
     // Arrange
-    QString rootSWdir = "./test_data/";
+    QString rootSWdir = TEST_DIR + "/test_data/";
     FVA_SIMPLE_MAP simpleMap;
     QString dictName = "dictionary.csv";
     int typeToFilter = -1;
@@ -77,7 +77,7 @@ TEST_F(fvacommoncsvTests, LoadMapWithInvalidItemTypeFilter)
 TEST_F(fvacommoncsvTests, LoadValidCsvFile)
 {
     // Arrange
-    QString rootSWdir = "./test_data/";
+    QString rootSWdir = TEST_DIR + "/test_data/";
     QString fvaFileName = "fva.csv";
     FVA_FILE_INFO_MAP fvaFileInfo;
 
@@ -93,7 +93,7 @@ TEST_F(fvacommoncsvTests, LoadValidCsvFile)
 TEST_F(fvacommoncsvTests, LoadCsvFileWithMissingFields)
 {
     // Arrange
-    QString rootSWdir = "./test_data/";
+    QString rootSWdir = TEST_DIR + "/test_data/";
     QString fvaFileName = "fva_missing_fields.csv";
     FVA_FILE_INFO_MAP fvaFileInfo;
 
@@ -109,7 +109,7 @@ TEST_F(fvacommoncsvTests, LoadCsvFileWithMissingFields)
 TEST_F(fvacommoncsvTests, LoadCsvFileWithNonUniqueFileNames)
 {
     // Arrange
-    QString rootSWdir = "./test_data/";
+    QString rootSWdir = TEST_DIR + "/test_data/";
     QString fvaFileName = "fva_non_unique_names.csv";
     FVA_FILE_INFO_MAP fvaFileInfo;
 
@@ -125,7 +125,7 @@ TEST_F(fvacommoncsvTests, LoadCsvFileWithNonUniqueFileNames)
 TEST_F(fvacommoncsvTests, LoadNonExistentCsvFile)
 {
     // Arrange
-    QString rootSWdir = "./test_data/";
+    QString rootSWdir = TEST_DIR + "/test_data/";
     QString fvaFileName = "non_existent_file.csv";
     FVA_FILE_INFO_MAP fvaFileInfo;
 
