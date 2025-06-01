@@ -27,6 +27,8 @@ void copy_folder(const fs::path& source, const fs::path& destination) {
     }
 }
 
+namespace fs = std::filesystem;
+
 // Test fixture for fvaBaseDictionaryItem tests
 class FVABaseDictionaryItemTests : public ::testing::Test
 {
