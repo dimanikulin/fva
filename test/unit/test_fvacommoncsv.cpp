@@ -5,32 +5,10 @@
 #include <filesystem>
 #include <fstream>
 
-void copy_folder(const fs::path& source, const fs::path& destination) {
-    if (!fs::exists(source) || !fs::is_directory(source)) {
-        throw std::runtime_error("Source folder does not exist or is not a directory.");
-    }
-
-    if (!fs::exists(destination)) {
-        fs::create_directories(destination);
-    }
-
-    for (const auto& entry : fs::recursive_directory_iterator(source)) {
-        const auto& path = entry.path();
-        auto relative_path = fs::relative(path, source);
-        auto dest_path = destination / relative_path;
-
-        if (fs::is_directory(path)) {
-            fs::create_directories(dest_path);
-        } else if (fs::is_regular_file(path)) {
-            fs::copy_file(path, dest_path, fs::copy_options::overwrite_existing);
-        }
-    }
-}
-
 namespace fs = std::filesystem;
 
 // Test fixture for fvaBaseDictionaryItem tests
-class FVABaseDictionaryItemTests : public ::testing::Test
+class fvacommoncsvTests : public ::testing::Test
 {
 protected:
     void SetUp() override
@@ -46,7 +24,7 @@ protected:
 };
 
 // Test case for loading a simple map from CSV with a specific item type filter
-TEST_F(fvaLoadSimpleMapFromCsvByItemTypeTest, LoadMapWithItemTypeFilter)
+TEST_F(fvacommoncsvTests, LoadMapWithItemTypeFilter)
 {
     // Arrange
     QString rootSWdir = "./test_data/";
@@ -63,7 +41,7 @@ TEST_F(fvaLoadSimpleMapFromCsvByItemTypeTest, LoadMapWithItemTypeFilter)
 }
 
 // Test case for loading a simple map from CSV without any item type filter
-TEST_F(fvaLoadSimpleMapFromCsvByItemTypeTest, LoadMapWithoutItemTypeFilter)
+TEST_F(fvacommoncsvTests, LoadMapWithoutItemTypeFilter)
 {
     // Arrange
     QString rootSWdir = "./test_data/";
@@ -79,7 +57,7 @@ TEST_F(fvaLoadSimpleMapFromCsvByItemTypeTest, LoadMapWithoutItemTypeFilter)
 }
 
 // Test case for loading a simple map from CSV with an invalid item type filter
-TEST_F(fvaLoadSimpleMapFromCsvByItemTypeTest, LoadMapWithInvalidItemTypeFilter)
+TEST_F(fvacommoncsvTests, LoadMapWithInvalidItemTypeFilter)
 {
     // Arrange
     QString rootSWdir = "./test_data/";
@@ -96,7 +74,7 @@ TEST_F(fvaLoadSimpleMapFromCsvByItemTypeTest, LoadMapWithInvalidItemTypeFilter)
 }
 
 // Test case for loading a valid CSV file
-TEST_F(FvaLoadFvaFileInfoFromCsvTests, LoadValidCsvFile)
+TEST_F(fvacommoncsvTests, LoadValidCsvFile)
 {
     // Arrange
     QString rootSWdir = "./test_data/";
@@ -112,7 +90,7 @@ TEST_F(FvaLoadFvaFileInfoFromCsvTests, LoadValidCsvFile)
 }
 
 // Test case for loading a CSV file with missing mandatory fields
-TEST_F(FvaLoadFvaFileInfoFromCsvTests, LoadCsvFileWithMissingFields)
+TEST_F(fvacommoncsvTests, LoadCsvFileWithMissingFields)
 {
     // Arrange
     QString rootSWdir = "./test_data/";
@@ -128,7 +106,7 @@ TEST_F(FvaLoadFvaFileInfoFromCsvTests, LoadCsvFileWithMissingFields)
 }
 
 // Test case for loading a CSV file with non-unique file names
-TEST_F(FvaLoadFvaFileInfoFromCsvTests, LoadCsvFileWithNonUniqueFileNames)
+TEST_F(fvacommoncsvTests, LoadCsvFileWithNonUniqueFileNames)
 {
     // Arrange
     QString rootSWdir = "./test_data/";
@@ -144,7 +122,7 @@ TEST_F(FvaLoadFvaFileInfoFromCsvTests, LoadCsvFileWithNonUniqueFileNames)
 }
 
 // Test case for loading a CSV file that does not exist
-TEST_F(FvaLoadFvaFileInfoFromCsvTests, LoadNonExistentCsvFile)
+TEST_F(fvacommoncsvTests, LoadNonExistentCsvFile)
 {
     // Arrange
     QString rootSWdir = "./test_data/";
