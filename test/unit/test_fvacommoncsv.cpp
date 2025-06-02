@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "fvacommoncsv.h"
+#include "mocks.h"
 
 #include <iostream>
 #include <filesystem>
