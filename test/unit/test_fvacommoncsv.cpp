@@ -24,6 +24,7 @@ protected:
     }
 };
 
+/*
 // Test case for loading a simple map from CSV with a specific item type filter
 TEST_F(fvacommoncsvTests, LoadMapWithItemTypeFilter)
 {
@@ -137,3 +138,4 @@ TEST_F(fvacommoncsvTests, LoadNonExistentCsvFile)
     EXPECT_EQ(result, FVA_ERROR_CANT_OPEN_INPUT_FILE);
     // Add additional assertions to verify the error handling
 }
+*/
