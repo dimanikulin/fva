@@ -13,6 +13,7 @@ add_executable(libtests
   test_fvabasedictionaryitem.cpp
   test_fvafmtcontext.cpp
   test_fvacommoncsv.cpp
+  test_fvacommonexif.cpp
 )
 
 # Link GoogleTest to tests
