@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../fvacommonexif.cpp"
+#include "fvacommonexif.h"
 
 /*
 // Test case for getting video taken time from EXIF data
