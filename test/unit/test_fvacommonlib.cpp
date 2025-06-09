@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include "../fvacommonlib.h"
+#include "fvacommonlib.h"
 
-/*
+
 // Test case for a one-year folder
 TEST(fvaParseDirNameTest, OneYearFolder)
 {
@@ -79,7 +79,7 @@ TEST(fvaParseDirNameTest, MonthsDayPeriod)
     EXPECT_EQ(result, FVA_NO_ERROR);
     // Add additional assertions for the values of 'from' and 'to'
 }
-*/
+
 // Test case for an invalid folder name
 TEST(fvaParseDirNameTest, InvalidFolderName)
 {
