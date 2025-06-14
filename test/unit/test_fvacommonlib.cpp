@@ -44,7 +44,7 @@ TEST(fvaParseDirNameTest, YearPeriod)
 // Test case for a one-day event
 TEST(fvaParseDirNameTest, OneDayEvent)
 {
-    QString dirName = "2022-01-01";
+    QString dirName = "2022.01.01";
     QDateTime from, to;
     FvaFmtContext ctx; // Provide a valid FvaFmtContext object
     ctx.fvaDirName = "yyyy.MM.dd"; // Set the format for date parsing
@@ -58,7 +58,7 @@ TEST(fvaParseDirNameTest, OneDayEvent)
 // Test case for one day and several events
 TEST(fvaParseDirNameTest, OneDaySeveralEvents)
 {
-    QString dirName = "2022-01-01 #3";
+    QString dirName = "2022.01.01 #3";
     QDateTime from, to;
     FvaFmtContext ctx; // Provide a valid FvaFmtContext object
     ctx.fvaDirName = "yyyy.MM.dd"; // Set the format for date parsing
@@ -72,7 +72,7 @@ TEST(fvaParseDirNameTest, OneDaySeveralEvents)
 // Test case for a period
 TEST(fvaParseDirNameTest, Period)
 {
-    QString dirName = "2022-01-01-03";
+    QString dirName = "2022.01.01-03";
     QDateTime from, to;
     FvaFmtContext ctx; // Provide a valid FvaFmtContext object
     ctx.fvaDirName = "yyyy.MM.dd"; // Set the format for date parsing
