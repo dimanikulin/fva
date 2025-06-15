@@ -6,7 +6,7 @@
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <Property Id="WIXUI_INSTALLDIR" Value="PRODUCTDIR" />
     <UIRef Id="WixUI_InstallDir" />
-    <?define Qt5_Dir = "D:\a\fva\Qt\5.15.2" ?>
+    <?define Qt5_Dir = "c:\a\fva\Qt\5.15.2" ?>
     <Feature Id="ProductFeature" Title="FVASetupWin" Level="1">
       <ComponentRef Id="platformsComponents" />
       <ComponentRef Id="icons" />
