@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
-#include "../fvaconfiguration.h"
+#include "fvaconfiguration.h"
 
-/*
 // Test case for getting an existing parameter value
 TEST(FvaConfigurationTest, GetExistingParamValue)
 {
@@ -175,4 +174,3 @@ TEST(FvaConfigurationTest, SetParamString)
     EXPECT_EQ(result, FVA_NO_ERROR);
     // Add additional assertions to verify the updated configuration
 }
-*/

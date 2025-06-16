@@ -15,6 +15,7 @@ add_executable(libtests
   test_fvacommoncsv.cpp
   test_fvacommonexif.cpp
   test_fvacommonlib.cpp
+  test_fvaconfiguration.cpp
 )
 
 # Link GoogleTest to tests
