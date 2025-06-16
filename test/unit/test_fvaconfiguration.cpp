@@ -6,15 +6,15 @@ TEST(FvaConfigurationTest, GetExistingParamValue)
 {
     FvaConfiguration config;
     QString paramName = "ID";
-    QString expectedValue = "12345";
-    QString actualValue;
-
+    auto expectedValue = 12345;
+    
     // Set up the configuration with the parameter
-    QStringList columnNames = { "ID", "Name", "Value" };
-    QStringList paramValues = { "12345", "Parameter1", "Value1" };
-    config.setConfigItems(columnNames, { paramValues });
+    config.setParam(paramName, expectedValue);
+    config.setParam("Name", "Parameter1");
+    config.setParam("Value", true);
 
-    FVA_EXIT_CODE result = config.getParamAsString(paramName, actualValue);
+    uint actualValue;
+    FVA_EXIT_CODE result = config.getParamAsUint(paramName, actualValue);
 
     EXPECT_EQ(result, FVA_NO_ERROR);
     EXPECT_EQ(actualValue, expectedValue);
@@ -28,9 +28,9 @@ TEST(FvaConfigurationTest, GetNonExistingParamValue)
     QString actualValue;
 
     // Set up the configuration with some parameters
-    QStringList columnNames = { "ID", "Name", "Value" };
-    QStringList paramValues = { "12345", "Parameter1", "Value1" };
-    config.setConfigItems(columnNames, { paramValues });
+    config.setParam("Name", "Parameter1");
+    config.setParam("Value", true);
+
 
     FVA_EXIT_CODE result = config.getParamAsString(paramName, actualValue);
 
@@ -71,7 +71,6 @@ TEST(FvaConfigurationTest, LoadInvalidConfigFile)
     FVA_EXIT_CODE result = config.load(filePath);
 
     EXPECT_NE(result, FVA_NO_ERROR);
-    // Add additional assertions to verify the behavior when loading fails
 }
 
 // Test case for saving the configuration to a file
@@ -81,11 +80,21 @@ TEST(FvaConfigurationTest, SaveConfigToFile)
     QString filePath = "/path/to/save/config.csv";
 
     // Set up the configuration with some data
+    config.setParam("Name", "Parameter1");
+    config.setParam("Value", true);
+    config.setParam("ID", "12345");
 
     FVA_EXIT_CODE result = config.save(filePath);
 
     EXPECT_EQ(result, FVA_NO_ERROR);
     // Add additional assertions to verify the saved configuration file
+    QString savedValue;
+    result = config.getParamAsString("Name", savedValue);
+    EXPECT_EQ(result, FVA_NO_ERROR);
+    EXPECT_EQ(savedValue, "Parameter1");
+    result = config.getParamAsString("Value", savedValue);
+    EXPECT_EQ(result, FVA_NO_ERROR);
+    EXPECT_EQ(savedValue, true);
 }
 
 // Test case for getting a parameter value as string
@@ -97,6 +106,9 @@ TEST(FvaConfigurationTest, GetParamAsString)
     QString actualValue;
 
     // Set up the configuration with the parameter
+    config.setParam(paramName, expectedValue);
+    config.setParam("Name", "Parameter1");
+    config.setParam("Value", true);
 
     FVA_EXIT_CODE result = config.getParamAsString(paramName, actualValue);
 
@@ -113,6 +125,9 @@ TEST(FvaConfigurationTest, GetParamAsBoolean)
     bool actualValue;
 
     // Set up the configuration with the parameter
+    config.setParam(paramName, expectedValue);
+    config.setParam("Name", "Parameter1");
+    config.setParam("Count", 10);
 
     FVA_EXIT_CODE result = config.getParamAsBoolean(paramName, actualValue);
 
@@ -129,6 +144,9 @@ TEST(FvaConfigurationTest, GetParamAsUint)
     uint actualValue;
 
     // Set up the configuration with the parameter
+    config.setParam(paramName, expectedValue);
+    config.setParam("Name", "Parameter1");
+    config.setParam("Flag", true);
 
     FVA_EXIT_CODE result = config.getParamAsUint(paramName, actualValue);
 
@@ -146,7 +164,12 @@ TEST(FvaConfigurationTest, SetParamUint)
     FVA_EXIT_CODE result = config.setParam(paramName, paramValue);
 
     EXPECT_EQ(result, FVA_NO_ERROR);
+
     // Add additional assertions to verify the updated configuration
+    uint actualValue;
+    result = config.getParamAsUint(paramName, actualValue);
+    EXPECT_EQ(result, FVA_NO_ERROR);
+    EXPECT_EQ(actualValue, paramValue);
 }
 
 // Test case for setting a parameter value as boolean
