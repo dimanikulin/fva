@@ -127,7 +127,8 @@ TEST(FvaConfigurationTest, GetParamAsBoolean)
     // Set up the configuration with the parameter
     config.setParam(paramName, expectedValue);
     config.setParam("Name", "Parameter1");
-    config.setParam("Count", 10);
+    uint paramValue = 10;
+    config.setParam("Count", paramValue);
 
     FVA_EXIT_CODE result = config.getParamAsBoolean(paramName, actualValue);
 
