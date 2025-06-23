@@ -6,7 +6,7 @@ TEST(FvaConfigurationTest, GetExistingParamValue)
 {
     FvaConfiguration config;
     QString paramName = "ID";
-    u_int expectedValue = 12345;
+    uint expectedValue = 12345;
     
     // Set up the configuration with the parameter
     config.setParam(paramName, expectedValue);
