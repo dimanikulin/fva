@@ -6,7 +6,7 @@ TEST(FvaConfigurationTest, GetExistingParamValue)
 {
     FvaConfiguration config;
     QString paramName = "ID";
-    auto expectedValue = 12345;
+    u_int expectedValue = 12345;
     
     // Set up the configuration with the parameter
     config.setParam(paramName, expectedValue);
@@ -182,7 +182,12 @@ TEST(FvaConfigurationTest, SetParamBoolean)
     FVA_EXIT_CODE result = config.setParam(paramName, paramValue);
 
     EXPECT_EQ(result, FVA_NO_ERROR);
+
     // Add additional assertions to verify the updated configuration
+    bool actualValue;
+    result = config.getParamAsBoolean(paramName, actualValue);
+    EXPECT_EQ(result, FVA_NO_ERROR);
+    EXPECT_EQ(actualValue, paramValue);
 }
 
 // Test case for setting a parameter value as string
@@ -195,5 +200,10 @@ TEST(FvaConfigurationTest, SetParamString)
     FVA_EXIT_CODE result = config.setParam(paramName, paramValue);
 
     EXPECT_EQ(result, FVA_NO_ERROR);
+    
     // Add additional assertions to verify the updated configuration
+    QString actualValue;
+    result = config.getParamAsString(paramName, actualValue);
+    EXPECT_EQ(result, FVA_NO_ERROR);
+    EXPECT_EQ(actualValue, paramValue);
 }
