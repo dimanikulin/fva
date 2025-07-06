@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../fvacsvfile.h"
+#include "fvacsvfile.h"
 
 // Test fixture for CSVFile tests
 class CSVFileTests : public ::testing::Test
@@ -16,7 +16,6 @@ protected:
     }
 };
 
-/*
 // Test case for parsing a line with no quotes and default delimiter
 TEST_F(CSVFileTests, ParseLine_NoQuotes_DefaultDelimiter)
 {
@@ -169,4 +168,3 @@ TEST_F(CSVFileTests, WriteLine)
     // Assert
     EXPECT_TRUE(result);
 }
-*/
