@@ -1,6 +1,5 @@
 # tests source files here
 add_executable(fvalibtests
-  test_FVADescriptionFile.cpp
   test_fvariffparser.cpp
 )
 

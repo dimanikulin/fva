@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
-#include "../FVADescriptionFile.h"
+#include "FVADescriptionFile.h"
 
-/*
 // Test case for saving an empty description file
 TEST(FVADescriptionFileTests, SaveEmptyFile)
 {
@@ -118,4 +117,3 @@ TEST(FVADescriptionFileTests, LoadFileWithMultipleItems)
     EXPECT_TRUE(decsItems.contains("Item2"));
     EXPECT_EQ(decsItems["Item2"].size(), 3);
 }
-*/
