@@ -1,6 +1,6 @@
 # tests source files here
 add_executable(fvalibtests
-  test_fvariffparser.cpp
+  
 )
 
 # Link GoogleTest to tests
