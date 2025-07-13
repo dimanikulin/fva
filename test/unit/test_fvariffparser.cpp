@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../fvariffparser.cpp"
+#include "fvariffparser.cpp"
 
 // Test fixture for RiffParser tests
 class RiffParserTests : public ::testing::Test
