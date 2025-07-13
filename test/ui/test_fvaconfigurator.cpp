@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-// #include "../FVAConfigurator.h"
+#include "FVAConfigurator.h"
 
 // Test fixture for FVAConfigurator tests
 class FVAConfiguratorTests : public ::testing::Test
