@@ -19,6 +19,7 @@ add_executable(libtests
   test_fvacsvfile.cpp
   test_fvadescriptionfile.cpp
   test_fvariffparser.cpp
+  test_CLTAutoChecks1.cpp
 )
 
 # Link GoogleTest to tests

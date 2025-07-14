@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
-// #include <gmock/gmock.h>
-#include "../CLTAutoChecks1.h"
+#include <gmock/gmock.h>
+#include "CLTAutoChecks1.h"
 
-/*// Mocking the dependencies
+// Mocking the dependencies
 class MockQDir : public QDir
 {
 public:
@@ -17,7 +17,7 @@ public:
     MOCK_CONST_METHOD0(fileName, QString());
     MOCK_CONST_METHOD0(absoluteFilePath, QString());
     MOCK_CONST_METHOD0(lastModified, QDateTime());
-};*/
+};
 
 class MockCLTContext : public CLTContext
 {
@@ -38,7 +38,7 @@ protected:
     }
 
     // Helper function to create a mock QFileInfo object
-    /* MockQFileInfo* CreateMockQFileInfo(bool isDir, const QString& suffix, const QString& fileName, const QString& absoluteFilePath, const QDateTime& lastModified)
+    MockQFileInfo* CreateMockQFileInfo(bool isDir, const QString& suffix, const QString& fileName, const QString& absoluteFilePath, const QDateTime& lastModified)
     {
         auto mockFileInfo = new MockQFileInfo();
         ON_CALL(*mockFileInfo, isDir()).WillByDefault(::testing::Return(isDir));
@@ -47,10 +47,10 @@ protected:
         ON_CALL(*mockFileInfo, absoluteFilePath()).WillByDefault(::testing::Return(absoluteFilePath));
         ON_CALL(*mockFileInfo, lastModified()).WillByDefault(::testing::Return(lastModified));
         return mockFileInfo;
-    }*/
+    }
 };
 
-/*
+
 // Test case for CLTAutoChecks1::execute
 TEST_F(CLTAutoChecks1Tests, Execute)
 {
@@ -108,7 +108,7 @@ TEST_F(CLTAutoChecks1Tests, SupportReadOnly)
     // Verify the expected behavior and output
     EXPECT_TRUE(result);
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTAutoChecks1Tests, Name)
 {
