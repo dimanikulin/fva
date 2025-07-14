@@ -19,6 +19,3 @@ target_link_libraries(fvaconfigurator Qt5::Widgets Qt5::Core Qt5::Gui fvalib)
 target_include_directories(fvaconfigurator PRIVATE ../FVACommonLib)
 
 install(TARGETS fvaconfigurator)
-
-# TODO to uncoment
-# add_subdirectory(test)
