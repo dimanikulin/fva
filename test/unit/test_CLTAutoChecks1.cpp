@@ -57,8 +57,9 @@ TEST_F(CLTAutoChecks1Tests, Execute)
     // Arrange
     MockQDir mockDir;
     MockCLTContext mockContext;
-    CLTAutoChecks1 cltAutoChecks1;
-
+    FvaConfiguration cfg;
+    CLTAutoChecks1 cltAutoChecks1(cfg);
+    
     // Set up the necessary variables and objects
     QList<MockQFileInfo*> mockFileInfos;
     mockFileInfos.append(CreateMockQFileInfo(false, "MP4", "video.mp4", "/path/to/video.mp4", QDateTime()));
