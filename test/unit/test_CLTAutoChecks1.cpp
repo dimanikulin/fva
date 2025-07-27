@@ -61,6 +61,7 @@ TEST_F(CLTAutoChecks1Tests, Execute)
     CLTAutoChecks1 cltAutoChecks1(cfg);
     
     // Set up the necessary variables and objects
+    /* TODo
     QList<MockQFileInfo*> mockFileInfos;
     mockFileInfos.append(CreateMockQFileInfo(false, "MP4", "video.mp4", "/path/to/video.mp4", QDateTime()));
     mockFileInfos.append(CreateMockQFileInfo(false, "WAV", "audio.wav", "/path/to/audio.wav", QDateTime()));
@@ -71,8 +72,8 @@ TEST_F(CLTAutoChecks1Tests, Execute)
     mockFileInfos.append(CreateMockQFileInfo(false, "PNG", "image.png", "/path/to/image.png", QDateTime()));
     mockFileInfos.append(CreateMockQFileInfo(false, "STL", "panoram.stl", "/path/to/panoram.stl", QDateTime()));
     
-    // TODO ON_CALL(mockDir, entryInfoList(::testing::_)).WillByDefault(::testing::Return(QList<QFileInfo>::fromStdList(std::list<QFileInfo*>(mockFileInfos.begin(), mockFileInfos.end()))));
-
+    ON_CALL(mockDir, entryInfoList(::testing::_)).WillByDefault(::testing::Return(QList<QFileInfo>::fromStdList(std::list<QFileInfo*>(mockFileInfos.begin(), mockFileInfos.end()))));
+    */
     // Act
     FVA_EXIT_CODE result = cltAutoChecks1.execute(mockContext);
 
