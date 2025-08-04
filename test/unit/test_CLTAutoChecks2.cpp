@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTAutoChecks2.h"
+#include "CLTAutoChecks2.h"
 
 // Test fixture for CLTAutoChecks2 tests
 class CLTAutoChecks2Tests : public ::testing::Test
@@ -16,7 +16,7 @@ protected:
     }
 };
 
-/*// Test case for execute function
+// Test case for execute function
 TEST_F(CLTAutoChecks2Tests, Execute)
 {
     // Arrange
@@ -75,5 +75,5 @@ TEST_F(CLTAutoChecks2Tests, SupportReadOnly)
     // Verify the expected read-only support
     ASSERT_TRUE(readOnly);
 }
-*/
+
 // Add more test cases for other member functions as needed
