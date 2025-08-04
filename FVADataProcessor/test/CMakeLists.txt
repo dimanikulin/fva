@@ -6,8 +6,6 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 # tests source files here
 add_executable(fvadataprocessorlibtests
-
-  test_CLTAutoChecks2.cpp
   test_CLTAutoChecks3.cpp
   test_CLTCheckDateTime.cpp
   test_CLTCheckDeviceName.cpp
