@@ -20,7 +20,8 @@ protected:
 TEST_F(CLTAutoChecks2Tests, Execute)
 {
     // Arrange
-    CLTAutoChecks2 cltAutoChecks2;
+    FvaConfiguration cfg;
+    CLTAutoChecks2 cltAutoChecks2(cfg);
     CLTContext context; // Set up the necessary context for the test
 
     // Act
@@ -46,7 +47,7 @@ TEST_F(CLTAutoChecks2Tests, ExecuteWithCfg)
 
     // Assert
     // Verify the expected behavior and output
-    ASSERT_EQ(FVA_EXIT_CODE_SUCCESS, result);
+    ASSERT_EQ(FVA_NO_ERROR, result);
 }
 
 // Test case for Name function
@@ -66,7 +67,8 @@ TEST_F(CLTAutoChecks2Tests, Name)
 TEST_F(CLTAutoChecks2Tests, SupportReadOnly)
 {
     // Arrange
-    CLTAutoChecks2 task(FvaConfiguration());
+    FvaConfiguration cfg;
+    CLTAutoChecks2 task(cfg);
 
     // Act
     bool readOnly = task.supportReadOnly();
