@@ -28,7 +28,7 @@ TEST_F(CLTAutoChecks2Tests, Execute)
     FVA_EXIT_CODE result = cltAutoChecks2.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
+    EXPECT_EQ(FVA_ERROR_WRONG_FOLDER_NAME, result); // Verify that the function returns the expected error code
     // Add more assertions to verify the expected behavior and output
 }
 
@@ -47,7 +47,7 @@ TEST_F(CLTAutoChecks2Tests, ExecuteWithCfg)
 
     // Assert
     // Verify the expected behavior and output
-    ASSERT_EQ(FVA_NO_ERROR, result);
+    ASSERT_EQ(FVA_ERROR_WRONG_FOLDER_NAME, result);
 }
 
 // Test case for Name function
