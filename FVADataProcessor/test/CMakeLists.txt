@@ -6,7 +6,6 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 # tests source files here
 add_executable(fvadataprocessorlibtests
-  test_CLTAutoChecks3.cpp
   test_CLTCheckDateTime.cpp
   test_CLTCheckDeviceName.cpp
   test_CLTCheckFileFormat.cpp
@@ -33,4 +32,3 @@ target_include_directories(fvadataprocessorlibtests PRIVATE ../../FVACommonLib)
 
 # Add the tests to CTest's test runner
 add_test(NAME fvadataprocessorlibtests COMMAND fvadataprocessorlibtests)
-

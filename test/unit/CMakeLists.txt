@@ -21,6 +21,7 @@ add_executable(libtests
   test_fvariffparser.cpp
   test_CLTAutoChecks1.cpp
   test_CLTAutoChecks2.cpp
+  test_CLTAutoChecks3.cpp
 )
 
 # Link GoogleTest to tests
@@ -28,4 +29,3 @@ target_link_libraries(libtests Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main 
 
 # Add the tests to CTest's test runner
 add_test(NAME libtests COMMAND libtests)
-
