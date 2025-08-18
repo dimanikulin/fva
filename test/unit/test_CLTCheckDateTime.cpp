@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTCheckDateTime.h"
+#include "CLTCheckDateTime.h"
 
 // Test fixture for CLTCheckDateTime tests
 class CLTCheckDateTimeTests : public ::testing::Test
@@ -16,7 +16,7 @@ protected:
     }
 };
 
-/*
+
 // Test case for execute function
 TEST_F(CLTCheckDateTimeTests, Execute)
 {
@@ -32,7 +32,7 @@ TEST_F(CLTCheckDateTimeTests, Execute)
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTCheckDateTimeTests, Name)
 {
@@ -46,7 +46,6 @@ TEST_F(CLTCheckDateTimeTests, Name)
     ASSERT_EQ("CLTCheckDateTime", name.toStdString());
 }
 
-/*
 // Test case for supportReadOnly function
 TEST_F(CLTCheckDateTimeTests, SupportReadOnly)
 {
@@ -112,4 +111,3 @@ TEST_F(CLTCheckDateTimeTests, Execute_EmptyExifDateTime)
     EXPECT_EQ(FVA_ERROR_NO_EXIF_DATE_TIME, result); // Verify that the function returns FVA_ERROR_NO_EXIF_DATE_TIME
     // Add more assertions to verify the expected behavior and output
 }
-*/
