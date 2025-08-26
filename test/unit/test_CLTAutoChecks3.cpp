@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTAutoChecks3.h"
+#include "CLTAutoChecks3.h"
 
 // Test fixture for CLTAutoChecks3 tests
 class CLTAutoChecks3Tests : public ::testing::Test
@@ -15,7 +15,7 @@ protected:
         // Clean up any resources used by the tests
     }
 };
-/*
+
 // Test case for execute function
 TEST_F(CLTAutoChecks3Tests, Execute)
 {
@@ -125,7 +125,7 @@ TEST_F(CLTAutoChecks3Tests, Execute)
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTAutoChecks3Tests, Name)
 {
@@ -138,7 +138,7 @@ TEST_F(CLTAutoChecks3Tests, Name)
     // Verify the expected name
     ASSERT_EQ("CLTAutoChecks3", name.toStdString());
 }
-/*
+
 // Test case for supportReadOnly function
 TEST_F(CLTAutoChecks3Tests, SupportReadOnly)
 {
@@ -151,6 +151,6 @@ TEST_F(CLTAutoChecks3Tests, SupportReadOnly)
     // Assert
     // Verify the expected read-only support
     ASSERT_TRUE(readOnly);
-}*/
+}
 
 // Add more test cases for other member functions as needed
