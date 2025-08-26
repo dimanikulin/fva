@@ -67,7 +67,8 @@ TEST_F(CLTCheckDateTimeTests, SupportReadOnly)
 TEST_F(CLTCheckDateTimeTests, Execute_NoImageFiles)
 {
     // Arrange
-    CLTCheckDateTime cltCheckDateTime;
+    FvaConfiguration cfg;
+    CLTCheckDateTime cltCheckDateTime(cfg);
     CLTContext context; // Set up the necessary context for the test
 
     // Act
@@ -82,7 +83,8 @@ TEST_F(CLTCheckDateTimeTests, Execute_NoImageFiles)
 TEST_F(CLTCheckDateTimeTests, Execute_ValidExifDateTime)
 {
     // Arrange
-    CLTCheckDateTime cltCheckDateTime;
+    FvaConfiguration cfg;
+    CLTCheckDateTime cltCheckDateTime(cfg);
     CLTContext context; // Set up the necessary context for the test
     QString filePath = "path/to/image.jpg";
     // Add the image file to the test directory
@@ -99,7 +101,8 @@ TEST_F(CLTCheckDateTimeTests, Execute_ValidExifDateTime)
 TEST_F(CLTCheckDateTimeTests, Execute_EmptyExifDateTime)
 {
     // Arrange
-    CLTCheckDateTime cltCheckDateTime;
+    FvaConfiguration cfg;
+    CLTCheckDateTime cltCheckDateTime(cfg);
     CLTContext context; // Set up the necessary context for the test
     QString filePath = "path/to/image.jpg";
     // Add the image file to the test directory with empty exif Date-Time
