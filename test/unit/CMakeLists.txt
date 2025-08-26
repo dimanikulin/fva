@@ -23,6 +23,7 @@ add_executable(libtests
   test_CLTAutoChecks2.cpp
   test_CLTAutoChecks3.cpp
   test_CLTCheckDateTime.cpp
+  test_CLTCheckDeviceName.cpp
 )
 
 # Link GoogleTest to tests
