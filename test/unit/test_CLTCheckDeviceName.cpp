@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTCheckDeviceName.h"
+#include "CLTCheckDeviceName.h"
 
 // Test fixture for CLTCheckDeviceName tests
 class CLTCheckDeviceNameTests : public ::testing::Test
@@ -16,12 +16,13 @@ protected:
     }
 };
 
-/*
+
 // Test case for execute function
 TEST_F(CLTCheckDeviceNameTests, Execute)
 {
     // Arrange
-    CLTCheckDeviceName cltCheckDeviceName;
+    FvaConfiguration cfg;
+    CLTCheckDeviceName cltCheckDeviceName(cfg);
     CLTContext context; // Set up the necessary context for the test
 
     // Act
@@ -31,7 +32,7 @@ TEST_F(CLTCheckDeviceNameTests, Execute)
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTCheckDeviceNameTests, Name)
 {
@@ -44,12 +45,13 @@ TEST_F(CLTCheckDeviceNameTests, Name)
     // Verify the expected name
     ASSERT_EQ("CLTCheckDeviceName", name.toStdString());
 }
-/*
+
 // Test case for supportReadOnly function
 TEST_F(CLTCheckDeviceNameTests, SupportReadOnly)
 {
     // Arrange
-    CLTCheckDeviceName task;
+    FvaConfiguration cfg;
+    CLTCheckDeviceName task(cfg);
 
     // Act
     bool readOnly = task.supportReadOnly();
@@ -64,7 +66,8 @@ TEST_F(CLTCheckDeviceNameTests, SupportReadOnly)
 TEST_F(CLTAutoChecks2Tests, Execute_EmptyDirectory)
 {
     // Arrange
-    CLTCheckDeviceName cltCheckDeviceName;
+    FvaConfiguration cfg;
+    CLTCheckDeviceName cltCheckDeviceName(cfg);
     CLTContext context; // Set up the necessary context for the test
 
     // Act
@@ -79,7 +82,8 @@ TEST_F(CLTAutoChecks2Tests, Execute_EmptyDirectory)
 TEST_F(CLTAutoChecks2Tests, Execute_NonImageFiles)
 {
     // Arrange
-    CLTCheckDeviceName cltCheckDeviceName;
+    FvaConfiguration cfg;
+    CLTCheckDeviceName cltCheckDeviceName(cfg);
     CLTContext context; // Set up the necessary context for the test
     // Add non-image files to the directory
 
@@ -95,7 +99,8 @@ TEST_F(CLTAutoChecks2Tests, Execute_NonImageFiles)
 TEST_F(CLTAutoChecks2Tests, Execute_MultipleImagesWithSameDeviceName)
 {
     // Arrange
-    CLTCheckDeviceName cltCheckDeviceName;
+    FvaConfiguration cfg;
+    CLTCheckDeviceName cltCheckDeviceName(cfg);
     CLTContext context; // Set up the necessary context for the test
     // Add multiple image files with the same device name to the directory
 
@@ -111,7 +116,8 @@ TEST_F(CLTAutoChecks2Tests, Execute_MultipleImagesWithSameDeviceName)
 TEST_F(CLTAutoChecks2Tests, Execute_MultipleImagesWithDifferentDeviceNames)
 {
     // Arrange
-    CLTCheckDeviceName cltCheckDeviceName;
+    FvaConfiguration cfg;
+    CLTCheckDeviceName cltCheckDeviceName(cfg);
     CLTContext context; // Set up the necessary context for the test
     // Add multiple image files with different device names to the directory
 
@@ -127,7 +133,8 @@ TEST_F(CLTAutoChecks2Tests, Execute_MultipleImagesWithDifferentDeviceNames)
 TEST_F(CLTAutoChecks2Tests, Execute_ImageWithNoDeviceName)
 {
     // Arrange
-    CLTCheckDeviceName cltCheckDeviceName;
+    FvaConfiguration cfg;
+    CLTCheckDeviceName cltCheckDeviceName(cfg);
     CLTContext context; // Set up the necessary context for the test
     // Add an image file with no device name to the directory
 
@@ -138,4 +145,3 @@ TEST_F(CLTAutoChecks2Tests, Execute_ImageWithNoDeviceName)
     EXPECT_EQ(FVA_ERROR_EMPTY_DEVICE_NAME, result); // Verify that the function returns FVA_ERROR_EMPTY_DEVICE_NAME
     // Add more assertions to verify the expected behavior and output
 }
-*/
