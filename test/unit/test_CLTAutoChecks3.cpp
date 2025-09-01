@@ -20,7 +20,8 @@ protected:
 TEST_F(CLTAutoChecks3Tests, Execute)
 {
     // Arrange
-    CLTAutoChecks3 cltAutoChecks3;
+    FvaConfiguration config;
+    CLTAutoChecks3 cltAutoChecks3(config);
     CLTContext context; // Set up the necessary context for the test
 
     // Act
@@ -35,7 +36,8 @@ TEST_F(CLTAutoChecks3Tests, Execute)
 TEST_F(CLTAutoChecks3Tests, Execute_MissingDeviceID)
 {
     // Arrange
-    CLTAutoChecks3 cltAutoChecks3;
+    FvaConfiguration config;
+    CLTAutoChecks3 cltAutoChecks3(config);
     CLTContext context; // Set up the necessary context for the test
     // Add a file to the directory that does not have a corresponding device ID in the CSV file
 
@@ -51,7 +53,8 @@ TEST_F(CLTAutoChecks3Tests, Execute_MissingDeviceID)
 TEST_F(CLTAutoChecks3Tests, Execute_UnknownDevice)
 {
     // Arrange
-    CLTAutoChecks3 cltAutoChecks3;
+    FvaConfiguration config;
+    CLTAutoChecks3 cltAutoChecks3(config);
     CLTContext context; // Set up the necessary context for the test
     // Add a file to the directory with an unknown device name
 
@@ -67,7 +70,8 @@ TEST_F(CLTAutoChecks3Tests, Execute_UnknownDevice)
 TEST_F(CLTAutoChecks3Tests, Execute_EmptyDeviceName)
 {
     // Arrange
-    CLTAutoChecks3 cltAutoChecks3;
+    FvaConfiguration config;
+    CLTAutoChecks3 cltAutoChecks3(config);
     CLTContext context; // Set up the necessary context for the test
     // Add a file to the directory with an empty device name
 
@@ -83,7 +87,8 @@ TEST_F(CLTAutoChecks3Tests, Execute_EmptyDeviceName)
 TEST_F(CLTAutoChecks3Tests, Execute_WronglyLinkedDeviceID)
 {
     // Arrange
-    CLTAutoChecks3 cltAutoChecks3;
+    FvaConfiguration config;
+    CLTAutoChecks3 cltAutoChecks3(config);
     CLTContext context; // Set up the necessary context for the test
     // Add a file to the directory with a device ID that is linked wrongly
 
@@ -99,7 +104,8 @@ TEST_F(CLTAutoChecks3Tests, Execute_WronglyLinkedDeviceID)
 TEST_F(CLTAutoChecks3Tests, Execute_MissingGeoLocation)
 {
     // Arrange
-    CLTAutoChecks3 cltAutoChecks3;
+    FvaConfiguration config;
+    CLTAutoChecks3 cltAutoChecks3(config);
     CLTContext context; // Set up the necessary context for the test
     // Add a file to the directory without GEO location data
 
@@ -115,7 +121,8 @@ TEST_F(CLTAutoChecks3Tests, Execute_MissingGeoLocation)
 TEST_F(CLTAutoChecks3Tests, Execute)
 {
     // Arrange
-    CLTAutoChecks3 cltAutoChecks3(FvaConfiguration());
+    FvaConfiguration config;
+    CLTAutoChecks3 cltAutoChecks3(config);
     CLTContext context; // Set up the necessary context for the test
 
     // Act
@@ -143,7 +150,8 @@ TEST_F(CLTAutoChecks3Tests, Name)
 TEST_F(CLTAutoChecks3Tests, SupportReadOnly)
 {
     // Arrange
-    CLTAutoChecks3 task(FvaConfiguration());
+    FvaConfiguration config;
+    CLTAutoChecks3 task(config);
 
     // Act
     bool readOnly = task.supportReadOnly();
