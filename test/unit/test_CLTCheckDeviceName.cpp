@@ -22,7 +22,7 @@ TEST_F(CLTCheckDeviceNameTests, Execute)
 {
     // Arrange
     CLTContext context; // Set up the necessary context for the test
-    CLTCheckDeviceName cltCheckDeviceName(context);
+    CLTCheckDeviceName cltCheckDeviceName();
 
     // Act
     FVA_EXIT_CODE result = cltCheckDeviceName.execute(context);
@@ -49,8 +49,7 @@ TEST_F(CLTCheckDeviceNameTests, Name)
 TEST_F(CLTCheckDeviceNameTests, SupportReadOnly)
 {
     // Arrange
-    CLTContext context; // Set up the necessary context for the test
-    CLTCheckDeviceName task(context);
+    CLTCheckDeviceName task();
 
     // Act
     bool readOnly = task.supportReadOnly();
@@ -66,7 +65,7 @@ TEST_F(CLTAutoChecks2Tests, Execute_EmptyDirectory)
 {
     // Arrange
     CLTContext context; // Set up the necessary context for the test
-    CLTCheckDeviceName cltCheckDeviceName(context);
+    CLTCheckDeviceName cltCheckDeviceName();
 
     // Act
     FVA_EXIT_CODE result = cltCheckDeviceName.execute(context);
@@ -81,7 +80,7 @@ TEST_F(CLTAutoChecks2Tests, Execute_NonImageFiles)
 {
     // Arrange
     CLTContext context; // Set up the necessary context for the test
-    CLTCheckDeviceName cltCheckDeviceName(context);
+    CLTCheckDeviceName cltCheckDeviceName();
     // Add non-image files to the directory
 
     // Act
@@ -97,7 +96,7 @@ TEST_F(CLTAutoChecks2Tests, Execute_MultipleImagesWithSameDeviceName)
 {
     // Arrange
     CLTContext context; // Set up the necessary context for the test
-    CLTCheckDeviceName cltCheckDeviceName(context);
+    CLTCheckDeviceName cltCheckDeviceName();
     // Add multiple image files with the same device name to the directory
 
     // Act
@@ -114,7 +113,7 @@ TEST_F(CLTAutoChecks2Tests, Execute_MultipleImagesWithDifferentDeviceNames)
     // Arrange
     CLTContext context; // Set up the necessary context for the test
 
-    CLTCheckDeviceName cltCheckDeviceName(context);
+    CLTCheckDeviceName cltCheckDeviceName();
     // Add multiple image files with different device names to the directory
 
     // Act
@@ -130,7 +129,7 @@ TEST_F(CLTAutoChecks2Tests, Execute_ImageWithNoDeviceName)
 {
     // Arrange
     CLTContext context; // Set up the necessary context for the test
-    CLTCheckDeviceName cltCheckDeviceName(context);
+    CLTCheckDeviceName cltCheckDeviceName();
     // Add an image file with no device name to the directory
 
     // Act
