@@ -61,7 +61,7 @@ TEST_F(CLTCheckDeviceNameTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 // Test case for execute function when directory is empty
-TEST_F(CLTAutoChecks2Tests, Execute_EmptyDirectory)
+TEST_F(CLTCheckDeviceNameTests, Execute_EmptyDirectory)
 {
     // Arrange
     CLTContext context; // Set up the necessary context for the test
@@ -76,7 +76,7 @@ TEST_F(CLTAutoChecks2Tests, Execute_EmptyDirectory)
 }
 
 // Test case for execute function when directory contains only non-image files
-TEST_F(CLTAutoChecks2Tests, Execute_NonImageFiles)
+TEST_F(CLTCheckDeviceNameTests, Execute_NonImageFiles)
 {
     // Arrange
     CLTContext context; // Set up the necessary context for the test
@@ -92,7 +92,7 @@ TEST_F(CLTAutoChecks2Tests, Execute_NonImageFiles)
 }
 
 // Test case for execute function when directory contains multiple image files with the same device name
-TEST_F(CLTAutoChecks2Tests, Execute_MultipleImagesWithSameDeviceName)
+TEST_F(CLTCheckDeviceNameTests, Execute_MultipleImagesWithSameDeviceName)
 {
     // Arrange
     CLTContext context; // Set up the necessary context for the test
@@ -108,7 +108,7 @@ TEST_F(CLTAutoChecks2Tests, Execute_MultipleImagesWithSameDeviceName)
 }
 
 // Test case for execute function when directory contains multiple image files with different device names
-TEST_F(CLTAutoChecks2Tests, Execute_MultipleImagesWithDifferentDeviceNames)
+TEST_F(CLTCheckDeviceNameTests, Execute_MultipleImagesWithDifferentDeviceNames)
 {
     // Arrange
     CLTContext context; // Set up the necessary context for the test
@@ -125,7 +125,7 @@ TEST_F(CLTAutoChecks2Tests, Execute_MultipleImagesWithDifferentDeviceNames)
 }
 
 // Test case for execute function when directory contains an image file with no device name
-TEST_F(CLTAutoChecks2Tests, Execute_ImageWithNoDeviceName)
+TEST_F(CLTCheckDeviceNameTests, Execute_ImageWithNoDeviceName)
 {
     // Arrange
     CLTContext context; // Set up the necessary context for the test
