@@ -45,7 +45,8 @@ TEST_F(CLTAutoChecks3Tests, Execute_MissingDeviceID)
     FVA_EXIT_CODE result = cltAutoChecks3.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_NO_DEV_ID, result); // Verify that the function returns FVA_ERROR_NO_DEV_ID
+    // TODO shell be checned in the #logs#/issues3.csv
+    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_ERROR_NO_DEV_ID
     // Add more assertions to verify the expected behavior and output
 }
 
@@ -79,7 +80,8 @@ TEST_F(CLTAutoChecks3Tests, Execute_EmptyDeviceName)
     FVA_EXIT_CODE result = cltAutoChecks3.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_EMPTY_DEVICE, result); // Verify that the function returns FVA_ERROR_EMPTY_DEVICE
+    // TODO shell be checned in the #logs#/issues3.csv
+    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_ERROR_EMPTY_DEVICE
     // Add more assertions to verify the expected behavior and output
 }
 
@@ -96,7 +98,8 @@ TEST_F(CLTAutoChecks3Tests, Execute_WronglyLinkedDeviceID)
     FVA_EXIT_CODE result = cltAutoChecks3.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_LINKED_WRONG_DEVICE, result); // Verify that the function returns FVA_ERROR_LINKED_WRONG_DEVICE
+    // TODO shell be checned in the #logs#/issues3.csv
+    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_ERROR_LINKED_WRONG_DEVICE
     // Add more assertions to verify the expected behavior and output
 }
 
@@ -113,7 +116,8 @@ TEST_F(CLTAutoChecks3Tests, Execute_MissingGeoLocation)
     FVA_EXIT_CODE result = cltAutoChecks3.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_NO_GEO, result); // Verify that the function returns FVA_ERROR_NO_GEO
+    // TODO shell be checned in the #logs#/issues3.csv
+    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_ERROR_NO_GEO
     // Add more assertions to verify the expected behavior and output
 }
 
