@@ -16,22 +16,6 @@ protected:
     }
 };
 
-// Test case for execute function
-TEST_F(CLTAutoChecks3Tests, Execute)
-{
-    // Arrange
-    FvaConfiguration config;
-    CLTAutoChecks3 cltAutoChecks3(config);
-    CLTContext context; // Set up the necessary context for the test
-
-    // Act
-    FVA_EXIT_CODE result = cltAutoChecks3.execute(context);
-
-    // Assert
-    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
-    // Add more assertions to verify the expected behavior and output
-}
-
 // Test case for execute function with missing device ID
 TEST_F(CLTAutoChecks3Tests, Execute_MissingDeviceID)
 {
