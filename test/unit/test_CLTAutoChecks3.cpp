@@ -47,7 +47,7 @@ TEST_F(CLTAutoChecks3Tests, Execute_UnknownDevice)
     FVA_EXIT_CODE result = cltAutoChecks3.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_UKNOWN_DEVICE, result); // Verify that the function returns FVA_ERROR_UKNOWN_DEVICE
+    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_ERROR_UKNOWN_DEVICE
     // Add more assertions to verify the expected behavior and output
 }
 

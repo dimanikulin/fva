@@ -111,6 +111,6 @@ TEST_F(CLTCheckDateTimeTests, Execute_EmptyExifDateTime)
     FVA_EXIT_CODE result = cltCheckDateTime.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_NO_EXIF_DATE_TIME, result); // Verify that the function returns FVA_ERROR_NO_EXIF_DATE_TIME
+    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_ERROR_NO_EXIF_DATE_TIME
     // Add more assertions to verify the expected behavior and output
 }

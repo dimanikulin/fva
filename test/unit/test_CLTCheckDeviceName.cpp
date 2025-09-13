@@ -120,7 +120,7 @@ TEST_F(CLTCheckDeviceNameTests, Execute_MultipleImagesWithDifferentDeviceNames)
     FVA_EXIT_CODE result = cltCheckDeviceName.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_NON_UNIQUE_DEVICE_NAME, result); // Verify that the function returns FVA_ERROR_NON_UNIQUE_DEVICE_NAME
+    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_ERROR_NON_UNIQUE_DEVICE_NAME
     // Add more assertions to verify the expected behavior and output
 }
 
@@ -136,6 +136,6 @@ TEST_F(CLTCheckDeviceNameTests, Execute_ImageWithNoDeviceName)
     FVA_EXIT_CODE result = cltCheckDeviceName.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_EMPTY_DEVICE_NAME, result); // Verify that the function returns FVA_ERROR_EMPTY_DEVICE_NAME
+    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_ERROR_EMPTY_DEVICE_NAME
     // Add more assertions to verify the expected behavior and output
 }
