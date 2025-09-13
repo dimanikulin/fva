@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTCheckFileFormat.h"
+#include "CLTCheckFileFormat.h"
 
 // Test fixture for CLTCheckFileFormat tests
 class CLTCheckFileFormatTests : public ::testing::Test
@@ -16,7 +16,6 @@ protected:
     }
 };
 
-/*
 // Test case for execute function
 TEST_F(CLTCheckFileFormatTests, Execute)
 {
@@ -48,7 +47,6 @@ TEST_F(CLTCheckFileFormatTests, Name)
     // ASSERT_EQ("CLTCheckFileFormat", name.toStdString());
 }
 
-/*
 // Test case for supportReadOnly function
 TEST_F(CLTCheckFileFormatTests, SupportReadOnly)
 {
@@ -94,5 +92,5 @@ TEST_F(CLTCheckFileFormatTests, ExecuteWithIncorrectFileFormats)
     EXPECT_EQ(FVA_ERROR_INCORRECT_FILE_FORMAT, result); // Verify that the function returns FVA_ERROR_INCORRECT_FILE_FORMAT
     // Add more assertions to verify the expected behavior and output
 }
-*/
+
 // Add more test cases for other scenarios as needed
