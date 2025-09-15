@@ -31,7 +31,6 @@ TEST_F(CLTCheckFileFormatTests, Execute)
     // For example:
     // ASSERT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
 }
-*/
 
 // Test case for Name function
 TEST_F(CLTCheckFileFormatTests, Name)
