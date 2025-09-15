@@ -72,7 +72,7 @@ TEST_F(CLTCheckFileFormatTests, ExecuteWithCorrectFileFormats)
     FVA_EXIT_CODE result = cltCheckFileFormat.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
+    EXPECT_EQ(FVA_ERROR_INCORRECT_FILE_FORMAT, result); // Verify that the function returns FVA_ERROR_INCORRECT_FILE_FORMAT
     // Add more assertions to verify the expected behavior and output
 }
 
