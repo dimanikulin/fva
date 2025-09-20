@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTCheckLocation.h"
+#include "CLTCheckLocation.h"
 
 // Test fixture for CLTCheckLocation tests
 class CLTCheckLocationTests : public ::testing::Test
