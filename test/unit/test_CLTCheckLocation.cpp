@@ -16,6 +16,31 @@ protected:
     }
 };
 
+void createImageFileWithExifLocation(const std::string& fileName)
+{
+    // Implement the logic to create an image file with exif location
+    // This is a placeholder implementation
+    std::ofstream file(fileName);
+    if (file.is_open())
+    {
+        file << "This is a test image file with exif location.";
+        file.close();
+    }
+    // TODO: Add exif location metadata to the file
+}
+
+void createImageFileWithoutExifLocation(const std::string& fileName)
+{
+    // Implement the logic to create an image file without exif location
+    // This is a placeholder implementation
+    std::ofstream file(fileName);
+    if (file.is_open())
+    {
+        file << "This is a test image file without exif location.";
+        file.close();
+    }
+}
+
 // Test case for execute function
 TEST_F(CLTCheckLocationTests, Execute)
 {
