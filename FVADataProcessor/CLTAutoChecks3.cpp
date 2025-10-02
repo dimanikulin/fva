@@ -56,11 +56,11 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context)
 		if (0 == devMap.size())
 		{
 			LOG_WARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
-			m_Issues.push_back("FVA_ERROR_UKNOWN_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
+			m_Issues.push_back("FVA_ERROR_UNKNOWN_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) + "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
 			if (context.readOnly)
 				continue;
 			else
-				return FVA_ERROR_UKNOWN_DEVICE;
+				return FVA_ERROR_UNKNOWN_DEVICE;
 		}
 		if (deviceName.isEmpty())
 		{
