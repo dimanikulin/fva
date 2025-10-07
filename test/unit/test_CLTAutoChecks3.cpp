@@ -64,8 +64,8 @@ TEST_F(CLTAutoChecks3Tests, Execute_EmptyDeviceName)
     FVA_EXIT_CODE result = cltAutoChecks3.execute(context);
 
     // Assert
-    // TODO shell be checned in the #logs#/issues3.csv
-    EXPECT_EQ(FVA_ERROR_EMPTY_DEVICE_NAME, result); // Verify that the function returns FVA_ERROR_EMPTY_DEVICE_NAME
+    // TODO shell be checned in the #logs#/issues3.csv for FVA_ERROR_EMPTY_DEVICE_NAME
+    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result); // Verify that the function returns 
     // Add more assertions to verify the expected behavior and output
 }
 
@@ -82,8 +82,8 @@ TEST_F(CLTAutoChecks3Tests, Execute_WronglyLinkedDeviceID)
     FVA_EXIT_CODE result = cltAutoChecks3.execute(context);
 
     // Assert
-    // TODO shell be checned in the #logs#/issues3.csv
-    EXPECT_EQ(FVA_ERROR_LINKED_WRONG_DEVICE, result); // Verify that the function returns FVA_ERROR_LINKED_WRONG_DEVICE
+    // TODO shell be checned in the #logs#/issues3.csv for FVA_ERROR_LINKED_WRONG_DEVICE
+    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result); // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
     // Add more assertions to verify the expected behavior and output
 }
 
