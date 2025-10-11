@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTCreateDirStructByDevNames.h"
+#include "CLTCreateDirStructByDevNames.h"
 
 // Test fixture for CLTCreateDirStructByDeviceName tests
 class CLTCreateDirStructByDeviceNameTests : public ::testing::Test
@@ -16,7 +16,7 @@ protected:
     }
 };
 
-/*
+
 // Test case for execute function
 TEST_F(CLTCreateDirStructByDeviceNameTests, Execute)
 {
@@ -31,7 +31,7 @@ TEST_F(CLTCreateDirStructByDeviceNameTests, Execute)
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTCreateDirStructByDeviceNameTests, Name)
 {
@@ -45,7 +45,6 @@ TEST_F(CLTCreateDirStructByDeviceNameTests, Name)
     ASSERT_EQ("CLTCreateDirStructByDeviceName", name.toStdString());
 }
 
-/*
 // Test case for supportReadOnly function
 TEST_F(CLTCreateDirStructByDeviceNameTests, SupportReadOnly)
 {
@@ -132,4 +131,4 @@ TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_WithPictureFilesAndDeviceNam
     ASSERT_TRUE(QDir("test_folder").exists("device2")); // Verify that the "device2" sub-folder is created
     ASSERT_TRUE(QDir("test_folder/device2").exists("picture2.jpg")); // Verify that the second picture file is moved to the "device2" sub-folder
 }
-*/
+    
