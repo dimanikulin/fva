@@ -6,7 +6,6 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 # tests source files here
 add_executable(fvadataprocessorlibtests
-  test_CLTCreateDirStructByDevNames.cpp
   test_CLTCreateDirStructByFileNames.cpp
   test_CLTCSVFvaFiles.cpp
   test_CLTCSVGetTagsForFvaFiles.cpp
