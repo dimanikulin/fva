@@ -68,7 +68,6 @@ TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_NoPictureFiles)
     CLTContext context;
     QDir dir;
     dir.mkdir("test_folder");
-    task.setFolder("test_folder");
 
     // Act
     FVA_EXIT_CODE result = task.execute(context);
@@ -86,7 +85,6 @@ TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_WithPictureFiles)
     CLTContext context;
     QDir dir;
     dir.mkdir("test_folder");
-    task.setFolder("test_folder");
 
     // Create a picture file
     QFile file("test_folder/picture.jpg");
@@ -110,7 +108,6 @@ TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_WithPictureFilesAndDeviceNam
     CLTContext context;
     QDir dir;
     dir.mkdir("test_folder");
-    task.setFolder("test_folder");
 
     // Create picture files with different device names
     QFile file1("test_folder/picture1.jpg");
