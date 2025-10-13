@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTCreateDirStructByFileNames.h"
+#include "CLTCreateDirStructByFileNames.h"
 
 // Test fixture for CLTCreateDirStructByFileNames tests
 class CLTCreateDirStructByFileNamesTests : public ::testing::Test
@@ -15,7 +15,7 @@ protected:
         // Clean up any resources used by the tests
     }
 };
-/*
+
 // Test case for execute function
 TEST_F(CLTCreateDirStructByFileNamesTests, Execute)
 {
@@ -30,7 +30,7 @@ TEST_F(CLTCreateDirStructByFileNamesTests, Execute)
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTCreateDirStructByFileNamesTests, Name)
 {
@@ -43,7 +43,7 @@ TEST_F(CLTCreateDirStructByFileNamesTests, Name)
     // Verify the expected name
     ASSERT_EQ("CLTCreateDirStructByFileNames", name.toStdString());
 }
-/*
+
 // Test case for supportReadOnly function
 TEST_F(CLTCreateDirStructByFileNamesTests, SupportReadOnly)
 {
@@ -93,5 +93,5 @@ TEST(CLTCreateDirStructByFileNamesTests, Execute)
     tempDir.remove(testFilePath);
     tempDir.rmdir(testFolder);
 }
-*/
+
 // Add more test cases for other scenarios as needed
