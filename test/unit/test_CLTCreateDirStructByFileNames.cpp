@@ -63,10 +63,6 @@ TEST(CLTCreateDirStructByFileNamesTests, Execute)
     testFile.open(QIODevice::WriteOnly);
     testFile.close();
 
-    // Set the folder and directory for the test
-    cltCreateDirStruct.setFolder(testFolder);
-    cltCreateDirStruct.setDir(tempDir);
-
     // Act
     FVA_EXIT_CODE result = cltCreateDirStruct.execute(context);
 
