@@ -123,6 +123,12 @@ jobs:
         key: ${{ matrix.config.name }}-ccache-${{ steps.ccache_cache_timestamp.outputs.timestamp }}
         restore-keys: |
           ${{ matrix.config.name }}-ccache-
+            
+    - name: Setup MinGW
+      if: matrix.config.os == 'windows-latest'
+      uses: egor-tensin/setup-mingw@v2
+      with:
+        version: 8.1.0
 
     - name: Download and install QT
       if: matrix.config.os == 'windows-latest'
