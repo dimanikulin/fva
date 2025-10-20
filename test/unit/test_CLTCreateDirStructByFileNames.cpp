@@ -45,7 +45,7 @@ TEST_F(CLTCreateDirStructByFileNamesTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 // Test case for execute function
-TEST(CLTCreateDirStructByFileNamesTests, Execute)
+TEST_F(CLTCreateDirStructByFileNamesTests, Execute)
 {
     // Arrange
     CLTCreateDirStructByFileNames cltCreateDirStruct;
