@@ -274,7 +274,9 @@ jobs:
          echo "=========================================================================================="
     
     - name: Install binaries to instdir and stripping them to make binaries smaller by CMake
-      run: cmake --install build --prefix instdir --strip
+      run:
+        cmake -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
+        cmake --install build --prefix instdir --strip
 
     - name: Pack the binaries by 7zip
       working-directory: instdir

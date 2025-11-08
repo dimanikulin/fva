@@ -1,5 +1,7 @@
 cmake_minimum_required (VERSION 3.0)
 
+option(BUILD_TESTING "Build tests" ON)
+
 if (WIN32)
     set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ ${CMAKE_CXX_STANDARD_LIBRARIES}")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive")
@@ -13,12 +15,6 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 project(fva)
 
-# Enable testing for the project
-enable_testing()
-
-# Add GoogleTest as a subdirectory. 
-add_subdirectory(googletest)
-
 add_subdirectory(FVACommonLib)
 add_subdirectory(FVAConfigurator)
 add_subdirectory(FVADataProcessor)
@@ -29,7 +25,17 @@ add_subdirectory(FVAOrganizer)
 add_subdirectory(FVAOrganizerWizard)
 add_subdirectory(FVAPlayer)
 add_subdirectory(FVAViewer)
-add_subdirectory(test)
+
+# Enable testing for the project
+if(BUILD_TESTING)
+
+  # Add GoogleTest as a subdirectory.
+  add_subdirectory(googletest)
+
+enable_testing()
+  add_subdirectory(test)
+endif()
+
 
 # Code coverage
 if(ENABLE_COVERAGE)
