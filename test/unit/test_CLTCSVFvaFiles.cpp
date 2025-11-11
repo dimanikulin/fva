@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTCSVFvaFiles.h"
+#include "CLTCSVFvaFiles.h"
 
 // Test fixture for CLTCSVFvaFile tests
 class CLTCSVFvaFileTests : public ::testing::Test
@@ -15,7 +15,7 @@ protected:
         // Clean up any resources used by the tests
     }
 };
-/*
+
 // Test case for execute function
 TEST_F(CLTCSVFvaFileTests, Execute)
 {
@@ -31,7 +31,7 @@ TEST_F(CLTCSVFvaFileTests, Execute)
     // Verify the expected behavior and output
     ASSERT_EQ(FVA_EXIT_CODE_SUCCESS, result);
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTCSVFvaFileTests, Name)
 {
@@ -45,7 +45,6 @@ TEST_F(CLTCSVFvaFileTests, Name)
     ASSERT_EQ("CLTCSVFvaFile", name.toStdString());
 }
 
-/*
 // Test case for supportReadOnly function
 TEST_F(CLTCSVFvaFileTests, SupportReadOnly)
 {
@@ -91,5 +90,5 @@ TEST_F(CLTCSVFvaFileTests, Execute)
     ASSERT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
-*/
+
 // Add more test cases for other member functions as needed
