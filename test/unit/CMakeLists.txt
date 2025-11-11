@@ -28,6 +28,7 @@ add_executable(libtests
   test_CLTCheckLocation.cpp
   test_CLTCreateDirStructByDevNames.cpp
   test_CLTCreateDirStructByFileNames.cpp
+  test_CLTCSVFvaFiles.cpp
 )
 
 # Link GoogleTest to tests
