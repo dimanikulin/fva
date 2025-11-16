@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTCSVGetTagsForFvaFiles.h"
+#include "CLTCSVGetTagsForFvaFiles.h"
 
 // Test fixture for CLTCSVGetTagsForFvaFiles tests
 class CLTCSVGetTagsForFvaFilesTests : public ::testing::Test
@@ -16,7 +16,6 @@ protected:
     }
 };
 
-/*
 // Test case for execute function
 TEST_F(CLTCSVGetTagsForFvaFilesTests, Execute)
 {
@@ -32,7 +31,7 @@ TEST_F(CLTCSVGetTagsForFvaFilesTests, Execute)
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTCSVGetTagsForFvaFilesTests, Name)
 {
@@ -46,7 +45,6 @@ TEST_F(CLTCSVGetTagsForFvaFilesTests, Name)
     ASSERT_EQ("CLTCSVGetTagsForFvaFiles", name.toStdString());
 }
 
-/*
 // Test case for supportReadOnly function
 TEST_F(CLTCSVGetTagsForFvaFilesTests, SupportReadOnly)
 {
@@ -83,4 +81,3 @@ TEST_F(CLTCSVGetTagsForFvaFilesTests, Constructor)
     // ASSERT_EQ(expectedValue, cltCSVGetTagsForFvaFiles.getSearchByEvent());
     // ...
 }
-*/
