@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTFixDuplicatedFileNames.h"
+#include "CLTFixDuplicatedFileNames.h"
 
 // Test fixture for CLTFixDuplicatedFileNames tests
 class CLTFixDuplicatedFileNamesTests : public ::testing::Test
@@ -16,7 +16,6 @@ protected:
     }
 };
 
-/*
 // Test case for execute function
 TEST_F(CLTFixDuplicatedFileNamesTests, Execute)
 {
@@ -32,7 +31,7 @@ TEST_F(CLTFixDuplicatedFileNamesTests, Execute)
     EXPECT_EQ(FVA_EXIT_CODE_SUCCESS, result); // Verify the expected result
     // Add more assertions to verify the expected behavior and output
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTFixDuplicatedFileNamesTests, Name)
 {
@@ -45,7 +44,7 @@ TEST_F(CLTFixDuplicatedFileNamesTests, Name)
     // Verify the expected name
     ASSERT_EQ("CLTFixDuplicatedFileNames", name.toStdString());
 }
-/*
+
 // Test case for supportReadOnly function
 TEST_F(CLTFixDuplicatedFileNamesTests, SupportReadOnly)
 {
@@ -162,4 +161,3 @@ TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithFailedFileRename)
     QFile::remove(sourceFilePath);
     QFile::remove(newFilePath);
 }
-*/
