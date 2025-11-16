@@ -29,7 +29,7 @@ TEST_F(CLTCSVFvaFileTests, Execute)
 
     // Assert
     // Verify the expected behavior and output
-    ASSERT_EQ(FVA_EXIT_CODE_SUCCESS, result);
+    ASSERT_EQ(FVA_NO_ERROR, result);
 }
 
 // Test case for Name function
@@ -72,23 +72,6 @@ TEST_F(CLTCSVFvaFileTests, Constructor)
     // Assert
     // Verify the expected behavior and output
     // Add assertions to verify that the member variables are correctly initialized
-}
-
-// Test case for execute function
-TEST_F(CLTCSVFvaFileTests, Execute)
-{
-    // Arrange
-    FvaConfiguration cfg;
-    CLTCSVFvaFile cltCSVFvaFile(cfg);
-    CLTContext context; // Set up the necessary context for the test
-
-    // Act
-    FVA_EXIT_CODE result = cltCSVFvaFile.execute(context);
-
-    // Assert
-    // Verify the expected behavior and output
-    ASSERT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
-    // Add more assertions to verify the expected behavior and output
 }
 
 // Add more test cases for other member functions as needed
