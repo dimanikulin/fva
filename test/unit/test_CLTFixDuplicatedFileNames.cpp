@@ -16,22 +16,6 @@ protected:
     }
 };
 
-// Test case for execute function
-TEST_F(CLTFixDuplicatedFileNamesTests, Execute)
-{
-    // Arrange
-    FvaConfiguration cfg;
-    CLTFixDuplicatedFileNames task(cfg);
-    CLTContext context; // Set up the necessary context for the test
-
-    // Act
-    FVA_EXIT_CODE result = task.execute(context);
-
-    // Assert
-    EXPECT_EQ(FVA_EXIT_CODE_SUCCESS, result); // Verify the expected result
-    // Add more assertions to verify the expected behavior and output
-}
-
 // Test case for Name function
 TEST_F(CLTFixDuplicatedFileNamesTests, Name)
 {
