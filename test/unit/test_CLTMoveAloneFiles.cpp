@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTMoveAloneFiles.h"
+#include "CLTMoveAloneFiles.h"
 
 // Test fixture for CLTMoveAloneFiles tests
 class CLTMoveAloneFilesTests : public ::testing::Test
@@ -16,7 +16,6 @@ protected:
     }
 };
 
-/*
 // Test case for execute function
 TEST_F(CLTMoveAloneFilesTests, Execute)
 {
@@ -32,7 +31,7 @@ TEST_F(CLTMoveAloneFilesTests, Execute)
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTMoveAloneFilesTests, Name)
 {
@@ -46,7 +45,6 @@ TEST_F(CLTMoveAloneFilesTests, Name)
     ASSERT_EQ("CLTMoveAloneFiles", name.toStdString());
 }
 
-/*
 // Test case for supportReadOnly function
 TEST_F(CLTMoveAloneFilesTests, SupportReadOnly)
 {
@@ -84,4 +82,3 @@ TEST_F(CLTAutoChecks2Tests, CountSupportedFiles)
     // Verify that the count is correct
     ASSERT_EQ(2, count); // Assuming fvaConvertFileExt2FileType("TXT") and fvaConvertFileExt2FileType("CPP") return a valid file type
 }
-*/
