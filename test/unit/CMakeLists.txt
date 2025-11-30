@@ -32,6 +32,7 @@ add_executable(libtests
   test_CLTCSVGetTagsForFvaFiles.cpp
   test_CLTFixDuplicatedFileNames.cpp
   test_CLTMoveAloneFiles.cpp
+  test_CLTMoveInputDir2Output.cpp
 )
 
 # Link GoogleTest to tests
