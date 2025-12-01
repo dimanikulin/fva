@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTMoveInputDir2Output.h"
+#include "CLTMoveInputDir2Output.h"
 
 // Test fixture for CLTMoveInputDir2Output tests
 class CLTMoveInputDir2OutputTests : public ::testing::Test
@@ -16,7 +16,7 @@ protected:
     }
 };
 
-/*// Test case for execute function
+// Test case for execute function
 TEST_F(CLTMoveInputDir2OutputTests, Execute)
 {
     // Arrange
@@ -30,7 +30,7 @@ TEST_F(CLTMoveInputDir2OutputTests, Execute)
     // Assert
     // Verify the expected behavior and output
     ASSERT_EQ(FVA_EXIT_CODE_SUCCESS, result);
-} */
+}
 
 // Test case for Name function
 TEST_F(CLTMoveInputDir2OutputTests, Name)
@@ -45,7 +45,7 @@ TEST_F(CLTMoveInputDir2OutputTests, Name)
     ASSERT_EQ("CLTMoveInputDir2Output", name.toStdString());
 }
 
-/*// Test case for supportReadOnly function
+// Test case for supportReadOnly function
 TEST_F(CLTMoveInputDir2OutputTests, SupportReadOnly)
 {
     // Arrange
@@ -94,5 +94,5 @@ TEST_F(CLTMoveInputDir2OutputTests, Execute)
     ASSERT_EQ(FVA_NO_ERROR, result);
     // Add more assertions to verify the expected behavior and output
 }
-*/
+
 // Add more test cases for other member functions as needed
