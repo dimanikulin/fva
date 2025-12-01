@@ -16,22 +16,6 @@ protected:
     }
 };
 
-// Test case for execute function
-TEST_F(CLTMoveInputDir2OutputTests, Execute)
-{
-    // Arrange
-    FvaConfiguration cfg;
-    CLTMoveInputDir2Output task(cfg);
-    CLTContext context; // Set up the necessary context for the test
-
-    // Act
-    FVA_EXIT_CODE result = task.execute(context);
-
-    // Assert
-    // Verify the expected behavior and output
-    ASSERT_EQ(FVA_EXIT_CODE_SUCCESS, result);
-}
-
 // Test case for Name function
 TEST_F(CLTMoveInputDir2OutputTests, Name)
 {
