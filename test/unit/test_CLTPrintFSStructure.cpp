@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTPrintFSStructure.h"
+#include "CLTPrintFSStructure.h"
 
 // Test fixture for CLTPrintFSStructure tests
 class CLTPrintFSStructureTests : public ::testing::Test
@@ -17,7 +17,7 @@ protected:
 };
 
 // Test case for execute function
-/*TEST_F(CLTPrintFSStructureTests, Execute)
+TEST_F(CLTPrintFSStructureTests, Execute)
 {
     // Arrange
     FvaConfiguration cfg;
@@ -31,7 +31,6 @@ protected:
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
- */
 // Test case for Name function
 TEST_F(CLTPrintFSStructureTests, Name)
 {
@@ -44,7 +43,7 @@ TEST_F(CLTPrintFSStructureTests, Name)
     // Verify the expected name
     ASSERT_EQ("CLTPrintFSStructure", name.toStdString());
 }
-/*
+
 // Test case for supportReadOnly function
 TEST_F(CLTPrintFSStructureTests, SupportReadOnly)
 {
@@ -95,4 +94,3 @@ TEST_F(CLTPrintFSStructureTests, Constructor_InvalidConfig)
 }
 
 // Add more test cases for other member functions as needed
-*/

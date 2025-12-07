@@ -6,7 +6,6 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 # tests source files here
 add_executable(fvadataprocessorlibtests
-  test_CLTPrintFSStructure.cpp
   test_CLTRenameFiles.cpp
   test_CLTRenameVideoBySequence.cpp
   test_CLTSetFileAtts.cpp
