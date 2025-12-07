@@ -7,6 +7,8 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 # tests source files here
 add_executable(uitests
   test_fvaconfigurator.cpp
+  test_fvadescriptioneditor.cpp
+  test_fvapeoplelistdlg.cpp
 )
 
 # Link GoogleTest and QT to tests
@@ -14,4 +16,3 @@ target_link_libraries(uitests Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main f
 
 # Add the tests to CTest's test runner
 add_test(NAME uitests COMMAND uitests)
-
