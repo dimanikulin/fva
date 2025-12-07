@@ -34,6 +34,7 @@ add_executable(libtests
   test_CLTMoveAloneFiles.cpp
   test_CLTMoveInputDir2Output.cpp
   test_CLTPrintFSStructure.cpp
+  test_CLTRenameFiles.cpp
 )
 
 # Link GoogleTest to tests
