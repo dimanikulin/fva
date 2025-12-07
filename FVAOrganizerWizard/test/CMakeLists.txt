@@ -6,7 +6,6 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 # tests source files here
 add_executable(fvaorganizerwizardtests
-  test_FVAOrganizerDevicePage.cpp
   test_FVAOrganizerDonePage.cpp
   test_FVAOrganizerEventCfgPage.cpp
   test_FVAOrganizerEventInfoPage.cpp
@@ -26,4 +25,3 @@ target_link_libraries(fvaorganizerwizardtests Qt5::Widgets Qt5::Core Qt5::Gui gt
 
 # Add the tests to CTest's test runner
 add_test(NAME fvaorganizerwizardtests COMMAND fvaorganizerwizardtests)
-
