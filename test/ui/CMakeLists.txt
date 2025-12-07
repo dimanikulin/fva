@@ -9,6 +9,7 @@ add_executable(uitests
   test_fvaconfigurator.cpp
   test_fvadescriptioneditor.cpp
   test_fvapeoplelistdlg.cpp
+  test_fvadictionaryeditor.cpp
 )
 
 # Link GoogleTest and QT to tests
