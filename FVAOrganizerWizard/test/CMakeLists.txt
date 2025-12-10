@@ -6,9 +6,6 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 # tests source files here
 add_executable(fvaorganizerwizardtests
-  test_FVAOrganizerDonePage.cpp
-  test_FVAOrganizerEventCfgPage.cpp
-  test_FVAOrganizerEventInfoPage.cpp
   test_FVAOrganizerInputDirPage.cpp
   test_FVAOrganizerOrientPage.cpp
   test_FVAOrganizerOutputDirPage.cpp
