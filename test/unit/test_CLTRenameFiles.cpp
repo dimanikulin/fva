@@ -62,7 +62,7 @@ TEST_F(CLTRenameFilesTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 // Test case for CLTRenameFiles constructor
-TEST(CLTRenameFilesTests, Constructor)
+TEST_F(CLTRenameFilesTests, Constructor)
 {
     // Arrange
     FvaConfiguration cfg;
@@ -79,7 +79,7 @@ TEST(CLTRenameFilesTests, Constructor)
 }
 
 // Test case for CLTRenameFiles constructor with invalid configuration
-TEST(CLTRenameFilesTests, Constructor_InvalidConfig)
+TEST_F(CLTRenameFilesTests, Constructor_InvalidConfig)
 {
     // Arrange
     FvaConfiguration cfg;
@@ -91,7 +91,7 @@ TEST(CLTRenameFilesTests, Constructor_InvalidConfig)
 }
 
 // Test case for CLTRenameFiles constructor with empty configuration
-TEST(CLTRenameFilesTests, Constructor_EmptyConfig)
+TEST_F(CLTRenameFilesTests, Constructor_EmptyConfig)
 {
     // Arrange
     FvaConfiguration cfg;
