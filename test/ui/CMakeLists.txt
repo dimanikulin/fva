@@ -17,6 +17,9 @@ add_executable(uitests
   test_FVAOrganizerInputDirPage.cpp
   test_FVAOrganizerOrientPage.cpp
   test_FVAOrganizerOutputDirPage.cpp
+  test_FVAOrganizerPlacePage.cpp
+  test_FVAOrganizerStartPage.cpp
+  test_fvaorganizerwizard.cpp
 )
 
 # Link GoogleTest and QT to tests
