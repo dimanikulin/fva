@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTRenameVideoBySequence.h"
+#include "CLTRenameVideoBySequence.h"
 
 // Test fixture for CLTRenameVideoBySequence tests
 class CLTRenameVideoBySequenceTests : public ::testing::Test
@@ -17,7 +17,7 @@ protected:
 };
 
 // Test case for execute function
-/*TEST_F(CLTRenameVideoBySequenceTests, Execute)
+TEST_F(CLTRenameVideoBySequenceTests, Execute)
 {
     // Arrange
     FvaConfiguration cfg;
@@ -31,7 +31,7 @@ protected:
     // Verify the expected behavior and output
     ASSERT_EQ(FVA_EXIT_CODE_SUCCESS, result);
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTRenameVideoBySequenceTests, Name)
 {
@@ -44,7 +44,7 @@ TEST_F(CLTRenameVideoBySequenceTests, Name)
     // Verify the expected name
     ASSERT_EQ("CLTRenameVideoBySequence", name.toStdString());
 }
-/*
+
 // Test case for supportReadOnly function
 TEST_F(CLTRenameVideoBySequenceTests, SupportReadOnly)
 {
@@ -102,4 +102,3 @@ TEST(CLTRenameVideoBySequenceTests, Constructor_ValidConfig)
     // Verify that the m_fmtctx member variable is filled correctly from the configuration
     EXPECT_EQ(FVA_NO_ERROR, renameVideoBySequence.m_fmtctx.fillFmtContextFromCfg(cfg));
 }
-*/
