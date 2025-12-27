@@ -23,7 +23,6 @@ add_subdirectory(FVADictionaryEditor)
 add_subdirectory(FVAFlowController)
 add_subdirectory(FVAOrganizer)
 add_subdirectory(FVAOrganizerWizard)
-add_subdirectory(FVAPlayer)
 add_subdirectory(src)
 
 # Enable testing for the project
