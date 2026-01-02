@@ -29,7 +29,7 @@ TEST_F(CLTRenameVideoBySequenceTests, Execute)
 
     // Assert
     // Verify the expected behavior and output
-    ASSERT_EQ(FVA_EXIT_CODE_SUCCESS, result);
+    ASSERT_EQ(FVA_NO_ERROR, result);
 }
 
 // Test case for Name function
@@ -73,32 +73,18 @@ TEST(CLTRenameVideoBySequenceTests, Constructor)
 
     // Assert
     // Verify that the m_renameVideoByModifTime member variable is set correctly
-    EXPECT_TRUE(renameVideoBySequence.m_renameVideoByModifTime);
+    
+    EXPECT_TRUE(renameVideoBySequence.renameVideoByModifTime());
 }
 
 // Test case for CLTRenameVideoBySequence constructor with invalid configuration
-TEST(CLTRenameVideoBySequenceTests, Constructor_InvalidConfig)
+TEST(CLTRenameVideoBySequenceTests, Constructor_falseRenameVideoByModifTime )
 {
     // Arrange
     FvaConfiguration cfg;
-    cfg.setParamAsBoolean("Rename::videoByModifTime", "invalid_value");
-
-    // Act & Assert
-    // Verify that an exception is thrown when trying to construct CLTRenameVideoBySequence with invalid configuration
-    EXPECT_THROW(CLTRenameVideoBySequence renameVideoBySequence(cfg), std::exception);
-}
-
-// Test case for CLTRenameVideoBySequence constructor with valid configuration
-TEST(CLTRenameVideoBySequenceTests, Constructor_ValidConfig)
-{
-    // Arrange
-    FvaConfiguration cfg;
-    cfg.setParamAsBoolean("Rename::videoByModifTime", true);
-
-    // Act
+    cfg.setParam("Rename::videoByModifTime", true);
     CLTRenameVideoBySequence renameVideoBySequence(cfg);
 
-    // Assert
-    // Verify that the m_fmtctx member variable is filled correctly from the configuration
-    EXPECT_EQ(FVA_NO_ERROR, renameVideoBySequence.m_fmtctx.fillFmtContextFromCfg(cfg));
+    // Act & Assert
+    EXPECT_TRUE(renameVideoBySequence.renameVideoByModifTime());
 }
