@@ -25,7 +25,14 @@ public:
 	* \return returns command name as a string
 	*/
 	static QString Name()			{ return "CLTRenameVideoBySequence"; }
-	virtual bool supportReadOnly()		{ return true; }
+	virtual bool supportReadOnly()	{ return true; }
+
+	/*!
+	* \brief it answers if task shall rename video files using the file modification time
+	* for testing purposes
+	* \return returns true if they do not have taken time set
+	*/
+	bool renameVideoByModifTime() const	{ return m_renameVideoByModifTime; }
 private:
 	/*!
 	* \brief shall be renamed video files using the file modification time if they do not have taken time set
