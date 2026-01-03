@@ -66,7 +66,7 @@ TEST(CLTRenameVideoBySequenceTests, Constructor)
 {
     // Arrange
     FvaConfiguration cfg;
-    cfg.setParamAsBoolean("Rename::videoByModifTime", true);
+    cfg.setParam("Rename::videoByModifTime", true);
 
     // Act
     CLTRenameVideoBySequence renameVideoBySequence(cfg);
