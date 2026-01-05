@@ -62,7 +62,7 @@ TEST_F(CLTRenameVideoBySequenceTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 // Test case for CLTRenameVideoBySequence constructor
-TEST(CLTRenameVideoBySequenceTests, Constructor)
+TEST_F(CLTRenameVideoBySequenceTests, Constructor)
 {
     // Arrange
     FvaConfiguration cfg;
@@ -78,7 +78,7 @@ TEST(CLTRenameVideoBySequenceTests, Constructor)
 }
 
 // Test case for CLTRenameVideoBySequence constructor with invalid configuration
-TEST(CLTRenameVideoBySequenceTests, Constructor_falseRenameVideoByModifTime )
+TEST_F(CLTRenameVideoBySequenceTests, Constructor_falseRenameVideoByModifTime )
 {
     // Arrange
     FvaConfiguration cfg;
