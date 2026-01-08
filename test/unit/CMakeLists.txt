@@ -36,6 +36,8 @@ add_executable(libtests
   test_CLTPrintFSStructure.cpp
   test_CLTRenameFiles.cpp
   test_CLTRenameVideoBySequence.cpp
+  test_CLTSetFileAtts.cpp
+  test_FVADataProcessor.cpp
 )
 
 # Link GoogleTest to tests
