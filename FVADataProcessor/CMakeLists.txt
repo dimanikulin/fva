@@ -4,8 +4,6 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
-add_subdirectory(test)
-
 set(HEADER_FILES ../FVACommonLib/CmdLineBaseTask.h 
    ../FVACommonLib/fvafmtcontext.h 
    ../FVACommonLib/fvacommonexif.h
