@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../FVADataProcessor.h"
+#include "FVADataProcessor.h"
 
 // Test fixture for FVADataProcessor tests
 class FVADataProcessorTests : public ::testing::Test
@@ -16,7 +16,6 @@ protected:
     }
 };
 
-/*
 // Test case for createTaskByName function
 TEST_F(FVADataProcessorTests, CreateTaskByName)
 {
@@ -82,5 +81,5 @@ TEST(FVADataProcessorTests, CreateTaskByName_CLTRenameVideoBySequence)
     // Assert
     ASSERT_TRUE(dynamic_cast<CLTRenameVideoBySequence*>(task.get()) != nullptr);
 }
-*/
+
 // Add more test cases for other task types as needed
