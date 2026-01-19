@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "FVADataProcessor.h"
+#include "CLTCreateDirStructByDeviceName.h"
 
 // Test fixture for FVADataProcessor tests
 class FVADataProcessorTests : public ::testing::Test
