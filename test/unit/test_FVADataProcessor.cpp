@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include "FVADataProcessor.h"
 #include "CLTCreateDirStructByDevNames.h"
+#include "CLTCheckDeviceName.h"
+#include "CLTRenameVideoBySequence.h"
 
 // Test fixture for FVADataProcessor tests
 class FVADataProcessorTests : public ::testing::Test
@@ -48,7 +50,7 @@ TEST(FVADataProcessorTests, CreateTaskByName_CLTCreateDirStructByDeviceName)
     std::unique_ptr<CmdLineBaseTask> task = dataProcessor.createTaskByName(context, cfg);
 
     // Assert
-    ASSERT_TRUE(dynamic_cast<CLTCreateDirStructByDevName*>(task.get()) != nullptr);
+    ASSERT_TRUE(dynamic_cast<CLTCreateDirStructByDevNames*>(task.get()) != nullptr);
 }
 
 // Test case for creating CLTCheckDeviceName task

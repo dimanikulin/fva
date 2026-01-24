@@ -60,7 +60,7 @@ TEST_F(CLTSetFileAttsTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 // Test case for setting file attributes for supported files
-TEST_F(CLTAutoChecks2Tests, SetFileAttributes_SupportedFiles)
+TEST_F(CLTSetFileAttsTests, SetFileAttributes_SupportedFiles)
 {
     // Arrange
     CLTSetFileAtts cltSetFileAtts;
@@ -76,7 +76,7 @@ TEST_F(CLTAutoChecks2Tests, SetFileAttributes_SupportedFiles)
 }
 
 // Test case for setting file attributes for internal files
-TEST_F(CLTAutoChecks2Tests, SetFileAttributes_InternalFiles)
+TEST_F(CLTSetFileAttsTests, SetFileAttributes_InternalFiles)
 {
     // Arrange
     CLTSetFileAtts cltSetFileAtts;
@@ -92,7 +92,7 @@ TEST_F(CLTAutoChecks2Tests, SetFileAttributes_InternalFiles)
 }
 
 // Test case for handling unsupported files
-TEST_F(CLTAutoChecks2Tests, SetFileAttributes_UnsupportedFiles)
+TEST_F(CLTSetFileAttsTests, SetFileAttributes_UnsupportedFiles)
 {
     // Arrange
     CLTSetFileAtts cltSetFileAtts;
