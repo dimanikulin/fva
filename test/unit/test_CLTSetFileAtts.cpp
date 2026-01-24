@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../CLTSetFileAtts.h"
+#include "CLTSetFileAtts.h"
 
 // Test fixture for CLTSetFileAtts tests
 class CLTSetFileAttsTests : public ::testing::Test
@@ -17,7 +17,7 @@ protected:
 };
 
 // Test case for execute function
-/*TEST_F(CLTSetFileAttsTests, Execute)
+TEST_F(CLTSetFileAttsTests, Execute)
 {
     // Arrange
     CLTSetFileAtts cltSetFileAtts;
@@ -30,7 +30,7 @@ protected:
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
-*/
+
 // Test case for Name function
 TEST_F(CLTSetFileAttsTests, Name)
 {
@@ -43,7 +43,7 @@ TEST_F(CLTSetFileAttsTests, Name)
     // Verify the expected name
     ASSERT_EQ("CLTSetFileAtts", name.toStdString());
 }
-/*
+
 // Test case for supportReadOnly function
 TEST_F(CLTSetFileAttsTests, SupportReadOnly)
 {
@@ -106,4 +106,3 @@ TEST_F(CLTAutoChecks2Tests, SetFileAttributes_UnsupportedFiles)
     EXPECT_EQ(FVA_ERROR_NOT_SUPPORTED_FILE, result); // Verify that the function returns FVA_ERROR_NOT_SUPPORTED_FILE
     // Add assertions to verify the expected behavior for unsupported files
 }
-*/
