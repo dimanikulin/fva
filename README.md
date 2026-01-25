@@ -38,8 +38,8 @@
 - [Definitions, Acronyms, Abbreviations](./README.md#definitions-acronyms-abbreviations) 
 
 # Description
-FVA Software (Photo-Video-Audio Software) is a convergent tool set in a form of desktop applications aimed at automating importing process of [Multimedia Data](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaData.md) (photo/audio/video)
-into [Multimedia IR systems](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaIRSystems.md) like [digiKam](https://www.digikam.org/) 
+FVA Software (Photo-Video-Audio Software) is a convergent tool set in a form of desktop applications aimed at automating importing process of [Multimedia Data](https://github.com/dimanikulin/publications/blob/master/content/MultimediaData.md) (photo/audio/video)
+into [Multimedia IR systems](https://github.com/dimanikulin/publications/blob/master/content/MultimediaIRSystems.md) like [digiKam](https://www.digikam.org/) 
 <img src="./resources/images/digiKam.png" alt="digiKam.png" width="20" height="20"/>,
  Google Photo, Apple Photo, [Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) 
 <img src="./resources/images/synologyMoments.png" alt="SynologyMoments.png" height="20" />, 
@@ -47,11 +47,11 @@ etc. to make multimedia more fully-searchable as well as to refine family photos
 <img src="./resources/images/inputAndOutputExamples.gif" alt="Input And Output Examples" />
 
 # Capabilities
-- **Organizing the multimedia:** Organizing the [Multimedia Data](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaData.md) to be more searchable
+- **Organizing the multimedia:** Organizing the [Multimedia Data](https://github.com/dimanikulin/publications/blob/master/content/MultimediaData.md) to be more searchable
 - **Multimedia metadata gaps identification:** It identifies the gaps and tries to fill it up (enriching the metadata and improving its consistency with minimal human involvement).
-- **Integration:** The system is integrated with online/offline [Multimedia IR systems](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaIRSystems.md):
-[digiKam](https://www.digikam.org/) <img src="./resources/images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaIRSystems.md) and 
-[Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="./resources/images/synologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online [Multimedia IR systems](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaIRSystems.md) are now supported.
+- **Integration:** The system is integrated with online/offline [Multimedia IR systems](https://github.com/dimanikulin/publications/blob/master/content/MultimediaIRSystems.md):
+[digiKam](https://www.digikam.org/) <img src="./resources/images/digiKam.png" alt="digiKam.png" width="20" height="20"/> as Offline [Multimedia IR systems](https://github.com/dimanikulin/publications/blob/master/content/MultimediaIRSystems.md) and 
+[Synology Moments](https://www.synology.com/en-global/dsm/feature/moments) <img src="./resources/images/synologyMoments.png" alt="SynologyMoments.png" height="20" /> as Online [Multimedia IR systems](https://github.com/dimanikulin/publications/blob/master/content/MultimediaIRSystems.md) are now supported.
 - **Supporting text search for [Multimedia IR systems](https://github.com/dimanikulin/dimanikulin/blob/master/content/MultimediaIRSystems.md):** It is possible to search by events, photo author, places, people using text search 
 - **Configuration:** The system flow depends on configuration.
 - **Automating the import:** to decrease the probability of human factor influence on the process of importing new photos into the existing photo album;
@@ -60,7 +60,7 @@ Despite many steps are automated, still human involvement is required.
 # Software Architecture Requirements
 
 ## Constraints
-This section lists [constrains](./Constraints.md) and explanations for them. 
+This section lists [constrains](./docs/Constraints.md) and explanations for them. 
 
 ## Assumptions
 This section lists all the assumptions with explanations for them. 
@@ -74,7 +74,7 @@ This is critical to do in order to cover all the gaps in the requirements.
 This section lists quality attributes for target architecture.
 So there are following Quality Attributes: **Conceptual Integrity**, **Maintainability**, **Reusability**, **Availability**, **Interoperability**, **Manageability**, **Performance**, **Reliability**, **Scalability**, **Security**, **Portability**, **Supportability**, **Testability**, **Learnability**, **Traceability**.
 
-For more details please [see](./QualityAttributes.md)
+For more details please [see](./docs/QualityAttributes.md)
 
 ## Hardware requirements
 TBD
@@ -119,7 +119,7 @@ flowchart BT
     A(UI) --> B(Processing)
     B(Processing) --> C(Data and Configuration)
 ```
-For more details please [see](./FunctionalView.md)
+For more details please [see](./docs/FunctionalView.md)
 
 ## Deployment View
 The target installation folder shall have next folder structure:
@@ -151,15 +151,15 @@ we use 3-rd party code here TBD link
 and own licence is TBD
 
 # Dependencies
-Only open source [code/tools](./Dependencies.md) are used, as a product is **open source**.
+Only open source [code/tools](./docs/Dependencies.md) are used, as a product is **open source**.
 
-There were other [dependencies](./DependenciesOld.md) but they got outdated.
+There were other [dependencies](./docs/DependenciesOld.md) but they got outdated.
 
 # Code Style
-Please see [here](./CodeStyle.md) for the rules to create and review the code.
+Please see [here](./docs/CodeStyle.md) for the rules to create and review the code.
 
 # Code Documentation
-Please see [here](./CodeDocumentation.md) for the rules to document the code.
+Please see [here](./docs/CodeDocumentation.md) for the rules to document the code.
 
 # Implementation status
 As of now, I have the **implementation status** for the following components:
