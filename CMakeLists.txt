@@ -32,7 +32,7 @@ if(BUILD_TESTING)
   add_subdirectory(googletest)
 
 enable_testing()
-  add_subdirectory(test)
+  add_subdirectory(tests)
 endif()
 
 
