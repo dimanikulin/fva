@@ -64,11 +64,12 @@ TEST_F(CLTSetFileAttsTests, SetFileAttributes_SupportedFiles)
 {
     // Arrange
     CLTSetFileAtts cltSetFileAtts;
+    CLTContext context;
     QDir m_dir; // Set up the necessary directory for the test
     // Add some supported files to the directory
 
     // Act
-    FVA_EXIT_CODE result = cltSetFileAtts.setAttributes(m_dir);
+    FVA_EXIT_CODE result = cltSetFileAtts.execute(context);
 
     // Assert
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
@@ -80,11 +81,12 @@ TEST_F(CLTSetFileAttsTests, SetFileAttributes_InternalFiles)
 {
     // Arrange
     CLTSetFileAtts cltSetFileAtts;
+    CLTContext context;
     QDir m_dir; // Set up the necessary directory for the test
     // Add some internal files to the directory
 
     // Act
-    FVA_EXIT_CODE result = cltSetFileAtts.setAttributes(m_dir);
+    FVA_EXIT_CODE result = cltSetFileAtts.execute(context);
 
     // Assert
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
@@ -96,11 +98,12 @@ TEST_F(CLTSetFileAttsTests, SetFileAttributes_UnsupportedFiles)
 {
     // Arrange
     CLTSetFileAtts cltSetFileAtts;
+    CLTContext context;
     QDir m_dir; // Set up the necessary directory for the test
     // Add some unsupported files to the directory
 
     // Act
-    FVA_EXIT_CODE result = cltSetFileAtts.setAttributes(m_dir);
+    FVA_EXIT_CODE result = cltSetFileAtts.execute(context);
 
     // Assert
     EXPECT_EQ(FVA_ERROR_NOT_SUPPORTED_FILE, result); // Verify that the function returns FVA_ERROR_NOT_SUPPORTED_FILE
