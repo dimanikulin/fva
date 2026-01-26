@@ -50,7 +50,7 @@ TEST(FVADataProcessorTests, CreateTaskByName_CLTCreateDirStructByDeviceName)
     std::unique_ptr<CmdLineBaseTask> task = dataProcessor.createTaskByName(context, cfg);
 
     // Assert
-    ASSERT_TRUE(dynamic_cast<CLTCreateDirStructByDevNames*>(task.get()) != nullptr);
+    ASSERT_TRUE(dynamic_cast<CLTCreateDirStructByDeviceName*>(task.get()) != nullptr);
 }
 
 // Test case for creating CLTCheckDeviceName task
