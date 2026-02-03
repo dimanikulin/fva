@@ -20,7 +20,7 @@ protected:
 };
 
 // Test case for createTaskByName function
-TEST_F(FVADataProcessorTests, CreateTaskByName)
+TEST(FVADataProcessorTests, CreateTaskByName)
 {
     // Arrange
     FVADataProcessor fvaDataProcessor;
