@@ -25,6 +25,7 @@ TEST(FVADataProcessorTests, CreateTaskByName)
     // Arrange
     FVADataProcessor fvaDataProcessor;
     CLTContext context; // Set up the necessary context for the test
+    context.cmdType = CLTCreateDirStructByDeviceName::Name();
     FvaConfiguration cfg; // Set up the necessary configuration for the test
 
     // Act
