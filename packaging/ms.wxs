@@ -12,7 +12,7 @@
       <ComponentRef Id="icons" />
       <!--ComponentRef Id="jpegr" /-->
       <ComponentRef Id="mediaserviceFilesComponents" />
-      <ComponentRef Id="scripts" />
+      <ComponentRef Id="tools" />
       <ComponentRef Id="files" />
       <ComponentRef Id="sqldriversComponents" />
     </Feature>
@@ -21,17 +21,17 @@
    <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">      
       <Directory Id="PRODUCTDIR"> 
-        <Directory Id="scripts" Name='#scripts#'>
-          <Component Id="scripts" Guid="D4AE1F4B-9CDC-424A-B757-1A970DF59665">
-            <File Id="CLTFixEmptyDateTime" Name="CLTFixEmptyDateTime.py" Source="..\scripts\CLTFixEmptyDateTime.py"  Vital="yes" KeyPath="no"/>
-            <File Id="CLTMerge2csv" Name="CLTMerge2csv.py" Source="..\scripts\CLTMerge2csv.py"  Vital="yes" KeyPath="no"/>
-            <File Id="CLTUpdateEventForDir" Name="CLTUpdateEventForDir.py" Source="..\scripts\CLTUpdateEventForDir.py"  Vital="yes" KeyPath="no"/>
-            <File Id="CLTUpdateEventPeopleForDir" Name="CLTUpdateEventPeopleForDir.py" Source="..\scripts\CLTUpdateEventPeopleForDir.py"  Vital="yes" KeyPath="no"/>
-            <File Id="CLTUpdatePlaceForDir" Name="CLTUpdatePlaceForDir.py"  Source="..\scripts\CLTUpdatePlaceForDir.py"  Vital="yes" KeyPath="no"/>
-            <File Id="fixCLT2Issues" Name="fixCLT2Issues.py"  Source="..\scripts\fixCLT2Issues.py"  Vital="yes" KeyPath="no"/>
-            <File Id="fixNoGeoIssues" Name="fixNoGeoIssues.py"  Source="..\scripts\fixNoGeoIssues.py"  Vital="yes" KeyPath="no"/>
-            <File Id="createFvaDB" Name="createFvaDB.sql" Source="..\scripts\createFvaDB.sql"  Vital="yes" KeyPath="no"/>
-            <File Id="createFvaDBDevices" Name="createFvaDBDevices.sql"  Source="..\scripts\createFvaDBDevices.sql"  Vital="yes" KeyPath="no"/>
+        <Directory Id="tools" Name='#tools#'>
+          <Component Id="tools" Guid="D4AE1F4B-9CDC-424A-B757-1A970DF59665">
+            <File Id="CLTFixEmptyDateTime" Name="CLTFixEmptyDateTime.py" Source="..\tools\CLTFixEmptyDateTime.py"  Vital="yes" KeyPath="no"/>
+            <File Id="CLTMerge2csv" Name="CLTMerge2csv.py" Source="..\tools\CLTMerge2csv.py"  Vital="yes" KeyPath="no"/>
+            <File Id="CLTUpdateEventForDir" Name="CLTUpdateEventForDir.py" Source="..\tools\CLTUpdateEventForDir.py"  Vital="yes" KeyPath="no"/>
+            <File Id="CLTUpdateEventPeopleForDir" Name="CLTUpdateEventPeopleForDir.py" Source="..\tools\CLTUpdateEventPeopleForDir.py"  Vital="yes" KeyPath="no"/>
+            <File Id="CLTUpdatePlaceForDir" Name="CLTUpdatePlaceForDir.py"  Source="..\tools\CLTUpdatePlaceForDir.py"  Vital="yes" KeyPath="no"/>
+            <File Id="fixCLT2Issues" Name="fixCLT2Issues.py"  Source="..\tools\fixCLT2Issues.py"  Vital="yes" KeyPath="no"/>
+            <File Id="fixNoGeoIssues" Name="fixNoGeoIssues.py"  Source="..\tools\fixNoGeoIssues.py"  Vital="yes" KeyPath="no"/>
+            <File Id="createFvaDB" Name="createFvaDB.sql" Source="..\tools\createFvaDB.sql"  Vital="yes" KeyPath="no"/>
+            <File Id="createFvaDBDevices" Name="createFvaDBDevices.sql"  Source="..\tools\createFvaDBDevices.sql"  Vital="yes" KeyPath="no"/>
             <CreateFolder />
           </Component>
         </Directory>
