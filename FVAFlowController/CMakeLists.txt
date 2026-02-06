@@ -4,9 +4,6 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
-# TODO uncoment later
-# add_subdirectory(test)
-
 set(HEADER_FILES 
    ../FVACommonLib/fvaconstants.h 
    ../FVACommonLib/fvaconfiguration.h 
