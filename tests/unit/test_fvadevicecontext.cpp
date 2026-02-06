@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../FVADeviceContext.h"
+#include "FVADeviceContext.h"
 
 // Test fixture for DeviceContext tests
 class DeviceContextTests : public ::testing::Test

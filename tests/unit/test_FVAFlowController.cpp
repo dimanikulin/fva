@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../FVAFlowController.h"
+#include "FVAFlowController.h"
 
 // Test fixture for FVAFlowController tests
 class FVAFlowControllerTests : public ::testing::Test
