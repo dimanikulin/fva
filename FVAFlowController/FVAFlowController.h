@@ -46,6 +46,8 @@ class QObject;
  */
 class FVAFlowController
 {
+private:
+friend class FVAFlowControllerTests;
 public:
 	FVAFlowController();
 
@@ -162,4 +164,3 @@ private: //data
 	FvaConfiguration m_cfg;
 };
 #endif
-
