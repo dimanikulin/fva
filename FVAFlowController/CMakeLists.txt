@@ -17,7 +17,7 @@ target_link_libraries(fvaflowcontrollerlib Qt5::Widgets Qt5::Core Qt5::Gui fvali
 
 target_include_directories(fvaflowcontrollerlib PRIVATE ../FVACommonLib ../FVADataProcessor/)
 
-target_include_directories(fvalib fvaflowcontrollerlib
+target_include_directories(fvaflowcontrollerlib INTERFACE
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
