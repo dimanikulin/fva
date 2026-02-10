@@ -21,7 +21,6 @@ add_subdirectory(FVADataProcessor)
 add_subdirectory(FVADescriptionEditor)
 add_subdirectory(FVADictionaryEditor)
 add_subdirectory(FVAFlowController)
-add_subdirectory(FVAOrganizer)
 add_subdirectory(FVAOrganizerWizard)
 add_subdirectory(src)
 
