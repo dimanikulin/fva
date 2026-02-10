@@ -46,7 +46,7 @@ class QObject;
  */
 class FVAFlowController
 {
-private:
+protected:
 friend class FVAFlowControllerTests;
 public:
 	FVAFlowController();
