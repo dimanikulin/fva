@@ -111,7 +111,7 @@ public:
 	 */
 	FVA_EXIT_CODE GetProblemFilesList(STR_LIST& fileListToFillUp);
 	
-private:
+protected:
 	/*!
 	 * \brief it performs the device checks for input folder
 	 * \param deviceContext - devices information got during checks, filled up by this function
