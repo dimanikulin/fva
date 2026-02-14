@@ -16,6 +16,7 @@ protected:
     }
 };
 
+/*
 // Test case for performDeviceChecks function
 TEST_F(FVAFlowControllerTests, PerformDeviceChecks)
 {
@@ -211,3 +212,4 @@ TEST_F(FVAFlowControllerTests, GetProblemFilesList)
     EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
+*/

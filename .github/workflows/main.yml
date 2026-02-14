@@ -233,9 +233,6 @@ jobs:
 
     - name: Run unit tests based on CTests
       shell: cmake -P {0}
-      env:
-        QT_PLUGIN_PATH: D:\a\fva\Qt\5.15.2\mingw81_64\plugins
-        PATH: D:\a\fva\Qt\5.15.2\mingw81_64\bin;${{ env.PATH }}
       run: |
         include(ProcessorCount)
         ProcessorCount(N)
