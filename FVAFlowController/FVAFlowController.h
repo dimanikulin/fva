@@ -46,8 +46,6 @@ class QObject;
  */
 class FVAFlowController
 {
-protected:
-friend class FVAFlowControllerTests;
 public:
 	FVAFlowController();
 
@@ -111,7 +109,7 @@ public:
 	 */
 	FVA_EXIT_CODE GetProblemFilesList(STR_LIST& fileListToFillUp);
 	
-protected:
+public: //helpers
 	/*!
 	 * \brief it performs the device checks for input folder
 	 * \param deviceContext - devices information got during checks, filled up by this function
