@@ -21,7 +21,6 @@ add_subdirectory(FVADataProcessor)
 add_subdirectory(FVADescriptionEditor)
 add_subdirectory(FVADictionaryEditor)
 add_subdirectory(FVAFlowController)
-add_subdirectory(FVAOrganizerWizard)
 add_subdirectory(src)
 
 # Enable testing for the project
@@ -30,7 +29,7 @@ if(BUILD_TESTING)
   # Add GoogleTest as a subdirectory.
   add_subdirectory(googletest)
 
-enable_testing()
+  enable_testing()
   add_subdirectory(tests)
 endif()
 
