@@ -4,13 +4,6 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
-set(HEADER_FILES 
-    ../FVACommonLib/FVADescriptionFile.h 
-    ../FVACommonLib/fvaconfiguration.h 
-    ../FVACommonLib/fvacommonui.h
-    ../FVACommonLib/fvalogger.inl
-    ../FVACommonLib/fvacommonlib.h)
-
 # IMPORTANT: once you add new implementation file here please update IMPLEMENTATIONSTATUS.MD as well in the current folder 
 add_executable(fvadescriptioneditor 
     fvadescriptioneditor.cpp
@@ -25,8 +18,6 @@ add_executable(fvadescriptioneditor
     ${HEADER_FILES}
 )
 target_link_libraries(fvadescriptioneditor Qt5::Widgets Qt5::Core Qt5::Gui fvalib)
-
-target_include_directories(fvadescriptioneditor PRIVATE ../FVACommonLib)
 
 install(TARGETS fvadescriptioneditor)
 
