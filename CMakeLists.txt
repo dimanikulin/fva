@@ -17,7 +17,6 @@ project(fva)
 
 add_subdirectory(FVACommonLib)
 add_subdirectory(FVAConfigurator)
-add_subdirectory(FVADataProcessor)
 add_subdirectory(src)
 
 # Enable testing for the project
