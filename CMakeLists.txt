@@ -15,7 +15,6 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 project(fva)
 
-add_subdirectory(FVACommonLib)
 add_subdirectory(src)
 
 # Enable testing for the project
