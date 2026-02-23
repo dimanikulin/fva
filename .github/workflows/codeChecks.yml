@@ -27,31 +27,30 @@ jobs:
           check_library: enable
           max_ctu_depth: 5
 
-      - name: Upload Cpp Code check Report to git hub storage to use later
+      - name: Upload Cpp Code check report to git hub storage to use later
         uses: actions/upload-artifact@v4
         with:
           path: ./cppcheck_report.txt
           name: cppcheck_report.txt
 
-      # commented as it does not work
-      #- name: Run cpp style checks
-      #  uses: coleaeason/actions-uncrustify@v1
+      - name: clang-tidy check
+        run: |
+          echo "==================Installing clang-tidy====================================="
+          wget https://apt.llvm.org/llvm.sh
+          chmod +x llvm.sh
+          sudo ./llvm.sh 17
+          sudo apt install clang-tidy-17
+          rm ./llvm.sh
+          echo "==================Creating compile_commands.json====================================="
+          cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          echo "==================Running clang-tidy====================================="
+          clang-tidy ./src/*.cpp -checks='*' > ./clang-tidy-report.txt
+          clang-tidy ./src/*.h -checks='*' >> ./clang-tidy-report.txt
+          clang-tidy ./tests/*.cpp -checks='*' >> ./clang-tidy-report.txt
+          #clang-tidy ./tests/*.h -checks='*' >> ./clang-tidy-report.txt
 
-      #- name: Python style check
-      #  uses: bulv1ne/python-style-check@v0.3
-
-      # TODO section
-      # to perform C++ Code style check;
-      # to upload a report for C++ Code style checks;
-
-      # to perform python style check
-      # to upload a report for Python style checks;
-
-      # to perform FVA C++ code style check;
-      # to upload a report for FVA C++ code style check;
-
-      # to perform FVA Code documentation check;
-      # to upload a report for FVA Code documentation check;
-
-      # to perform checking code by KDE/clazy
-      # to upload a report for Checking code by KDE/clazy;
+      - name: Upload clang-tidy report to git hub storage to use later
+        uses: actions/upload-artifact@v4
+        with:
+          path: ./clang-tidy-report.txt
+          name: clang-tidy-report.txt
