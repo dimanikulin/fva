@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: ./cppcheck_report.txt
-          name: cppcheck_report.txt
+          name: cppcheck_report.zip
     #- name: clang-tidy check
     #  run: |
     #      echo "==================Installing clang-tidy====================================="
@@ -57,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: ./suspect-words-report.txt
-          name: suspect-words-report.txt
+          name: suspect-words-report.zip
 
       - name: Check for boilerplate code
         # This step checks for boilerplate code in the codebase
@@ -69,7 +69,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: ./boilerplate-report.txt
-          name: boilerplate-report.txt
+          name: boilerplate-report.zip
 
       - name: Check for large files
         # This step checks for large files in the codebase
@@ -81,4 +81,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: ./file-size-report.txt
-          name: file-size-report.txt
+          name: file-size-report.zip
