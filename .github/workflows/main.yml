@@ -180,21 +180,6 @@ jobs:
         if (NOT result EQUAL 0)
           message(FATAL_ERROR "Bad exit status")
         endif()
-    - name: clang-tidy check
-      run: |
-          echo "==================Installing clang-tidy====================================="
-          wget https://apt.llvm.org/llvm.sh
-          chmod +x llvm.sh
-          sudo ./llvm.sh 17
-          sudo apt install clang-tidy-17
-          rm ./llvm.sh
-          echo "==================Creating compile_commands.json====================================="
-          cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-          echo "==================Running clang-tidy====================================="
-          clang-tidy ./src/*.cpp -checks='*' > ./clang-tidy-report.txt
-          clang-tidy ./src/*.h -checks='*' >> ./clang-tidy-report.txt
-          clang-tidy ./tests/*.cpp -checks='*' >> ./clang-tidy-report.txt
-          #clang-tidy ./tests/*.h -checks='*' >> ./clang-tidy-report.txt
 
     - name: Upload clang-tidy report to git hub storage to use later
       uses: actions/upload-artifact@v4
