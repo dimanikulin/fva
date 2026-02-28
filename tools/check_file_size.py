@@ -34,10 +34,10 @@ def scan_directory(root_dir, max_lines, comment_symbol="#", extensions=None):
             try:
                 count = count_code_lines(filepath, comment_symbol)
                 if count > max_lines:
-                    print(f"{filepath}: {count} lines (limit {max_lines})")
+                    print(f"{filepath}: {count} lines exceed (limit {max_lines})")
                     failed += 1
                 else:
-                    print(f"{filepath}: {count} lines (limit {max_lines})")
+                    print(f"{filepath}: {count} lines within limit (limit {max_lines})")
                     passed += 1
             except Exception as e:
                 print(f"Skipping {filepath}: {e}")
