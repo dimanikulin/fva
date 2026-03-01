@@ -47,6 +47,13 @@ jobs:
     #      clang-tidy ./src/*.h -checks='*' >> ./clang-tidy-report.txt
     #      clang-tidy ./tests/*.cpp -checks='*' >> ./clang-tidy-report.txt
     #      #clang-tidy ./tests/*.h -checks='*' >> ./clang-tidy-report.txt
+      #- name: Upload clang-tidy report to git hub storage to use later
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    path: ./clang-tidy-report.txt
+      #    name: clang-tidy-report.txt
+
+
       - name: Check for suspect words
         # This step checks for suspect words in the codebase
         run: |

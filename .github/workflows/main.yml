@@ -29,11 +29,11 @@ jobs:
             cc: "gcc", cxx: "g++"
           }
 
-        #- {
-        #    name: "Ubuntu Latest GCC", artifact: "Linux.7z",
-        #    os: ubuntu-latest,
-        #    cc: "gcc", cxx: "g++"
-        #  }
+        - {
+            name: "Ubuntu Latest GCC", artifact: "Linux.7z",
+            os: ubuntu-latest,
+            cc: "gcc", cxx: "g++"
+          }
 
         #- {
         #    name: "macOS Latest Clang", artifact: "macOS.7z",
@@ -180,13 +180,6 @@ jobs:
         if (NOT result EQUAL 0)
           message(FATAL_ERROR "Bad exit status")
         endif()
-
-    - name: Upload clang-tidy report to git hub storage to use later
-      uses: actions/upload-artifact@v4
-      with:
-          path: ./clang-tidy-report.txt
-          name: clang-tidy-report.txt
-
     - name: Build the sources
       shell: cmake -P {0}
       run: |
@@ -322,7 +315,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         path: ./build/Testing/Temporary/CTestCostData.txt
-        name: CTestCostData.txt
+        name: CTestCostData.zip
 
     - name: Pack Coverage Info by 7zip
       if: matrix.config.os == 'ubuntu-latest'  
