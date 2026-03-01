@@ -144,7 +144,7 @@ jobs:
       if: matrix.config.os == 'ubuntu-latest'
       uses: jurplel/install-qt-action@v4
       with:
-        version: '6.6.2'
+        version: ${{ env.QT_VERSION }}
         host: 'linux'
         target: 'desktop'
         arch: 'gcc_64'
