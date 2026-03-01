@@ -130,7 +130,7 @@ jobs:
       with:
         version: 8.1.0
 
-    - name: Download and install QT
+    - name: Download and install QT for Windows
       if: matrix.config.os == 'windows-latest'
       uses: jurplel/install-qt-action@v3
       with:
@@ -138,6 +138,10 @@ jobs:
         target: 'desktop'
         arch: 'win64_mingw81'
         setup-python : 'false'
+
+    - name: Install Qt for Linux
+      if: matrix.config.os == 'ubuntu-latest'
+      run: sudo apt-get update && sudo apt-get install -y qtbase5-dev qt5-qmake qtbase5-dev-tools
 
     - name: Configure make files by CMake
       shell: cmake -P {0}
