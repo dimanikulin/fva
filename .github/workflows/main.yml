@@ -149,7 +149,11 @@ jobs:
         target: 'desktop'
         arch: 'gcc_64'
         cache: true
-
+    
+    - name: Install OpenGL development headers
+      if: matrix.config.os == 'ubuntu-latest'
+      run: sudo apt-get update && sudo apt-get install -y libgl1-mesa-dev
+    
     - name: Configure make files by CMake
       shell: cmake -P {0}
       env:
@@ -191,6 +195,7 @@ jobs:
         if (NOT result EQUAL 0)
           message(FATAL_ERROR "Bad exit status")
         endif()
+        
     - name: Build the sources
       shell: cmake -P {0}
       run: |
