@@ -124,11 +124,11 @@ jobs:
         restore-keys: |
           ${{ matrix.config.name }}-ccache-
             
-    - name: Setup MinGW
-      if: matrix.config.os == 'windows-latest'
-      uses: egor-tensin/setup-mingw@v2
-      with:
-        version: 8.1.0
+    #- name: Setup MinGW
+    #  if: matrix.config.os == 'windows-latest'
+    #  uses: egor-tensin/setup-mingw@v2
+    #  with:
+    #    version: 8.1.0
 
     - name: Download and install QT for Windows
       if: matrix.config.os == 'windows-latest'
@@ -138,10 +138,17 @@ jobs:
         target: 'desktop'
         arch: 'win64_mingw81'
         setup-python : 'false'
+        cache: true
 
     - name: Install Qt for Linux
       if: matrix.config.os == 'ubuntu-latest'
-      run: sudo apt-get update && sudo apt-get install -y qtbase5-dev qt5-qmake qtbase5-dev-tools
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: '6.6.2'
+        host: 'linux'
+        target: 'desktop'
+        arch: 'gcc_64'
+        cache: true
 
     - name: Configure make files by CMake
       shell: cmake -P {0}
