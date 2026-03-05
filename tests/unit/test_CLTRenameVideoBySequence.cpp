@@ -1,28 +1,25 @@
 #include <gtest/gtest.h>
+
 #include "CLTRenameVideoBySequence.h"
 
 // Test fixture for CLTRenameVideoBySequence tests
-class CLTRenameVideoBySequenceTests : public ::testing::Test
-{
+class CLTRenameVideoBySequenceTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for execute function
-TEST_F(CLTRenameVideoBySequenceTests, Execute)
-{
+TEST_F(CLTRenameVideoBySequenceTests, Execute) {
     // Arrange
     FvaConfiguration cfg;
     CLTRenameVideoBySequence task(cfg);
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
 
     // Act
     FVA_EXIT_CODE result = task.execute(context);
@@ -33,8 +30,7 @@ TEST_F(CLTRenameVideoBySequenceTests, Execute)
 }
 
 // Test case for Name function
-TEST_F(CLTRenameVideoBySequenceTests, Name)
-{
+TEST_F(CLTRenameVideoBySequenceTests, Name) {
     // Arrange
 
     // Act
@@ -46,8 +42,7 @@ TEST_F(CLTRenameVideoBySequenceTests, Name)
 }
 
 // Test case for supportReadOnly function
-TEST_F(CLTRenameVideoBySequenceTests, SupportReadOnly)
-{
+TEST_F(CLTRenameVideoBySequenceTests, SupportReadOnly) {
     // Arrange
     FvaConfiguration cfg;
     CLTRenameVideoBySequence task(cfg);
@@ -62,8 +57,7 @@ TEST_F(CLTRenameVideoBySequenceTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 // Test case for CLTRenameVideoBySequence constructor
-TEST_F(CLTRenameVideoBySequenceTests, Constructor)
-{
+TEST_F(CLTRenameVideoBySequenceTests, Constructor) {
     // Arrange
     FvaConfiguration cfg;
     cfg.setParam("Rename::videoByModifTime", true);
@@ -73,13 +67,12 @@ TEST_F(CLTRenameVideoBySequenceTests, Constructor)
 
     // Assert
     // Verify that the m_renameVideoByModifTime member variable is set correctly
-    
+
     EXPECT_TRUE(renameVideoBySequence.renameVideoByModifTime());
 }
 
 // Test case for CLTRenameVideoBySequence constructor with invalid configuration
-TEST_F(CLTRenameVideoBySequenceTests, Constructor_falseRenameVideoByModifTime )
-{
+TEST_F(CLTRenameVideoBySequenceTests, Constructor_falseRenameVideoByModifTime) {
     // Arrange
     FvaConfiguration cfg;
     cfg.setParam("Rename::videoByModifTime", true);

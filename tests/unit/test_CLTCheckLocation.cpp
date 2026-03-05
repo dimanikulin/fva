@@ -1,64 +1,56 @@
 #include <gtest/gtest.h>
+
 #include "CLTCheckLocation.h"
 
 // Test fixture for CLTCheckLocation tests
-class CLTCheckLocationTests : public ::testing::Test
-{
+class CLTCheckLocationTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
-void createImageFileWithExifLocation(const std::string& fileName)
-{
+void createImageFileWithExifLocation(const std::string& fileName) {
     // Implement the logic to create an image file with exif location
     // This is a placeholder implementation
     std::ofstream file(fileName);
-    if (file.is_open())
-    {
+    if (file.is_open()) {
         file << "This is a test image file with exif location.";
         file.close();
     }
     // TODO: Add exif location metadata to the file
 }
 
-void createImageFileWithoutExifLocation(const std::string& fileName)
-{
+void createImageFileWithoutExifLocation(const std::string& fileName) {
     // Implement the logic to create an image file without exif location
     // This is a placeholder implementation
     std::ofstream file(fileName);
-    if (file.is_open())
-    {
+    if (file.is_open()) {
         file << "This is a test image file without exif location.";
         file.close();
     }
 }
 
 // Test case for execute function
-TEST_F(CLTCheckLocationTests, Execute)
-{
+TEST_F(CLTCheckLocationTests, Execute) {
     // Arrange
     CLTCheckLocation cltCheckLocation;
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
 
     // Act
     FVA_EXIT_CODE result = cltCheckLocation.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
+    EXPECT_EQ(FVA_NO_ERROR, result);  // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
 
 // Test case for Name function
-TEST_F(CLTCheckLocationTests, Name)
-{
+TEST_F(CLTCheckLocationTests, Name) {
     // Arrange
 
     // Act
@@ -70,8 +62,7 @@ TEST_F(CLTCheckLocationTests, Name)
 }
 
 // Test case for supportReadOnly function
-TEST_F(CLTCheckLocationTests, SupportReadOnly)
-{
+TEST_F(CLTCheckLocationTests, SupportReadOnly) {
     // Arrange
     CLTCheckLocation cltCheckLocation;
 
@@ -85,8 +76,7 @@ TEST_F(CLTCheckLocationTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 // Test case for execute function when all image files have exif location
-TEST_F(CLTCheckLocationTests, Execute_AllFilesWithExifLocation)
-{
+TEST_F(CLTCheckLocationTests, Execute_AllFilesWithExifLocation) {
     // Arrange
     CLTCheckLocation cltCheckLocation;
     CLTContext context;
@@ -107,8 +97,7 @@ TEST_F(CLTCheckLocationTests, Execute_AllFilesWithExifLocation)
 }
 
 // Test case for execute function when some image files don't have exif location
-TEST_F(CLTCheckLocationTests, Execute_SomeFilesWithoutExifLocation)
-{
+TEST_F(CLTCheckLocationTests, Execute_SomeFilesWithoutExifLocation) {
     // Arrange
     CLTCheckLocation cltCheckLocation;
     CLTContext context;
@@ -123,13 +112,12 @@ TEST_F(CLTCheckLocationTests, Execute_SomeFilesWithoutExifLocation)
     FVA_EXIT_CODE result = cltCheckLocation.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_NO_EXIF_LOCATION, result); // Verify that the function returns FVA_ERROR_NO_EXIF_LOCATION
+    EXPECT_EQ(FVA_ERROR_NO_EXIF_LOCATION, result);  // Verify that the function returns FVA_ERROR_NO_EXIF_LOCATION
     // Add more assertions to verify the expected behavior and output
 }
 
 // Test case for execute function when all image files don't have exif location
-TEST_F(CLTCheckLocationTests, Execute_AllFilesWithoutExifLocation)
-{
+TEST_F(CLTCheckLocationTests, Execute_AllFilesWithoutExifLocation) {
     // Arrange
     CLTCheckLocation cltCheckLocation;
     CLTContext context;
@@ -144,6 +132,6 @@ TEST_F(CLTCheckLocationTests, Execute_AllFilesWithoutExifLocation)
     FVA_EXIT_CODE result = cltCheckLocation.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
+    EXPECT_EQ(FVA_NO_ERROR, result);  // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }

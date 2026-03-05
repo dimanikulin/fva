@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
+
 #include "fvacltcontext.h"
 
 // Test case for default constructor
-TEST(CLTContextTests, DefaultConstructor)
-{
+TEST(CLTContextTests, DefaultConstructor) {
     // Arrange
     CLTContext context;
 
@@ -17,8 +17,7 @@ TEST(CLTContextTests, DefaultConstructor)
 }
 
 // Test case for setting values in the context
-TEST(CLTContextTests, SetValues)
-{
+TEST(CLTContextTests, SetValues) {
     // Arrange
     CLTContext context;
 

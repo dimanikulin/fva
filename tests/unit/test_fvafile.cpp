@@ -1,24 +1,21 @@
 #include <gtest/gtest.h>
+
 #include "fvaFile.h"
 
 // Test fixture for fvaFile tests
-class fvaFileTests : public ::testing::Test
-{
+class fvaFileTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for default constructor
-TEST_F(fvaFileTests, DefaultConstructorTest)
-{
+TEST_F(fvaFileTests, DefaultConstructorTest) {
     // Arrange
     fvaFile file;
 
@@ -35,8 +32,7 @@ TEST_F(fvaFileTests, DefaultConstructorTest)
 }
 
 // Test case for setting values
-TEST_F(fvaFileTests, SetValuesTest)
-{
+TEST_F(fvaFileTests, SetValuesTest) {
     // Arrange
     fvaFile file;
     unsigned int eventId = 1;

@@ -1,32 +1,29 @@
 #include <gtest/gtest.h>
-#include "FVADataProcessor.h"
-#include "CLTCreateDirStructByDevNames.h"
+
 #include "CLTCheckDeviceName.h"
+#include "CLTCreateDirStructByDevNames.h"
 #include "CLTRenameVideoBySequence.h"
+#include "FVADataProcessor.h"
 
 // Test fixture for FVADataProcessor tests
-class FVADataProcessorTests : public ::testing::Test
-{
+class FVADataProcessorTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for createTaskByName function
-TEST(FVADataProcessorTests, CreateTaskByName)
-{
+TEST(FVADataProcessorTests, CreateTaskByName) {
     // Arrange
     FVADataProcessor fvaDataProcessor;
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
     context.cmdType = CLTCreateDirStructByDeviceName::Name();
-    FvaConfiguration cfg; // Set up the necessary configuration for the test
+    FvaConfiguration cfg;  // Set up the necessary configuration for the test
 
     // Act
     std::unique_ptr<CmdLineBaseTask> task = fvaDataProcessor.createTaskByName(context, cfg);
@@ -39,8 +36,7 @@ TEST(FVADataProcessorTests, CreateTaskByName)
 
 // Add more test cases for other member functions as needed
 // Test case for creating CLTCreateDirStructByDeviceName task
-TEST(FVADataProcessorTests, CreateTaskByName_CLTCreateDirStructByDeviceName)
-{
+TEST(FVADataProcessorTests, CreateTaskByName_CLTCreateDirStructByDeviceName) {
     // Arrange
     CLTContext context;
     context.cmdType = CLTCreateDirStructByDeviceName::Name();
@@ -55,8 +51,7 @@ TEST(FVADataProcessorTests, CreateTaskByName_CLTCreateDirStructByDeviceName)
 }
 
 // Test case for creating CLTCheckDeviceName task
-TEST(FVADataProcessorTests, CreateTaskByName_CLTCheckDeviceName)
-{
+TEST(FVADataProcessorTests, CreateTaskByName_CLTCheckDeviceName) {
     // Arrange
     CLTContext context;
     context.cmdType = CLTCheckDeviceName::Name();
@@ -71,8 +66,7 @@ TEST(FVADataProcessorTests, CreateTaskByName_CLTCheckDeviceName)
 }
 
 // Test case for creating CLTRenameVideoBySequence task
-TEST(FVADataProcessorTests, CreateTaskByName_CLTRenameVideoBySequence)
-{
+TEST(FVADataProcessorTests, CreateTaskByName_CLTRenameVideoBySequence) {
     // Arrange
     CLTContext context;
     context.cmdType = CLTRenameVideoBySequence::Name();

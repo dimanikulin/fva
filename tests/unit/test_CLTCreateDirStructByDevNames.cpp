@@ -1,40 +1,35 @@
 #include <gtest/gtest.h>
+
 #include "CLTCreateDirStructByDevNames.h"
 
 // Test fixture for CLTCreateDirStructByDeviceName tests
-class CLTCreateDirStructByDeviceNameTests : public ::testing::Test
-{
+class CLTCreateDirStructByDeviceNameTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
-
 // Test case for execute function
-TEST_F(CLTCreateDirStructByDeviceNameTests, Execute)
-{
+TEST_F(CLTCreateDirStructByDeviceNameTests, Execute) {
     // Arrange
     CLTCreateDirStructByDeviceName cltCreateDirStruct;
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
 
     // Act
     FVA_EXIT_CODE result = cltCreateDirStruct.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
+    EXPECT_EQ(FVA_NO_ERROR, result);  // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
 
 // Test case for Name function
-TEST_F(CLTCreateDirStructByDeviceNameTests, Name)
-{
+TEST_F(CLTCreateDirStructByDeviceNameTests, Name) {
     // Arrange
 
     // Act
@@ -46,8 +41,7 @@ TEST_F(CLTCreateDirStructByDeviceNameTests, Name)
 }
 
 // Test case for supportReadOnly function
-TEST_F(CLTCreateDirStructByDeviceNameTests, SupportReadOnly)
-{
+TEST_F(CLTCreateDirStructByDeviceNameTests, SupportReadOnly) {
     // Arrange
     CLTCreateDirStructByDeviceName cltCreateDirStruct;
 
@@ -61,8 +55,7 @@ TEST_F(CLTCreateDirStructByDeviceNameTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 // Test case for execute function with no picture files
-TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_NoPictureFiles)
-{
+TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_NoPictureFiles) {
     // Arrange
     CLTCreateDirStructByDeviceName task;
     CLTContext context;
@@ -74,12 +67,11 @@ TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_NoPictureFiles)
 
     // Assert
     ASSERT_EQ(FVA_NO_ERROR, result);
-    ASSERT_TRUE(QDir("test_folder").isEmpty()); // Verify that no sub-folders are created
+    ASSERT_TRUE(QDir("test_folder").isEmpty());  // Verify that no sub-folders are created
 }
 
 // Test case for execute function with picture files
-TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_WithPictureFiles)
-{
+TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_WithPictureFiles) {
     // Arrange
     CLTCreateDirStructByDeviceName task;
     CLTContext context;
@@ -98,12 +90,12 @@ TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_WithPictureFiles)
     ASSERT_EQ(FVA_NO_ERROR, result);
     // TODO to uncomment and fix
     // ASSERT_TRUE(QDir("test_folder").exists("EMPTY")); // Verify that the "EMPTY" sub-folder is created
-    // ASSERT_TRUE(QDir("test_folder/EMPTY").exists("picture.jpg")); // Verify that the picture file is moved to the "EMPTY" sub-folder
+    // ASSERT_TRUE(QDir("test_folder/EMPTY").exists("picture.jpg")); // Verify that the picture file is moved to the
+    // "EMPTY" sub-folder
 }
 
 // Test case for execute function with picture files and device names
-TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_WithPictureFilesAndDeviceNames)
-{
+TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_WithPictureFilesAndDeviceNames) {
     // Arrange
     CLTCreateDirStructByDeviceName task;
     CLTContext context;
@@ -126,8 +118,8 @@ TEST_F(CLTCreateDirStructByDeviceNameTests, Execute_WithPictureFilesAndDeviceNam
     ASSERT_EQ(FVA_NO_ERROR, result);
     // TODO to uncomment and fix
     // ASSERT_TRUE(QDir("test_folder").exists("device1")); // Verify that the "device1" sub-folder is created
-    // ASSERT_TRUE(QDir("test_folder/device1").exists("picture1.jpg")); // Verify that the first picture file is moved to the "device1" sub-folder
-    // ASSERT_TRUE(QDir("test_folder").exists("device2")); // Verify that the "device2" sub-folder is created
-    // ASSERT_TRUE(QDir("test_folder/device2").exists("picture2.jpg")); // Verify that the second picture file is moved to the "device2" sub-folder
+    // ASSERT_TRUE(QDir("test_folder/device1").exists("picture1.jpg")); // Verify that the first picture file is moved
+    // to the "device1" sub-folder ASSERT_TRUE(QDir("test_folder").exists("device2")); // Verify that the "device2"
+    // sub-folder is created ASSERT_TRUE(QDir("test_folder/device2").exists("picture2.jpg")); // Verify that the second
+    // picture file is moved to the "device2" sub-folder
 }
-    

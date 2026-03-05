@@ -1,40 +1,36 @@
 #include <gtest/gtest.h>
+
 #include "CLTAutoChecks2.h"
 
 // Test fixture for CLTAutoChecks2 tests
-class CLTAutoChecks2Tests : public ::testing::Test
-{
+class CLTAutoChecks2Tests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for execute function
-TEST_F(CLTAutoChecks2Tests, Execute)
-{
+TEST_F(CLTAutoChecks2Tests, Execute) {
     // Arrange
     FvaConfiguration cfg;
     CLTAutoChecks2 cltAutoChecks2(cfg);
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
 
     // Act
     FVA_EXIT_CODE result = cltAutoChecks2.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_WRONG_FOLDER_NAME, result); // Verify that the function returns the expected error code
+    EXPECT_EQ(FVA_ERROR_WRONG_FOLDER_NAME, result);  // Verify that the function returns the expected error code
     // Add more assertions to verify the expected behavior and output
 }
 
 // Test case for execute function with configuration
-TEST_F(CLTAutoChecks2Tests, ExecuteWithCfg)
-{
+TEST_F(CLTAutoChecks2Tests, ExecuteWithCfg) {
     // Arrange
     FvaConfiguration cfg;
     CLTAutoChecks2 task(cfg);
@@ -51,8 +47,7 @@ TEST_F(CLTAutoChecks2Tests, ExecuteWithCfg)
 }
 
 // Test case for Name function
-TEST_F(CLTAutoChecks2Tests, Name)
-{
+TEST_F(CLTAutoChecks2Tests, Name) {
     // Arrange
 
     // Act
@@ -64,8 +59,7 @@ TEST_F(CLTAutoChecks2Tests, Name)
 }
 
 // Test case for supportReadOnly function
-TEST_F(CLTAutoChecks2Tests, SupportReadOnly)
-{
+TEST_F(CLTAutoChecks2Tests, SupportReadOnly) {
     // Arrange
     FvaConfiguration cfg;
     CLTAutoChecks2 task(cfg);

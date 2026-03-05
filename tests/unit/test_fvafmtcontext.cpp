@@ -1,24 +1,21 @@
 #include <gtest/gtest.h>
+
 #include "FvaFmtContext.h"
 
 // Test fixture for FvaFmtContext tests
-class FvaFmtContextTests : public ::testing::Test
-{
+class FvaFmtContextTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for fillFmtContextFromCfg when all parameters are valid
-TEST_F(FvaFmtContextTests, FillFmtContextFromCfg_AllParametersValid)
-{
+TEST_F(FvaFmtContextTests, FillFmtContextFromCfg_AllParametersValid) {
     // Arrange
     FvaConfiguration cfg;
     FvaFmtContext fmtContext;
@@ -48,8 +45,7 @@ TEST_F(FvaFmtContextTests, FillFmtContextFromCfg_AllParametersValid)
 }
 
 // Test case for fillFmtContextFromCfg when some parameters are missing
-TEST_F(FvaFmtContextTests, FillFmtContextFromCfg_SomeParametersMissing)
-{
+TEST_F(FvaFmtContextTests, FillFmtContextFromCfg_SomeParametersMissing) {
     // Arrange
     FvaConfiguration cfg;
     FvaFmtContext fmtContext;

@@ -1,40 +1,36 @@
 #include <gtest/gtest.h>
+
 #include "CLTCSVGetTagsForFvaFiles.h"
 
 // Test fixture for CLTCSVGetTagsForFvaFiles tests
-class CLTCSVGetTagsForFvaFilesTests : public ::testing::Test
-{
+class CLTCSVGetTagsForFvaFilesTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for execute function
-TEST_F(CLTCSVGetTagsForFvaFilesTests, Execute)
-{
+TEST_F(CLTCSVGetTagsForFvaFilesTests, Execute) {
     // Arrange
     FvaConfiguration cfg;
     CLTCSVGetTagsForFvaFiles task(cfg);
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
 
     // Act
     FVA_EXIT_CODE result = task.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
+    EXPECT_EQ(FVA_NO_ERROR, result);  // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
 
 // Test case for Name function
-TEST_F(CLTCSVGetTagsForFvaFilesTests, Name)
-{
+TEST_F(CLTCSVGetTagsForFvaFilesTests, Name) {
     // Arrange
 
     // Act
@@ -46,8 +42,7 @@ TEST_F(CLTCSVGetTagsForFvaFilesTests, Name)
 }
 
 // Test case for supportReadOnly function
-TEST_F(CLTCSVGetTagsForFvaFilesTests, SupportReadOnly)
-{
+TEST_F(CLTCSVGetTagsForFvaFilesTests, SupportReadOnly) {
     // Arrange
     FvaConfiguration cfg;
     CLTCSVGetTagsForFvaFiles task(cfg);
@@ -63,8 +58,7 @@ TEST_F(CLTCSVGetTagsForFvaFilesTests, SupportReadOnly)
 // Add more test cases for other member functions as needed
 
 // Test case for CLTCSVGetTagsForFvaFiles constructor
-TEST_F(CLTCSVGetTagsForFvaFilesTests, Constructor)
-{
+TEST_F(CLTCSVGetTagsForFvaFilesTests, Constructor) {
     // Arrange
     FvaConfiguration cfg;
     // Set up the necessary configuration parameters

@@ -1,24 +1,21 @@
 #include <gtest/gtest.h>
+
 #include "fvafolder.h"
 
 // Test fixture for fvaFolder tests
-class fvaFolderTests : public ::testing::Test
-{
+class fvaFolderTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for default constructor
-TEST_F(fvaFolderTests, DefaultConstructorTest)
-{
+TEST_F(fvaFolderTests, DefaultConstructorTest) {
     // Arrange
     fvaFolder folder;
 
@@ -30,8 +27,7 @@ TEST_F(fvaFolderTests, DefaultConstructorTest)
 }
 
 // Test case for setting event id
-TEST_F(fvaFolderTests, SetEventIdTest)
-{
+TEST_F(fvaFolderTests, SetEventIdTest) {
     // Arrange
     fvaFolder folder;
 
@@ -43,8 +39,7 @@ TEST_F(fvaFolderTests, SetEventIdTest)
 }
 
 // Test case for adding event reason people ids
-TEST_F(fvaFolderTests, AddEventReasonPeopleIdsTest)
-{
+TEST_F(fvaFolderTests, AddEventReasonPeopleIdsTest) {
     // Arrange
     fvaFolder folder;
 
@@ -61,8 +56,7 @@ TEST_F(fvaFolderTests, AddEventReasonPeopleIdsTest)
 }
 
 // Test case for setting folder tags
-TEST_F(fvaFolderTests, SetTagsTest)
-{
+TEST_F(fvaFolderTests, SetTagsTest) {
     // Arrange
     fvaFolder folder;
 
@@ -74,8 +68,7 @@ TEST_F(fvaFolderTests, SetTagsTest)
 }
 
 // Test case for setting linked folder
-TEST_F(fvaFolderTests, SetLinkedFolderTest)
-{
+TEST_F(fvaFolderTests, SetLinkedFolderTest) {
     // Arrange
     fvaFolder folder;
 

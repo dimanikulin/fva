@@ -1,24 +1,21 @@
 #include <gtest/gtest.h>
+
 #include "CLTFixDuplicatedFileNames.h"
 
 // Test fixture for CLTFixDuplicatedFileNames tests
-class CLTFixDuplicatedFileNamesTests : public ::testing::Test
-{
+class CLTFixDuplicatedFileNamesTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for Name function
-TEST_F(CLTFixDuplicatedFileNamesTests, Name)
-{
+TEST_F(CLTFixDuplicatedFileNamesTests, Name) {
     // Arrange
 
     // Act
@@ -30,8 +27,7 @@ TEST_F(CLTFixDuplicatedFileNamesTests, Name)
 }
 
 // Test case for supportReadOnly function
-TEST_F(CLTFixDuplicatedFileNamesTests, SupportReadOnly)
-{
+TEST_F(CLTFixDuplicatedFileNamesTests, SupportReadOnly) {
     // Arrange
     FvaConfiguration cfg;
     CLTFixDuplicatedFileNames task(cfg);
@@ -45,8 +41,7 @@ TEST_F(CLTFixDuplicatedFileNamesTests, SupportReadOnly)
 }
 
 // Test case for execute function
-TEST_F(CLTFixDuplicatedFileNamesTests, Execute)
-{
+TEST_F(CLTFixDuplicatedFileNamesTests, Execute) {
     // Arrange
     FvaConfiguration cfg;
     CLTFixDuplicatedFileNames task(cfg);
@@ -64,8 +59,7 @@ TEST_F(CLTFixDuplicatedFileNamesTests, Execute)
 }
 
 // Test case for execute function with custom destination folder
-TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithCustomDestination)
-{
+TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithCustomDestination) {
     // Arrange
     FvaConfiguration cfg;
     CLTFixDuplicatedFileNames task(cfg);
@@ -84,8 +78,7 @@ TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithCustomDestination)
 }
 
 // Test case for execute function with existing destination file
-TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithExistingDestinationFile)
-{
+TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithExistingDestinationFile) {
     // Arrange
     FvaConfiguration cfg;
     CLTFixDuplicatedFileNames task(cfg);
@@ -113,8 +106,7 @@ TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithExistingDestinationFile)
 }
 
 // Test case for execute function with failed file rename
-TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithFailedFileRename)
-{
+TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithFailedFileRename) {
     // Arrange
     FvaConfiguration cfg;
     CLTFixDuplicatedFileNames task(cfg);

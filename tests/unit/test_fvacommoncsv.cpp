@@ -1,10 +1,11 @@
 #include <gtest/gtest.h>
-#include "fvacommoncsv.h"
-#include "mocks.h"
 
-#include <iostream>
 #include <filesystem>
 #include <fstream>
+#include <iostream>
+
+#include "fvacommoncsv.h"
+#include "mocks.h"
 /*
 namespace fs = std::filesystem;
 
@@ -117,7 +118,7 @@ TEST_F(fvacommoncsvTests, LoadCsvFileWithNonUniqueFileNames)
 
     // Act
     FVA_EXIT_CODE result = fvaLoadFvaFileInfoFromCsv(rootSWdir, fvaFileInfo, fvaFileName);
-                                                
+
     // Assert
     EXPECT_EQ(result, FVA_ERROR_NON_UNIQUE_FVA_INFO);
     // Add additional assertions to verify the error handling

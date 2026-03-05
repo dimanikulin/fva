@@ -1,27 +1,24 @@
 #include <gtest/gtest.h>
+
 #include "CLTSetFileAtts.h"
 
 // Test fixture for CLTSetFileAtts tests
-class CLTSetFileAttsTests : public ::testing::Test
-{
+class CLTSetFileAttsTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for execute function
-TEST_F(CLTSetFileAttsTests, Execute)
-{
+TEST_F(CLTSetFileAttsTests, Execute) {
     // Arrange
     CLTSetFileAtts cltSetFileAtts;
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
 
     // Act
     FVA_EXIT_CODE result = cltSetFileAtts.execute(context);
@@ -33,8 +30,7 @@ TEST_F(CLTSetFileAttsTests, Execute)
 }
 
 // Test case for Name function
-TEST_F(CLTSetFileAttsTests, Name)
-{
+TEST_F(CLTSetFileAttsTests, Name) {
     // Arrange
 
     // Act
@@ -46,8 +42,7 @@ TEST_F(CLTSetFileAttsTests, Name)
 }
 
 // Test case for supportReadOnly function
-TEST_F(CLTSetFileAttsTests, SupportReadOnly)
-{
+TEST_F(CLTSetFileAttsTests, SupportReadOnly) {
     // Arrange
     CLTSetFileAtts task;
 
@@ -61,13 +56,12 @@ TEST_F(CLTSetFileAttsTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 // Test case for setting file attributes for supported files
-TEST_F(CLTSetFileAttsTests, SetFileAttributes_SupportedFiles)
-{
+TEST_F(CLTSetFileAttsTests, SetFileAttributes_SupportedFiles) {
     // Arrange
     CLTSetFileAtts cltSetFileAtts;
     CLTContext context;
     context.cmdType = CLTSetFileAtts::Name();
-    QDir m_dir; // Set up the necessary directory for the test
+    QDir m_dir;  // Set up the necessary directory for the test
     // Add some supported files to the directory
 
     // Act
@@ -80,13 +74,12 @@ TEST_F(CLTSetFileAttsTests, SetFileAttributes_SupportedFiles)
 }
 
 // Test case for setting file attributes for internal files
-TEST_F(CLTSetFileAttsTests, SetFileAttributes_InternalFiles)
-{
+TEST_F(CLTSetFileAttsTests, SetFileAttributes_InternalFiles) {
     // Arrange
     CLTSetFileAtts cltSetFileAtts;
     CLTContext context;
     context.cmdType = CLTSetFileAtts::Name();
-    QDir m_dir; // Set up the necessary directory for the test
+    QDir m_dir;  // Set up the necessary directory for the test
     // Add some internal files to the directory
 
     // Act
@@ -99,18 +92,17 @@ TEST_F(CLTSetFileAttsTests, SetFileAttributes_InternalFiles)
 }
 
 // Test case for handling unsupported files
-TEST_F(CLTSetFileAttsTests, SetFileAttributes_UnsupportedFiles)
-{
+TEST_F(CLTSetFileAttsTests, SetFileAttributes_UnsupportedFiles) {
     // Arrange
     CLTSetFileAtts cltSetFileAtts;
     CLTContext context;
-    QDir m_dir; // Set up the necessary directory for the test
+    QDir m_dir;  // Set up the necessary directory for the test
     // Add some unsupported files to the directory
 
     // Act
     FVA_EXIT_CODE result = cltSetFileAtts.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_NOT_SUPPORTED_FILE, result); // Verify that the function returns FVA_ERROR_NOT_SUPPORTED_FILE
+    EXPECT_EQ(FVA_ERROR_NOT_SUPPORTED_FILE, result);  // Verify that the function returns FVA_ERROR_NOT_SUPPORTED_FILE
     // Add assertions to verify the expected behavior for unsupported files
 }

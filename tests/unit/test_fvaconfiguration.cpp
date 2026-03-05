@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "fvaconfiguration.h"
 
 /*
@@ -8,7 +9,7 @@ TEST(FvaConfigurationTest, GetExistingParamValue)
     FvaConfiguration config;
     QString paramName = "ID";
     uint expectedValue = 12345;
-    
+
     // Set up the configuration with the parameter
     config.setParam(paramName, expectedValue);
     config.setParam("Name", "Parameter1");
@@ -202,7 +203,7 @@ TEST(FvaConfigurationTest, SetParamString)
     FVA_EXIT_CODE result = config.setParam(paramName, paramValue);
 
     EXPECT_EQ(result, FVA_NO_ERROR);
-    
+
     // Add additional assertions to verify the updated configuration
     QString actualValue;
     result = config.getParamAsString(paramName, actualValue);

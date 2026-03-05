@@ -1,24 +1,21 @@
 #include <gtest/gtest.h>
+
 #include "CLTMoveInputDir2Output.h"
 
 // Test fixture for CLTMoveInputDir2Output tests
-class CLTMoveInputDir2OutputTests : public ::testing::Test
-{
+class CLTMoveInputDir2OutputTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for Name function
-TEST_F(CLTMoveInputDir2OutputTests, Name)
-{
+TEST_F(CLTMoveInputDir2OutputTests, Name) {
     // Arrange
 
     // Act
@@ -30,8 +27,7 @@ TEST_F(CLTMoveInputDir2OutputTests, Name)
 }
 
 // Test case for supportReadOnly function
-TEST_F(CLTMoveInputDir2OutputTests, SupportReadOnly)
-{
+TEST_F(CLTMoveInputDir2OutputTests, SupportReadOnly) {
     // Arrange
     FvaConfiguration cfg;
     CLTMoveInputDir2Output task(cfg);
@@ -43,12 +39,11 @@ TEST_F(CLTMoveInputDir2OutputTests, SupportReadOnly)
     // Verify the expected read-only support
     ASSERT_TRUE(readOnly);
 }
-  
+
 // Add more test cases for other member functions as needed
 
 // Test case for constructor
-TEST_F(CLTMoveInputDir2OutputTests, Constructor)
-{
+TEST_F(CLTMoveInputDir2OutputTests, Constructor) {
     // Arrange
     FvaConfiguration cfg;
 
@@ -61,8 +56,7 @@ TEST_F(CLTMoveInputDir2OutputTests, Constructor)
 }
 
 // Test case for execute function
-TEST_F(CLTMoveInputDir2OutputTests, Execute)
-{
+TEST_F(CLTMoveInputDir2OutputTests, Execute) {
     // Arrange
     FvaConfiguration cfg;
     CLTMoveInputDir2Output task(cfg);

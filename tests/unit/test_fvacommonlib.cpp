@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "fvacommonlib.h"
 
+#include "fvacommonlib.h"
 
 /*
 17,Format::fvaDirName,yyyy.MM.dd
@@ -14,12 +14,11 @@
 */
 
 // Test case for a one-year folder
-TEST(fvaParseDirNameTest, OneYearFolder)
-{
+TEST(fvaParseDirNameTest, OneYearFolder) {
     QString dirName = "2022";
     QDateTime from, to;
-    FvaFmtContext ctx; // Provide a valid FvaFmtContext object
-    ctx.fvaDirNameYear = "yyyy"; // Set the format for year parsing
+    FvaFmtContext ctx;            // Provide a valid FvaFmtContext object
+    ctx.fvaDirNameYear = "yyyy";  // Set the format for year parsing
 
     FVA_EXIT_CODE result = fvaParseDirName(dirName, from, to, ctx);
 
@@ -28,12 +27,11 @@ TEST(fvaParseDirNameTest, OneYearFolder)
 }
 
 // Test case for a year period
-TEST(fvaParseDirNameTest, YearPeriod)
-{
+TEST(fvaParseDirNameTest, YearPeriod) {
     QString dirName = "2022-2023";
     QDateTime from, to;
-    FvaFmtContext ctx; // Provide a valid FvaFmtContext object
-    ctx.fvaDirNameYear = "yyyy"; // Set the format for year parsing
+    FvaFmtContext ctx;            // Provide a valid FvaFmtContext object
+    ctx.fvaDirNameYear = "yyyy";  // Set the format for year parsing
 
     FVA_EXIT_CODE result = fvaParseDirName(dirName, from, to, ctx);
 
@@ -42,12 +40,11 @@ TEST(fvaParseDirNameTest, YearPeriod)
 }
 
 // Test case for a one-day event
-TEST(fvaParseDirNameTest, OneDayEvent)
-{
+TEST(fvaParseDirNameTest, OneDayEvent) {
     QString dirName = "2022.01.01";
     QDateTime from, to;
-    FvaFmtContext ctx; // Provide a valid FvaFmtContext object
-    ctx.fvaDirName = "yyyy.MM.dd"; // Set the format for date parsing
+    FvaFmtContext ctx;              // Provide a valid FvaFmtContext object
+    ctx.fvaDirName = "yyyy.MM.dd";  // Set the format for date parsing
 
     FVA_EXIT_CODE result = fvaParseDirName(dirName, from, to, ctx);
 
@@ -56,12 +53,11 @@ TEST(fvaParseDirNameTest, OneDayEvent)
 }
 
 // Test case for one day and several events
-TEST(fvaParseDirNameTest, OneDaySeveralEvents)
-{
+TEST(fvaParseDirNameTest, OneDaySeveralEvents) {
     QString dirName = "2022.01.01 #3";
     QDateTime from, to;
-    FvaFmtContext ctx; // Provide a valid FvaFmtContext object
-    ctx.fvaDirName = "yyyy.MM.dd"; // Set the format for date parsing
+    FvaFmtContext ctx;              // Provide a valid FvaFmtContext object
+    ctx.fvaDirName = "yyyy.MM.dd";  // Set the format for date parsing
 
     FVA_EXIT_CODE result = fvaParseDirName(dirName, from, to, ctx);
 
@@ -70,12 +66,11 @@ TEST(fvaParseDirNameTest, OneDaySeveralEvents)
 }
 
 // Test case for a period
-TEST(fvaParseDirNameTest, Period)
-{
+TEST(fvaParseDirNameTest, Period) {
     QString dirName = "2022.01.01-03";
     QDateTime from, to;
-    FvaFmtContext ctx; // Provide a valid FvaFmtContext object
-    ctx.fvaDirName = "yyyy.MM.dd"; // Set the format for date parsing
+    FvaFmtContext ctx;              // Provide a valid FvaFmtContext object
+    ctx.fvaDirName = "yyyy.MM.dd";  // Set the format for date parsing
 
     FVA_EXIT_CODE result = fvaParseDirName(dirName, from, to, ctx);
 
@@ -84,12 +79,11 @@ TEST(fvaParseDirNameTest, Period)
 }
 
 // Test case for months-day period
-TEST(fvaParseDirNameTest, MonthsDayPeriod)
-{
+TEST(fvaParseDirNameTest, MonthsDayPeriod) {
     QString dirName = "2017.05.29-06.15";
     QDateTime from, to;
-    FvaFmtContext ctx; // Provide a valid FvaFmtContext object
-    ctx.fvaDirName = "yyyy.MM.dd"; // Set the format for date parsing
+    FvaFmtContext ctx;              // Provide a valid FvaFmtContext object
+    ctx.fvaDirName = "yyyy.MM.dd";  // Set the format for date parsing
 
     FVA_EXIT_CODE result = fvaParseDirName(dirName, from, to, ctx);
 
@@ -98,12 +92,11 @@ TEST(fvaParseDirNameTest, MonthsDayPeriod)
 }
 
 // Test case for an invalid folder name
-TEST(fvaParseDirNameTest, InvalidFolderName)
-{
+TEST(fvaParseDirNameTest, InvalidFolderName) {
     QString dirName = "invalid";
     QDateTime from, to;
-    FvaFmtContext ctx; // Provide a valid FvaFmtContext object
-    ctx.fvaDirName = "yyyy.MM.dd"; // Set the format for date parsing
+    FvaFmtContext ctx;              // Provide a valid FvaFmtContext object
+    ctx.fvaDirName = "yyyy.MM.dd";  // Set the format for date parsing
 
     FVA_EXIT_CODE result = fvaParseDirName(dirName, from, to, ctx);
 

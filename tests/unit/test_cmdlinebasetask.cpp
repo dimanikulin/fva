@@ -1,25 +1,22 @@
 #include <gtest/gtest.h>
+
 #include "CmdLineBaseTask.h"
 #include "mocks.h"
 
 // Test fixture for CmdLineBaseTask tests
-class CmdLineBaseTaskTests : public ::testing::Test
-{
+class CmdLineBaseTaskTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for execute() method
-TEST_F(CmdLineBaseTaskTests, ExecuteTest)
-{
+TEST_F(CmdLineBaseTaskTests, ExecuteTest) {
     // Arrange
     CLTContext context;
     MockCmdLineBaseTask task;
@@ -35,8 +32,7 @@ TEST_F(CmdLineBaseTaskTests, ExecuteTest)
 }
 
 // Test case for processFolderRecursivly() method
-TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivlyTest)
-{
+TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivlyTest) {
     // Arrange
     std::string folder = TEST_DIR;
     CLTContext context;
@@ -49,10 +45,8 @@ TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivlyTest)
     EXPECT_EQ(result, FVA_NO_ERROR);
 }
 
-
 // Test case for supportReadOnly() method
-TEST_F(CmdLineBaseTaskTests, SupportReadOnlyTest)
-{
+TEST_F(CmdLineBaseTaskTests, SupportReadOnlyTest) {
     // Arrange
     MockCmdLineBaseTask task;
 
@@ -63,10 +57,8 @@ TEST_F(CmdLineBaseTaskTests, SupportReadOnlyTest)
     EXPECT_FALSE(result);
 }
 
-
 // Test case for processFolderRecursivly when folder contains no subfolders or files
-TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
-{
+TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles) {
     // Arrange
     std::string folder = TEST_DIR;
     CLTContext context;
@@ -80,17 +72,16 @@ TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_NoSubfoldersOrFiles)
 }
 
 // Test case for processFolderRecursivly when folder contains subfolders and files
-TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
-{
+TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles) {
     CLTContext context;
     MockCmdLineBaseTask task;
 
     // Create subfolders and files
     QDir().mkpath(QString(TEST_DIR) + "/subfolder1");
     QDir().mkpath(QString(TEST_DIR) + "/subfolder2");
-    QFile file (QString(TEST_DIR) + "/file1.txt");
+    QFile file(QString(TEST_DIR) + "/file1.txt");
     file.open(QIODevice::WriteOnly);
-    QFile file2 (QString(TEST_DIR) + "/subfolder1/file2.txt");
+    QFile file2(QString(TEST_DIR) + "/subfolder1/file2.txt");
     file2.open(QIODevice::WriteOnly);
 
     // Act
@@ -101,8 +92,7 @@ TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles)
 }
 
 // Test case for processFolderRecursivly when folder contains internal folders to skip
-TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_SkipInternalFolders)
-{
+TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_SkipInternalFolders) {
     CLTContext context;
     MockCmdLineBaseTask task;
 

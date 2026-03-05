@@ -1,28 +1,25 @@
 #include <gtest/gtest.h>
+
 #include "CLTAutoChecks3.h"
 
 // Test fixture for CLTAutoChecks3 tests
-class CLTAutoChecks3Tests : public ::testing::Test
-{
+class CLTAutoChecks3Tests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for execute function with missing device ID
-TEST_F(CLTAutoChecks3Tests, Execute_MissingDeviceID)
-{
+TEST_F(CLTAutoChecks3Tests, Execute_MissingDeviceID) {
     // Arrange
     FvaConfiguration config;
     CLTAutoChecks3 cltAutoChecks3(config);
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
     // Add a file to the directory that does not have a corresponding device ID in the CSV file
 
     // Act
@@ -30,34 +27,32 @@ TEST_F(CLTAutoChecks3Tests, Execute_MissingDeviceID)
 
     // Assert
     // TODO shell be checned in the #logs#/issues3.csv
-    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result); // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
+    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result);  // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
     // Add more assertions to verify the expected behavior and output
 }
 
 // Test case for execute function with unknown device
-TEST_F(CLTAutoChecks3Tests, Execute_UnknownDevice)
-{
+TEST_F(CLTAutoChecks3Tests, Execute_UnknownDevice) {
     // Arrange
     FvaConfiguration config;
     CLTAutoChecks3 cltAutoChecks3(config);
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
     // Add a file to the directory with an unknown device name
 
     // Act
     FVA_EXIT_CODE result = cltAutoChecks3.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result); // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
+    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result);  // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
     // Add more assertions to verify the expected behavior and output
 }
 
 // Test case for execute function with empty device name
-TEST_F(CLTAutoChecks3Tests, Execute_EmptyDeviceName)
-{
+TEST_F(CLTAutoChecks3Tests, Execute_EmptyDeviceName) {
     // Arrange
     FvaConfiguration config;
     CLTAutoChecks3 cltAutoChecks3(config);
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
     // Add a file to the directory with an empty device name
 
     // Act
@@ -65,17 +60,16 @@ TEST_F(CLTAutoChecks3Tests, Execute_EmptyDeviceName)
 
     // Assert
     // TODO shell be checned in the #logs#/issues3.csv for FVA_ERROR_EMPTY_DEVICE_NAME
-    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result); // Verify that the function returns 
+    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result);  // Verify that the function returns
     // Add more assertions to verify the expected behavior and output
 }
 
 // Test case for execute function with wrongly linked device ID
-TEST_F(CLTAutoChecks3Tests, Execute_WronglyLinkedDeviceID)
-{
+TEST_F(CLTAutoChecks3Tests, Execute_WronglyLinkedDeviceID) {
     // Arrange
     FvaConfiguration config;
     CLTAutoChecks3 cltAutoChecks3(config);
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
     // Add a file to the directory with a device ID that is linked wrongly
 
     // Act
@@ -83,17 +77,16 @@ TEST_F(CLTAutoChecks3Tests, Execute_WronglyLinkedDeviceID)
 
     // Assert
     // TODO shell be checned in the #logs#/issues3.csv for FVA_ERROR_LINKED_WRONG_DEVICE
-    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result); // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
+    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result);  // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
     // Add more assertions to verify the expected behavior and output
 }
 
 // Test case for execute function with missing GEO location
-TEST_F(CLTAutoChecks3Tests, Execute_MissingGeoLocation)
-{
+TEST_F(CLTAutoChecks3Tests, Execute_MissingGeoLocation) {
     // Arrange
     FvaConfiguration config;
     CLTAutoChecks3 cltAutoChecks3(config);
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
     // Add a file to the directory without GEO location data
 
     // Act
@@ -101,30 +94,28 @@ TEST_F(CLTAutoChecks3Tests, Execute_MissingGeoLocation)
 
     // Assert
     // TODO shell be checned in the #logs#/issues3.csv
-    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result); // Verify that the function returns FVA_ERROR_NO_GEO
+    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result);  // Verify that the function returns FVA_ERROR_NO_GEO
     // Add more assertions to verify the expected behavior and output
 }
 
 // Test case for execute function
-TEST_F(CLTAutoChecks3Tests, Execute)
-{
+TEST_F(CLTAutoChecks3Tests, Execute) {
     // Arrange
     FvaConfiguration config;
     CLTAutoChecks3 cltAutoChecks3(config);
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
 
     // Act
     FVA_EXIT_CODE result = cltAutoChecks3.execute(context);
 
     // Assert
     // TODO shell be checned in the #logs#/issues3.csv
-    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result); // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
+    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result);  // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
     // Add more assertions to verify the expected behavior and output
 }
 
 // Test case for Name function
-TEST_F(CLTAutoChecks3Tests, Name)
-{
+TEST_F(CLTAutoChecks3Tests, Name) {
     // Arrange
 
     // Act
@@ -136,8 +127,7 @@ TEST_F(CLTAutoChecks3Tests, Name)
 }
 
 // Test case for supportReadOnly function
-TEST_F(CLTAutoChecks3Tests, SupportReadOnly)
-{
+TEST_F(CLTAutoChecks3Tests, SupportReadOnly) {
     // Arrange
     FvaConfiguration config;
     CLTAutoChecks3 task(config);

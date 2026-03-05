@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
+
 #include "fvadevice.h"
 
 // Test case for verifying the initialization of fvaDevice object
-TEST(fvaDeviceTests, InitializationTest)
-{
+TEST(fvaDeviceTests, InitializationTest) {
     // Arrange
     fvaDevice device;
 
@@ -19,8 +19,7 @@ TEST(fvaDeviceTests, InitializationTest)
 }
 
 // Test case for setting and getting the device identifier
-TEST(fvaDeviceTests, DeviceIdTest)
-{
+TEST(fvaDeviceTests, DeviceIdTest) {
     // Arrange
     fvaDevice device;
     int deviceId = 123;
@@ -33,8 +32,7 @@ TEST(fvaDeviceTests, DeviceIdTest)
 }
 
 // Test case for setting and getting the owner name
-TEST(fvaDeviceTests, OwnerNameTest)
-{
+TEST(fvaDeviceTests, OwnerNameTest) {
     // Arrange
     fvaDevice device;
     QString ownerName = "John Doe";
@@ -47,8 +45,7 @@ TEST(fvaDeviceTests, OwnerNameTest)
 }
 
 // Test case for setting and getting the owner identifier
-TEST(fvaDeviceTests, OwnerIdTest)
-{
+TEST(fvaDeviceTests, OwnerIdTest) {
     // Arrange
     fvaDevice device;
     int ownerId = 456;
@@ -61,8 +58,7 @@ TEST(fvaDeviceTests, OwnerIdTest)
 }
 
 // Test case for setting and getting the linked name
-TEST(fvaDeviceTests, LinkedNameTest)
-{
+TEST(fvaDeviceTests, LinkedNameTest) {
     // Arrange
     fvaDevice device;
     QString linkedName = "Brand Model";
@@ -75,8 +71,7 @@ TEST(fvaDeviceTests, LinkedNameTest)
 }
 
 // Test case for setting and getting the GUI name
-TEST(fvaDeviceTests, GuiNameTest)
-{
+TEST(fvaDeviceTests, GuiNameTest) {
     // Arrange
     fvaDevice device;
     QString guiName = "Device Name";
@@ -89,8 +84,7 @@ TEST(fvaDeviceTests, GuiNameTest)
 }
 
 // Test case for setting and getting the device type
-TEST(fvaDeviceTests, DeviceTypeTest)
-{
+TEST(fvaDeviceTests, DeviceTypeTest) {
     // Arrange
     fvaDevice device;
     FVA_DEVICE_TYPE type = FVA_DEVICE_TYPE::DEVICE_TYPE_PHOTO_VIDEO;

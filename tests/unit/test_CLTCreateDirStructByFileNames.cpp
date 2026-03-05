@@ -1,24 +1,21 @@
 #include <gtest/gtest.h>
+
 #include "CLTCreateDirStructByFileNames.h"
 
 // Test fixture for CLTCreateDirStructByFileNames tests
-class CLTCreateDirStructByFileNamesTests : public ::testing::Test
-{
+class CLTCreateDirStructByFileNamesTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for Name function
-TEST_F(CLTCreateDirStructByFileNamesTests, Name)
-{
+TEST_F(CLTCreateDirStructByFileNamesTests, Name) {
     // Arrange
 
     // Act
@@ -30,8 +27,7 @@ TEST_F(CLTCreateDirStructByFileNamesTests, Name)
 }
 
 // Test case for supportReadOnly function
-TEST_F(CLTCreateDirStructByFileNamesTests, SupportReadOnly)
-{
+TEST_F(CLTCreateDirStructByFileNamesTests, SupportReadOnly) {
     // Arrange
     CLTCreateDirStructByFileNames task;
 
@@ -45,11 +41,10 @@ TEST_F(CLTCreateDirStructByFileNamesTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 // Test case for execute function
-TEST_F(CLTCreateDirStructByFileNamesTests, Execute)
-{
+TEST_F(CLTCreateDirStructByFileNamesTests, Execute) {
     // Arrange
     CLTCreateDirStructByFileNames cltCreateDirStruct;
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
 
     // Create a temporary directory for testing
     QDir tempDir;

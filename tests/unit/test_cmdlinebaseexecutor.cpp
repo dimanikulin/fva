@@ -1,26 +1,23 @@
 #include <gtest/gtest.h>
+
 #include "CmdLineBaseExecutor.h"
 #include "FVADataProcessor.h"
 #include "mocks.h"
 
 // Test fixture for CmdLineBaseExecutor tests
-class CmdLineBaseExecutorTests : public ::testing::Test
-{
+class CmdLineBaseExecutorTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for the run() method
-TEST_F(CmdLineBaseExecutorTests, RunTest)
-{
+TEST_F(CmdLineBaseExecutorTests, RunTest) {
     // Arrange
     CLTContext context;
     context.dir = TEST_DIR;
@@ -36,8 +33,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest)
 }
 
 // Test case for run() when input folder does not exist
-TEST_F(CmdLineBaseExecutorTests, RunTest_InputFolderNotExist)
-{
+TEST_F(CmdLineBaseExecutorTests, RunTest_InputFolderNotExist) {
     // Arrange
     CLTContext context;
     FvaConfiguration cfg;
@@ -52,8 +48,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_InputFolderNotExist)
 }
 
 // Test case for run() when command is unknown
-TEST_F(CmdLineBaseExecutorTests, RunTest_UnknownCommand)
-{
+TEST_F(CmdLineBaseExecutorTests, RunTest_UnknownCommand) {
     // Arrange
     CLTContext context;
     context.dir = TEST_DIR;
@@ -72,8 +67,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_UnknownCommand)
 }
 
 // Test case for run() when command does not support readonly mode
-TEST_F(CmdLineBaseExecutorTests, RunTest_CommandDoesNotSupportReadOnly)
-{
+TEST_F(CmdLineBaseExecutorTests, RunTest_CommandDoesNotSupportReadOnly) {
     // Arrange
     CLTContext context;
     context.dir = TEST_DIR;
@@ -92,8 +86,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_CommandDoesNotSupportReadOnly)
 }
 
 // Test case for run() when command is executed in recursive mode
-TEST_F(CmdLineBaseExecutorTests, RunTest_RecursiveMode)
-{
+TEST_F(CmdLineBaseExecutorTests, RunTest_RecursiveMode) {
     // Arrange
     CLTContext context;
     context.dir = TEST_DIR;
@@ -112,8 +105,7 @@ TEST_F(CmdLineBaseExecutorTests, RunTest_RecursiveMode)
 }
 
 // Test case for run() when command is executed in non-recursive mode
-TEST_F(CmdLineBaseExecutorTests, RunTest_NonRecursiveMode)
-{
+TEST_F(CmdLineBaseExecutorTests, RunTest_NonRecursiveMode) {
     // Arrange
     CLTContext context;
     context.dir = TEST_DIR;

@@ -1,25 +1,21 @@
 #include <gtest/gtest.h>
+
 #include "fvaperson.h"
 
 // Test fixture for fvaPerson tests
-class FVAPersonTests : public ::testing::Test
-{
+class FVAPersonTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
-
 // Test case for fvaPerson class
-TEST_F(FVAPersonTests, Constructor)
-{
+TEST_F(FVAPersonTests, Constructor) {
     // Act
     fvaPerson person;
 
@@ -29,7 +25,7 @@ TEST_F(FVAPersonTests, Constructor)
     person.fullName = "John Doe";
     person.type = 2;
     person.institution = 3;
-    
+
     // Assert
     EXPECT_EQ(person.Id, 1);
     EXPECT_EQ(person.name, "John");

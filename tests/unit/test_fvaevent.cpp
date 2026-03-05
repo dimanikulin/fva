@@ -1,24 +1,21 @@
 #include <gtest/gtest.h>
+
 #include "FVAEvent.h"
 
 // Test fixture for fvaEvent tests
-class FVAEventTests : public ::testing::Test
-{
+class FVAEventTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for default constructor
-TEST_F(FVAEventTests, DefaultConstructorTest)
-{
+TEST_F(FVAEventTests, DefaultConstructorTest) {
     // Arrange
 
     // Act
@@ -32,8 +29,7 @@ TEST_F(FVAEventTests, DefaultConstructorTest)
 }
 
 // Test case for parameterized constructor
-TEST_F(FVAEventTests, ParameterizedConstructionTest)
-{
+TEST_F(FVAEventTests, ParameterizedConstructionTest) {
     // Arrange
     int ID = 1;
     QString name = "Test Event";
@@ -53,4 +49,3 @@ TEST_F(FVAEventTests, ParameterizedConstructionTest)
     EXPECT_EQ(event.type, type);
     EXPECT_EQ(event.institution, institution);
 }
-

@@ -1,18 +1,17 @@
 #include <gtest/gtest.h>
-#include "fvaItem.h"
-#include "fvaFolder.h"
-#include "fvaFile.h"
 
 #include <iostream>
 
+#include "fvaFile.h"
+#include "fvaFolder.h"
+#include "fvaItem.h"
 
 // Test case for FVA_FS_TYPE_FILE
-TEST(FvaItemTests, GetGuiName_File)
-{
+TEST(FvaItemTests, GetGuiName_File) {
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_IMG;
-    item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
+    item.dateFrom = QDateTime::fromString("2022/01/01", "yyyy/MM/dd");
 
     QVariantMap dictionaries;
 
@@ -24,13 +23,12 @@ TEST(FvaItemTests, GetGuiName_File)
 }
 
 // Test case for FVA_FS_TYPE_DIR with valid dateTo and without pFvaFolder
-TEST(FvaItemTests, GetGuiName_Directory_ValidDateToWithoutFolder)
-{
+TEST(FvaItemTests, GetGuiName_Directory_ValidDateToWithoutFolder) {
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
-    item.dateTo = QDateTime::fromString("2022/01/31" , "yyyy/MM/dd");
+    item.dateFrom = QDateTime::fromString("2022/01/01", "yyyy/MM/dd");
+    item.dateTo = QDateTime::fromString("2022/01/31", "yyyy/MM/dd");
 
     QVariantMap dictionaries;
 
@@ -42,12 +40,11 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToWithoutFolder)
 }
 
 // Test case for FVA_FS_TYPE_DIR without valid dateTo
-TEST(FvaItemTests, GetGuiName_Directory_WithoutValidDateTo)
-{
+TEST(FvaItemTests, GetGuiName_Directory_WithoutValidDateTo) {
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
+    item.dateFrom = QDateTime::fromString("2022/01/01", "yyyy/MM/dd");
 
     QVariantMap dictionaries;
 
@@ -59,13 +56,12 @@ TEST(FvaItemTests, GetGuiName_Directory_WithoutValidDateTo)
 }
 
 // Test case for getGuiFullName with empty dictionaries
-TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries)
-{
+TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries) {
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_IMG;
-    item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
-    item.dateTo = QDateTime::fromString("2022/01/02" , "yyyy/MM/dd");
+    item.dateFrom = QDateTime::fromString("2022/01/01", "yyyy/MM/dd");
+    item.dateTo = QDateTime::fromString("2022/01/02", "yyyy/MM/dd");
     item.fsFullPath = "/path/to/file.txt";
     item.isFiltered = false;
     item.pFvaFile = new fvaFile();
@@ -80,13 +76,12 @@ TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries)
 }
 
 // Test case for getGuiName with empty dictionaries
-TEST(FvaItemTests, GetGuiName_EmptyDictionaries)
-{
+TEST(FvaItemTests, GetGuiName_EmptyDictionaries) {
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDateTime::fromString("2022/01/01" , "yyyy/MM/dd");
-    item.dateTo = QDateTime::fromString("2022/01/31" , "yyyy/MM/dd");
+    item.dateFrom = QDateTime::fromString("2022/01/01", "yyyy/MM/dd");
+    item.dateTo = QDateTime::fromString("2022/01/31", "yyyy/MM/dd");
     item.fsFullPath = "/path/to/folder";
     item.isFiltered = false;
     item.pFvaFolder = new fvaFolder();

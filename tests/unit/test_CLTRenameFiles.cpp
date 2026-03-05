@@ -1,40 +1,36 @@
 #include <gtest/gtest.h>
+
 #include "CLTRenameFiles.h"
 
 // Test fixture for CLTRenameFiles tests
-class CLTRenameFilesTests : public ::testing::Test
-{
+class CLTRenameFilesTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for execute function
-TEST_F(CLTRenameFilesTests, Execute)
-{
+TEST_F(CLTRenameFilesTests, Execute) {
     // Arrange
     FvaConfiguration cfg;
     CLTRenameFiles cltRenameFiles(cfg);
-    CLTContext context; // Set up the necessary context for the test
+    CLTContext context;  // Set up the necessary context for the test
 
     // Act
     FVA_EXIT_CODE result = cltRenameFiles.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_NO_ERROR, result); // Verify that the function returns FVA_NO_ERROR
+    EXPECT_EQ(FVA_NO_ERROR, result);  // Verify that the function returns FVA_NO_ERROR
     // Add more assertions to verify the expected behavior and output
 }
 
 // Test case for Name function
-TEST_F(CLTRenameFilesTests, Name)
-{
+TEST_F(CLTRenameFilesTests, Name) {
     // Arrange
 
     // Act
@@ -46,8 +42,7 @@ TEST_F(CLTRenameFilesTests, Name)
 }
 
 // Test case for supportReadOnly function
-TEST_F(CLTRenameFilesTests, SupportReadOnly)
-{
+TEST_F(CLTRenameFilesTests, SupportReadOnly) {
     // Arrange
     FvaConfiguration cfg;
     CLTRenameFiles cltRenameFiles(cfg);
@@ -62,8 +57,7 @@ TEST_F(CLTRenameFilesTests, SupportReadOnly)
 
 // Add more test cases for other member functions as needed
 // Test case for CLTRenameFiles constructor
-TEST_F(CLTRenameFilesTests, Constructor)
-{
+TEST_F(CLTRenameFilesTests, Constructor) {
     // Arrange
     FvaConfiguration cfg;
     cfg.setParam("Rename::videoByModifTime", true);
@@ -79,8 +73,7 @@ TEST_F(CLTRenameFilesTests, Constructor)
 }
 
 // Test case for CLTRenameFiles constructor with invalid configuration
-TEST_F(CLTRenameFilesTests, Constructor_InvalidConfig)
-{
+TEST_F(CLTRenameFilesTests, Constructor_InvalidConfig) {
     // Arrange
     FvaConfiguration cfg;
     cfg.setParam("Rename::videoByModifTime", true);
@@ -92,8 +85,7 @@ TEST_F(CLTRenameFilesTests, Constructor_InvalidConfig)
 }
 
 // Test case for CLTRenameFiles constructor with empty configuration
-TEST_F(CLTRenameFilesTests, Constructor_EmptyConfig)
-{
+TEST_F(CLTRenameFilesTests, Constructor_EmptyConfig) {
     // Arrange
     FvaConfiguration cfg;
 

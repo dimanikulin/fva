@@ -1,24 +1,21 @@
 #include <gtest/gtest.h>
+
 #include "FVABaseDictionaryItem.h"
 
 // Test fixture for fvaBaseDictionaryItem tests
-class FVABaseDictionaryItemTests : public ::testing::Test
-{
+class FVABaseDictionaryItemTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for default constructor
-TEST_F(FVABaseDictionaryItemTests, DefaultConstructor)
-{
+TEST_F(FVABaseDictionaryItemTests, DefaultConstructor) {
     // Arrange
     fvaBaseDictionaryItem item;
 
@@ -29,8 +26,7 @@ TEST_F(FVABaseDictionaryItemTests, DefaultConstructor)
 }
 
 // Test case for parameterized constructor
-TEST_F(FVABaseDictionaryItemTests, ParameterizedConstructor)
-{
+TEST_F(FVABaseDictionaryItemTests, ParameterizedConstructor) {
     // Arrange
     int ID = 1;
     int type = 2;

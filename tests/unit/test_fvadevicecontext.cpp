@@ -1,24 +1,21 @@
 #include <gtest/gtest.h>
+
 #include "FVADeviceContext.h"
 
 // Test fixture for DeviceContext tests
-class DeviceContextTests : public ::testing::Test
-{
+class DeviceContextTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
 
 // Test case for matchedDeviceName
-TEST_F(DeviceContextTests, MatchedDeviceName)
-{
+TEST_F(DeviceContextTests, MatchedDeviceName) {
     // Arrange
     DeviceContext deviceContext;
 
@@ -30,8 +27,7 @@ TEST_F(DeviceContextTests, MatchedDeviceName)
 }
 
 // Test case for fullDeviceMap
-TEST_F(DeviceContextTests, FullDeviceMap)
-{
+TEST_F(DeviceContextTests, FullDeviceMap) {
     // Arrange
     DeviceContext deviceContext;
 
@@ -44,8 +40,7 @@ TEST_F(DeviceContextTests, FullDeviceMap)
 }
 
 // Test case for deviceMap
-TEST_F(DeviceContextTests, DeviceMap)
-{
+TEST_F(DeviceContextTests, DeviceMap) {
     // Arrange
     DeviceContext deviceContext;
 

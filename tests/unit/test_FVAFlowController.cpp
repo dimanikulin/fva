@@ -1,17 +1,15 @@
 #include <gtest/gtest.h>
+
 #include "FVAFlowController.h"
 
 // Test fixture for FVAFlowController tests
-class FVAFlowControllerTests : public ::testing::Test
-{
+class FVAFlowControllerTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
