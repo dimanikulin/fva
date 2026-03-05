@@ -29,11 +29,11 @@ jobs:
             cc: "gcc", cxx: "g++"
           }
 
-        - {
-            name: "Ubuntu Latest GCC", artifact: "Linux.7z",
-            os: ubuntu-latest,
-            cc: "gcc", cxx: "g++"
-          }
+        #- {
+        #    name: "Ubuntu Latest GCC", artifact: "Linux.7z",
+        #    os: ubuntu-latest,
+        #    cc: "gcc", cxx: "g++"
+        #  }
 
         #- {
         #    name: "macOS Latest Clang", artifact: "macOS.7z",
@@ -259,24 +259,6 @@ jobs:
           message("::error::${test_results}")
           message(FATAL_ERROR "Running tests failed!")
         endif()
-
-    - name: Code coverage using Codecov 
-      if: matrix.config.os == 'ubuntu-latest'  
-      run: |
-         echo "==================Installing coverage tool====================================="
-         sudo apt-get update
-         sudo apt-get -y install lcov
-         echo "==================Run capture for coverage====================================="
-         lcov --capture --directory ./build --output-file ./build/coverage.info --ignore-errors mismatch
-         echo "==================Filtering coverage====================================="
-         lcov --remove ./build/coverage.info --directory ./build -o ./build/filtered_coverage.info \
-         '/usr/include/*' \
-         '/include/gtest/*' \
-         '*/test/*' \
-         '*/googletest/*'
-         echo "================================= Conversion coverage====================================="
-         genhtml ./build/filtered_coverage.info --output-directory coverage_report
-         echo "=========================================================================================="
     
     - name: Install binaries to instdir and stripping them to make binaries smaller by CMake
       run: |
