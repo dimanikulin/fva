@@ -2,16 +2,13 @@
 // #include "../FVAOrganizerPlacePage.h"
 
 // Test fixture for FVAOrganizerOrientPage tests
-class FVAOrganizerPlacePageTests : public ::testing::Test
-{
+class FVAOrganizerPlacePageTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
@@ -51,10 +48,10 @@ TEST_F(FVAOrganizerPlacePageTests, OnAddPlacePressed)
 {
     // Arrange
     FVAOrganizerPlacePage page;
-    
+
     // Act
     page.OnAddPlacePressed();
-    
+
     // Assert
     // Verify the expected behavior and output
 }
@@ -65,10 +62,10 @@ TEST_F(FVAOrganizerPlacePageTests, OnSaveButtonPressed_ValidInputs)
     // Arrange
     FVAOrganizerPlacePage page;
     // Set up the necessary inputs for the test
-    
+
     // Act
     page.OnSaveButtonPressed();
-    
+
     // Assert
     // Verify the expected behavior and output
 }
@@ -79,10 +76,10 @@ TEST_F(FVAOrganizerPlacePageTests, OnSaveButtonPressed_TooManyFoldersSelected)
     // Arrange
     FVAOrganizerPlacePage page;
     // Set up the necessary inputs for the test
-    
+
     // Act
     page.OnSaveButtonPressed();
-    
+
     // Assert
     // Verify the expected behavior and output
 }
@@ -93,10 +90,10 @@ TEST_F(FVAOrganizerPlacePageTests, OnSaveButtonPressed_EmptyPathForFolderSelecte
     // Arrange
     FVAOrganizerPlacePage page;
     // Set up the necessary inputs for the test
-    
+
     // Act
     page.OnSaveButtonPressed();
-    
+
     // Assert
     // Verify the expected behavior and output
 }
@@ -107,10 +104,10 @@ TEST_F(FVAOrganizerPlacePageTests, OnSaveButtonPressed_NoPlaceSelected)
     // Arrange
     FVAOrganizerPlacePage page;
     // Set up the necessary inputs for the test
-    
+
     // Act
     page.OnSaveButtonPressed();
-    
+
     // Assert
     // Verify the expected behavior and output
 }
@@ -121,10 +118,10 @@ TEST_F(FVAOrganizerPlacePageTests, OnSaveButtonPressed_TooManyPlacesSelected)
     // Arrange
     FVAOrganizerPlacePage page;
     // Set up the necessary inputs for the test
-    
+
     // Act
     page.OnSaveButtonPressed();
-    
+
     // Assert
     // Verify the expected behavior and output
 }
@@ -165,10 +162,10 @@ TEST_F(FVAOrganizerPlacePageTests, validatePage)
 {
     // Arrange
     FVAOrganizerPlacePage page;
-    
+
     // Act
     bool result = page.validatePage();
-    
+
     // Assert
     // Verify the expected behavior and output
 }

@@ -1,17 +1,15 @@
 #include <gtest/gtest.h>
+
 #include "FVAConfigurator.h"
 
 // Test fixture for FVAConfigurator tests
-class FVAConfiguratorTests : public ::testing::Test
-{
+class FVAConfiguratorTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };

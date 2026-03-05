@@ -2,16 +2,13 @@
 // #include "../fvadictionaryeditor.h"
 
 // Test fixture for FVADictionaryEditor tests
-class FVADictionaryEditorTests : public ::testing::Test
-{
+class FVADictionaryEditorTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
@@ -65,7 +62,7 @@ TEST_F(FVADictionaryEditorTests, OnAddEventBtnPressed)
     // Arrange
     FVADictionaryEditor editor("device");
     // Set up the necessary UI elements and test data
-    
+
     // Act
     editor.OnAddEventBtnPressed();
 
@@ -84,7 +81,7 @@ TEST_F(FVADictionaryEditorTests, FillUpCB)
     QString rootSWdir = "/path/to/rootSWdir";
     QString dictName = "fvaRelationTypes.csv";
     QComboBox cb;
-    
+
     // Act
     FVA_EXIT_CODE result = fillUpCB(rootSWdir, dictName, &cb);
 

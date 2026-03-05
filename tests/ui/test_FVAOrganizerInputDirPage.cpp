@@ -2,16 +2,13 @@
 // #include "../FVAOrganizerInputDirPage.h"
 
 // Test fixture for FVAOrganizerInputDirPage tests
-class FVAOrganizerInputDirPageTests : public ::testing::Test
-{
+class FVAOrganizerInputDirPageTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
@@ -69,10 +66,10 @@ TEST(FVAOrganizerInputDirPageTests, IsComplete)
 {
     // Arrange
     FVAOrganizerInputDirPage inputDirPage;
-    
+
     // Act
     bool result = inputDirPage.isComplete();
-    
+
     // Assert
     EXPECT_TRUE(result); // Verify that the input data on the page is complete
     // Add more assertions to verify the expected behavior and output

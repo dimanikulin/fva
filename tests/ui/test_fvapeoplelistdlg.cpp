@@ -2,16 +2,13 @@
 // #include "../FVAPeopleListDlg.h"
 
 // Test fixture for FVAPeopleListDlg tests
-class FVAPeopleListDlgTests : public ::testing::Test
-{
+class FVAPeopleListDlgTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };

@@ -1,17 +1,15 @@
 #include <gtest/gtest.h>
+
 #include "../FVAOrganizerEventCfgPage.h"
 
 // Test fixture for FVAOrganizerEventCfgPage tests
-class FVAOrganizerEventCfgPageTests : public ::testing::Test
-{
+class FVAOrganizerEventCfgPageTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };

@@ -2,16 +2,13 @@
 // #include "../fvadescriptioneditor.h"
 
 // Test fixture for FVADescriptionEditor tests
-class FVADescriptionEditorTests : public ::testing::Test
-{
+class FVADescriptionEditorTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };

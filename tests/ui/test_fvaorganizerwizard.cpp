@@ -2,16 +2,13 @@
 // #include "../fvaorganizerwizard.h"
 
 // Test fixture for FVAOrganizerWizard tests
-class FVAOrganizerWizardTests : public ::testing::Test
-{
+class FVAOrganizerWizardTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };

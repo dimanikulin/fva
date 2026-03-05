@@ -2,16 +2,13 @@
 // #include "../FVAOrganizerOrientPage.h"
 
 // Test fixture for FVAOrganizerOrientPage tests
-class FVAOrganizerOrientPageTests : public ::testing::Test
-{
+class FVAOrganizerOrientPageTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };

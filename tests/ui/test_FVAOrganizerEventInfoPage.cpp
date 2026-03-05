@@ -2,16 +2,13 @@
 // #include "../FVAOrganizerEventInfoPage.h"
 
 // Test fixture for FVAOrganizerEventInfoPage tests
-class FVAOrganizerEventInfoPageTests : public ::testing::Test
-{
+class FVAOrganizerEventInfoPageTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };

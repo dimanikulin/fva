@@ -2,16 +2,13 @@
 // #include "../FVAOrganizerStartPage.h"
 
 // Test fixture for FVAOrganizerStartPage tests
-class FVAOrganizerStartPageTests : public ::testing::Test
-{
+class FVAOrganizerStartPageTests : public ::testing::Test {
 protected:
-    void SetUp() override
-    {
+    void SetUp() override {
         // Set up any necessary objects or test data
     }
 
-    void TearDown() override
-    {
+    void TearDown() override {
         // Clean up any resources used by the tests
     }
 };
