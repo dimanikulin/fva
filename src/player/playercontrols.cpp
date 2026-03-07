@@ -1,28 +1,27 @@
 /*!
-* \file PlayerControls.cpp
-* \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
-* \author Dima Nikulin.
-* \version 0.29
-* \date  2014-2021
-*/
+ * \file PlayerControls.cpp
+ * \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
+ * \author Dima Nikulin.
+ * \version 0.29
+ * \date  2014-2021
+ */
 #include "playercontrols.h"
 
 #include <QBoxLayout>
+#include <QComboBox>
 #include <QSlider>
 #include <QStyle>
 #include <QToolButton>
-#include <QComboBox>
 
 PlayerControls::PlayerControls(QWidget *parent)
-    : QWidget(parent)
-    , playerState(QMediaPlayer::StoppedState)
-    , playerMuted(false)
-    , playButton(0)
-    , stopButton(0)
-    , muteButton(0)
-    , volumeSlider(0)
-    , rateBox(0)
-{
+    : QWidget(parent),
+      playerState(QMediaPlayer::StoppedState),
+      playerMuted(false),
+      playButton(0),
+      stopButton(0),
+      muteButton(0),
+      volumeSlider(0),
+      rateBox(0) {
     playButton = new QToolButton(this);
     playButton->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
 
@@ -62,85 +61,62 @@ PlayerControls::PlayerControls(QWidget *parent)
     setLayout(layout);
 }
 
-QMediaPlayer::State PlayerControls::state() const
-{
-    return playerState;
-}
+QMediaPlayer::State PlayerControls::state() const { return playerState; }
 
-void PlayerControls::setState(QMediaPlayer::State state)
-{
+void PlayerControls::setState(QMediaPlayer::State state) {
     if (state != playerState) {
         playerState = state;
 
         switch (state) {
-        case QMediaPlayer::StoppedState:
-            stopButton->setEnabled(false);
-            playButton->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
-            break;
-        case QMediaPlayer::PlayingState:
-            stopButton->setEnabled(true);
-            playButton->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
-            break;
-        case QMediaPlayer::PausedState:
-            stopButton->setEnabled(true);
-            playButton->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
-            break;
+            case QMediaPlayer::StoppedState:
+                stopButton->setEnabled(false);
+                playButton->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
+                break;
+            case QMediaPlayer::PlayingState:
+                stopButton->setEnabled(true);
+                playButton->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
+                break;
+            case QMediaPlayer::PausedState:
+                stopButton->setEnabled(true);
+                playButton->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
+                break;
         }
     }
 }
 
-int PlayerControls::volume() const
-{
-    return volumeSlider ? volumeSlider->value() : 0;
+int PlayerControls::volume() const { return volumeSlider ? volumeSlider->value() : 0; }
+
+void PlayerControls::setVolume(int volume) {
+    if (volumeSlider) volumeSlider->setValue(volume);
 }
 
-void PlayerControls::setVolume(int volume)
-{
-    if (volumeSlider)
-        volumeSlider->setValue(volume);
-}
+bool PlayerControls::isMuted() const { return playerMuted; }
 
-bool PlayerControls::isMuted() const
-{
-    return playerMuted;
-}
-
-void PlayerControls::setMuted(bool muted)
-{
+void PlayerControls::setMuted(bool muted) {
     if (muted != playerMuted) {
         playerMuted = muted;
 
-        muteButton->setIcon(style()->standardIcon(muted
-                ? QStyle::SP_MediaVolumeMuted
-                : QStyle::SP_MediaVolume));
+        muteButton->setIcon(style()->standardIcon(muted ? QStyle::SP_MediaVolumeMuted : QStyle::SP_MediaVolume));
     }
 }
 
-void PlayerControls::playClicked()
-{
+void PlayerControls::playClicked() {
     switch (playerState) {
-    case QMediaPlayer::StoppedState:
-    case QMediaPlayer::PausedState:
-        emit play();
-        break;
-    case QMediaPlayer::PlayingState:
-        emit pause();
-        break;
+        case QMediaPlayer::StoppedState:
+        case QMediaPlayer::PausedState:
+            emit play();
+            break;
+        case QMediaPlayer::PlayingState:
+            emit pause();
+            break;
     }
 }
 
-void PlayerControls::muteClicked()
-{
-    emit changeMuting(!playerMuted);
-}
+void PlayerControls::muteClicked() { emit changeMuting(!playerMuted); }
 
-qreal PlayerControls::playbackRate() const
-{
-    return rateBox->itemData(rateBox->currentIndex()).toDouble();
-}
+qreal PlayerControls::playbackRate() const { return rateBox->itemData(rateBox->currentIndex()).toDouble(); }
 
-void PlayerControls::setPlaybackRate(float rate)
-{
+void PlayerControls::setPlaybackRate(float rate) {
     for (int i = 0; i < rateBox->count(); ++i) {
         if (qFuzzyCompare(rate, float(rateBox->itemData(i).toDouble()))) {
             rateBox->setCurrentIndex(i);
@@ -152,7 +128,4 @@ void PlayerControls::setPlaybackRate(float rate)
     rateBox->setCurrentIndex(rateBox->count() - 1);
 }
 
-void PlayerControls::updateRate()
-{
-    emit changeRate(playbackRate());
-}
+void PlayerControls::updateRate() { emit changeRate(playbackRate()); }

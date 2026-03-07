@@ -1,17 +1,17 @@
 /*!
-* \file FVAPlayer.h
-* \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
-* \author Dima Nikulin.
-* \version 0.29
-* \date  2014-2021
-*/
+ * \file FVAPlayer.h
+ * \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
+ * \author Dima Nikulin.
+ * \version 0.29
+ * \date  2014-2021
+ */
 #ifndef FVAPLAYER_H
 #define FVAPLAYER_H
 
-#include "videowidget.h"
-
 #include <QWidget>
 #include <QtMultimedia/QMediaPlayer>
+
+#include "videowidget.h"
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -21,43 +21,42 @@ class QSlider;
 class QVideoWidget;
 QT_END_NAMESPACE
 
-class FVAPlayer : public QWidget
-{
-	Q_OBJECT
+class FVAPlayer : public QWidget {
+    Q_OBJECT
 
-	public:
-		FVAPlayer(QWidget *parent = 0);
-		~FVAPlayer();
+public:
+    FVAPlayer(QWidget *parent = 0);
+    ~FVAPlayer();
 
-	signals:
-		void fullScreenChanged(bool fullScreen);
+signals:
+    void fullScreenChanged(bool fullScreen);
 
-	private slots:
+private slots:
 
-		void durationChanged(qint64 duration);
-		void positionChanged(qint64 progress);
-		void metaDataChanged();
-		void seek(int seconds);
-		void statusChanged(QMediaPlayer::MediaStatus status);
-		void bufferingProgress(int progress);
-		void videoAvailableChanged(bool available);
-		void displayErrorMessage();
+    void durationChanged(qint64 duration);
+    void positionChanged(qint64 progress);
+    void metaDataChanged();
+    void seek(int seconds);
+    void statusChanged(QMediaPlayer::MediaStatus status);
+    void bufferingProgress(int progress);
+    void videoAvailableChanged(bool available);
+    void displayErrorMessage();
 
-	private:
-		void setTrackInfo(const QString &info);
-		void setStatusInfo(const QString &info);
-		void handleCursor(QMediaPlayer::MediaStatus status);
-		void updateDurationInfo(qint64 currentInfo);
+private:
+    void setTrackInfo(const QString &info);
+    void setStatusInfo(const QString &info);
+    void handleCursor(QMediaPlayer::MediaStatus status);
+    void updateDurationInfo(qint64 currentInfo);
 
-		QMediaPlayer *player;
-		VideoWidget *videoWidget;
-		QLabel *coverLabel;
-		QSlider *slider;
-		QLabel *labelDuration;
-		QPushButton *fullScreenButton;
-		QString trackInfo;
-		QString statusInfo;
-		qint64 duration;
+    QMediaPlayer *player;
+    VideoWidget *videoWidget;
+    QLabel *coverLabel;
+    QSlider *slider;
+    QLabel *labelDuration;
+    QPushButton *fullScreenButton;
+    QString trackInfo;
+    QString statusInfo;
+    qint64 duration;
 };
 
-#endif // PLAYER_H
+#endif  // PLAYER_H

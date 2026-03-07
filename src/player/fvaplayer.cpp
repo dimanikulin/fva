@@ -1,39 +1,36 @@
 /*!
-* \file FVAPlayer.cpp
-* \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
-* \author Dima Nikulin.
-* \version 0.29
-* \date  2014-2021
-*/
+ * \file FVAPlayer.cpp
+ * \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
+ * \author Dima Nikulin.
+ * \version 0.29
+ * \date  2014-2021
+ */
 #include "fvaplayer.h"
-#include "playercontrols.h"
 
-#include <QtMultimedia/QMediaService>
-#include <QtMultimedia/QMediaPlaylist>
 #include <QtMultimedia/QMediaMetaData>
+#include <QtMultimedia/QMediaPlaylist>
+#include <QtMultimedia/QMediaService>
 #include <QtWidgets>
 
-FVAPlayer::FVAPlayer(QWidget *parent)
-    : QWidget(parent)
-    , videoWidget(0)
-    , coverLabel(0)
-    , slider(0)
-{
+#include "playercontrols.h"
+
+FVAPlayer::FVAPlayer(QWidget *parent) : QWidget(parent), videoWidget(0), coverLabel(0), slider(0) {
     player = new QMediaPlayer(this);
-    QMediaPlaylist* playlist = new QMediaPlaylist();
+    QMediaPlaylist *playlist = new QMediaPlaylist();
     player->setPlaylist(playlist);
 
     connect(player, SIGNAL(durationChanged(qint64)), SLOT(durationChanged(qint64)));
     connect(player, SIGNAL(positionChanged(qint64)), SLOT(positionChanged(qint64)));
     connect(player, SIGNAL(metaDataChanged()), SLOT(metaDataChanged()));
-    connect(player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)),this, SLOT(statusChanged(QMediaPlayer::MediaStatus)));
+    connect(player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)), this,
+            SLOT(statusChanged(QMediaPlayer::MediaStatus)));
     connect(player, SIGNAL(bufferStatusChanged(int)), this, SLOT(bufferingProgress(int)));
     connect(player, SIGNAL(videoAvailableChanged(bool)), this, SLOT(videoAvailableChanged(bool)));
     connect(player, SIGNAL(error(QMediaPlayer::Error)), this, SLOT(displayErrorMessage()));
 
     videoWidget = new VideoWidget(this);
     player->setVideoOutput(videoWidget);
-	videoWidget->setMinimumHeight(200);
+    videoWidget->setMinimumHeight(200);
 
     slider = new QSlider(Qt::Horizontal, this);
     slider->setRange(0, player->duration() / 1000);
@@ -53,7 +50,7 @@ FVAPlayer::FVAPlayer(QWidget *parent)
     connect(controls, SIGNAL(changeMuting(bool)), player, SLOT(setMuted(bool)));
     connect(controls, SIGNAL(changeRate(qreal)), player, SLOT(setPlaybackRate(qreal)));
     connect(controls, SIGNAL(stop()), videoWidget, SLOT(update()));
-    connect(player, SIGNAL(stateChanged(QMediaPlayer::State)),controls, SLOT(setState(QMediaPlayer::State)));
+    connect(player, SIGNAL(stateChanged(QMediaPlayer::State)), controls, SLOT(setState(QMediaPlayer::State)));
     connect(player, SIGNAL(volumeChanged(int)), controls, SLOT(setVolume(int)));
     connect(player, SIGNAL(mutedChanged(bool)), controls, SLOT(setMuted(bool)));
 
@@ -78,10 +75,9 @@ FVAPlayer::FVAPlayer(QWidget *parent)
     layout->addLayout(controlLayout);
     setLayout(layout);
 
-    if (!player->isAvailable()) 
-	{
+    if (!player->isAvailable()) {
         QMessageBox::warning(this, tr("Service not available"),
-                             tr("The QMediaPlayer object does not have a valid service.\n"\
+                             tr("The QMediaPlayer object does not have a valid service.\n"
                                 "Please check the media service plugins are installed."));
 
         controls->setEnabled(false);
@@ -92,88 +88,75 @@ FVAPlayer::FVAPlayer(QWidget *parent)
 
     QStringList arguments = qApp->arguments();
     arguments.removeAt(0);
-	QFileInfo fileInfo(arguments.at(0));
-	QUrl url = QUrl::fromLocalFile(fileInfo.absoluteFilePath());
-	playlist->addMedia(url);
+    QFileInfo fileInfo(arguments.at(0));
+    QUrl url = QUrl::fromLocalFile(fileInfo.absoluteFilePath());
+    playlist->addMedia(url);
 
-	emit controls->play();
+    emit controls->play();
 
-	QIcon	icon	= QIcon (QCoreApplication::applicationDirPath() + "/Icons/main.png");
-	setWindowIcon(icon);
+    QIcon icon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/main.png");
+    setWindowIcon(icon);
 }
 
-FVAPlayer::~FVAPlayer()
-{
-}
+FVAPlayer::~FVAPlayer() {}
 
-void FVAPlayer::durationChanged(qint64 duration)
-{
-    this->duration = duration/1000;
+void FVAPlayer::durationChanged(qint64 duration) {
+    this->duration = duration / 1000;
     slider->setMaximum(duration / 1000);
 }
 
-void FVAPlayer::positionChanged(qint64 progress)
-{
+void FVAPlayer::positionChanged(qint64 progress) {
     if (!slider->isSliderDown()) {
         slider->setValue(progress / 1000);
     }
     updateDurationInfo(progress / 1000);
 }
 
-void FVAPlayer::metaDataChanged()
-{
+void FVAPlayer::metaDataChanged() {
     if (player->isMetaDataAvailable()) {
         setTrackInfo(QString("%1 - %2")
-                .arg(player->metaData(QMediaMetaData::AlbumArtist).toString())
-                .arg(player->metaData(QMediaMetaData::Title).toString()));
+                         .arg(player->metaData(QMediaMetaData::AlbumArtist).toString())
+                         .arg(player->metaData(QMediaMetaData::Title).toString()));
 
         if (coverLabel) {
             QUrl url = player->metaData(QMediaMetaData::CoverArtUrlLarge).value<QUrl>();
 
-            coverLabel->setPixmap(!url.isEmpty()
-                    ? QPixmap(url.toString())
-                    : QPixmap());
+            coverLabel->setPixmap(!url.isEmpty() ? QPixmap(url.toString()) : QPixmap());
         }
     }
 }
-void FVAPlayer::seek(int seconds)
-{
-    player->setPosition(seconds * 1000);
-}
+void FVAPlayer::seek(int seconds) { player->setPosition(seconds * 1000); }
 
-void FVAPlayer::statusChanged(QMediaPlayer::MediaStatus status)
-{
+void FVAPlayer::statusChanged(QMediaPlayer::MediaStatus status) {
     handleCursor(status);
 
     // handle status message
     switch (status) {
-    case QMediaPlayer::UnknownMediaStatus:
-    case QMediaPlayer::NoMedia:
-    case QMediaPlayer::LoadedMedia:
-    case QMediaPlayer::BufferingMedia:
-    case QMediaPlayer::BufferedMedia:
-        setStatusInfo(QString());
-        break;
-    case QMediaPlayer::LoadingMedia:
-        setStatusInfo(tr("Loading..."));
-        break;
-    case QMediaPlayer::StalledMedia:
-        setStatusInfo(tr("Media Stalled"));
-        break;
-    case QMediaPlayer::EndOfMedia:
-        QApplication::alert(this);
-        break;
-    case QMediaPlayer::InvalidMedia:
-        displayErrorMessage();
-        break;
+        case QMediaPlayer::UnknownMediaStatus:
+        case QMediaPlayer::NoMedia:
+        case QMediaPlayer::LoadedMedia:
+        case QMediaPlayer::BufferingMedia:
+        case QMediaPlayer::BufferedMedia:
+            setStatusInfo(QString());
+            break;
+        case QMediaPlayer::LoadingMedia:
+            setStatusInfo(tr("Loading..."));
+            break;
+        case QMediaPlayer::StalledMedia:
+            setStatusInfo(tr("Media Stalled"));
+            break;
+        case QMediaPlayer::EndOfMedia:
+            QApplication::alert(this);
+            break;
+        case QMediaPlayer::InvalidMedia:
+            displayErrorMessage();
+            break;
     }
 }
 
-void FVAPlayer::handleCursor(QMediaPlayer::MediaStatus status)
-{
+void FVAPlayer::handleCursor(QMediaPlayer::MediaStatus status) {
 #ifndef QT_NO_CURSOR
-    if (status == QMediaPlayer::LoadingMedia ||
-        status == QMediaPlayer::BufferingMedia ||
+    if (status == QMediaPlayer::LoadingMedia || status == QMediaPlayer::BufferingMedia ||
         status == QMediaPlayer::StalledMedia)
         setCursor(QCursor(Qt::BusyCursor));
     else
@@ -181,32 +164,22 @@ void FVAPlayer::handleCursor(QMediaPlayer::MediaStatus status)
 #endif
 }
 
-void FVAPlayer::bufferingProgress(int progress)
-{
-    setStatusInfo(tr("Buffering %4%").arg(progress));
-}
+void FVAPlayer::bufferingProgress(int progress) { setStatusInfo(tr("Buffering %4%").arg(progress)); }
 
-void FVAPlayer::videoAvailableChanged(bool available)
-{
+void FVAPlayer::videoAvailableChanged(bool available) {
     if (!available) {
-        disconnect(fullScreenButton, SIGNAL(clicked(bool)),
-                    videoWidget, SLOT(setFullScreen(bool)));
-        disconnect(videoWidget, SIGNAL(fullScreenChanged(bool)),
-                fullScreenButton, SLOT(setChecked(bool)));
+        disconnect(fullScreenButton, SIGNAL(clicked(bool)), videoWidget, SLOT(setFullScreen(bool)));
+        disconnect(videoWidget, SIGNAL(fullScreenChanged(bool)), fullScreenButton, SLOT(setChecked(bool)));
         videoWidget->setFullScreen(false);
     } else {
-        connect(fullScreenButton, SIGNAL(clicked(bool)),
-                videoWidget, SLOT(setFullScreen(bool)));
-        connect(videoWidget, SIGNAL(fullScreenChanged(bool)),
-                fullScreenButton, SLOT(setChecked(bool)));
+        connect(fullScreenButton, SIGNAL(clicked(bool)), videoWidget, SLOT(setFullScreen(bool)));
+        connect(videoWidget, SIGNAL(fullScreenChanged(bool)), fullScreenButton, SLOT(setChecked(bool)));
 
-        if (fullScreenButton->isChecked())
-            videoWidget->setFullScreen(true);
+        if (fullScreenButton->isChecked()) videoWidget->setFullScreen(true);
     }
 }
 
-void FVAPlayer::setTrackInfo(const QString &info)
-{
+void FVAPlayer::setTrackInfo(const QString &info) {
     trackInfo = info;
     if (!statusInfo.isEmpty())
         setWindowTitle(QString("%1 | %2").arg(trackInfo).arg(statusInfo));
@@ -214,8 +187,7 @@ void FVAPlayer::setTrackInfo(const QString &info)
         setWindowTitle(trackInfo);
 }
 
-void FVAPlayer::setStatusInfo(const QString &info)
-{
+void FVAPlayer::setStatusInfo(const QString &info) {
     statusInfo = info;
     if (!statusInfo.isEmpty())
         setWindowTitle(QString("%1 | %2").arg(trackInfo).arg(statusInfo));
@@ -223,20 +195,16 @@ void FVAPlayer::setStatusInfo(const QString &info)
         setWindowTitle(trackInfo);
 }
 
-void FVAPlayer::displayErrorMessage()
-{
-    setStatusInfo(player->errorString());
-}
+void FVAPlayer::displayErrorMessage() { setStatusInfo(player->errorString()); }
 
-void FVAPlayer::updateDurationInfo(qint64 currentInfo)
-{
+void FVAPlayer::updateDurationInfo(qint64 currentInfo) {
     QString tStr;
     if (currentInfo || duration) {
-        QTime currentTime((currentInfo/3600)%60, (currentInfo/60)%60, currentInfo%60, (currentInfo*1000)%1000);
-        QTime totalTime((duration/3600)%60, (duration/60)%60, duration%60, (duration*1000)%1000);
+        QTime currentTime((currentInfo / 3600) % 60, (currentInfo / 60) % 60, currentInfo % 60,
+                          (currentInfo * 1000) % 1000);
+        QTime totalTime((duration / 3600) % 60, (duration / 60) % 60, duration % 60, (duration * 1000) % 1000);
         QString format = "mm:ss";
-        if (duration > 3600)
-            format = "hh:mm:ss";
+        if (duration > 3600) format = "hh:mm:ss";
         tStr = currentTime.toString(format) + " / " + totalTime.toString(format);
     }
     labelDuration->setText(tStr);
