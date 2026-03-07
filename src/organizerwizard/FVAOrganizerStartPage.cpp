@@ -1,52 +1,52 @@
 /*!
-* \file FVAOrganizerStartPage.cpp
-* \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
-* \author Dima Nikulin.
-* \version 0.29
-* \date  2014-2021
-*/
+ * \file FVAOrganizerStartPage.cpp
+ * \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
+ * \author Dima Nikulin.
+ * \version 0.29
+ * \date  2014-2021
+ */
 #include "FVAOrganizerStartPage.h"
+
+#include <QPushButton>
+#include <QTextBrowser>
+#include <QVBoxLayout>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QProcess>
+
 #include "fvaconstants.h"
 #include "fvalogger.inl"
 
-#include <QVBoxLayout>
-#include <QTextBrowser>
-#include <QPushButton>
+FVAOrganizerStartPage::FVAOrganizerStartPage() {
+    LOG_DEB << "construction";
 
-#include <QtCore/QProcess>
-#include <QtCore/QCoreApplication>
+    helloWords = new QTextBrowser;
+    cfgButton = new QPushButton;
 
-FVAOrganizerStartPage::FVAOrganizerStartPage()
-{
-        LOG_DEB << "construction" ;
+#ifdef FVA_LANGUAGE_RUS
+#else
+#ifdef FVA_LANGUAGE_ENG
+    helloWords->setText(
+        tr("Welcome into the multimedia content system!\nPlease press button \"Next\" to continue or \"Configure\" for "
+           "configuration"));
+    cfgButton->setText(tr("Configure"));
+#endif  // FVA_LANGUAGE_ENG
+#endif  // FVA_LANGUAGE_RUS
 
-	helloWords = new QTextBrowser;
-	cfgButton = new QPushButton;
+    QVBoxLayout* layout = new QVBoxLayout;
 
-#ifdef  FVA_LANGUAGE_RUS
-#else 
-#ifdef  FVA_LANGUAGE_ENG
-	helloWords->setText(tr("Welcome into the multimedia content system!\nPlease press button \"Next\" to continue or \"Configure\" for configuration"));
-	cfgButton->setText(tr("Configure"));
-#endif // FVA_LANGUAGE_ENG
-#endif // FVA_LANGUAGE_RUS
+    layout->addWidget(helloWords);
+    layout->addWidget(cfgButton);
 
-	QVBoxLayout * layout = new QVBoxLayout;
+    setLayout(layout);
 
-	layout->addWidget(helloWords);
-	layout->addWidget(cfgButton);
+    connect(cfgButton, SIGNAL(clicked()), this, SLOT(OnCfgBtnPressed()));
 
-	setLayout(layout);
-
-	connect(cfgButton, SIGNAL(clicked()), this, SLOT(OnCfgBtnPressed()));
-
-        LOG_DEB << "constructed" ;
+    LOG_DEB << "constructed";
 }
 
-void FVAOrganizerStartPage::OnCfgBtnPressed()
-{
-	QProcess myProcess(this);
-	myProcess.setProcessChannelMode(QProcess::MergedChannels);
-	myProcess.start(QCoreApplication::applicationDirPath() + "/FVAConfigurator.exe");
-	myProcess.waitForFinished(-1);
+void FVAOrganizerStartPage::OnCfgBtnPressed() {
+    QProcess myProcess(this);
+    myProcess.setProcessChannelMode(QProcess::MergedChannels);
+    myProcess.start(QCoreApplication::applicationDirPath() + "/FVAConfigurator.exe");
+    myProcess.waitForFinished(-1);
 }
