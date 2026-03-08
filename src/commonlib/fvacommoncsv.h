@@ -1,21 +1,20 @@
 /*!
-* \file fvacommoncsv.h
-* \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
-* \author Dima Nikulin.
-* \version 0.29
-* \date  2014-2021
-*/
+ * \file fvacommoncsv.h
+ * \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
+ * \author Dima Nikulin.
+ * \version 0.29
+ * \date  2014-2021
+ */
 
 #ifndef FVACOMMONCSV_H
 #define FVACOMMONCSV_H
 
-#include "fvaexitcodes.h"
-
-#include "fvafile.h"
-#include "fvadevice.h"
-#include "fvaperson.h"
-#include "FVAEvent.h"
 #include "FVABaseDictionaryItem.h"
+#include "FVAEvent.h"
+#include "fvadevice.h"
+#include "fvaexitcodes.h"
+#include "fvafile.h"
+#include "fvaperson.h"
 
 typedef QMap<int, QString> FVA_SIMPLE_MAP;
 
@@ -35,7 +34,8 @@ FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const 
  * \param fvaFileName - fva file name to load fva info from
  * \returns it returns code of error if any or FVA_NO_ERROR if info was loaded
  */
-FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFileName = "fvaFile.csv");
+FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo,
+                                        const QString& fvaFileName = "fvaFile.csv");
 
 /*!
  * \brief it returns an ID value from file by file path provided
@@ -62,38 +62,39 @@ FVA_EXIT_CODE fvaSaveIDInFile(const QString& file, int ID);
 FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& deviceMap);
 
 /*!
-* \brief it tries to load people map from dictionary
-* \param rootSWdir - dir where fva SW is located
-* \param peopleMap a map to be filled up
-* \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
-*/
+ * \brief it tries to load people map from dictionary
+ * \param rootSWdir - dir where fva SW is located
+ * \param peopleMap a map to be filled up
+ * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
+ */
 FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peopleMap);
 
 /*!
-* \brief it tries to load simple map <ID to Name> from dictionary with predifined type of items
-* \param rootSWdir - dir where fva SW is located
-* \param simpleMap - <ID to Name> a map to be filled up
-* \param dictName file name of dictionary to load from
-* \param typeToFilter - a predefined item type to be filtered out from whole scope, if typeToFilter==FVA_UNDEFINED_ID no filtering is applyed
-* \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
-*/
-FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SIMPLE_MAP& simpleMap, const QString& dictName, int typeToFilter=FVA_UNDEFINED_ID);
+ * \brief it tries to load simple map <ID to Name> from dictionary with predifined type of items
+ * \param rootSWdir - dir where fva SW is located
+ * \param simpleMap - <ID to Name> a map to be filled up
+ * \param dictName file name of dictionary to load from
+ * \param typeToFilter - a predefined item type to be filtered out from whole scope, if typeToFilter==FVA_UNDEFINED_ID
+ * no filtering is applyed \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
+ */
+FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SIMPLE_MAP& simpleMap,
+                                                const QString& dictName, int typeToFilter = FVA_UNDEFINED_ID);
 
 /*!
-* \brief it tries to load event map from dictionary
-* \param rootSWdir - dir where FVA SW is located
-* \param eventMap a map to be filled up
-* \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
-*/
+ * \brief it tries to load event map from dictionary
+ * \param rootSWdir - dir where FVA SW is located
+ * \param eventMap a map to be filled up
+ * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
+ */
 FVA_EXIT_CODE fvaLoadEventMapFromCsv(const QString& rootSWdir, FVA_EVENT_MAP& eventMap);
 
 /*!
-* \brief it loads base item dictionary map from csv
-* \param rootSWdir - dir where FVA SW is located
-* \param dictMap - a map to be filled up
-* \param dictName file name of dictionary to load from
-* \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
-*/
+ * \brief it loads base item dictionary map from csv
+ * \param rootSWdir - dir where FVA SW is located
+ * \param dictMap - a map to be filled up
+ * \param dictName file name of dictionary to load from
+ * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
+ */
 FVA_EXIT_CODE fvaLoadDictMapFromCsv(const QString& rootSWdir, BASE_DICT_ITEM_MAP& dictMap, const QString& dictName);
 
-#endif // FVACOMMONCSV_H
+#endif  // FVACOMMONCSV_H

@@ -1,18 +1,18 @@
 /*!
-* \file fvacommonui.h
-* \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
-* \author Dima Nikulin.
-* \version 0.29
-* \date  2014-2021
-*/
+ * \file fvacommonui.h
+ * \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
+ * \author Dima Nikulin.
+ * \version 0.29
+ * \date  2014-2021
+ */
 
 #ifndef FVACOMMONUI_H
 #define FVACOMMONUI_H
 
-#include <QtCore/QString>
 #include <QLabel>
-#include <QTreeWidget>
 #include <QMessageBox>
+#include <QTreeWidget>
+#include <QtCore/QString>
 
 #include "fvaexitcodes.h"
 
@@ -23,7 +23,7 @@
  * \param text - text to draw over an image
  * \returns it returns code of error if any or FVA_NO_ERROR if showing was successful
  */
-FVA_EXIT_CODE fvaShowImage( const QString& fileName, QLabel* imgLabel, const QString& text);
+FVA_EXIT_CODE fvaShowImage(const QString& fileName, QLabel* imgLabel, const QString& text);
 
 /*!
  * \brief it creates people tree in gui widgets
@@ -68,7 +68,7 @@ FVA_EXIT_CODE fvaBuildPlaceTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
  * \param Ids - arrau to fill by id of checked items
  * \returns it returns nothing
  */
-void fvaFindCheckedItem(QTreeWidgetItem *item, QList<unsigned int>& Ids);
+void fvaFindCheckedItem(QTreeWidgetItem* item, QList<unsigned int>& Ids);
 
 /*!
  * \brief it recursivly updates checks
@@ -76,54 +76,52 @@ void fvaFindCheckedItem(QTreeWidgetItem *item, QList<unsigned int>& Ids);
  * \param column - column
  * \returns it returns nothing
  */
-void fvaUpdateChecks(QTreeWidgetItem *item, int column);
+void fvaUpdateChecks(QTreeWidgetItem* item, int column);
 
 /*!
  * \brief it recursivly clear checks
  * \param item - to update in
  * \returns it returns nothing
  */
-void fvaClearChecks(QTreeWidgetItem *item);
+void fvaClearChecks(QTreeWidgetItem* item);
 
 /*!
- * \brief it shows input dir structure 
+ * \brief it shows input dir structure
  * \param folder - to show a folder in GUI
  * \param item - current tree item we work with
  * \param treeWidget - a widget we draw dir structure on
- * \param problemFileList - a list of files with some problems (if file name in this list and a file name in UI match - we will mark it by red)
- * \returns it returns nothing
+ * \param problemFileList - a list of files with some problems (if file name in this list and a file name in UI match -
+ * we will mark it by red) \returns it returns nothing
  */
-void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget, const QList<QString>& problemFileList);
+void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget,
+                         const QList<QString>& problemFileList);
 
-#define FVA_MESSAGE_BOX(message)\
-	QMessageBox msgBox; \
-	msgBox.setText(message); \
-	msgBox.exec();
+#define FVA_MESSAGE_BOX(message) \
+    QMessageBox msgBox;          \
+    msgBox.setText(message);     \
+    msgBox.exec();
 
-#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(cmdName)\
-if (exitCode != FVA_NO_ERROR)\
-{\
-	QMessageBox msgBox; \
-	msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
-	msgBox.exec(); \
-	return exitCode; \
-}
+#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(cmdName)                                                \
+    if (exitCode != FVA_NO_ERROR) {                                                                        \
+        QMessageBox msgBox;                                                                                \
+        msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
+        msgBox.exec();                                                                                     \
+        return exitCode;                                                                                   \
+    }
 
-#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE(cmdName)\
-if (exitCode != FVA_NO_ERROR)\
-{\
-	QMessageBox msgBox; \
-	msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
-	msgBox.exec(); \
-	return false; \
-}
+#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_FALSE(cmdName)                                                   \
+    if (exitCode != FVA_NO_ERROR) {                                                                        \
+        QMessageBox msgBox;                                                                                \
+        msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
+        msgBox.exec();                                                                                     \
+        return false;                                                                                      \
+    }
 
-#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET(cmdName)\
-if (exitCode != FVA_NO_ERROR)\
-{\
-	QMessageBox msgBox; \
-	msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
-	msgBox.exec(); \
-	return; \
-}
-#endif // FVACOMMONUI_H
+#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET(cmdName)                                                         \
+    if (exitCode != FVA_NO_ERROR) {                                                                        \
+        QMessageBox msgBox;                                                                                \
+        msgBox.setText(QString("Fva cmd ") + cmdName + " failed with error " + QString::number(exitCode)); \
+        msgBox.exec();                                                                                     \
+        return;                                                                                            \
+    }
+#endif  // FVACOMMONUI_H

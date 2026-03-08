@@ -8,8 +8,8 @@
 #ifndef FVAEVENT_H
 #define FVAEVENT_H
 
-#include <QtCore/QString>
 #include <QtCore/QMap>
+#include <QtCore/QString>
 
 #include "fvaconstants.h"
 
@@ -17,30 +17,29 @@
  * \brief it describes whole information about event
  ID,Name,Type,Institution
  */
-class fvaEvent
-{
-	public:
-		/*
-		 * event identifier from event dictionary - fvaEvents.csv
-		 */
-		int ID = 0;
+class fvaEvent {
+public:
+    /*
+     * event identifier from event dictionary - fvaEvents.csv
+     */
+    int ID = 0;
 
-		/*
-		 * name 
-		 */
-		QString name;
+    /*
+     * name
+     */
+    QString name;
 
-		/*
-		 * relation type from fvaRelationTypes.csv
-		 */
-		unsigned int type = 0;
+    /*
+     * relation type from fvaRelationTypes.csv
+     */
+    unsigned int type = 0;
 
-		/*
-		 * institution type from fvaInstitutions.csv
-		 */
-		unsigned int institution = 0;
+    /*
+     * institution type from fvaInstitutions.csv
+     */
+    unsigned int institution = 0;
 };
 
 typedef QMap<int, fvaEvent> FVA_EVENT_MAP;
 
-#endif // FVAEVENT_H
+#endif  // FVAEVENT_H
