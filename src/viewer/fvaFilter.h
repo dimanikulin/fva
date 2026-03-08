@@ -8,6 +8,11 @@
 #ifndef FVAFILTER_H
 #define FVAFILTER_H
 
+#include <QtCore/QDateTime>
+#include <QtCore/QList>
+#include <QtCore/QVector>
+#include <QtCore/QString>
+
 /*!
  * it keeps data to perform filtration
  */
