@@ -2,10 +2,15 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(
+  Qt5
+  COMPONENTS Core Gui Widgets
+  REQUIRED)
 
-# IMPORTANT: once you add new implementation file here please update IMPLEMENTATIONSTATUS.MD as well in the current folder 
-add_library(fvalib  
+# IMPORTANT: once you add new implementation file here please update IMPLEMENTATIONSTATUS.MD as well
+# in the current folder
+add_library(
+  fvalib
   fvadevice.h
   fvafile.h
   fvafolder.h
@@ -14,7 +19,6 @@ add_library(fvalib
   fvaItem.cpp
   FVABaseDictionaryItem.h
   FVAEvent.h
-
   CmdLineBaseExecutor.h
   CmdLineBaseTask.h
   fvacltcontext.h
@@ -30,7 +34,6 @@ add_library(fvalib
   fvafmtcontext.h
   fvariffparser.h
   fvalogger.inl
-
   CmdLineBaseExecutor.cpp
   CmdLineBaseTask.cpp
   fvacommoncsv.cpp
@@ -42,13 +45,9 @@ add_library(fvalib
   FVADescriptionFile.cpp
   fvafmtcontext.cpp
   fvariffparser.cpp
+  exif.cpp)
 
-  exif.cpp
-)
-
-target_include_directories(fvalib INTERFACE
-        ${CMAKE_CURRENT_SOURCE_DIR}
-)
+target_include_directories(fvalib INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(fvalib Qt5::Widgets Qt5::Core Qt5::Gui)
 

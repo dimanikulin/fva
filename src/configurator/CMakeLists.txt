@@ -2,10 +2,15 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(
+  Qt5
+  COMPONENTS Core Gui Widgets
+  REQUIRED)
 
-# IMPORTANT: once you add new implementation file here please update IMPLEMENTATIONSTATUS.MD as well in the current folder 
-add_executable(fvaconfigurator fvaconfigurator.qrc fvaconfigurator.ui fvaconfigurator.cpp fvaconfigurator.h main.cpp ${HEADER_FILES})
+# IMPORTANT: once you add new implementation file here please update IMPLEMENTATIONSTATUS.MD as well
+# in the current folder
+add_executable(fvaconfigurator fvaconfigurator.qrc fvaconfigurator.ui fvaconfigurator.cpp
+                               fvaconfigurator.h main.cpp ${HEADER_FILES})
 
 target_link_libraries(fvaconfigurator Qt5::Widgets Qt5::Core Qt5::Gui fvalib)
 

@@ -1,5 +1,6 @@
 # tests source files here
-add_executable(libtests
+add_executable(
+  libtests
   test_fvacltcontext.cpp
   test_fvadevice.cpp
   test_fvaconstants.cpp
@@ -39,11 +40,20 @@ add_executable(libtests
   test_CLTSetFileAtts.cpp
   test_FVADataProcessor.cpp
   test_fvadevicecontext.cpp
-  test_FVAFlowController.cpp
-)
+  test_FVAFlowController.cpp)
 
 # Link GoogleTest to tests
-target_link_libraries(libtests Qt5::Widgets Qt5::Core Qt5::Gui gtest gtest_main gmock_main fvalib fvadataprocessorlib fvaflowcontrollerlib)
+target_link_libraries(
+  libtests
+  Qt5::Widgets
+  Qt5::Core
+  Qt5::Gui
+  gtest
+  gtest_main
+  gmock_main
+  fvalib
+  fvadataprocessorlib
+  fvaflowcontrollerlib)
 
 # Add the tests to CTest's test runner
 add_test(NAME libtests COMMAND libtests)
