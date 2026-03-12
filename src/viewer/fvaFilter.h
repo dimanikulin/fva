@@ -10,8 +10,8 @@
 
 #include <QtCore/QDateTime>
 #include <QtCore/QList>
-#include <QtCore/QVector>
 #include <QtCore/QString>
+#include <QtCore/QVector>
 
 /*!
  * it keeps data to perform filtration
