@@ -1,3 +1,1 @@
-cmake-format -i CMakeLists.txt
-cmake-format -i src/CMakeLists.txt
-cmake-format -i tests/CMakeLists.txt
+find . -type f -name "CMakeLists.txt" -exec cmake-format -i {} +
