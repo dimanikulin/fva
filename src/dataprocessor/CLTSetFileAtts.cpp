@@ -9,7 +9,7 @@
 
 #if (defined(Q_OS_WIN))
 #include <winbase.h>
-#include <windows.h>
+#include <synchapi.h>
 #endif
 
 FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/) {
