@@ -8,8 +8,8 @@
 #include "CLTSetFileAtts.h"
 
 #if (defined(Q_OS_WIN))
-#include <synchapi.h>
 #include <winbase.h>
+#include <synchapi.h>
 #endif
 
 FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/) {
