@@ -100,3 +100,35 @@ jobs:
           rm ./llvm.sh
           echo "==================Running clang-format====================================="          
           for i in $(find . -regex '.*\.\(cpp\|hpp\|cc\|cxx\|h\)' -not -path "./build/*" -not -path "./CMakeFiles/*" -not -path "./_deps/*"); do if ! clang-format-17 -style=file --dry-run --Werror "$i"; then exit 1; fi done
+      
+      - name: CMake Linter check
+        run: |
+          echo "==================Installing cmake-lint-format====================================="
+          pip install cmakelint
+          echo "==================Running cmakelint====================================="
+          FILES=$(find . -name "CMakeLists.txt" | grep -vE "(^./CMakeFiles/.|^./_deps/)")
+          : > ./cmakelint-format-report.txt
+          for file in $FILES; do
+          {
+            echo "===== $file ====="
+            cmakelint "$file"
+            echo
+          } >> ./cmakelint-format-report.txt 2>&1 || true
+          done
+      - name: Upload cmakelint-format report to git hub storage to use later
+        uses: actions/upload-artifact@v4
+        with:
+          path: ./cmakelint-format-report.txt
+          name: cmakelint-format-report.zip
+      - name: MarkDown Lint check
+        continue-on-error: true
+        run: |        
+          echo "==================Installing markdownlint-cli====================================="
+          npm install -g markdownlint-cli
+          echo "==================Running markdownlint====================================="
+          markdownlint "**/*.md" > ./markdownlint-report.txt 2>&1
+      - name: Upload markdownlint report to git hub storage to use later
+        uses: actions/upload-artifact@v4
+        with:
+          path: ./markdownlint-report.txt
+          name: markdownlint-report.zip
