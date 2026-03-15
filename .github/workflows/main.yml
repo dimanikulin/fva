@@ -288,8 +288,8 @@ jobs:
       if: matrix.config.os == 'windows-latest'
       uses: actions/upload-artifact@v4
       with:
-        path: ./packaging/bin/ms.msi
-        name: ms.msi
+        path: ./packaging/bin/FVASetupWin.msi
+        name: FVASetupWin.msi
 
     - name: Upload LastTest.log to git hub storage to use later
       if: matrix.config.os == 'windows-latest'
