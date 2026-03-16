@@ -86,7 +86,7 @@ bool FVAOrganizerInputDirPage::validatePage() {
     ((FVAOrganizerWizard*)wizard())->inputFolder(dir);
     ((FVAOrganizerWizard*)wizard())->fullDeviceMap(deviceContext.fullDeviceMap);
     ((FVAOrganizerWizard*)wizard())->matchedDeviceMap(deviceContext.deviceMap);
-    ((FVAOrganizerWizard*)wizard())->matchedDeviceName(deviceContext.matchedDeviceName);
+    ((FVAOrganizerWizard*)wizard())->matchedDeviceName(QString::fromStdString(deviceContext.matchedDeviceName));
 
     return true;
 }

@@ -56,6 +56,8 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
     for (auto it = deviceContext.fullDeviceMap.begin(); it != deviceContext.fullDeviceMap.end(); ++it)
         it.value().ownerName = peopleMap[it.value().ownerId].name;
 
+    deviceContext.matchedDeviceName.clear();
+
     QDir _dir(context.dir);
     Q_FOREACH (QFileInfo info, _dir.entryInfoList(QDir::System | QDir::Hidden | QDir::Files, QDir::DirsLast)) {
         if (info.isDir()) continue;
@@ -63,9 +65,12 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
         FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
         if (FVA_FS_TYPE_IMG != type) continue;
 
-        deviceContext.deviceMap =
-            fvaGetDeviceMapForImg(deviceContext.fullDeviceMap, info.filePath(), deviceContext.matchedDeviceName);
-        if (!deviceContext.matchedDeviceName.isEmpty()) break;
+        QString matchedDeviceName;
+        deviceContext.deviceMap = fvaGetDeviceMapForImg(deviceContext.fullDeviceMap, info.filePath(), matchedDeviceName);
+        if (!matchedDeviceName.isEmpty()) {
+            deviceContext.matchedDeviceName = matchedDeviceName.toStdString();
+            break;
+        }
     }
     return FVA_NO_ERROR;
 }

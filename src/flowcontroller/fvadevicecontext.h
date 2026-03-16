@@ -8,7 +8,7 @@
 #ifndef DEVICE_CONTEXT_H_
 #define DEVICE_CONTEXT_H_
 
-#include <QtCore/QString>
+#include <string>
 
 #include "fvadevice.h"
 
@@ -20,7 +20,7 @@ public:
     /*!
      * \brief human - readable device name
      */
-    QString matchedDeviceName;
+    std::string matchedDeviceName;
 
     /*!
      * \brief full the devices map
