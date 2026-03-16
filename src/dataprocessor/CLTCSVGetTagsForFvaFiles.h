@@ -8,6 +8,8 @@
 #ifndef _CMD_CSV_GET_TAGS_FOR_FVA_FILES_H_
 #define _CMD_CSV_GET_TAGS_FOR_FVA_FILES_H_
 
+#include <vector>
+
 #include "CmdLineBaseTask.h"
 #include "fvacommoncsv.h"
 #include "fvafile.h"
@@ -71,7 +73,7 @@ private:  // data
     /*!
      * list if records we write in the output file
      */
-    QList<QString> m_records;
+    std::vector<QString> m_records;
 
     /*!
      * map of tag types

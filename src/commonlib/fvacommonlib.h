@@ -9,6 +9,8 @@
 #ifndef FVACOMMONLIB_H
 #define FVACOMMONLIB_H
 
+#include <vector>
+
 #include <QtCore/QDateTime>
 #include <QtCore/QString>
 #include <QtCore/QStringList>
@@ -92,7 +94,7 @@ FVA_EXIT_CODE fvaCreateDirIfNotExists(const QString& dirPath);
  * \param strList - a list of QString to be written
  * \returns it returns FVA_EXIT_CODE
  */
-FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, const QList<QString>& strList);
+FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, const std::vector<QString>& strList);
 
 /*!
  * \brief it simply gets the QString list from a file
@@ -100,6 +102,6 @@ FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, const QList<QString>& st
  * \param strList - a list of QString to be filledUp
  * \returns it returns FVA_EXIT_CODE
  */
-FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, QList<QString>& strList);
+FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, std::vector<QString>& strList);
 
 #endif  // FVACOMMONLIB_H

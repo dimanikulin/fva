@@ -126,7 +126,7 @@ void FVAOrganizerEventInfoPage::OnSaveButtonPressed() {
 
     dir2EventMap[selectedInputDirPath] = eventIds.at(0);
 
-    dir2PeopleMap[selectedInputDirPath] = peopleIds;
+    dir2PeopleMap[selectedInputDirPath] = std::vector<unsigned int>(peopleIds.begin(), peopleIds.end());
 
     peopleWidget->selectionModel()->clearSelection();
     eventsWidget->selectionModel()->clearSelection();

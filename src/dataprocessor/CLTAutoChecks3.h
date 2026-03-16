@@ -9,6 +9,8 @@
 #ifndef _CLT_AUTO_CHECKS_3_H_
 #define _CLT_AUTO_CHECKS_3_H
 
+#include <vector>
+
 #include "CmdLineBaseTask.h"
 #include "fvadevice.h"
 #include "fvafile.h"
@@ -42,7 +44,7 @@ private:
     /*!
      * issues found, divided by type (in string format)
      */
-    QList<QString> m_Issues;
+    std::vector<QString> m_Issues;
 
     /*!
      * global device map

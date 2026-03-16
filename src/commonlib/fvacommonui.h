@@ -9,6 +9,8 @@
 #ifndef FVACOMMONUI_H
 #define FVACOMMONUI_H
 
+#include <vector>
+
 #include <QLabel>
 #include <QMessageBox>
 #include <QTreeWidget>
@@ -94,7 +96,7 @@ void fvaClearChecks(QTreeWidgetItem* item);
  * we will mark it by red) \returns it returns nothing
  */
 void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget,
-                         const QList<QString>& problemFileList);
+                         const std::vector<QString>& problemFileList);
 
 #define FVA_MESSAGE_BOX(message) \
     QMessageBox msgBox;          \

@@ -8,6 +8,8 @@
 #ifndef _CLT_CHECK_LOCATION_H_
 #define _CLT_CHECK_LOCATION_H_
 
+#include <vector>
+
 #include "CmdLineBaseTask.h"
 
 /*!
@@ -34,6 +36,6 @@ private:
     /*!
      * issues found
      */
-    QList<QString> m_Issues;
+    std::vector<QString> m_Issues;
 };
 #endif  // _CLT_CHECK_LOCATION_H_

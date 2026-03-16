@@ -117,7 +117,7 @@ bool FVAOrganizerOutputDirPage::validatePage() {
         LOG_DEB << "before dirList.append(googlePhotoLineEdit->text())";
 
         // add this folder into list
-        dirList.append(googlePhotoLineEdit->text());
+        dirList.push_back(googlePhotoLineEdit->text());
     }
 
     LOG_DEB << "before if (!digiKamLineEdit->text().isEmpty())";
@@ -127,7 +127,7 @@ bool FVAOrganizerOutputDirPage::validatePage() {
         LOG_DEB << "dirList.append(digiKamLineEdit->text())";
 
         // add this folder into list
-        dirList.append(digiKamLineEdit->text());
+        dirList.push_back(digiKamLineEdit->text());
     }
 
     // before we move the folders lets first update the input folder content (tags) by fva information we got so far.

@@ -7,6 +7,8 @@
  */
 #include "CLTCSVFvaFiles.h"
 
+#include <vector>
+
 #include "fvacommoncsv.h"
 
 CLTCSVFvaFile::CLTCSVFvaFile(const FvaConfiguration& cfg) {
@@ -19,7 +21,7 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context) {
     FVA_EXIT_CODE res = fvaGetIDFromFile(m_rootSWdir + "#data#/fvaFile.id", ID);
     RET_RES_IF_RES_IS_ERROR
 
-    QList<QString> records;
+    std::vector<QString> records;
     Q_FOREACH (QFileInfo info,
                m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
                                    QDir::DirsFirst)) {
@@ -33,7 +35,7 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context) {
         QString csvRecord = QString::number(++ID) + ","   // ID
                             + info.fileName() + ",,,"     // Name
                             + context.custom + ",,,,,,";  // m_custom here is device id
-        records.append(csvRecord);
+        records.push_back(csvRecord);
     }
     res = fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileN.csv", records);
     if (FVA_NO_ERROR != res) return res;

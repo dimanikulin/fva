@@ -9,6 +9,8 @@
 #ifndef _CLT_AUTO_CHECKS_2_H_
 #define _CLT_AUTO_CHECKS_2_H
 
+#include <vector>
+
 #include "CmdLineBaseTask.h"
 #include "fvafmtcontext.h"
 
@@ -47,7 +49,7 @@ private:  // data
     /*!
      * issues found, divided by type (in string format)
      */
-    QList<QString> m_Issues;
+    std::vector<QString> m_Issues;
 
     /*!
      * file names to file pathes
