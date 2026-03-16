@@ -8,8 +8,8 @@
 #ifndef FVADEVICE_H
 #define FVADEVICE_H
 
-#include <map>
 #include <QtCore/QString>
+#include <map>
 
 #include "fvaconstants.h"
 

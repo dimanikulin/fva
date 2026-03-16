@@ -66,7 +66,8 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
         if (FVA_FS_TYPE_IMG != type) continue;
 
         QString matchedDeviceName;
-        deviceContext.deviceMap = fvaGetDeviceMapForImg(deviceContext.fullDeviceMap, info.filePath(), matchedDeviceName);
+        deviceContext.deviceMap =
+            fvaGetDeviceMapForImg(deviceContext.fullDeviceMap, info.filePath(), matchedDeviceName);
         if (!matchedDeviceName.isEmpty()) {
             deviceContext.matchedDeviceName = matchedDeviceName.toStdString();
             break;

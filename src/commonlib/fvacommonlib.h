@@ -9,13 +9,12 @@
 #ifndef FVACOMMONLIB_H
 #define FVACOMMONLIB_H
 
-#include <vector>
-
 #include <QtCore/QDateTime>
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 #include <QtCore/QVariantMap>
 #include <QtCore/QVector>
+#include <vector>
 
 #include "fvadevice.h"
 #include "fvaexitcodes.h"

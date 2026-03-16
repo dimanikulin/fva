@@ -9,12 +9,11 @@
 #ifndef FVACOMMONUI_H
 #define FVACOMMONUI_H
 
-#include <vector>
-
 #include <QLabel>
 #include <QMessageBox>
 #include <QTreeWidget>
 #include <QtCore/QString>
+#include <vector>
 
 #include "fvaexitcodes.h"
 

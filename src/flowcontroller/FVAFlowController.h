@@ -8,11 +8,10 @@
 #ifndef _FVA_FLOW_CONTROLLER_H_
 #define _FVA_FLOW_CONTROLLER_H_
 
-#include <map>
-#include <vector>
-
 #include <QtCore/QString>
 #include <QtCore/QStringList>
+#include <map>
+#include <vector>
 
 #include "FVADataProcessor.h"
 #include "fvacltcontext.h"
