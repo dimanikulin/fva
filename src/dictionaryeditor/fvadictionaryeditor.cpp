@@ -88,8 +88,9 @@ void FVADictionaryEditor::OnAddDeviceBtnPressed() {
     QTextStream writeStream(&file);
     writeStream.setCodec("UTF-8");
     // ID,OwnerId,LinkedName,Name,Type
+    int nextDeviceId = deviceMap.empty() ? 1 : (deviceMap.rbegin()->first + 1);
     writeStream << "\n"
-                << deviceMap.lastKey() + 1 << "," << ui.cbOwner->itemData(ui.cbOwner->currentIndex()).toString() << ","
+                << nextDeviceId << "," << ui.cbOwner->itemData(ui.cbOwner->currentIndex()).toString() << ","
                 << ui.editLinkName->text() << "," << ui.editName->text() << ","
                 << "1";  // hardcoded now to photo-video device type
     writeStream.flush();

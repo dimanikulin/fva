@@ -97,9 +97,9 @@ void FVAOrganizerDevicePage::setVisible(bool visible) {
 #endif  // FVA_LANGUAGE_RUS
         } else if (deviceMap.size() == 1) {
             LOG_DEB << "setVisible deviceMap.size() == 1";
-            deviceName->setText(deviceMap.begin().value().guiName);
-            ownerName->setText(deviceMap.begin().value().ownerName);
-            deviceId = deviceMap.begin().value().deviceId;
+            deviceName->setText(deviceMap.begin()->second.guiName);
+            ownerName->setText(deviceMap.begin()->second.ownerName);
+            deviceId = deviceMap.begin()->second.deviceId;
             emit completeChanged();
         } else {
             LOG_DEB << "setVisible deviceMap.size() != 1 and !<";

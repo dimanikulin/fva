@@ -8,8 +8,9 @@
 #ifndef _FVA_FLOW_CONTROLLER_H_
 #define _FVA_FLOW_CONTROLLER_H_
 
+#include <map>
+
 #include <QtCore/QList>
-#include <QtCore/QMap>
 #include <QtCore/QString>
 
 #include "FVADataProcessor.h"
@@ -23,12 +24,12 @@ typedef QList<QString> STR_LIST;
 /*!
  * \brief DIR_2_ID_MAP maps input dir structure (folder names) to ids
  */
-typedef QMap<QString, unsigned int> DIR_2_ID_MAP;
+typedef std::map<QString, unsigned int> DIR_2_ID_MAP;
 
 /*!
  * \brief DIR_2_IDS_MAP maps input dir structure (folder names) to ids
  */
-typedef QMap<QString, QList<unsigned int>> DIR_2_IDS_MAP;
+typedef std::map<QString, QList<unsigned int>> DIR_2_IDS_MAP;
 
 class QObject;
 

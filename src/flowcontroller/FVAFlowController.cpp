@@ -54,7 +54,7 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadPeopleMapFromCsv")
 
     for (auto it = deviceContext.fullDeviceMap.begin(); it != deviceContext.fullDeviceMap.end(); ++it)
-        it.value().ownerName = peopleMap[it.value().ownerId].name;
+        it->second.ownerName = peopleMap[it->second.ownerId].name;
 
     deviceContext.matchedDeviceName.clear();
 
@@ -303,12 +303,12 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
         QStringList params;
         params.append(fvafileNPath);
 
-        QString fsPath = it.key();
+        QString fsPath = it->first;
         QFileInfo fi(fsPath);
         if (fi.isDir()) {
             params.append(fsPath);
 
-            QString placeId = QString::number(it.value());
+            QString placeId = QString::number(it->second);
             params.append(placeId);
 
             // run command implemented in python to update the fvafile.csv for each file in folder with placeid  we got
@@ -341,12 +341,12 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDi
         QStringList params;
         params.append(fvafileNPath);
 
-        QString fsPath = it.key();
+        QString fsPath = it->first;
         QFileInfo fi(fsPath);
         if (fi.isDir()) {
             params.append(fsPath);
 
-            QString eventId = QString::number(it.value());
+            QString eventId = QString::number(it->second);
             params.append(eventId);
 
             // run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got
@@ -357,15 +357,16 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDi
             // show error message box and return to calling function if previous operation failed
             IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventForDir")
 
-            if (0 == peopleMap[fsPath].size()) {
+            auto peopleIt = peopleMap.find(fsPath);
+            if (peopleIt == peopleMap.end() || 0 == peopleIt->second.size()) {
                 LOG_WARN << "empty people list for " << fvafileNPath << " " << fsPath;
                 continue;
             }
             params.removeLast();  // remove last param as it was for previous cmd actual only
             QString peopleIds;
-            for (int i = 0; i < peopleMap[fsPath].size(); ++i) {
-                peopleIds += QString::number(peopleMap[fsPath][i]);
-                if (i < peopleMap[fsPath].size() - 1) peopleIds += ",";
+            for (int i = 0; i < peopleIt->second.size(); ++i) {
+                peopleIds += QString::number(peopleIt->second[i]);
+                if (i < peopleIt->second.size() - 1) peopleIds += ",";
             }
             params.append(peopleIds);
 

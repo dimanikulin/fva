@@ -66,7 +66,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
         }
         bool matched = false;
         for (DEVICE_MAP::iterator it = devMap.begin(); it != devMap.end(); ++it) {
-            if (it.value().deviceId == deviceID) {
+            if (it->second.deviceId == deviceID) {
                 matched = true;
                 break;
             }
@@ -74,7 +74,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
 
         if (!matched) {
             LOG_WARN << "device id linked wrongly, " << info.absoluteFilePath() << ",from image-"
-                     << devMap.begin().value().deviceId << ", from fvafile=" << deviceID;
+                     << devMap.begin()->second.deviceId << ", from fvafile=" << deviceID;
             m_Issues.push_back("FVA_ERROR_LINKED_WRONG_DEVICE," + info.absoluteFilePath() + "," +
                                QString::number(deviceID) + "," + m_deviceMap[deviceID].guiName + " " +
                                m_deviceMap[deviceID].ownerName);

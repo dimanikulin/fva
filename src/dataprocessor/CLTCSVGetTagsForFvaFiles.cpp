@@ -115,9 +115,9 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
 
-        auto itPerson = m_fvaPeopleMap.find(itDevice.value().ownerId);
+        auto itPerson = m_fvaPeopleMap.find(itDevice->second.ownerId);
         if (itPerson == m_fvaPeopleMap.end()) {
-            LOG_CRIT << "person not found in fvaPeople.csv, ID - " << itDevice.value().ownerId;
+            LOG_CRIT << "person not found in fvaPeople.csv, ID - " << itDevice->second.ownerId;
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
 

@@ -8,7 +8,7 @@
 #ifndef FVADEVICE_H
 #define FVADEVICE_H
 
-#include <QtCore/QMap>
+#include <map>
 #include <QtCore/QString>
 
 #include "fvaconstants.h"
@@ -54,6 +54,6 @@ public:
     fvaDevice() : deviceId(0), ownerId(0), type(FVA_DEVICE_TYPE::DEVICE_TYPE_PHOTO_UKNOWN) {}
 };
 
-typedef QMap<int, fvaDevice> DEVICE_MAP;
+typedef std::map<int, fvaDevice> DEVICE_MAP;
 
 #endif  // FVADEVICE_H

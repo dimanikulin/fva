@@ -149,15 +149,15 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
     if (deviceName.isEmpty()) return DEVICE_MAP();
     QString fixedDevName = deviceName.toUpper().trimmed();
     for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it) {
-        QString name = it.value().linkedName.toUpper();
-        if (name == fixedDevName) result[it.key()] = it.value();
+        QString name = it->second.linkedName.toUpper();
+        if (name == fixedDevName) result[it->first] = it->second;
     }
 
     deviceName = deviceName.remove("  ");
     deviceName = deviceName.remove(QChar('\0'));
     if (!deviceName.isEmpty()) {
         for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it) {
-            if (it.value().linkedName == deviceName.toUpper().trimmed()) result[it.key()] = it.value();
+            if (it->second.linkedName == deviceName.toUpper().trimmed()) result[it->first] = it->second;
         }
     }
     return result;
