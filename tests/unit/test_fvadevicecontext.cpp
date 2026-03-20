@@ -23,7 +23,7 @@ TEST_F(DeviceContextTests, MatchedDeviceName) {
     deviceContext.matchedDeviceName = "Device1";
 
     // Assert
-    ASSERT_EQ("Device1", deviceContext.matchedDeviceName.toStdString());
+    ASSERT_EQ("Device1", deviceContext.matchedDeviceName);
 }
 
 // Test case for fullDeviceMap
