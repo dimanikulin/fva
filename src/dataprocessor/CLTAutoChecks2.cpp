@@ -141,8 +141,10 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
 QMap<unsigned int, unsigned int> sizes;
 
 CLTAutoChecks2::CLTAutoChecks2(const FvaConfiguration& cfg) {
-    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
+    std::string rootSWdir;
+    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
     RET_IF_RES_IS_ERROR
+    m_rootSWdir = QString::fromStdString(rootSWdir);
 
     res = cfg.getParamAsUint("Rename::minFilesInDir", m_minCountSupportedFiles);
     RET_IF_RES_IS_ERROR

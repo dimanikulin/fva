@@ -148,12 +148,13 @@ void FVAOrganizerPlacePage::setVisible(bool visible) {
         LOG_DEB << "setVisible if (visible)";
 
         FvaConfiguration cfg;
-        FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+        FVA_EXIT_CODE exitCode = cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("load.cfg")
 
-        QString rootSWdir;
+        std::string rootSWdir;
         exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("get.param")
+        const QString rootSWdirQ = QString::fromStdString(rootSWdir);
 
         FVAFlowController flow;
 
@@ -164,7 +165,7 @@ void FVAOrganizerPlacePage::setVisible(bool visible) {
         // populate input file struture with files
         fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget, fileListToFillUp);
 
-        exitCode = fvaBuildPlaceTree(this, placesWidget, rootSWdir);
+        exitCode = fvaBuildPlaceTree(this, placesWidget, rootSWdirQ);
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildPlaceTree")
     }
     LOG_DEB << "setVisible before exit";

@@ -34,16 +34,16 @@ FVA_EXIT_CODE CLTCheckLocation::execute(const CLTContext& context) {
     return FVA_NO_ERROR;
 }
 CLTCheckLocation::~CLTCheckLocation() {
-    QString rootSWdir;
+    std::string rootSWdir;
 
     FvaConfiguration cfg;
-    FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+    FVA_EXIT_CODE res = cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
     RET_IF_RES_IS_ERROR
 
     res = cfg.getParamAsString("Common::RootDir", rootSWdir);
     RET_IF_RES_IS_ERROR
 
-    fvaSaveStrListToFile(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", m_Issues);
+    fvaSaveStrListToFile(QString::fromStdString(rootSWdir) + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", m_Issues);
 
     LOG_DEB << "cmd deleted, dir:" << m_folder;
 }

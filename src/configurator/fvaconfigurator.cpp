@@ -58,7 +58,7 @@ FVAConfigurator::FVAConfigurator(QWidget* parent) : QDialog(parent) {
 #endif  // FVA_LANGUAGE_ENG
 #endif  // FVA_LANGUAGE_RUS
 
-    FVA_EXIT_CODE res = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+    FVA_EXIT_CODE res = cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
     RET_IF_RES_IS_ERROR
 
     InitializeCommonTab(cfg);
@@ -70,15 +70,15 @@ FVAConfigurator::FVAConfigurator(QWidget* parent) : QDialog(parent) {
 
     bool temp;
     for (CHECKBOXES::iterator it = m_checkboxes.begin(); it != m_checkboxes.end(); ++it) {
-        res = cfg.getParamAsBoolean(it.key(), temp);
+        res = cfg.getParamAsBoolean(it.key().toStdString(), temp);
         RET_IF_RES_IS_ERROR
         it.value()->setChecked(temp);
     }
-    QString temp2;
+    std::string temp2;
     for (LINEEDITES::iterator it = m_lineedites.begin(); it != m_lineedites.end(); ++it) {
-        res = cfg.getParamAsString(it.key(), temp2);
+        res = cfg.getParamAsString(it.key().toStdString(), temp2);
         RET_IF_RES_IS_ERROR
-        it.value()->setText(temp2);
+        it.value()->setText(QString::fromStdString(temp2));
     }
 }
 
@@ -86,16 +86,16 @@ void FVAConfigurator::accept() {
     QDialog::accept();
 
     for (CHECKBOXES::iterator it = m_checkboxes.begin(); it != m_checkboxes.end(); ++it)
-        cfg.setParam(it.key(), it.value()->isChecked());
+        cfg.setParam(it.key().toStdString(), it.value()->isChecked());
 
     for (LINEEDITES::iterator it = m_lineedites.begin(); it != m_lineedites.end(); ++it)
-        cfg.setParam(it.key(), it.value()->text());
+        cfg.setParam(it.key().toStdString(), it.value()->text().toStdString());
 
-    cfg.setParam("Common::Language", static_cast<uint>(cbLanguage->currentIndex()));
-    cfg.setParam("Common::LogLevel", static_cast<uint>(cbLogLevel->currentIndex()));
-    cfg.setParam("Rename::minFilesInDir", static_cast<uint>(minFilesInDirSpin->value()));
+    cfg.setParam("Common::Language", static_cast<unsigned int>(cbLanguage->currentIndex()));
+    cfg.setParam("Common::LogLevel", static_cast<unsigned int>(cbLogLevel->currentIndex()));
+    cfg.setParam("Rename::minFilesInDir", static_cast<unsigned int>(minFilesInDirSpin->value()));
 
-    FVA_EXIT_CODE res = cfg.save(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+    FVA_EXIT_CODE res = cfg.save((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
     RET_IF_RES_IS_ERROR
 }
 

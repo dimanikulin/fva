@@ -10,8 +10,10 @@
 #include "fvacommoncsv.h"
 
 CLTMoveInputDir2Output::CLTMoveInputDir2Output(const FvaConfiguration& cfg) {
-    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
+    std::string rootSWdir;
+    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
     RET_IF_RES_IS_ERROR
+    m_rootSWdir = QString::fromStdString(rootSWdir);
 }
 
 FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context) {

@@ -43,7 +43,7 @@ FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void) {
     googlePhotoLineEdit->setReadOnly(true);
 
     FvaConfiguration cfg;
-    FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+    FVA_EXIT_CODE exitCode = cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.load")
 
     QGridLayout* dirLayout = new QGridLayout;

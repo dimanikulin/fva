@@ -22,7 +22,7 @@
 FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent) : QWizard(parent) {
     FvaConfiguration cfg;
     LOG_DEB << "construction";
-    FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+    FVA_EXIT_CODE exitCode = cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.load")
     int index = 0;
 

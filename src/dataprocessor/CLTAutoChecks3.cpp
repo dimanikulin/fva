@@ -11,8 +11,10 @@
 #include "fvacommonexif.h"
 
 CLTAutoChecks3::CLTAutoChecks3(const FvaConfiguration& cfg) {
-    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
+    std::string rootSWdir;
+    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
     RET_IF_RES_IS_ERROR
+    m_rootSWdir = QString::fromStdString(rootSWdir);
 
     res = fvaLoadFvaFileInfoFromCsv(m_rootSWdir, m_fvaFileInfo);
     RET_IF_RES_IS_ERROR

@@ -9,8 +9,9 @@
 #ifndef _FVA_CONFIGURATION_
 #define _FVA_CONFIGURATION_
 
-#include <QtCore/QString>
-#include <QtCore/QStringList>
+#include <map>
+#include <string>
+#include <vector>
 
 #include "FVADescriptionFile.h"
 #include "fvaexitcodes.h"
@@ -27,14 +28,14 @@ public:  // methods
      * \param path - path to CSV file
      * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
      */
-    FVA_EXIT_CODE load(const QString& path);
+    FVA_EXIT_CODE load(const std::string& path);
 
     /*!
      * \brief it saves data to file
      * \param path - path to CSV file
      * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
      */
-    FVA_EXIT_CODE save(const QString& path);
+    FVA_EXIT_CODE save(const std::string& path);
 
     /*!
      * \brief it returns the parameter value as string representation
@@ -42,7 +43,7 @@ public:  // methods
      * \param paramVaue - parameter value to be returned
      * \returns it returns code of error if any or FVA_NO_ERROR if getting was successful
      */
-    FVA_EXIT_CODE getParamAsString(const QString& paramName, QString& paramValue) const;
+    FVA_EXIT_CODE getParamAsString(const std::string& paramName, std::string& paramValue) const;
 
     /*!
      * \brief it returns the parameter value as bool
@@ -50,7 +51,7 @@ public:  // methods
      * \param paramVaue - parameter value to be returned
      * \returns it returns code of error if any or FVA_NO_ERROR if getting was successful
      */
-    FVA_EXIT_CODE getParamAsBoolean(const QString& paramName, bool& paramValue) const;
+    FVA_EXIT_CODE getParamAsBoolean(const std::string& paramName, bool& paramValue) const;
 
     /*!
      * \brief it returns the parameter value as unsigned integer
@@ -58,7 +59,7 @@ public:  // methods
      * \param paramVaue - parameter value to be returned
      * \returns it returns code of error if any or FVA_NO_ERROR if getting was successful
      */
-    FVA_EXIT_CODE getParamAsUint(const QString& paramName, uint& paramValue) const;
+    FVA_EXIT_CODE getParamAsUint(const std::string& paramName, unsigned int& paramValue) const;
 
     /*!
      * \brief it sets the parameter value as unsigned integer for the futher saving
@@ -66,7 +67,7 @@ public:  // methods
      * \param paramValue - parameter value
      * \returns it returns code of error if any or FVA_NO_ERROR if setting was successful
      */
-    FVA_EXIT_CODE setParam(const QString& paramName, uint paramValue);
+    FVA_EXIT_CODE setParam(const std::string& paramName, unsigned int paramValue);
 
     /*!
      * \brief it sets the parameter value as boolean for the futher saving
@@ -74,7 +75,7 @@ public:  // methods
      * \param paramValue - parameter value
      * \returns it returns code of error if any or FVA_NO_ERROR if setting was successful
      */
-    FVA_EXIT_CODE setParam(const QString& paramName, bool paramValue);
+    FVA_EXIT_CODE setParam(const std::string& paramName, bool paramValue);
 
     /*!
      * \brief it sets the parameter value as string for the futher saving
@@ -82,17 +83,17 @@ public:  // methods
      * \param paramValue - parameter value
      * \returns it returns code of error if any or FVA_NO_ERROR if setting was successful
      */
-    FVA_EXIT_CODE setParam(const QString& paramName, QString paramValue);
+    FVA_EXIT_CODE setParam(const std::string& paramName, const std::string& paramValue);
 
 private:  // data
     /*!
      * \brief titles from CSV file that keeps whole the configuration
      */
-    QStringList m_cfgtitles;
+    std::vector<std::string> m_cfgtitles;
 
     /*!
      * \brief whole the configuration from CSV file that keeps it
      */
-    DESCRIPTIONS_MAP m_cfgItems;
+    std::map<int, std::vector<std::string>> m_cfgItems;
 };
 #endif  // _FVA_CONFIGURATION_

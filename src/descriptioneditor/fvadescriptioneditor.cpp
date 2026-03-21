@@ -44,22 +44,23 @@ FVADescriptionEditor::FVADescriptionEditor(bool forFolder, QWidget* parent)
     }
     LOG_DEB << "before loading cfg";
     FvaConfiguration cfg;
-    FVA_EXIT_CODE exitCode = cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+        FVA_EXIT_CODE exitCode = cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.load.cfg")
 
-    QString rootSWdir;
-    exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
+        std::string rootSWdir;
+        exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.get.param")
+        const QString rootSWdirQ = QString::fromStdString(rootSWdir);
 
     LOG_DEB << "before fvaBuildPeopleTree 1";
-    exitCode = fvaBuildPeopleTree(this, ui.treePeopleWidget, rootSWdir);
+        exitCode = fvaBuildPeopleTree(this, ui.treePeopleWidget, rootSWdirQ);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleTree.ui.treePeopleWidget")
 
     LOG_DEB << "before fvaBuildPeopleTree 2";
-    exitCode = fvaBuildPeopleTree(this, ui.treePEventWidget, rootSWdir);
+        exitCode = fvaBuildPeopleTree(this, ui.treePEventWidget, rootSWdirQ);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleTree.ui.treePEventWidget")
 
-    exitCode = fvaBuildEventTree(this, ui.treeEventWidget, rootSWdir);
+        exitCode = fvaBuildEventTree(this, ui.treeEventWidget, rootSWdirQ);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildEventTree")
 
     LOG_DEB << "constructed";

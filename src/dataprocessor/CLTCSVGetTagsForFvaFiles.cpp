@@ -12,9 +12,11 @@
 CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg) {
     LOG_DEB << "cmd created, dir:" << m_folder;
 
-    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
+    std::string rootSWdir;
+    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
     if (res != FVA_NO_ERROR) LOG_CRIT << "Failed to load Common::RootDir with erorr - " << res;
     RET_IF_RES_IS_ERROR
+    m_rootSWdir = QString::fromStdString(rootSWdir);
 
     // ask configuration if we need to search by certain serach attribute
     res = cfg.getParamAsBoolean("Search::Place", m_SearchByPlace);

@@ -16,6 +16,8 @@
 #include "fvaconfiguration.h"
 #include "fvalogger.inl"
 
+// TODO : to move this function to some common place and use in other places as well
+// TODO make UT for this function
 namespace {
 std::string quoteArg(const std::string& arg) {
     std::string escaped;
@@ -31,14 +33,14 @@ std::string quoteArg(const std::string& arg) {
 }  // namespace
 
 FVAFlowController::FVAFlowController() {
-    FVA_EXIT_CODE exitCode = m_cfg.load(QCoreApplication::applicationDirPath() + "/fvaParams.csv");
+    FVA_EXIT_CODE exitCode = m_cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
 
     // show error message box and return if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.load")
 }
 
 FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContext, CLTContext& context) {
-    QString rootSWdir;
+    std::string rootSWdir;
     FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", rootSWdir);
 
     // show error message box and return to calling function if previous operation failed
@@ -56,13 +58,13 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
     else
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckDeviceName")
 
-    exitCode = fvaLoadDeviceMapFromCsv(rootSWdir, deviceContext.fullDeviceMap);
+    exitCode = fvaLoadDeviceMapFromCsv(QString::fromStdString(rootSWdir), deviceContext.fullDeviceMap);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadDeviceMapFromCsv")
 
     PEOPLE_MAP peopleMap;
-    exitCode = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
+    exitCode = fvaLoadPeopleMapFromCsv(QString::fromStdString(rootSWdir), peopleMap);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadPeopleMapFromCsv")
@@ -193,13 +195,12 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const std::string& dir
 
 FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName, QObject* obj,
                                               const std::vector<std::string>& params) {
-    QString fvaSWRootDirQ;
-    FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDirQ);
+    std::string fvaSWRootDir;
+    FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
-    const std::string fvaSWRootDir = fvaSWRootDirQ.toStdString();
     const std::string pyScriptRunPath = fvaSWRootDir + "#scripts#/" + scriptName;
 
     std::string command = "python " + quoteArg(pyScriptRunPath);
@@ -310,13 +311,12 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const std::string& dir, int de
 }
 
 FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& placeMap, QObject* obj) {
-    QString fvaSWRootDirQ;
-    FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDirQ);
+    std::string fvaSWRootDir;
+    FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
-    const std::string fvaSWRootDir = fvaSWRootDirQ.toStdString();
     const std::string fvafileNPath = fvaSWRootDir + "#data#/fvafileN.csv";
 
     // for each folder in input dir map
@@ -351,13 +351,12 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
 FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inputDir, const DIR_2_ID_MAP& eventMap,
                                                           const DIR_2_IDS_MAP& peopleMap, QObject* obj) {
     const QString inputDir_ = QString::fromStdString(inputDir);
-    QString fvaSWRootDirQ;
-    FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDirQ);
+    std::string fvaSWRootDir;
+    FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
-    const std::string fvaSWRootDir = fvaSWRootDirQ.toStdString();
     const std::string fvafileNPath = fvaSWRootDir + "#data#/fvafileN.csv";
 
     // for each folder in input dir map
@@ -438,13 +437,12 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
 }
 
 FVA_EXIT_CODE FVAFlowController::GetProblemFilesList(STR_LIST& fileListToFillUp) {
-    QString rootSWdirQ;
-    FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", rootSWdirQ);
+    std::string rootSWdir;
+    FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", rootSWdir);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
-    const std::string rootSWdir = rootSWdirQ.toStdString();
     return fvaLoadStrListFromFile(QString::fromStdString(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv"),
                                   fileListToFillUp);
 }
@@ -533,13 +531,11 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
     }
 
-    QString fvaSWRootDirQ;
-    FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDirQ);
+    std::string fvaSWRootDir;
+    FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
-
-    const std::string fvaSWRootDir = fvaSWRootDirQ.toStdString();
 
     std::vector<std::string> params;
     params.push_back(fvaSWRootDir + "#data#/fvaFile.csv");

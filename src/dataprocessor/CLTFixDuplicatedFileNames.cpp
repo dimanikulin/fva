@@ -9,8 +9,10 @@
 
 // TODO to work with digiKam dir but not fva dir
 CLTFixDuplicatedFileNames::CLTFixDuplicatedFileNames(const FvaConfiguration& cfg) {
-    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
+    std::string rootSWdir;
+    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
     RET_IF_RES_IS_ERROR
+    m_rootSWdir = QString::fromStdString(rootSWdir);
 }
 
 FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute(const CLTContext& context) {
