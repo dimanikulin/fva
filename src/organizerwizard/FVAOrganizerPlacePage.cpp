@@ -123,7 +123,7 @@ void FVAOrganizerPlacePage::OnSaveButtonPressed() {
         return;
     }
 
-    dir2PlaceMap[selectedInputDirPath] = placesIds.at(0);
+    dir2PlaceMap[selectedInputDirPath.toStdString()] = placesIds.at(0);
 
     for (auto idTop = 0; idTop < placesWidget->topLevelItemCount(); ++idTop)
         fvaClearChecks(placesWidget->topLevelItem(idTop));

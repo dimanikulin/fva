@@ -13,6 +13,7 @@
 #include <QMessageBox>
 #include <QTreeWidget>
 #include <QtCore/QString>
+#include <string>
 #include <vector>
 
 #include "fvaexitcodes.h"
@@ -95,7 +96,7 @@ void fvaClearChecks(QTreeWidgetItem* item);
  * we will mark it by red) \returns it returns nothing
  */
 void fvaPopulateInputDir(const QString& folder, QTreeWidgetItem* item, QTreeWidget* treeWidget,
-                         const std::vector<QString>& problemFileList);
+                         const std::vector<std::string>& problemFileList);
 
 #define FVA_MESSAGE_BOX(message) \
     QMessageBox msgBox;          \

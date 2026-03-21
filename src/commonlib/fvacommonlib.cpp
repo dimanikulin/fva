@@ -225,7 +225,7 @@ FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, const std::vector<QStrin
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, std::vector<QString>& strList) {
+FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, std::vector<std::string>& strList) {
     QFile file(path);
     file.open(QIODevice::ReadOnly | QIODevice::Text);
 
@@ -237,7 +237,7 @@ FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, std::vector<QString>& 
         if (line.isNull())
             break;
         else
-            strList.push_back(line);
+            strList.push_back(line.toStdString());
     }
 
     file.close();

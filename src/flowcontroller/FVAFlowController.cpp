@@ -10,6 +10,7 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QDir>
 #include <QtCore/QProcess>
+#include <QtCore/QStringList>
 
 #include "fvacommoncsv.h"
 #include "fvacommonui.h"
@@ -175,7 +176,8 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject* obj, const QStringList& params) {
+FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject* obj,
+                                              const std::vector<std::string>& params) {
     QString fvaSWRootDir;
     FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
@@ -184,7 +186,8 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject
 
     QString pyScriptRunPath = fvaSWRootDir + "#scripts#/" + scriptName;
 
-    QStringList params_ = params;
+    QStringList params_;
+    for (auto it = params.begin(); it != params.end(); ++it) params_.push_back(QString::fromStdString(*it));
     params_.push_front(pyScriptRunPath);
 
     QProcess myProcess(obj);
@@ -232,8 +235,8 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
         }
 
         // run command implemented in python to fixing empty date-time issue
-        QStringList params;
-        params.append(context.dir);
+        std::vector<std::string> params;
+        params.push_back(context.dir.toStdString());
         exitCode = runPythonCMD("CLTFixEmptyDateTime.py", obj, params);
 
         // show error message box and return to calling function if previous operation failed
@@ -301,16 +304,16 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
 
     // for each folder in input dir map
     for (auto it = placeMap.begin(); it != placeMap.end(); ++it) {
-        QStringList params;
-        params.append(fvafileNPath);
+        std::vector<std::string> params;
+        params.push_back(fvafileNPath.toStdString());
 
-        QString fsPath = it->first;
+        QString fsPath = QString::fromStdString(it->first);
         QFileInfo fi(fsPath);
         if (fi.isDir()) {
-            params.append(fsPath);
+            params.push_back(fsPath.toStdString());
 
             QString placeId = QString::number(it->second);
-            params.append(placeId);
+            params.push_back(placeId.toStdString());
 
             // run command implemented in python to update the fvafile.csv for each file in folder with placeid  we got
             exitCode = runPythonCMD("CLTUpdatePlaceForDir.py", obj, params);
@@ -339,16 +342,16 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDi
 
     // for each folder in input dir map
     for (auto it = eventMap.begin(); it != eventMap.end(); ++it) {
-        QStringList params;
-        params.append(fvafileNPath);
+        std::vector<std::string> params;
+        params.push_back(fvafileNPath.toStdString());
 
-        QString fsPath = it->first;
+        QString fsPath = QString::fromStdString(it->first);
         QFileInfo fi(fsPath);
         if (fi.isDir()) {
-            params.append(fsPath);
+            params.push_back(fsPath.toStdString());
 
             QString eventId = QString::number(it->second);
-            params.append(eventId);
+            params.push_back(eventId.toStdString());
 
             // run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got
             exitCode = runPythonCMD("CLTUpdateEventForDir.py", obj, params);
@@ -358,18 +361,18 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDi
             // show error message box and return to calling function if previous operation failed
             IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventForDir")
 
-            auto peopleIt = peopleMap.find(fsPath);
+            auto peopleIt = peopleMap.find(it->first);
             if (peopleIt == peopleMap.end() || 0 == peopleIt->second.size()) {
                 LOG_WARN << "empty people list for " << fvafileNPath << " " << fsPath;
                 continue;
             }
-            params.removeLast();  // remove last param as it was for previous cmd actual only
+            params.pop_back();  // remove last param as it was for previous cmd actual only
             QString peopleIds;
             for (int i = 0; i < peopleIt->second.size(); ++i) {
                 peopleIds += QString::number(peopleIt->second[i]);
                 if (i < peopleIt->second.size() - 1) peopleIds += ",";
             }
-            params.append(peopleIds);
+            params.push_back(peopleIds.toStdString());
 
             LOG_DEB << "CLTUpdateEventPeopleForDir:" << fvafileNPath << " " << fsPath << " " << eventId;
 
@@ -449,7 +452,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 
     // for each folder in output list
     for (STR_LIST::const_iterator it = outputDirs.begin(); it != outputDirs.end(); ++it) {
-        QString dirToMoveTo = *it;
+        QString dirToMoveTo = QString::fromStdString(*it);
         context.outputDir = dirToMoveTo;
         LOG_DEB << "Moving into:" << dirToMoveTo;
 
@@ -509,9 +512,9 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
-    QStringList params;
-    params.append(fvaSWRootDir + "#data#/fvaFile.csv");
-    params.append(fvaSWRootDir + "#data#/fvaFileN.csv");
+    std::vector<std::string> params;
+    params.push_back((fvaSWRootDir + "#data#/fvaFile.csv").toStdString());
+    params.push_back((fvaSWRootDir + "#data#/fvaFileN.csv").toStdString());
 
     // run command implemented in python to the fvafile.csv and fvafileN.csv
     exitCode = runPythonCMD("CLTMerge2csv.py", obj, params);

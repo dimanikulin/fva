@@ -14,6 +14,7 @@
 #include <QtCore/QStringList>
 #include <QtCore/QVariantMap>
 #include <QtCore/QVector>
+#include <string>
 #include <vector>
 
 #include "fvadevice.h"
@@ -96,11 +97,11 @@ FVA_EXIT_CODE fvaCreateDirIfNotExists(const QString& dirPath);
 FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, const std::vector<QString>& strList);
 
 /*!
- * \brief it simply gets the QString list from a file
+ * \brief it simply gets the string list from a file
  * \param path - a file path to get strList from
- * \param strList - a list of QString to be filledUp
+ * \param strList - a list of strings to be filledUp
  * \returns it returns FVA_EXIT_CODE
  */
-FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, std::vector<QString>& strList);
+FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, std::vector<std::string>& strList);
 
 #endif  // FVACOMMONLIB_H

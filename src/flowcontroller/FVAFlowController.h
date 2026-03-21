@@ -9,8 +9,8 @@
 #define _FVA_FLOW_CONTROLLER_H_
 
 #include <QtCore/QString>
-#include <QtCore/QStringList>
 #include <map>
+#include <string>
 #include <vector>
 
 #include "FVADataProcessor.h"
@@ -19,17 +19,17 @@
 #include "fvadevicecontext.h"
 #include "fvaexitcodes.h"
 
-typedef std::vector<QString> STR_LIST;
+typedef std::vector<std::string> STR_LIST;
 
 /*!
  * \brief DIR_2_ID_MAP maps input dir structure (folder names) to ids
  */
-typedef std::map<QString, unsigned int> DIR_2_ID_MAP;
+typedef std::map<std::string, unsigned int> DIR_2_ID_MAP;
 
 /*!
  * \brief DIR_2_IDS_MAP maps input dir structure (folder names) to ids
  */
-typedef std::map<QString, std::vector<unsigned int>> DIR_2_IDS_MAP;
+typedef std::map<std::string, std::vector<unsigned int>> DIR_2_IDS_MAP;
 
 class QObject;
 
@@ -152,7 +152,7 @@ public:  // helpers
      * \param params - list of params to run the cmd
      * \return it returns code of error (FVA_NO_ERROR - if no error happened)
      */
-    FVA_EXIT_CODE runPythonCMD(const QString& scriptName, QObject* obj, const QStringList& params);
+    FVA_EXIT_CODE runPythonCMD(const QString& scriptName, QObject* obj, const std::vector<std::string>& params);
 
 private:  // data
     /*!
