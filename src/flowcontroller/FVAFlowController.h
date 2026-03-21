@@ -8,7 +8,6 @@
 #ifndef _FVA_FLOW_CONTROLLER_H_
 #define _FVA_FLOW_CONTROLLER_H_
 
-#include <QtCore/QString>
 #include <map>
 #include <string>
 #include <vector>
@@ -58,7 +57,7 @@ public:
      * \param obj - to attach the child processes to this object
      * \return it returns code of error (FVA_NO_ERROR - if no error happened)
      */
-    FVA_EXIT_CODE PerformChecksForInputDir(const QString& dir, DeviceContext& deviceContext, QObject* obj);
+    FVA_EXIT_CODE PerformChecksForInputDir(const std::string& dir, DeviceContext& deviceContext, QObject* obj);
 
     /*!
      * \brief it performs the organization stuff for the input folder according to fva configuration
@@ -66,7 +65,7 @@ public:
      * \param deviceId - identifier of device from FVA device dictionary
      * \return it returns code of error (FVA_NO_ERROR - if no error happened)
      */
-    FVA_EXIT_CODE OrganizeInputDir(const QString& dir, int deviceId);
+    FVA_EXIT_CODE OrganizeInputDir(const std::string& dir, int deviceId);
 
     /*!
      * \brief it performs the moving input folder content to output folder with checks according to event cfg
@@ -76,7 +75,7 @@ public:
      * \param obj - to attach the child processes to this object
      * \return it returns code of error (FVA_NO_ERROR - if no error happened)
      */
-    FVA_EXIT_CODE MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs, bool removeInput,
+    FVA_EXIT_CODE MoveInputDirToOutputDirs(const std::string& inputDir, const STR_LIST& outputDirs, bool removeInput,
                                            QObject* obj);
 
     /*!
@@ -85,7 +84,7 @@ public:
      * \param obj - to attach the child processes to this object
      * \return it returns code of error (FVA_NO_ERROR - if no error happened)
      */
-    FVA_EXIT_CODE UpdateInputDirContent(const QString& inputDir, QObject* obj);
+    FVA_EXIT_CODE UpdateInputDirContent(const std::string& inputDir, QObject* obj);
 
     /*!
      * \brief it process input folder content as multi-events folder according to event cfg and info
@@ -95,7 +94,7 @@ public:
      * fvaPeople.csv \param obj - to attach the child processes to this object \return it returns code of error
      * (FVA_NO_ERROR - if no error happened)
      */
-    FVA_EXIT_CODE ProcessInputDirForEvents(const QString& inputDir, const DIR_2_ID_MAP& eventMap,
+    FVA_EXIT_CODE ProcessInputDirForEvents(const std::string& inputDir, const DIR_2_ID_MAP& eventMap,
                                            const DIR_2_IDS_MAP& peopleMap, QObject* obj);
 
     /*!
@@ -128,7 +127,7 @@ public:  // helpers
      * \param obj - to attach the child processes to this object
      * \return it returns void
      */
-    void performOrientationChecks(const QString& dir, QObject* obj);
+    void performOrientationChecks(const std::string& dir, QObject* obj);
 
     /*!
      * \brief it performs the common checks for input folder
@@ -152,7 +151,7 @@ public:  // helpers
      * \param params - list of params to run the cmd
      * \return it returns code of error (FVA_NO_ERROR - if no error happened)
      */
-    FVA_EXIT_CODE runPythonCMD(const QString& scriptName, QObject* obj, const std::vector<std::string>& params);
+    FVA_EXIT_CODE runPythonCMD(const std::string& scriptName, QObject* obj, const std::vector<std::string>& params);
 
 private:  // data
     /*!

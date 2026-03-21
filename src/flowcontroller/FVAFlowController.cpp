@@ -77,11 +77,12 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
     return FVA_NO_ERROR;
 }
 
-void FVAFlowController::performOrientationChecks(const QString& dir, QObject* obj) {
+void FVAFlowController::performOrientationChecks(const std::string& dir, QObject* obj) {
+    const QString dir_ = QString::fromStdString(dir);
     // to run change orentation in auto mode
     QProcess myProcess(obj);
     myProcess.setProcessChannelMode(QProcess::MergedChannels);
-    myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe -auto " + dir);
+    myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe -auto " + dir_);
     myProcess.waitForFinished(-1);
 }
 
@@ -113,13 +114,14 @@ FVA_EXIT_CODE FVAFlowController::performCommonChecks(CLTContext& context) {
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, DeviceContext& deviceContext,
+FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const std::string& dir, DeviceContext& deviceContext,
                                                           QObject* obj) {
+    const QString dir_ = QString::fromStdString(dir);
     // create command-line-task context to keep common parameters for all commands
     CLTContext context;
 
     // set up the directory that user selected in UI
-    context.dir = dir;
+    context.dir = dir_;
 
     // perform common checks
     FVA_EXIT_CODE res = performCommonChecks(context);
@@ -176,15 +178,16 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const QString& dir, De
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::runPythonCMD(const QString& scriptName, QObject* obj,
+FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName, QObject* obj,
                                               const std::vector<std::string>& params) {
+    const QString scriptName_ = QString::fromStdString(scriptName);
     QString fvaSWRootDir;
     FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
-    QString pyScriptRunPath = fvaSWRootDir + "#scripts#/" + scriptName;
+    QString pyScriptRunPath = fvaSWRootDir + "#scripts#/" + scriptName_;
 
     QStringList params_;
     for (auto it = params.begin(); it != params.end(); ++it) params_.push_back(QString::fromStdString(*it));
@@ -248,9 +251,10 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const QString& dir, int deviceId) {
+FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const std::string& dir, int deviceId) {
+    const QString dir_ = QString::fromStdString(dir);
     CLTContext context;
-    context.dir = dir;
+    context.dir = dir_;
     context.cmdType = "CLTRenameFiles";
     context.readOnly = true;  // in read only mode CLTRenameFiles just checks if renaming is possible
     FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, m_cfg);
@@ -330,8 +334,9 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDir, const DIR_2_ID_MAP& eventMap,
+FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inputDir, const DIR_2_ID_MAP& eventMap,
                                                           const DIR_2_IDS_MAP& peopleMap, QObject* obj) {
+    const QString inputDir_ = QString::fromStdString(inputDir);
     QString fvaSWRootDir;
     FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
@@ -398,7 +403,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const QString& inputDi
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Place)")
 
     CLTContext context;  // empty so far
-    context.dir = inputDir;
+    context.dir = inputDir_;
 
     if (SearchByPlace) {
         // we will check if location is not empty so
@@ -424,11 +429,12 @@ FVA_EXIT_CODE FVAFlowController::GetProblemFilesList(STR_LIST& fileListToFillUp)
     return fvaLoadStrListFromFile(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", fileListToFillUp);
 }
 
-FVA_EXIT_CODE FVAFlowController::UpdateInputDirContent(const QString& inputDir, QObject* obj) {
+FVA_EXIT_CODE FVAFlowController::UpdateInputDirContent(const std::string& inputDir, QObject* obj) {
     LOG_DEB << "Enter";
+    const QString inputDir_ = QString::fromStdString(inputDir);
 
     CLTContext context;
-    context.dir = inputDir;
+    context.dir = inputDir_;
     context.cmdType = "CLTCSVGetTagsForFvaFiles";
     FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, m_cfg);
 
@@ -439,15 +445,16 @@ FVA_EXIT_CODE FVAFlowController::UpdateInputDirContent(const QString& inputDir, 
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDir, const STR_LIST& outputDirs,
+FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inputDir, const STR_LIST& outputDirs,
                                                           bool removeInput, QObject* obj) {
     LOG_DEB << "Enter";
+    const QString inputDir_ = QString::fromStdString(inputDir);
 
     // get the size of folder list we received
     uint sizeProcessed = outputDirs.size();
 
     CLTContext context;  // empty so far
-    context.dir = inputDir;
+    context.dir = inputDir_;
     context.cmdType = "CLTMoveInputDir2Output";
 
     // for each folder in output list
@@ -490,7 +497,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const QString& inputDi
 
         if (FVA_ERROR_DEST_FILE_ALREADY_EXISTS == exitCode) {
             CLTContext contextDupl;  // empty so far
-            contextDupl.dir = inputDir;
+            contextDupl.dir = inputDir_;
             contextDupl.cmdType = "CLTFixDuplicatedFileNames";
 
             // run new cmd
