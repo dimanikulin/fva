@@ -119,10 +119,12 @@ void FVAOrganizerDevicePage::setVisible(bool visible) {
 void FVAOrganizerDevicePage::OnChangeDictPressed() {
     QProcess myProcess(this);
     myProcess.setProcessChannelMode(QProcess::MergedChannels);
-    QStringList params;
-    params.append(((FVAOrganizerWizard*)wizard())->matchedDeviceName());
+    const QString matchedDeviceName = ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
+    QString escapedDeviceName = matchedDeviceName;
+    escapedDeviceName.replace("\"", "\\\"");
+    const QString cmd = QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe \"" + escapedDeviceName + "\"";
     LOG_DEB << "called FVADictionaryEditor with device=" << ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
-    myProcess.start(QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe", params);
+    myProcess.start(cmd);
     myProcess.waitForFinished(-1);
 }
 bool FVAOrganizerDevicePage::isComplete() const {
