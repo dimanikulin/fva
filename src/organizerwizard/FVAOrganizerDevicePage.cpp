@@ -122,7 +122,8 @@ void FVAOrganizerDevicePage::OnChangeDictPressed() {
     const QString matchedDeviceName = ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
     QString escapedDeviceName = matchedDeviceName;
     escapedDeviceName.replace("\"", "\\\"");
-    const QString cmd = QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe \"" + escapedDeviceName + "\"";
+    const QString cmd =
+        QCoreApplication::applicationDirPath() + "/FVADictionaryEditor.exe \"" + escapedDeviceName + "\"";
     LOG_DEB << "called FVADictionaryEditor with device=" << ((FVAOrganizerWizard*)wizard())->matchedDeviceName();
     myProcess.start(cmd);
     myProcess.waitForFinished(-1);

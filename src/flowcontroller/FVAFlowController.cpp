@@ -209,7 +209,7 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName, QOb
     myProcess.setProcessChannelMode(QProcess::MergedChannels);
     myProcess.start(QString::fromStdString(command));
     LOG_DEB << "runPythonCMD:"
-        << "pyScriptRunPath=" << QString::fromStdString(pyScriptRunPath);
+            << "pyScriptRunPath=" << QString::fromStdString(pyScriptRunPath);
 
     myProcess.waitForFinished();
 
@@ -335,7 +335,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
             // run command implemented in python to update the fvafile.csv for each file in folder with placeid  we got
             exitCode = runPythonCMD("CLTUpdatePlaceForDir.py", obj, params);
 
-                LOG_DEB << "CLTUpdatePlaceForDir:" << QString::fromStdString(fvafileNPath) << " "
+            LOG_DEB << "CLTUpdatePlaceForDir:" << QString::fromStdString(fvafileNPath) << " "
                     << QString::fromStdString(fsPath) << " " << QString::fromStdString(placeId);
         }
         if (fi.isFile()) {
@@ -376,7 +376,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
             // run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got
             exitCode = runPythonCMD("CLTUpdateEventForDir.py", obj, params);
 
-                LOG_DEB << "CLTUpdateEventForDir:" << QString::fromStdString(fvafileNPath) << " "
+            LOG_DEB << "CLTUpdateEventForDir:" << QString::fromStdString(fvafileNPath) << " "
                     << QString::fromStdString(fsPath) << " " << QString::fromStdString(eventId);
 
             // show error message box and return to calling function if previous operation failed
