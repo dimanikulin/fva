@@ -10,14 +10,13 @@
 
 #include <QtCore/QString>
 #include <QtCore/QStringList>
-
 #include <algorithm>
 #include <cctype>
 #include <cstdlib>
 
 namespace {
-    // TODO : to move this function to some common place and use in other places as well
-    // TODO make UT for this function
+// TODO : to move this function to some common place and use in other places as well
+// TODO make UT for this function
 std::string toUpperCopy(const std::string& value) {
     std::string result = value;
     std::transform(result.begin(), result.end(), result.begin(),
@@ -78,7 +77,8 @@ FVA_EXIT_CODE FvaConfiguration::save(const std::string& path) {
     }
 
     DESCRIPTIONS_MAP cfgItemsQt;
-    for (std::map<int, std::vector<std::string>>::const_iterator it = m_cfgItems.begin(); it != m_cfgItems.end(); ++it) {
+    for (std::map<int, std::vector<std::string>>::const_iterator it = m_cfgItems.begin(); it != m_cfgItems.end();
+         ++it) {
         QStringList rowQt;
         for (const std::string& item : it->second) {
             rowQt.append(QString::fromStdString(item));
@@ -98,7 +98,8 @@ FVA_EXIT_CODE FvaConfiguration::getParamAsString(const std::string& paramName, s
     if (-1 == columnValue) return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
     const std::string upperParamName = toUpperCopy(paramName);
-    for (std::map<int, std::vector<std::string>>::const_iterator it = m_cfgItems.begin(); it != m_cfgItems.end(); ++it) {
+    for (std::map<int, std::vector<std::string>>::const_iterator it = m_cfgItems.begin(); it != m_cfgItems.end();
+         ++it) {
         const std::vector<std::string>& list = it->second;
         if (columnName >= static_cast<int>(list.size()) || columnValue >= static_cast<int>(list.size())) {
             continue;
