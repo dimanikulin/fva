@@ -58,12 +58,14 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
     else
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckDeviceName")
 
-    exitCode = fvaLoadDeviceMapFromCsv(QString::fromStdString(rootSWdir), deviceContext.fullDeviceMap);
+    // TODO to use STL instead of QT 
+        exitCode = fvaLoadDeviceMapFromCsv(QString::fromStdString(rootSWdir), deviceContext.fullDeviceMap);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadDeviceMapFromCsv")
 
     PEOPLE_MAP peopleMap;
+    // TODO to use STL instead of QT
     exitCode = fvaLoadPeopleMapFromCsv(QString::fromStdString(rootSWdir), peopleMap);
 
     // show error message box and return to calling function if previous operation failed
@@ -74,6 +76,7 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
 
     deviceContext.matchedDeviceName.clear();
 
+    // TODO to use STL instead of QT
     QDir _dir(context.dir);
     Q_FOREACH (QFileInfo info, _dir.entryInfoList(QDir::System | QDir::Hidden | QDir::Files, QDir::DirsLast)) {
         if (info.isDir()) continue;
@@ -93,11 +96,11 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
 }
 
 void FVAFlowController::performOrientationChecks(const std::string& dir, QObject* obj) {
-    const QString dir_ = QString::fromStdString(dir);
     // to run change orentation in auto mode
+    // TODO to use STL instead of QT
     QProcess myProcess(obj);
     myProcess.setProcessChannelMode(QProcess::MergedChannels);
-    myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe -auto " + dir_);
+    myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe -auto " + QString::fromStdString(dir));
     myProcess.waitForFinished(-1);
 }
 
@@ -131,12 +134,11 @@ FVA_EXIT_CODE FVAFlowController::performCommonChecks(CLTContext& context) {
 
 FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const std::string& dir, DeviceContext& deviceContext,
                                                           QObject* obj) {
-    const QString dir_ = QString::fromStdString(dir);
     // create command-line-task context to keep common parameters for all commands
     CLTContext context;
 
     // set up the directory that user selected in UI
-    context.dir = dir_;
+    context.dir = QString::fromStdString(dir);
 
     // perform common checks
     FVA_EXIT_CODE res = performCommonChecks(context);
@@ -206,11 +208,12 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName, QOb
     std::string command = "python " + quoteArg(pyScriptRunPath);
     for (auto it = params.begin(); it != params.end(); ++it) command += " " + quoteArg(*it);
 
+    // TODO to use STL instead of QT
     QProcess myProcess(obj);
     myProcess.setProcessChannelMode(QProcess::MergedChannels);
     myProcess.start(QString::fromStdString(command));
     LOG_DEB << "runPythonCMD:"
-            << "pyScriptRunPath=" << QString::fromStdString(pyScriptRunPath);
+            << "pyScriptRunPath=" << pyScriptRunPath;
 
     myProcess.waitForFinished();
 
@@ -252,6 +255,7 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
 
         // run command implemented in python to fixing empty date-time issue
         std::vector<std::string> params;
+        // TODO to use STL instead of QT
         params.push_back(context.dir.toStdString());
         exitCode = runPythonCMD("CLTFixEmptyDateTime.py", obj, params);
 
@@ -265,9 +269,8 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
 }
 
 FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const std::string& dir, int deviceId) {
-    const QString dir_ = QString::fromStdString(dir);
     CLTContext context;
-    context.dir = dir_;
+    context.dir = QString::fromStdString(dir); // TODO to use STL instead of QT
     context.cmdType = "CLTRenameFiles";
     context.readOnly = true;  // in read only mode CLTRenameFiles just checks if renaming is possible
     FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, m_cfg);
@@ -282,6 +285,7 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const std::string& dir, int de
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTRenameFiles")
 
     context.cmdType = "CLTCSVFvaFile";
+    // TODO to use STL instead of QT
     context.custom = QString::number(deviceId);
     exitCode = m_dataProcessor.run(context, m_cfg);
 
@@ -325,6 +329,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
         params.push_back(fvafileNPath);
 
         const std::string& fsPath = it->first;
+        // TODO to use STL instead of QT
         QFileInfo fi(QString::fromStdString(fsPath));
         if (fi.isDir()) {
             params.push_back(fsPath);
@@ -335,14 +340,14 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
             // run command implemented in python to update the fvafile.csv for each file in folder with placeid  we got
             exitCode = runPythonCMD("CLTUpdatePlaceForDir.py", obj, params);
 
-            LOG_DEB << "CLTUpdatePlaceForDir:" << QString::fromStdString(fvafileNPath) << " "
-                    << QString::fromStdString(fsPath) << " " << QString::fromStdString(placeId);
+            LOG_DEB << "CLTUpdatePlaceForDir:" << fvafileNPath << " " << fsPath << " " << placeId;
         }
         if (fi.isFile()) {
             return FVA_ERROR_NOT_IMPLEMENTED;
         }
     }
     // clean up after processing
+    // TODO to use STL instead of QT
     QFile::remove(QString::fromStdString(fvaSWRootDir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv"));
 
     return FVA_NO_ERROR;
@@ -350,7 +355,6 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
 
 FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inputDir, const DIR_2_ID_MAP& eventMap,
                                                           const DIR_2_IDS_MAP& peopleMap, QObject* obj) {
-    const QString inputDir_ = QString::fromStdString(inputDir);
     std::string fvaSWRootDir;
     FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
@@ -365,6 +369,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
         params.push_back(fvafileNPath);
 
         const std::string& fsPath = it->first;
+        // TODO to use STL instead of QT
         QFileInfo fi(QString::fromStdString(fsPath));
         if (fi.isDir()) {
             params.push_back(fsPath);
@@ -375,16 +380,14 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
             // run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got
             exitCode = runPythonCMD("CLTUpdateEventForDir.py", obj, params);
 
-            LOG_DEB << "CLTUpdateEventForDir:" << QString::fromStdString(fvafileNPath) << " "
-                    << QString::fromStdString(fsPath) << " " << QString::fromStdString(eventId);
+            LOG_DEB << "CLTUpdateEventForDir:" << fvafileNPath << " " << fsPath << " " << eventId;
 
             // show error message box and return to calling function if previous operation failed
             IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventForDir")
 
             auto peopleIt = peopleMap.find(it->first);
             if (peopleIt == peopleMap.end() || 0 == peopleIt->second.size()) {
-                LOG_WARN << "empty people list for " << QString::fromStdString(fvafileNPath) << " "
-                         << QString::fromStdString(fsPath);
+                LOG_WARN << "empty people list for " << fvafileNPath << " " << fsPath;
                 continue;
             }
             params.pop_back();  // remove last param as it was for previous cmd actual only
@@ -395,8 +398,8 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
             }
             params.push_back(peopleIds);
 
-            LOG_DEB << "CLTUpdateEventPeopleForDir:" << QString::fromStdString(fvafileNPath) << " "
-                    << QString::fromStdString(fsPath) << " " << QString::fromStdString(eventId);
+            LOG_DEB << "CLTUpdateEventPeopleForDir:" << fvafileNPath << " "
+                    << fsPath << " " << eventId;
 
             // run command implemented in python to update the fvafile.csv for each file in folder with event people ids
             // we got
@@ -420,7 +423,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Place)")
 
     CLTContext context;  // empty so far
-    context.dir = inputDir_;
+    context.dir = QString::fromStdString(inputDir); // TODO to use STL instead of QT
 
     if (SearchByPlace) {
         // we will check if location is not empty so
@@ -443,6 +446,7 @@ FVA_EXIT_CODE FVAFlowController::GetProblemFilesList(STR_LIST& fileListToFillUp)
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
+    // TODO to use STL instead of QT
     return fvaLoadStrListFromFile(QString::fromStdString(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv"),
                                   fileListToFillUp);
 }
@@ -466,20 +470,18 @@ FVA_EXIT_CODE FVAFlowController::UpdateInputDirContent(const std::string& inputD
 FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inputDir, const STR_LIST& outputDirs,
                                                           bool removeInput, QObject* obj) {
     LOG_DEB << "Enter";
-    const QString inputDir_ = QString::fromStdString(inputDir);
-
     // get the size of folder list we received
     uint sizeProcessed = outputDirs.size();
 
     CLTContext context;  // empty so far
-    context.dir = inputDir_;
+    context.dir = QString::fromStdString(inputDir); // TODO to use STL instead of QT
     context.cmdType = "CLTMoveInputDir2Output";
 
     // for each folder in output list
     for (STR_LIST::const_iterator it = outputDirs.begin(); it != outputDirs.end(); ++it) {
         const std::string dirToMoveTo = *it;
         context.outputDir = QString::fromStdString(dirToMoveTo);
-        LOG_DEB << "Moving into:" << QString::fromStdString(dirToMoveTo);
+        LOG_DEB << "Moving into:" << dirToMoveTo;
 
         // check if we got 1 folder only to integrate the multimedia data  into
         // and if we need to remove the input folder as well
@@ -499,6 +501,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
         if (exitCode == FVA_ERROR_DEST_DIR_ALREADY_EXISTS) {
             // ask user for what to do
             // TODO to make multilanguage
+            // TODO to use STL instead of QT
             QMessageBox msgBox;
             msgBox.setText("The sub directory for merge is already present in target!");
             msgBox.setInformativeText(
@@ -515,7 +518,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
 
         if (FVA_ERROR_DEST_FILE_ALREADY_EXISTS == exitCode) {
             CLTContext contextDupl;  // empty so far
-            contextDupl.dir = inputDir_;
+            contextDupl.dir = QString::fromStdString(inputDir); // TODO to use STL instead of QT
             contextDupl.cmdType = "CLTFixDuplicatedFileNames";
 
             // run new cmd
