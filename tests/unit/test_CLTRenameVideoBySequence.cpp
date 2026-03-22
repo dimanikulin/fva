@@ -68,8 +68,8 @@ TEST_F(CLTRenameVideoBySequenceTests, Constructor) {
     // Assert
     // Verify that the m_renameVideoByModifTime member variable is set correctly
 
-    // TODO to uncomment and fix the test   
-    //EXPECT_TRUE(renameVideoBySequence.renameVideoByModifTime());
+    // TODO to uncomment and fix the test
+    // EXPECT_TRUE(renameVideoBySequence.renameVideoByModifTime());
 }
 
 // Test case for CLTRenameVideoBySequence constructor with invalid configuration
