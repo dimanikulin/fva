@@ -58,8 +58,8 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
     else
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckDeviceName")
 
-    // TODO to use STL instead of QT 
-        exitCode = fvaLoadDeviceMapFromCsv(QString::fromStdString(rootSWdir), deviceContext.fullDeviceMap);
+    // TODO to use STL instead of QT
+    exitCode = fvaLoadDeviceMapFromCsv(QString::fromStdString(rootSWdir), deviceContext.fullDeviceMap);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadDeviceMapFromCsv")
@@ -270,7 +270,7 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
 
 FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const std::string& dir, int deviceId) {
     CLTContext context;
-    context.dir = QString::fromStdString(dir); // TODO to use STL instead of QT
+    context.dir = QString::fromStdString(dir);  // TODO to use STL instead of QT
     context.cmdType = "CLTRenameFiles";
     context.readOnly = true;  // in read only mode CLTRenameFiles just checks if renaming is possible
     FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, m_cfg);
@@ -398,8 +398,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
             }
             params.push_back(peopleIds);
 
-            LOG_DEB << "CLTUpdateEventPeopleForDir:" << fvafileNPath << " "
-                    << fsPath << " " << eventId;
+            LOG_DEB << "CLTUpdateEventPeopleForDir:" << fvafileNPath << " " << fsPath << " " << eventId;
 
             // run command implemented in python to update the fvafile.csv for each file in folder with event people ids
             // we got
@@ -422,8 +421,8 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Place)")
 
-    CLTContext context;  // empty so far
-    context.dir = QString::fromStdString(inputDir); // TODO to use STL instead of QT
+    CLTContext context;                              // empty so far
+    context.dir = QString::fromStdString(inputDir);  // TODO to use STL instead of QT
 
     if (SearchByPlace) {
         // we will check if location is not empty so
@@ -473,8 +472,8 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
     // get the size of folder list we received
     uint sizeProcessed = outputDirs.size();
 
-    CLTContext context;  // empty so far
-    context.dir = QString::fromStdString(inputDir); // TODO to use STL instead of QT
+    CLTContext context;                              // empty so far
+    context.dir = QString::fromStdString(inputDir);  // TODO to use STL instead of QT
     context.cmdType = "CLTMoveInputDir2Output";
 
     // for each folder in output list
@@ -517,8 +516,8 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
         exitCode = m_dataProcessor.run(context, m_cfg);
 
         if (FVA_ERROR_DEST_FILE_ALREADY_EXISTS == exitCode) {
-            CLTContext contextDupl;  // empty so far
-            contextDupl.dir = QString::fromStdString(inputDir); // TODO to use STL instead of QT
+            CLTContext contextDupl;                              // empty so far
+            contextDupl.dir = QString::fromStdString(inputDir);  // TODO to use STL instead of QT
             contextDupl.cmdType = "CLTFixDuplicatedFileNames";
 
             // run new cmd
