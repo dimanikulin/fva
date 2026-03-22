@@ -8,7 +8,7 @@
 #ifndef FVAFMTCONTEXT_H
 #define FVAFMTCONTEXT_H
 
-#include <QtCore/QString>
+#include <string>
 
 #include "fvaconfiguration.h"
 
@@ -20,42 +20,42 @@ public:  // data
     /*!
      * \brief format a dir name as a date
      */
-    QString fvaDirName;
+    std::string fvaDirName;
 
     /*!
      * \brief format a dir name as a year
      */
-    QString fvaDirNameYear;
+    std::string fvaDirNameYear;
 
     /*!
      * \brief format a FVA file name as a date + time
      */
-    QString fvaFileName;
+    std::string fvaFileName;
 
     /*!
      * \brief format an EXIF date + time
      */
-    QString exifDateTime;
+    std::string exifDateTime;
 
     /*!
      * \brief file name format 1 as a date + time
      */
-    QString fileName1;
+    std::string fileName1;
 
     /*!
      * \brief file name format 2 as a date + time
      */
-    QString fileName2;
+    std::string fileName2;
 
     /*!
      * \brief riff format 1 of date + time
      */
-    QString riffDateTime1;
+    std::string riffDateTime1;
 
     /*!
      * \brief riff format 2 of date + time
      */
-    QString riffDateTime2;
+    std::string riffDateTime2;
 
 public:  // methods
     /*!

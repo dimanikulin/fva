@@ -24,7 +24,8 @@ FVA_EXIT_CODE CLTCheckDateTime::execute(const CLTContext& context) {
         QString suffix = info.suffix().toUpper();
         if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix)) continue;
 
-        QDateTime DateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath(), m_fmtctx.exifDateTime);
+        QDateTime DateTime =
+            fvaGetExifDateTimeOriginalFromFile(info.filePath(), QString::fromStdString(m_fmtctx.exifDateTime));
 
         if (!DateTime.isValid() || DateTime.isNull()) {
             LOG_CRIT << "found empty exif Date-Time:" << info.absoluteFilePath();

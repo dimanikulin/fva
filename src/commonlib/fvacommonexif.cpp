@@ -52,8 +52,9 @@ bool fvaExifGeoDataPresentInFile(const QString& pathToFile) {
     return false;
 }
 QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error, const FvaFmtContext& ctx) {
-    QDateTime renameDateTime = fvaGetExifDateTimeOriginalFromFile(pathToFile, ctx.exifDateTime);
-    QString _newName = renameDateTime.toString(ctx.fvaFileName);
+    QDateTime renameDateTime =
+        fvaGetExifDateTimeOriginalFromFile(pathToFile, QString::fromStdString(ctx.exifDateTime));
+    QString _newName = renameDateTime.toString(QString::fromStdString(ctx.fvaFileName));
     if (_newName.isEmpty()) {
         RiffParser riffInfo;
         QString createdDate;

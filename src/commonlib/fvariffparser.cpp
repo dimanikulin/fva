@@ -61,17 +61,18 @@ bool RiffParser::processNode(const QString& tag, QString& value) {
 bool RiffParser::findTag(const QString& tag, QString& value) { return processNode(tag, value); }
 bool RiffParser::convertToDate(const QString& strDate, QDateTime& value, const FvaFmtContext& ctx) const {
     // remove terminate char and last symbol
-    value = QDateTime::fromString(strDate.mid(4, strDate.size() - 5).remove("\n"), ctx.riffDateTime1);
+    value = QDateTime::fromString(strDate.mid(4, strDate.size() - 5).remove("\n"),
+                                  QString::fromStdString(ctx.riffDateTime1));
     if (!value.isValid()) {
         // try to use other format
         QString newStr = strDate.mid(0, strDate.size() - 1).remove("\n");
-        value = QDateTime::fromString(newStr, ctx.exifDateTime);
+        value = QDateTime::fromString(newStr, QString::fromStdString(ctx.exifDateTime));
     }
 
     if (!value.isValid()) {
         // try to use other format
         QString newStr = strDate.mid(QString("UTC ").size()).remove("\n");
-        value = QDateTime::fromString(newStr, ctx.riffDateTime2);
+        value = QDateTime::fromString(newStr, QString::fromStdString(ctx.riffDateTime2));
     }
 
     return value.isValid();

@@ -39,7 +39,7 @@ FVA_EXIT_CODE fvaParseDirName(const QString& dirName, QDateTime& from, QDateTime
     switch (dirName.length()) {
         case 4:  // one year folder
         {
-            from = QDateTime::fromString(dirName, ctx.fvaDirNameYear);
+            from = QDateTime::fromString(dirName, QString::fromStdString(ctx.fvaDirNameYear));
             if (!from.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
             to = from /*.addYears(1)*/;
         } break;
@@ -47,19 +47,19 @@ FVA_EXIT_CODE fvaParseDirName(const QString& dirName, QDateTime& from, QDateTime
         {
             if (dirName[4] != '-') return FVA_ERROR_WRONG_FOLDER_NAME;
 
-            from = QDateTime::fromString(dirName.mid(0, 4), ctx.fvaDirNameYear);
-            to = QDateTime::fromString(dirName.mid(5, 4), ctx.fvaDirNameYear);
+            from = QDateTime::fromString(dirName.mid(0, 4), QString::fromStdString(ctx.fvaDirNameYear));
+            to = QDateTime::fromString(dirName.mid(5, 4), QString::fromStdString(ctx.fvaDirNameYear));
 
             if (!from.isValid() || !to.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
         } break;
         case 10:  // one-day event
         {
-            from = QDateTime::fromString(dirName, ctx.fvaDirName);
+            from = QDateTime::fromString(dirName, QString::fromStdString(ctx.fvaDirName));
             if (!from.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
             to = from.addDays(1);
         } break;
         case 13: {
-            from = QDateTime::fromString(dirName.mid(0, 10), ctx.fvaDirName);
+            from = QDateTime::fromString(dirName.mid(0, 10), QString::fromStdString(ctx.fvaDirName));
             if (!from.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
             if (dirName[10] == ' ')  // one day and several events
             {
@@ -86,13 +86,13 @@ FVA_EXIT_CODE fvaParseDirName(const QString& dirName, QDateTime& from, QDateTime
         } break;
         case 16:  // months-day period
         {
-            from = QDateTime::fromString(dirName.mid(0, 10), ctx.fvaDirName);
+            from = QDateTime::fromString(dirName.mid(0, 10), QString::fromStdString(ctx.fvaDirName));
             if (!from.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
             if (dirName[10] != '-')  // not a period
                 return FVA_ERROR_WRONG_FOLDER_NAME;
 
             QString sTo = dirName.mid(0, 4) + "." + dirName.mid(11, 5);
-            to = QDateTime::fromString(sTo, ctx.fvaDirName);
+            to = QDateTime::fromString(sTo, QString::fromStdString(ctx.fvaDirName));
             if (!to.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
             to = to.addDays(1);
         } break;
@@ -106,7 +106,7 @@ FVA_EXIT_CODE fvaParseFileName(const QString& fileName, QDateTime& date, const F
         // it is also file name to extract name from "IMG_20150504_142546"
         QString newFileName = fileName;
         newFileName.remove("IMG_");
-        date = QDateTime::fromString(newFileName, ctx.fileName1);
+        date = QDateTime::fromString(newFileName, QString::fromStdString(ctx.fileName1));
         if (!date.isValid())
             return FVA_ERROR_WRONG_FILE_NAME;
         else
@@ -116,7 +116,7 @@ FVA_EXIT_CODE fvaParseFileName(const QString& fileName, QDateTime& date, const F
         QString newFileName = fileName;
         newFileName.remove("WP_");
         newFileName.remove("_Pro");
-        date = QDateTime::fromString(newFileName, ctx.fileName2);
+        date = QDateTime::fromString(newFileName, QString::fromStdString(ctx.fileName2));
         if (!date.isValid())
             return FVA_ERROR_WRONG_FILE_NAME;
         else
@@ -124,17 +124,17 @@ FVA_EXIT_CODE fvaParseFileName(const QString& fileName, QDateTime& date, const F
     } else if (fileName.contains("_") && fileName.length() == 15) {
         // it is also file name to extract name from "20150504_142546"
         QString newFileName = fileName;
-        date = QDateTime::fromString(newFileName, ctx.fileName1);
+        date = QDateTime::fromString(newFileName, QString::fromStdString(ctx.fileName1));
         if (!date.isValid())
             return FVA_ERROR_WRONG_FILE_NAME;
         else
             return FVA_NO_ERROR;
     }
 
-    date = QDateTime::fromString(fileName, ctx.fvaFileName);
+    date = QDateTime::fromString(fileName, QString::fromStdString(ctx.fvaFileName));
     if (!date.isValid()) {
         QString newFileName = QString(fileName).replace("##", "01");
-        date = QDateTime::fromString(newFileName, ctx.fvaFileName);
+        date = QDateTime::fromString(newFileName, QString::fromStdString(ctx.fvaFileName));
         if (!date.isValid()) {
             return FVA_ERROR_WRONG_FILE_NAME;
         }

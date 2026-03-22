@@ -59,7 +59,8 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
             ////////////////////////////////// 5. check for matching taken time and file name//////////////////////////
             if (FVA_FS_TYPE_IMG == type) {
                 QString error;
-                QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath(), m_fmtctx.exifDateTime);
+                QDateTime dateTime =
+                    fvaGetExifDateTimeOriginalFromFile(info.filePath(), QString::fromStdString(m_fmtctx.exifDateTime));
 
                 if (!dateTime.isValid()) {
                     LOG_WARN << "empty image taken time found in:" << info.absoluteFilePath();
@@ -74,7 +75,8 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
             }
             if (FVA_FS_TYPE_VIDEO == type) {
                 QString error;
-                QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(info.filePath(), m_fmtctx.exifDateTime);
+                QDateTime dateTime =
+                    fvaGetExifDateTimeOriginalFromFile(info.filePath(), QString::fromStdString(m_fmtctx.exifDateTime));
                 if (!dateTime.isValid()) {
                     LOG_WARN << "empty video taken time found in:" << info.absoluteFilePath();
                     // m_Issues.push_back("FVA_ERROR_EMPTY_VIDEO_TIME," + info.absoluteFilePath() + "," +
@@ -97,9 +99,10 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
                     return FVA_ERROR_WRONG_FOLDER_NAME;
             }
             if (dateStart == dateEnd) dateEnd = dateEnd.addYears(1);
-            QDateTime fileDateTime = QDateTime::fromString(baseFileName, m_fmtctx.fvaFileName);
+            QDateTime fileDateTime = QDateTime::fromString(baseFileName, QString::fromStdString(m_fmtctx.fvaFileName));
             QString newFileName = baseFileName.replace("##", "01");
-            if (!fileDateTime.isValid()) fileDateTime = QDateTime::fromString(newFileName, m_fmtctx.fvaFileName);
+            if (!fileDateTime.isValid())
+                fileDateTime = QDateTime::fromString(newFileName, QString::fromStdString(m_fmtctx.fvaFileName));
             if ((fileDateTime < dateStart) || (fileDateTime > dateEnd)) {
                 LOG_CRIT << "unsupported file found:" << info.absoluteFilePath() << " data period=" << dateStart << ";"
                          << dateEnd;

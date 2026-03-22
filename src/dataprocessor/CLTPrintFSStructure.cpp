@@ -46,7 +46,8 @@ FVA_EXIT_CODE CLTPrintFSStructure::execute(const CLTContext& /*context*/) {
         }
         QFileInfo f(info);
         result = info.filePath() + "," + hash.result().toBase64() + "," +
-                 f.lastModified().toString(m_fmtctx.fvaFileName) + "," + QString::number(info.size()) + "\n";
+             f.lastModified().toString(QString::fromStdString(m_fmtctx.fvaFileName)) + "," +
+             QString::number(info.size()) + "\n";
         m_file.write(result.toLocal8Bit());
     }
     return FVA_NO_ERROR;
