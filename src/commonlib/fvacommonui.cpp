@@ -118,9 +118,9 @@ FVA_EXIT_CODE fvaBuildSimpleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, co
     RET_RES_IF_RES_IS_ERROR
 
     for (auto i = firstLvlMap.begin(); i != firstLvlMap.end(); ++i) {
-        int ID = i.key();
+        int ID = i->first;
         QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
-        treeWidgetItem->setText(0, i.value());
+        treeWidgetItem->setText(0, i->second);
         treeWidgetItem->setFlags(treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
         treeWidgetItem->setCheckState(0, Qt::Unchecked);
         pTreeWidget->addTopLevelItem(treeWidgetItem);
@@ -132,10 +132,10 @@ FVA_EXIT_CODE fvaBuildSimpleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, co
 
         for (auto index = secondLvlMap.begin(); index != secondLvlMap.end(); ++index) {
             QTreeWidgetItem* childWidgetItem = new QTreeWidgetItem;
-            childWidgetItem->setText(0, index.value());
+            childWidgetItem->setText(0, index->second);
             childWidgetItem->setFlags(childWidgetItem->flags() | Qt::ItemIsUserCheckable);
             childWidgetItem->setCheckState(0, Qt::Unchecked);
-            childWidgetItem->setData(1, 1, index.key());
+            childWidgetItem->setData(1, 1, index->first);
 
             treeWidgetItem->addChild(childWidgetItem);
         }
@@ -177,9 +177,9 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
     res = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
     RET_RES_IF_RES_IS_ERROR
     for (auto i = RelationsMap.begin(); i != RelationsMap.end(); ++i) {
-        int ID = i.key();
+        int ID = i->first;
         QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
-        treeWidgetItem->setText(0, i.value());
+        treeWidgetItem->setText(0, i->second);
 #ifdef _SHOW_ICONS_
         treeWidgetItem->setIcon(0, peopleIcon);
 #endif  // _SHOW_ICONS_

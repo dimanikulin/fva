@@ -107,7 +107,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
             LOG_CRIT << "place type item not found in fvaPlaceTypes.csv, type - " << itPlace.value().type;
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
-        tags += TagTypeDelim + m_fvaTagsTypeMap[1] + TagDelim + itPlaceType.value() + TagDelim + itPlace.value().name;
+        tags += TagTypeDelim + m_fvaTagsTypeMap[1] + TagDelim + itPlaceType->second + TagDelim + itPlace.value().name;
     }
 
     if (m_SearchByAuthor && fvaFileItem.deviceId != 0 && fvaFileItem.deviceId != FVA_UNDEFINED_ID) {
@@ -139,14 +139,14 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
         }
 
         tags +=
-            TagTypeDelim + m_fvaTagsTypeMap[3] + TagDelim + itRelationTypes.value() + TagDelim + itEvent.value().name;
+            TagTypeDelim + m_fvaTagsTypeMap[3] + TagDelim + itRelationTypes->second + TagDelim + itEvent.value().name;
         if (itEvent.value().institution != 0 && itEvent.value().institution != FVA_UNDEFINED_ID) {
             auto itInstitution = m_fvaInstitutionMap.find(itEvent.value().institution);
             if (itInstitution == m_fvaInstitutionMap.end()) {
                 LOG_CRIT << "Institution not found in fvaInstitutions.csv, type - " << itEvent.value().institution;
                 return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
             }
-            tags += TagDelim + itInstitution.value();
+            tags += TagDelim + itInstitution->second;
         }
     }
 
