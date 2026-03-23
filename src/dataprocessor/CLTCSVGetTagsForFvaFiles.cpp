@@ -108,7 +108,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
         tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[1]) + TagDelim +
-            QString::fromStdString(itPlaceType->second) + TagDelim + itPlace.value().name;
+                QString::fromStdString(itPlaceType->second) + TagDelim + itPlace.value().name;
     }
 
     if (m_SearchByAuthor && fvaFileItem.deviceId != 0 && fvaFileItem.deviceId != FVA_UNDEFINED_ID) {
@@ -140,7 +140,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
         }
 
         tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[3]) + TagDelim +
-            QString::fromStdString(itRelationTypes->second) + TagDelim + itEvent.value().name;
+                QString::fromStdString(itRelationTypes->second) + TagDelim + itEvent.value().name;
         if (itEvent.value().institution != 0 && itEvent.value().institution != FVA_UNDEFINED_ID) {
             auto itInstitution = m_fvaInstitutionMap.find(itEvent.value().institution);
             if (itInstitution == m_fvaInstitutionMap.end()) {
