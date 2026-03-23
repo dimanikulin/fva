@@ -24,7 +24,7 @@ FVA_EXIT_CODE fillUpCB(const QString& rootSWdir, const QString& dictName, QCombo
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("FVADictionaryEditor." + dictName)
 
     cb->clear();
-    for (auto i = fvaMap.begin(); i != fvaMap.end(); ++i) cb->addItem(i->second, i->first);
+    for (auto i = fvaMap.begin(); i != fvaMap.end(); ++i) cb->addItem(QString::fromStdString(i->second), i->first);
 
     return FVA_NO_ERROR;
 }
@@ -119,7 +119,7 @@ void FVADictionaryEditor::OnAddPlaceBtnPressed() {
     // ID,Name,Type,GPSLatitude,GPSLongitude,GPSLatitudeRef,GPSLongitudeRef
     int nextPlaceId = fvaMap.empty() ? 1 : (fvaMap.rbegin()->first + 1);
     writeStream << "\n"
-                << nextPlaceId << ",\"" << ui.editPlace->text() << "\"," 
+                << nextPlaceId << ",\"" << ui.editPlace->text() << "\","
                 << ui.cbPlaceType->itemData(ui.cbPlaceType->currentIndex()).toInt() << "," << ui.editGPSLatitude->text()
                 << "," << ui.editGPSLongitude->text() << "," << ui.cbGPSLatitudeRef->currentText().at(0) << ","
                 << ui.cbGPSLongitudeRef->currentText().at(0);
@@ -147,7 +147,7 @@ void FVADictionaryEditor::OnAddEventBtnPressed() {
     // ID,Name,Type,Institution
     int nextEventId = fvaMap.empty() ? 1 : (fvaMap.rbegin()->first + 1);
     writeStream << "\n"
-                << nextEventId << ",\"" << ui.editEvent->text() << "\"," 
+                << nextEventId << ",\"" << ui.editEvent->text() << "\","
                 << ui.cbEventType->itemData(ui.cbEventType->currentIndex()).toInt() << ","
                 << ui.cbEventTypeInstit->itemData(ui.cbEventTypeInstit->currentIndex()).toInt();
     writeStream.flush();

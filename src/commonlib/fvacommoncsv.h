@@ -10,6 +10,7 @@
 #define FVACOMMONCSV_H
 
 #include <map>
+#include <string>
 
 #include "FVABaseDictionaryItem.h"
 #include "FVAEvent.h"
@@ -18,7 +19,7 @@
 #include "fvafile.h"
 #include "fvaperson.h"
 
-typedef std::map<int, QString> FVA_SIMPLE_MAP;
+typedef std::map<int, std::string> FVA_SIMPLE_MAP;
 
 /*!
  * \brief it returns device ID by file name from fva information saved in CSV files
