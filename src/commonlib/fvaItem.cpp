@@ -79,14 +79,14 @@ QString fvaItem::getGuiFullName(const QVariantMap& dictionaries) {
     QString fullName;
     if (!pFvaFolder && !pFvaFile) return "";
     if (type != FVA_FS_TYPE_DIR && pFvaFile) {
-        if (!pFvaFile->description.isEmpty()) fullName = pFvaFile->description;
+        if (!pFvaFile->description.empty()) fullName = QString::fromStdString(pFvaFile->description);
     }
 
     if (type != FVA_FS_TYPE_DIR && pFvaFile) {
         if (fullName.isEmpty())
-            fullName = pFvaFile->comment;
+            fullName = QString::fromStdString(pFvaFile->comment);
         else
-            fullName += ", " + pFvaFile->comment;
+            fullName += ", " + QString::fromStdString(pFvaFile->comment);
     } else if (type == FVA_FS_TYPE_DIR && pFvaFolder) {
         if (fullName.isEmpty())
             fullName = pFvaFolder->tags;

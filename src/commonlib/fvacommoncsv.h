@@ -28,7 +28,7 @@ typedef std::map<int, std::string> FVA_SIMPLE_MAP;
  * \param deviceID - output parameter to contain device ID
  * \returns it returns code of error if any or FVA_NO_ERROR if device ID has been retrieved
  */
-FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID);
+FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const std::string& fvaFile, int& deviceID);
 
 /*!
  * \brief it loads fva information saved in CSV files
@@ -38,7 +38,7 @@ FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const 
  * \returns it returns code of error if any or FVA_NO_ERROR if info was loaded
  */
 FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo,
-                                        const QString& fvaFileName = "fvaFile.csv");
+                                        const std::string& fvaFileName = "fvaFile.csv");
 
 /*!
  * \brief it returns an ID value from file by file path provided

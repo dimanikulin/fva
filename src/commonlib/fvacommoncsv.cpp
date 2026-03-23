@@ -35,13 +35,13 @@ FVA_EXIT_CODE fvaSaveIDInFile(const QString& fileName, int ID) {
     return FVA_NO_ERROR;
 }
 FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo,
-                                        const QString& fvaFileName) {
+                                        const std::string& fvaFileName) {
     FVADescriptionFile fvaFileCsv;
 
     QStringList titles;
     DESCRIPTIONS_MAP decsItems;
 
-    FVA_EXIT_CODE res = fvaFileCsv.load(rootSWdir + "#data#/" + fvaFileName, titles, decsItems);
+    FVA_EXIT_CODE res = fvaFileCsv.load(rootSWdir + "#data#/" + QString::fromStdString(fvaFileName), titles, decsItems);
     RET_RES_IF_RES_IS_ERROR
 
     // ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,EventId,ReasonPeople,reserved1
@@ -69,7 +69,7 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
     for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
         QStringList list = it.value();
 
-        QString fileName = list[columnName].toUpper();
+        const std::string fileName = list[columnName].toUpper().toStdString();
         if (fvaFileInfo.find(fileName) != fvaFileInfo.end()) {
             QFile file(rootSWdir + "#data#/fvaNotUniqueFileName.csv");
             file.open(QIODevice::WriteOnly | QIODevice::Append);
@@ -82,6 +82,7 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
         newFile.deviceId = list[columnDevId].remove("\t").toUInt();
         newFile.placeId = list[columnPlaceID].remove("\t").toUInt();
         newFile.eventId = list[columnEventID].remove("\t").toUInt();
+        newFile.name = fileName;
         QString eventPeopleIds = list[columnReasonPeopleID].remove("\t").trimmed();
         newFile.eventPeopleIds = fvaStringToIds(eventPeopleIds);
 
@@ -91,15 +92,18 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
         newFile.description;
         newFile.comment;
 
-        fvaFileInfo[fileName.toUpper()] = newFile;
+        fvaFileInfo[fileName.toUpper().toStdString()] = newFile;
     }
     return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const QString& fvaFile, int& deviceID) {
+FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const std::string& fvaFile, int& deviceID) {
     deviceID = FVA_UNDEFINED_ID;
 
-    if (fvaFileInfo.find(fvaFile.toUpper()) != fvaFileInfo.end()) {
-        deviceID = fvaFileInfo[fvaFile.toUpper()].deviceId;
+    const std::string upperFile = QString::fromStdString(fvaFile).toUpper().toStdString();
+
+    auto it = fvaFileInfo.find(upperFile);
+    if (it != fvaFileInfo.end()) {
+        deviceID = it->second.deviceId;
         return FVA_NO_ERROR;
     }
 

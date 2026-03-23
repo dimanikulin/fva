@@ -86,9 +86,9 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 
     // lets try to find it first
     fvaFile fvaFileItem;
-    auto itFvaFileItem = m_fvaFileInfo.find(fileName.toUpper());
+    auto itFvaFileItem = m_fvaFileInfo.find(fileName.toUpper().toStdString());
     if (itFvaFileItem != m_fvaFileInfo.end())
-        fvaFileItem = *itFvaFileItem;
+        fvaFileItem = itFvaFileItem->second;
     else {
         LOG_CRIT << "fva item not found in fvaFileN.csv - " << fileName;
         return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;

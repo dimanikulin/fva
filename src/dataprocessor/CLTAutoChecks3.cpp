@@ -35,12 +35,15 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
         FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
 
         // remove checked FVA file
-        if (fvaIsFVAFile(suffix)) m_fvaFileInfoC.erase(m_fvaFileInfoC.find(info.fileName().toUpper()));
+        if (fvaIsFVAFile(suffix)) {
+            auto it = m_fvaFileInfoC.find(info.fileName().toUpper().toStdString());
+            if (it != m_fvaFileInfoC.end()) m_fvaFileInfoC.erase(it);
+        }
 
         if (FVA_FS_TYPE_IMG != type) continue;
         //////////////////////////////////// 1. check for exsiting device in fva info by fileName
         int deviceID = FVA_UNDEFINED_ID;
-        FVA_EXIT_CODE res = fvaGetDeviceIdFromCsv(m_fvaFileInfo, info.fileName(), deviceID);
+        FVA_EXIT_CODE res = fvaGetDeviceIdFromCsv(m_fvaFileInfo, info.fileName().toStdString(), deviceID);
         if (FVA_NO_ERROR != res) {
             LOG_WARN << "no dev id found for file: " << info.absoluteFilePath();
             if (FVA_ERROR_NO_DEV_ID == res)
@@ -87,8 +90,9 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
         bool GeoPresent = fvaExifGeoDataPresentInFile(info.filePath());
         if (!GeoPresent) {
             int PlaceId = -1;
-            if (m_fvaFileInfo.find(info.fileName().toUpper()) != m_fvaFileInfo.end()) {
-                PlaceId = m_fvaFileInfo[info.fileName().toUpper()].placeId;
+            auto it = m_fvaFileInfo.find(info.fileName().toUpper().toStdString());
+            if (it != m_fvaFileInfo.end()) {
+                PlaceId = it->second.placeId;
             }
 
             LOG_WARN << "GEO location is NOT preent in:" << info.absoluteFilePath() << ", PlaceId=" << PlaceId;
@@ -100,7 +104,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
 
 CLTAutoChecks3::~CLTAutoChecks3() {
     for (auto it = m_fvaFileInfoC.begin(); it != m_fvaFileInfoC.end(); ++it) {
-        m_Issues.push_back("FVA_ERROR_NOT_EXISTING_FVA," + it.key());
+        m_Issues.push_back("FVA_ERROR_NOT_EXISTING_FVA," + QString::fromStdString(it->first));
     }
 
     fvaSaveStrListToFile(m_rootSWdir + "#logs#/issues3.csv", m_Issues);

@@ -9,8 +9,10 @@
 #ifndef FVAFILE_H
 #define FVAFILE_H
 
-#include <QtCore/QString>
 #include <QtCore/QVector>
+
+#include <map>
+#include <string>
 
 #include "fvaconstants.h"
 
@@ -55,24 +57,24 @@ public:
     /*!
      * decsription
      */
-    QString description;
+    std::string description;
 
     /*!
      * file comment
      */
-    QString comment;
+    std::string comment;
 
     /*!
      * name of file
      */
-    QString name;
+    std::string name;
 
     /*!
      * list of people ids that caused this event
      */
     QVector<unsigned int> eventPeopleIds;
 };
-typedef QMap<QString, fvaFile> FVA_FILE_INFO_MAP;
-typedef QMap<int, fvaFile*> FVA_FILE_MAP;
+typedef std::map<std::string, fvaFile> FVA_FILE_INFO_MAP;
+typedef std::map<int, fvaFile*> FVA_FILE_MAP;
 
 #endif  // FVAFILE_H
