@@ -10,7 +10,6 @@
 #define FVAFILE_H
 
 #include <QtCore/QVector>
-
 #include <map>
 #include <string>
 
