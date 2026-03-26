@@ -8,52 +8,52 @@
 
 #include "fvacsvfile.h"
 
-#include <QtCore/QTextCodec>
-#include <QtCore/QTextStream>
+#include <ios>
 
 CSVFile::CSVFile() {}
 
 CSVFile::~CSVFile() {
-    if (m_stream.get()) {
-        m_stream->flush();
-        m_stream.release();
+    if (m_outputFile.get()) {
+        m_outputFile->flush();
+        m_outputFile->close();
+        m_outputFile.release();
     }
 
-    if (m_file.get()) {
-        m_file->close();
-        m_file.release();
+    if (m_inputFile.get()) {
+        m_inputFile->close();
+        m_inputFile.release();
     }
 }
 
-bool CSVFile::openForRead(const QString& path) {
-    m_file.reset(new QFile(path));
-    if (!m_file->open(QIODevice::ReadOnly)) return false;
-
-    m_stream.reset(new QTextStream(m_file.get()));
-    m_stream->setCodec(QTextCodec::codecForName("UTF-8"));
-    return true;
+bool CSVFile::openForRead(const std::string& path) {
+    m_inputFile.reset(new std::ifstream(path.c_str(), std::ios::in));
+    return m_inputFile->is_open();
 }
 
-bool CSVFile::openForWrite(const QString& path) {
-    m_file.reset(new QFile(path));
-    if (!m_file->open(QIODevice::WriteOnly)) return false;
-
-    m_stream.reset(new QTextStream(m_file.get()));
-    m_stream->setCodec(QTextCodec::codecForName("UTF-8"));
-    return true;
+bool CSVFile::openForWrite(const std::string& path) {
+    m_outputFile.reset(new std::ofstream(path.c_str(), std::ios::out | std::ios::trunc));
+    return m_outputFile->is_open();
 }
 
-QString CSVFile::readLine() { return m_stream->readLine(); }
+std::string CSVFile::readLine() {
+    std::string line;
+    if (!m_inputFile.get() || !std::getline(*m_inputFile, line)) return std::string();
 
-bool CSVFile::atEnd() { return m_stream->atEnd(); }
+    if (!line.empty() && line[line.size() - 1] == '\r') {
+        line.erase(line.size() - 1);
+    }
+    return line;
+}
 
-bool CSVFile::parseLine(const QString& line, QStringList& values, char delimiter) {
-    int pos = 0;
+bool CSVFile::atEnd() { return !m_inputFile.get() || m_inputFile->eof(); }
+
+bool CSVFile::parseLine(const std::string& line, std::vector<std::string>& values, char delimiter) {
+    std::size_t pos = 0;
     bool quotes = false;
-    QString field = "";
+    std::string field;
 
     while (pos < line.length() && line[pos] != 0x00) {
-        QChar c = line[pos];
+        const char c = line[pos];
         if (!quotes && c == '"')
             quotes = true;
         else if (quotes && c == '"') {
@@ -78,7 +78,9 @@ bool CSVFile::parseLine(const QString& line, QStringList& values, char delimiter
     return true;
 }
 
-bool CSVFile::writeLine(const QString& line) {
-    *m_stream << line << "\n";
-    return true;
+bool CSVFile::writeLine(const std::string& line) {
+    if (!m_outputFile.get()) return false;
+
+    *m_outputFile << line << "\n";
+    return static_cast<bool>(*m_outputFile);
 }

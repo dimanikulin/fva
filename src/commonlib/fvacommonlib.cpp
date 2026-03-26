@@ -7,6 +7,8 @@
  */
 #include "fvacommonlib.h"
 
+#include <sstream>
+
 #include <QtCore/QCoreApplication>
 #include <QtCore/QDir>
 #include <QtCore/QProcess>
@@ -167,6 +169,20 @@ QVector<unsigned int> fvaStringToIds(const QString& strList) {
     QVector<unsigned int> result;
     QStringList l = strList.split(',');
     for (auto iter = l.begin(); iter != l.end(); ++iter) result.append(iter->toUInt());
+
+    return result;
+}
+
+QVector<unsigned int> fvaStringToIds(const std::string& strList) {
+    QVector<unsigned int> result;
+    std::stringstream stream(strList);
+    std::string item;
+
+    while (std::getline(stream, item, ',')) {
+        if (!item.empty()) {
+            result.append(static_cast<unsigned int>(std::stoul(item)));
+        }
+    }
 
     return result;
 }

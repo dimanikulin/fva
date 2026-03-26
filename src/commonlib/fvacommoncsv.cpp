@@ -93,8 +93,8 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const std::string& rootSWdir, FVA_FILE_I
     int columnReasonPeopleID = FVADescriptionFile::getColumnIdByName(titles, "ReasonPeople");
     if (-1 == columnReasonPeopleID) return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
-    for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
-        std::vector<std::string> list = it.value();
+    for (DESCRIPTIONS_MAP::const_iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
+        const std::vector<std::string>& list = it->second;
 
         const std::string fileName = toUpper(list[columnName]);
         if (fvaFileInfo.find(fileName) != fvaFileInfo.end()) {
@@ -155,8 +155,8 @@ FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const std::string& rootSWdir, FV
         LOG_CRIT << "-1 == columnType";
         return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
     }
-    for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
-        std::vector<std::string> list = it.value();
+    for (DESCRIPTIONS_MAP::const_iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
+        const std::vector<std::string>& list = it->second;
 
         int ID = static_cast<int>(std::stoul(removeTab(list[columnId])));
         const std::string Name = trim(removeTab(list[columnName]));
@@ -191,8 +191,8 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const std::string& rootSWdir, DEVICE_MAP& 
     int columnType = FVADescriptionFile::getColumnIdByName(titles, "Type");
     if (-1 == columnType) return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
-    for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
-        std::vector<std::string> list = it.value();
+    for (DESCRIPTIONS_MAP::const_iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
+        const std::vector<std::string>& list = it->second;
 
         fvaDevice device;
         device.linkedName = trim(removeTab(list[columnLinkedName]));
@@ -237,8 +237,8 @@ FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const std::string& rootSWdir, PEOPLE_MAP& 
         LOG_CRIT << "-1 == columnInstitution";
         return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
     }
-    for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
-        std::vector<std::string> list = it.value();
+    for (DESCRIPTIONS_MAP::const_iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
+        const std::vector<std::string>& list = it->second;
 
         fvaPerson person;
         person.Id = static_cast<int>(std::stoul(removeTab(list[columnId])));
@@ -280,8 +280,8 @@ FVA_EXIT_CODE fvaLoadEventMapFromCsv(const std::string& rootSWdir, FVA_EVENT_MAP
         return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
     }
 
-    for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
-        std::vector<std::string> list = it.value();
+    for (DESCRIPTIONS_MAP::const_iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
+        const std::vector<std::string>& list = it->second;
 
         fvaEvent event;
 
@@ -315,8 +315,8 @@ FVA_EXIT_CODE fvaLoadDictMapFromCsv(const std::string& rootSWdir, BASE_DICT_ITEM
         return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
     }
 
-    for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
-        std::vector<std::string> list = it.value();
+    for (DESCRIPTIONS_MAP::const_iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
+        const std::vector<std::string>& list = it->second;
 
         fvaBaseDictionaryItem dictionaryItem;
 

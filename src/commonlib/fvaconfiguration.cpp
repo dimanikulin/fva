@@ -8,8 +8,6 @@
 
 #include "fvaconfiguration.h"
 
-#include <QtCore/QString>
-#include <QtCore/QStringList>
 #include <algorithm>
 #include <cctype>
 #include <cstdlib>
@@ -36,28 +34,8 @@ int getColumnIdByName(const std::vector<std::string>& titles, const std::string&
 
 FVA_EXIT_CODE FvaConfiguration::load(const std::string& path) {
     FVADescriptionFile fvaFileCsv;
-    QStringList cfgTitlesQt;
-    DESCRIPTIONS_MAP cfgItemsQt;
-
-    FVA_EXIT_CODE res = fvaFileCsv.load(QString::fromStdString(path), cfgTitlesQt, cfgItemsQt);
+    FVA_EXIT_CODE res = fvaFileCsv.load(path, m_cfgtitles, m_cfgItems);
     RET_RES_IF_RES_IS_ERROR
-
-    m_cfgtitles.clear();
-    m_cfgtitles.reserve(static_cast<size_t>(cfgTitlesQt.size()));
-    for (const QString& title : cfgTitlesQt) {
-        m_cfgtitles.push_back(title.toStdString());
-    }
-
-    m_cfgItems.clear();
-    for (DESCRIPTIONS_MAP::const_iterator it = cfgItemsQt.begin(); it != cfgItemsQt.end(); ++it) {
-        const QStringList& row = it.value();
-        std::vector<std::string> convertedRow;
-        convertedRow.reserve(static_cast<size_t>(row.size()));
-        for (const QString& item : row) {
-            convertedRow.push_back(item.toStdString());
-        }
-        m_cfgItems[it.key()] = convertedRow;
-    }
 
     // ID,Name,Value
     int columnName = getColumnIdByName(m_cfgtitles, "Name");
@@ -71,22 +49,7 @@ FVA_EXIT_CODE FvaConfiguration::load(const std::string& path) {
 FVA_EXIT_CODE FvaConfiguration::save(const std::string& path) {
     FVADescriptionFile fvaFileCsv;
 
-    QStringList cfgTitlesQt;
-    for (const std::string& title : m_cfgtitles) {
-        cfgTitlesQt.append(QString::fromStdString(title));
-    }
-
-    DESCRIPTIONS_MAP cfgItemsQt;
-    for (std::map<int, std::vector<std::string>>::const_iterator it = m_cfgItems.begin(); it != m_cfgItems.end();
-         ++it) {
-        QStringList rowQt;
-        for (const std::string& item : it->second) {
-            rowQt.append(QString::fromStdString(item));
-        }
-        cfgItemsQt[it->first] = rowQt;
-    }
-
-    return fvaFileCsv.save(QString::fromStdString(path), cfgTitlesQt, cfgItemsQt);
+    return fvaFileCsv.save(path, m_cfgtitles, m_cfgItems);
 }
 
 FVA_EXIT_CODE FvaConfiguration::getParamAsString(const std::string& paramName, std::string& paramValue) const {

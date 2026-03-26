@@ -9,10 +9,14 @@
 #ifndef _FVA_DESC_FILE_
 #define _FVA_DESC_FILE_
 
+#include <map>
+#include <string>
+#include <vector>
+
 #include "fvacsvfile.h"
 #include "fvaexitcodes.h"
 
-typedef QMap<int, QStringList> DESCRIPTIONS_MAP;
+typedef std::map<int, std::vector<std::string> > DESCRIPTIONS_MAP;
 
 /*!
  * \brief it wraps functions to work with descption file (having format a csv file)
@@ -32,7 +36,7 @@ public:
      * \param decsItems it set of rows with structure according to titles
      * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
      */
-    FVA_EXIT_CODE load(const QString& path, QStringList& titles, DESCRIPTIONS_MAP& decsItems);
+    FVA_EXIT_CODE load(const std::string& path, std::vector<std::string>& titles, DESCRIPTIONS_MAP& decsItems);
 
     /*!
      * \brief it saves data to file
@@ -41,12 +45,12 @@ public:
      * \param decsItems it set of rows with structure according to titles
      * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
      */
-    FVA_EXIT_CODE save(const QString& path, const QStringList& titles, const DESCRIPTIONS_MAP& decsItems);
+    FVA_EXIT_CODE save(const std::string& path, const std::vector<std::string>& titles, const DESCRIPTIONS_MAP& decsItems);
 
     /*!
      * \brief it returns id of colum by name
      */
-    static int getColumnIdByName(const QStringList& titles, const QString& columnName);
+    static int getColumnIdByName(const std::vector<std::string>& titles, const std::string& columnName);
 };
 
 #endif  // _FVA_DESC_FILE_
