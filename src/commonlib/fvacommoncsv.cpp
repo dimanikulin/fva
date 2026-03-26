@@ -7,10 +7,10 @@
  */
 #include "fvacommoncsv.h"
 
-#include <fstream>
-#include <sstream>
 #include <algorithm>
 #include <cctype>
+#include <fstream>
+#include <sstream>
 
 #include "FVADescriptionFile.h"
 #include "fvacommonlib.h"
@@ -32,7 +32,9 @@ std::string trim(const std::string& str) {
     auto start = str.begin();
     while (start != str.end() && std::isspace(*start)) ++start;
     auto end = str.end();
-    do { --end; } while (std::distance(start, end) > 0 && std::isspace(*end));
+    do {
+        --end;
+    } while (std::distance(start, end) > 0 && std::isspace(*end));
     return std::string(start, end + 1);
 }
 
@@ -292,7 +294,8 @@ FVA_EXIT_CODE fvaLoadEventMapFromCsv(const std::string& rootSWdir, FVA_EVENT_MAP
     }
     return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadDictMapFromCsv(const std::string& rootSWdir, BASE_DICT_ITEM_MAP& dictMap, const std::string& dictName) {
+FVA_EXIT_CODE fvaLoadDictMapFromCsv(const std::string& rootSWdir, BASE_DICT_ITEM_MAP& dictMap,
+                                    const std::string& dictName) {
     FVADescriptionFile fvaCsv;
     std::vector<std::string> titles;
     DESCRIPTIONS_MAP decsItems;

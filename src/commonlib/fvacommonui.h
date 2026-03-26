@@ -35,7 +35,8 @@ FVA_EXIT_CODE fvaShowImage(const QString& fileName, QLabel* imgLabel, const QStr
  * \param rootSWdir - dir where FVA SW is located
  * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
  */
-FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const std::string& rootSWdir);
+FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices,
+                                 const std::string& rootSWdir);
 
 /*!
  * \brief it creates people tree in gui widgets

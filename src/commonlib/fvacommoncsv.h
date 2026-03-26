@@ -98,6 +98,7 @@ FVA_EXIT_CODE fvaLoadEventMapFromCsv(const std::string& rootSWdir, FVA_EVENT_MAP
  * \param dictName file name of dictionary to load from
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_EXIT_CODE fvaLoadDictMapFromCsv(const std::string& rootSWdir, BASE_DICT_ITEM_MAP& dictMap, const std::string& dictName);
+FVA_EXIT_CODE fvaLoadDictMapFromCsv(const std::string& rootSWdir, BASE_DICT_ITEM_MAP& dictMap,
+                                    const std::string& dictName);
 
 #endif  // FVACOMMONCSV_H

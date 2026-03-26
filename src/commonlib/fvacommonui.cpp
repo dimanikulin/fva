@@ -156,7 +156,8 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, co
 }
 
 #define _SHOW_ICONS_
-FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const std::string& rootSWdir) {
+FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices,
+                                 const std::string& rootSWdir) {
     LOG_DEB << "enter";
     pMainWnd->connect(pTreeWidget, SIGNAL(itemChanged(QTreeWidgetItem*, int)), pMainWnd,
                       SLOT(updateChecks(QTreeWidgetItem*, int)));
