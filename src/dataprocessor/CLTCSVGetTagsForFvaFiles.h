@@ -43,7 +43,7 @@ private:  // data
     /*!
      * path to root fva sw folder
      */
-    QString m_rootSWdir;
+    std::string m_rootSWdir;
 
     /*!
      * cfg flag to search by place

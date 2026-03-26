@@ -35,7 +35,7 @@ FVA_EXIT_CODE fvaShowImage(const QString& fileName, QLabel* imgLabel, const QStr
  * \param rootSWdir - dir where FVA SW is located
  * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
  */
-FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir);
+FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const std::string& rootSWdir);
 
 /*!
  * \brief it creates people tree in gui widgets
@@ -44,7 +44,7 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
  * \param rootSWdir - dir where FVA SW is located
  * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
  */
-FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir);
+FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const std::string& rootSWdir);
 
 /*!
  * \brief it creates event tree in gui widgets
@@ -53,7 +53,7 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, co
  * \param rootSWdir - dir where FVA SW is located
  * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
  */
-FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir);
+FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const std::string& rootSWdir);
 
 /*!
  * \brief it creates place tree in gui widgets
@@ -62,7 +62,7 @@ FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
  * \param rootSWdir - dir where FVA SW is located
  * \returns it returns code of error if any or FVA_NO_ERROR if building was successful
  */
-FVA_EXIT_CODE fvaBuildPlaceTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir);
+FVA_EXIT_CODE fvaBuildPlaceTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const std::string& rootSWdir);
 
 /*!
  * \brief it finds all checked item ID in gui widget tree

@@ -37,7 +37,7 @@ FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const 
  * \param fvaFileName - fva file name to load fva info from
  * \returns it returns code of error if any or FVA_NO_ERROR if info was loaded
  */
-FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo,
+FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const std::string& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo,
                                         const std::string& fvaFileName = "fvaFile.csv");
 
 /*!
@@ -46,7 +46,7 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
  * \param int& - variable to fill up by ID loaded from the file
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_EXIT_CODE fvaGetIDFromFile(const QString& file, int& ID);
+FVA_EXIT_CODE fvaGetIDFromFile(const std::string& file, int& ID);
 
 /*!
  * \brief it saves an ID value in file by file path provided (it will delete previous content!)
@@ -54,7 +54,7 @@ FVA_EXIT_CODE fvaGetIDFromFile(const QString& file, int& ID);
  * \param int - ID to save
  * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
  */
-FVA_EXIT_CODE fvaSaveIDInFile(const QString& file, int ID);
+FVA_EXIT_CODE fvaSaveIDInFile(const std::string& file, int ID);
 
 /*!
  * \brief it tries to load device map from dictionary
@@ -62,7 +62,7 @@ FVA_EXIT_CODE fvaSaveIDInFile(const QString& file, int ID);
  * \param deviceMap a map to be filled up
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& deviceMap);
+FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const std::string& rootSWdir, DEVICE_MAP& deviceMap);
 
 /*!
  * \brief it tries to load people map from dictionary
@@ -70,7 +70,7 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& devi
  * \param peopleMap a map to be filled up
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peopleMap);
+FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const std::string& rootSWdir, PEOPLE_MAP& peopleMap);
 
 /*!
  * \brief it tries to load simple map <ID to Name> from dictionary with predifined type of items
@@ -80,8 +80,8 @@ FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peop
  * \param typeToFilter - a predefined item type to be filtered out from whole scope, if typeToFilter==FVA_UNDEFINED_ID
  * no filtering is applyed \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SIMPLE_MAP& simpleMap,
-                                                const QString& dictName, int typeToFilter = FVA_UNDEFINED_ID);
+FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const std::string& rootSWdir, FVA_SIMPLE_MAP& simpleMap,
+                                                const std::string& dictName, int typeToFilter = FVA_UNDEFINED_ID);
 
 /*!
  * \brief it tries to load event map from dictionary
@@ -89,7 +89,7 @@ FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SI
  * \param eventMap a map to be filled up
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_EXIT_CODE fvaLoadEventMapFromCsv(const QString& rootSWdir, FVA_EVENT_MAP& eventMap);
+FVA_EXIT_CODE fvaLoadEventMapFromCsv(const std::string& rootSWdir, FVA_EVENT_MAP& eventMap);
 
 /*!
  * \brief it loads base item dictionary map from csv
@@ -98,6 +98,6 @@ FVA_EXIT_CODE fvaLoadEventMapFromCsv(const QString& rootSWdir, FVA_EVENT_MAP& ev
  * \param dictName file name of dictionary to load from
  * \returns it returns code of error if any or FVA_NO_ERROR if loading was successful
  */
-FVA_EXIT_CODE fvaLoadDictMapFromCsv(const QString& rootSWdir, BASE_DICT_ITEM_MAP& dictMap, const QString& dictName);
+FVA_EXIT_CODE fvaLoadDictMapFromCsv(const std::string& rootSWdir, BASE_DICT_ITEM_MAP& dictMap, const std::string& dictName);
 
 #endif  // FVACOMMONCSV_H

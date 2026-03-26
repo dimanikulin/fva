@@ -14,7 +14,7 @@ CLTAutoChecks3::CLTAutoChecks3(const FvaConfiguration& cfg) {
     std::string rootSWdir;
     FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
     RET_IF_RES_IS_ERROR
-    m_rootSWdir = QString::fromStdString(rootSWdir);
+    m_rootSWdir = rootSWdir;
 
     res = fvaLoadFvaFileInfoFromCsv(m_rootSWdir, m_fvaFileInfo);
     RET_IF_RES_IS_ERROR

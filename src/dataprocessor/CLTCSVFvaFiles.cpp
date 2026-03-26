@@ -15,7 +15,7 @@ CLTCSVFvaFile::CLTCSVFvaFile(const FvaConfiguration& cfg) {
     std::string rootSWdir;
     FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
     RET_IF_RES_IS_ERROR
-    m_rootSWdir = QString::fromStdString(rootSWdir);
+    m_rootSWdir = rootSWdir;
 }
 
 FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context) {

@@ -64,7 +64,7 @@ private:
     /*!
      * path to root fva sw folder
      */
-    QString m_rootSWdir;
+    std::string m_rootSWdir;
 
     /*!
      * \brief formatting context to use formatting options from

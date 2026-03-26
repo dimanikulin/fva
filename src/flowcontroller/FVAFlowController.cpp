@@ -59,14 +59,14 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTCheckDeviceName")
 
     // TODO to use STL instead of QT
-    exitCode = fvaLoadDeviceMapFromCsv(QString::fromStdString(rootSWdir), deviceContext.fullDeviceMap);
+    exitCode = fvaLoadDeviceMapFromCsv(rootSWdir, deviceContext.fullDeviceMap);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadDeviceMapFromCsv")
 
     PEOPLE_MAP peopleMap;
     // TODO to use STL instead of QT
-    exitCode = fvaLoadPeopleMapFromCsv(QString::fromStdString(rootSWdir), peopleMap);
+    exitCode = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadPeopleMapFromCsv")

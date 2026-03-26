@@ -18,7 +18,7 @@
 
 // TODO make a validate for data entered
 
-FVA_EXIT_CODE fillUpCB(const QString& rootSWdir, const QString& dictName, QComboBox* cb) {
+FVA_EXIT_CODE fillUpCB(const std::string& rootSWdir, const std::string& dictName, QComboBox* cb) {
     FVA_SIMPLE_MAP fvaMap;
     FVA_EXIT_CODE exitCode = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, fvaMap, dictName);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("FVADictionaryEditor." + dictName)
@@ -44,11 +44,10 @@ FVADictionaryEditor::FVADictionaryEditor(const QString& device, QWidget* parent)
     std::string rootSWdir;
     exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.get.rootdir")
-    const QString rootSWdirQ = QString::fromStdString(rootSWdir);
 
     LOG_DEB << "people group box building";
     PEOPLE_MAP peopleMap;
-    exitCode = fvaLoadPeopleMapFromCsv(rootSWdirQ, peopleMap);
+    exitCode = fvaLoadPeopleMapFromCsv(rootSWdir, peopleMap);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.fvaLoadPeopleMapFromCsv")
 
     ui.cbOwner->clear();
@@ -60,12 +59,12 @@ FVADictionaryEditor::FVADictionaryEditor(const QString& device, QWidget* parent)
     ui.editLinkName->setText(m_device);
 
     LOG_DEB << "event group box building";
-    fillUpCB(rootSWdirQ, "fvaRelationTypes.csv", ui.cbEventType);
+    fillUpCB(rootSWdir, "fvaRelationTypes.csv", ui.cbEventType);
 
-    fillUpCB(rootSWdirQ, "fvaInstitutions.csv", ui.cbEventTypeInstit);
+    fillUpCB(rootSWdir, "fvaInstitutions.csv", ui.cbEventTypeInstit);
 
     LOG_DEB << "location group box building";
-    fillUpCB(rootSWdirQ, "fvaPlaceTypes.csv", ui.cbPlaceType);
+    fillUpCB(rootSWdir, "fvaPlaceTypes.csv", ui.cbPlaceType);
 
     QIcon icon = QIcon(QCoreApplication::applicationDirPath() + "/Icons/main.png");
     setWindowIcon(icon);
@@ -79,13 +78,12 @@ void FVADictionaryEditor::OnAddDeviceBtnPressed() {
     std::string rootSWdir;
     FVA_EXIT_CODE exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.getRootDir")
-    const QString rootSWdirQ = QString::fromStdString(rootSWdir);
 
     DEVICE_MAP deviceMap;
-    exitCode = fvaLoadDeviceMapFromCsv(rootSWdirQ, deviceMap);
+    exitCode = fvaLoadDeviceMapFromCsv(rootSWdir, deviceMap);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.fvaLoadDeviceMapFromCsv")
 
-    QFile file(rootSWdirQ + "#data#/fvadevices.csv");
+    QFile file(QString::fromStdString(rootSWdir) + "#data#/fvadevices.csv");
     file.open(QIODevice::Append | QIODevice::Text);
     QTextStream writeStream(&file);
     writeStream.setCodec("UTF-8");
@@ -105,13 +103,12 @@ void FVADictionaryEditor::OnAddPlaceBtnPressed() {
     std::string rootSWdir;
     FVA_EXIT_CODE exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.getRootDir")
-    const QString rootSWdirQ = QString::fromStdString(rootSWdir);
 
     FVA_SIMPLE_MAP fvaMap;
-    exitCode = fvaLoadSimpleMapFromCsvByItemType(rootSWdirQ, fvaMap, "fvaPlaces.csv");
+    exitCode = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, fvaMap, "fvaPlaces.csv");
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.fvaPlaces.csv")
 
-    QFile file(rootSWdirQ + "#data#/fvaPlaces.csv");
+    QFile file(QString::fromStdString(rootSWdir) + "#data#/fvaPlaces.csv");
     file.open(QIODevice::Append | QIODevice::Text);
     QTextStream writeStream(&file);
 
@@ -133,13 +130,12 @@ void FVADictionaryEditor::OnAddEventBtnPressed() {
     std::string rootSWdir;
     FVA_EXIT_CODE exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.getRootDir")
-    const QString rootSWdirQ = QString::fromStdString(rootSWdir);
 
     FVA_SIMPLE_MAP fvaMap;
-    exitCode = fvaLoadSimpleMapFromCsvByItemType(rootSWdirQ, fvaMap, "fvaEvents.csv");
+    exitCode = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, fvaMap, "fvaEvents.csv");
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADictionaryEditor.fvaEvents.csv")
 
-    QFile file(rootSWdirQ + "#data#/fvaEvents.csv");
+    QFile file(QString::fromStdString(rootSWdir) + "#data#/fvaEvents.csv");
     file.open(QIODevice::Append | QIODevice::Text);
     QTextStream writeStream(&file);
 

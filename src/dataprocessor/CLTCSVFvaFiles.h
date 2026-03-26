@@ -31,7 +31,7 @@ private:  // data
     /*!
      * path to root fva sw folder
      */
-    QString m_rootSWdir;
+    std::string m_rootSWdir;
 };
 
 #endif  // _CMD_CSV_FVA_FILES_H_

@@ -104,8 +104,8 @@ FVA_EXIT_CODE fvaShowImage(const QString& fileName, QLabel* imgLabel, const QStr
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE fvaBuildSimpleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir,
-                                 const QString& firstLvlDictName, const QString& secondLvlDictName) {
+FVA_EXIT_CODE fvaBuildSimpleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const std::string& rootSWdir,
+                                 const std::string& firstLvlDictName, const std::string& secondLvlDictName) {
     pMainWnd->connect(pTreeWidget, SIGNAL(itemChanged(QTreeWidgetItem*, int)), pMainWnd,
                       SLOT(updateChecks(QTreeWidgetItem*, int)));
 
@@ -143,20 +143,20 @@ FVA_EXIT_CODE fvaBuildSimpleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, co
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE fvaBuildPlaceTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir) {
+FVA_EXIT_CODE fvaBuildPlaceTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const std::string& rootSWdir) {
     return fvaBuildSimpleTree(pMainWnd, pTreeWidget, rootSWdir, "fvaPlaceTypes.csv", "fvaPlaces.csv");
 }
 
-FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir) {
+FVA_EXIT_CODE fvaBuildEventTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const std::string& rootSWdir) {
     return fvaBuildSimpleTree(pMainWnd, pTreeWidget, rootSWdir, "fvaRelationTypes.csv", "fvaEvents.csv");
 }
 
-FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const QString& rootSWdir) {
+FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, const std::string& rootSWdir) {
     return fvaBuildSimpleTree(pMainWnd, pTreeWidget, rootSWdir, "fvaRelationTypes.csv", "fvaPeople.csv");
 }
 
 #define _SHOW_ICONS_
-FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const QString& rootSWdir) {
+FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bool devices, const std::string& rootSWdir) {
     LOG_DEB << "enter";
     pMainWnd->connect(pTreeWidget, SIGNAL(itemChanged(QTreeWidgetItem*, int)), pMainWnd,
                       SLOT(updateChecks(QTreeWidgetItem*, int)));

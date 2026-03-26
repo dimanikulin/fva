@@ -7,8 +7,10 @@
  */
 #include "fvacommoncsv.h"
 
-#include <QtCore/QFile>
-#include <QtCore/QTextStream>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
+#include <cctype>
 
 #include "FVADescriptionFile.h"
 #include "fvacommonlib.h"
@@ -16,32 +18,55 @@
 #include "fvafile.h"
 #include "fvalogger.inl"
 
-FVA_EXIT_CODE fvaGetIDFromFile(const QString& fileName, int& ID) {
-    QFile file(fileName);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return FVA_ERROR_CANT_OPEN_ID_FILE;
-    QTextStream readStream(&file);
-    readStream >> ID;
+// TODO to move these functions to some common place and use in other places as well
+// TODO make UT for these functions
+// Helper function to convert string to uppercase
+std::string toUpper(const std::string& str) {
+    std::string result = str;
+    std::transform(result.begin(), result.end(), result.begin(), [](unsigned char c) { return std::toupper(c); });
+    return result;
+}
+
+// Helper function to trim whitespace from string
+std::string trim(const std::string& str) {
+    auto start = str.begin();
+    while (start != str.end() && std::isspace(*start)) ++start;
+    auto end = str.end();
+    do { --end; } while (std::distance(start, end) > 0 && std::isspace(*end));
+    return std::string(start, end + 1);
+}
+
+// Helper function to remove tabs from string
+std::string removeTab(const std::string& str) {
+    std::string result = str;
+    result.erase(std::remove(result.begin(), result.end(), '\t'), result.end());
+    return result;
+}
+
+FVA_EXIT_CODE fvaGetIDFromFile(const std::string& fileName, int& ID) {
+    std::ifstream file(fileName);
+    if (!file.is_open()) return FVA_ERROR_CANT_OPEN_ID_FILE;
+    file >> ID;
     file.close();
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE fvaSaveIDInFile(const QString& fileName, int ID) {
-    QFile file(fileName);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;
-    QTextStream writeStream(&file);
-    writeStream << ID;
-    writeStream.flush();
+FVA_EXIT_CODE fvaSaveIDInFile(const std::string& fileName, int ID) {
+    std::ofstream file(fileName, std::ios::out);
+    if (!file.is_open()) return FVA_ERROR_CANT_OPEN_NEW_DIR_DESC;
+    file << ID;
+    file.flush();
     file.close();
     return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo,
+FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const std::string& rootSWdir, FVA_FILE_INFO_MAP& fvaFileInfo,
                                         const std::string& fvaFileName) {
     FVADescriptionFile fvaFileCsv;
 
-    QStringList titles;
+    std::vector<std::string> titles;
     DESCRIPTIONS_MAP decsItems;
 
-    FVA_EXIT_CODE res = fvaFileCsv.load(rootSWdir + "#data#/" + QString::fromStdString(fvaFileName), titles, decsItems);
+    FVA_EXIT_CODE res = fvaFileCsv.load(rootSWdir + "#data#/" + fvaFileName, titles, decsItems);
     RET_RES_IF_RES_IS_ERROR
 
     // ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,EventId,ReasonPeople,reserved1
@@ -67,23 +92,21 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
     if (-1 == columnReasonPeopleID) return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
     for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
-        QStringList list = it.value();
+        std::vector<std::string> list = it.value();
 
-        const std::string fileName = list[columnName].toUpper().toStdString();
+        const std::string fileName = toUpper(list[columnName]);
         if (fvaFileInfo.find(fileName) != fvaFileInfo.end()) {
-            QFile file(rootSWdir + "#data#/fvaNotUniqueFileName.csv");
-            file.open(QIODevice::WriteOnly | QIODevice::Append);
-            QTextStream writeStream(&file);
-            writeStream << list[columnID].toUpper() << "\n";
+            std::ofstream file(rootSWdir + "#data#/fvaNotUniqueFileName.csv", std::ios::app);
+            file << toUpper(list[columnID]) << "\n";
             file.close();
             return FVA_ERROR_NON_UNIQUE_FVA_INFO;
         }
         fvaFile newFile;
-        newFile.deviceId = list[columnDevId].remove("\t").toUInt();
-        newFile.placeId = list[columnPlaceID].remove("\t").toUInt();
-        newFile.eventId = list[columnEventID].remove("\t").toUInt();
+        newFile.deviceId = static_cast<int>(std::stoul(removeTab(list[columnDevId])));
+        newFile.placeId = static_cast<int>(std::stoul(removeTab(list[columnPlaceID])));
+        newFile.eventId = static_cast<int>(std::stoul(removeTab(list[columnEventID])));
         newFile.name = fileName;
-        QString eventPeopleIds = list[columnReasonPeopleID].remove("\t").trimmed();
+        std::string eventPeopleIds = trim(removeTab(list[columnReasonPeopleID]));
         newFile.eventPeopleIds = fvaStringToIds(eventPeopleIds);
 
         // not loaded field yet
@@ -99,7 +122,7 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
 FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const std::string& fvaFile, int& deviceID) {
     deviceID = FVA_UNDEFINED_ID;
 
-    const std::string upperFile = QString::fromStdString(fvaFile).toUpper().toStdString();
+    const std::string upperFile = toUpper(fvaFile);
 
     auto it = fvaFileInfo.find(upperFile);
     if (it != fvaFileInfo.end()) {
@@ -109,10 +132,10 @@ FVA_EXIT_CODE fvaGetDeviceIdFromCsv(const FVA_FILE_INFO_MAP& fvaFileInfo, const 
 
     return FVA_ERROR_NO_DEV_ID;
 };
-FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SIMPLE_MAP& simpleMap,
-                                                const QString& dictName, int typeToFilter) {
+FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const std::string& rootSWdir, FVA_SIMPLE_MAP& simpleMap,
+                                                const std::string& dictName, int typeToFilter) {
     FVADescriptionFile fvaCsv;
-    QStringList titles;
+    std::vector<std::string> titles;
     DESCRIPTIONS_MAP decsItems;
     FVA_EXIT_CODE res = fvaCsv.load(rootSWdir + "#data#/" + dictName, titles, decsItems);
     RET_RES_IF_RES_IS_ERROR
@@ -131,22 +154,22 @@ FVA_EXIT_CODE fvaLoadSimpleMapFromCsvByItemType(const QString& rootSWdir, FVA_SI
         return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
     }
     for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
-        QStringList list = it.value();
+        std::vector<std::string> list = it.value();
 
-        int ID = list[columnId].remove("\t").toUInt();
-        const std::string Name = list[columnName].remove("\t").trimmed().toStdString();
+        int ID = static_cast<int>(std::stoul(removeTab(list[columnId])));
+        const std::string Name = trim(removeTab(list[columnName]));
         if (FVA_UNDEFINED_ID == typeToFilter)
             simpleMap[ID] = Name;
         else {
-            int Type = list[columnType].remove("\t").toInt();
+            int Type = std::stoi(removeTab(list[columnType]));
             if (Type == typeToFilter) simpleMap[ID] = Name;
         }
     }
     return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& deviceMap) {
+FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const std::string& rootSWdir, DEVICE_MAP& deviceMap) {
     FVADescriptionFile fvaDeviceCsv;
-    QStringList titles;
+    std::vector<std::string> titles;
     DESCRIPTIONS_MAP decsItems;
     FVA_EXIT_CODE res = fvaDeviceCsv.load(rootSWdir + "#data#/fvaDevices.csv", titles, decsItems);
     RET_RES_IF_RES_IS_ERROR
@@ -167,22 +190,22 @@ FVA_EXIT_CODE fvaLoadDeviceMapFromCsv(const QString& rootSWdir, DEVICE_MAP& devi
     if (-1 == columnType) return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
 
     for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
-        QStringList list = it.value();
+        std::vector<std::string> list = it.value();
 
         fvaDevice device;
-        device.linkedName = list[columnLinkedName].remove("\t").trimmed();
-        device.deviceId = list[columnDevId].remove("\t").toUInt();
-        device.guiName = list[columnName].remove("\t").trimmed();
+        device.linkedName = trim(removeTab(list[columnLinkedName]));
+        device.deviceId = static_cast<int>(std::stoul(removeTab(list[columnDevId])));
+        device.guiName = trim(removeTab(list[columnName]));
         device.ownerName = "N/A";
-        device.ownerId = list[columnOwnerId].remove("\t").toUInt();
-        device.type = static_cast<FVA_DEVICE_TYPE>(list[columnType].remove("\t").toUInt());
+        device.ownerId = static_cast<int>(std::stoul(removeTab(list[columnOwnerId])));
+        device.type = static_cast<FVA_DEVICE_TYPE>(std::stoul(removeTab(list[columnType])));
         deviceMap[device.deviceId] = device;
     }
     return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peopleMap) {
+FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const std::string& rootSWdir, PEOPLE_MAP& peopleMap) {
     FVADescriptionFile fvaPeopleCsv;
-    QStringList titles;
+    std::vector<std::string> titles;
     DESCRIPTIONS_MAP decsItems;
     FVA_EXIT_CODE res = fvaPeopleCsv.load(rootSWdir + "#data#/fvaPeople.csv", titles, decsItems);
     RET_RES_IF_RES_IS_ERROR
@@ -213,23 +236,22 @@ FVA_EXIT_CODE fvaLoadPeopleMapFromCsv(const QString& rootSWdir, PEOPLE_MAP& peop
         return FVA_ERROR_CANT_FIND_MANDATORY_FIELDS;
     }
     for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
-        QStringList list = it.value();
+        std::vector<std::string> list = it.value();
 
         fvaPerson person;
-        person.Id = list[columnId].remove("\t").toUInt();
-        person.name = list[columnName].remove("\t").trimmed();
-        person.fullName = list[columnFullName].remove("\t").trimmed();
-        person.type = list[columnType].remove("\t").toUInt();
-        person.institution = list[columnInstitution].remove("\t").toUInt();
-        ;
+        person.Id = static_cast<int>(std::stoul(removeTab(list[columnId])));
+        person.name = trim(removeTab(list[columnName]));
+        person.fullName = trim(removeTab(list[columnFullName]));
+        person.type = static_cast<int>(std::stoul(removeTab(list[columnType])));
+        person.institution = static_cast<int>(std::stoul(removeTab(list[columnInstitution])));
 
         peopleMap[person.Id] = person;
     }
     return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadEventMapFromCsv(const QString& rootSWdir, FVA_EVENT_MAP& eventMap) {
+FVA_EXIT_CODE fvaLoadEventMapFromCsv(const std::string& rootSWdir, FVA_EVENT_MAP& eventMap) {
     FVADescriptionFile fvaEventTypesCsv;
-    QStringList titles;
+    std::vector<std::string> titles;
     DESCRIPTIONS_MAP decsItems;
     FVA_EXIT_CODE res = fvaEventTypesCsv.load(rootSWdir + "#data#/fvaEvents.csv", titles, decsItems);
     RET_RES_IF_RES_IS_ERROR
@@ -257,22 +279,22 @@ FVA_EXIT_CODE fvaLoadEventMapFromCsv(const QString& rootSWdir, FVA_EVENT_MAP& ev
     }
 
     for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
-        QStringList list = it.value();
+        std::vector<std::string> list = it.value();
 
         fvaEvent event;
 
-        event.ID = list[columnId].remove("\t").toUInt();
-        event.name = list[columnName].remove("\t").trimmed();
-        event.type = list[columnType].remove("\t").toInt();
-        event.institution = list[columnIns].remove("\t").toInt();
+        event.ID = static_cast<int>(std::stoul(removeTab(list[columnId])));
+        event.name = trim(removeTab(list[columnName]));
+        event.type = std::stoi(removeTab(list[columnType]));
+        event.institution = std::stoi(removeTab(list[columnIns]));
 
         eventMap[event.ID] = event;
     }
     return FVA_NO_ERROR;
 }
-FVA_EXIT_CODE fvaLoadDictMapFromCsv(const QString& rootSWdir, BASE_DICT_ITEM_MAP& dictMap, const QString& dictName) {
+FVA_EXIT_CODE fvaLoadDictMapFromCsv(const std::string& rootSWdir, BASE_DICT_ITEM_MAP& dictMap, const std::string& dictName) {
     FVADescriptionFile fvaCsv;
-    QStringList titles;
+    std::vector<std::string> titles;
     DESCRIPTIONS_MAP decsItems;
     FVA_EXIT_CODE res = fvaCsv.load(rootSWdir + "#data#/" + dictName, titles, decsItems);
     RET_RES_IF_RES_IS_ERROR
@@ -291,13 +313,13 @@ FVA_EXIT_CODE fvaLoadDictMapFromCsv(const QString& rootSWdir, BASE_DICT_ITEM_MAP
     }
 
     for (DESCRIPTIONS_MAP::Iterator it = decsItems.begin(); it != decsItems.end(); ++it) {
-        QStringList list = it.value();
+        std::vector<std::string> list = it.value();
 
         fvaBaseDictionaryItem dictionaryItem;
 
-        dictionaryItem.ID = list[columnId].remove("\t").toUInt();
-        dictionaryItem.name = list[columnName].remove("\t").trimmed();
-        dictionaryItem.type = list[columnType].remove("\t").toInt();
+        dictionaryItem.ID = static_cast<int>(std::stoul(removeTab(list[columnId])));
+        dictionaryItem.name = trim(removeTab(list[columnName]));
+        dictionaryItem.type = std::stoi(removeTab(list[columnType]));
 
         dictMap[dictionaryItem.ID] = dictionaryItem;
     }
