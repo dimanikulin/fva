@@ -92,7 +92,7 @@ FVA_EXIT_CODE fvaLoadFvaFileInfoFromCsv(const QString& rootSWdir, FVA_FILE_INFO_
         newFile.description;
         newFile.comment;
 
-        fvaFileInfo[fileName.toUpper().toStdString()] = newFile;
+        fvaFileInfo[fileName] = newFile;
     }
     return FVA_NO_ERROR;
 }
