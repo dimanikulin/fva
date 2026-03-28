@@ -90,7 +90,7 @@ void FVAOrganizerDevicePage::setVisible(bool visible) {
 #ifdef FVA_LANGUAGE_ENG
             cbDevice->addItem(tr("Select the owner"), 0);
             for (auto i = deviceMap.begin(); i != deviceMap.end(); ++i)
-                cbDevice->addItem(i->second.ownerName, i->second.deviceId);
+                cbDevice->addItem(QString::fromStdString(i->second.ownerName), i->second.deviceId);
 
             deviceName->setText(tr("UNDEFINED!"));
             ownerName->setText(tr("UNDEFINED!"));
@@ -98,8 +98,8 @@ void FVAOrganizerDevicePage::setVisible(bool visible) {
 #endif  // FVA_LANGUAGE_RUS
         } else if (deviceMap.size() == 1) {
             LOG_DEB << "setVisible deviceMap.size() == 1";
-            deviceName->setText(deviceMap.begin()->second.guiName);
-            ownerName->setText(deviceMap.begin()->second.ownerName);
+            deviceName->setText(QString::fromStdString(deviceMap.begin()->second.guiName));
+            ownerName->setText(QString::fromStdString(deviceMap.begin()->second.ownerName));
             deviceId = deviceMap.begin()->second.deviceId;
             emit completeChanged();
         } else {

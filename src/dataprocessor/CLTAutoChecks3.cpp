@@ -57,7 +57,8 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
         if (0 == devMap.size()) {
             LOG_WARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
             m_Issues.push_back("FVA_ERROR_UNKNOWN_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) +
-                               "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
+                               "," + QString::fromStdString(m_deviceMap[deviceID].guiName) + " " +
+                               QString::fromStdString(m_deviceMap[deviceID].ownerName));
             if (context.readOnly)
                 continue;
             else
@@ -66,7 +67,8 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
         if (deviceName.isEmpty()) {
             LOG_WARN << "empty device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
             m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) +
-                               "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
+                               "," + QString::fromStdString(m_deviceMap[deviceID].guiName) + " " +
+                               QString::fromStdString(m_deviceMap[deviceID].ownerName));
             continue;
         }
         bool matched = false;
@@ -81,8 +83,8 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
             LOG_WARN << "device id linked wrongly, " << info.absoluteFilePath() << ",from image-"
                      << devMap.begin()->second.deviceId << ", from fvafile=" << deviceID;
             m_Issues.push_back("FVA_ERROR_LINKED_WRONG_DEVICE," + info.absoluteFilePath() + "," +
-                               QString::number(deviceID) + "," + m_deviceMap[deviceID].guiName + " " +
-                               m_deviceMap[deviceID].ownerName);
+                               QString::number(deviceID) + "," + QString::fromStdString(m_deviceMap[deviceID].guiName) +
+                               " " + QString::fromStdString(m_deviceMap[deviceID].ownerName));
             continue;
         }
 

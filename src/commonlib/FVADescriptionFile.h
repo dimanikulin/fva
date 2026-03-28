@@ -45,7 +45,8 @@ public:
      * \param decsItems it set of rows with structure according to titles
      * \returns it returns code of error if any or FVA_NO_ERROR if saving was successful
      */
-    FVA_EXIT_CODE save(const std::string& path, const std::vector<std::string>& titles, const DESCRIPTIONS_MAP& decsItems);
+    FVA_EXIT_CODE save(const std::string& path, const std::vector<std::string>& titles,
+                       const DESCRIPTIONS_MAP& decsItems);
 
     /*!
      * \brief it returns id of colum by name

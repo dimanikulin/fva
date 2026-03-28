@@ -7,11 +7,10 @@
  */
 #include "fvacommonlib.h"
 
-#include <sstream>
-
 #include <QtCore/QCoreApplication>
 #include <QtCore/QDir>
 #include <QtCore/QProcess>
+#include <sstream>
 
 #include "fvacommonexif.h"
 
@@ -151,7 +150,7 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
     if (deviceName.isEmpty()) return DEVICE_MAP();
     QString fixedDevName = deviceName.toUpper().trimmed();
     for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it) {
-        QString name = it->second.linkedName.toUpper();
+        QString name = QString::fromStdString(it->second.linkedName).toUpper();
         if (name == fixedDevName) result[it->first] = it->second;
     }
 
@@ -159,7 +158,7 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
     deviceName = deviceName.remove(QChar('\0'));
     if (!deviceName.isEmpty()) {
         for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it) {
-            if (it->second.linkedName == deviceName.toUpper().trimmed()) result[it->first] = it->second;
+            if (QString::fromStdString(it->second.linkedName) == deviceName.toUpper().trimmed()) result[it->first] = it->second;
         }
     }
     return result;

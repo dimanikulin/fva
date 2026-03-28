@@ -8,8 +8,8 @@
 #ifndef FVADEVICE_H
 #define FVADEVICE_H
 
-#include <QtCore/QString>
 #include <map>
+#include <string>
 
 #include "fvaconstants.h"
 
@@ -26,7 +26,7 @@ public:
     /*
      * owner name from people dictionary
      */
-    QString ownerName;
+    std::string ownerName;
 
     /*
      * owner identifier from people dictionary
@@ -36,12 +36,12 @@ public:
     /*
      * device name to register in dictionary(usually <brand name> + <device model>)
      */
-    QString linkedName;
+    std::string linkedName;
 
     /*
      * device name to show in GUI
      */
-    QString guiName;
+    std::string guiName;
 
     /*
      * device type

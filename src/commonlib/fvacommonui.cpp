@@ -220,7 +220,7 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
                     if (IDOwner != IDp)
                             continue;
                     QTreeWidgetItem* deviceWidgetItem = new QTreeWidgetItem;
-                    deviceWidgetItem->setText(0, inddev->guiName);
+                        deviceWidgetItem->setText(0, QString::fromStdString(inddev->guiName));
                     deviceWidgetItem->setData(1, 1, IDdev);
 #ifdef _SHOW_ICONS_
                     deviceWidgetItem->setIcon(0, photoIcon);
