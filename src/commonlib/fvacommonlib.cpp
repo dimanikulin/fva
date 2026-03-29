@@ -10,8 +10,8 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QDir>
 #include <QtCore/QFile>
-#include <QtCore/QTextStream>
 #include <QtCore/QProcess>
+#include <QtCore/QTextStream>
 #include <sstream>
 
 #include "fvacommonexif.h"
