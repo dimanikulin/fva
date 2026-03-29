@@ -8,7 +8,8 @@
 #ifndef FVA_BASE_DICTIONARY_ITEM_H
 #define FVA_BASE_DICTIONARY_ITEM_H
 
-#include <QtCore/QString>
+#include <map>
+#include <string>
 
 /*!
  * \brief it keeps base information about a dictionary element
@@ -28,7 +29,7 @@ public:  // data
     /*!
      * item name
      */
-    QString name;
+    std::string name;
 
     /*!
      * \brief constructor
@@ -44,9 +45,9 @@ public:  // data
      * \note none
      * \warning none
      */
-    fvaBaseDictionaryItem(int ID, int type, QString name) : ID(ID), type(type), name(name){};
+    fvaBaseDictionaryItem(int ID, int type, std::string name) : ID(ID), type(type), name(name){};
 };
 
-typedef QMap<int, fvaBaseDictionaryItem> BASE_DICT_ITEM_MAP;
+typedef std::map<int, fvaBaseDictionaryItem> BASE_DICT_ITEM_MAP;
 
 #endif  // FVA_BASE_DICTIONARY_ITEM_H
