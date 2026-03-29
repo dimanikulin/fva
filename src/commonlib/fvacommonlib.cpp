@@ -9,6 +9,8 @@
 
 #include <QtCore/QCoreApplication>
 #include <QtCore/QDir>
+#include <QtCore/QFile>
+#include <QtCore/QTextStream>
 #include <QtCore/QProcess>
 #include <sstream>
 
