@@ -8,7 +8,8 @@
 #ifndef FVAPERSON_H
 #define FVAPERSON_H
 
-#include <QtCore/QString>
+#include <map>
+#include <string>
 
 /*!
  * \brief it describes whole information about a person
@@ -23,12 +24,12 @@ public:
     /*!
      * name from dictionary - short form
      */
-    QString name;
+    std::string name;
 
     /*!
      * name from dictionary - full form
      */
-    QString fullName;
+    std::string fullName;
 
     /*!
      * relation people type from a dictionary(fvaRelationTypes.csv)
@@ -41,6 +42,6 @@ public:
     int institution;
 };
 
-typedef QMap<int, fvaPerson> PEOPLE_MAP;
+typedef std::map<int, fvaPerson> PEOPLE_MAP;
 
 #endif  // FVAPERSON_H

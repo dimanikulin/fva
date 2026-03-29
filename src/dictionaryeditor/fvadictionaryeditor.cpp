@@ -52,7 +52,8 @@ FVADictionaryEditor::FVADictionaryEditor(const QString& device, QWidget* parent)
 
     ui.cbOwner->clear();
     ui.cbOwner->addItem(tr("Choose an owner"), 0);
-    for (auto i = peopleMap.begin(); i != peopleMap.end(); ++i) ui.cbOwner->addItem(i->name, i->Id);
+    for (auto i = peopleMap.begin(); i != peopleMap.end(); ++i)
+        ui.cbOwner->addItem(QString::fromStdString(i->second.name), i->second.Id);
 
     LOG_DEB << "device group box building";
     ui.editName->setText(m_device);

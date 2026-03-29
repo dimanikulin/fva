@@ -72,7 +72,7 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("fvaLoadPeopleMapFromCsv")
 
     for (auto it = deviceContext.fullDeviceMap.begin(); it != deviceContext.fullDeviceMap.end(); ++it)
-        it->second.ownerName = peopleMap[it->second.ownerId].name.toStdString();
+        it->second.ownerName = peopleMap[it->second.ownerId].name;
 
     deviceContext.matchedDeviceName.clear();
 

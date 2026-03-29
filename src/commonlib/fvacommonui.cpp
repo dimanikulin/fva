@@ -187,7 +187,7 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
         treeWidgetItem->setFlags(treeWidgetItem->flags() | Qt::ItemIsUserCheckable);
         treeWidgetItem->setCheckState(0, Qt::Unchecked);
         for (auto indexp = peopleMap.begin(); indexp != peopleMap.end(); ++indexp) {
-            int IDp = indexp->Id;
+            int IDp = indexp->second.Id;
             if (IDp == 0) continue;
 
             /*int IDrelp = indexp->relationId;
@@ -196,7 +196,7 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
 
             QTreeWidgetItem* personWidgetItem = new QTreeWidgetItem;
 
-            personWidgetItem->setText(0, indexp->fullName);
+            personWidgetItem->setText(0, QString::fromStdString(indexp->second.fullName));
             if (!devices)
                     personWidgetItem->setData(1, 1, IDp);
 #ifdef _SHOW_ICONS_

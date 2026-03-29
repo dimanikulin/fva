@@ -124,7 +124,8 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
 
-        tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[2]) + TagDelim + itPerson.value().fullName;
+        tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[2]) + TagDelim +
+            QString::fromStdString(itPerson->second.fullName);
     }
 
     if (m_SearchByEvent && fvaFileItem.eventId != 0 && fvaFileItem.eventId != FVA_UNDEFINED_ID) {
@@ -159,7 +160,8 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
                 return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
             }
 
-            tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[4]) + TagDelim + itPerson.value().fullName;
+            tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[4]) + TagDelim +
+                    QString::fromStdString(itPerson->second.fullName);
         }
     }
 
