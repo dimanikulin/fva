@@ -125,7 +125,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
         }
 
         tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[2]) + TagDelim +
-            QString::fromStdString(itPerson->second.fullName);
+                QString::fromStdString(itPerson->second.fullName);
     }
 
     if (m_SearchByEvent && fvaFileItem.eventId != 0 && fvaFileItem.eventId != FVA_UNDEFINED_ID) {
