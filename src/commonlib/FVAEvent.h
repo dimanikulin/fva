@@ -8,8 +8,8 @@
 #ifndef FVAEVENT_H
 #define FVAEVENT_H
 
-#include <QtCore/QMap>
-#include <QtCore/QString>
+#include <map>
+#include <string>
 
 #include "fvaconstants.h"
 
@@ -27,7 +27,7 @@ public:
     /*
      * name
      */
-    QString name;
+    std::string name;
 
     /*
      * relation type from fvaRelationTypes.csv
@@ -40,6 +40,6 @@ public:
     unsigned int institution = 0;
 };
 
-typedef QMap<int, fvaEvent> FVA_EVENT_MAP;
+typedef std::map<int, fvaEvent> FVA_EVENT_MAP;
 
 #endif  // FVAEVENT_H

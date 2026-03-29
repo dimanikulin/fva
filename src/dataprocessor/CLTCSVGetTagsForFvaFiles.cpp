@@ -134,18 +134,19 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
             LOG_CRIT << "event not found in fvaEvents.csv, ID - " << fvaFileItem.eventId;
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
-        auto itRelationTypes = m_fvaRelationTypesMap.find(itEvent.value().type);
+        auto itRelationTypes = m_fvaRelationTypesMap.find(itEvent->second.type);
         if (itRelationTypes == m_fvaRelationTypesMap.end()) {
-            LOG_CRIT << "event type not found in fvaRelationTypes.csv, type - " << itEvent.value().type;
+            LOG_CRIT << "event type not found in fvaRelationTypes.csv, type - " << itEvent->second.type;
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
 
         tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[3]) + TagDelim +
-                QString::fromStdString(itRelationTypes->second) + TagDelim + itEvent.value().name;
-        if (itEvent.value().institution != 0 && itEvent.value().institution != FVA_UNDEFINED_ID) {
-            auto itInstitution = m_fvaInstitutionMap.find(itEvent.value().institution);
+                QString::fromStdString(itRelationTypes->second) + TagDelim +
+                QString::fromStdString(itEvent->second.name);
+        if (itEvent->second.institution != 0 && itEvent->second.institution != FVA_UNDEFINED_ID) {
+            auto itInstitution = m_fvaInstitutionMap.find(itEvent->second.institution);
             if (itInstitution == m_fvaInstitutionMap.end()) {
-                LOG_CRIT << "Institution not found in fvaInstitutions.csv, type - " << itEvent.value().institution;
+                LOG_CRIT << "Institution not found in fvaInstitutions.csv, type - " << itEvent->second.institution;
                 return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
             }
             tags += TagDelim + QString::fromStdString(itInstitution->second);
