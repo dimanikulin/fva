@@ -9,7 +9,8 @@
 #define FVAFOLDER_H
 
 #include <QtCore/QString>
-#include <QtCore/QVector>
+#include <map>
+#include <vector>
 
 /*!
  * \brief it keeps fva specific information about a folder
@@ -27,7 +28,7 @@ public:
     /*!
      * people that are reason of event
      */
-    QVector<unsigned int> eventReasonPeopleIds;
+    std::vector<unsigned int> eventReasonPeopleIds;
 
     /*!
      * folder tags
@@ -40,6 +41,6 @@ public:
     QString linkedFolder;
 };
 
-typedef QMap<int, fvaFolder*> FVA_FOLDER_MAP;
+typedef std::map<int, fvaFolder*> FVA_FOLDER_MAP;
 
 #endif  // FVAFOLDER_H

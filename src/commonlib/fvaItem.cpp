@@ -33,7 +33,7 @@ QString fvaItem::getGuiName(const QVariantMap& dictionaries) {
                 }
             }
 
-            if (pFvaFolder && !pFvaFolder->eventReasonPeopleIds.isEmpty()) {
+            if (pFvaFolder && !pFvaFolder->eventReasonPeopleIds.empty()) {
                 QVariantList vlist = dictionaries["people"].toList();
                 for (auto i = vlist.begin(); i != vlist.end(); ++i) {
                     if ((i->toMap()["ID"].toUInt() == pFvaFolder->eventReasonPeopleIds[0]) &&

@@ -13,7 +13,6 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 #include <QtCore/QVariantMap>
-#include <QtCore/QVector>
 #include <string>
 #include <vector>
 
@@ -72,8 +71,8 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
 /*!
  * \brief it convert identifiers list from string to int vector
  */
-QVector<unsigned int> fvaStringToIds(const QString& strList);
-QVector<unsigned int> fvaStringToIds(const std::string& strList);
+std::vector<unsigned int> fvaStringToIds(const QString& strList);
+std::vector<unsigned int> fvaStringToIds(const std::string& strList);
 
 /*!
  * \brief it removes the dir if there is no content inside

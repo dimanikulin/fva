@@ -167,22 +167,22 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pat
     return result;
 }
 
-QVector<unsigned int> fvaStringToIds(const QString& strList) {
-    QVector<unsigned int> result;
+std::vector<unsigned int> fvaStringToIds(const QString& strList) {
+    std::vector<unsigned int> result;
     QStringList l = strList.split(',');
-    for (auto iter = l.begin(); iter != l.end(); ++iter) result.append(iter->toUInt());
+    for (auto iter = l.begin(); iter != l.end(); ++iter) result.push_back(iter->toUInt());
 
     return result;
 }
 
-QVector<unsigned int> fvaStringToIds(const std::string& strList) {
-    QVector<unsigned int> result;
+std::vector<unsigned int> fvaStringToIds(const std::string& strList) {
+    std::vector<unsigned int> result;
     std::stringstream stream(strList);
     std::string item;
 
     while (std::getline(stream, item, ',')) {
         if (!item.empty()) {
-            result.append(static_cast<unsigned int>(std::stoul(item)));
+            result.push_back(static_cast<unsigned int>(std::stoul(item)));
         }
     }
 

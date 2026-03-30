@@ -153,7 +153,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
         }
     }
 
-    if (m_SearchByEventReasonPeople && !fvaFileItem.eventPeopleIds.isEmpty()) {
+    if (m_SearchByEventReasonPeople && !fvaFileItem.eventPeopleIds.empty()) {
         for (auto it = fvaFileItem.eventPeopleIds.begin(); it != fvaFileItem.eventPeopleIds.begin(); ++it) {
             auto itPerson = m_fvaPeopleMap.find(*it);
             if (itPerson == m_fvaPeopleMap.end()) {

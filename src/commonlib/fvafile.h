@@ -9,9 +9,9 @@
 #ifndef FVAFILE_H
 #define FVAFILE_H
 
-#include <QtCore/QVector>
 #include <map>
 #include <string>
+#include <vector>
 
 #include "fvaconstants.h"
 
@@ -51,7 +51,7 @@ public:
     /*!
      * people list ids
      */
-    QVector<unsigned int> peopleIds;
+    std::vector<unsigned int> peopleIds;
 
     /*!
      * decsription
@@ -71,7 +71,7 @@ public:
     /*!
      * list of people ids that caused this event
      */
-    QVector<unsigned int> eventPeopleIds;
+    std::vector<unsigned int> eventPeopleIds;
 };
 typedef std::map<std::string, fvaFile> FVA_FILE_INFO_MAP;
 typedef std::map<int, fvaFile*> FVA_FILE_MAP;
