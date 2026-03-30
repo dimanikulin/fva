@@ -70,15 +70,15 @@ FVAConfigurator::FVAConfigurator(QWidget* parent) : QDialog(parent) {
 
     bool temp;
     for (CHECKBOXES::iterator it = m_checkboxes.begin(); it != m_checkboxes.end(); ++it) {
-        res = cfg.getParamAsBoolean(it.key().toStdString(), temp);
+        res = cfg.getParamAsBoolean(it->first.toStdString(), temp);
         RET_IF_RES_IS_ERROR
-        it.value()->setChecked(temp);
+        it->second->setChecked(temp);
     }
     std::string temp2;
     for (LINEEDITES::iterator it = m_lineedites.begin(); it != m_lineedites.end(); ++it) {
-        res = cfg.getParamAsString(it.key().toStdString(), temp2);
+        res = cfg.getParamAsString(it->first.toStdString(), temp2);
         RET_IF_RES_IS_ERROR
-        it.value()->setText(QString::fromStdString(temp2));
+        it->second->setText(QString::fromStdString(temp2));
     }
 }
 
@@ -86,10 +86,10 @@ void FVAConfigurator::accept() {
     QDialog::accept();
 
     for (CHECKBOXES::iterator it = m_checkboxes.begin(); it != m_checkboxes.end(); ++it)
-        cfg.setParam(it.key().toStdString(), it.value()->isChecked());
+        cfg.setParam(it->first.toStdString(), it->second->isChecked());
 
     for (LINEEDITES::iterator it = m_lineedites.begin(); it != m_lineedites.end(); ++it)
-        cfg.setParam(it.key().toStdString(), it.value()->text().toStdString());
+        cfg.setParam(it->first.toStdString(), it->second->text().toStdString());
 
     cfg.setParam("Common::Language", static_cast<unsigned int>(cbLanguage->currentIndex()));
     cfg.setParam("Common::LogLevel", static_cast<unsigned int>(cbLogLevel->currentIndex()));
@@ -119,8 +119,8 @@ void FVAConfigurator::InitializeCommonTab(const FvaConfiguration& cfg) {
 #endif  // FVA_LANGUAGE_RUS
 
     QLineEdit* fvaRootDirEdit = new QLineEdit;
-    m_checkboxes.insert("Common::CheckOrientation", CheckOrientationCheckBox);
-    m_lineedites.insert("Common::RootDir", fvaRootDirEdit);
+    m_checkboxes["Common::CheckOrientation"] = CheckOrientationCheckBox;
+    m_lineedites["Common::RootDir"] = fvaRootDirEdit;
 
     uint temp;
     FVA_EXIT_CODE res = cfg.getParamAsUint("Common::Language", temp);
@@ -146,19 +146,19 @@ void FVAConfigurator::InitializeSearchTab(const FvaConfiguration& cfg) {
 #ifdef FVA_LANGUAGE_RUS
 #else
 #ifdef FVA_LANGUAGE_ENG
-    m_checkboxes.insert("Search::DateTime", new QCheckBox(tr("Date and Time")));
-    m_checkboxes.insert("Search::Place", new QCheckBox(tr("Place")));
-    m_checkboxes.insert("Search::People", new QCheckBox(tr("People")));
-    m_checkboxes.insert("Search::Author", new QCheckBox(tr("Author")));
-    m_checkboxes.insert("Search::DescOrComment", new QCheckBox(tr("Description Or Comment")));
-    m_checkboxes.insert("Search::Event", new QCheckBox(tr("Event")));
-    m_checkboxes.insert("Search::EventReasonPeople", new QCheckBox(tr("Reason event people")));
+    m_checkboxes["Search::DateTime"] = new QCheckBox(tr("Date and Time"));
+    m_checkboxes["Search::Place"] = new QCheckBox(tr("Place"));
+    m_checkboxes["Search::People"] = new QCheckBox(tr("People"));
+    m_checkboxes["Search::Author"] = new QCheckBox(tr("Author"));
+    m_checkboxes["Search::DescOrComment"] = new QCheckBox(tr("Description Or Comment"));
+    m_checkboxes["Search::Event"] = new QCheckBox(tr("Event"));
+    m_checkboxes["Search::EventReasonPeople"] = new QCheckBox(tr("Reason event people"));
 #endif  // FVA_LANGUAGE_ENG
 #endif  // FVA_LANGUAGE_RUS
 
     QVBoxLayout* layout = new QVBoxLayout;
     for (CHECKBOXES::iterator it = m_checkboxes.begin(); it != m_checkboxes.end(); ++it) {
-        if (it.key().contains("Search::", Qt::CaseInsensitive)) layout->addWidget(it.value());
+        if (it->first.contains("Search::", Qt::CaseInsensitive)) layout->addWidget(it->second);
     }
     tabSearch->setLayout(layout);
 }
@@ -172,8 +172,8 @@ void FVAConfigurator::InitializeIntegratorTab(const FvaConfiguration& cfg) {
 #endif  // FVA_LANGUAGE_ENG
 #endif  // FVA_LANGUAGE_RUS
 
-    m_checkboxes.insert("Integration::GooglePhoto", GooglePhotoCheckBox);
-    m_checkboxes.insert("Integration::digiKam", digiKamCheckBox);
+    m_checkboxes["Integration::GooglePhoto"] = GooglePhotoCheckBox;
+    m_checkboxes["Integration::digiKam"] = digiKamCheckBox;
 
     QVBoxLayout* layout = new QVBoxLayout;
     layout->addWidget(GooglePhotoCheckBox);
@@ -201,8 +201,8 @@ void FVAConfigurator::InitializeRenameTab(const FvaConfiguration& cfg) {
     RET_IF_RES_IS_ERROR
     minFilesInDirSpin->setValue(temp);
 
-    m_checkboxes.insert("Rename::picsByModifTime", picsByModifTimeCheckBox);
-    m_checkboxes.insert("Rename::videoByModifTime", videoByModifTimeCheckBox);
+    m_checkboxes["Rename::picsByModifTime"] = picsByModifTimeCheckBox;
+    m_checkboxes["Rename::videoByModifTime"] = videoByModifTimeCheckBox;
 
     QVBoxLayout* layout = new QVBoxLayout;
     layout->addWidget(minFilesInDirLbl);
@@ -229,10 +229,10 @@ void FVAConfigurator::InitializeFormatTab(const FvaConfiguration& cfg) {
     QLineEdit* fvaFileNameEdit = new QLineEdit;
     QLineEdit* exifDateTimeEdit = new QLineEdit;
 
-    m_lineedites.insert("Format::fvaDirName", fvaDirNameEdit);
-    m_lineedites.insert("Format::fvaDirNameYear", fvaDirNameYearEdit);
-    m_lineedites.insert("Format::fvaFileName", fvaFileNameEdit);
-    m_lineedites.insert("Format::exifDateTime", exifDateTimeEdit);
+    m_lineedites["Format::fvaDirName"] = fvaDirNameEdit;
+    m_lineedites["Format::fvaDirNameYear"] = fvaDirNameYearEdit;
+    m_lineedites["Format::fvaFileName"] = fvaFileNameEdit;
+    m_lineedites["Format::exifDateTime"] = exifDateTimeEdit;
 
     layout->addWidget(fvaDirNameLbl);
     layout->addWidget(fvaDirNameEdit);
@@ -263,10 +263,10 @@ void FVAConfigurator::InitializeFormat2Tab(const FvaConfiguration& cfg) {
     QLineEdit* riffDateTime1Edit = new QLineEdit;
     QLineEdit* riffDateTime2Edit = new QLineEdit;
 
-    m_lineedites.insert("Format::fileName1", fileName1Edit);
-    m_lineedites.insert("Format::fileName2", fileName2Edit);
-    m_lineedites.insert("Format::riffDateTime1", riffDateTime1Edit);
-    m_lineedites.insert("Format::riffDateTime2", riffDateTime2Edit);
+    m_lineedites["Format::fileName1"] = fileName1Edit;
+    m_lineedites["Format::fileName2"] = fileName2Edit;
+    m_lineedites["Format::riffDateTime1"] = riffDateTime1Edit;
+    m_lineedites["Format::riffDateTime2"] = riffDateTime2Edit;
 
     layout->addWidget(fileName1Lbl);
     layout->addWidget(fileName1Edit);

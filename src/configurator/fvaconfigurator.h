@@ -8,7 +8,7 @@
 #pragma once
 
 #include <QDialog>
-#include <QtCore/QMap>
+#include <map>
 
 #include "fvaconfiguration.h"
 #include "ui_fvaconfigurator.h"
@@ -20,8 +20,8 @@ class QSpinBox;
 class QComboBox;
 class QLineEdit;
 
-typedef QMap<QString, QCheckBox*> CHECKBOXES;
-typedef QMap<QString, QLineEdit*> LINEEDITES;
+typedef std::map<QString, QCheckBox*> CHECKBOXES;
+typedef std::map<QString, QLineEdit*> LINEEDITES;
 
 /*!
  * \brief FVAConfigurator is child of QDialog and implements the next functions:
