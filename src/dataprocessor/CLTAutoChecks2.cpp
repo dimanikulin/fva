@@ -10,7 +10,6 @@
 #include "fvacommonexif.h"
 
 FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
-    QMap<QString, unsigned int> fileCount;
     unsigned int countSupportedFiles = 0;
     Q_FOREACH (QFileInfo info,
                m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
@@ -48,10 +47,10 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
                     return FVA_ERROR_WRONG_FILE_NAME;
             }
 
-            QMap<QString, QString>::iterator it = m_uniqueFileNames.find(info.fileName());
+            auto it = m_uniqueFileNames.find(info.fileName());
             if (m_uniqueFileNames.end() != it) {
                 LOG_WARN << "not uniquie file name found: " << info.fileName()
-                         << ",cur path:" << info.absoluteFilePath() << ",prev path:" << it.value();
+                         << ",cur path:" << info.absoluteFilePath() << ",prev path:" << it->second;
                 m_Issues.push_back("FVA_ERROR_NON_UNIQUE_FILE_NAME," + info.absoluteFilePath() + "," + info.fileName());
             } else
                 m_uniqueFileNames[info.fileName()] = info.absoluteFilePath();
@@ -141,7 +140,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
     }
     return FVA_NO_ERROR;
 }
-QMap<unsigned int, unsigned int> sizes;
+std::map<unsigned int, unsigned int> sizes;
 
 CLTAutoChecks2::CLTAutoChecks2(const FvaConfiguration& cfg) {
     std::string rootSWdir;
@@ -158,7 +157,7 @@ CLTAutoChecks2::CLTAutoChecks2(const FvaConfiguration& cfg) {
 CLTAutoChecks2::~CLTAutoChecks2() {
     LOG_DEB << "cmd deleted, dir:" << m_folder;
     for (auto it = m_fileCount.begin(); it != m_fileCount.end(); ++it) {
-        sizes[it.value()] = ++sizes[it.value()];
+        sizes[it->second] = ++sizes[it->second];
     }
     if (0 == m_Issues.size()) return;  // not to create file for no issues
 

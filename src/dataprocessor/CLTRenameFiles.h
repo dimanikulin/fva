@@ -8,6 +8,8 @@
 #ifndef _CLT_RENAME_FILES_H_
 #define _CLT_RENAME_FILES_H_
 
+#include <map>
+
 #include "CmdLineBaseTask.h"
 
 /*!
@@ -36,7 +38,7 @@ private:
     /*!
      * file pates to file name
      */
-    QMap<QString, QString> m_uniqueFileNames;
+    std::map<QString, QString> m_uniqueFileNames;
 
     /*!
      * \brief shall be renamed video files using the file modification time if they do not have taken time set

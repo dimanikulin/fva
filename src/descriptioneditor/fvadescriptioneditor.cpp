@@ -116,7 +116,7 @@ void FVADescriptionEditor::OnSaveBtnPressed()
         close();
 }
 
-void setCheckedItem(QTreeWidgetItem *item, QVector<unsigned int>& Ids)
+void setCheckedItem(QTreeWidgetItem *item, std::vector<unsigned int>& Ids)
 {
         for (auto it = Ids.begin(); it != Ids.end(); ++it)
         {
@@ -190,13 +190,13 @@ void FVADescriptionEditor::updateGuiForItem( const QString& path )
                 ui.cmbBoxDevice->setCurrentIndex(0);
 
         //////// PLACE/////////////////////
-        QVector<unsigned int> Ids;
+        std::vector<unsigned int> Ids;
         columnId = FVADescriptionFile::getColumnIdByName(m_titles,"Place");
         if ( -1 == columnId )
                 return;
         selID = list[columnId].remove("\t");
         Ids.push_back(selID.toInt());
-        if ( !selID.isEmpty() && !Ids.isEmpty())
+        if ( !selID.isEmpty() && !Ids.empty())
         {
                 for (auto idTop = 0; idTop < ui.treePlaceWidget->topLevelItemCount();++idTop )
                         setCheckedItem(ui.treePlaceWidget->topLevelItem(idTop), Ids);
@@ -213,7 +213,7 @@ void FVADescriptionEditor::updateGuiForItem( const QString& path )
                 if ((*idP).toInt() != 0)
                         Ids.push_back((*idP).toInt());
         }
-        if (!Ids.isEmpty())
+        if (!Ids.empty())
         {
                 for (auto idTop = 0; idTop < ui.treePeopleWidget->topLevelItemCount();++idTop )
                         setCheckedItem(ui.treePeopleWidget->topLevelItem(idTop), Ids);
@@ -243,7 +243,7 @@ void FVADescriptionEditor::updateGuiForItem( const QString& path )
                         if ((*idP).toInt() != 0)
                                 Ids.push_back((*idP).toInt());
                 }
-                if (!Ids.isEmpty())
+                if (!Ids.empty())
                 {
                         for (auto idTop = 0; idTop < ui.treePEventWidget->topLevelItemCount();++idTop )
                                 setCheckedItem(ui.treePEventWidget->topLevelItem(idTop), Ids);
@@ -254,7 +254,7 @@ void FVADescriptionEditor::updateGuiForItem( const QString& path )
 void FVADescriptionEditor::saveCurrentDescription()
 {
         ////////// PEOPLE /////////////////////
-        QList<unsigned int> Ids;
+        std::vector<unsigned int> Ids;
         for (auto idTop = 0; idTop < ui.treePeopleWidget->topLevelItemCount();++idTop )
                 fvaFindCheckedItem(ui.treePeopleWidget->topLevelItem(idTop), Ids);
 
@@ -271,8 +271,8 @@ void FVADescriptionEditor::saveCurrentDescription()
         for (auto idTop = 0; idTop < ui.treePlaceWidget->topLevelItemCount();++idTop )
                 fvaFindCheckedItem(ui.treePlaceWidget->topLevelItem(idTop), Ids);
 
-        if (Ids.count() == 1)
-                place = QString::number(Ids.at(0));
+        if (Ids.size() == 1)
+                place = QString::number(Ids[0]);
 
         if (m_forFolder)
         {
@@ -303,8 +303,8 @@ void FVADescriptionEditor::saveCurrentDescription()
                 Ids.clear();
                 for (auto idTop = 0; idTop < ui.treeEventWidget->topLevelItemCount();++idTop )
                         fvaFindCheckedItem(ui.treeEventWidget->topLevelItem(idTop), Ids);
-                if (Ids.count() == 1)
-                        event = QString::number(Ids.at(0));
+                if (Ids.size() == 1)
+                        event = QString::number(Ids[0]);
 
                 QVariantMap content;
                 content["deviceId"] = device;

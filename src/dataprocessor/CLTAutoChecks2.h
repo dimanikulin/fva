@@ -9,6 +9,7 @@
 #ifndef _CLT_AUTO_CHECKS_2_H_
 #define _CLT_AUTO_CHECKS_2_H
 
+#include <map>
 #include <vector>
 
 #include "CmdLineBaseTask.h"
@@ -44,7 +45,7 @@ private:  // data
     /*!
      * count of files in each subfolder
      */
-    QMap<QString, unsigned int> m_fileCount;
+    std::map<QString, unsigned int> m_fileCount;
 
     /*!
      * issues found, divided by type (in string format)
@@ -54,7 +55,7 @@ private:  // data
     /*!
      * file names to file pathes
      */
-    QMap<QString, QString> m_uniqueFileNames;
+    std::map<QString, QString> m_uniqueFileNames;
 
     /*!
      * path to root fva sw folder

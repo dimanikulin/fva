@@ -106,7 +106,7 @@ void FVAOrganizerEventInfoPage::OnSaveButtonPressed() {
         return;
     }
 
-    QList<unsigned int> eventIds, peopleIds;
+    std::vector<unsigned int> eventIds, peopleIds;
 
     for (auto idTop = 0; idTop < peopleWidget->topLevelItemCount(); ++idTop)
         fvaFindCheckedItem(peopleWidget->topLevelItem(idTop), peopleIds);
@@ -114,19 +114,19 @@ void FVAOrganizerEventInfoPage::OnSaveButtonPressed() {
     for (auto idTop = 0; idTop < eventsWidget->topLevelItemCount(); ++idTop)
         fvaFindCheckedItem(eventsWidget->topLevelItem(idTop), eventIds);
 
-    if (eventIds.length() == 0) {
+    if (eventIds.empty()) {
         FVA_MESSAGE_BOX("no event is selected")
         return;
     }
 
-    if (eventIds.length() > 1) {
+    if (eventIds.size() > 1) {
         FVA_MESSAGE_BOX("too many events are selected")
         return;
     }
 
-    dir2EventMap[selectedInputDirPath.toStdString()] = eventIds.at(0);
+    dir2EventMap[selectedInputDirPath.toStdString()] = eventIds[0];
 
-    dir2PeopleMap[selectedInputDirPath.toStdString()] = std::vector<unsigned int>(peopleIds.begin(), peopleIds.end());
+    dir2PeopleMap[selectedInputDirPath.toStdString()] = peopleIds;
 
     peopleWidget->selectionModel()->clearSelection();
     eventsWidget->selectionModel()->clearSelection();

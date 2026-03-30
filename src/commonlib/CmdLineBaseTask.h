@@ -10,6 +10,7 @@
 
 #include <QtCore/QDebug>
 #include <QtCore/QDir>
+#include <map>
 
 #include "fvacltcontext.h"
 #include "fvacommonlib.h"
@@ -70,6 +71,6 @@ protected:  // data
     QDir m_dir;
 };
 
-extern QMap<unsigned int, unsigned int> sizes;
+extern std::map<unsigned int, unsigned int> sizes;
 
 #endif  //_CMD_LINE_BASE_TASK_H_

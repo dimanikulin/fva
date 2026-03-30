@@ -108,22 +108,22 @@ void FVAOrganizerPlacePage::OnSaveButtonPressed() {
         return;
     }
 
-    QList<unsigned int> placesIds;
+    std::vector<unsigned int> placesIds;
 
     for (auto idTop = 0; idTop < placesWidget->topLevelItemCount(); ++idTop)
         fvaFindCheckedItem(placesWidget->topLevelItem(idTop), placesIds);
 
-    if (placesIds.length() == 0) {
+    if (placesIds.empty()) {
         FVA_MESSAGE_BOX("no place is selected")
         return;
     }
 
-    if (placesIds.length() > 1) {
+    if (placesIds.size() > 1) {
         FVA_MESSAGE_BOX("too many places are selected")
         return;
     }
 
-    dir2PlaceMap[selectedInputDirPath.toStdString()] = placesIds.at(0);
+    dir2PlaceMap[selectedInputDirPath.toStdString()] = placesIds[0];
 
     for (auto idTop = 0; idTop < placesWidget->topLevelItemCount(); ++idTop)
         fvaClearChecks(placesWidget->topLevelItem(idTop));
