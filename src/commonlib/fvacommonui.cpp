@@ -244,14 +244,15 @@ FVA_EXIT_CODE fvaBuildPeopleTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, bo
     return FVA_NO_ERROR;
 }
 
-void fvaFindCheckedItem(QTreeWidgetItem* item, QList<unsigned int>& Ids) {
+void fvaFindCheckedItem(QTreeWidgetItem* item, std::vector<unsigned int>& Ids) {
     if (item->checkState(0) == Qt::CheckState::Checked) {
         int ID = item->data(1, 1).toInt();
-        if (ID) Ids.push_back(ID);
+        if (ID) Ids.push_back(static_cast<unsigned int>(ID));
     }
 
     for (auto id = 0; id < item->childCount(); ++id) fvaFindCheckedItem(item->child(id), Ids);
 }
+
 void fvaClearChecks(QTreeWidgetItem* item) {
     if (!item) return;
     item->setCheckState(0, Qt::Unchecked);

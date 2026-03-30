@@ -71,7 +71,7 @@ FVA_EXIT_CODE fvaBuildPlaceTree(QWidget* pMainWnd, QTreeWidget* pTreeWidget, con
  * \param Ids - arrau to fill by id of checked items
  * \returns it returns nothing
  */
-void fvaFindCheckedItem(QTreeWidgetItem* item, QList<unsigned int>& Ids);
+void fvaFindCheckedItem(QTreeWidgetItem* item, std::vector<unsigned int>& Ids);
 
 /*!
  * \brief it recursivly updates checks

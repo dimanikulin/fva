@@ -9,9 +9,8 @@
 #define FVAFILTER_H
 
 #include <QtCore/QDateTime>
-#include <QtCore/QList>
 #include <QtCore/QString>
-#include <QtCore/QVector>
+#include <vector>
 
 /*!
  * it keeps data to perform filtration
@@ -31,27 +30,27 @@ public:
     /*!
      * places to be filtered
      */
-    QList<unsigned int> placeIds;
+    std::vector<unsigned int> placeIds;
 
     /*!
      * people to be entered
      */
-    QList<unsigned int> peopleIds;
+    std::vector<unsigned int> peopleIds;
 
     /*!
      * list of id of foto devices
      */
-    QList<unsigned int> deviceIds;
+    std::vector<unsigned int> deviceIds;
 
     /*!
      * folder events
      */
-    QList<unsigned int> eventIds;
+    std::vector<unsigned int> eventIds;
 
     /*!
      * people that are reason of event
      */
-    QList<unsigned int> eventReasonPeopleIds;
+    std::vector<unsigned int> eventReasonPeopleIds;
 
     /*!
      * folder tags or file desciption/comment
@@ -61,7 +60,7 @@ public:
     /*
      * does ID match to filtration
      */
-    bool doesIDMatchToFilter(unsigned int ID, const QList<unsigned int>& Ids) const {
+    bool doesIDMatchToFilter(unsigned int ID, const std::vector<unsigned int>& Ids) const {
         for (auto it = Ids.begin(); it != Ids.end(); ++it) {
             if (ID == *it) return true;
         }
@@ -71,7 +70,7 @@ public:
     /*
      * does list of ID matche to filtration
      */
-    bool doIDsMatchToFilter(const QVector<unsigned int>& IDs, const QList<unsigned int>& filterIds) const {
+    bool doIDsMatchToFilter(const std::vector<unsigned int>& IDs, const std::vector<unsigned int>& filterIds) const {
         for (auto it = IDs.begin(); it != IDs.end(); ++it) {
             if (doesIDMatchToFilter(*it, filterIds)) return true;
         }
