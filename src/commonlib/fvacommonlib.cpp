@@ -11,7 +11,6 @@
 #include <QtCore/QDir>
 #include <QtCore/QProcess>
 #include <QtCore/QStringList>
-
 #include <algorithm>
 #include <cctype>
 #include <fstream>
@@ -49,8 +48,7 @@ FVA_FS_TYPE fvaConvertFileExt2FileType(const std::string& extention) {
     )
         return FVA_FS_TYPE_IMG;
 
-    if (upper == "AVI" || upper == "MOV" || upper == "MPG" || upper == "MP4" || upper == "3GP" ||
-        upper == "MKV")
+    if (upper == "AVI" || upper == "MOV" || upper == "MPG" || upper == "MP4" || upper == "3GP" || upper == "MKV")
         return FVA_FS_TYPE_VIDEO;
 
     if (upper == "WAV") return FVA_FS_TYPE_AUDIO;
@@ -224,9 +222,7 @@ bool fvaRemoveDirIfEmpty(const QString& dirPath) {
     return false;
 }
 
-bool fvaRemoveDirIfEmpty(const std::string& dirPath) {
-    return fvaRemoveDirIfEmpty(QString::fromStdString(dirPath));
-}
+bool fvaRemoveDirIfEmpty(const std::string& dirPath) { return fvaRemoveDirIfEmpty(QString::fromStdString(dirPath)); }
 
 FVA_EXIT_CODE fvaRunCLT(const std::string& cmdName, const std::string& inputDir, bool isRecursive, bool isReadOnly,
                         const std::string& custom) {
