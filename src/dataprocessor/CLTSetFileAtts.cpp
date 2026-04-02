@@ -19,7 +19,7 @@ FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/) {
                                    QDir::DirsFirst)) {
         if (info.isDir()) continue;
         QString suffix = info.suffix().toUpper();
-        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
+        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix.toStdString());
         if (FVA_FS_TYPE_UNKNOWN != type) {
 #if (defined(Q_OS_WIN))
             // TODO uncomment when we support windows
@@ -27,7 +27,7 @@ FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/) {
             //       LOG_CRIT << "can not set attr for fva file:" << info.absoluteFilePath();
 #endif
         } else {
-            if (fvaIsInternalFile(info.fileName())) {
+            if (fvaIsInternalFile(info.fileName().toStdString())) {
 #if (defined(Q_OS_WIN))
 // TODO uncomment when we support windows
 // if (!SetFileAttributes(info.absoluteFilePath().toStdString().c_str(),

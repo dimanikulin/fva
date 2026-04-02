@@ -23,9 +23,9 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context) {
     QString dstDirPath = context.outputDir + "/" + dirName.mid(0, 4) /*extract year*/;
 
     // skip internal folder
-    if (!fvaIsInternalDir(dirName) && !fvaIsInternalDir(dstDirPath)) {
+    if (!fvaIsInternalDir(dirName.toStdString()) && !fvaIsInternalDir(dstDirPath.toStdString())) {
         // lets create year folder if it does not exist
-        FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath);
+        FVA_EXIT_CODE res = fvaCreateDirIfNotExists(dstDirPath.toStdString());
         if (FVA_ERROR_CANT_CREATE_DIR == res) {
             LOG_CRIT << "could not create dest folder:" << dstDirPath;
             return FVA_ERROR_CANT_CREATE_DIR;
@@ -39,7 +39,7 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context) {
         }
 
         // lets create year/last leaf folder if it does not exist
-        res = fvaCreateDirIfNotExists(dstDirPath);
+        res = fvaCreateDirIfNotExists(dstDirPath.toStdString());
         if (FVA_ERROR_CANT_CREATE_DIR == res) {
             LOG_CRIT << "could not create dest folder:" << dstDirPath;
             return FVA_ERROR_CANT_CREATE_DIR;
@@ -51,7 +51,7 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context) {
                 LOG_CRIT << "destination dir already exists: " << dstDirPath;
                 // lets try to create with different name
                 dstDirPath += " #1";
-                res = fvaCreateDirIfNotExists(dstDirPath);
+                res = fvaCreateDirIfNotExists(dstDirPath.toStdString());
                 if (FVA_ERROR_CANT_CREATE_DIR == res) {
                     LOG_CRIT << "could not create dest folder:" << dstDirPath;
                     return FVA_ERROR_CANT_CREATE_DIR;
@@ -70,7 +70,7 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context) {
                m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
                                    QDir::DirsFirst)) {
         // skip internal folder
-        if (info.isDir() && fvaIsInternalDir(info.fileName())) {
+        if (info.isDir() && fvaIsInternalDir(info.fileName().toStdString())) {
             LOG_WARN << "skipped internal dir : " << info.fileName();
             continue;  // goto to next dir
         }
@@ -91,7 +91,7 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context) {
             } else if (!info.isDir())
                 LOG_DEB << "moved:" << info.absoluteFilePath() << " into " << dstDirPath + "/" + info.fileName();
 
-            if (info.isDir() && !fvaRemoveDirIfEmpty(info.absoluteFilePath())) {
+            if (info.isDir() && !fvaRemoveDirIfEmpty(info.absoluteFilePath().toStdString())) {
                 LOG_CRIT << "could not remove empty source:" << info.absoluteFilePath();
                 return FVA_ERROR_CANT_MOVE_DIR;
             } else if (info.isDir())

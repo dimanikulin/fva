@@ -87,8 +87,8 @@ void FVAViewer::showItem(QTreeWidgetItem* item) {
                    fvaitem->fsFullPath + ")");
     QFileInfo info(fvaitem->fsFullPath);
     QString suffix = info.suffix().toUpper();
-    if (FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType(suffix) ||
-        FVA_FS_TYPE_AUDIO == fvaConvertFileExt2FileType(suffix)) {
+    if (FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType(suffix.toStdString()) ||
+        FVA_FS_TYPE_AUDIO == fvaConvertFileExt2FileType(suffix.toStdString())) {
         QProcess myProcess(this);
         myProcess.setProcessChannelMode(QProcess::MergedChannels);
         QStringList params;
@@ -96,7 +96,7 @@ void FVAViewer::showItem(QTreeWidgetItem* item) {
         QString path = QCoreApplication::applicationDirPath() + "/FVAPlayer.exe";
         myProcess.start(path, params);
         myProcess.waitForFinished(-1);
-    } else if (FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType(suffix)) {
+    } else if (FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType(suffix.toStdString())) {
         fvaShowImage(fvaitem->fsFullPath, m_ui->imageLbl, fvaitem->getGuiName(m_dictionaries));
     }
 }

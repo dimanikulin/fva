@@ -22,7 +22,7 @@ FVA_EXIT_CODE CLTCheckDateTime::execute(const CLTContext& context) {
         if (info.isDir()) continue;
 
         QString suffix = info.suffix().toUpper();
-        if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix)) continue;
+        if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix.toStdString())) continue;
 
         QDateTime DateTime =
             fvaGetExifDateTimeOriginalFromFile(info.filePath(), QString::fromStdString(m_fmtctx.exifDateTime));

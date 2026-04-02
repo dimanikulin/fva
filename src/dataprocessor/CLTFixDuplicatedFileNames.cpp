@@ -30,7 +30,7 @@ FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute(const CLTContext& context) {
                m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
                                    QDir::DirsFirst)) {
         // skip internal folder
-        if (fvaIsInternalDir(dir) || fvaIsInternalDir(dstDirPath)) {
+        if (fvaIsInternalDir(dir.toStdString()) || fvaIsInternalDir(dstDirPath.toStdString())) {
             LOG_WARN << "skipped #copy for: " << info.absoluteFilePath() << " , dst: " << dstDirPath;
             continue;
         }

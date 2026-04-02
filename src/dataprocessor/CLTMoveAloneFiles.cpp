@@ -18,7 +18,7 @@ FVA_EXIT_CODE CLTMoveAloneFiles::execute(const CLTContext& context) {
                                    QDir::DirsFirst)) {
         if (info.isDir()) continue;
         QString suffix = info.suffix().toUpper();
-        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
+        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix.toStdString());
         if (FVA_FS_TYPE_UNKNOWN != type) countSupportedFiles++;
     }
     // no need to move these files
@@ -43,7 +43,7 @@ FVA_EXIT_CODE CLTMoveAloneFiles::execute(const CLTContext& context) {
         if (info.isDir()) continue;
 
         // skip meta files
-        if (fvaIsInternalFile(info.fileName())) continue;
+        if (fvaIsInternalFile(info.fileName().toStdString())) continue;
 
         LOG_WARN << "to move to:" << folderUp + "/" + info.fileName() << " from " << info.absoluteFilePath();
 
@@ -55,7 +55,7 @@ FVA_EXIT_CODE CLTMoveAloneFiles::execute(const CLTContext& context) {
             }
         }
     }
-    if (FVA_NO_ERROR == fvaRemoveDirIfEmpty(m_folder)) {
+    if (FVA_NO_ERROR == fvaRemoveDirIfEmpty(m_folder.toStdString())) {
         LOG_WARN << "removed empty dir " << m_folder;
     }
 

@@ -65,7 +65,7 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
 
         // if it is picture files
         QString suffix = info.suffix().toUpper();
-        if (FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType(suffix)) {
+        if (FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType(suffix.toStdString())) {
             if (!checkIfParentFileExist(info, renameDateTime, prevRenameDateTime)) {
                 renameDateTime =
                     fvaGetExifDateTimeOriginalFromFile(info.filePath(), QString::fromStdString(m_fmtctx.exifDateTime));
@@ -83,11 +83,11 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
             }
         }
         // if it is video file
-        else if (FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType(suffix)) {
+        else if (FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType(suffix.toStdString())) {
             QString error;
             renameDateTime = fvaGetVideoTakenTime(info.filePath(), error, m_fmtctx);
             if (!renameDateTime.isValid()) {
-                if (FVA_NO_ERROR != fvaParseFileName(info.baseName(), renameDateTime, m_fmtctx)) {
+                if (FVA_NO_ERROR != fvaParseFileName(info.baseName().toStdString(), renameDateTime, m_fmtctx)) {
                     LOG_WARN << "can not get taken time from:" << info.absoluteFilePath() << ",error:" << error;
                     fillRenameDateTimeFromLastModifiedIfValid(m_dir, info, renameDateTime);
                     if (!renameDateTime.isValid() && m_renameVideoByModifTime == true &&
@@ -98,7 +98,7 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
                     }
                 }
             }
-        } else if (FVA_FS_TYPE_AUDIO == fvaConvertFileExt2FileType(suffix)) {
+        } else if (FVA_FS_TYPE_AUDIO == fvaConvertFileExt2FileType(suffix.toStdString())) {
             fillRenameDateTimeFromLastModifiedIfValid(m_dir, info, renameDateTime);
         } else {
             LOG_WARN << "unsupported file type:" << info.absoluteFilePath();

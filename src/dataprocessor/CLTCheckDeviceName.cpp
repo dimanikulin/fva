@@ -18,7 +18,7 @@ FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/) {
         // if it is picture files
         QString suffix = info.suffix().toUpper();
         QString fullname = info.absoluteFilePath();
-        if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix)) continue;
+        if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix.toStdString())) continue;
 
         QString newDeviceName = fvaGetExifMakeAndModelFromFile(info.filePath());
 

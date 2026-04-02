@@ -14,7 +14,7 @@ FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute(const CLTContext& context) 
         if (info.isDir()) continue;
 
         // skip meta files
-        if (fvaIsInternalFile(info.fileName())) continue;
+        if (fvaIsInternalFile(info.fileName().toStdString())) continue;
 
         // create year dir first
         // extract year

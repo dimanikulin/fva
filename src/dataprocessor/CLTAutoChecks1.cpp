@@ -26,7 +26,7 @@ FVA_EXIT_CODE CLTAutoChecks1::execute(const CLTContext& /*context*/) {
         if (info.isDir()) continue;
 
         QString suffix = info.suffix().toUpper();
-        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
+        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix.toStdString());
 
         //	#01.NotVideoFirst
         if (!first) {

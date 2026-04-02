@@ -24,12 +24,12 @@ FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& /*context*/) {
         if (info.isDir()) continue;
 
         QString suffix = info.suffix().toUpper();
-        if (FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType(suffix) && imageFilePrefix.isEmpty()) {
+        if (FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType(suffix.toStdString()) && imageFilePrefix.isEmpty()) {
             if (!info.baseName().contains("_")) continue;
             int index = info.baseName().indexOf("_");
             imageFilePrefix = info.baseName().mid(0, index);
             LOG_DEB << "got new image prefix:" << imageFilePrefix;
-        } else if (FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType(suffix)) {
+        } else if (FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType(suffix.toStdString())) {
             QString error;
             QDateTime renameDateTime = fvaGetVideoTakenTime(info.filePath(), error, m_fmtctx);
             if (renameDateTime.isValid() || info.baseName().at(0) == 'P')  // P is first latter for panasonic cameras
@@ -37,7 +37,7 @@ FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& /*context*/) {
                 continue;
             }
 
-            FVA_EXIT_CODE res = fvaParseFileName(info.baseName(), renameDateTime, m_fmtctx);
+            FVA_EXIT_CODE res = fvaParseFileName(info.baseName().toStdString(), renameDateTime, m_fmtctx);
             if (FVA_NO_ERROR == res) {
                 continue;
             }
@@ -67,7 +67,7 @@ FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& /*context*/) {
                 return FVA_ERROR_CANT_RENAME_FILE;
             } else
                 LOG_DEB << "renamed file:" << info.absoluteFilePath() << " to:" << newFilePath;
-        } else if (FVA_FS_TYPE_UNKNOWN == fvaConvertFileExt2FileType(suffix)) {
+        } else if (FVA_FS_TYPE_UNKNOWN == fvaConvertFileExt2FileType(suffix.toStdString())) {
             LOG_WARN << "unsupported file type:" << info.absoluteFilePath();
             continue;
         }

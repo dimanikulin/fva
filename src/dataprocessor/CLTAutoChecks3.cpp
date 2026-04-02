@@ -52,10 +52,11 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
                 m_Issues.push_back("FVA_ERROR_NON_UNIQUE_FVA_INFO," + info.absoluteFilePath() + "," + info.fileName());
         }
         //////////////////////////////////// 2. check for exsiting device in dictionary by device name in pictire
-        QString deviceName;
-        DEVICE_MAP devMap = fvaGetDeviceMapForImg(m_deviceMap, info.filePath(), deviceName);
+        std::string deviceName;
+        DEVICE_MAP devMap = fvaGetDeviceMapForImg(m_deviceMap, info.filePath().toStdString(), deviceName);
         if (0 == devMap.size()) {
-            LOG_WARN << "unknown device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
+            LOG_WARN << "unknown device found:" << QString::fromStdString(deviceName).trimmed() << " in file :"
+                     << info.absoluteFilePath();
             m_Issues.push_back("FVA_ERROR_UNKNOWN_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) +
                                "," + QString::fromStdString(m_deviceMap[deviceID].guiName) + " " +
                                QString::fromStdString(m_deviceMap[deviceID].ownerName));
@@ -64,8 +65,9 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
             else
                 return FVA_ERROR_UNKNOWN_DEVICE;
         }
-        if (deviceName.isEmpty()) {
-            LOG_WARN << "empty device found:" << deviceName.trimmed() << " in file :" << info.absoluteFilePath();
+        if (deviceName.empty()) {
+            LOG_WARN << "empty device found:" << QString::fromStdString(deviceName).trimmed() << " in file :"
+                     << info.absoluteFilePath();
             m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) +
                                "," + QString::fromStdString(m_deviceMap[deviceID].guiName) + " " +
                                QString::fromStdString(m_deviceMap[deviceID].ownerName));

@@ -25,19 +25,11 @@ std::string fvaToUpper(std::string value) {
 }
 }  // namespace
 
-bool fvaIsInternalFile(const QString& fileName) {
-    return fileName.toUpper() == FVA_BACKGROUND_MUSIC_FILE_NAME.toUpper() || fileName.toUpper() == FVA_DB_NAME;
+bool fvaIsInternalFile(const std::string& fileName) {
+    const QString qFileName = QString::fromStdString(fileName);
+    return qFileName.toUpper() == FVA_BACKGROUND_MUSIC_FILE_NAME.toUpper() || qFileName.toUpper() == FVA_DB_NAME;
 }
-
-bool fvaIsInternalFile(const std::string& fileName) { return fvaIsInternalFile(QString::fromStdString(fileName)); }
-
-bool fvaIsFVAFile(const QString& extention) { return FVA_FS_TYPE_UNKNOWN != fvaConvertFileExt2FileType(extention); }
-
 bool fvaIsFVAFile(const std::string& extention) { return FVA_FS_TYPE_UNKNOWN != fvaConvertFileExt2FileType(extention); }
-
-FVA_FS_TYPE fvaConvertFileExt2FileType(const QString& extention) {
-    return fvaConvertFileExt2FileType(extention.toStdString());
-}
 
 FVA_FS_TYPE fvaConvertFileExt2FileType(const std::string& extention) {
     const std::string upper = fvaToUpper(extention);
@@ -48,7 +40,8 @@ FVA_FS_TYPE fvaConvertFileExt2FileType(const std::string& extention) {
     )
         return FVA_FS_TYPE_IMG;
 
-    if (upper == "AVI" || upper == "MOV" || upper == "MPG" || upper == "MP4" || upper == "3GP" || upper == "MKV")
+    if (upper == "AVI" || upper == "MOV" || upper == "MPG" || upper == "MP4" || upper == "3GP" ||
+        upper == "MKV")
         return FVA_FS_TYPE_VIDEO;
 
     if (upper == "WAV") return FVA_FS_TYPE_AUDIO;
@@ -56,142 +49,139 @@ FVA_FS_TYPE fvaConvertFileExt2FileType(const std::string& extention) {
     return FVA_FS_TYPE_UNKNOWN;
 }
 
-FVA_EXIT_CODE fvaParseDirName(const QString& dirName, QDateTime& from, QDateTime& to, const FvaFmtContext& ctx) {
-    switch (dirName.length()) {
-        case 4: {
-            from = QDateTime::fromString(dirName, QString::fromStdString(ctx.fvaDirNameYear));
-            if (!from.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
-            to = from;
-        } break;
-        case 9: {
-            if (dirName[4] != '-') return FVA_ERROR_WRONG_FOLDER_NAME;
+FVA_EXIT_CODE fvaParseDirName(const std::string& dirName, QDateTime& from, QDateTime& to, const FvaFmtContext& ctx) {
+    const QString qDirName = QString::fromStdString(dirName);
 
-            from = QDateTime::fromString(dirName.mid(0, 4), QString::fromStdString(ctx.fvaDirNameYear));
-            to = QDateTime::fromString(dirName.mid(5, 4), QString::fromStdString(ctx.fvaDirNameYear));
+    switch (qDirName.length()) {
+        case 4:  // one year folder
+        {
+            from = QDateTime::fromString(qDirName, QString::fromStdString(ctx.fvaDirNameYear));
+            if (!from.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
+            to = from /*.addYears(1)*/;
+        } break;
+        case 9:  // year period
+        {
+            if (qDirName[4] != '-') return FVA_ERROR_WRONG_FOLDER_NAME;
+
+            from = QDateTime::fromString(qDirName.mid(0, 4), QString::fromStdString(ctx.fvaDirNameYear));
+            to = QDateTime::fromString(qDirName.mid(5, 4), QString::fromStdString(ctx.fvaDirNameYear));
 
             if (!from.isValid() || !to.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
         } break;
-        case 10: {
-            from = QDateTime::fromString(dirName, QString::fromStdString(ctx.fvaDirName));
+        case 10:  // one-day event
+        {
+            from = QDateTime::fromString(qDirName, QString::fromStdString(ctx.fvaDirName));
             if (!from.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
             to = from.addDays(1);
         } break;
         case 13: {
-            from = QDateTime::fromString(dirName.mid(0, 10), QString::fromStdString(ctx.fvaDirName));
+            from = QDateTime::fromString(qDirName.mid(0, 10), QString::fromStdString(ctx.fvaDirName));
             if (!from.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
-            if (dirName[10] == ' ') {
-                if (dirName[11] != '#') {
+            if (qDirName[10] == ' ')  // one day and several events
+            {
+                if (qDirName[11] != '#')
                     return FVA_ERROR_WRONG_FOLDER_NAME;
+                else {
+                    bool result = false;
+                    int dEventNumber = qDirName.mid(12, 1).toInt(&result);
+                    if (!result || !dEventNumber) return FVA_ERROR_WRONG_FOLDER_NAME;
                 }
-
-                bool result = false;
-                const int eventNumber = dirName.mid(12, 1).toInt(&result);
-                if (!result || !eventNumber) return FVA_ERROR_WRONG_FOLDER_NAME;
                 to = from.addDays(1);
-            } else if (dirName[10] == '-') {
-                const QString endDate = dirName.mid(11, 2);
-                const QString startDate = dirName.mid(8, 2);
-                bool endOk = false;
-                bool startOk = false;
-                const int endDay = endDate.toInt(&endOk);
-                const int startDay = startDate.toInt(&startOk);
-                if (!endOk || !startOk || !endDay || !startDay) return FVA_ERROR_WRONG_FOLDER_NAME;
-                to = from.addDays(endDay - startDay + 1);
-            } else {
+            } else if (qDirName[10] == '-')  // period
+            {
+                QString sEndDate = qDirName.mid(11, 2);
+                QString sStartDate = qDirName.mid(8, 2);
+                bool res, res1 = false;
+                int dEndDate = sEndDate.toInt(&res);
+                int dStartDate = sStartDate.toInt(&res1);
+                if (!res || !res1 || !dEndDate || !dStartDate) return FVA_ERROR_WRONG_FOLDER_NAME;
+                to = from.addDays(dEndDate - dStartDate);
+                to = to.addDays(1);
+            } else
                 return FVA_ERROR_WRONG_FOLDER_NAME;
-            }
         } break;
-        case 16: {
-            from = QDateTime::fromString(dirName.mid(0, 10), QString::fromStdString(ctx.fvaDirName));
+        case 16:  // months-day period
+        {
+            from = QDateTime::fromString(qDirName.mid(0, 10), QString::fromStdString(ctx.fvaDirName));
             if (!from.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
-            if (dirName[10] != '-') return FVA_ERROR_WRONG_FOLDER_NAME;
+            if (qDirName[10] != '-')  // not a period
+                return FVA_ERROR_WRONG_FOLDER_NAME;
 
-            const QString toStr = dirName.mid(0, 4) + "." + dirName.mid(11, 5);
-            to = QDateTime::fromString(toStr, QString::fromStdString(ctx.fvaDirName));
+            QString sTo = qDirName.mid(0, 4) + "." + qDirName.mid(11, 5);
+            to = QDateTime::fromString(sTo, QString::fromStdString(ctx.fvaDirName));
             if (!to.isValid()) return FVA_ERROR_WRONG_FOLDER_NAME;
             to = to.addDays(1);
         } break;
         default:
             return FVA_ERROR_WRONG_FOLDER_NAME;
     }
-
-    return FVA_NO_ERROR;
-}
-
-FVA_EXIT_CODE fvaParseDirName(const std::string& dirName, QDateTime& from, QDateTime& to, const FvaFmtContext& ctx) {
-    return fvaParseDirName(QString::fromStdString(dirName), from, to, ctx);
-}
-
-FVA_EXIT_CODE fvaParseFileName(const QString& fileName, QDateTime& date, const FvaFmtContext& ctx) {
-    if (fileName.contains("IMG_") && fileName.length() == 19) {
-        QString newFileName = fileName;
-        newFileName.remove("IMG_");
-        date = QDateTime::fromString(newFileName, QString::fromStdString(ctx.fileName1));
-        return date.isValid() ? FVA_NO_ERROR : FVA_ERROR_WRONG_FILE_NAME;
-    }
-
-    if (fileName.contains("WP_") && fileName.length() == 24) {
-        QString newFileName = fileName;
-        newFileName.remove("WP_");
-        newFileName.remove("_Pro");
-        date = QDateTime::fromString(newFileName, QString::fromStdString(ctx.fileName2));
-        return date.isValid() ? FVA_NO_ERROR : FVA_ERROR_WRONG_FILE_NAME;
-    }
-
-    if (fileName.contains("_") && fileName.length() == 15) {
-        date = QDateTime::fromString(fileName, QString::fromStdString(ctx.fileName1));
-        return date.isValid() ? FVA_NO_ERROR : FVA_ERROR_WRONG_FILE_NAME;
-    }
-
-    date = QDateTime::fromString(fileName, QString::fromStdString(ctx.fvaFileName));
-    if (!date.isValid()) {
-        const QString newFileName = QString(fileName).replace("##", "01");
-        date = QDateTime::fromString(newFileName, QString::fromStdString(ctx.fvaFileName));
-        if (!date.isValid()) return FVA_ERROR_WRONG_FILE_NAME;
-    }
-
     return FVA_NO_ERROR;
 }
 
 FVA_EXIT_CODE fvaParseFileName(const std::string& fileName, QDateTime& date, const FvaFmtContext& ctx) {
-    return fvaParseFileName(QString::fromStdString(fileName), date, ctx);
-}
+    const QString qFileName = QString::fromStdString(fileName);
 
-DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pathToFile, QString& deviceName) {
-    deviceName = fvaGetExifMakeAndModelFromFile(pathToFile);
-
-    DEVICE_MAP result;
-    if (deviceName.isEmpty()) return result;
-
-    const QString fixedDevName = deviceName.toUpper().trimmed();
-    for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it) {
-        const QString name = QString::fromStdString(it->second.linkedName).toUpper();
-        if (name == fixedDevName) result[it->first] = it->second;
+    if (qFileName.contains("IMG_") && qFileName.length() == 19) {
+        // it is also file name to extract name from "IMG_20150504_142546"
+        QString newFileName = qFileName;
+        newFileName.remove("IMG_");
+        date = QDateTime::fromString(newFileName, QString::fromStdString(ctx.fileName1));
+        if (!date.isValid())
+            return FVA_ERROR_WRONG_FILE_NAME;
+        else
+            return FVA_NO_ERROR;
+    } else if (qFileName.contains("WP_") && qFileName.length() == 24) {
+        // it is also file name to extract name from "WP_20151220_13_49_40_Pro"
+        QString newFileName = qFileName;
+        newFileName.remove("WP_");
+        newFileName.remove("_Pro");
+        date = QDateTime::fromString(newFileName, QString::fromStdString(ctx.fileName2));
+        if (!date.isValid())
+            return FVA_ERROR_WRONG_FILE_NAME;
+        else
+            return FVA_NO_ERROR;
+    } else if (qFileName.contains("_") && qFileName.length() == 15) {
+        // it is also file name to extract name from "20150504_142546"
+        QString newFileName = qFileName;
+        date = QDateTime::fromString(newFileName, QString::fromStdString(ctx.fileName1));
+        if (!date.isValid())
+            return FVA_ERROR_WRONG_FILE_NAME;
+        else
+            return FVA_NO_ERROR;
     }
 
-    deviceName = deviceName.remove("  ");
-    deviceName = deviceName.remove(QChar('\0'));
-    if (!deviceName.isEmpty()) {
-        const QString normalized = deviceName.toUpper().trimmed();
-        for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it) {
-            if (QString::fromStdString(it->second.linkedName) == normalized) result[it->first] = it->second;
+    date = QDateTime::fromString(qFileName, QString::fromStdString(ctx.fvaFileName));
+    if (!date.isValid()) {
+        QString newFileName = QString(qFileName).replace("##", "01");
+        date = QDateTime::fromString(newFileName, QString::fromStdString(ctx.fvaFileName));
+        if (!date.isValid()) {
+            return FVA_ERROR_WRONG_FILE_NAME;
         }
     }
-
-    return result;
+    return FVA_NO_ERROR;
 }
 
 DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const std::string& pathToFile, std::string& deviceName) {
-    QString qtDeviceName;
-    DEVICE_MAP result = fvaGetDeviceMapForImg(deviceMap, QString::fromStdString(pathToFile), qtDeviceName);
+    QString qtDeviceName = fvaGetExifMakeAndModelFromFile(QString::fromStdString(pathToFile));
     deviceName = qtDeviceName.toStdString();
-    return result;
-}
 
-std::vector<unsigned int> fvaStringToIds(const QString& strList) {
-    std::vector<unsigned int> result;
-    const QStringList list = strList.split(',');
-    for (const auto& item : list) result.push_back(item.toUInt());
+    DEVICE_MAP result;
+    if (qtDeviceName.isEmpty()) return DEVICE_MAP();
+    QString fixedDevName = qtDeviceName.toUpper().trimmed();
+    for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it) {
+        QString name = QString::fromStdString(it->second.linkedName).toUpper();
+        if (name == fixedDevName) result[it->first] = it->second;
+    }
+
+    qtDeviceName = qtDeviceName.remove("  ");
+    qtDeviceName = qtDeviceName.remove(QChar('\0'));
+    if (!qtDeviceName.isEmpty()) {
+        for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it) {
+            if (QString::fromStdString(it->second.linkedName) == qtDeviceName.toUpper().trimmed())
+                result[it->first] = it->second;
+        }
+    }
+    deviceName = qtDeviceName.toStdString();
     return result;
 }
 
@@ -209,20 +199,19 @@ std::vector<unsigned int> fvaStringToIds(const std::string& strList) {
     return result;
 }
 
-bool fvaIsInternalDir(const QString& dir) { return dir.contains("#"); }
-
-bool fvaIsInternalDir(const std::string& dir) { return dir.find('#') != std::string::npos; }
-
-bool fvaRemoveDirIfEmpty(const QString& dirPath) {
-    if (QDir(dirPath).entryInfoList(QDir::NoDotAndDotDot | QDir::AllEntries).count() == 0) {
-        QDir dir(dirPath);
-        return dir.rmdir(dirPath);
-    }
-
-    return false;
+bool fvaIsInternalDir(const std::string& dir) {
+    return dir.find('#') != std::string::npos;
 }
+bool fvaRemoveDirIfEmpty(const std::string& dirPath) {
+    const QString qDirPath = QString::fromStdString(dirPath);
+    if (QDir(qDirPath).entryInfoList(QDir::NoDotAndDotDot | QDir::AllEntries).count() == 0) {
+        QDir dir(qDirPath);
 
-bool fvaRemoveDirIfEmpty(const std::string& dirPath) { return fvaRemoveDirIfEmpty(QString::fromStdString(dirPath)); }
+        // empty folder now - no need in it to keep
+        return dir.rmdir(qDirPath);
+    } else
+        return false;
+}
 
 FVA_EXIT_CODE fvaRunCLT(const std::string& cmdName, const std::string& inputDir, bool isRecursive, bool isReadOnly,
                         const std::string& custom) {
@@ -242,24 +231,16 @@ FVA_EXIT_CODE fvaRunCLT(const std::string& cmdName, const std::string& inputDir,
     return static_cast<FVA_EXIT_CODE>(myProcess.exitCode());
 }
 
-FVA_EXIT_CODE fvaCreateDirIfNotExists(const QString& dirPath) {
-    if (!QDir(dirPath).exists()) {
-        QDir dir(dirPath);
-        return dir.mkdir(dirPath) ? FVA_NO_ERROR : FVA_ERROR_CANT_CREATE_DIR;
-    }
-
-    return FVA_ERROR_DEST_DIR_ALREADY_EXISTS;
-}
-
 FVA_EXIT_CODE fvaCreateDirIfNotExists(const std::string& dirPath) {
-    return fvaCreateDirIfNotExists(QString::fromStdString(dirPath));
-}
+    if (!QDir(QString::fromStdString(dirPath)).exists()) {
+        QDir dir(QString::fromStdString(dirPath));
 
-FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, const std::vector<QString>& strList) {
-    std::vector<std::string> converted;
-    converted.reserve(strList.size());
-    for (const auto& item : strList) converted.push_back(item.toStdString());
-    return fvaSaveStrListToFile(path.toStdString(), converted);
+        if (!dir.mkdir(QString::fromStdString(dirPath)))
+            return FVA_ERROR_CANT_CREATE_DIR;
+        else
+            return FVA_NO_ERROR;
+    } else
+        return FVA_ERROR_DEST_DIR_ALREADY_EXISTS;
 }
 
 FVA_EXIT_CODE fvaSaveStrListToFile(const std::string& path, const std::vector<std::string>& strList) {
@@ -271,10 +252,6 @@ FVA_EXIT_CODE fvaSaveStrListToFile(const std::string& path, const std::vector<st
     if (!fileNew.good()) return FVA_ERROR_CANT_OPEN_FILE_DESC;
 
     return FVA_NO_ERROR;
-}
-
-FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, std::vector<std::string>& strList) {
-    return fvaLoadStrListFromFile(path.toStdString(), strList);
 }
 
 FVA_EXIT_CODE fvaLoadStrListFromFile(const std::string& path, std::vector<std::string>& strList) {

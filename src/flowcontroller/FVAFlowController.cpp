@@ -81,14 +81,14 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
     Q_FOREACH (QFileInfo info, _dir.entryInfoList(QDir::System | QDir::Hidden | QDir::Files, QDir::DirsLast)) {
         if (info.isDir()) continue;
         QString suffix = info.suffix().toUpper();
-        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
+        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix.toStdString());
         if (FVA_FS_TYPE_IMG != type) continue;
 
-        QString matchedDeviceName;
+        std::string matchedDeviceName;
         deviceContext.deviceMap =
-            fvaGetDeviceMapForImg(deviceContext.fullDeviceMap, info.filePath(), matchedDeviceName);
-        if (!matchedDeviceName.isEmpty()) {
-            deviceContext.matchedDeviceName = matchedDeviceName.toStdString();
+            fvaGetDeviceMapForImg(deviceContext.fullDeviceMap, info.filePath().toStdString(), matchedDeviceName);
+        if (!matchedDeviceName.empty()) {
+            deviceContext.matchedDeviceName = matchedDeviceName;
             break;
         }
     }

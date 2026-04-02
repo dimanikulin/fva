@@ -17,7 +17,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
         // 1.CHECK FOR PROPER FOLDER NAME (NO COPY FOLDER)
         if (info.isDir()) {
             QDateTime from, to;
-            if (FVA_NO_ERROR != fvaParseDirName(info.fileName(), from, to, m_fmtctx)) {
+            if (FVA_NO_ERROR != fvaParseDirName(info.fileName().toStdString(), from, to, m_fmtctx)) {
                 // skip internal folder
                 if (m_dir.dirName()[0] == '#') continue;
 
