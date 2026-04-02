@@ -21,7 +21,7 @@
 FVA_EXIT_CODE fillUpCB(const std::string& rootSWdir, const std::string& dictName, QComboBox* cb) {
     FVA_SIMPLE_MAP fvaMap;
     FVA_EXIT_CODE exitCode = fvaLoadSimpleMapFromCsvByItemType(rootSWdir, fvaMap, dictName);
-    IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("FVADictionaryEditor." + dictName)
+    IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE((std::string("FVADictionaryEditor.") + dictName).c_str())
 
     cb->clear();
     for (auto i = fvaMap.begin(); i != fvaMap.end(); ++i) cb->addItem(QString::fromStdString(i->second), i->first);
