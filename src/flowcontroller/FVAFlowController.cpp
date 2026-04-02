@@ -445,9 +445,7 @@ FVA_EXIT_CODE FVAFlowController::GetProblemFilesList(STR_LIST& fileListToFillUp)
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("cfg.getParamAsString");
 
-    // TODO to use STL instead of QT
-    return fvaLoadStrListFromFile(QString::fromStdString(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv"),
-                                  fileListToFillUp);
+    return fvaLoadStrListFromFile(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", fileListToFillUp);
 }
 
 FVA_EXIT_CODE FVAFlowController::UpdateInputDirContent(const std::string& inputDir, QObject* obj) {

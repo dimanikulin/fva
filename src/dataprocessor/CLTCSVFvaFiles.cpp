@@ -23,13 +23,13 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context) {
     FVA_EXIT_CODE res = fvaGetIDFromFile(m_rootSWdir + "#data#/fvaFile.id", ID);
     RET_RES_IF_RES_IS_ERROR
 
-    std::vector<QString> records;
+    std::vector<std::string> records;
     Q_FOREACH (QFileInfo info,
                m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
                                    QDir::DirsFirst)) {
         // just skip internal folder
         if ((info.isDir() && info.fileName()[0] == '#' && info.fileName()[info.fileName().size() - 1] == '#') ||
-            info.isFile() && !fvaIsFVAFile(info.suffix().toUpper())) {
+            info.isFile() && !fvaIsFVAFile(info.suffix().toUpper().toStdString())) {
             LOG_DEB << "skipped internal fs object - " << info.absoluteFilePath();
             continue;
         }
@@ -37,7 +37,7 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context) {
         QString csvRecord = QString::number(++ID) + ","   // ID
                             + info.fileName() + ",,,"     // Name
                             + context.custom + ",,,,,,";  // m_custom here is device id
-        records.push_back(csvRecord);
+        records.push_back(csvRecord.toStdString());
     }
     res = fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileN.csv", records);
     if (FVA_NO_ERROR != res) return res;

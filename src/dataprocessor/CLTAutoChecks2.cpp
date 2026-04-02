@@ -33,12 +33,12 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
 
         // 2.CHECK FOR PROPER FILE NAME AND SUPPORTED TYPE
         QString suffix = info.suffix().toUpper();
-        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
+        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix.toStdString());
         if (FVA_FS_TYPE_UNKNOWN != type) {
             countSupportedFiles++;  // it is our file
             QDateTime date;
             QString baseFileName = info.baseName();
-            if (FVA_NO_ERROR != fvaParseFileName(info.baseName(), date, m_fmtctx)) {
+            if (FVA_NO_ERROR != fvaParseFileName(info.baseName().toStdString(), date, m_fmtctx)) {
                 LOG_CRIT << "unsupported file found:" << info.absoluteFilePath();
                 m_Issues.push_back("FVA_ERROR_WRONG_FILE_NAME," + info.absoluteFilePath() + "," + info.fileName());
                 if (context.readOnly)
@@ -86,7 +86,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
             //////////////////////////////////// 6. MATCHING FILE NAME AND FOLDER NAME
             ///////////////////////////////////////////////////////
             QDateTime dateStart, dateEnd;
-            if (FVA_NO_ERROR != fvaParseDirName(m_dir.dirName(), dateStart, dateEnd, m_fmtctx)) {
+            if (FVA_NO_ERROR != fvaParseDirName(m_dir.dirName().toStdString(), dateStart, dateEnd, m_fmtctx)) {
                 // skip internal folder
                 if (m_dir.dirName()[0] == '#') continue;
 
@@ -113,7 +113,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
             }
             countSupportedFiles++;
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        } else if (fvaIsInternalFile(info.fileName())) {
+        } else if (fvaIsInternalFile(info.fileName().toStdString())) {
             // nothing to do here
             m_Issues.push_back("FVA_ERROR_INTERNAL_FILE," + info.absoluteFilePath() + "," + info.fileName());
         } else {
@@ -161,5 +161,9 @@ CLTAutoChecks2::~CLTAutoChecks2() {
     }
     if (0 == m_Issues.size()) return;  // not to create file for no issues
 
-    fvaSaveStrListToFile(m_rootSWdir + "#logs#/issues2.csv", m_Issues);
+    std::vector<std::string> issues;
+    issues.reserve(m_Issues.size());
+    for (const auto& issue : m_Issues) issues.push_back(issue.toStdString());
+
+    fvaSaveStrListToFile((m_rootSWdir + "#logs#/issues2.csv").toStdString(), issues);
 }

@@ -174,7 +174,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context) {
                m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
                                    QDir::DirsFirst)) {
         // just skip internal folder
-        if (info.isDir() || info.isFile() && !fvaIsFVAFile(info.suffix().toUpper())) {
+        if (info.isDir() || info.isFile() && !fvaIsFVAFile(info.suffix().toUpper().toStdString())) {
             LOG_DEB << "skipped dir or internal fs object - " << info.absoluteFilePath();
             continue;
         }
@@ -188,7 +188,11 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context) {
     return FVA_NO_ERROR;
 }
 CLTCSVGetTagsForFvaFiles::~CLTCSVGetTagsForFvaFiles() {
-    fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileTags.csv", m_records);
+    std::vector<std::string> records;
+    records.reserve(m_records.size());
+    for (const auto& record : m_records) records.push_back(record.toStdString());
+
+    fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileTags.csv", records);
 
     LOG_DEB << "cmd deleted, dir:" << m_folder;
 }

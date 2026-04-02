@@ -11,8 +11,6 @@
 
 #include <QtCore/QDateTime>
 #include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QVariantMap>
 #include <string>
 #include <vector>
 
@@ -23,21 +21,25 @@
 /*!
  * \brief it converts file extention to file type if it is possible
  */
+FVA_FS_TYPE fvaConvertFileExt2FileType(const std::string& type);
 FVA_FS_TYPE fvaConvertFileExt2FileType(const QString& type);
 
 /*!
  * \brief it answers if file is internal purpose for
  */
+bool fvaIsInternalFile(const std::string& fileName);
 bool fvaIsInternalFile(const QString& fileName);
 
 /*!
  * \brief it answers if file is supported type of  (by its file extention)
  */
+bool fvaIsFVAFile(const std::string& extention);
 bool fvaIsFVAFile(const QString& extention);
 
 /*!
  * \brief it answers if dir is internal one
  */
+bool fvaIsInternalDir(const std::string& dir);
 bool fvaIsInternalDir(const QString& dir);
 
 /*!
@@ -48,6 +50,7 @@ bool fvaIsInternalDir(const QString& dir);
  * \param ctx - to use formatting options from
  * \returns it returns code of error if any or FVA_NO_ERROR if parsing was successful
  */
+FVA_EXIT_CODE fvaParseDirName(const std::string& dirName, QDateTime& from, QDateTime& to, const FvaFmtContext& ctx);
 FVA_EXIT_CODE fvaParseDirName(const QString& dirName, QDateTime& from, QDateTime& to, const FvaFmtContext& ctx);
 
 /*!
@@ -57,6 +60,7 @@ FVA_EXIT_CODE fvaParseDirName(const QString& dirName, QDateTime& from, QDateTime
  * \param ctx - to use formatting options from
  * \returns it returns code of error if any or FVA_NO_ERROR if parsing was successful
  */
+FVA_EXIT_CODE fvaParseFileName(const std::string& fileName, QDateTime& date, const FvaFmtContext& ctx);
 FVA_EXIT_CODE fvaParseFileName(const QString& fileName, QDateTime& date, const FvaFmtContext& ctx);
 
 /*!
@@ -66,19 +70,21 @@ FVA_EXIT_CODE fvaParseFileName(const QString& fileName, QDateTime& date, const F
  * \param deviceName contains device link name
  * \returns it returns map of devices found or empty map if not
  */
+DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const std::string& pathToFile, std::string& deviceName);
 DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const QString& pathToFile, QString& deviceName);
 
 /*!
  * \brief it convert identifiers list from string to int vector
  */
-std::vector<unsigned int> fvaStringToIds(const QString& strList);
 std::vector<unsigned int> fvaStringToIds(const std::string& strList);
+std::vector<unsigned int> fvaStringToIds(const QString& strList);
 
 /*!
  * \brief it removes the dir if there is no content inside
  * \param dirPath - path to folder to remove
  * \returns it returns true if folder has been deleted, otherwize it return false
  */
+bool fvaRemoveDirIfEmpty(const std::string& dirPath);
 bool fvaRemoveDirIfEmpty(const QString& dirPath);
 
 /*!
@@ -86,6 +92,7 @@ bool fvaRemoveDirIfEmpty(const QString& dirPath);
  * \param dirPath - dir path to create
  * \returns it returns FVA_EXIT_CODE
  */
+FVA_EXIT_CODE fvaCreateDirIfNotExists(const std::string& dirPath);
 FVA_EXIT_CODE fvaCreateDirIfNotExists(const QString& dirPath);
 
 /*!
@@ -94,6 +101,7 @@ FVA_EXIT_CODE fvaCreateDirIfNotExists(const QString& dirPath);
  * \param strList - a list of QString to be written
  * \returns it returns FVA_EXIT_CODE
  */
+FVA_EXIT_CODE fvaSaveStrListToFile(const std::string& path, const std::vector<std::string>& strList);
 FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, const std::vector<QString>& strList);
 
 /*!
@@ -102,6 +110,7 @@ FVA_EXIT_CODE fvaSaveStrListToFile(const QString& path, const std::vector<QStrin
  * \param strList - a list of strings to be filledUp
  * \returns it returns FVA_EXIT_CODE
  */
+FVA_EXIT_CODE fvaLoadStrListFromFile(const std::string& path, std::vector<std::string>& strList);
 FVA_EXIT_CODE fvaLoadStrListFromFile(const QString& path, std::vector<std::string>& strList);
 
 #endif  // FVACOMMONLIB_H

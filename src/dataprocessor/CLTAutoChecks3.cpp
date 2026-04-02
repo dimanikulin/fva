@@ -32,10 +32,10 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
                m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
                                    QDir::DirsFirst)) {
         QString suffix = info.suffix().toUpper();
-        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
+        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix.toStdString());
 
         // remove checked FVA file
-        if (fvaIsFVAFile(suffix)) {
+        if (fvaIsFVAFile(suffix.toStdString())) {
             auto it = m_fvaFileInfoC.find(info.fileName().toUpper().toStdString());
             if (it != m_fvaFileInfoC.end()) m_fvaFileInfoC.erase(it);
         }
@@ -109,5 +109,9 @@ CLTAutoChecks3::~CLTAutoChecks3() {
         m_Issues.push_back("FVA_ERROR_NOT_EXISTING_FVA," + QString::fromStdString(it->first));
     }
 
-    fvaSaveStrListToFile(m_rootSWdir + "#logs#/issues3.csv", m_Issues);
+    std::vector<std::string> issues;
+    issues.reserve(m_Issues.size());
+    for (const auto& issue : m_Issues) issues.push_back(issue.toStdString());
+
+    fvaSaveStrListToFile(m_rootSWdir + "#logs#/issues3.csv", issues);
 }
