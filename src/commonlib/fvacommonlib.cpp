@@ -31,8 +31,7 @@ FVA_FS_TYPE fvaConvertFileExt2FileType(const std::string& extention) {
     )
         return FVA_FS_TYPE_IMG;
 
-    if (upper == "AVI" || upper == "MOV" || upper == "MPG" || upper == "MP4" || upper == "3GP" ||
-        upper == "MKV")
+    if (upper == "AVI" || upper == "MOV" || upper == "MPG" || upper == "MP4" || upper == "3GP" || upper == "MKV")
         return FVA_FS_TYPE_VIDEO;
 
     if (upper == "WAV") return FVA_FS_TYPE_AUDIO;
@@ -190,9 +189,7 @@ std::vector<unsigned int> fvaStringToIds(const std::string& strList) {
     return result;
 }
 
-bool fvaIsInternalDir(const std::string& dir) {
-    return dir.find('#') != std::string::npos;
-}
+bool fvaIsInternalDir(const std::string& dir) { return dir.find('#') != std::string::npos; }
 bool fvaRemoveDirIfEmpty(const std::string& dirPath) {
     const QString qDirPath = QString::fromStdString(dirPath);
     if (QDir(qDirPath).entryInfoList(QDir::NoDotAndDotDot | QDir::AllEntries).count() == 0) {
