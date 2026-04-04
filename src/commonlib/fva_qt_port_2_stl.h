@@ -18,4 +18,11 @@
  */
 std::string fvaStrToUpper(const std::string& str);
 
+/*!
+ * \brief Helper function to quote a command-line argument
+ * \param arg The input argument
+ * \return The quoted version of the input argument
+ */
+std::string quoteArg(const std::string& arg);
+
 #endif  // FVA_QT_PORT_2_STL_H

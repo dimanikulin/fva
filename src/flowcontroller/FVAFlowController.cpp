@@ -15,22 +15,8 @@
 #include "fvacommonui.h"
 #include "fvaconfiguration.h"
 #include "fvalogger.inl"
+#include "fva_qt_port_2_stl.h"
 
-// TODO : to move this function to some common place and use in other places as well
-// TODO make UT for this function
-namespace {
-std::string quoteArg(const std::string& arg) {
-    std::string escaped;
-    escaped.reserve(arg.size() + 2);
-    escaped.push_back('"');
-    for (char c : arg) {
-        if (c == '"') escaped.push_back('\\');
-        escaped.push_back(c);
-    }
-    escaped.push_back('"');
-    return escaped;
-}
-}  // namespace
 
 FVAFlowController::FVAFlowController() {
     FVA_EXIT_CODE exitCode = m_cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());

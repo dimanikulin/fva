@@ -16,3 +16,16 @@ std::string fvaStrToUpper(const std::string& str) {
     std::transform(result.begin(), result.end(), result.begin(), [](unsigned char c) { return std::toupper(c); });
     return result;
 }
+
+// TODO make UT for this function
+std::string quoteArg(const std::string& arg) {
+    std::string escaped;
+    escaped.reserve(arg.size() + 2);
+    escaped.push_back('"');
+    for (char c : arg) {
+        if (c == '"') escaped.push_back('\\');
+        escaped.push_back(c);
+    }
+    escaped.push_back('"');
+    return escaped;
+}
