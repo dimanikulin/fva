@@ -45,6 +45,7 @@ add_library(
   FVADescriptionFile.cpp
   fvafmtcontext.cpp
   fvariffparser.cpp
+  fva_qt_port_stl.cpp
   exif.cpp)
 
 target_include_directories(fvalib INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})

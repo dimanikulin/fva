@@ -13,6 +13,7 @@
 #include <fstream>
 #include <sstream>
 
+#include "fva_qt_port_stl.h"
 #include "fvacommonexif.h"
 
 bool fvaIsInternalFile(const std::string& fileName) {
