@@ -16,6 +16,6 @@
  * \param str The input string
  * \return The uppercase version of the input string
  */
-std::string toUpper(const std::string& str);
+std::string fvaStrToUpper(const std::string& str);
 
 #endif  // FVA_QT_PORT_2_STL_H

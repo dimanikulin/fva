@@ -15,11 +15,15 @@
 
 #include "fvacommonexif.h"
 
-bool fvaIsInternalFile(const std::string& fileName) { return fvaIsInternalFile(QString::fromStdString(fileName)); }
+bool fvaIsInternalFile(const std::string& fileName) {
+    const QString qFileName = QString::fromStdString(fileName);
+    return qFileName.toUpper() == FVA_BACKGROUND_MUSIC_FILE_NAME.toUpper() || qFileName.toUpper() == FVA_DB_NAME;
+}
+
 bool fvaIsFVAFile(const std::string& extention) { return FVA_FS_TYPE_UNKNOWN != fvaConvertFileExt2FileType(extention); }
 
 FVA_FS_TYPE fvaConvertFileExt2FileType(const std::string& extention) {
-    const std::string upper = fvaToUpper(extention);
+    const std::string upper = fvaStrToUpper(extention);
     if (upper == "JPG" || upper == "JPEG"
         //|| extention.toUpper()	== "PNG"
         //|| extention.toUpper()	== "BMP"

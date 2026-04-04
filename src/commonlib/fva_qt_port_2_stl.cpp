@@ -11,7 +11,7 @@
 #include <cctype>
 
 // TODO create UT for this function
-std::string toUpper(const std::string& str)  {
+std::string fvaStrToUpper(const std::string& str)  {
     std::string result = str;
     std::transform(result.begin(), result.end(), result.begin(), [](unsigned char c) { return std::toupper(c); });
     return result;
