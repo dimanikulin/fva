@@ -11,12 +11,11 @@
 #include <QtCore/QDir>
 #include <QtCore/QProcess>
 
+#include "fva_qt_port_2_stl.h"
 #include "fvacommoncsv.h"
 #include "fvacommonui.h"
 #include "fvaconfiguration.h"
 #include "fvalogger.inl"
-#include "fva_qt_port_2_stl.h"
-
 
 FVAFlowController::FVAFlowController() {
     FVA_EXIT_CODE exitCode = m_cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
@@ -60,7 +59,7 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
 
     deviceContext.matchedDeviceName.clear();
 
-    QDir _dir(context.dir);
+    QDir _dir(QString::fromStdString(context.dir));
     Q_FOREACH (QFileInfo info, _dir.entryInfoList(QDir::System | QDir::Hidden | QDir::Files, QDir::DirsLast)) {
         if (info.isDir()) continue;
         QString suffix = info.suffix().toUpper();
@@ -120,7 +119,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const std::string& dir
     CLTContext context;
 
     // set up the directory that user selected in UI
-    context.dir = QString::fromStdString(dir);
+    context.dir = dir;
 
     // perform common checks
     FVA_EXIT_CODE res = performCommonChecks(context);
@@ -236,7 +235,7 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
 
         // run command implemented in python to fixing empty date-time issue
         std::vector<std::string> params;
-        params.push_back(context.dir.toStdString());
+        params.push_back(context.dir);
         exitCode = runPythonCMD("CLTFixEmptyDateTime.py", obj, params);
 
         // show error message box and return to calling function if previous operation failed
@@ -250,7 +249,7 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
 
 FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const std::string& dir, int deviceId) {
     CLTContext context;
-    context.dir = QString::fromStdString(dir);
+    context.dir = dir;
     context.cmdType = "CLTRenameFiles";
     context.readOnly = true;  // in read only mode CLTRenameFiles just checks if renaming is possible
     FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, m_cfg);
@@ -265,7 +264,7 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const std::string& dir, int de
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTRenameFiles")
 
     context.cmdType = "CLTCSVFvaFile";
-    context.custom = QString::number(deviceId);
+    context.custom = std::to_string(deviceId);
     exitCode = m_dataProcessor.run(context, m_cfg);
 
     // show error message box and return to calling function if previous operation failed
@@ -397,8 +396,8 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::Place)")
 
-    CLTContext context;                              // empty so far
-    context.dir = QString::fromStdString(inputDir);
+    CLTContext context;  // empty so far
+    context.dir = inputDir;
 
     if (SearchByPlace) {
         // we will check if location is not empty so
@@ -409,7 +408,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
         exitCode = m_dataProcessor.run(context, m_cfg);
 
         // show error message box and return to calling function if previous operation failed
-        IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
+        IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(QString::fromStdString(context.cmdType))
     }
     return FVA_NO_ERROR;
 }
@@ -426,15 +425,14 @@ FVA_EXIT_CODE FVAFlowController::GetProblemFilesList(STR_LIST& fileListToFillUp)
 
 FVA_EXIT_CODE FVAFlowController::UpdateInputDirContent(const std::string& inputDir, QObject* obj) {
     LOG_DEB << "Enter";
-    const QString inputDir_ = QString::fromStdString(inputDir);
 
     CLTContext context;
-    context.dir = inputDir_;
+    context.dir = inputDir;
     context.cmdType = "CLTCSVGetTagsForFvaFiles";
     FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, m_cfg);
 
     // show error message box and return to calling function if previous operation failed
-    IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
+    IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(QString::fromStdString(context.cmdType))
 
     LOG_DEB << "Exit";
     return FVA_NO_ERROR;
@@ -446,14 +444,14 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
     // get the size of folder list we received
     uint sizeProcessed = outputDirs.size();
 
-    CLTContext context;                              // empty so far
-    context.dir = QString::fromStdString(inputDir);
+    CLTContext context;  // empty so far
+    context.dir = inputDir;
     context.cmdType = "CLTMoveInputDir2Output";
 
     // for each folder in output list
     for (STR_LIST::const_iterator it = outputDirs.begin(); it != outputDirs.end(); ++it) {
         const std::string dirToMoveTo = *it;
-        context.outputDir = QString::fromStdString(dirToMoveTo);
+        context.outputDir = dirToMoveTo;
         LOG_DEB << "Moving into:" << dirToMoveTo;
 
         // check if we got 1 folder only to integrate the multimedia data  into
@@ -489,21 +487,21 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
         exitCode = m_dataProcessor.run(context, m_cfg);
 
         if (FVA_ERROR_DEST_FILE_ALREADY_EXISTS == exitCode) {
-            CLTContext contextDupl;                              // empty so far
-            contextDupl.dir = QString::fromStdString(inputDir);
+            CLTContext contextDupl;  // empty so far
+            contextDupl.dir = inputDir;
             contextDupl.cmdType = "CLTFixDuplicatedFileNames";
 
             // run new cmd
             exitCode = m_dataProcessor.run(contextDupl, m_cfg);
 
             // show error message box and return to calling function if previous operation failed
-            IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(contextDupl.cmdType)
+            IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(QString::fromStdString(contextDupl.cmdType))
 
             // and run move cmd again
             exitCode = m_dataProcessor.run(context, m_cfg);
         }
         // show error message box and return to calling function if previous operation failed
-        IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
+        IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(QString::fromStdString(context.cmdType))
     }
 
     std::string fvaSWRootDir;
@@ -520,7 +518,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
     exitCode = runPythonCMD("CLTMerge2csv.py", obj, params);
 
     // show error message box and return to calling function if previous operation failed
-    IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
+    IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(QString::fromStdString(context.cmdType))
 
     // clean up after processing
     std::remove((fvaSWRootDir + "#data#/fvaFileN.csv").c_str());

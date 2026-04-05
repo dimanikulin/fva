@@ -32,42 +32,43 @@
 std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTContext& context,
                                                                     const FvaConfiguration& cfg) {
     std::unique_ptr<CmdLineBaseTask> r(nullptr);
+    const QString cmdType = QString::fromStdString(context.cmdType);
 
-    if (context.cmdType == CLTCreateDirStructByDeviceName::Name())
+    if (cmdType == CLTCreateDirStructByDeviceName::Name())
         r.reset(new CLTCreateDirStructByDeviceName());
-    else if (context.cmdType == CLTCheckDeviceName::Name())
+    else if (cmdType == CLTCheckDeviceName::Name())
         r.reset(new CLTCheckDeviceName());
-    else if (context.cmdType == CLTRenameVideoBySequence::Name())
+    else if (cmdType == CLTRenameVideoBySequence::Name())
         r.reset(new CLTRenameVideoBySequence(cfg));
-    else if (context.cmdType == CLTAutoChecks1::Name())
+    else if (cmdType == CLTAutoChecks1::Name())
         r.reset(new CLTAutoChecks1(cfg));
-    else if (context.cmdType == CLTCheckFileFormat::Name())
+    else if (cmdType == CLTCheckFileFormat::Name())
         r.reset(new CLTCheckFileFormat());
-    else if (context.cmdType == CLTCheckLocation::Name())
+    else if (cmdType == CLTCheckLocation::Name())
         r.reset(new CLTCheckLocation());
-    else if (context.cmdType == CLTCheckDateTime::Name())
+    else if (cmdType == CLTCheckDateTime::Name())
         r.reset(new CLTCheckDateTime(cfg));
-    else if (context.cmdType == CLTCreateDirStructByFileNames::Name())
+    else if (cmdType == CLTCreateDirStructByFileNames::Name())
         r.reset(new CLTCreateDirStructByFileNames());
-    else if (context.cmdType == CLTRenameFiles::Name())
+    else if (cmdType == CLTRenameFiles::Name())
         r.reset(new CLTRenameFiles(cfg));
-    else if (context.cmdType == CLTAutoChecks2::Name())
+    else if (cmdType == CLTAutoChecks2::Name())
         r.reset(new CLTAutoChecks2(cfg));
-    else if (context.cmdType == CLTMoveAloneFiles::Name())
+    else if (cmdType == CLTMoveAloneFiles::Name())
         r.reset(new CLTMoveAloneFiles(cfg));
-    else if (context.cmdType == CLTSetFileAtts::Name())
+    else if (cmdType == CLTSetFileAtts::Name())
         r.reset(new CLTSetFileAtts());
-    else if (context.cmdType == CLTPrintFSStructure::Name())
+    else if (cmdType == CLTPrintFSStructure::Name())
         r.reset(new CLTPrintFSStructure(cfg));
-    else if (context.cmdType == CLTMoveInputDir2Output::Name())
+    else if (cmdType == CLTMoveInputDir2Output::Name())
         r.reset(new CLTMoveInputDir2Output(cfg));
-    else if (context.cmdType == CLTCSVFvaFile::Name())
+    else if (cmdType == CLTCSVFvaFile::Name())
         r.reset(new CLTCSVFvaFile(cfg));
-    else if (context.cmdType == CLTAutoChecks3::Name())
+    else if (cmdType == CLTAutoChecks3::Name())
         r.reset(new CLTAutoChecks3(cfg));
-    else if (context.cmdType == CLTFixDuplicatedFileNames::Name())
+    else if (cmdType == CLTFixDuplicatedFileNames::Name())
         r.reset(new CLTFixDuplicatedFileNames(cfg));
-    else if (context.cmdType == CLTCSVGetTagsForFvaFiles::Name())
+    else if (cmdType == CLTCSVGetTagsForFvaFiles::Name())
         r.reset(new CLTCSVGetTagsForFvaFiles(cfg));
 
     return r;

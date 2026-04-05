@@ -20,7 +20,7 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context) {
     // get the last dir leaf in input folder
     QString dirName = m_dir.dirName();
 
-    QString dstDirPath = context.outputDir + "/" + dirName.mid(0, 4) /*extract year*/;
+    QString dstDirPath = QString::fromStdString(context.outputDir) + "/" + dirName.mid(0, 4) /*extract year*/;
 
     // skip internal folder
     if (!fvaIsInternalDir(dirName.toStdString()) && !fvaIsInternalDir(dstDirPath.toStdString())) {
@@ -45,7 +45,7 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context) {
             return FVA_ERROR_CANT_CREATE_DIR;
         } else if (FVA_ERROR_DEST_DIR_ALREADY_EXISTS == res) {
             // it is first time run
-            if (context.custom.isEmpty())
+            if (context.custom.empty())
                 return FVA_ERROR_DEST_DIR_ALREADY_EXISTS;
             else if (context.custom == "create") {
                 LOG_CRIT << "destination dir already exists: " << dstDirPath;

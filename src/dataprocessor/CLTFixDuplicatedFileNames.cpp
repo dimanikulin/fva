@@ -20,9 +20,9 @@ FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute(const CLTContext& context) {
     QString dir = m_dir.dirName();
 
     QString dstDirPath;
-    if (!context.custom.isEmpty()) {
+    if (!context.custom.empty()) {
         // it is destintation folder fo us
-        dstDirPath = context.custom;
+        dstDirPath = QString::fromStdString(context.custom);
     } else
         dstDirPath = m_rootSWdir + dir.mid(0, 4) /*extract year*/ + "/" + m_dir.dirName();
 

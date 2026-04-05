@@ -34,9 +34,9 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context) {
             continue;
         }
         // ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,EventId,ReasonPeople,reserved1
-        QString csvRecord = QString::number(++ID) + ","   // ID
-                            + info.fileName() + ",,,"     // Name
-                            + context.custom + ",,,,,,";  // m_custom here is device id
+        QString csvRecord = QString::number(++ID) + ","                           // ID
+                            + info.fileName() + ",,,"                             // Name
+                            + QString::fromStdString(context.custom) + ",,,,,,";  // m_custom here is device id
         records.push_back(csvRecord.toStdString());
     }
     res = fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileN.csv", records);

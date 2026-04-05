@@ -47,8 +47,9 @@ int main(int argc, char *argv[]) {
     }
     switch (a.arguments().size()) {
         case 7: {
-            context.custom = a.arguments()[6];
-            if (context.custom.contains("custom=")) context.custom = context.custom.remove("custom=");
+            context.custom = a.arguments()[6].toStdString();
+            const std::string customPrefix = "custom=";
+            if (context.custom.find(customPrefix) == 0) context.custom.erase(0, customPrefix.size());
         }
 
         case 6: {
@@ -74,10 +75,10 @@ int main(int argc, char *argv[]) {
             context.readOnly = (temp == "yes");
         }
         case 3: {
-            context.dir = a.arguments()[2];
+            context.dir = a.arguments()[2].toStdString();
         }
         case 2: {
-            context.cmdType = a.arguments()[1];
+            context.cmdType = a.arguments()[1].toStdString();
         }
     }
 

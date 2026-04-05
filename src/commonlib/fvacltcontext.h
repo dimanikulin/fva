@@ -9,7 +9,7 @@
 #ifndef CLT_CONTEXT_H_
 #define CLT_CONTEXT_H_
 
-#include <QtCore/QString>
+#include <string>
 
 /*!
  * \brief to keep command line task context (+settings) that is known before task is started
@@ -19,17 +19,17 @@ public:  // data
     /*!
      * \brief human - readable type of command
      */
-    QString cmdType;
+    std::string cmdType;
 
     /*!
      * \brief path to work folder of command to work in
      */
-    QString dir;
+    std::string dir;
 
     /*!
      * \brief path to output folder of command to work in
      */
-    QString outputDir;
+    std::string outputDir;
 
     /*!
      * \brief does command work in read-only mode
@@ -39,7 +39,7 @@ public:  // data
     /*!
      * \brief a parameter to customize a command  - might be string or integer inside
      */
-    QString custom;
+    std::string custom;
 
     /*!
      * \brief is it recursive mode now
@@ -50,7 +50,7 @@ public:  // methods
     /*!
      * \breif - default ctor
      */
-    CLTContext() : cmdType(""), dir(""), readOnly(false), custom(""), recursive(true) {}
+    CLTContext() : cmdType(""), dir(""), outputDir(""), readOnly(false), custom(""), recursive(true) {}
 
     CLTContext& operator=(const CLTContext& other) {
         if (this == &other) {
