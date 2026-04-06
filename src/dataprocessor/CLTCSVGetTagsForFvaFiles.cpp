@@ -102,13 +102,13 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
 
-        auto itPlaceType = m_fvaPlaceTypesMap.find(itPlace.value().type);
+        auto itPlaceType = m_fvaPlaceTypesMap.find(itPlace->second.type);
         if (itPlaceType == m_fvaPlaceTypesMap.end()) {
-            LOG_CRIT << "place type item not found in fvaPlaceTypes.csv, type - " << itPlace.value().type;
+            LOG_CRIT << "place type item not found in fvaPlaceTypes.csv, type - " << itPlace->second.type;
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
         tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[1]) + TagDelim +
-                QString::fromStdString(itPlaceType->second) + TagDelim + itPlace.value().name;
+                QString::fromStdString(itPlaceType->second) + TagDelim + itPlace->second.name;
     }
 
     if (m_SearchByAuthor && fvaFileItem.deviceId != 0 && fvaFileItem.deviceId != FVA_UNDEFINED_ID) {
@@ -154,7 +154,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
     }
 
     if (m_SearchByEventReasonPeople && !fvaFileItem.eventPeopleIds.empty()) {
-        for (auto it = fvaFileItem.eventPeopleIds.begin(); it != fvaFileItem.eventPeopleIds.begin(); ++it) {
+        for (auto it = fvaFileItem.eventPeopleIds.begin(); it != fvaFileItem.eventPeopleIds.end(); ++it) {
             auto itPerson = m_fvaPeopleMap.find(*it);
             if (itPerson == m_fvaPeopleMap.end()) {
                 LOG_CRIT << "person not found in fvaPeople.csv, ID - " << *it;
