@@ -8,6 +8,7 @@
 #ifndef _CMD_CSV_GET_TAGS_FOR_FVA_FILES_H_
 #define _CMD_CSV_GET_TAGS_FOR_FVA_FILES_H_
 
+#include <string>
 #include <vector>
 
 #include "CmdLineBaseTask.h"
@@ -37,7 +38,7 @@ private:
      * \param fileName a name of file to get tags for
      * \return it returns the code result
      */
-    FVA_EXIT_CODE getFvaTagsForFile(const QString& fileName, QString& tags);
+    FVA_EXIT_CODE getFvaTagsForFile(const std::string& fileName, std::string& tags);
 
 private:  // data
     /*!
@@ -73,7 +74,7 @@ private:  // data
     /*!
      * list if records we write in the output file
      */
-    std::vector<QString> m_records;
+    std::vector<std::string> m_records;
 
     /*!
      * map of tag types

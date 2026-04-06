@@ -8,6 +8,7 @@
 #include "CLTCSVGetTagsForFvaFiles.h"
 
 #include "fvacommoncsv.h"
+#include "fva_qt_port_2_stl.h"
 
 CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg) {
     LOG_DEB << "cmd created, dir:" << m_folder;
@@ -80,19 +81,17 @@ CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg) 
         LOG_CRIT << "Failed to fvaLoadSimpleMapFromCsvByItemType fvaInstitutions.csv with erorr - " << res;
     RET_IF_RES_IS_ERROR
 }
-FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileName, QString& tags) {
-    const QString TagTypeDelim = "~";
-    const QString TagDelim = "/";
+FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const std::string& fileName, std::string& tags) {
+    const std::string tagTypeDelim = "~";
+    const std::string tagDelim = "/";
 
     // lets try to find it first
-    fvaFile fvaFileItem;
-    auto itFvaFileItem = m_fvaFileInfo.find(fileName.toUpper().toStdString());
-    if (itFvaFileItem != m_fvaFileInfo.end())
-        fvaFileItem = itFvaFileItem->second;
-    else {
-        LOG_CRIT << "fva item not found in fvaFileN.csv - " << fileName;
+    auto itFvaFileItem = m_fvaFileInfo.find(fvaStrToUpper(fileName));
+    if (itFvaFileItem == m_fvaFileInfo.end()) {
+        LOG_CRIT << "fva item not found in fvaFileN.csv - " << fileName.c_str();
         return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
     }
+    const fvaFile& fvaFileItem = itFvaFileItem->second;
 
     // TODO make constant to tag types IDs
     if (m_SearchByPlace && fvaFileItem.placeId != 0 && fvaFileItem.placeId != FVA_UNDEFINED_ID) {
@@ -107,8 +106,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
             LOG_CRIT << "place type item not found in fvaPlaceTypes.csv, type - " << itPlace->second.type;
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
-        tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[1]) + TagDelim +
-                QString::fromStdString(itPlaceType->second) + TagDelim + itPlace->second.name;
+        tags += tagTypeDelim + m_fvaTagsTypeMap[1] + tagDelim + itPlaceType->second + tagDelim + itPlace->second.name;
     }
 
     if (m_SearchByAuthor && fvaFileItem.deviceId != 0 && fvaFileItem.deviceId != FVA_UNDEFINED_ID) {
@@ -124,8 +122,7 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
 
-        tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[2]) + TagDelim +
-                QString::fromStdString(itPerson->second.fullName);
+        tags += tagTypeDelim + m_fvaTagsTypeMap[2] + tagDelim + itPerson->second.fullName;
     }
 
     if (m_SearchByEvent && fvaFileItem.eventId != 0 && fvaFileItem.eventId != FVA_UNDEFINED_ID) {
@@ -140,29 +137,27 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
 
-        tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[3]) + TagDelim +
-                QString::fromStdString(itRelationTypes->second) + TagDelim +
-                QString::fromStdString(itEvent->second.name);
+        tags += tagTypeDelim + m_fvaTagsTypeMap[3] + tagDelim + itRelationTypes->second + tagDelim +
+                itEvent->second.name;
         if (itEvent->second.institution != 0 && itEvent->second.institution != FVA_UNDEFINED_ID) {
             auto itInstitution = m_fvaInstitutionMap.find(itEvent->second.institution);
             if (itInstitution == m_fvaInstitutionMap.end()) {
                 LOG_CRIT << "Institution not found in fvaInstitutions.csv, type - " << itEvent->second.institution;
                 return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
             }
-            tags += TagDelim + QString::fromStdString(itInstitution->second);
+            tags += tagDelim + itInstitution->second;
         }
     }
 
     if (m_SearchByEventReasonPeople && !fvaFileItem.eventPeopleIds.empty()) {
-        for (auto it = fvaFileItem.eventPeopleIds.begin(); it != fvaFileItem.eventPeopleIds.end(); ++it) {
-            auto itPerson = m_fvaPeopleMap.find(*it);
+        for (const auto personId : fvaFileItem.eventPeopleIds) {
+            auto itPerson = m_fvaPeopleMap.find(personId);
             if (itPerson == m_fvaPeopleMap.end()) {
-                LOG_CRIT << "person not found in fvaPeople.csv, ID - " << *it;
+                LOG_CRIT << "person not found in fvaPeople.csv, ID - " << personId;
                 return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
             }
 
-            tags += TagTypeDelim + QString::fromStdString(m_fvaTagsTypeMap[4]) + TagDelim +
-                    QString::fromStdString(itPerson->second.fullName);
+            tags += tagTypeDelim + m_fvaTagsTypeMap[4] + tagDelim + itPerson->second.fullName;
         }
     }
 
@@ -170,29 +165,27 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const QString& fileNam
 }
 
 FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context) {
-    Q_FOREACH (QFileInfo info,
-               m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
-                                   QDir::DirsFirst)) {
+    for (const auto& info :
+         m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
+                             QDir::DirsFirst)) {
         // just skip internal folder
-        if (info.isDir() || info.isFile() && !fvaIsFVAFile(info.suffix().toUpper().toStdString())) {
+        if (info.isDir() || (info.isFile() && !fvaIsFVAFile(fvaStrToUpper(info.suffix().toStdString())))) {
             LOG_DEB << "skipped dir or internal fs object - " << info.absoluteFilePath();
             continue;
         }
-        QString fvaTags;
-        FVA_EXIT_CODE res = getFvaTagsForFile(info.fileName(), fvaTags);
+
+        std::string fvaTags;
+        FVA_EXIT_CODE res = getFvaTagsForFile(info.fileName().toStdString(), fvaTags);
         if (FVA_NO_ERROR != res) return res;
+
         // full path to tags
-        QString csvRecord = info.absoluteFilePath() + ",\"" + fvaTags + "\"";
+        const std::string csvRecord = info.absoluteFilePath().toStdString() + ",\"" + fvaTags + "\"";
         m_records.push_back(csvRecord);
     }
     return FVA_NO_ERROR;
 }
 CLTCSVGetTagsForFvaFiles::~CLTCSVGetTagsForFvaFiles() {
-    std::vector<std::string> records;
-    records.reserve(m_records.size());
-    for (const auto& record : m_records) records.push_back(record.toStdString());
-
-    fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileTags.csv", records);
+    fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileTags.csv", m_records);
 
     LOG_DEB << "cmd deleted, dir:" << m_folder;
 }
