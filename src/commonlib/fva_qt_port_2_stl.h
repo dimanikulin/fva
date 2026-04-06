@@ -10,8 +10,8 @@
  * \date  2014-2021
  */
 
-#include <string>
 #include <filesystem>
+#include <string>
 
 /*!
  * \brief Helper function to convert string to uppercase
