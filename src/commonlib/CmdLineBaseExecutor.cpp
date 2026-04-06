@@ -6,34 +6,32 @@
  * \date  2014-2021
  */
 #include "CmdLineBaseExecutor.h"
-
-#include <QtCore/QDir>
+#include "fva_qt_port_2_stl.h"
 
 FVA_EXIT_CODE CmdLineBaseExecutor::run(const CLTContext& context, const FvaConfiguration& cfg) {
-    const QString dirPath = QString::fromStdString(context.dir);
-    QDir dir(dirPath);
+    const std::string& dirPath = context.dir;
 
-    if (!dir.exists(dirPath)) {
-        LOG_CRIT << "input folder does not exist";
+    if (!isExistingDirectory(dirPath)) {
+        LOG_CRIT << "input folder does not exist:" << dirPath.c_str();
         return FVA_ERROR_INPUT_DIR_NOT_EXIST_ARG;
     }
 
     std::unique_ptr<CmdLineBaseTask> task(createTaskByName(context, cfg));
-    if (!task.get()) {
-        LOG_CRIT << "uknown command:" << QString::fromStdString(context.cmdType);
+    if (!task) {
+        LOG_CRIT << "uknown command:" << context.cmdType.c_str();
         return FVA_ERROR_UKNOWN_CMD;
     }
-    LOG_DEB << "cmd created,dir:" << dirPath << ",RO=" << (context.readOnly ? "yes" : "no")
+    LOG_DEB << "cmd created,dir:" << dirPath.c_str() << ",RO=" << (context.readOnly ? "yes" : "no")
             << ",REC=" << (context.recursive ? "yes" : "no");
 
     if (context.readOnly && !task->supportReadOnly()) {
-        LOG_CRIT << "command does not support readonly:" << QString::fromStdString(context.cmdType);
+        LOG_CRIT << "command does not support readonly:" << context.cmdType.c_str();
         return FVA_ERROR_NOT_SUPPORTED_RO_MODE;
     }
 
     // if it is recursive command
     if (context.recursive) {
-        LOG_WARN << "RECURSIVE mode for cmd:" << QString::fromStdString(context.cmdType);
+        LOG_WARN << "RECURSIVE mode for cmd:" << context.cmdType.c_str();
         return task->processFolderRecursivly(context.dir, context);
     } else
         return task->execute(context);

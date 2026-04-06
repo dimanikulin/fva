@@ -9,15 +9,15 @@
 
 #include <algorithm>
 #include <cctype>
+#include <sys/stat.h>
 
-// TODO create UT for this function
+// TODO create UTs
 std::string fvaStrToUpper(const std::string& str) {
     std::string result = str;
     std::transform(result.begin(), result.end(), result.begin(), [](unsigned char c) { return std::toupper(c); });
     return result;
 }
 
-// TODO make UT for this function
 std::string quoteArg(const std::string& arg) {
     std::string escaped;
     escaped.reserve(arg.size() + 2);
@@ -28,4 +28,9 @@ std::string quoteArg(const std::string& arg) {
     }
     escaped.push_back('"');
     return escaped;
+}
+
+bool isExistingDirectory(const std::string& dirPath) {
+    struct stat pathInfo = {};
+    return stat(dirPath.c_str(), &pathInfo) == 0 && ((pathInfo.st_mode & S_IFDIR) != 0);
 }

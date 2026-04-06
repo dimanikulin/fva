@@ -1,6 +1,7 @@
 #ifndef FVA_QT_PORT_2_STL_H
 #define FVA_QT_PORT_2_STL_H
 
+// TODO to create name space for this file and move it to commonlib/utils or something like that
 /*!
  * \file fva_qt_port_2_stl.h
  * \copyright Copyright 2021 FVA Software. All rights reserved. This file is released under the XXX License.
@@ -24,5 +25,12 @@ std::string fvaStrToUpper(const std::string& str);
  * \return The quoted version of the input argument
  */
 std::string quoteArg(const std::string& arg);
+
+/*!
+ * \brief Helper function to check if a directory exists
+ * \param dirPath The path to the directory
+ * \return true if the directory exists, false otherwise
+ */
+bool isExistingDirectory(const std::string& dirPath);
 
 #endif  // FVA_QT_PORT_2_STL_H
