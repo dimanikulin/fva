@@ -11,6 +11,7 @@
  */
 
 #include <string>
+#include <filesystem>
 
 /*!
  * \brief Helper function to convert string to uppercase
@@ -32,5 +33,12 @@ std::string quoteArg(const std::string& arg);
  * \return true if the directory exists, false otherwise
  */
 bool isExistingDirectory(const std::string& dirPath);
+
+/*!
+ * \brief Helper function to convert a filesystem path to a native string format
+ * \param path The input filesystem path
+ * \return The native string representation of the input path
+ */
+std::string toNativePathString(const std::filesystem::path& path);
 
 #endif  // FVA_QT_PORT_2_STL_H

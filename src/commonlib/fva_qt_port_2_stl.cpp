@@ -35,3 +35,9 @@ bool isExistingDirectory(const std::string& dirPath) {
     struct stat pathInfo = {};
     return stat(dirPath.c_str(), &pathInfo) == 0 && ((pathInfo.st_mode & S_IFDIR) != 0);
 }
+
+std::string toNativePathString(const std::filesystem::path& path) {
+    auto nativePath = path;
+    nativePath.make_preferred();
+    return nativePath.string();
+}

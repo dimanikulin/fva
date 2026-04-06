@@ -8,9 +8,9 @@
 #ifndef _CMD_LINE_BASE_TASK_H_
 #define _CMD_LINE_BASE_TASK_H_
 
-#include <QtCore/QDebug>
-#include <QtCore/QDir>
+#include <filesystem>
 #include <map>
+#include <string>
 
 #include "fvacltcontext.h"
 #include "fvacommonlib.h"
@@ -63,12 +63,12 @@ protected:  // data
     /*!
      * it keeps folder name to work with
      */
-    QString m_folder;
+    std::string m_folder;
 
     /*!
      * it keeps folder object to work with
      */
-    QDir m_dir;
+    std::filesystem::path m_dir;
 };
 
 extern std::map<unsigned int, unsigned int> sizes;
