@@ -7,9 +7,10 @@
  */
 #include "fva_qt_port_2_stl.h"
 
+#include <sys/stat.h>
+
 #include <algorithm>
 #include <cctype>
-#include <sys/stat.h>
 
 // TODO create UTs
 std::string fvaStrToUpper(const std::string& str) {

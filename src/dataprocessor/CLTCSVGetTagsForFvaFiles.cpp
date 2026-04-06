@@ -7,8 +7,8 @@
  */
 #include "CLTCSVGetTagsForFvaFiles.h"
 
-#include "fvacommoncsv.h"
 #include "fva_qt_port_2_stl.h"
+#include "fvacommoncsv.h"
 
 CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg) {
     LOG_DEB << "cmd created, dir:" << m_folder;
@@ -137,8 +137,8 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const std::string& fil
             return FVA_ERROR_CANT_FIND_FVA_FILE_ITEM;
         }
 
-        tags += tagTypeDelim + m_fvaTagsTypeMap[3] + tagDelim + itRelationTypes->second + tagDelim +
-                itEvent->second.name;
+        tags +=
+            tagTypeDelim + m_fvaTagsTypeMap[3] + tagDelim + itRelationTypes->second + tagDelim + itEvent->second.name;
         if (itEvent->second.institution != 0 && itEvent->second.institution != FVA_UNDEFINED_ID) {
             auto itInstitution = m_fvaInstitutionMap.find(itEvent->second.institution);
             if (itInstitution == m_fvaInstitutionMap.end()) {
@@ -165,9 +165,8 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const std::string& fil
 }
 
 FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context) {
-    for (const auto& info :
-         m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
-                             QDir::DirsFirst)) {
+    for (const auto& info : m_dir.entryInfoList(
+             QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst)) {
         // just skip internal folder
         if (info.isDir() || (info.isFile() && !fvaIsFVAFile(fvaStrToUpper(info.suffix().toStdString())))) {
             LOG_DEB << "skipped dir or internal fs object - " << info.absoluteFilePath();

@@ -6,6 +6,7 @@
  * \date  2014-2021
  */
 #include "CmdLineBaseExecutor.h"
+
 #include "fva_qt_port_2_stl.h"
 
 FVA_EXIT_CODE CmdLineBaseExecutor::run(const CLTContext& context, const FvaConfiguration& cfg) {
