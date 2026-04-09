@@ -41,4 +41,25 @@ bool isExistingDirectory(const std::string& dirPath);
  */
 std::string toNativePathString(const std::filesystem::path& path);
 
+/*!
+ * \brief Helper function to convert string to uppercase
+ * \param str The input string
+ * \return The uppercase version of the input string
+ */
+std::string toUpper(const std::string& str);
+
+/*!
+ * \brief Helper function to trim whitespace from string
+ * \param str The input string
+ * \return The trimmed version of the input string
+ */
+std::string trim(const std::string& str);
+
+/*!
+ * \brief Helper function to remove tabs from string
+ * \param str The input string
+ * \return The string with tabs removed
+ */
+std::string removeTab(const std::string& str);
+
 #endif  // FVA_QT_PORT_2_STL_H

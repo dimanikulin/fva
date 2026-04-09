@@ -17,33 +17,7 @@
 #include "fvadevice.h"
 #include "fvafile.h"
 #include "fvalogger.inl"
-
-// TODO to move these functions to some common place and use in other places as well
-// TODO make UT for these functions
-// Helper function to convert string to uppercase
-std::string toUpper(const std::string& str) {
-    std::string result = str;
-    std::transform(result.begin(), result.end(), result.begin(), [](unsigned char c) { return std::toupper(c); });
-    return result;
-}
-
-// Helper function to trim whitespace from string
-std::string trim(const std::string& str) {
-    auto start = str.begin();
-    while (start != str.end() && std::isspace(*start)) ++start;
-    auto end = str.end();
-    do {
-        --end;
-    } while (std::distance(start, end) > 0 && std::isspace(*end));
-    return std::string(start, end + 1);
-}
-
-// Helper function to remove tabs from string
-std::string removeTab(const std::string& str) {
-    std::string result = str;
-    result.erase(std::remove(result.begin(), result.end(), '\t'), result.end());
-    return result;
-}
+#include "fva_qt_port_2_stl.h"
 
 FVA_EXIT_CODE fvaGetIDFromFile(const std::string& fileName, int& ID) {
     std::ifstream file(fileName);
