@@ -6,6 +6,7 @@
  * \date  2014-2021
  */
 #include "CmdLineBaseTask.h"
+#include "fva_qt_port_2_stl.h"
 
 #include <algorithm>
 #include <vector>
