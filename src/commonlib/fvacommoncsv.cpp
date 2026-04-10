@@ -13,11 +13,11 @@
 #include <sstream>
 
 #include "FVADescriptionFile.h"
+#include "fva_qt_port_2_stl.h"
 #include "fvacommonlib.h"
 #include "fvadevice.h"
 #include "fvafile.h"
 #include "fvalogger.inl"
-#include "fva_qt_port_2_stl.h"
 
 FVA_EXIT_CODE fvaGetIDFromFile(const std::string& fileName, int& ID) {
     std::ifstream file(fileName);

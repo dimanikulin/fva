@@ -6,10 +6,11 @@
  * \date  2014-2021
  */
 #include "CmdLineBaseTask.h"
-#include "fva_qt_port_2_stl.h"
 
 #include <algorithm>
 #include <vector>
+
+#include "fva_qt_port_2_stl.h"
 
 FVA_EXIT_CODE CmdLineBaseTask::processFolderRecursivly(const std::string& folder, const CLTContext& context) {
     namespace fs = std::filesystem;
