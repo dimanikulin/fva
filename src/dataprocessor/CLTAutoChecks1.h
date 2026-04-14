@@ -8,7 +8,7 @@
 #ifndef _CLT_AUTO_CHECKS_1_H_
 #define _CLT_AUTO_CHECKS_1_H
 
-#include <QtCore/QCoreApplication>
+#include <string>
 
 #include "CmdLineBaseTask.h"
 #include "fvafmtcontext.h"
@@ -29,7 +29,7 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTAutoChecks1"; }
+    static std::string Name() { return "CLTAutoChecks1"; }
     virtual bool supportReadOnly() { return true; }
 
 private:

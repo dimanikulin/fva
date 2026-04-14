@@ -40,7 +40,7 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
         r.reset(new CLTCheckDeviceName());
     else if (cmdType == CLTRenameVideoBySequence::Name())
         r.reset(new CLTRenameVideoBySequence(cfg));
-    else if (cmdType == CLTAutoChecks1::Name())
+    else if (cmdType == QString::fromStdString(CLTAutoChecks1::Name()))
         r.reset(new CLTAutoChecks1(cfg));
     else if (cmdType == CLTCheckFileFormat::Name())
         r.reset(new CLTCheckFileFormat());
