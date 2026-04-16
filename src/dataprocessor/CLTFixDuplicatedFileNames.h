@@ -8,6 +8,8 @@
 #ifndef _CLT_FIX_DUPLICATED_FILE_NAMES_H_
 #define _CLT_FIX_DUPLICATED_FILE_NAMES_H_
 
+#include <string>
+
 #include "CmdLineBaseTask.h"
 
 /*!
@@ -23,7 +25,7 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTFixDuplicatedFileNames"; }
+    static std::string Name() { return "CLTFixDuplicatedFileNames"; }
     virtual bool supportReadOnly() { return false; }
 
 private:  // data
@@ -31,7 +33,7 @@ private:  // data
      * path to root fva sw folder
      */
     // TODO use from base class or from context,cfg
-    QString m_rootSWdir;
+    std::string m_rootSWdir;
 };
 
 #endif  // _CLT_FIX_DUPLICATED_FILE_NAMES_H_

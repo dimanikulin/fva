@@ -7,64 +7,95 @@
  */
 #include "CLTFixDuplicatedFileNames.h"
 
+#include <cctype>
+#include <filesystem>
+
 // TODO to work with digiKam dir but not fva dir
 CLTFixDuplicatedFileNames::CLTFixDuplicatedFileNames(const FvaConfiguration& cfg) {
-    std::string rootSWdir;
-    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
+    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", m_rootSWdir);
     RET_IF_RES_IS_ERROR
-    m_rootSWdir = QString::fromStdString(rootSWdir);
 }
 
 FVA_EXIT_CODE CLTFixDuplicatedFileNames::execute(const CLTContext& context) {
-    // get the last dir leaf in input folder
-    QString dir = m_dir.dirName();
+    namespace fs = std::filesystem;
 
-    QString dstDirPath;
+    const std::string dir = m_dir.filename().string();
+
+    fs::path dstDirPath;
     if (!context.custom.empty()) {
         // it is destintation folder fo us
-        dstDirPath = QString::fromStdString(context.custom);
-    } else
-        dstDirPath = m_rootSWdir + dir.mid(0, 4) /*extract year*/ + "/" + m_dir.dirName();
+        dstDirPath = fs::path(context.custom);
+    } else {
+        const std::string year = dir.size() >= 4 ? dir.substr(0, 4) : dir;
+        dstDirPath = fs::path(m_rootSWdir) / year / dir;
+    }
 
-    Q_FOREACH (QFileInfo info,
-               m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
-                                   QDir::DirsFirst)) {
-        // skip internal folder
-        if (fvaIsInternalDir(dir.toStdString()) || fvaIsInternalDir(dstDirPath.toStdString())) {
-            LOG_WARN << "skipped #copy for: " << info.absoluteFilePath() << " , dst: " << dstDirPath;
+    const std::string dstDirPathStr = dstDirPath.string();
+    if (fvaIsInternalDir(dir) || fvaIsInternalDir(dstDirPathStr)) {
+        LOG_WARN << "skipped #copy for: " << m_folder.c_str() << " , dst: " << dstDirPathStr.c_str();
+        return FVA_NO_ERROR;
+    }
+
+    std::error_code ec;
+    for (const auto& entry : fs::directory_iterator(m_dir, fs::directory_options::skip_permission_denied, ec)) {
+        if (ec) {
+            LOG_CRIT << "failed to enumerate dir: " << m_folder.c_str();
+            return FVA_ERROR_INVALID_ARG;
+        }
+
+        std::error_code entryEc;
+        if (entry.is_directory(entryEc) || entryEc) continue;
+
+        const fs::path srcPath = entry.path();
+        const fs::path existingDstPath = dstDirPath / srcPath.filename();
+
+        std::error_code existsEc;
+        if (!fs::exists(existingDstPath, existsEc)) {
+            if (existsEc) {
+                LOG_WARN << "failed to check destination existence: " << existingDstPath.string().c_str();
+            }
             continue;
         }
 
-        if (info.isDir()) continue;
+        std::string croppedFileName = srcPath.stem().string();
+        std::string fileNameExt = srcPath.extension().string();
+        if (!fileNameExt.empty() && fileNameExt.front() == '.') fileNameExt.erase(0, 1);
 
-        // check for already existing
-        if (!m_dir.exists(dstDirPath + "/" + info.fileName())) continue;
-
-        QString cropedFileName = info.fileName().split(".", QString::SkipEmptyParts).at(0);
-        QString fileNameExt = info.fileName().split(".", QString::SkipEmptyParts).at(1);
-
-        int lastDigit = cropedFileName[cropedFileName.length() - 1].digitValue();
-        if (lastDigit == 9)
-            // last digit seconds overflow
-            lastDigit = -1;
-
-        cropedFileName.chop(1);
-        QString newFileName = cropedFileName + QString::number(++lastDigit) + "." + fileNameExt;
-        QString newFullPath = info.absoluteDir().absolutePath() + "/" + newFileName;
-
-        // check for already existing again
-        if (m_dir.exists(newFullPath)) {
-            LOG_CRIT << "destination file already exists again: " << newFullPath;
-            return FVA_ERROR_DEST_FILE_ALREADY_EXISTS;
-        } else {
-            if (!m_dir.rename(info.absoluteFilePath(), newFullPath)) {
-                LOG_CRIT << "could not move:" << info.absoluteFilePath() << " into " << newFullPath;
-                return FVA_ERROR_CANT_RENAME_FILE;
-            } else {
-                LOG_DEB << "renamed:" << info.absoluteFilePath() << " into " << newFullPath;
-                LOG_DEB << "need to fix taken time for:" << newFullPath;
+        int lastDigit = -1;
+        if (!croppedFileName.empty()) {
+            const unsigned char lastChar = static_cast<unsigned char>(croppedFileName.back());
+            if (std::isdigit(lastChar)) lastDigit = croppedFileName.back() - '0';
+            if (lastDigit == 9) {
+                // last digit seconds overflow
+                lastDigit = -1;
             }
+            croppedFileName.pop_back();
         }
+
+        std::string newFileName = croppedFileName + std::to_string(++lastDigit);
+        if (!fileNameExt.empty()) newFileName += "." + fileNameExt;
+
+        const fs::path newFullPath = srcPath.parent_path() / newFileName;
+
+        std::error_code newExistsEc;
+        if (fs::exists(newFullPath, newExistsEc)) {
+            LOG_CRIT << "destination file already exists again: " << newFullPath.string().c_str();
+            return FVA_ERROR_DEST_FILE_ALREADY_EXISTS;
+        }
+        if (newExistsEc) {
+            LOG_CRIT << "could not verify destination file: " << newFullPath.string().c_str();
+            return FVA_ERROR_DEST_FILE_ALREADY_EXISTS;
+        }
+
+        std::error_code renameEc;
+        fs::rename(srcPath, newFullPath, renameEc);
+        if (renameEc) {
+            LOG_CRIT << "could not move:" << srcPath.string().c_str() << " into " << newFullPath.string().c_str();
+            return FVA_ERROR_CANT_RENAME_FILE;
+        }
+
+        LOG_DEB << "renamed:" << srcPath.string().c_str() << " into " << newFullPath.string().c_str();
+        LOG_DEB << "need to fix taken time for:" << newFullPath.string().c_str();
     }
     return FVA_NO_ERROR;
 }

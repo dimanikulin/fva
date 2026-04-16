@@ -66,7 +66,7 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
         r.reset(new CLTCSVFvaFile(cfg));
     else if (cmdType == CLTAutoChecks3::Name())
         r.reset(new CLTAutoChecks3(cfg));
-    else if (cmdType == CLTFixDuplicatedFileNames::Name())
+    else if (cmdType == QString::fromStdString(CLTFixDuplicatedFileNames::Name()))
         r.reset(new CLTFixDuplicatedFileNames(cfg));
     else if (cmdType == CLTCSVGetTagsForFvaFiles::Name())
         r.reset(new CLTCSVGetTagsForFvaFiles(cfg));
