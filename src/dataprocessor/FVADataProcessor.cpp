@@ -54,7 +54,7 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
         r.reset(new CLTRenameFiles(cfg));
     else if (cmdType == CLTAutoChecks2::Name())
         r.reset(new CLTAutoChecks2(cfg));
-    else if (cmdType == CLTMoveAloneFiles::Name())
+    else if (cmdType == QString::fromStdString(CLTMoveAloneFiles::Name()))
         r.reset(new CLTMoveAloneFiles(cfg));
     else if (cmdType == CLTSetFileAtts::Name())
         r.reset(new CLTSetFileAtts());

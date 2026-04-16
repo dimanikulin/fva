@@ -8,6 +8,8 @@
 #ifndef _CLT_MOVE_ALONE_FILES_H_
 #define _CLT_MOVE_ALONE_FILES_H_
 
+#include <string>
+
 #include "CmdLineBaseTask.h"
 
 /*!
@@ -22,13 +24,13 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTMoveAloneFiles"; }
+    static std::string Name() { return "CLTMoveAloneFiles"; }
     virtual bool supportReadOnly() { return true; }
 
 private:
     /*!
      * min count of multimedia files in one folder allowed
      */
-    uint m_minCountSupportedFiles;
+    unsigned int m_minCountSupportedFiles;
 };
 #endif  // _CLT_MOVE_ALONE_FILES_H_

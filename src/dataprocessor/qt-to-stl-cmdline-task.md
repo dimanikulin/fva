@@ -1,0 +1,2 @@
+- `CmdLineBaseTask` migration: use `std::filesystem` for recursive traversal and native path handling; keep Qt conversions only where downstream task implementations still require Qt-boundary types.
+- Task name migration pattern: return std::string from Name() and compare in the task factory via QString::fromStdString(...).
