@@ -44,6 +44,7 @@ private:  // data
     /*!
      * path to root fva sw folder
      */
+    // TODO use from base class or from context,cfg
     std::string m_rootSWdir;
 
     /*!
