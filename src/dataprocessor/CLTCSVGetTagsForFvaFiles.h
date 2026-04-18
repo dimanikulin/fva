@@ -29,7 +29,7 @@ public:
      * \brief returns command name
      * \return command name as a string
      */
-    static QString Name() { return "CLTCSVGetTagsForFvaFiles"; }
+    static std::string Name() { return "CLTCSVGetTagsForFvaFiles"; }
     virtual bool supportReadOnly() { return false; }
 
 private:

@@ -7,6 +7,9 @@
  */
 #include "CLTCSVGetTagsForFvaFiles.h"
 
+#include <algorithm>
+#include <filesystem>
+
 #include "fva_qt_port_2_stl.h"
 #include "fvacommoncsv.h"
 
@@ -165,20 +168,51 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::getFvaTagsForFile(const std::string& fil
 }
 
 FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context) {
-    for (const auto& info : m_dir.entryInfoList(
-             QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst)) {
-        // just skip internal folder
-        if (info.isDir() || (info.isFile() && !fvaIsFVAFile(fvaStrToUpper(info.suffix().toStdString())))) {
-            LOG_DEB << "skipped dir or internal fs object - " << info.absoluteFilePath();
+    namespace fs = std::filesystem;
+
+    (void)context;
+
+    std::error_code ec;
+    std::vector<fs::directory_entry> entries;
+    for (const auto& entry : fs::directory_iterator(m_dir, fs::directory_options::skip_permission_denied, ec)) {
+        if (ec) {
+            LOG_CRIT << "failed to enumerate dir: " << m_folder.c_str();
+            return FVA_ERROR_INVALID_ARG;
+        }
+        entries.push_back(entry);
+    }
+
+    std::sort(entries.begin(), entries.end(), [](const fs::directory_entry& lhs, const fs::directory_entry& rhs) {
+        std::error_code lhsEc;
+        std::error_code rhsEc;
+        const bool lhsIsDir = lhs.is_directory(lhsEc);
+        const bool rhsIsDir = rhs.is_directory(rhsEc);
+
+        if (lhsIsDir != rhsIsDir) return lhsIsDir > rhsIsDir;
+        return lhs.path().filename().string() < rhs.path().filename().string();
+    });
+
+    for (const auto& entry : entries) {
+        std::error_code entryEc;
+        if (entry.is_directory(entryEc) || entryEc) {
+            LOG_DEB << "skipped dir or internal fs object - " << entry.path().string().c_str();
+            continue;
+        }
+
+        std::string suffix = entry.path().extension().string();
+        if (!suffix.empty() && suffix.front() == '.') suffix.erase(0, 1);
+
+        if (!fvaIsFVAFile(fvaStrToUpper(suffix))) {
+            LOG_DEB << "skipped dir or internal fs object - " << entry.path().string().c_str();
             continue;
         }
 
         std::string fvaTags;
-        FVA_EXIT_CODE res = getFvaTagsForFile(info.fileName().toStdString(), fvaTags);
+        FVA_EXIT_CODE res = getFvaTagsForFile(entry.path().filename().string(), fvaTags);
         if (FVA_NO_ERROR != res) return res;
 
-        // full path to tags
-        const std::string csvRecord = info.absoluteFilePath().toStdString() + ",\"" + fvaTags + "\"";
+        const fs::path absolutePath = fs::absolute(entry.path(), entryEc);
+        const std::string csvRecord = toNativePathString(entryEc ? entry.path() : absolutePath) + ",\"" + fvaTags + "\"";
         m_records.push_back(csvRecord);
     }
     return FVA_NO_ERROR;

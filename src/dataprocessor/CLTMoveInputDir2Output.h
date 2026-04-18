@@ -23,7 +23,7 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTMoveInputDir2Output"; }
+    static std::string Name() { return "CLTMoveInputDir2Output"; }
     virtual bool supportReadOnly() { return true; }
 
 private:  // data
@@ -31,6 +31,6 @@ private:  // data
      * path to root fva sw folder
      */
     // TODO use from base class or from context,cfg
-    QString m_rootSWdir;
+    std::string m_rootSWdir;
 };
 #endif  // _CLT_MERGE_1_DAY_EVENT_DIR_H_

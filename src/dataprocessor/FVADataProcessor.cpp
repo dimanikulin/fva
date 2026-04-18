@@ -60,7 +60,7 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
         r.reset(new CLTSetFileAtts());
     else if (cmdType == CLTPrintFSStructure::Name())
         r.reset(new CLTPrintFSStructure(cfg));
-    else if (cmdType == CLTMoveInputDir2Output::Name())
+    else if (cmdType == QString::fromStdString(CLTMoveInputDir2Output::Name()))
         r.reset(new CLTMoveInputDir2Output(cfg));
     else if (cmdType == CLTCSVFvaFile::Name())
         r.reset(new CLTCSVFvaFile(cfg));
@@ -68,7 +68,7 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
         r.reset(new CLTAutoChecks3(cfg));
     else if (cmdType == QString::fromStdString(CLTFixDuplicatedFileNames::Name()))
         r.reset(new CLTFixDuplicatedFileNames(cfg));
-    else if (cmdType == CLTCSVGetTagsForFvaFiles::Name())
+    else if (cmdType == QString::fromStdString(CLTCSVGetTagsForFvaFiles::Name()))
         r.reset(new CLTCSVGetTagsForFvaFiles(cfg));
 
     return r;
