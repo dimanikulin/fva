@@ -79,16 +79,16 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
 
             auto it = m_uniqueFileNames.find(fileName);
             if (m_uniqueFileNames.end() != it) {
-                LOG_WARN << "not uniquie file name found: " << fileName.c_str() << ",cur path:"
-                         << entryPath.string().c_str() << ",prev path:" << it->second.c_str();
+                LOG_WARN << "not uniquie file name found: " << fileName.c_str()
+                         << ",cur path:" << entryPath.string().c_str() << ",prev path:" << it->second.c_str();
                 m_Issues.push_back("FVA_ERROR_NON_UNIQUE_FILE_NAME," + entryPath.string() + "," + fileName);
             } else {
                 m_uniqueFileNames[fileName] = entryPath.string();
             }
 
             if (FVA_FS_TYPE_IMG == type) {
-                QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(
-                    QString::fromStdString(entryPath.string()), QString::fromStdString(m_fmtctx.exifDateTime));
+                QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(QString::fromStdString(entryPath.string()),
+                                                                        QString::fromStdString(m_fmtctx.exifDateTime));
 
                 if (!dateTime.isValid()) {
                     LOG_WARN << "empty image taken time found in:" << entryPath.string().c_str();
@@ -100,8 +100,8 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
             }
 
             if (FVA_FS_TYPE_VIDEO == type) {
-                QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(
-                    QString::fromStdString(entryPath.string()), QString::fromStdString(m_fmtctx.exifDateTime));
+                QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(QString::fromStdString(entryPath.string()),
+                                                                        QString::fromStdString(m_fmtctx.exifDateTime));
                 if (!dateTime.isValid()) {
                     LOG_WARN << "empty video taken time found in:" << entryPath.string().c_str();
                     // m_Issues.push_back("FVA_ERROR_EMPTY_VIDEO_TIME," + entryPath.string() + "," + fileName);

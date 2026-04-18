@@ -37,8 +37,7 @@ FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/) {
             return FVA_ERROR_NOT_SUPPORTED_FILE;
         }
 
-        fs::permissions(entry.path(),
-                        fs::perms::owner_write | fs::perms::group_write | fs::perms::others_write,
+        fs::permissions(entry.path(), fs::perms::owner_write | fs::perms::group_write | fs::perms::others_write,
                         fs::perm_options::remove, entryEc);
         if (entryEc) {
             LOG_CRIT << "can not set read-only attr for file:" << entry.path().string().c_str();
