@@ -212,7 +212,8 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context) {
         if (FVA_NO_ERROR != res) return res;
 
         const fs::path absolutePath = fs::absolute(entry.path(), entryEc);
-        const std::string csvRecord = toNativePathString(entryEc ? entry.path() : absolutePath) + ",\"" + fvaTags + "\"";
+        const std::string csvRecord =
+            toNativePathString(entryEc ? entry.path() : absolutePath) + ",\"" + fvaTags + "\"";
         m_records.push_back(csvRecord);
     }
     return FVA_NO_ERROR;

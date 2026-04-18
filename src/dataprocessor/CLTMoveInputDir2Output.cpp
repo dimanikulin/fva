@@ -61,7 +61,8 @@ FVA_EXIT_CODE CLTMoveInputDir2Output::execute(const CLTContext& context) {
                     LOG_CRIT << "could not create dest folder:" << toNativePathString(dstDirPath).c_str();
                     return FVA_ERROR_CANT_CREATE_DIR;
                 } else if (FVA_ERROR_DEST_DIR_ALREADY_EXISTS == res) {
-                    LOG_CRIT << "not immplemented to create dest folder with #2:" << toNativePathString(dstDirPath).c_str();
+                    LOG_CRIT << "not immplemented to create dest folder with #2:"
+                             << toNativePathString(dstDirPath).c_str();
                     return FVA_ERROR_NOT_IMPLEMENTED;
                 } else if (FVA_NO_ERROR == res)
                     LOG_DEB << "created dest folder:" << toNativePathString(dstDirPath).c_str();
