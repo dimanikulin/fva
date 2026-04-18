@@ -8,6 +8,8 @@
 #ifndef _CLT_SET_FILE_ATTRS_H_
 #define _CLT_SET_FILE_ATTRS_H_
 
+#include <string>
+
 #include "CmdLineBaseTask.h"
 
 /*!
@@ -21,7 +23,7 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTSetFileAtts"; }
+    static std::string Name() { return "CLTSetFileAtts"; }
     virtual bool supportReadOnly() { return false; }
 };
 #endif  // _CLT_SET_FILE_ATTRS_H_

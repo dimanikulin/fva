@@ -7,37 +7,42 @@
  */
 #include "CLTSetFileAtts.h"
 
-#if (defined(Q_OS_WIN))
-// TODO uncomment when we support windows
-// #include <synchapi.h>
-// #include <winbase.h>
-#endif
+#include <algorithm>
+#include <cctype>
+#include <filesystem>
+#include <string>
 
 FVA_EXIT_CODE CLTSetFileAtts::execute(const CLTContext& /*context*/) {
-    Q_FOREACH (QFileInfo info,
-               m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
-                                   QDir::DirsFirst)) {
-        if (info.isDir()) continue;
-        QString suffix = info.suffix().toUpper();
-        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix.toStdString());
-        if (FVA_FS_TYPE_UNKNOWN != type) {
-#if (defined(Q_OS_WIN))
-            // TODO uncomment when we support windows
-            // if (!SetFileAttributes(info.absoluteFilePath().toStdString().c_str(), FILE_ATTRIBUTE_READONLY))
-            //       LOG_CRIT << "can not set attr for fva file:" << info.absoluteFilePath();
-#endif
-        } else {
-            if (fvaIsInternalFile(info.fileName().toStdString())) {
-#if (defined(Q_OS_WIN))
-// TODO uncomment when we support windows
-// if (!SetFileAttributes(info.absoluteFilePath().toStdString().c_str(),
-//                       /*FILE_ATTRIBUTE_HIDDEN |*/ FILE_ATTRIBUTE_READONLY))
-//     LOG_CRIT << "can not set attr for internal file:" << info.absoluteFilePath();
-#endif
-            } else {
-                LOG_CRIT << "found not supported file:" << info.absoluteFilePath();
-                return FVA_ERROR_NOT_SUPPORTED_FILE;
-            }
+    namespace fs = std::filesystem;
+
+    std::error_code ec;
+    for (const auto& entry : fs::directory_iterator(m_dir, fs::directory_options::skip_permission_denied, ec)) {
+        if (ec) {
+            LOG_CRIT << "failed to enumerate dir: " << m_folder.c_str();
+            return FVA_ERROR_INVALID_ARG;
+        }
+
+        std::error_code entryEc;
+        if (entry.is_directory(entryEc) || entryEc) continue;
+
+        std::string suffix = entry.path().extension().string();
+        if (!suffix.empty() && suffix.front() == '.') suffix.erase(0, 1);
+        std::transform(suffix.begin(), suffix.end(), suffix.begin(),
+                       [](unsigned char ch) { return static_cast<char>(std::toupper(ch)); });
+
+        const std::string fileName = entry.path().filename().string();
+        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
+        if (FVA_FS_TYPE_UNKNOWN == type && !fvaIsInternalFile(fileName)) {
+            LOG_CRIT << "found not supported file:" << entry.path().string().c_str();
+            return FVA_ERROR_NOT_SUPPORTED_FILE;
+        }
+
+        fs::permissions(entry.path(),
+                        fs::perms::owner_write | fs::perms::group_write | fs::perms::others_write,
+                        fs::perm_options::remove, entryEc);
+        if (entryEc) {
+            LOG_CRIT << "can not set read-only attr for file:" << entry.path().string().c_str();
+            return FVA_ERROR_CANT_SET_PARAM;
         }
     }
 

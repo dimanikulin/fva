@@ -52,11 +52,11 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
         r.reset(new CLTCreateDirStructByFileNames());
     else if (cmdType == CLTRenameFiles::Name())
         r.reset(new CLTRenameFiles(cfg));
-    else if (cmdType == CLTAutoChecks2::Name())
+    else if (cmdType == QString::fromStdString(CLTAutoChecks2::Name()))
         r.reset(new CLTAutoChecks2(cfg));
     else if (cmdType == QString::fromStdString(CLTMoveAloneFiles::Name()))
         r.reset(new CLTMoveAloneFiles(cfg));
-    else if (cmdType == CLTSetFileAtts::Name())
+    else if (cmdType == QString::fromStdString(CLTSetFileAtts::Name()))
         r.reset(new CLTSetFileAtts());
     else if (cmdType == CLTPrintFSStructure::Name())
         r.reset(new CLTPrintFSStructure(cfg));

@@ -10,6 +10,7 @@
 #define _CLT_AUTO_CHECKS_2_H
 
 #include <map>
+#include <string>
 #include <vector>
 
 #include "CmdLineBaseTask.h"
@@ -34,39 +35,39 @@ public:
     CLTAutoChecks2(const FvaConfiguration& cfg);
     virtual ~CLTAutoChecks2();
     virtual FVA_EXIT_CODE execute(const CLTContext& context);
-    /*!
+/*!
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTAutoChecks2"; }
+    static std::string Name() { return "CLTAutoChecks2"; }
     virtual bool supportReadOnly() { return true; }
 
 private:  // data
     /*!
      * count of files in each subfolder
      */
-    std::map<QString, unsigned int> m_fileCount;
+    std::map<std::string, unsigned int> m_fileCount;
 
     /*!
      * issues found, divided by type (in string format)
      */
-    std::vector<QString> m_Issues;
+    std::vector<std::string> m_Issues;
 
     /*!
      * file names to file pathes
      */
-    std::map<QString, QString> m_uniqueFileNames;
+    std::map<std::string, std::string> m_uniqueFileNames;
 
     /*!
      * path to root fva sw folder
      */
     // TODO use from base class or from context,cfg
-    QString m_rootSWdir;
+    std::string m_rootSWdir;
 
     /*!
      * min count of multimedia files in one folder allowed
      */
-    uint m_minCountSupportedFiles;
+    unsigned int m_minCountSupportedFiles;
 
     /*!
      * \brief formatting context to use formatting options from
