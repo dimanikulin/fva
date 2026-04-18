@@ -59,7 +59,7 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTCreateDirStructByFileNames"; }
+    static std::string Name() { return "CLTCreateDirStructByFileNames"; }
     virtual bool supportReadOnly() { return true; }
 };
 

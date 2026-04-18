@@ -7,42 +7,61 @@
  */
 #include "CLTCreateDirStructByFileNames.h"
 
+#include <filesystem>
+#include <string>
+#include <vector>
+
+#include "fva_qt_port_2_stl.h"
+
 FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute(const CLTContext& context) {
-    Q_FOREACH (QFileInfo info,
-               m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
-                                   QDir::DirsFirst)) {
-        if (info.isDir()) continue;
+    namespace fs = std::filesystem;
+
+    std::error_code ec;
+    std::vector<fs::directory_entry> entries;
+    for (const auto& entry : fs::directory_iterator(m_dir, fs::directory_options::skip_permission_denied, ec)) {
+        if (ec) {
+            LOG_CRIT << "failed to enumerate dir: " << m_folder.c_str();
+            return FVA_ERROR_INVALID_ARG;
+        }
+        entries.push_back(entry);
+    }
+
+    for (const auto& entry : entries) {
+        std::error_code entryEc;
+        if (entry.is_directory(entryEc) || entryEc) continue;
+
+        const std::string fileName = entry.path().filename().string();
 
         // skip meta files
-        if (fvaIsInternalFile(info.fileName().toStdString())) continue;
+        if (fvaIsInternalFile(fileName)) continue;
 
-        // create year dir first
-        // extract year
-        QString year = info.baseName().mid(0, 4);
-        QString yearFolderName = m_folder + "/" + year;
+        const std::string baseName = entry.path().stem().string();
+        const std::string year = baseName.substr(0, std::min<size_t>(4, baseName.size()));
+        fs::path yearFolderPath = m_dir / year;
 
-        if (!m_dir.exists(yearFolderName)) {
-            if (!context.readOnly) m_dir.mkdir(yearFolderName);
-            LOG_DEB << "year-folder:" << yearFolderName << " created";
+        if (!fs::exists(yearFolderPath, entryEc)) {
+            if (!context.readOnly) fs::create_directory(yearFolderPath, entryEc);
+            LOG_DEB << "year-folder:" << toNativePathString(yearFolderPath).c_str() << " created";
         }
 
-        QString day = info.baseName().mid(0, 10).replace("-", ".");
-        QString fullSubFolderpath = m_folder + "/" + year + "/" + day;
+        std::string day = baseName.substr(0, std::min<size_t>(10, baseName.size()));
+        std::replace(day.begin(), day.end(), '-', '.');
+        const fs::path fullSubFolderPath = m_dir / year / day;
 
-        // and noe day name
-        if (!m_dir.exists(fullSubFolderpath)) {
-            if (!context.readOnly) m_dir.mkdir(fullSubFolderpath);
-            LOG_DEB << "sub-folder:" << fullSubFolderpath << " created";
+        if (!fs::exists(fullSubFolderPath, entryEc)) {
+            if (!context.readOnly) fs::create_directory(fullSubFolderPath, entryEc);
+            LOG_DEB << "sub-folder:" << toNativePathString(fullSubFolderPath).c_str() << " created";
         }
         if (!context.readOnly) {
-            // move the file
-            if (!m_dir.rename(info.absoluteFilePath(), fullSubFolderpath + "/" + info.fileName())) {
-                LOG_CRIT << "can not rename file:" << info.absoluteFilePath()
-                         << " into:" << fullSubFolderpath + "/" + info.fileName();
+            const fs::path destinationPath = fullSubFolderPath / entry.path().filename();
+            fs::rename(entry.path(), destinationPath, entryEc);
+            if (entryEc) {
+                LOG_CRIT << "can not rename file:" << toNativePathString(entry.path()).c_str()
+                         << " into:" << toNativePathString(destinationPath).c_str();
                 return FVA_ERROR_CANT_RENAME_FILE;
             } else
-                LOG_DEB << "file renamed:" << info.absoluteFilePath()
-                        << " into:" << fullSubFolderpath + "/" + info.fileName();
+                LOG_DEB << "file renamed:" << toNativePathString(entry.path()).c_str()
+                        << " into:" << toNativePathString(destinationPath).c_str();
         }
     }
 

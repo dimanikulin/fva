@@ -34,7 +34,7 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
     std::unique_ptr<CmdLineBaseTask> r(nullptr);
     const QString cmdType = QString::fromStdString(context.cmdType);
 
-    if (cmdType == CLTCreateDirStructByDeviceName::Name())
+    if (cmdType == QString::fromStdString(CLTCreateDirStructByDeviceName::Name()))
         r.reset(new CLTCreateDirStructByDeviceName());
     else if (cmdType == CLTCheckDeviceName::Name())
         r.reset(new CLTCheckDeviceName());
@@ -48,7 +48,7 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
         r.reset(new CLTCheckLocation());
     else if (cmdType == CLTCheckDateTime::Name())
         r.reset(new CLTCheckDateTime(cfg));
-    else if (cmdType == CLTCreateDirStructByFileNames::Name())
+    else if (cmdType == QString::fromStdString(CLTCreateDirStructByFileNames::Name()))
         r.reset(new CLTCreateDirStructByFileNames());
     else if (cmdType == CLTRenameFiles::Name())
         r.reset(new CLTRenameFiles(cfg));

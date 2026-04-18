@@ -22,7 +22,7 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTCreateDirStructByDeviceName"; }
+    static std::string Name() { return "CLTCreateDirStructByDeviceName"; }
     virtual bool supportReadOnly() { return false; }
 };
 
