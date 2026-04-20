@@ -1,6 +1,5 @@
 add_subdirectory(organizer)
 add_subdirectory(flowcontroller)
 add_subdirectory(dataprocessor)
-add_subdirectory(configurator)
 add_subdirectory(commonlib)
 add_subdirectory(qtui)
