@@ -8,6 +8,8 @@
 #ifndef _CMD_CSV_FVA_FILES_H_
 #define _CMD_CSV_FVA_FILES_H_
 
+#include <string>
+
 #include "CmdLineBaseTask.h"
 
 /*!
@@ -24,7 +26,7 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTCSVFvaFile"; }
+    static std::string Name() { return "CLTCSVFvaFile"; }
     virtual bool supportReadOnly() { return true; }
 
 private:  // data

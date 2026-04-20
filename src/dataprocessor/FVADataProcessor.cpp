@@ -62,7 +62,7 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
         r.reset(new CLTPrintFSStructure(cfg));
     else if (cmdType == QString::fromStdString(CLTMoveInputDir2Output::Name()))
         r.reset(new CLTMoveInputDir2Output(cfg));
-    else if (cmdType == CLTCSVFvaFile::Name())
+    else if (cmdType == QString::fromStdString(CLTCSVFvaFile::Name()))
         r.reset(new CLTCSVFvaFile(cfg));
     else if (cmdType == CLTAutoChecks3::Name())
         r.reset(new CLTAutoChecks3(cfg));

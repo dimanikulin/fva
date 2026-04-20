@@ -7,6 +7,10 @@
  */
 #include "CLTCSVFvaFiles.h"
 
+#include <algorithm>
+#include <cctype>
+#include <filesystem>
+#include <string>
 #include <vector>
 
 #include "fvacommoncsv.h"
@@ -19,25 +23,60 @@ CLTCSVFvaFile::CLTCSVFvaFile(const FvaConfiguration& cfg) {
 }
 
 FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context) {
+    namespace fs = std::filesystem;
+
     int ID = FVA_UNDEFINED_ID;
     FVA_EXIT_CODE res = fvaGetIDFromFile(m_rootSWdir + "#data#/fvaFile.id", ID);
     RET_RES_IF_RES_IS_ERROR
 
+    std::error_code ec;
+    std::vector<fs::directory_entry> entries;
+    for (const auto& entry : fs::directory_iterator(m_dir, fs::directory_options::skip_permission_denied, ec)) {
+        if (ec) {
+            LOG_CRIT << "failed to enumerate dir: " << m_folder.c_str();
+            return FVA_ERROR_INVALID_ARG;
+        }
+        entries.push_back(entry);
+    }
+
+    std::sort(entries.begin(), entries.end(), [](const fs::directory_entry& lhs, const fs::directory_entry& rhs) {
+        std::error_code lhsEc;
+        std::error_code rhsEc;
+        const bool lhsIsDir = lhs.is_directory(lhsEc);
+        const bool rhsIsDir = rhs.is_directory(rhsEc);
+        if (lhsIsDir != rhsIsDir) return lhsIsDir > rhsIsDir;
+        return lhs.path().filename().string() < rhs.path().filename().string();
+    });
+
     std::vector<std::string> records;
-    Q_FOREACH (QFileInfo info,
-               m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
-                                   QDir::DirsFirst)) {
-        // just skip internal folder
-        if ((info.isDir() && info.fileName()[0] == '#' && info.fileName()[info.fileName().size() - 1] == '#') ||
-            info.isFile() && !fvaIsFVAFile(info.suffix().toUpper().toStdString())) {
-            LOG_DEB << "skipped internal fs object - " << info.absoluteFilePath();
+    for (const auto& entry : entries) {
+        std::error_code entryEc;
+        const bool isDir = entry.is_directory(entryEc);
+        if (entryEc) continue;
+
+        const std::string fileName = entry.path().filename().string();
+        if (isDir && fileName.size() >= 2 && fileName.front() == '#' && fileName.back() == '#') {
+            LOG_DEB << "skipped internal fs object - " << entry.path().string().c_str();
             continue;
         }
+
+        if (entry.is_regular_file(entryEc)) {
+            std::string suffix = entry.path().extension().string();
+            if (!suffix.empty() && suffix.front() == '.') suffix.erase(0, 1);
+            std::transform(suffix.begin(), suffix.end(), suffix.begin(),
+                           [](unsigned char ch) { return static_cast<char>(std::toupper(ch)); });
+
+            if (!fvaIsFVAFile(suffix)) {
+                LOG_DEB << "skipped internal fs object - " << entry.path().string().c_str();
+                continue;
+            }
+        }
+
         // ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,EventId,ReasonPeople,reserved1
-        QString csvRecord = QString::number(++ID) + ","                           // ID
-                            + info.fileName() + ",,,"                             // Name
-                            + QString::fromStdString(context.custom) + ",,,,,,";  // m_custom here is device id
-        records.push_back(csvRecord.toStdString());
+        std::string csvRecord = std::to_string(++ID) + ","   // ID
+                                + fileName + ",,,"           // Name
+                                + context.custom + ",,,,,,";  // m_custom here is device id
+        records.push_back(csvRecord);
     }
     res = fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileN.csv", records);
     if (FVA_NO_ERROR != res) return res;
