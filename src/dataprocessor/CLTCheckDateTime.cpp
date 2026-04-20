@@ -7,14 +7,13 @@
  */
 #include "CLTCheckDateTime.h"
 
+#include <QtCore/QDateTime>
+#include <QtCore/QString>
 #include <algorithm>
 #include <cctype>
 #include <filesystem>
 #include <string>
 #include <vector>
-
-#include <QtCore/QDateTime>
-#include <QtCore/QString>
 
 #include "fvacommonexif.h"
 

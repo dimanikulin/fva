@@ -7,13 +7,12 @@
  */
 #include "CLTCheckDeviceName.h"
 
+#include <QtCore/QString>
 #include <algorithm>
 #include <cctype>
 #include <filesystem>
 #include <string>
 #include <vector>
-
-#include <QtCore/QString>
 
 #include "fvacommonexif.h"
 
