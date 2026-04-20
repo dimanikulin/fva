@@ -7,13 +7,12 @@
  */
 #include "CLTAutoChecks3.h"
 
+#include <QtCore/QString>
 #include <algorithm>
 #include <cctype>
 #include <filesystem>
 #include <string>
 #include <vector>
-
-#include <QtCore/QString>
 
 #include "fvacommoncsv.h"
 #include "fvacommonexif.h"
@@ -98,9 +97,8 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
         if (0 == devMap.size()) {
             LOG_WARN << "unknown device found:" << QString::fromStdString(deviceName).trimmed()
                      << " in file :" << absoluteFilePath.c_str();
-            m_Issues.push_back("FVA_ERROR_UNKNOWN_DEVICE," + absoluteFilePath + "," +
-                               std::to_string(deviceID) + "," + m_deviceMap[deviceID].guiName + " " +
-                               m_deviceMap[deviceID].ownerName);
+            m_Issues.push_back("FVA_ERROR_UNKNOWN_DEVICE," + absoluteFilePath + "," + std::to_string(deviceID) + "," +
+                               m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
             if (context.readOnly)
                 continue;
             else
@@ -109,8 +107,8 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
         if (deviceName.empty()) {
             LOG_WARN << "empty device found:" << QString::fromStdString(deviceName).trimmed()
                      << " in file :" << absoluteFilePath.c_str();
-            m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + absoluteFilePath + "," + std::to_string(deviceID) +
-                               "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
+            m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + absoluteFilePath + "," + std::to_string(deviceID) + "," +
+                               m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
             continue;
         }
         bool matched = false;
@@ -124,9 +122,8 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
         if (!matched) {
             LOG_WARN << "device id linked wrongly, " << absoluteFilePath.c_str() << ",from image-"
                      << devMap.begin()->second.deviceId << ", from fvafile=" << deviceID;
-            m_Issues.push_back("FVA_ERROR_LINKED_WRONG_DEVICE," + absoluteFilePath + "," +
-                               std::to_string(deviceID) + "," + m_deviceMap[deviceID].guiName + " " +
-                               m_deviceMap[deviceID].ownerName);
+            m_Issues.push_back("FVA_ERROR_LINKED_WRONG_DEVICE," + absoluteFilePath + "," + std::to_string(deviceID) +
+                               "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
             continue;
         }
 

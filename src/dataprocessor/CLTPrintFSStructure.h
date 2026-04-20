@@ -8,9 +8,8 @@
 #ifndef _CLT_PRINT_FS_STRUCTURE_H_
 #define _CLT_PRINT_FS_STRUCTURE_H_
 
-#include <string>
-
 #include <QtCore/QFile>
+#include <string>
 
 #include "CmdLineBaseTask.h"
 

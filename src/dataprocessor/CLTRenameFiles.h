@@ -8,11 +8,10 @@
 #ifndef _CLT_RENAME_FILES_H_
 #define _CLT_RENAME_FILES_H_
 
+#include <QtCore/QDateTime>
 #include <filesystem>
 #include <map>
 #include <string>
-
-#include <QtCore/QDateTime>
 
 #include "CmdLineBaseTask.h"
 
@@ -37,8 +36,7 @@ protected:
                                 const QDateTime& prevRenameDateTime);
 
     void fillRenameDateTimeFromLastModifiedIfValid(const std::filesystem::path& dirPath,
-                                                   const std::filesystem::path& filePath,
-                                                   QDateTime& renameDateTime);
+                                                   const std::filesystem::path& filePath, QDateTime& renameDateTime);
 
 private:
     /*!

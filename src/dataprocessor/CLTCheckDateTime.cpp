@@ -58,8 +58,7 @@ FVA_EXIT_CODE CLTCheckDateTime::execute(const CLTContext& context) {
         const QString filePath = QString::fromStdString(entry.path().string());
         std::error_code absEc;
         const fs::path absolutePath = fs::absolute(entry.path(), absEc);
-        const QString absoluteFilePath =
-            QString::fromStdString(absEc ? entry.path().string() : absolutePath.string());
+        const QString absoluteFilePath = QString::fromStdString(absEc ? entry.path().string() : absolutePath.string());
         const QDateTime dateTime =
             fvaGetExifDateTimeOriginalFromFile(filePath, QString::fromStdString(m_fmtctx.exifDateTime));
 
@@ -71,4 +70,3 @@ FVA_EXIT_CODE CLTCheckDateTime::execute(const CLTContext& context) {
     return FVA_NO_ERROR;
 }
 CLTCheckDateTime::~CLTCheckDateTime() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
-    

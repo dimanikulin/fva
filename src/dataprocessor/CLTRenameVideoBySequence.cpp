@@ -7,15 +7,14 @@
  */
 #include "CLTRenameVideoBySequence.h"
 
+#include <QtCore/QDateTime>
+#include <QtCore/QFileInfo>
+#include <QtCore/QString>
 #include <algorithm>
 #include <cctype>
 #include <filesystem>
 #include <string>
 #include <vector>
-
-#include <QtCore/QDateTime>
-#include <QtCore/QFileInfo>
-#include <QtCore/QString>
 
 #include "fvacommonexif.h"
 
@@ -62,8 +61,7 @@ FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& context) {
         const std::string baseName = entry.path().stem().string();
         std::error_code absEc;
         const fs::path absolutePath = fs::absolute(entry.path(), absEc);
-        const QString absoluteFilePath =
-            QString::fromStdString(absEc ? entry.path().string() : absolutePath.string());
+        const QString absoluteFilePath = QString::fromStdString(absEc ? entry.path().string() : absolutePath.string());
 
         if (FVA_FS_TYPE_IMG == type && imageFilePrefix.empty()) {
             const std::size_t index = baseName.find('_');

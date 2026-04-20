@@ -7,15 +7,14 @@
  */
 #include "CLTRenameFiles.h"
 
+#include <QtCore/QDir>
+#include <QtCore/QFileInfo>
+#include <QtCore/QString>
 #include <algorithm>
 #include <cctype>
 #include <filesystem>
 #include <string>
 #include <vector>
-
-#include <QtCore/QDir>
-#include <QtCore/QFileInfo>
-#include <QtCore/QString>
 
 #include "fvacommonexif.h"
 
@@ -113,10 +112,9 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
                 const QString maybeName = renameDateTime.toString(QString::fromStdString(m_fmtctx.fvaFileName));
                 if (maybeName.isEmpty()) fillRenameDateTimeFromLastModifiedIfValid(m_dir, entryPath, renameDateTime);
                 if (!renameDateTime.isValid() && m_renamePicsByModifTime && info.lastModified().isValid()) {
-                    LOG_WARN
-                        << "modification time to use (true == FVA_RENAME_FILES_BY_MODIF_TIME_FOR_EMPTY_EXIF) for:"
-                        << absoluteFilePath << ", time : "
-                        << info.lastModified().toString(QString::fromStdString(m_fmtctx.fvaFileName));
+                    LOG_WARN << "modification time to use (true == FVA_RENAME_FILES_BY_MODIF_TIME_FOR_EMPTY_EXIF) for:"
+                             << absoluteFilePath << ", time : "
+                             << info.lastModified().toString(QString::fromStdString(m_fmtctx.fvaFileName));
                     renameDateTime = info.lastModified();
                 }
             }
@@ -182,7 +180,8 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
 
         std::error_code existsEc;
         if (fs::exists(newPath, existsEc) && !existsEc) {
-            LOG_WARN << "file already exists:" << QString::fromStdString(newPathStr) << ",old path:" << absoluteFilePath;
+            LOG_WARN << "file already exists:" << QString::fromStdString(newPathStr)
+                     << ",old path:" << absoluteFilePath;
             const fs::path copyDir = m_dir / "#copy";
             if (!fs::exists(copyDir, existsEc)) {
                 LOG_WARN << "created COPY folder:" << QString::fromStdString(copyDir.string());
@@ -193,7 +192,8 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
             std::error_code renameEc;
             fs::rename(entryPath, newCopyPath, renameEc);
             if (renameEc) {
-                LOG_CRIT << "can not rename file:" << absoluteFilePath << " to:" << QString::fromStdString(newCopyPath.string());
+                LOG_CRIT << "can not rename file:" << absoluteFilePath
+                         << " to:" << QString::fromStdString(newCopyPath.string());
                 return FVA_ERROR_CANT_RENAME_FILE;
             }
             LOG_DEB << "renamed file:" << absoluteFilePath << " to:" << QString::fromStdString(newCopyPath.string());

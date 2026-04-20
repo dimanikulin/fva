@@ -7,12 +7,11 @@
  */
 #include "CLTPrintFSStructure.h"
 
+#include <QtCore/QCryptographicHash>
+#include <QtCore/QFileInfo>
 #include <algorithm>
 #include <filesystem>
 #include <vector>
-
-#include <QtCore/QCryptographicHash>
-#include <QtCore/QFileInfo>
 
 CLTPrintFSStructure::CLTPrintFSStructure(const FvaConfiguration& cfg) {
     std::string rootSWdir;

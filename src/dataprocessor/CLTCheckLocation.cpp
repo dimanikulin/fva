@@ -7,14 +7,13 @@
  */
 #include "CLTCheckLocation.h"
 
+#include <QtCore/QCoreApplication>
+#include <QtCore/QString>
 #include <algorithm>
 #include <cctype>
 #include <filesystem>
 #include <string>
 #include <vector>
-
-#include <QtCore/QCoreApplication>
-#include <QtCore/QString>
 
 #include "fvacommonexif.h"
 
@@ -53,8 +52,7 @@ FVA_EXIT_CODE CLTCheckLocation::execute(const CLTContext& context) {
         const QString filePath = QString::fromStdString(entry.path().string());
         std::error_code absEc;
         const fs::path absolutePath = fs::absolute(entry.path(), absEc);
-        const QString absoluteFilePath =
-            QString::fromStdString(absEc ? entry.path().string() : absolutePath.string());
+        const QString absoluteFilePath = QString::fromStdString(absEc ? entry.path().string() : absolutePath.string());
 
         const bool present = fvaExifGeoDataPresentInFile(filePath);
         if (!present) {
