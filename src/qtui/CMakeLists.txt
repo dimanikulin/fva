@@ -1,0 +1,5 @@
+add_subdirectory(viewer)
+add_subdirectory(player)
+add_subdirectory(organizerwizard)
+add_subdirectory(dictionaryeditor)
+add_subdirectory(descriptioneditor)
