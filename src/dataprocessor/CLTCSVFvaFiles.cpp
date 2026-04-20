@@ -73,8 +73,8 @@ FVA_EXIT_CODE CLTCSVFvaFile::execute(const CLTContext& context) {
         }
 
         // ID,Name,PlaceId,People,DevId,Description,ScanerId,Comment,EventId,ReasonPeople,reserved1
-        std::string csvRecord = std::to_string(++ID) + ","   // ID
-                                + fileName + ",,,"           // Name
+        std::string csvRecord = std::to_string(++ID) + ","    // ID
+                                + fileName + ",,,"            // Name
                                 + context.custom + ",,,,,,";  // m_custom here is device id
         records.push_back(csvRecord);
     }
