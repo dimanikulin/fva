@@ -8,6 +8,10 @@
 #ifndef _CLT_PRINT_FS_STRUCTURE_H_
 #define _CLT_PRINT_FS_STRUCTURE_H_
 
+#include <string>
+
+#include <QtCore/QFile>
+
 #include "CmdLineBaseTask.h"
 
 /*!
@@ -23,7 +27,7 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTPrintFSStructure"; }
+    static std::string Name() { return "CLTPrintFSStructure"; }
     virtual bool supportReadOnly() { return false; }
 
 private:  // data

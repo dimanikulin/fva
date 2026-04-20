@@ -7,28 +7,62 @@
  */
 #include "CLTCheckLocation.h"
 
-#include <QApplication>
+#include <algorithm>
+#include <cctype>
+#include <filesystem>
+#include <string>
+#include <vector>
+
+#include <QtCore/QCoreApplication>
+#include <QtCore/QString>
 
 #include "fvacommonexif.h"
 
 FVA_EXIT_CODE CLTCheckLocation::execute(const CLTContext& context) {
-    QString imageFilePrefix;
-    Q_FOREACH (QFileInfo info,
-               m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
-                                   QDir::DirsFirst)) {
-        if (info.isDir()) continue;
+    namespace fs = std::filesystem;
 
-        QString suffix = info.suffix().toUpper();
-        if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix.toStdString())) continue;
+    std::error_code ec;
+    std::vector<fs::directory_entry> entries;
+    for (const auto& entry : fs::directory_iterator(m_dir, fs::directory_options::skip_permission_denied, ec)) {
+        if (ec) {
+            LOG_CRIT << "failed to enumerate dir: " << m_folder.c_str();
+            return FVA_ERROR_INVALID_ARG;
+        }
+        entries.push_back(entry);
+    }
 
-        bool present = fvaExifGeoDataPresentInFile(info.filePath());
+    std::sort(entries.begin(), entries.end(), [](const fs::directory_entry& lhs, const fs::directory_entry& rhs) {
+        std::error_code lhsEc;
+        std::error_code rhsEc;
+        const bool lhsIsDir = lhs.is_directory(lhsEc);
+        const bool rhsIsDir = rhs.is_directory(rhsEc);
+        if (lhsIsDir != rhsIsDir) return lhsIsDir > rhsIsDir;
+        return lhs.path().filename().string() < rhs.path().filename().string();
+    });
+
+    for (const auto& entry : entries) {
+        std::error_code entryEc;
+        if (entry.is_directory(entryEc) || entryEc) continue;
+
+        std::string suffix = entry.path().extension().string();
+        if (!suffix.empty() && suffix.front() == '.') suffix.erase(0, 1);
+        std::transform(suffix.begin(), suffix.end(), suffix.begin(),
+                       [](unsigned char ch) { return static_cast<char>(std::toupper(ch)); });
+        if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix)) continue;
+
+        const QString filePath = QString::fromStdString(entry.path().string());
+        std::error_code absEc;
+        const fs::path absolutePath = fs::absolute(entry.path(), absEc);
+        const QString absoluteFilePath =
+            QString::fromStdString(absEc ? entry.path().string() : absolutePath.string());
+
+        const bool present = fvaExifGeoDataPresentInFile(filePath);
         if (!present) {
             if (context.readOnly) {
-                LOG_CRIT << "found file without exif location:" << info.absoluteFilePath();
+                LOG_CRIT << "found file without exif location:" << absoluteFilePath;
                 return FVA_ERROR_NO_EXIF_LOCATION;
-            } else {
-                m_Issues.push_back(info.absoluteFilePath());
             }
+            m_Issues.push_back(absoluteFilePath.toStdString());
         }
     }
     return FVA_NO_ERROR;
@@ -43,11 +77,7 @@ CLTCheckLocation::~CLTCheckLocation() {
     res = cfg.getParamAsString("Common::RootDir", rootSWdir);
     RET_IF_RES_IS_ERROR
 
-    std::vector<std::string> issues;
-    issues.reserve(m_Issues.size());
-    for (const auto& issue : m_Issues) issues.push_back(issue.toStdString());
-
-    fvaSaveStrListToFile(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", issues);
+    fvaSaveStrListToFile(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", m_Issues);
 
     LOG_DEB << "cmd deleted, dir:" << m_folder;
 }

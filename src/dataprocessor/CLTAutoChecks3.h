@@ -9,6 +9,7 @@
 #ifndef _CLT_AUTO_CHECKS_3_H_
 #define _CLT_AUTO_CHECKS_3_H
 
+#include <string>
 #include <vector>
 
 #include "CmdLineBaseTask.h"
@@ -37,14 +38,14 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTAutoChecks3"; }
+    static std::string Name() { return "CLTAutoChecks3"; }
     virtual bool supportReadOnly() { return true; }
 
 private:
     /*!
      * issues found, divided by type (in string format)
      */
-    std::vector<QString> m_Issues;
+    std::vector<std::string> m_Issues;
 
     /*!
      * global device map

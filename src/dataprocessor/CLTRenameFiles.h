@@ -8,7 +8,11 @@
 #ifndef _CLT_RENAME_FILES_H_
 #define _CLT_RENAME_FILES_H_
 
+#include <filesystem>
 #include <map>
+#include <string>
+
+#include <QtCore/QDateTime>
 
 #include "CmdLineBaseTask.h"
 
@@ -25,20 +29,22 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTRenameFiles"; }
+    static std::string Name() { return "CLTRenameFiles"; }
     virtual bool supportReadOnly() { return true; }
 
 protected:
-    bool checkIfParentFileExist(const QFileInfo& fileToCheck, QDateTime& renameDateTime,
+    bool checkIfParentFileExist(const std::filesystem::path& fileToCheck, QDateTime& renameDateTime,
                                 const QDateTime& prevRenameDateTime);
 
-    void fillRenameDateTimeFromLastModifiedIfValid(const QDir& dir, const QFileInfo& info, QDateTime& renameDateTime);
+    void fillRenameDateTimeFromLastModifiedIfValid(const std::filesystem::path& dirPath,
+                                                   const std::filesystem::path& filePath,
+                                                   QDateTime& renameDateTime);
 
 private:
     /*!
      * file pates to file name
      */
-    std::map<QString, QString> m_uniqueFileNames;
+    std::map<std::string, std::string> m_uniqueFileNames;
 
     /*!
      * \brief shall be renamed video files using the file modification time if they do not have taken time set

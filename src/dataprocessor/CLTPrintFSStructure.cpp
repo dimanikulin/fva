@@ -7,7 +7,12 @@
  */
 #include "CLTPrintFSStructure.h"
 
+#include <algorithm>
+#include <filesystem>
+#include <vector>
+
 #include <QtCore/QCryptographicHash>
+#include <QtCore/QFileInfo>
 
 CLTPrintFSStructure::CLTPrintFSStructure(const FvaConfiguration& cfg) {
     std::string rootSWdir;
@@ -24,29 +29,52 @@ CLTPrintFSStructure::CLTPrintFSStructure(const FvaConfiguration& cfg) {
 CLTPrintFSStructure::~CLTPrintFSStructure() { m_file.close(); }
 
 FVA_EXIT_CODE CLTPrintFSStructure::execute(const CLTContext& /*context*/) {
+    namespace fs = std::filesystem;
+
     char buffer[64 * 1024];
     qint64 size = 0;
-    QCryptographicHash hash(QCryptographicHash::Sha1);
     QString result;
 
-    Q_FOREACH (QFileInfo info,
-               m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
-                                   QDir::DirsFirst)) {
-        if (info.isDir()) continue;
+    std::error_code ec;
+    std::vector<fs::directory_entry> entries;
+    for (const auto& entry : fs::directory_iterator(m_dir, fs::directory_options::skip_permission_denied, ec)) {
+        if (ec) {
+            LOG_CRIT << "failed to enumerate dir: " << m_folder.c_str();
+            return FVA_ERROR_INVALID_ARG;
+        }
+        entries.push_back(entry);
+    }
 
-        QFile file(info.absoluteFilePath());
+    std::sort(entries.begin(), entries.end(), [](const fs::directory_entry& lhs, const fs::directory_entry& rhs) {
+        std::error_code lhsEc;
+        std::error_code rhsEc;
+        const bool lhsIsDir = lhs.is_directory(lhsEc);
+        const bool rhsIsDir = rhs.is_directory(rhsEc);
+        if (lhsIsDir != rhsIsDir) return lhsIsDir > rhsIsDir;
+        return lhs.path().filename().string() < rhs.path().filename().string();
+    });
+
+    for (const auto& entry : entries) {
+        std::error_code entryEc;
+        if (entry.is_directory(entryEc) || entryEc) continue;
+
+        const QString absoluteFilePath = QString::fromStdString(entry.path().string());
+        QFile file(absoluteFilePath);
 
         if (!file.open(QIODevice::ReadOnly)) {
-            LOG_CRIT << "failed to open file:" << info.absoluteFilePath();
+            LOG_CRIT << "failed to open file:" << absoluteFilePath;
             continue;
         }
+
+        QCryptographicHash hash(QCryptographicHash::Sha1);
         while (!file.atEnd()) {
             size = file.read(buffer, 64 * 1024);
             if (size) hash.addData(buffer, size);
         }
-        QFileInfo f(info);
-        result = info.filePath() + "," + hash.result().toBase64() + "," +
-                 f.lastModified().toString(QString::fromStdString(m_fmtctx.fvaFileName)) + "," +
+
+        QFileInfo info(absoluteFilePath);
+        result = absoluteFilePath + "," + hash.result().toBase64() + "," +
+                 info.lastModified().toString(QString::fromStdString(m_fmtctx.fvaFileName)) + "," +
                  QString::number(info.size()) + "\n";
         m_file.write(result.toLocal8Bit());
     }

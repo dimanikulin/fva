@@ -8,6 +8,8 @@
 #ifndef _CLT_RENAME_VIDEO_BY_SEQUENCE_H_
 #define _CLT_RENAME_VIDEO_BY_SEQUENCE_H_
 
+#include <string>
+
 #include "CmdLineBaseTask.h"
 
 /*!
@@ -23,7 +25,7 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTRenameVideoBySequence"; }
+    static std::string Name() { return "CLTRenameVideoBySequence"; }
     virtual bool supportReadOnly() { return true; }
 
     /*!

@@ -31,6 +31,11 @@ FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/) {
     }
 
     std::sort(entries.begin(), entries.end(), [](const fs::directory_entry& lhs, const fs::directory_entry& rhs) {
+        std::error_code lhsEc;
+        std::error_code rhsEc;
+        const bool lhsIsDir = lhs.is_directory(lhsEc);
+        const bool rhsIsDir = rhs.is_directory(rhsEc);
+        if (lhsIsDir != rhsIsDir) return lhsIsDir > rhsIsDir;
         return lhs.path().filename().string() < rhs.path().filename().string();
     });
 
@@ -45,7 +50,10 @@ FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/) {
         if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix)) continue;
 
         const QString filePath = QString::fromStdString(entry.path().string());
-        const QString absoluteFilePath = QString::fromStdString(fs::absolute(entry.path()).string());
+        std::error_code absEc;
+        const fs::path absolutePath = fs::absolute(entry.path(), absEc);
+        const QString absoluteFilePath =
+            QString::fromStdString(absEc ? entry.path().string() : absolutePath.string());
         const QString newDeviceName = fvaGetExifMakeAndModelFromFile(filePath);
 
         if (newDeviceName.isEmpty()) {
@@ -64,4 +72,4 @@ FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/) {
     }
 
     return FVA_NO_ERROR;
-};
+}

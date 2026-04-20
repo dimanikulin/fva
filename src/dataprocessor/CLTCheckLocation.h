@@ -8,6 +8,7 @@
 #ifndef _CLT_CHECK_LOCATION_H_
 #define _CLT_CHECK_LOCATION_H_
 
+#include <string>
 #include <vector>
 
 #include "CmdLineBaseTask.h"
@@ -29,13 +30,13 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTCheckLocation"; }
+    static std::string Name() { return "CLTCheckLocation"; }
     virtual bool supportReadOnly() { return true; }
 
 private:
     /*!
      * issues found
      */
-    std::vector<QString> m_Issues;
+    std::vector<std::string> m_Issues;
 };
 #endif  // _CLT_CHECK_LOCATION_H_

@@ -7,6 +7,14 @@
  */
 #include "CLTAutoChecks3.h"
 
+#include <algorithm>
+#include <cctype>
+#include <filesystem>
+#include <string>
+#include <vector>
+
+#include <QtCore/QString>
+
 #include "fvacommoncsv.h"
 #include "fvacommonexif.h"
 
@@ -28,38 +36,71 @@ CLTAutoChecks3::CLTAutoChecks3(const FvaConfiguration& cfg) {
     RET_IF_RES_IS_ERROR
 }
 FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
-    Q_FOREACH (QFileInfo info,
-               m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
-                                   QDir::DirsFirst)) {
-        QString suffix = info.suffix().toUpper();
-        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix.toStdString());
+    namespace fs = std::filesystem;
 
-        // remove checked FVA file
-        if (fvaIsFVAFile(suffix.toStdString())) {
-            auto it = m_fvaFileInfoC.find(info.fileName().toUpper().toStdString());
+    std::error_code ec;
+    std::vector<fs::directory_entry> entries;
+    for (const auto& entry : fs::directory_iterator(m_dir, fs::directory_options::skip_permission_denied, ec)) {
+        if (ec) {
+            LOG_CRIT << "failed to enumerate dir: " << m_folder.c_str();
+            return FVA_ERROR_INVALID_ARG;
+        }
+        entries.push_back(entry);
+    }
+
+    std::sort(entries.begin(), entries.end(), [](const fs::directory_entry& lhs, const fs::directory_entry& rhs) {
+        std::error_code lhsEc;
+        std::error_code rhsEc;
+        const bool lhsIsDir = lhs.is_directory(lhsEc);
+        const bool rhsIsDir = rhs.is_directory(rhsEc);
+        if (lhsIsDir != rhsIsDir) return lhsIsDir > rhsIsDir;
+        return lhs.path().filename().string() < rhs.path().filename().string();
+    });
+
+    for (const auto& entry : entries) {
+        std::error_code entryEc;
+        if (entryEc) continue;
+
+        const std::string fileName = entry.path().filename().string();
+        std::string fileNameUpper = fileName;
+        std::transform(fileNameUpper.begin(), fileNameUpper.end(), fileNameUpper.begin(),
+                       [](unsigned char ch) { return static_cast<char>(std::toupper(ch)); });
+
+        std::string suffix = entry.path().extension().string();
+        if (!suffix.empty() && suffix.front() == '.') suffix.erase(0, 1);
+        std::transform(suffix.begin(), suffix.end(), suffix.begin(),
+                       [](unsigned char ch) { return static_cast<char>(std::toupper(ch)); });
+
+        const FVA_FS_TYPE type = entry.is_directory(entryEc) ? FVA_FS_TYPE_UNKNOWN : fvaConvertFileExt2FileType(suffix);
+        std::error_code absEc;
+        const fs::path absolutePath = fs::absolute(entry.path(), absEc);
+        const std::string absoluteFilePath = absEc ? entry.path().string() : absolutePath.string();
+
+        if (fvaIsFVAFile(suffix)) {
+            auto it = m_fvaFileInfoC.find(fileNameUpper);
             if (it != m_fvaFileInfoC.end()) m_fvaFileInfoC.erase(it);
         }
 
         if (FVA_FS_TYPE_IMG != type) continue;
-        //////////////////////////////////// 1. check for exsiting device in fva info by fileName
+
         int deviceID = FVA_UNDEFINED_ID;
-        FVA_EXIT_CODE res = fvaGetDeviceIdFromCsv(m_fvaFileInfo, info.fileName().toStdString(), deviceID);
+        FVA_EXIT_CODE res = fvaGetDeviceIdFromCsv(m_fvaFileInfo, fileName, deviceID);
         if (FVA_NO_ERROR != res) {
-            LOG_WARN << "no dev id found for file: " << info.absoluteFilePath();
+            LOG_WARN << "no dev id found for file: " << absoluteFilePath.c_str();
             if (FVA_ERROR_NO_DEV_ID == res)
-                m_Issues.push_back("FVA_ERROR_NO_DEV_ID," + info.absoluteFilePath() + "," + info.fileName());
+                m_Issues.push_back("FVA_ERROR_NO_DEV_ID," + absoluteFilePath + "," + fileName);
             if (FVA_ERROR_NON_UNIQUE_FVA_INFO == res)
-                m_Issues.push_back("FVA_ERROR_NON_UNIQUE_FVA_INFO," + info.absoluteFilePath() + "," + info.fileName());
+                m_Issues.push_back("FVA_ERROR_NON_UNIQUE_FVA_INFO," + absoluteFilePath + "," + fileName);
         }
-        //////////////////////////////////// 2. check for exsiting device in dictionary by device name in pictire
+
         std::string deviceName;
-        DEVICE_MAP devMap = fvaGetDeviceMapForImg(m_deviceMap, info.filePath().toStdString(), deviceName);
+        DEVICE_MAP devMap = fvaGetDeviceMapForImg(m_deviceMap, entry.path().string(), deviceName);
         if (0 == devMap.size()) {
             LOG_WARN << "unknown device found:" << QString::fromStdString(deviceName).trimmed()
-                     << " in file :" << info.absoluteFilePath();
-            m_Issues.push_back("FVA_ERROR_UNKNOWN_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) +
-                               "," + QString::fromStdString(m_deviceMap[deviceID].guiName) + " " +
-                               QString::fromStdString(m_deviceMap[deviceID].ownerName));
+                     << " in file :" << absoluteFilePath.c_str();
+            m_Issues.push_back("FVA_ERROR_UNKNOWN_DEVICE," + absoluteFilePath + "," +
+                               std::to_string(deviceID) + "," + m_deviceMap[deviceID].guiName + " " +
+                               m_deviceMap[deviceID].ownerName);
             if (context.readOnly)
                 continue;
             else
@@ -67,10 +108,9 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
         }
         if (deviceName.empty()) {
             LOG_WARN << "empty device found:" << QString::fromStdString(deviceName).trimmed()
-                     << " in file :" << info.absoluteFilePath();
-            m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + info.absoluteFilePath() + "," + QString::number(deviceID) +
-                               "," + QString::fromStdString(m_deviceMap[deviceID].guiName) + " " +
-                               QString::fromStdString(m_deviceMap[deviceID].ownerName));
+                     << " in file :" << absoluteFilePath.c_str();
+            m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + absoluteFilePath + "," + std::to_string(deviceID) +
+                               "," + m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
             continue;
         }
         bool matched = false;
@@ -82,25 +122,24 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
         }
 
         if (!matched) {
-            LOG_WARN << "device id linked wrongly, " << info.absoluteFilePath() << ",from image-"
+            LOG_WARN << "device id linked wrongly, " << absoluteFilePath.c_str() << ",from image-"
                      << devMap.begin()->second.deviceId << ", from fvafile=" << deviceID;
-            m_Issues.push_back("FVA_ERROR_LINKED_WRONG_DEVICE," + info.absoluteFilePath() + "," +
-                               QString::number(deviceID) + "," + QString::fromStdString(m_deviceMap[deviceID].guiName) +
-                               " " + QString::fromStdString(m_deviceMap[deviceID].ownerName));
+            m_Issues.push_back("FVA_ERROR_LINKED_WRONG_DEVICE," + absoluteFilePath + "," +
+                               std::to_string(deviceID) + "," + m_deviceMap[deviceID].guiName + " " +
+                               m_deviceMap[deviceID].ownerName);
             continue;
         }
 
-        //////////////////////////////////// 3. check for GEO position exsiting in file//////////////////////
-        bool GeoPresent = fvaExifGeoDataPresentInFile(info.filePath());
-        if (!GeoPresent) {
-            int PlaceId = -1;
-            auto it = m_fvaFileInfo.find(info.fileName().toUpper().toStdString());
+        const bool geoPresent = fvaExifGeoDataPresentInFile(QString::fromStdString(entry.path().string()));
+        if (!geoPresent) {
+            int placeId = -1;
+            auto it = m_fvaFileInfo.find(fileNameUpper);
             if (it != m_fvaFileInfo.end()) {
-                PlaceId = it->second.placeId;
+                placeId = it->second.placeId;
             }
 
-            LOG_WARN << "GEO location is NOT preent in:" << info.absoluteFilePath() << ", PlaceId=" << PlaceId;
-            m_Issues.push_back("FVA_ERROR_NO_GEO," + info.absoluteFilePath() + "," + QString::number(PlaceId));
+            LOG_WARN << "GEO location is NOT preent in:" << absoluteFilePath.c_str() << ", PlaceId=" << placeId;
+            m_Issues.push_back("FVA_ERROR_NO_GEO," + absoluteFilePath + "," + std::to_string(placeId));
         }
     }
     return FVA_NO_ERROR;
@@ -108,12 +147,8 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
 
 CLTAutoChecks3::~CLTAutoChecks3() {
     for (auto it = m_fvaFileInfoC.begin(); it != m_fvaFileInfoC.end(); ++it) {
-        m_Issues.push_back("FVA_ERROR_NOT_EXISTING_FVA," + QString::fromStdString(it->first));
+        m_Issues.push_back("FVA_ERROR_NOT_EXISTING_FVA," + it->first);
     }
 
-    std::vector<std::string> issues;
-    issues.reserve(m_Issues.size());
-    for (const auto& issue : m_Issues) issues.push_back(issue.toStdString());
-
-    fvaSaveStrListToFile(m_rootSWdir + "#logs#/issues3.csv", issues);
+    fvaSaveStrListToFile(m_rootSWdir + "#logs#/issues3.csv", m_Issues);
 }

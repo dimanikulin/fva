@@ -44,13 +44,13 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
         r.reset(new CLTAutoChecks1(cfg));
     else if (cmdType == QString::fromStdString(CLTCheckFileFormat::Name()))
         r.reset(new CLTCheckFileFormat());
-    else if (cmdType == CLTCheckLocation::Name())
+    else if (cmdType == QString::fromStdString(CLTCheckLocation::Name()))
         r.reset(new CLTCheckLocation());
     else if (cmdType == QString::fromStdString(CLTCheckDateTime::Name()))
         r.reset(new CLTCheckDateTime(cfg));
     else if (cmdType == QString::fromStdString(CLTCreateDirStructByFileNames::Name()))
         r.reset(new CLTCreateDirStructByFileNames());
-    else if (cmdType == CLTRenameFiles::Name())
+    else if (cmdType == QString::fromStdString(CLTRenameFiles::Name()))
         r.reset(new CLTRenameFiles(cfg));
     else if (cmdType == QString::fromStdString(CLTAutoChecks2::Name()))
         r.reset(new CLTAutoChecks2(cfg));
@@ -58,13 +58,13 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
         r.reset(new CLTMoveAloneFiles(cfg));
     else if (cmdType == QString::fromStdString(CLTSetFileAtts::Name()))
         r.reset(new CLTSetFileAtts());
-    else if (cmdType == CLTPrintFSStructure::Name())
+    else if (cmdType == QString::fromStdString(CLTPrintFSStructure::Name()))
         r.reset(new CLTPrintFSStructure(cfg));
     else if (cmdType == QString::fromStdString(CLTMoveInputDir2Output::Name()))
         r.reset(new CLTMoveInputDir2Output(cfg));
     else if (cmdType == QString::fromStdString(CLTCSVFvaFile::Name()))
         r.reset(new CLTCSVFvaFile(cfg));
-    else if (cmdType == CLTAutoChecks3::Name())
+    else if (cmdType == QString::fromStdString(CLTAutoChecks3::Name()))
         r.reset(new CLTAutoChecks3(cfg));
     else if (cmdType == QString::fromStdString(CLTFixDuplicatedFileNames::Name()))
         r.reset(new CLTFixDuplicatedFileNames(cfg));
