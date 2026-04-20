@@ -8,6 +8,8 @@
 #ifndef _CLT_CHECK_DATE_TIME_H_
 #define _CLT_CHECK_DATE_TIME_H_
 
+#include <string>
+
 #include "CmdLineBaseTask.h"
 
 /*!
@@ -26,7 +28,7 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTCheckDateTime"; }
+    static std::string Name() { return "CLTCheckDateTime"; }
     virtual bool supportReadOnly() { return false; }
 
 private:

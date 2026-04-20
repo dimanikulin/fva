@@ -7,29 +7,56 @@
  */
 #include "CLTCheckDeviceName.h"
 
+#include <algorithm>
+#include <cctype>
+#include <filesystem>
+#include <string>
+#include <vector>
+
+#include <QtCore/QString>
+
 #include "fvacommonexif.h"
 
 FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/) {
-    QString deviceName;
-    Q_FOREACH (QFileInfo info,
-               m_dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files,
-                                   QDir::DirsFirst)) {
-        if (info.isDir()) continue;
-        // if it is picture files
-        QString suffix = info.suffix().toUpper();
-        QString fullname = info.absoluteFilePath();
-        if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix.toStdString())) continue;
+    namespace fs = std::filesystem;
 
-        QString newDeviceName = fvaGetExifMakeAndModelFromFile(info.filePath());
+    QString deviceName;
+    std::error_code ec;
+    std::vector<fs::directory_entry> entries;
+    for (const auto& entry : fs::directory_iterator(m_dir, fs::directory_options::skip_permission_denied, ec)) {
+        if (ec) {
+            LOG_CRIT << "failed to enumerate dir: " << m_folder.c_str();
+            return FVA_ERROR_INVALID_ARG;
+        }
+        entries.push_back(entry);
+    }
+
+    std::sort(entries.begin(), entries.end(), [](const fs::directory_entry& lhs, const fs::directory_entry& rhs) {
+        return lhs.path().filename().string() < rhs.path().filename().string();
+    });
+
+    for (const auto& entry : entries) {
+        std::error_code entryEc;
+        if (entry.is_directory(entryEc) || entryEc) continue;
+
+        std::string suffix = entry.path().extension().string();
+        if (!suffix.empty() && suffix.front() == '.') suffix.erase(0, 1);
+        std::transform(suffix.begin(), suffix.end(), suffix.begin(),
+                       [](unsigned char ch) { return static_cast<char>(std::toupper(ch)); });
+        if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix)) continue;
+
+        const QString filePath = QString::fromStdString(entry.path().string());
+        const QString absoluteFilePath = QString::fromStdString(fs::absolute(entry.path()).string());
+        const QString newDeviceName = fvaGetExifMakeAndModelFromFile(filePath);
 
         if (newDeviceName.isEmpty()) {
-            LOG_CRIT << "no device name in picture:" << info.absoluteFilePath();
+            LOG_CRIT << "no device name in picture:" << absoluteFilePath;
             return FVA_ERROR_EMPTY_DEVICE_NAME;
         } else {
             if (deviceName.isEmpty())
-                LOG_DEB << "got first device name: " << newDeviceName << "in picture:" << info.absoluteFilePath();
+                LOG_DEB << "got first device name: " << newDeviceName << "in picture:" << absoluteFilePath;
             else if (deviceName != newDeviceName) {
-                LOG_CRIT << "got new device name: " << newDeviceName << "in picture:" << info.absoluteFilePath()
+                LOG_CRIT << "got new device name: " << newDeviceName << "in picture:" << absoluteFilePath
                          << "old: " << deviceName;
                 return FVA_ERROR_NON_UNIQUE_DEVICE_NAME;
             }

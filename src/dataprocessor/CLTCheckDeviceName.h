@@ -8,6 +8,8 @@
 #ifndef _CLT_CHECK_DEVICE_NAME_H_
 #define _CLT_CHECK_DEVICE_NAME_H_
 
+#include <string>
+
 #include "CmdLineBaseTask.h"
 
 /*!
@@ -25,7 +27,7 @@ public:
      * \brief returns command name
      * \return returns command name as a string
      */
-    static QString Name() { return "CLTCheckDeviceName"; }
+    static std::string Name() { return "CLTCheckDeviceName"; }
     virtual bool supportReadOnly() { return false; }
 };
 #endif  // _CLT_CHECK_DEVICE_NAME_H_
