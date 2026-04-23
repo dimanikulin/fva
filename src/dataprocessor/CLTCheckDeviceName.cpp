@@ -7,7 +7,6 @@
  */
 #include "CLTCheckDeviceName.h"
 
-#include <QtCore/QString>
 #include <algorithm>
 #include <cctype>
 #include <filesystem>
@@ -16,10 +15,12 @@
 
 #include "fvacommonexif.h"
 
+CLTCheckDeviceName::~CLTCheckDeviceName() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
+
 FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/) {
     namespace fs = std::filesystem;
 
-    QString deviceName;
+    std::string deviceName;
     std::error_code ec;
     std::vector<fs::directory_entry> entries;
     for (const auto& entry : fs::directory_iterator(m_dir, fs::directory_options::skip_permission_denied, ec)) {
@@ -49,21 +50,22 @@ FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/) {
                        [](unsigned char ch) { return static_cast<char>(std::toupper(ch)); });
         if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix)) continue;
 
-        const QString filePath = QString::fromStdString(entry.path().string());
         std::error_code absEc;
         const fs::path absolutePath = fs::absolute(entry.path(), absEc);
-        const QString absoluteFilePath = QString::fromStdString(absEc ? entry.path().string() : absolutePath.string());
-        const QString newDeviceName = fvaGetExifMakeAndModelFromFile(filePath);
+        const fs::path reportPath = absEc ? entry.path() : absolutePath;
+        const QString newDeviceNameQt = fvaGetExifMakeAndModelFromFile(QString::fromStdString(entry.path().string()));
+        const std::string newDeviceName = newDeviceNameQt.toStdString();
 
-        if (newDeviceName.isEmpty()) {
-            LOG_CRIT << "no device name in picture:" << absoluteFilePath;
+        if (newDeviceName.empty()) {
+            LOG_CRIT << "no device name in picture:" << reportPath.string().c_str();
             return FVA_ERROR_EMPTY_DEVICE_NAME;
         } else {
-            if (deviceName.isEmpty())
-                LOG_DEB << "got first device name: " << newDeviceName << "in picture:" << absoluteFilePath;
+            if (deviceName.empty())
+                LOG_DEB << "got first device name: " << newDeviceName.c_str() << "in picture:"
+                        << reportPath.string().c_str();
             else if (deviceName != newDeviceName) {
-                LOG_CRIT << "got new device name: " << newDeviceName << "in picture:" << absoluteFilePath
-                         << "old: " << deviceName;
+                LOG_CRIT << "got new device name: " << newDeviceName.c_str() << "in picture:"
+                         << reportPath.string().c_str() << "old: " << deviceName.c_str();
                 return FVA_ERROR_NON_UNIQUE_DEVICE_NAME;
             }
             deviceName = newDeviceName;

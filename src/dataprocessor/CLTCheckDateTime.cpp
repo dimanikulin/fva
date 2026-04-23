@@ -7,8 +7,6 @@
  */
 #include "CLTCheckDateTime.h"
 
-#include <QtCore/QDateTime>
-#include <QtCore/QString>
 #include <algorithm>
 #include <cctype>
 #include <filesystem>
@@ -55,15 +53,14 @@ FVA_EXIT_CODE CLTCheckDateTime::execute(const CLTContext& context) {
                        [](unsigned char ch) { return static_cast<char>(std::toupper(ch)); });
         if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix)) continue;
 
-        const QString filePath = QString::fromStdString(entry.path().string());
         std::error_code absEc;
         const fs::path absolutePath = fs::absolute(entry.path(), absEc);
-        const QString absoluteFilePath = QString::fromStdString(absEc ? entry.path().string() : absolutePath.string());
-        const QDateTime dateTime =
-            fvaGetExifDateTimeOriginalFromFile(filePath, QString::fromStdString(m_fmtctx.exifDateTime));
+        const fs::path reportPath = absEc ? entry.path() : absolutePath;
+        const auto dateTime = fvaGetExifDateTimeOriginalFromFile(QString::fromStdString(entry.path().string()),
+                                                                 QString::fromStdString(m_fmtctx.exifDateTime));
 
         if (!dateTime.isValid() || dateTime.isNull()) {
-            LOG_CRIT << "found empty exif Date-Time:" << absoluteFilePath;
+            LOG_CRIT << "found empty exif Date-Time:" << reportPath.string().c_str();
             return FVA_ERROR_NO_EXIF_DATE_TIME;
         }
     }
