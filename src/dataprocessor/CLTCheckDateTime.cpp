@@ -66,4 +66,4 @@ FVA_EXIT_CODE CLTCheckDateTime::execute(const CLTContext& context) {
     }
     return FVA_NO_ERROR;
 }
-CLTCheckDateTime::~CLTCheckDateTime() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
+CLTCheckDateTime::~CLTCheckDateTime() { LOG_DEB << "cmd deleted, dir:" << m_folder.c_str(); }

@@ -15,7 +15,7 @@
 
 #include "fvacommonexif.h"
 
-CLTCheckDeviceName::~CLTCheckDeviceName() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
+CLTCheckDeviceName::~CLTCheckDeviceName() { LOG_DEB << "cmd deleted, dir:" << m_folder.c_str(); }
 
 FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/) {
     namespace fs = std::filesystem;
