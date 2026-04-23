@@ -27,7 +27,6 @@ add_library(
   fvaconfiguration.h
   fvacsvfile.h
   fvacommonlib.h
-  fvacommonui.h
   fvaconstants.h
   FVADescriptionFile.h
   fvaexitcodes.h
@@ -41,7 +40,6 @@ add_library(
   fvaconfiguration.cpp
   fvacsvfile.cpp
   fvacommonlib.cpp
-  fvacommonui.cpp
   FVADescriptionFile.cpp
   fvafmtcontext.cpp
   fvariffparser.cpp
