@@ -61,11 +61,11 @@ FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/) {
             return FVA_ERROR_EMPTY_DEVICE_NAME;
         } else {
             if (deviceName.empty())
-                LOG_DEB << "got first device name: " << newDeviceName.c_str() << "in picture:"
-                        << reportPath.string().c_str();
+                LOG_DEB << "got first device name: " << newDeviceName.c_str()
+                        << "in picture:" << reportPath.string().c_str();
             else if (deviceName != newDeviceName) {
-                LOG_CRIT << "got new device name: " << newDeviceName.c_str() << "in picture:"
-                         << reportPath.string().c_str() << "old: " << deviceName.c_str();
+                LOG_CRIT << "got new device name: " << newDeviceName.c_str()
+                         << "in picture:" << reportPath.string().c_str() << "old: " << deviceName.c_str();
                 return FVA_ERROR_NON_UNIQUE_DEVICE_NAME;
             }
             deviceName = newDeviceName;
