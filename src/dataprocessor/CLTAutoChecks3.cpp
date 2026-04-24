@@ -14,6 +14,7 @@
 #include <string>
 #include <vector>
 
+#include "fva_qt_port_2_stl.h"
 #include "fvacommoncsv.h"
 #include "fvacommonexif.h"
 
@@ -42,7 +43,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
     for (const auto& entry : fs::directory_iterator(m_dir, fs::directory_options::skip_permission_denied, ec)) {
         if (ec) {
             LOG_CRIT << "failed to enumerate dir: " << m_folder.c_str();
-            return FVA_ERROR_INVALID_ARG;
+            return FVA_ERROR_FAILED_TO_ENUMERATE_DIR;
         }
         entries.push_back(entry);
     }
@@ -95,7 +96,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
         std::string deviceName;
         DEVICE_MAP devMap = fvaGetDeviceMapForImg(m_deviceMap, entry.path().string(), deviceName);
         if (0 == devMap.size()) {
-            LOG_WARN << "unknown device found:" << QString::fromStdString(deviceName).trimmed()
+            LOG_WARN << "unknown device found:" << trim(deviceName)
                      << " in file :" << absoluteFilePath.c_str();
             m_Issues.push_back("FVA_ERROR_UNKNOWN_DEVICE," + absoluteFilePath + "," + std::to_string(deviceID) + "," +
                                m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
@@ -105,7 +106,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
                 return FVA_ERROR_UNKNOWN_DEVICE;
         }
         if (deviceName.empty()) {
-            LOG_WARN << "empty device found:" << QString::fromStdString(deviceName).trimmed()
+            LOG_WARN << "empty device found:" << trim(deviceName)
                      << " in file :" << absoluteFilePath.c_str();
             m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + absoluteFilePath + "," + std::to_string(deviceID) + "," +
                                m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);

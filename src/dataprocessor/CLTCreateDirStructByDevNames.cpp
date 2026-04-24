@@ -24,7 +24,7 @@ FVA_EXIT_CODE CLTCreateDirStructByDeviceName::execute(const CLTContext& /*contex
     for (const auto& entry : fs::directory_iterator(m_dir, fs::directory_options::skip_permission_denied, ec)) {
         if (ec) {
             LOG_CRIT << "failed to enumerate dir: " << m_folder.c_str();
-            return FVA_ERROR_INVALID_ARG;
+            return FVA_ERROR_FAILED_TO_ENUMERATE_DIR;
         }
         entries.push_back(entry);
     }
