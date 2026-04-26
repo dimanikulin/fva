@@ -9,9 +9,8 @@
 #ifndef FVACOMMONEXIF_H
 #define FVACOMMONEXIF_H
 
-#include <string>
-
 #include <QtCore/QDateTime>
+#include <string>
 
 #include "fvafmtcontext.h"
 

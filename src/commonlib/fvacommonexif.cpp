@@ -8,10 +8,9 @@
 
 #include "fvacommonexif.h"
 
+#include <QtCore/QFile>
 #include <fstream>
 #include <vector>
-
-#include <QtCore/QFile>
 
 #include "exif.h"
 #include "fvariffparser.h"
