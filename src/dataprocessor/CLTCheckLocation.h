@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "CmdLineBaseTask.h"
+#include "fvaconfiguration.h"
 
 /*!
  * \brief CLTCheckLocation is child of CmdLineBaseTask and implements the next functions:
@@ -23,6 +24,7 @@
  */
 class CLTCheckLocation : public CmdLineBaseTask {
 public:
+    explicit CLTCheckLocation(const FvaConfiguration& cfg);
     virtual ~CLTCheckLocation();
     virtual FVA_EXIT_CODE execute(const CLTContext& context);
 
@@ -34,6 +36,7 @@ public:
     virtual bool supportReadOnly() { return true; }
 
 private:
+    std::string m_rootSWdir;
     /*!
      * issues found
      */

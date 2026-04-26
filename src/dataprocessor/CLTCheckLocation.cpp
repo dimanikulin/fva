@@ -7,8 +7,6 @@
  */
 #include "CLTCheckLocation.h"
 
-#include <QtCore/QCoreApplication>
-#include <QtCore/QString>
 #include <algorithm>
 #include <cctype>
 #include <filesystem>
@@ -16,6 +14,13 @@
 #include <vector>
 
 #include "fvacommonexif.h"
+
+CLTCheckLocation::CLTCheckLocation(const FvaConfiguration& cfg) {
+    std::string rootSWdir;
+    FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
+    RET_IF_RES_IS_ERROR
+    m_rootSWdir = rootSWdir;
+}
 
 FVA_EXIT_CODE CLTCheckLocation::execute(const CLTContext& context) {
     namespace fs = std::filesystem;
@@ -49,33 +54,24 @@ FVA_EXIT_CODE CLTCheckLocation::execute(const CLTContext& context) {
                        [](unsigned char ch) { return static_cast<char>(std::toupper(ch)); });
         if (FVA_FS_TYPE_IMG != fvaConvertFileExt2FileType(suffix)) continue;
 
-        const QString filePath = QString::fromStdString(entry.path().string());
+        const std::string filePath = entry.path().string();
         std::error_code absEc;
         const fs::path absolutePath = fs::absolute(entry.path(), absEc);
-        const QString absoluteFilePath = QString::fromStdString(absEc ? entry.path().string() : absolutePath.string());
+        const std::string absoluteFilePath = absEc ? entry.path().string() : absolutePath.string();
 
         const bool present = fvaExifGeoDataPresentInFile(filePath);
         if (!present) {
             if (context.readOnly) {
-                LOG_CRIT << "found file without exif location:" << absoluteFilePath;
+                LOG_CRIT << "found file without exif location:" << absoluteFilePath.c_str();
                 return FVA_ERROR_NO_EXIF_LOCATION;
             }
-            m_Issues.push_back(absoluteFilePath.toStdString());
+            m_Issues.push_back(absoluteFilePath);
         }
     }
     return FVA_NO_ERROR;
 }
 CLTCheckLocation::~CLTCheckLocation() {
-    std::string rootSWdir;
-
-    FvaConfiguration cfg;
-    FVA_EXIT_CODE res = cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
-    RET_IF_RES_IS_ERROR
-
-    res = cfg.getParamAsString("Common::RootDir", rootSWdir);
-    RET_IF_RES_IS_ERROR
-
-    fvaSaveStrListToFile(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", m_Issues);
+    fvaSaveStrListToFile(m_rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", m_Issues);
 
     LOG_DEB << "cmd deleted, dir:" << m_folder;
 }

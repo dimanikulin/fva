@@ -45,7 +45,7 @@ std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTCon
     else if (cmdType == QString::fromStdString(CLTCheckFileFormat::Name()))
         r.reset(new CLTCheckFileFormat());
     else if (cmdType == QString::fromStdString(CLTCheckLocation::Name()))
-        r.reset(new CLTCheckLocation());
+        r.reset(new CLTCheckLocation(cfg));
     else if (cmdType == QString::fromStdString(CLTCheckDateTime::Name()))
         r.reset(new CLTCheckDateTime(cfg));
     else if (cmdType == QString::fromStdString(CLTCreateDirStructByFileNames::Name()))
