@@ -82,34 +82,33 @@ std::string formatFileTime(const std::filesystem::file_time_type& fileTime, cons
  * \param data The input data to encode
  * \param size The size of the input data
  * \return The Base64 encoded string
-*/
+ */
 std::string base64Encode(const std::uint8_t* data, std::size_t size);
 
 /*!
  * \brief A simple implementation of the SHA-1 hashing algorithm
  */
-class Sha1{
+class Sha1 {
 public:
     /*!
      * \brief Constructs a new Sha1 object and initializes its state
      */
     Sha1();
-    
+
     /*!
      * \brief Updates the hash state with the given data
      * \param data The input data to update the hash with
      * \param len The length of the input data
      */
     void update(const std::uint8_t* data, std::size_t len);
-    
+
     /*!
      * \brief Finalizes the hash computation and returns the resulting digest
      * \return The SHA-1 digest as an array of 20 bytes
      */
     std::array<std::uint8_t, 20> final();
 
-    private:
-
+private:
     static constexpr std::size_t kBlockSize = 64;
 
     /*!
@@ -131,12 +130,10 @@ public:
      */
     void processBlock(const std::uint8_t* block);
 
-        std::array<std::uint32_t, 5> m_state = {};
+    std::array<std::uint32_t, 5> m_state = {};
     std::array<std::uint8_t, kBlockSize> m_buffer = {};
     std::size_t m_bufferSize = 0;
     std::uint64_t m_totalBits = 0;
-
 };
-
 
 #endif  // FVA_QT_PORT_2_STL_H

@@ -16,6 +16,7 @@
 #include <iomanip>
 #include <sstream>
 #include <vector>
+
 #include "fva_qt_port_2_stl.h"
 
 CLTPrintFSStructure::CLTPrintFSStructure(const FvaConfiguration& cfg) {
@@ -75,8 +76,7 @@ FVA_EXIT_CODE CLTPrintFSStructure::execute(const CLTContext& /*context*/) {
             file.read(buffer.data(), static_cast<std::streamsize>(buffer.size()));
             const std::streamsize bytesRead = file.gcount();
             if (bytesRead > 0) {
-                sha1.update(reinterpret_cast<const std::uint8_t*>(buffer.data()),
-                            static_cast<std::size_t>(bytesRead));
+                sha1.update(reinterpret_cast<const std::uint8_t*>(buffer.data()), static_cast<std::size_t>(bytesRead));
             }
         }
 
