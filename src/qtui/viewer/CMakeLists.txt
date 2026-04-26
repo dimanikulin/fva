@@ -27,6 +27,6 @@ add_executable(
   qpicturelabel.ui
   )
 
-target_link_libraries(fvaviewer Qt5::Widgets Qt5::Core Qt5::Gui fvalib)
+target_link_libraries(fvaviewer Qt5::Widgets Qt5::Core Qt5::Gui fvalib fvacommonuilib)
 
 install(TARGETS fvaviewer)
