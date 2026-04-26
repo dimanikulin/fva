@@ -14,7 +14,6 @@ add_executable(
   d-filter.ui
   e-filter.ui
   filters.ui
-  fvaFilter.h
   fvaviewer.cpp
   fvaviewer.h
   fvaviewer.qrc
