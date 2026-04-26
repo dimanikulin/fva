@@ -8,7 +8,7 @@
 #ifndef _CLT_PRINT_FS_STRUCTURE_H_
 #define _CLT_PRINT_FS_STRUCTURE_H_
 
-#include <QtCore/QFile>
+#include <fstream>
 #include <string>
 
 #include "CmdLineBaseTask.h"
@@ -33,7 +33,7 @@ private:  // data
     /*!
      * \brief file to output the file stucture info into
      */
-    QFile m_file;
+    std::ofstream m_file;
 
     /*!
      * \brief formatting context to use formatting options from
