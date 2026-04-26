@@ -18,6 +18,6 @@ add_library(
 
 target_include_directories(fvacommonuilib INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(fvacommonuilib Qt5::Widgets Qt5::Core Qt5::Gui)
+target_link_libraries(fvacommonuilib Qt5::Widgets Qt5::Core Qt5::Gui fvalib)
 
 install(TARGETS fvacommonuilib)
