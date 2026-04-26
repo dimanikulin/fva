@@ -9,8 +9,9 @@
 #ifndef FVACOMMONEXIF_H
 #define FVACOMMONEXIF_H
 
+#include <string>
+
 #include <QtCore/QDateTime>
-#include <QtCore/QString>
 
 #include "fvafmtcontext.h"
 
@@ -36,7 +37,7 @@ QDateTime fvaGetExifDateTimeOriginalFromFile(const QString& pathToFile, const QS
  * \param pathToFile path file to check Exif GEO Location is present from
  * \returns it returns true if Exif GEO Location is present, otherwize it returns false
  */
-bool fvaExifGeoDataPresentInFile(const QString& pathToFile);
+bool fvaExifGeoDataPresentInFile(const std::string& pathToFile);
 
 /*!
  * \brief it tries to get time a video taken at from header

@@ -7,7 +7,6 @@
  */
 #include "CLTAutoChecks3.h"
 
-#include <QtCore/QString>
 #include <algorithm>
 #include <cctype>
 #include <filesystem>
@@ -126,7 +125,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
             continue;
         }
 
-        const bool geoPresent = fvaExifGeoDataPresentInFile(QString::fromStdString(entry.path().string()));
+        const bool geoPresent = fvaExifGeoDataPresentInFile(entry.path().string());
         if (!geoPresent) {
             int placeId = -1;
             auto it = m_fvaFileInfo.find(fileNameUpper);
