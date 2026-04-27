@@ -9,8 +9,8 @@
 
 #include <QtCore/QString>
 #include <algorithm>
-#include <chrono>
 #include <cctype>
+#include <chrono>
 #include <filesystem>
 #include <string>
 #include <vector>
@@ -129,8 +129,8 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
                 if (maybeName.isEmpty()) fillRenameDateTimeFromLastModifiedIfValid(m_dir, entryPath, renameDateTime);
                 if (!renameDateTime.isValid() && m_renamePicsByModifTime && lastModified.isValid()) {
                     LOG_WARN << "modification time to use (true == FVA_RENAME_FILES_BY_MODIF_TIME_FOR_EMPTY_EXIF) for:"
-                             << absoluteFilePath << ", time : "
-                             << lastModified.toString(QString::fromStdString(m_fmtctx.fvaFileName));
+                             << absoluteFilePath
+                             << ", time : " << lastModified.toString(QString::fromStdString(m_fmtctx.fvaFileName));
                     renameDateTime = lastModified;
                 }
             }
