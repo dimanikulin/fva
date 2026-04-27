@@ -12,6 +12,10 @@
 
 #include <filesystem>
 #include <string>
+#include <array>
+#include <cstdint>
+
+// TODO make Unit tests for these functions and class 
 
 /*!
  * \brief Helper function to convert string to uppercase
@@ -26,6 +30,7 @@ std::string fvaStrToUpper(const std::string& str);
  * \return The quoted version of the input argument
  */
 std::string quoteArg(const std::string& arg);
+
 
 /*!
  * \brief Helper function to check if a directory exists

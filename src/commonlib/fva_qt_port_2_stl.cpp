@@ -12,6 +12,13 @@
 #include <algorithm>
 #include <cctype>
 
+#include <cstring>   // for std::memcpy
+#include <chrono>
+#include <ctime>
+#include <iomanip>
+#include <sstream>
+
+
 // TODO create UTs
 std::string fvaStrToUpper(const std::string& str) {
     std::string result = str;
