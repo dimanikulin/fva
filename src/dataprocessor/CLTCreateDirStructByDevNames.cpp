@@ -15,6 +15,9 @@
 #include "fva_qt_port_2_stl.h"
 #include "fvacommonexif.h"
 
+
+CLTCreateDirStructByDeviceName::~CLTCreateDirStructByDeviceName() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
+
 FVA_EXIT_CODE CLTCreateDirStructByDeviceName::execute(const CLTContext& /*context*/) {
     namespace fs = std::filesystem;
 

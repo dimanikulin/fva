@@ -13,6 +13,8 @@
 
 #include "fva_qt_port_2_stl.h"
 
+CLTCreateDirStructByFileNames::~CLTCreateDirStructByFileNames() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
+
 FVA_EXIT_CODE CLTCreateDirStructByFileNames::execute(const CLTContext& context) {
     namespace fs = std::filesystem;
 
