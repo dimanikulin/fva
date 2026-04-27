@@ -7,16 +7,32 @@
  */
 #include "CLTRenameFiles.h"
 
-#include <QtCore/QDir>
-#include <QtCore/QFileInfo>
 #include <QtCore/QString>
 #include <algorithm>
+#include <chrono>
 #include <cctype>
 #include <filesystem>
 #include <string>
 #include <vector>
 
 #include "fvacommonexif.h"
+
+namespace {
+
+QDateTime fvaLastWriteTime(const std::filesystem::path& filePath) {
+    namespace fs = std::filesystem;
+
+    std::error_code ec;
+    const fs::file_time_type fileTime = fs::last_write_time(filePath, ec);
+    if (ec) return QDateTime();
+
+    const auto systemTime = std::chrono::time_point_cast<std::chrono::system_clock::duration>(
+        fileTime - fs::file_time_type::clock::now() + std::chrono::system_clock::now());
+    const std::time_t tt = std::chrono::system_clock::to_time_t(systemTime);
+    return QDateTime::fromSecsSinceEpoch(static_cast<qint64>(tt), Qt::UTC).toLocalTime();
+}
+
+}  // namespace
 
 CLTRenameFiles::CLTRenameFiles(const FvaConfiguration& cfg) {
     FVA_EXIT_CODE res = cfg.getParamAsBoolean("Rename::videoByModifTime", m_renameVideoByModifTime);
@@ -60,12 +76,12 @@ void CLTRenameFiles::fillRenameDateTimeFromLastModifiedIfValid(const std::filesy
     const QDateTime validDateStart = QDateTime::fromString(dirDate, QString::fromStdString(m_fmtctx.fvaDirName));
 
     if (validDateStart.isValid()) {
-        const QFileInfo info(QString::fromStdString(filePath.string()));
+        const QDateTime lastModified = fvaLastWriteTime(filePath);
         const QDateTime validDateEnd = validDateStart.addDays(1);
-        if ((info.lastModified() > validDateStart) && (info.lastModified() < validDateEnd)) {
+        if ((lastModified > validDateStart) && (lastModified < validDateEnd)) {
             LOG_WARN << " modification time to use for:" << QString::fromStdString(filePath.string())
-                     << ",time:" << info.lastModified().toString(QString::fromStdString(m_fmtctx.fvaFileName));
-            renameDateTime = info.lastModified();
+                     << ",time:" << lastModified.toString(QString::fromStdString(m_fmtctx.fvaFileName));
+            renameDateTime = lastModified;
         }
     }
 }
@@ -97,7 +113,7 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
 
         const fs::path entryPath = entry.path();
         const QString absoluteFilePath = QString::fromStdString(entryPath.string());
-        const QFileInfo info(absoluteFilePath);
+        const QDateTime lastModified = fvaLastWriteTime(entryPath);
 
         std::string suffix = entryPath.extension().string();
         if (!suffix.empty() && suffix.front() == '.') suffix.erase(0, 1);
@@ -111,11 +127,11 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
                     fvaGetExifDateTimeOriginalFromFile(absoluteFilePath, QString::fromStdString(m_fmtctx.exifDateTime));
                 const QString maybeName = renameDateTime.toString(QString::fromStdString(m_fmtctx.fvaFileName));
                 if (maybeName.isEmpty()) fillRenameDateTimeFromLastModifiedIfValid(m_dir, entryPath, renameDateTime);
-                if (!renameDateTime.isValid() && m_renamePicsByModifTime && info.lastModified().isValid()) {
+                if (!renameDateTime.isValid() && m_renamePicsByModifTime && lastModified.isValid()) {
                     LOG_WARN << "modification time to use (true == FVA_RENAME_FILES_BY_MODIF_TIME_FOR_EMPTY_EXIF) for:"
                              << absoluteFilePath << ", time : "
-                             << info.lastModified().toString(QString::fromStdString(m_fmtctx.fvaFileName));
-                    renameDateTime = info.lastModified();
+                             << lastModified.toString(QString::fromStdString(m_fmtctx.fvaFileName));
+                    renameDateTime = lastModified;
                 }
             }
         } else if (FVA_FS_TYPE_VIDEO == fileType) {
@@ -125,10 +141,10 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
                 if (FVA_NO_ERROR != fvaParseFileName(entryPath.stem().string(), renameDateTime, m_fmtctx)) {
                     LOG_WARN << "can not get taken time from:" << absoluteFilePath << ",error:" << error;
                     fillRenameDateTimeFromLastModifiedIfValid(m_dir, entryPath, renameDateTime);
-                    if (!renameDateTime.isValid() && m_renameVideoByModifTime && info.lastModified().isValid()) {
+                    if (!renameDateTime.isValid() && m_renameVideoByModifTime && lastModified.isValid()) {
                         LOG_WARN << "last modif time to use (FVA_RENAME_VIDEO_BY_MODIF_TIME_IF_EMPTY_EXIF == true): for"
                                  << absoluteFilePath;
-                        renameDateTime = info.lastModified();
+                        renameDateTime = lastModified;
                     }
                 }
             }
