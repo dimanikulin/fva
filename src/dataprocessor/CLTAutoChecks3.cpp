@@ -95,7 +95,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
         std::string deviceName;
         DEVICE_MAP devMap = fvaGetDeviceMapForImg(m_deviceMap, entry.path().string(), deviceName);
         if (0 == devMap.size()) {
-            LOG_WARN << "unknown device found:" << trim(deviceName) << " in file :" << absoluteFilePath.c_str();
+            LOG_WARN << "unknown device found:" << trim(deviceName).c_str() << " in file :" << absoluteFilePath.c_str();
             m_Issues.push_back("FVA_ERROR_UNKNOWN_DEVICE," + absoluteFilePath + "," + std::to_string(deviceID) + "," +
                                m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
             if (context.readOnly)
@@ -104,7 +104,7 @@ FVA_EXIT_CODE CLTAutoChecks3::execute(const CLTContext& context) {
                 return FVA_ERROR_UNKNOWN_DEVICE;
         }
         if (deviceName.empty()) {
-            LOG_WARN << "empty device found:" << trim(deviceName) << " in file :" << absoluteFilePath.c_str();
+            LOG_WARN << "empty device found:" << trim(deviceName).c_str() << " in file :" << absoluteFilePath.c_str();
             m_Issues.push_back("FVA_ERROR_EMPTY_DEVICE," + absoluteFilePath + "," + std::to_string(deviceID) + "," +
                                m_deviceMap[deviceID].guiName + " " + m_deviceMap[deviceID].ownerName);
             continue;
