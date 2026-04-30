@@ -102,7 +102,7 @@ FVA_EXIT_CODE CLTPrintFSStructure::execute(const CLTContext& /*context*/) {
 
         if (!m_file.is_open()) {
             LOG_CRIT << "output file is not opened";
-            return FVA_ERROR_CANT_OPEN_FILE;
+            return FVA_ERROR_CANT_OPEN_OUTPUT_FILE;
         }
 
         m_file << absolutePath.string() << "," << base64Encode(digest.data(), digest.size()) << ","

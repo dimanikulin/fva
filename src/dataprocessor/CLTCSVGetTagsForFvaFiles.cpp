@@ -14,7 +14,7 @@
 #include "fvacommoncsv.h"
 
 CLTCSVGetTagsForFvaFiles::CLTCSVGetTagsForFvaFiles(const FvaConfiguration& cfg) {
-    LOG_DEB << "cmd created, dir:" << m_folder;
+    LOG_DEB << "cmd created, dir:" << m_folder.c_str();
 
     std::string rootSWdir;
     FVA_EXIT_CODE res = cfg.getParamAsString("Common::RootDir", rootSWdir);
@@ -221,5 +221,5 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context) {
 CLTCSVGetTagsForFvaFiles::~CLTCSVGetTagsForFvaFiles() {
     fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileTags.csv", m_records);
 
-    LOG_DEB << "cmd deleted, dir:" << m_folder;
+    LOG_DEB << "cmd deleted, dir:" << m_folderю.c_str();
 }
