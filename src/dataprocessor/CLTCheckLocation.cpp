@@ -73,5 +73,5 @@ FVA_EXIT_CODE CLTCheckLocation::execute(const CLTContext& context) {
 CLTCheckLocation::~CLTCheckLocation() {
     fvaSaveStrListToFile(m_rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", m_Issues);
 
-    LOG_DEB << "cmd deleted, dir:" << m_folder;
+    LOG_DEB << "cmd deleted, dir:" << m_folder.c_str() << " , issues found:" << m_Issues.size();
 }

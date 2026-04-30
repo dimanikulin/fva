@@ -21,7 +21,7 @@
  */
 class CLTCheckFileFormat : public CmdLineBaseTask {
 public:
-    virtual ~CLTCheckFileFormat() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
+    virtual ~CLTCheckFileFormat() { LOG_DEB << "cmd deleted, dir:" << m_folder.c_str(); }
     virtual FVA_EXIT_CODE execute(const CLTContext& context);
     /*!
      * \brief returns command name
