@@ -19,7 +19,7 @@
 class CLTFixDuplicatedFileNames : public CmdLineBaseTask {
 public:
     CLTFixDuplicatedFileNames(const FvaConfiguration& cfg);
-    virtual ~CLTFixDuplicatedFileNames() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
+    virtual ~CLTFixDuplicatedFileNames() { LOG_DEB << "cmd deleted, dir:" << m_folder.c_str(); }
     virtual FVA_EXIT_CODE execute(const CLTContext& context);
     /*!
      * \brief returns command name
