@@ -19,7 +19,7 @@
 class CLTRenameVideoBySequence : public CmdLineBaseTask {
 public:
     CLTRenameVideoBySequence(const FvaConfiguration& cfg);
-    virtual ~CLTRenameVideoBySequence() { LOG_DEB << "cmd deleted, dir:" << m_folder; }
+    virtual ~CLTRenameVideoBySequence() { LOG_DEB << "cmd deleted, dir:" << m_folder.c_str(); }
     virtual FVA_EXIT_CODE execute(const CLTContext& context);
     /*!
      * \brief returns command name

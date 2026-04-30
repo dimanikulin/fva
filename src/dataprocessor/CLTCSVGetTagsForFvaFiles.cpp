@@ -221,5 +221,5 @@ FVA_EXIT_CODE CLTCSVGetTagsForFvaFiles::execute(const CLTContext& context) {
 CLTCSVGetTagsForFvaFiles::~CLTCSVGetTagsForFvaFiles() {
     fvaSaveStrListToFile(m_rootSWdir + "#data#/fvaFileTags.csv", m_records);
 
-    LOG_DEB << "cmd deleted, dir:" << m_folderю.c_str();
+    LOG_DEB << "cmd deleted, dir:" << m_folder.c_str();
 }
