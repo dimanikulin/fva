@@ -7,9 +7,6 @@
  */
 #include "FVADataProcessor.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QDir>
-
 #include "CLTAutoChecks1.h"
 #include "CLTAutoChecks2.h"
 #include "CLTAutoChecks3.h"
@@ -32,43 +29,43 @@
 std::unique_ptr<CmdLineBaseTask> FVADataProcessor::createTaskByName(const CLTContext& context,
                                                                     const FvaConfiguration& cfg) {
     std::unique_ptr<CmdLineBaseTask> r(nullptr);
-    const QString cmdType = QString::fromStdString(context.cmdType);
+    const std::string& cmdType = context.cmdType;
 
-    if (cmdType == QString::fromStdString(CLTCreateDirStructByDeviceName::Name()))
+    if (cmdType == CLTCreateDirStructByDeviceName::Name())
         r.reset(new CLTCreateDirStructByDeviceName());
-    else if (cmdType == QString::fromStdString(CLTCheckDeviceName::Name()))
+    else if (cmdType == CLTCheckDeviceName::Name())
         r.reset(new CLTCheckDeviceName());
     else if (cmdType == CLTRenameVideoBySequence::Name())
         r.reset(new CLTRenameVideoBySequence(cfg));
-    else if (cmdType == QString::fromStdString(CLTAutoChecks1::Name()))
+    else if (cmdType == CLTAutoChecks1::Name())
         r.reset(new CLTAutoChecks1(cfg));
-    else if (cmdType == QString::fromStdString(CLTCheckFileFormat::Name()))
+    else if (cmdType == CLTCheckFileFormat::Name())
         r.reset(new CLTCheckFileFormat());
-    else if (cmdType == QString::fromStdString(CLTCheckLocation::Name()))
+    else if (cmdType == CLTCheckLocation::Name())
         r.reset(new CLTCheckLocation(cfg));
-    else if (cmdType == QString::fromStdString(CLTCheckDateTime::Name()))
+    else if (cmdType == CLTCheckDateTime::Name())
         r.reset(new CLTCheckDateTime(cfg));
-    else if (cmdType == QString::fromStdString(CLTCreateDirStructByFileNames::Name()))
+    else if (cmdType == CLTCreateDirStructByFileNames::Name())
         r.reset(new CLTCreateDirStructByFileNames());
-    else if (cmdType == QString::fromStdString(CLTRenameFiles::Name()))
+    else if (cmdType == CLTRenameFiles::Name())
         r.reset(new CLTRenameFiles(cfg));
-    else if (cmdType == QString::fromStdString(CLTAutoChecks2::Name()))
+    else if (cmdType == CLTAutoChecks2::Name())
         r.reset(new CLTAutoChecks2(cfg));
-    else if (cmdType == QString::fromStdString(CLTMoveAloneFiles::Name()))
+    else if (cmdType == CLTMoveAloneFiles::Name())
         r.reset(new CLTMoveAloneFiles(cfg));
-    else if (cmdType == QString::fromStdString(CLTSetFileAtts::Name()))
+    else if (cmdType == CLTSetFileAtts::Name())
         r.reset(new CLTSetFileAtts());
-    else if (cmdType == QString::fromStdString(CLTPrintFSStructure::Name()))
+    else if (cmdType == CLTPrintFSStructure::Name())
         r.reset(new CLTPrintFSStructure(cfg));
-    else if (cmdType == QString::fromStdString(CLTMoveInputDir2Output::Name()))
+    else if (cmdType == CLTMoveInputDir2Output::Name())
         r.reset(new CLTMoveInputDir2Output(cfg));
-    else if (cmdType == QString::fromStdString(CLTCSVFvaFile::Name()))
+    else if (cmdType == CLTCSVFvaFile::Name())
         r.reset(new CLTCSVFvaFile(cfg));
-    else if (cmdType == QString::fromStdString(CLTAutoChecks3::Name()))
+    else if (cmdType == CLTAutoChecks3::Name())
         r.reset(new CLTAutoChecks3(cfg));
-    else if (cmdType == QString::fromStdString(CLTFixDuplicatedFileNames::Name()))
+    else if (cmdType == CLTFixDuplicatedFileNames::Name())
         r.reset(new CLTFixDuplicatedFileNames(cfg));
-    else if (cmdType == QString::fromStdString(CLTCSVGetTagsForFvaFiles::Name()))
+    else if (cmdType == CLTCSVGetTagsForFvaFiles::Name())
         r.reset(new CLTCSVGetTagsForFvaFiles(cfg));
 
     return r;
