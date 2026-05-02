@@ -16,19 +16,17 @@
 #include "fvaconfiguration.h"
 #include "fvalogger.inl"
 
-#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET(msg) \
-    if (exitCode != FVA_NO_ERROR) { \
+#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET(msg)                       \
+    if (exitCode != FVA_NO_ERROR) {                                  \
         FVA_MESSAGE_BOX("Error happened during " msg " operation!"); \
-        return exitCode; \
+        return exitCode;                                             \
     }
 
-
-# define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(msg) \
-    if (exitCode != FVA_NO_ERROR) { \
+#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(msg)              \
+    if (exitCode != FVA_NO_ERROR) {                                  \
         FVA_MESSAGE_BOX("Error happened during " msg " operation!"); \
-        return exitCode; \
+        return exitCode;                                             \
     }
-
 
 FVAFlowController::FVAFlowController() {
     FVA_EXIT_CODE exitCode = m_cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
