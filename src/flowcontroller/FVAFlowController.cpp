@@ -26,16 +26,16 @@
         // TODO to replace with some more generic solution
 }
 
-#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET(msg)                       \
-    if (exitCode != FVA_NO_ERROR) {                                  \
+#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET(msg)                                          \
+    if (exitCode != FVA_NO_ERROR) {                                                     \
         FVA_MESSAGE_BOX(std::string("Error happened during ") + (msg) + " operation!"); \
-        return;                                                      \
+        return;                                                                         \
     }
 
-#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(msg)              \
-    if (exitCode != FVA_NO_ERROR) {                                  \
+#define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(msg)                                 \
+    if (exitCode != FVA_NO_ERROR) {                                                     \
         FVA_MESSAGE_BOX(std::string("Error happened during ") + (msg) + " operation!"); \
-        return exitCode;                                             \
+        return exitCode;                                                                \
     }
 
 FVAFlowController::FVAFlowController() {
@@ -223,7 +223,7 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName, QOb
     LOG_DEB << "runPythonCMD:"
             << "pyScriptRunPath=" << pyScriptRunPath;
 
-        int exitCode_ = std::system(command.c_str());
+    int exitCode_ = std::system(command.c_str());
     if (exitCode_ != 0) {
         LOG_DEB << "runPythonCMD:"
                 << "exitCode_=" << exitCode_;
