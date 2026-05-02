@@ -16,11 +16,11 @@
 #include "fvaconfiguration.h"
 #include "fvalogger.inl"
 
-    #define FVA_MESSAGE_BOX(msg) \
-    { \
-        QMessageBox msgBox; \
+#define FVA_MESSAGE_BOX(msg) \
+    {                        \
+        QMessageBox msgBox;  \
         msgBox.setText(msg); \
-        msgBox.exec(); \
+        msgBox.exec();       \
     }
 
 #define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET(msg)                       \
