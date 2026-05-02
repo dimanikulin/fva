@@ -11,7 +11,6 @@
 
 #include "FVADataProcessor.h"
 #include "fvacommonlib.h"
-#include "fvacommonui.h"
 #include "fvalogger.inl"
 
 LOGGER_GLOBAL
@@ -21,7 +20,9 @@ int main(int argc, char *argv[]) {
 
     FvaConfiguration cfg;
     FVA_EXIT_CODE exitCode = cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
-    IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("param loading")
+    if (exitCode != FVA_NO_ERROR) {
+        return exitCode;
+    }
 
     LOG_INIT("#logs#/org.txt")
 
