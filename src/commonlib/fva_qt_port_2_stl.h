@@ -90,6 +90,12 @@ std::string formatFileTime(const std::filesystem::file_time_type& fileTime, cons
 std::string base64Encode(const std::uint8_t* data, std::size_t size);
 
 /*!
+ * \brief Helper function to get the application directory path
+ * \return The directory path where the application is located
+ */
+std::string getApplicationDirPath()
+
+/*!
  * \brief A simple implementation of the SHA-1 hashing algorithm
  */
 class Sha1 {

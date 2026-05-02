@@ -7,9 +7,14 @@
  */
 #include "FVAFlowController.h"
 
-#include <QtCore/QCoreApplication>
-#include <QtCore/QDir>
-#include <QtCore/QProcess>
+#include <algorithm>
+#include <cctype>
+#include <cstdlib>
+#include <filesystem>
+
+#ifdef _WIN32
+#include <Windows.h>
+#endif
 
 #include "fva_qt_port_2_stl.h"
 #include "fvacommoncsv.h"
@@ -23,18 +28,19 @@
 
 #define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET(msg)                       \
     if (exitCode != FVA_NO_ERROR) {                                  \
-        FVA_MESSAGE_BOX("Error happened during " msg " operation!"); \
+        FVA_MESSAGE_BOX(std::string("Error happened during ") + (msg) + " operation!"); \
         return;                                                      \
     }
 
 #define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(msg)              \
     if (exitCode != FVA_NO_ERROR) {                                  \
-        FVA_MESSAGE_BOX("Error happened during " msg " operation!"); \
+        FVA_MESSAGE_BOX(std::string("Error happened during ") + (msg) + " operation!"); \
         return exitCode;                                             \
     }
 
 FVAFlowController::FVAFlowController() {
-    FVA_EXIT_CODE exitCode = m_cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
+    const std::string cfgPath = getApplicationDirPath() + "/fvaParams.csv";
+    FVA_EXIT_CODE exitCode = m_cfg.load(cfgPath);
 
     // show error message box and return if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("cfg.load")
@@ -75,16 +81,23 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
 
     deviceContext.matchedDeviceName.clear();
 
-    QDir _dir(QString::fromStdString(context.dir));
-    Q_FOREACH (QFileInfo info, _dir.entryInfoList(QDir::System | QDir::Hidden | QDir::Files, QDir::DirsLast)) {
-        if (info.isDir()) continue;
-        QString suffix = info.suffix().toUpper();
-        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix.toStdString());
+    std::error_code fsError;
+    for (const auto& entry : std::filesystem::directory_iterator(context.dir, fsError)) {
+        if (fsError != std::error_code()) break;
+        if (!entry.is_regular_file(fsError)) continue;
+        if (fsError != std::error_code()) continue;
+
+        std::string suffix = entry.path().extension().string();
+        if (!suffix.empty() && suffix[0] == '.') suffix.erase(0, 1);
+        std::transform(suffix.begin(), suffix.end(), suffix.begin(),
+                       [](unsigned char c) { return static_cast<char>(std::toupper(c)); });
+
+        FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
         if (FVA_FS_TYPE_IMG != type) continue;
 
         std::string matchedDeviceName;
         deviceContext.deviceMap =
-            fvaGetDeviceMapForImg(deviceContext.fullDeviceMap, info.filePath().toStdString(), matchedDeviceName);
+            fvaGetDeviceMapForImg(deviceContext.fullDeviceMap, entry.path().string(), matchedDeviceName);
         if (!matchedDeviceName.empty()) {
             deviceContext.matchedDeviceName = matchedDeviceName;
             break;
@@ -94,11 +107,11 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
 }
 
 void FVAFlowController::performOrientationChecks(const std::string& dir, QObject* obj) {
+    (void)obj;
+
     // to run change orentation in auto mode
-    QProcess myProcess(obj);
-    myProcess.setProcessChannelMode(QProcess::MergedChannels);
-    myProcess.start(QCoreApplication::applicationDirPath() + "/jpegr/jpegr.exe -auto " + QString::fromStdString(dir));
-    myProcess.waitForFinished(-1);
+    const std::string command = quoteArg(getApplicationDirPath() + "/jpegr/jpegr.exe") + " -auto " + quoteArg(dir);
+    std::system(command.c_str());
 }
 
 FVA_EXIT_CODE FVAFlowController::performCommonChecks(CLTContext& context) {
@@ -194,6 +207,8 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const std::string& dir
 
 FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName, QObject* obj,
                                               const std::vector<std::string>& params) {
+    (void)obj;
+
     std::string fvaSWRootDir;
     FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
@@ -205,15 +220,10 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName, QOb
     std::string command = "python " + quoteArg(pyScriptRunPath);
     for (auto it = params.begin(); it != params.end(); ++it) command += " " + quoteArg(*it);
 
-    QProcess myProcess(obj);
-    myProcess.setProcessChannelMode(QProcess::MergedChannels);
-    myProcess.start(QString::fromStdString(command));
     LOG_DEB << "runPythonCMD:"
             << "pyScriptRunPath=" << pyScriptRunPath;
 
-    myProcess.waitForFinished();
-
-    int exitCode_ = myProcess.exitCode();
+        int exitCode_ = std::system(command.c_str());
     if (exitCode_ != 0) {
         LOG_DEB << "runPythonCMD:"
                 << "exitCode_=" << exitCode_;
@@ -323,8 +333,8 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
         params.push_back(fvafileNPath);
 
         const std::string& fsPath = it->first;
-        QFileInfo fi(QString::fromStdString(fsPath));
-        if (fi.isDir()) {
+        std::error_code fsError;
+        if (std::filesystem::is_directory(fsPath, fsError)) {
             params.push_back(fsPath);
 
             const std::string placeId = std::to_string(it->second);
@@ -335,7 +345,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
 
             LOG_DEB << "CLTUpdatePlaceForDir:" << fvafileNPath << " " << fsPath << " " << placeId;
         }
-        if (fi.isFile()) {
+        if (std::filesystem::is_regular_file(fsPath, fsError)) {
             return FVA_ERROR_NOT_IMPLEMENTED;
         }
     }
@@ -361,8 +371,8 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
         params.push_back(fvafileNPath);
 
         const std::string& fsPath = it->first;
-        QFileInfo fi(QString::fromStdString(fsPath));
-        if (fi.isDir()) {
+        std::error_code fsError;
+        if (std::filesystem::is_directory(fsPath, fsError)) {
             params.push_back(fsPath);
 
             const std::string eventId = std::to_string(it->second);
@@ -398,7 +408,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
             // show error message box and return to calling function if previous operation failed
             IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventPeopleForDir")
         }
-        if (fi.isFile()) {
+        if (std::filesystem::is_regular_file(fsPath, fsError)) {
             return FVA_ERROR_NOT_IMPLEMENTED;
         }
     }
@@ -424,7 +434,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
         exitCode = m_dataProcessor.run(context, m_cfg);
 
         // show error message box and return to calling function if previous operation failed
-        IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(QString::fromStdString(context.cmdType))
+        IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
     }
     return FVA_NO_ERROR;
 }
@@ -448,7 +458,7 @@ FVA_EXIT_CODE FVAFlowController::UpdateInputDirContent(const std::string& inputD
     FVA_EXIT_CODE exitCode = m_dataProcessor.run(context, m_cfg);
 
     // show error message box and return to calling function if previous operation failed
-    IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(QString::fromStdString(context.cmdType))
+    IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
 
     LOG_DEB << "Exit";
     return FVA_NO_ERROR;
@@ -511,13 +521,13 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
             exitCode = m_dataProcessor.run(contextDupl, m_cfg);
 
             // show error message box and return to calling function if previous operation failed
-            IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(QString::fromStdString(contextDupl.cmdType))
+            IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(contextDupl.cmdType)
 
             // and run move cmd again
             exitCode = m_dataProcessor.run(context, m_cfg);
         }
         // show error message box and return to calling function if previous operation failed
-        IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(QString::fromStdString(context.cmdType))
+        IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
     }
 
     std::string fvaSWRootDir;
@@ -534,7 +544,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
     exitCode = runPythonCMD("CLTMerge2csv.py", obj, params);
 
     // show error message box and return to calling function if previous operation failed
-    IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(QString::fromStdString(context.cmdType))
+    IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)
 
     // clean up after processing
     std::remove((fvaSWRootDir + "#data#/fvaFileN.csv").c_str());

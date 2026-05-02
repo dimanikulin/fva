@@ -252,3 +252,14 @@ void Sha1::processBlock(const std::uint8_t* block) {
     m_state[3] += d;
     m_state[4] += e;
 }
+
+std::string getApplicationDirPath() {
+#ifdef _WIN32
+    char buffer[MAX_PATH] = {0};
+    const DWORD length = GetModuleFileNameA(nullptr, buffer, MAX_PATH);
+    if (length > 0 && length < MAX_PATH) {
+        return std::filesystem::path(std::string(buffer, length)).parent_path().string();
+    }
+#endif
+    return std::filesystem::current_path().string();
+}
