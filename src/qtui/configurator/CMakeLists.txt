@@ -12,6 +12,6 @@ find_package(
 add_executable(fvaconfigurator fvaconfigurator.qrc fvaconfigurator.ui fvaconfigurator.cpp
                                fvaconfigurator.h main.cpp ${HEADER_FILES})
 
-target_link_libraries(fvaconfigurator Qt5::Widgets Qt5::Core Qt5::Gui fvalib)
+target_link_libraries(fvaconfigurator Qt5::Widgets Qt5::Core Qt5::Gui fvalib fvacommonuilib)
 
 install(TARGETS fvaconfigurator)

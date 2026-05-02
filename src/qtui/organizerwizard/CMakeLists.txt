@@ -43,6 +43,7 @@ target_link_libraries(
   Qt5::Gui
   fvalib
   fvadataprocessorlib
-  fvaflowcontrollerlib)
+  fvaflowcontrollerlib
+  fvacommonuilib)
 
 install(TARGETS fvaorganizerwizard)
