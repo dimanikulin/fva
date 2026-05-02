@@ -18,15 +18,13 @@
 
 #define FVA_MESSAGE_BOX(msg) \
     {                        \
-        QMessageBox msgBox;  \
-        msgBox.setText(msg); \
-        msgBox.exec();       \
-    }
+        // TODO to replace with some more generic solution
+}
 
 #define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET(msg)                       \
     if (exitCode != FVA_NO_ERROR) {                                  \
         FVA_MESSAGE_BOX("Error happened during " msg " operation!"); \
-        return exitCode;                                             \
+        return;                                                      \
     }
 
 #define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(msg)              \
