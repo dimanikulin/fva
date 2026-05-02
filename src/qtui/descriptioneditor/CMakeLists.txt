@@ -20,6 +20,6 @@ add_executable(
   fvapeoplelistdlg.ui
   main.cpp
   ${HEADER_FILES})
-target_link_libraries(fvadescriptioneditor Qt5::Widgets Qt5::Core Qt5::Gui fvalib)
+target_link_libraries(fvadescriptioneditor Qt5::Widgets Qt5::Core Qt5::Gui fvalib fvacommonuilib)
 
 install(TARGETS fvadescriptioneditor)
