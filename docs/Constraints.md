@@ -7,3 +7,4 @@
 | 5 | One format for pictures should be used (jpeg) as a widely used with EXIF support, any other format must be converted to this one with adding EXIF when needed | It simplifies implementation of solution | Low | High |
 | 6 | One folder shall keep multimedia data for one event only | It simplifies organization structure of photo album, implementation of solution and make photo album more searchable  | Low | High |
 | 7 | The solution shall use open source tools only | As it is going to be open source as well | High | Middle |
+| 8 | Not GUI code must use STL and not any UI framework | For better portability | Middle | Middle |
