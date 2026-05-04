@@ -17,6 +17,13 @@
 #include <iomanip>
 #include <sstream>
 
+#ifdef _WIN32
+  #ifndef NOMINMAX
+    #define NOMINMAX
+  #endif
+  #include <windows.h>   // MAX_PATH, DWORD, GetModuleFileNameA
+#endif
+
 // TODO create UTs
 std::string fvaStrToUpper(const std::string& str) {
     std::string result = str;
