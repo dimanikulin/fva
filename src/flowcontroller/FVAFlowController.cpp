@@ -21,10 +21,11 @@
 #include "fvaconfiguration.h"
 #include "fvalogger.inl"
 
+// TODO replace with with proper implementation of message box
 #define FVA_MESSAGE_BOX(msg) \
-    {                        \
-        // TODO to replace with some more generic solution
-}
+    do {                     \
+        (void)(msg);         \
+    } while (0)
 
 #define IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET(msg)                                          \
     if (exitCode != FVA_NO_ERROR) {                                                     \
