@@ -18,10 +18,10 @@
 #include <sstream>
 
 #ifdef _WIN32
-  #ifndef NOMINMAX
-    #define NOMINMAX
-  #endif
-  #include <windows.h>   // MAX_PATH, DWORD, GetModuleFileNameA
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#include <windows.h>  // MAX_PATH, DWORD, GetModuleFileNameA
 #endif
 
 // TODO create UTs
