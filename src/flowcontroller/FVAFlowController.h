@@ -71,8 +71,7 @@ public:
      * \param removeInput - flag saying do we need to remove input folder or not
      * \return it returns code of error (FVA_NO_ERROR - if no error happened)
      */
-    FVA_EXIT_CODE MoveInputDirToOutputDirs(const std::string& inputDir, const STR_LIST& outputDirs, bool removeInput,
-                                           bool removeInput);
+    FVA_EXIT_CODE MoveInputDirToOutputDirs(const std::string& inputDir, const STR_LIST& outputDirs, bool removeInput);
 
     /*!
      * \brief it updates input folder content according to information got so far (fva info like event info, place info)

@@ -216,7 +216,7 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName, con
     for (auto it = params.begin(); it != params.end(); ++it) command += " " + quoteArg(*it);
 
     LOG_DEB << "runPythonCMD:"
-            << "pyScriptRunPath=" << pyScriptRunPath;
+            << "pyScriptRunPath=" << pyScriptRunPath.c_str() << " command=" << command.c_str();
 
     int exitCode_ = std::system(command.c_str());
     if (exitCode_ != 0) {
@@ -338,7 +338,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
             // run command implemented in python to update the fvafile.csv for each file in folder with placeid  we got
             exitCode = runPythonCMD("CLTUpdatePlaceForDir.py", params);
 
-            LOG_DEB << "CLTUpdatePlaceForDir:" << fvafileNPath << " " << fsPath << " " << placeId;
+            LOG_DEB << "CLTUpdatePlaceForDir:" << fvafileNPath.c_str() << " " << fsPath.c_str() << " " << placeId.c_str();
         }
         if (std::filesystem::is_regular_file(fsPath, fsError)) {
             return FVA_ERROR_NOT_IMPLEMENTED;
@@ -376,14 +376,14 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
             // run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got
             exitCode = runPythonCMD("CLTUpdateEventForDir.py", params);
 
-            LOG_DEB << "CLTUpdateEventForDir:" << fvafileNPath << " " << fsPath << " " << eventId;
+            LOG_DEB << "CLTUpdateEventForDir:" << fvafileNPath.c_str() << " " << fsPath.c_str() << " " << eventId.c_str();
 
             // show error message box and return to calling function if previous operation failed
             IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventForDir")
 
             auto peopleIt = peopleMap.find(it->first);
             if (peopleIt == peopleMap.end() || 0 == peopleIt->second.size()) {
-                LOG_WARN << "empty people list for " << fvafileNPath << " " << fsPath;
+                LOG_WARN << "empty people list for " << fvafileNPath.c_str() << " " << fsPath.c_str();
                 continue;
             }
             params.pop_back();  // remove last param as it was for previous cmd actual only
@@ -394,7 +394,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
             }
             params.push_back(peopleIds);
 
-            LOG_DEB << "CLTUpdateEventPeopleForDir:" << fvafileNPath << " " << fsPath << " " << eventId;
+            LOG_DEB << "CLTUpdateEventPeopleForDir:" << fvafileNPath.c_str() << " " << fsPath.c_str() << " " << eventId.c_str();
 
             // run command implemented in python to update the fvafile.csv for each file in folder with event people ids
             // we got
@@ -473,7 +473,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
     for (STR_LIST::const_iterator it = outputDirs.begin(); it != outputDirs.end(); ++it) {
         const std::string dirToMoveTo = *it;
         context.outputDir = dirToMoveTo;
-        LOG_DEB << "Moving into:" << dirToMoveTo;
+        LOG_DEB << "Moving into:" << dirToMoveTo.c_str();
 
         // check if we got 1 folder only to integrate the multimedia data  into
         // and if we need to remove the input folder as well
