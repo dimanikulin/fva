@@ -86,7 +86,7 @@ public:
      * \param inputDir - directory to perform the actions in
      * \param eventMap - maps input dir structure (folder names) to event ids got from fvaEvents.csv
      * \param peopleMap - maps input dir structure (folder names) to people ids (that caused the event) got from
-     * fvaPeople.csv 
+     * fvaPeople.csv
      * \return it returns code of error
      * (FVA_NO_ERROR - if no error happened)
      */

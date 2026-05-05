@@ -141,8 +141,7 @@ FVA_EXIT_CODE FVAFlowController::performCommonChecks(CLTContext& context) {
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const std::string& dir,
-                                                          DeviceContext& deviceContext) {
+FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const std::string& dir, DeviceContext& deviceContext) {
     // create command-line-task context to keep common parameters for all commands
     CLTContext context;
 
@@ -204,8 +203,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const std::string& dir
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName,
-                                              const std::vector<std::string>& params) {
+FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName, const std::vector<std::string>& params) {
     std::string fvaSWRootDir;
     FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
@@ -495,7 +493,8 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
         if (exitCode == FVA_ERROR_DEST_DIR_ALREADY_EXISTS) {
             // ask user for what to do
             // TODO to make multilanguage
-            // TODO - to make it in UI instead of message box and to remove this code from flow controller as it is UI related
+            // TODO - to make it in UI instead of message box and to remove this code from flow controller as it is UI
+            // related
             /*QMessageBox msgBox;
             msgBox.setText("The sub directory for merge is already present in target!");
             msgBox.setInformativeText(

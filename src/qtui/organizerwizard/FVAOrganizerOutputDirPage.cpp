@@ -131,8 +131,7 @@ bool FVAOrganizerOutputDirPage::validatePage() {
     }
 
     // before we move the folders lets first update the input folder content (tags) by fva information we got so far.
-    FVA_EXIT_CODE exitCode =
-        flow.UpdateInputDirContent(((FVAOrganizerWizard*)wizard())->inputFolder().toStdString());
+    FVA_EXIT_CODE exitCode = flow.UpdateInputDirContent(((FVAOrganizerWizard*)wizard())->inputFolder().toStdString());
     if (exitCode != FVA_NO_ERROR) return false;
 
     LOG_DEB << "before flow.MoveInputDirToOutputDirs";
