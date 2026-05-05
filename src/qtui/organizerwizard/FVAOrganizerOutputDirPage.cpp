@@ -132,13 +132,13 @@ bool FVAOrganizerOutputDirPage::validatePage() {
 
     // before we move the folders lets first update the input folder content (tags) by fva information we got so far.
     FVA_EXIT_CODE exitCode =
-        flow.UpdateInputDirContent(((FVAOrganizerWizard*)wizard())->inputFolder().toStdString(), this);
+        flow.UpdateInputDirContent(((FVAOrganizerWizard*)wizard())->inputFolder().toStdString());
     if (exitCode != FVA_NO_ERROR) return false;
 
     LOG_DEB << "before flow.MoveInputDirToOutputDirs";
     // call the Flow Controller MoveInputDirToOutputDirs method to integrate the input data into Multimedia IR systems
     exitCode = flow.MoveInputDirToOutputDirs(((FVAOrganizerWizard*)wizard())->inputFolder().toStdString(), dirList,
-                                             removeOriginDirCheckBox->isChecked(), this);
+                                             removeOriginDirCheckBox->isChecked());
 
     return exitCode == FVA_NO_ERROR;
 }

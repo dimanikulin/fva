@@ -107,9 +107,7 @@ FVA_EXIT_CODE FVAFlowController::performDeviceChecks(DeviceContext& deviceContex
     return FVA_NO_ERROR;
 }
 
-void FVAFlowController::performOrientationChecks(const std::string& dir, QObject* obj) {
-    (void)obj;
-
+void FVAFlowController::performOrientationChecks(const std::string& dir) {
     // to run change orentation in auto mode
     const std::string command = quoteArg(getApplicationDirPath() + "/jpegr/jpegr.exe") + " -auto " + quoteArg(dir);
     std::system(command.c_str());
@@ -143,8 +141,8 @@ FVA_EXIT_CODE FVAFlowController::performCommonChecks(CLTContext& context) {
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const std::string& dir, DeviceContext& deviceContext,
-                                                          QObject* obj) {
+FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const std::string& dir,
+                                                          DeviceContext& deviceContext) {
     // create command-line-task context to keep common parameters for all commands
     CLTContext context;
 
@@ -183,7 +181,7 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const std::string& dir
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("getParamAsBoolean(Search::DateTime)")
     if (SearchByDateTime) {
         // perform date-time checks
-        FVA_EXIT_CODE res = performDTChecks(context, obj);
+        FVA_EXIT_CODE res = performDTChecks(context);
 
         // return to calling function if previous operation failed
         RET_RES_IF_RES_IS_ERROR
@@ -201,15 +199,13 @@ FVA_EXIT_CODE FVAFlowController::PerformChecksForInputDir(const std::string& dir
     // do we need to check photo orientation?
     if (needCheckOrientation)
         // perform orientation checks
-        performOrientationChecks(dir, obj);
+        performOrientationChecks(dir);
 
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName, QObject* obj,
+FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName,
                                               const std::vector<std::string>& params) {
-    (void)obj;
-
     std::string fvaSWRootDir;
     FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
@@ -234,7 +230,7 @@ FVA_EXIT_CODE FVAFlowController::runPythonCMD(const std::string& scriptName, QOb
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* obj) {
+FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context) {
     // prepare context to run CheckDataTime command
     context.cmdType = "CLTCheckDateTime";
 
@@ -263,7 +259,7 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context, QObject* o
         // run command implemented in python to fixing empty date-time issue
         std::vector<std::string> params;
         params.push_back(context.dir);
-        exitCode = runPythonCMD("CLTFixEmptyDateTime.py", obj, params);
+        exitCode = runPythonCMD("CLTFixEmptyDateTime.py", params);
 
         // show error message box and return to calling function if previous operation failed
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTFixEmptyDateTime")
@@ -319,7 +315,7 @@ FVA_EXIT_CODE FVAFlowController::OrganizeInputDir(const std::string& dir, int de
     return FVA_NO_ERROR;
 }
 
-FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& placeMap, QObject* obj) {
+FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& placeMap) {
     std::string fvaSWRootDir;
     FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
@@ -342,7 +338,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
             params.push_back(placeId);
 
             // run command implemented in python to update the fvafile.csv for each file in folder with placeid  we got
-            exitCode = runPythonCMD("CLTUpdatePlaceForDir.py", obj, params);
+            exitCode = runPythonCMD("CLTUpdatePlaceForDir.py", params);
 
             LOG_DEB << "CLTUpdatePlaceForDir:" << fvafileNPath << " " << fsPath << " " << placeId;
         }
@@ -357,7 +353,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForPlaces(const DIR_2_ID_MAP& pl
 }
 
 FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inputDir, const DIR_2_ID_MAP& eventMap,
-                                                          const DIR_2_IDS_MAP& peopleMap, QObject* obj) {
+                                                          const DIR_2_IDS_MAP& peopleMap) {
     std::string fvaSWRootDir;
     FVA_EXIT_CODE exitCode = m_cfg.getParamAsString("Common::RootDir", fvaSWRootDir);
 
@@ -380,7 +376,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
             params.push_back(eventId);
 
             // run command implemented in python to update the fvafile.csv for each file in folder with eventid  we got
-            exitCode = runPythonCMD("CLTUpdateEventForDir.py", obj, params);
+            exitCode = runPythonCMD("CLTUpdateEventForDir.py", params);
 
             LOG_DEB << "CLTUpdateEventForDir:" << fvafileNPath << " " << fsPath << " " << eventId;
 
@@ -404,7 +400,7 @@ FVA_EXIT_CODE FVAFlowController::ProcessInputDirForEvents(const std::string& inp
 
             // run command implemented in python to update the fvafile.csv for each file in folder with event people ids
             // we got
-            exitCode = runPythonCMD("CLTUpdateEventPeopleForDir.py", obj, params);
+            exitCode = runPythonCMD("CLTUpdateEventPeopleForDir.py", params);
 
             // show error message box and return to calling function if previous operation failed
             IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE("CLTUpdateEventPeopleForDir")
@@ -450,7 +446,7 @@ FVA_EXIT_CODE FVAFlowController::GetProblemFilesList(STR_LIST& fileListToFillUp)
     return fvaLoadStrListFromFile(rootSWdir + "#data#/FVA_ERROR_NO_EXIF_LOCATION.csv", fileListToFillUp);
 }
 
-FVA_EXIT_CODE FVAFlowController::UpdateInputDirContent(const std::string& inputDir, QObject* obj) {
+FVA_EXIT_CODE FVAFlowController::UpdateInputDirContent(const std::string& inputDir) {
     LOG_DEB << "Enter";
 
     CLTContext context;
@@ -466,7 +462,7 @@ FVA_EXIT_CODE FVAFlowController::UpdateInputDirContent(const std::string& inputD
 }
 
 FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inputDir, const STR_LIST& outputDirs,
-                                                          bool removeInput, QObject* obj) {
+                                                          bool removeInput) {
     LOG_DEB << "Enter";
     // get the size of folder list we received
     uint sizeProcessed = outputDirs.size();
@@ -499,7 +495,8 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
         if (exitCode == FVA_ERROR_DEST_DIR_ALREADY_EXISTS) {
             // ask user for what to do
             // TODO to make multilanguage
-            QMessageBox msgBox;
+            // TODO - to make it in UI instead of message box and to remove this code from flow controller as it is UI related
+            /*QMessageBox msgBox;
             msgBox.setText("The sub directory for merge is already present in target!");
             msgBox.setInformativeText(
                 "By pressing OK all the content will be merged to already existing folder,\n by pressing Cancel new "
@@ -507,7 +504,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
             msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
             msgBox.setDefaultButton(QMessageBox::Ok);
 
-            context.custom = (msgBox.exec() == QMessageBox::Ok) ? "merge" : "create";
+            context.custom = (msgBox.exec() == QMessageBox::Ok) ? "merge" : "create";*/
         }
 
         // and run it again
@@ -542,7 +539,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
     params.push_back(fvaSWRootDir + "#data#/fvaFileN.csv");
 
     // run command implemented in python to the fvafile.csv and fvafileN.csv
-    exitCode = runPythonCMD("CLTMerge2csv.py", obj, params);
+    exitCode = runPythonCMD("CLTMerge2csv.py", params);
 
     // show error message box and return to calling function if previous operation failed
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET_EXITCODE(context.cmdType)

@@ -80,7 +80,7 @@ bool FVAOrganizerInputDirPage::validatePage() {
     DeviceContext deviceContext;
 
     // call the flow controller PerformChecksForInputDir method to check the multimedia data and to fix it if needs
-    FVA_EXIT_CODE exitCode = flow.PerformChecksForInputDir(dir.toStdString(), deviceContext, this);
+    FVA_EXIT_CODE exitCode = flow.PerformChecksForInputDir(dir.toStdString(), deviceContext);
     if (exitCode != FVA_NO_ERROR) return false;
 
     ((FVAOrganizerWizard*)wizard())->inputFolder(dir);
