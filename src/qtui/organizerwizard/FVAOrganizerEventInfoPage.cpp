@@ -162,17 +162,16 @@ void FVAOrganizerEventInfoPage::setVisible(bool visible) {
         std::string rootSWdir;
         exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("get.param")
-        const QString rootSWdirQ = QString::fromStdString(rootSWdir);
 
         QString inputDir = ((FVAOrganizerWizard *)wizard())->inputFolder();
 
         STR_LIST fileListToFillUp;  // empty for this page
         fvaPopulateInputDir(inputDir, nullptr, inputDirsWidget, fileListToFillUp);
 
-        exitCode = fvaBuildPeopleTree(this, peopleWidget, rootSWdirQ);
+        exitCode = fvaBuildPeopleTree(this, peopleWidget, rootSWdir);
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildPeopleTree")
 
-        exitCode = fvaBuildEventTree(this, eventsWidget, rootSWdirQ);
+        exitCode = fvaBuildEventTree(this, eventsWidget, rootSWdir);
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("fvaBuildEventTree")
     }
     LOG_DEB << "setVisible before exit";
