@@ -247,11 +247,11 @@ FVA_EXIT_CODE FVAFlowController::performDTChecks(CLTContext& context) {
         // if we can NOT fixing "no exif date time" issue by picture modification time
         if (false == fixPicsByModifTime) {
             // show error to user so they are aware what happened
-            FVA_MESSAGE_BOX("Found empty date-time metadata, automated fixing is not possible")
+            FVA_MESSAGE_BOX("Found empty date-time metadata, automated fixing is not possible");
             return FVA_ERROR_NOT_IMPLEMENTED;
         } else {
             // show message to user so they are aware what happened
-            FVA_MESSAGE_BOX("Found empty date-time metadata, that will be fixed automatically")
+            FVA_MESSAGE_BOX("Found empty date-time metadata, that will be fixed automatically");
         }
 
         // run command implemented in python to fixing empty date-time issue
