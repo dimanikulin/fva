@@ -25,7 +25,7 @@ std::string stripPrefix(const std::string& value, const std::string& prefix) {
 }
 }  // namespace
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     std::filesystem::path appDir = std::filesystem::current_path();
     if (argc > 0 && argv[0] != nullptr && std::strlen(argv[0]) > 0) {
         std::filesystem::path appPath(argv[0]);
@@ -49,16 +49,15 @@ int main(int argc, char *argv[]) {
     std::string temp;
     if (argc < 3 || argc > 7) {
         std::cerr
-            <<
-            "Not enough parameters!\n"
-            "argument [0] - path \n"
-            "argument [1] - cmdType \n"
-            "argument [2] - path to folder or file \n"
-            "argument [3] - recursive \n"
-            "argument [4] - logLevel \n"
-            "argument [5] - readonly \n"
-            "argument [6] - custom \n\n"
-            "example: CLTAutoChecks2 \"C:/FVA/2009/2009.09.05\" recursive=yes logvel=4 readonly=no custom=someValue"
+            << "Not enough parameters!\n"
+               "argument [0] - path \n"
+               "argument [1] - cmdType \n"
+               "argument [2] - path to folder or file \n"
+               "argument [3] - recursive \n"
+               "argument [4] - logLevel \n"
+               "argument [5] - readonly \n"
+               "argument [6] - custom \n\n"
+               "example: CLTAutoChecks2 \"C:/FVA/2009/2009.09.05\" recursive=yes logvel=4 readonly=no custom=someValue"
             << std::endl;
 
         return FVA_ERROR_NOT_ENOUGH_ARG;
@@ -67,13 +66,13 @@ int main(int argc, char *argv[]) {
         case 7: {
             context.custom = stripPrefix(argv[6], "custom=");
         }
-        [[fallthrough]];
+            [[fallthrough]];
 
         case 6: {
             temp = stripPrefix(argv[5], "readonly=");
             context.readOnly = (temp == "yes");
         }
-        [[fallthrough]];
+            [[fallthrough]];
 
         case 5: {
             // TODO to change to anoter parameter when needs because it is now saved into cfg file - fvaParams.csv
@@ -86,20 +85,20 @@ int main(int argc, char *argv[]) {
                             g_logLevel = ( QtMsgType ) dLogLevel;
             }*/
         }
-        [[fallthrough]];
+            [[fallthrough]];
         case 4: {
             temp = stripPrefix(argv[3], "recursive=");
             context.recursive = (temp == "yes");
         }
-        [[fallthrough]];
+            [[fallthrough]];
         case 3: {
             context.dir = argv[2];
         }
-        [[fallthrough]];
+            [[fallthrough]];
         case 2: {
             context.cmdType = argv[1];
         }
-        [[fallthrough]];
+            [[fallthrough]];
         default:
             break;
     }
