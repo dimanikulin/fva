@@ -1,12 +1,3 @@
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
-
-find_package(
-  Qt5
-  COMPONENTS Core Gui Widgets
-  REQUIRED)
-
 # IMPORTANT: once you add new implementation file here please update IMPLEMENTATIONSTATUS.MD as well
 # in the current folder
 add_library(
@@ -47,7 +38,5 @@ add_library(
   exif.cpp)
 
 target_include_directories(fvalib INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_link_libraries(fvalib Qt5::Widgets Qt5::Core Qt5::Gui)
 
 install(TARGETS fvalib)
