@@ -152,8 +152,8 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
             const std::time_t dateEndTime = toTimeT(dateEnd);
 
             if ((fileTime < dateStartTime) || (fileTime > dateEndTime)) {
-                LOG_CRIT << "unsupported file found:" << entryPath.string().c_str() << " data period="
-                         << toQDateTime(dateStart) << ";" << toQDateTime(dateEnd);
+                LOG_CRIT << "unsupported file found:" << entryPath.string().c_str()
+                         << " data period=" << toQDateTime(dateStart) << ";" << toQDateTime(dateEnd);
                 m_Issues.push_back("FVA_ERROR_NOT_SUPPORTED_FILE," + entryPath.string() + "," + fileName);
                 if (context.readOnly)
                     continue;

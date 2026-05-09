@@ -7,10 +7,10 @@
  */
 #include "fvacommonlib.h"
 
-#include <QtCore/QCoreApplication>
-#include <QtCore/QDir>
-#include <QtCore/QProcess>
+#include <QtCore/QString>
+#include <cstdlib>
 #include <ctime>
+#include <filesystem>
 #include <fstream>
 #include <iomanip>
 #include <sstream>
@@ -18,10 +18,38 @@
 #include "fva_qt_port_2_stl.h"
 #include "fvacommonexif.h"
 
+namespace {
+
+bool parseDateTime(const std::string& value, const std::string& qtFormat, std::tm& result) {
+    result = {};
+    std::istringstream stream(value);
+    stream >> std::get_time(&result, qtToStrftimeFormat(qtFormat).c_str());
+    if (stream.fail()) return false;
+
+    std::tm normalized = result;
+    if (normalized.tm_mday == 0) normalized.tm_mday = 1;
+    normalized.tm_isdst = -1;
+    if (std::mktime(&normalized) == static_cast<std::time_t>(-1)) return false;
+
+    result = normalized;
+    return true;
+}
+
+bool addDays(std::tm& value, int days) {
+    std::tm copy = value;
+    copy.tm_mday += days;
+    copy.tm_isdst = -1;
+    if (std::mktime(&copy) == static_cast<std::time_t>(-1)) return false;
+    value = copy;
+    return true;
+}
+
+}  // namespace
 
 bool fvaIsInternalFile(const std::string& fileName) {
-    const QString qFileName = QString::fromStdString(fileName);
-    return qFileName.toUpper() == FVA_BACKGROUND_MUSIC_FILE_NAME.toUpper() || qFileName.toUpper() == FVA_DB_NAME;
+    const std::string upperName = fvaStrToUpper(fileName);
+    return upperName == fvaStrToUpper(FVA_BACKGROUND_MUSIC_FILE_NAME.toStdString()) ||
+           upperName == fvaStrToUpper(FVA_DB_NAME.toStdString());
 }
 
 bool fvaIsFVAFile(const std::string& extention) { return FVA_FS_TYPE_UNKNOWN != fvaConvertFileExt2FileType(extention); }
@@ -51,8 +79,8 @@ FVA_EXIT_CODE fvaParseDirName(const std::string& dirName, std::tm& from, std::tm
         } break;
         case 9: {
             if (dirName[4] != '-') return FVA_ERROR_WRONG_FOLDER_NAME;
-            if (!parseDateTime(dirName.substr(0, 4), ctx.fvaDirNameYear, from)
-                || !parseDateTime(dirName.substr(5, 4), ctx.fvaDirNameYear, to)) {
+            if (!parseDateTime(dirName.substr(0, 4), ctx.fvaDirNameYear, from) ||
+                !parseDateTime(dirName.substr(5, 4), ctx.fvaDirNameYear, to)) {
                 return FVA_ERROR_WRONG_FOLDER_NAME;
             }
         } break;
@@ -169,44 +197,39 @@ std::vector<unsigned int> fvaStringToIds(const std::string& strList) {
 
 bool fvaIsInternalDir(const std::string& dir) { return dir.find('#') != std::string::npos; }
 bool fvaRemoveDirIfEmpty(const std::string& dirPath) {
-    const QString qDirPath = QString::fromStdString(dirPath);
-    if (QDir(qDirPath).entryInfoList(QDir::NoDotAndDotDot | QDir::AllEntries).count() == 0) {
-        QDir dir(qDirPath);
+    namespace fs = std::filesystem;
+    std::error_code ec;
+    const fs::path path(dirPath);
 
-        // empty folder now - no need in it to keep
-        return dir.rmdir(qDirPath);
-    } else
-        return false;
+    if (!fs::exists(path, ec) || ec || !fs::is_directory(path, ec) || ec) return false;
+    if (!fs::is_empty(path, ec) || ec) return false;
+
+    // empty folder now - no need to keep it
+    return fs::remove(path, ec) && !ec;
 }
 
 FVA_EXIT_CODE fvaRunCLT(const std::string& cmdName, const std::string& inputDir, bool isRecursive, bool isReadOnly,
                         const std::string& custom) {
-    QProcess myProcess;
-    myProcess.setProcessChannelMode(QProcess::MergedChannels);
-    QStringList params;
-    params.append(QString::fromStdString(cmdName));
-    params.append(QString::fromStdString(inputDir));
-    params.append(isRecursive ? "recursive=yes" : "recursive=no");
-    params.append("logvel=4");
-    params.append(isReadOnly ? "readonly=yes" : "readonly=no");
-    if (!custom.empty()) params.append("custom=" + QString::fromStdString(custom));
+    std::string command = quoteArg("FVACLTProcess.exe") + " " + quoteArg(cmdName) + " " + quoteArg(inputDir) + " " +
+                          quoteArg(isRecursive ? "recursive=yes" : "recursive=no") + " " + quoteArg("logvel=4") + " " +
+                          quoteArg(isReadOnly ? "readonly=yes" : "readonly=no");
+    if (!custom.empty()) command += " " + quoteArg("custom=" + custom);
 
-    myProcess.start("FVACLTProcess.exe", params);
-    myProcess.waitForFinished(-1);
-
-    return static_cast<FVA_EXIT_CODE>(myProcess.exitCode());
+    const int result = std::system(command.c_str());
+    if (result == -1) return FVA_ERROR_CANT_START_PYTHON_PROC;
+    return static_cast<FVA_EXIT_CODE>(result);
 }
 
 FVA_EXIT_CODE fvaCreateDirIfNotExists(const std::string& dirPath) {
-    if (!QDir(QString::fromStdString(dirPath)).exists()) {
-        QDir dir(QString::fromStdString(dirPath));
+    namespace fs = std::filesystem;
+    std::error_code ec;
+    const fs::path path(dirPath);
 
-        if (!dir.mkdir(QString::fromStdString(dirPath)))
-            return FVA_ERROR_CANT_CREATE_DIR;
-        else
-            return FVA_NO_ERROR;
-    } else
-        return FVA_ERROR_DEST_DIR_ALREADY_EXISTS;
+    if (fs::exists(path, ec)) return FVA_ERROR_DEST_DIR_ALREADY_EXISTS;
+    if (ec) return FVA_ERROR_CANT_CREATE_DIR;
+
+    if (!fs::create_directories(path, ec) || ec) return FVA_ERROR_CANT_CREATE_DIR;
+    return FVA_NO_ERROR;
 }
 
 FVA_EXIT_CODE fvaSaveStrListToFile(const std::string& path, const std::vector<std::string>& strList) {

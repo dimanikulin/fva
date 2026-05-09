@@ -7,7 +7,6 @@
  */
 #include <QApplication>
 #include <QMessageBox>
-#include <QtCore/QDateTime>
 
 #include "FVADataProcessor.h"
 #include "fvacommonlib.h"
@@ -73,7 +72,7 @@ int main(int argc, char *argv[]) {
         case 4: {
             temp = a.arguments()[3];
             if (temp.contains("recursive=")) temp = temp.remove("recursive=");
-            context.readOnly = (temp == "yes");
+            context.recursive = (temp == "yes");
         }
         case 3: {
             context.dir = a.arguments()[2].toStdString();
