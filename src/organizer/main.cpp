@@ -5,8 +5,10 @@
  * \version 0.29
  * \date  2014-2021
  */
-#include <QApplication>
-#include <QMessageBox>
+#include <cstring>
+#include <filesystem>
+#include <iostream>
+#include <string>
 
 #include "FVADataProcessor.h"
 #include "fvacommonlib.h"
@@ -14,11 +16,27 @@
 
 LOGGER_GLOBAL
 
+namespace {
+std::string stripPrefix(const std::string& value, const std::string& prefix) {
+    if (value.rfind(prefix, 0) == 0) {
+        return value.substr(prefix.size());
+    }
+    return value;
+}
+}  // namespace
+
 int main(int argc, char *argv[]) {
-    QApplication a(argc, argv);
+    std::filesystem::path appDir = std::filesystem::current_path();
+    if (argc > 0 && argv[0] != nullptr && std::strlen(argv[0]) > 0) {
+        std::filesystem::path appPath(argv[0]);
+        if (appPath.has_parent_path()) {
+            appDir = appPath.parent_path();
+        }
+    }
 
     FvaConfiguration cfg;
-    FVA_EXIT_CODE exitCode = cfg.load((QCoreApplication::applicationDirPath() + "/fvaParams.csv").toStdString());
+    const std::string cfgPath = (appDir / "fvaParams.csv").string();
+    FVA_EXIT_CODE exitCode = cfg.load(cfgPath);
     if (exitCode != FVA_NO_ERROR) {
         return exitCode;
     }
@@ -28,10 +46,10 @@ int main(int argc, char *argv[]) {
     LOG_DEB << "FVAOrganizer logger started";
 
     CLTContext context;
-    QString temp;
-    if (a.arguments().size() < 3 || a.arguments().size() > 7) {
-        QMessageBox msgBox;
-        msgBox.setText(
+    std::string temp;
+    if (argc < 3 || argc > 7) {
+        std::cerr
+            <<
             "Not enough parameters!\n"
             "argument [0] - path \n"
             "argument [1] - cmdType \n"
@@ -40,23 +58,22 @@ int main(int argc, char *argv[]) {
             "argument [4] - logLevel \n"
             "argument [5] - readonly \n"
             "argument [6] - custom \n\n"
-            "example: CLTAutoChecks2 \"C:/FVA/2009/2009.09.05\" recursive=yes logvel=4 readonly=no custom=someValue");
-        msgBox.exec();
+            "example: CLTAutoChecks2 \"C:/FVA/2009/2009.09.05\" recursive=yes logvel=4 readonly=no custom=someValue"
+            << std::endl;
 
         return FVA_ERROR_NOT_ENOUGH_ARG;
     }
-    switch (a.arguments().size()) {
+    switch (argc) {
         case 7: {
-            context.custom = a.arguments()[6].toStdString();
-            const std::string customPrefix = "custom=";
-            if (context.custom.find(customPrefix) == 0) context.custom.erase(0, customPrefix.size());
+            context.custom = stripPrefix(argv[6], "custom=");
         }
+        [[fallthrough]];
 
         case 6: {
-            temp = a.arguments()[5];
-            if (temp.contains("readonly=")) temp = temp.remove("readonly=");
+            temp = stripPrefix(argv[5], "readonly=");
             context.readOnly = (temp == "yes");
         }
+        [[fallthrough]];
 
         case 5: {
             // TODO to change to anoter parameter when needs because it is now saved into cfg file - fvaParams.csv
@@ -69,17 +86,22 @@ int main(int argc, char *argv[]) {
                             g_logLevel = ( QtMsgType ) dLogLevel;
             }*/
         }
+        [[fallthrough]];
         case 4: {
-            temp = a.arguments()[3];
-            if (temp.contains("recursive=")) temp = temp.remove("recursive=");
-            context.readOnly = (temp == "yes");
+            temp = stripPrefix(argv[3], "recursive=");
+            context.recursive = (temp == "yes");
         }
+        [[fallthrough]];
         case 3: {
-            context.dir = a.arguments()[2].toStdString();
+            context.dir = argv[2];
         }
+        [[fallthrough]];
         case 2: {
-            context.cmdType = a.arguments()[1].toStdString();
+            context.cmdType = argv[1];
         }
+        [[fallthrough]];
+        default:
+            break;
     }
 
     FVADataProcessor cmdExecutor;
