@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
         case 4: {
             temp = a.arguments()[3];
             if (temp.contains("recursive=")) temp = temp.remove("recursive=");
-            context.recursive = (temp == "yes");
+            context.readOnly = (temp == "yes");
         }
         case 3: {
             context.dir = a.arguments()[2].toStdString();
