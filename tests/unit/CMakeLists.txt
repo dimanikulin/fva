@@ -45,9 +45,6 @@ add_executable(
 # Link GoogleTest to tests
 target_link_libraries(
   libtests
-  Qt5::Widgets
-  Qt5::Core
-  Qt5::Gui
   gtest
   gtest_main
   gmock_main
