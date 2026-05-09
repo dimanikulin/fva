@@ -12,6 +12,7 @@
 #include <QtCore/QString>
 #include <algorithm>
 #include <cctype>
+#include <ctime>
 #include <filesystem>
 #include <string>
 #include <vector>
@@ -76,7 +77,8 @@ FVA_EXIT_CODE CLTRenameVideoBySequence::execute(const CLTContext& context) {
                 continue;
             }
 
-            FVA_EXIT_CODE res = fvaParseFileName(baseName, const_cast<QDateTime&>(renameDateTime), m_fmtctx);
+            std::tm parsedDate = {};
+            FVA_EXIT_CODE res = fvaParseFileName(baseName, parsedDate, m_fmtctx);
             if (FVA_NO_ERROR == res) {
                 continue;
             }

@@ -9,7 +9,7 @@
 #ifndef FVACOMMONLIB_H
 #define FVACOMMONLIB_H
 
-#include <QtCore/QDateTime>
+#include <ctime>
 #include <string>
 #include <vector>
 
@@ -45,7 +45,7 @@ bool fvaIsInternalDir(const std::string& dir);
  * \param ctx - to use formatting options from
  * \returns it returns code of error if any or FVA_NO_ERROR if parsing was successful
  */
-FVA_EXIT_CODE fvaParseDirName(const std::string& dirName, QDateTime& from, QDateTime& to, const FvaFmtContext& ctx);
+FVA_EXIT_CODE fvaParseDirName(const std::string& dirName, std::tm& from, std::tm& to, const FvaFmtContext& ctx);
 
 /*!
  * \brief it tries to parse file name into date
@@ -54,7 +54,7 @@ FVA_EXIT_CODE fvaParseDirName(const std::string& dirName, QDateTime& from, QDate
  * \param ctx - to use formatting options from
  * \returns it returns code of error if any or FVA_NO_ERROR if parsing was successful
  */
-FVA_EXIT_CODE fvaParseFileName(const std::string& fileName, QDateTime& date, const FvaFmtContext& ctx);
+FVA_EXIT_CODE fvaParseFileName(const std::string& fileName, std::tm& date, const FvaFmtContext& ctx);
 
 /*!
  * \brief it returns device id from map loaded

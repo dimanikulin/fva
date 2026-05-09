@@ -7,13 +7,32 @@
  */
 #include "CLTAutoChecks2.h"
 
+#include <QtCore/QDate>
+#include <QtCore/QTime>
 #include <algorithm>
 #include <cctype>
+#include <ctime>
 #include <filesystem>
 #include <string>
 #include <vector>
 
 #include "fvacommonexif.h"
+
+namespace {
+
+QDateTime toQDateTime(const std::tm& value) {
+    return QDateTime(QDate(value.tm_year + 1900, value.tm_mon + 1, value.tm_mday),
+                     QTime(value.tm_hour, value.tm_min, value.tm_sec));
+}
+
+std::time_t toTimeT(std::tm value) {
+    value.tm_isdst = -1;
+    return std::mktime(&value);
+}
+
+bool sameDateTime(const QDateTime& lhs, const std::tm& rhs) { return lhs == toQDateTime(rhs); }
+
+}  // namespace
 
 FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
     namespace fs = std::filesystem;
@@ -43,7 +62,8 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
 
         // 1.CHECK FOR PROPER FOLDER NAME (NO COPY FOLDER)
         if (isDir) {
-            QDateTime from, to;
+            std::tm from = {};
+            std::tm to = {};
             if (FVA_NO_ERROR != fvaParseDirName(fileName, from, to, m_fmtctx)) {
                 if (fvaIsInternalDir(fileName)) continue;
 
@@ -66,7 +86,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
         FVA_FS_TYPE type = fvaConvertFileExt2FileType(suffix);
         if (FVA_FS_TYPE_UNKNOWN != type) {
             countSupportedFiles++;  // it is our file
-            QDateTime date;
+            std::tm date = {};
             const std::string baseFileName = entryPath.stem().string();
             if (FVA_NO_ERROR != fvaParseFileName(baseFileName, date, m_fmtctx)) {
                 LOG_CRIT << "unsupported file found:" << entryPath.string().c_str();
@@ -93,7 +113,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
                 if (!dateTime.isValid()) {
                     LOG_WARN << "empty image taken time found in:" << entryPath.string().c_str();
                     m_Issues.push_back("FVA_ERROR_NULL_TAKEN_TIME," + entryPath.string() + "," + fileName);
-                } else if (dateTime != date) {
+                } else if (!sameDateTime(dateTime, date)) {
                     LOG_WARN << "mismatching image taken time found in:" << entryPath.string().c_str();
                     m_Issues.push_back("FVA_ERROR_MISMATCH_TAKEN_TIME," + entryPath.string() + "," + fileName);
                 }
@@ -108,7 +128,8 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
                 }
             }
 
-            QDateTime dateStart, dateEnd;
+            std::tm dateStart = {};
+            std::tm dateEnd = {};
             const std::string dirName = m_dir.filename().string();
             if (FVA_NO_ERROR != fvaParseDirName(dirName, dateStart, dateEnd, m_fmtctx)) {
                 if (fvaIsInternalDir(dirName)) continue;
@@ -120,24 +141,19 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
                 else
                     return FVA_ERROR_WRONG_FOLDER_NAME;
             }
-            if (dateStart == dateEnd) dateEnd = dateEnd.addYears(1);
-
-            QDateTime fileDateTime = QDateTime::fromString(QString::fromStdString(baseFileName),
-                                                           QString::fromStdString(m_fmtctx.fvaFileName));
-            std::string newFileName = baseFileName;
-            size_t pos = 0;
-            while ((pos = newFileName.find("##", pos)) != std::string::npos) {
-                newFileName.replace(pos, 2, "01");
-                pos += 2;
-            }
-            if (!fileDateTime.isValid()) {
-                fileDateTime = QDateTime::fromString(QString::fromStdString(newFileName),
-                                                     QString::fromStdString(m_fmtctx.fvaFileName));
+            if (std::difftime(toTimeT(dateStart), toTimeT(dateEnd)) == 0.0) {
+                dateEnd.tm_year += 1;
+                dateEnd.tm_isdst = -1;
+                std::mktime(&dateEnd);
             }
 
-            if ((fileDateTime < dateStart) || (fileDateTime > dateEnd)) {
-                LOG_CRIT << "unsupported file found:" << entryPath.string().c_str() << " data period=" << dateStart
-                         << ";" << dateEnd;
+            const std::time_t fileTime = toTimeT(date);
+            const std::time_t dateStartTime = toTimeT(dateStart);
+            const std::time_t dateEndTime = toTimeT(dateEnd);
+
+            if ((fileTime < dateStartTime) || (fileTime > dateEndTime)) {
+                LOG_CRIT << "unsupported file found:" << entryPath.string().c_str() << " data period="
+                         << toQDateTime(dateStart) << ";" << toQDateTime(dateEnd);
                 m_Issues.push_back("FVA_ERROR_NOT_SUPPORTED_FILE," + entryPath.string() + "," + fileName);
                 if (context.readOnly)
                     continue;

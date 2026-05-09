@@ -96,6 +96,23 @@ std::string base64Encode(const std::uint8_t* data, std::size_t size);
 std::string getApplicationDirPath();
 
 /*!
+ * \brief Helper function to parse a date/time string using a specified Qt format
+ * \param value The input date/time string to parse
+ * \param qtFormat The Qt date/time format string
+ * \param result The output tm structure to hold the parsed date/time
+ * \return true if parsing was successful, false otherwise
+ */
+bool parseDateTime(const std::string& value, const std::string& qtFormat, std::tm& result);
+
+/*!
+ * \brief Helper function to add a specified number of days to a tm structure
+ * \param value The input tm structure representing the date/time
+ * \param days The number of days to add
+ * \return true if the operation was successful, false otherwise
+ */
+bool addDays(std::tm& value, int days);
+
+/*!
  * \brief A simple implementation of the SHA-1 hashing algorithm
  */
 class Sha1 {

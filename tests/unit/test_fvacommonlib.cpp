@@ -15,8 +15,9 @@
 
 // Test case for a one-year folder
 TEST(fvaParseDirNameTest, OneYearFolder) {
-    QString dirName = "2022";
-    QDateTime from, to;
+    std::string dirName = "2022";
+    std::tm from = {};
+    std::tm to = {};
     FvaFmtContext ctx;            // Provide a valid FvaFmtContext object
     ctx.fvaDirNameYear = "yyyy";  // Set the format for year parsing
 
@@ -28,8 +29,9 @@ TEST(fvaParseDirNameTest, OneYearFolder) {
 
 // Test case for a year period
 TEST(fvaParseDirNameTest, YearPeriod) {
-    QString dirName = "2022-2023";
-    QDateTime from, to;
+    std::string dirName = "2022-2023";
+    std::tm from = {};
+    std::tm to = {};
     FvaFmtContext ctx;            // Provide a valid FvaFmtContext object
     ctx.fvaDirNameYear = "yyyy";  // Set the format for year parsing
 
@@ -41,8 +43,9 @@ TEST(fvaParseDirNameTest, YearPeriod) {
 
 // Test case for a one-day event
 TEST(fvaParseDirNameTest, OneDayEvent) {
-    QString dirName = "2022.01.01";
-    QDateTime from, to;
+    std::string dirName = "2022.01.01";
+    std::tm from = {};
+    std::tm to = {};
     FvaFmtContext ctx;              // Provide a valid FvaFmtContext object
     ctx.fvaDirName = "yyyy.MM.dd";  // Set the format for date parsing
 
@@ -54,8 +57,9 @@ TEST(fvaParseDirNameTest, OneDayEvent) {
 
 // Test case for one day and several events
 TEST(fvaParseDirNameTest, OneDaySeveralEvents) {
-    QString dirName = "2022.01.01 #3";
-    QDateTime from, to;
+    std::string dirName = "2022.01.01 #3";
+    std::tm from = {};
+    std::tm to = {};
     FvaFmtContext ctx;              // Provide a valid FvaFmtContext object
     ctx.fvaDirName = "yyyy.MM.dd";  // Set the format for date parsing
 
@@ -67,8 +71,9 @@ TEST(fvaParseDirNameTest, OneDaySeveralEvents) {
 
 // Test case for a period
 TEST(fvaParseDirNameTest, Period) {
-    QString dirName = "2022.01.01-03";
-    QDateTime from, to;
+    std::string dirName = "2022.01.01-03";
+    std::tm from = {};
+    std::tm to = {};
     FvaFmtContext ctx;              // Provide a valid FvaFmtContext object
     ctx.fvaDirName = "yyyy.MM.dd";  // Set the format for date parsing
 
@@ -80,8 +85,9 @@ TEST(fvaParseDirNameTest, Period) {
 
 // Test case for months-day period
 TEST(fvaParseDirNameTest, MonthsDayPeriod) {
-    QString dirName = "2017.05.29-06.15";
-    QDateTime from, to;
+    std::string dirName = "2017.05.29-06.15";
+    std::tm from = {};
+    std::tm to = {};
     FvaFmtContext ctx;              // Provide a valid FvaFmtContext object
     ctx.fvaDirName = "yyyy.MM.dd";  // Set the format for date parsing
 
@@ -93,8 +99,9 @@ TEST(fvaParseDirNameTest, MonthsDayPeriod) {
 
 // Test case for an invalid folder name
 TEST(fvaParseDirNameTest, InvalidFolderName) {
-    QString dirName = "invalid";
-    QDateTime from, to;
+    std::string dirName = "invalid";
+    std::tm from = {};
+    std::tm to = {};
     FvaFmtContext ctx;              // Provide a valid FvaFmtContext object
     ctx.fvaDirName = "yyyy.MM.dd";  // Set the format for date parsing
 

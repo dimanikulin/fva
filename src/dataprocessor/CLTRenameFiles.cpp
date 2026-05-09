@@ -7,10 +7,13 @@
  */
 #include "CLTRenameFiles.h"
 
+#include <QtCore/QDate>
 #include <QtCore/QString>
+#include <QtCore/QTime>
 #include <algorithm>
 #include <cctype>
 #include <chrono>
+#include <ctime>
 #include <filesystem>
 #include <string>
 #include <vector>
@@ -30,6 +33,11 @@ QDateTime fvaLastWriteTime(const std::filesystem::path& filePath) {
         fileTime - fs::file_time_type::clock::now() + std::chrono::system_clock::now());
     const std::time_t tt = std::chrono::system_clock::to_time_t(systemTime);
     return QDateTime::fromSecsSinceEpoch(static_cast<qint64>(tt), Qt::UTC).toLocalTime();
+}
+
+QDateTime fromStdTm(const std::tm& value) {
+    return QDateTime(QDate(value.tm_year + 1900, value.tm_mon + 1, value.tm_mday),
+                     QTime(value.tm_hour, value.tm_min, value.tm_sec));
 }
 
 }  // namespace
@@ -138,7 +146,10 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
             QString error;
             renameDateTime = fvaGetVideoTakenTime(absoluteFilePath, error, m_fmtctx);
             if (!renameDateTime.isValid()) {
-                if (FVA_NO_ERROR != fvaParseFileName(entryPath.stem().string(), renameDateTime, m_fmtctx)) {
+                std::tm parsedDate = {};
+                if (FVA_NO_ERROR == fvaParseFileName(entryPath.stem().string(), parsedDate, m_fmtctx)) {
+                    renameDateTime = fromStdTm(parsedDate);
+                } else {
                     LOG_WARN << "can not get taken time from:" << absoluteFilePath << ",error:" << error;
                     fillRenameDateTimeFromLastModifiedIfValid(m_dir, entryPath, renameDateTime);
                     if (!renameDateTime.isValid() && m_renameVideoByModifTime && lastModified.isValid()) {

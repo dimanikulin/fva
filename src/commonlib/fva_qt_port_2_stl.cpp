@@ -270,3 +270,29 @@ std::string getApplicationDirPath() {
 #endif
     return std::filesystem::current_path().string();
 }
+
+bool parseDateTime(const std::string& value, const std::string& qtFormat, std::tm& result) {
+    result = {};
+    std::istringstream stream(value);
+    stream >> std::get_time(&result, qtToStrftimeFormat(qtFormat).c_str());
+    if (stream.fail()) return false;
+
+    // Normalize parsed values and reject impossible dates.
+    std::tm normalized = result;
+    if (normalized.tm_year < 0) return false;
+    if (normalized.tm_mday == 0) normalized.tm_mday = 1;
+    const std::time_t epoch = std::mktime(&normalized);
+    if (epoch == static_cast<std::time_t>(-1)) return false;
+
+    result = normalized;
+    return true;
+}
+
+bool addDays(std::tm& value, int days) {
+    std::tm copy = value;
+    copy.tm_mday += days;
+    const std::time_t epoch = std::mktime(&copy);
+    if (epoch == static_cast<std::time_t>(-1)) return false;
+    value = copy;
+    return true;
+}
