@@ -154,7 +154,7 @@ void FVAOrganizerPlacePage::setVisible(bool visible) {
         std::string rootSWdir;
         exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
         IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("get.param")
-     
+
         FVAFlowController flow;
 
         STR_LIST fileListToFillUp;

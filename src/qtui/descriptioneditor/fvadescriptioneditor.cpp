@@ -50,7 +50,7 @@ FVADescriptionEditor::FVADescriptionEditor(bool forFolder, QWidget* parent)
     std::string rootSWdir;
     exitCode = cfg.getParamAsString("Common::RootDir", rootSWdir);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.get.param")
-    
+
     LOG_DEB << "before fvaBuildPeopleTree 1";
     exitCode = fvaBuildPeopleTree(this, ui.treePeopleWidget, rootSWdir);
     IF_CLT_ERROR_SHOW_MSG_BOX_AND_RET("FVADescriptionEditor.fvaBuildPeopleTree.ui.treePeopleWidget")
