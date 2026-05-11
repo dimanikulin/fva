@@ -26,10 +26,11 @@ std::string fvaGetExifMakeAndModelFromFile(const std::string& pathToFile);
  * \brief it returns Exif DateTimeOriginal attribute converted to std::chrono time_point
  * \param pathToFile path file to load DateTimeOriginal from
  * \param exifDateTimeFmt format of an EXIF date
- * \returns it returns default-constructed time_point if loading of DateTimeOriginal not successful, otherwize it returns
- * DateTimeOriginal attribute converted to std::chrono::system_clock::time_point
+ * \returns it returns default-constructed time_point if loading of DateTimeOriginal not successful, otherwize it
+ * returns DateTimeOriginal attribute converted to std::chrono::system_clock::time_point
  */
-std::chrono::system_clock::time_point fvaGetExifDateTimeOriginalFromFile(const std::string& pathToFile, const std::string& exifDateTimeFmt);
+std::chrono::system_clock::time_point fvaGetExifDateTimeOriginalFromFile(const std::string& pathToFile,
+                                                                         const std::string& exifDateTimeFmt);
 
 /*!
  * \brief it checks if Exif GEO Location is present
@@ -45,6 +46,7 @@ bool fvaExifGeoDataPresentInFile(const std::string& pathToFile);
  * \param ctx - to use formatting options from
  * \returns it returns time taken
  */
-std::chrono::system_clock::time_point fvaGetVideoTakenTime(const std::string& pathToFile, std::string& error, const FvaFmtContext& ctx);
+std::chrono::system_clock::time_point fvaGetVideoTakenTime(const std::string& pathToFile, std::string& error,
+                                                           const FvaFmtContext& ctx);
 
 #endif  // FVACOMMONEXIF_H
