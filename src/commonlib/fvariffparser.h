@@ -8,10 +8,9 @@
 #ifndef _RIFF_PARSER_H_
 #define _RIFF_PARSER_H_
 
-#include <QtCore/QDataStream>
-#include <QtCore/QDateTime>
-#include <QtCore/QFile>
-#include <QtCore/QString>
+#include <fstream>
+#include <chrono>
+#include <string>
 #include <memory>
 
 #include "fvafmtcontext.h"
@@ -24,11 +23,11 @@ class RiffParser {
 public:  // methods
     /*
      * \brief it opens file and makes premialiry checks for consitensy
-     * \param error human-readable description of error if any
      * \param path riff file absolute path
+     * \param error human-readable description of error if any
      * \return it returns true if it succesfully opened the file, otherwize it returns false
      */
-    bool open(const QString& path, QString& error);
+    bool open(const std::string& path, std::string& error);
 
     /*!
      * \brief it finds string type tag by its name
@@ -36,7 +35,7 @@ public:  // methods
      * \param value out param to be filled by value of tag
      * \return it returns true if it succesfully found the tag, otherwize it returns false
      */
-    bool findTag(const QString& tag, QString& value);
+    bool findTag(const std::string& tag, std::string& value);
 
     /*!
      * \brief it converts string type to date-time type
@@ -45,7 +44,7 @@ public:  // methods
      * \param ctx - to use formatting options from
      * \return it returns true if it succesfully converted the value, otherwize it returns false
      */
-    bool convertToDate(const QString& strDate, QDateTime& value, const FvaFmtContext& ctx) const;
+    bool convertToDate(const std::string& strDate, std::chrono::system_clock::time_point& value, const FvaFmtContext& ctx) const;
 
 private:  // methods
     /*!
@@ -54,18 +53,13 @@ private:  // methods
      * \param value out param to be filled by value of tag
      * \return it returns true if it succesfully found the tag, otherwize it returns false
      */
-    bool processNode(const QString& tag, QString& value);
+    bool processNode(const std::string& tag, std::string& value);
 
 private:  // data
     /*!
-     * file system object
+     * file stream object
      */
-    std::unique_ptr<QFile> m_file;
-
-    /*!
-     * stream object
-     */
-    std::unique_ptr<QDataStream> m_stream;
+    std::unique_ptr<std::ifstream> m_file;
 };
 
 #endif  // _RIFF_PARSER_H_

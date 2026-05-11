@@ -8,9 +8,11 @@
 #ifndef FVAITEM_H
 #define FVAITEM_H
 
-#include <QtCore/QDateTime>
-#include <QtCore/QString>
-#include <QtCore/QVariantMap>
+#include <chrono>
+#include <string>
+#include <map>
+#include <any>
+#include <list>
 
 #include "fvaconstants.h"
 
@@ -29,13 +31,13 @@ public:
      * \brief it returns human-readable string as item name
      * \param dictionaries - global dictionary set
      */
-    QString getGuiName(const QVariantMap& dictionaries);
+    std::string getGuiName(const std::map<std::string, std::any>& dictionaries);
 
     /*!
      * \brief it returns human-readable string to show full name
      * \param dictionaries - global dictionary set
      */
-    QString getGuiFullName(const QVariantMap& dictionaries);
+    std::string getGuiFullName(const std::map<std::string, std::any>& dictionaries);
 
 public:  // data
     /*!
@@ -47,8 +49,8 @@ public:  // data
      * for folder it is event date period, for file it is date taken(dateFrom only)
      * both are filesystem names
      */
-    QDateTime dateFrom;
-    QDateTime dateTo;
+    std::chrono::system_clock::time_point dateFrom;
+    std::chrono::system_clock::time_point dateTo;
 
     /*!
      * children
@@ -58,7 +60,7 @@ public:  // data
     /*!
      * absolute path to item
      */
-    QString fsFullPath;
+    std::string fsFullPath;
 
     /*!
      * does this item fit filtration conditions

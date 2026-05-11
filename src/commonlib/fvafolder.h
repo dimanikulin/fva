@@ -8,7 +8,7 @@
 #ifndef FVAFOLDER_H
 #define FVAFOLDER_H
 
-#include <QtCore/QString>
+#include <string>
 #include <map>
 #include <vector>
 
@@ -33,12 +33,12 @@ public:
     /*!
      * folder tags
      */
-    QString tags;
+    std::string tags;
 
     /*!
      * folder to show together with this folder
      */
-    QString linkedFolder;
+    std::string linkedFolder;
 };
 
 typedef std::map<int, fvaFolder*> FVA_FOLDER_MAP;
