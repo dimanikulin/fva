@@ -7,6 +7,7 @@
  */
 
 #include "fvariffparser.h"
+
 #include <cstring>
 #include <iomanip>
 #include <sstream>
@@ -57,10 +58,10 @@ bool RiffParser::processNode(const std::string& tag, std::string& value) {
         char buffer[8];
         m_file->read(buffer, sizeof(buffer));
         if (m_file->gcount() < sizeof(buffer)) break;
-        
+
         int datasize = *((int*)(&buffer[4]));
         std::string fourcc(buffer, 4);
-        
+
         if (fourcc == "LIST") {
             char buffer_[4];
             m_file->read(buffer_, sizeof(buffer_));
@@ -80,20 +81,21 @@ bool RiffParser::processNode(const std::string& tag, std::string& value) {
     }
     return false;
 }
-bool RiffParser::findTag(const std::string& tag, std::string& value) { 
+bool RiffParser::findTag(const std::string& tag, std::string& value) {
     m_file->seekg(0, std::ios::beg);
     return processNode(tag, value);
 }
-bool RiffParser::convertToDate(const std::string& strDate, std::chrono::system_clock::time_point& value, const FvaFmtContext& ctx) const {
+bool RiffParser::convertToDate(const std::string& strDate, std::chrono::system_clock::time_point& value,
+                               const FvaFmtContext& ctx) const {
     // remove terminate char and last symbol
     std::string trimmed = strDate.substr(4, strDate.size() - 5);
     trimmed.erase(trimmed.find_last_not_of("\n") + 1);
-    
+
     value = parseDateTime(trimmed, ctx.riffDateTime1);
     if (value.time_since_epoch().count() != 0) {
         return true;
     }
-    
+
     // try to use other format
     std::string newStr = strDate.substr(0, strDate.size() - 1);
     newStr.erase(newStr.find_last_not_of("\n") + 1);

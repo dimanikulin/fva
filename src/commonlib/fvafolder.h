@@ -8,8 +8,8 @@
 #ifndef FVAFOLDER_H
 #define FVAFOLDER_H
 
-#include <string>
 #include <map>
+#include <string>
 #include <vector>
 
 /*!

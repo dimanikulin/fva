@@ -8,10 +8,10 @@
 #ifndef _RIFF_PARSER_H_
 #define _RIFF_PARSER_H_
 
-#include <fstream>
 #include <chrono>
-#include <string>
+#include <fstream>
 #include <memory>
+#include <string>
 
 #include "fvafmtcontext.h"
 
@@ -44,7 +44,8 @@ public:  // methods
      * \param ctx - to use formatting options from
      * \return it returns true if it succesfully converted the value, otherwize it returns false
      */
-    bool convertToDate(const std::string& strDate, std::chrono::system_clock::time_point& value, const FvaFmtContext& ctx) const;
+    bool convertToDate(const std::string& strDate, std::chrono::system_clock::time_point& value,
+                       const FvaFmtContext& ctx) const;
 
 private:  // methods
     /*!
