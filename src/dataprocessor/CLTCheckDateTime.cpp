@@ -9,6 +9,7 @@
 
 #include <algorithm>
 #include <cctype>
+#include <chrono>
 #include <filesystem>
 #include <string>
 #include <vector>
@@ -56,10 +57,9 @@ FVA_EXIT_CODE CLTCheckDateTime::execute(const CLTContext& context) {
         std::error_code absEc;
         const fs::path absolutePath = fs::absolute(entry.path(), absEc);
         const fs::path reportPath = absEc ? entry.path() : absolutePath;
-        const auto dateTime = fvaGetExifDateTimeOriginalFromFile(QString::fromStdString(entry.path().string()),
-                                                                 QString::fromStdString(m_fmtctx.exifDateTime));
+        const auto dateTime = fvaGetExifDateTimeOriginalFromFile(entry.path().string(), m_fmtctx.exifDateTime);
 
-        if (!dateTime.isValid() || dateTime.isNull()) {
+        if (dateTime == std::chrono::system_clock::time_point{}) {
             LOG_CRIT << "found empty exif Date-Time:" << reportPath.string().c_str();
             return FVA_ERROR_NO_EXIF_DATE_TIME;
         }

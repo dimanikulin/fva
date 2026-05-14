@@ -7,12 +7,13 @@
  */
 #include "CLTAutoChecks2.h"
 
-#include <QtCore/QDate>
-#include <QtCore/QTime>
 #include <algorithm>
+#include <chrono>
 #include <cctype>
 #include <ctime>
 #include <filesystem>
+#include <iomanip>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -20,9 +21,10 @@
 
 namespace {
 
-QDateTime toQDateTime(const std::tm& value) {
-    return QDateTime(QDate(value.tm_year + 1900, value.tm_mon + 1, value.tm_mday),
-                     QTime(value.tm_hour, value.tm_min, value.tm_sec));
+std::string formatTm(const std::tm& value) {
+    std::ostringstream oss;
+    oss << std::put_time(&const_cast<std::tm&>(value), "%Y-%m-%d %H:%M:%S");
+    return oss.str();
 }
 
 std::time_t toTimeT(std::tm value) {
@@ -30,7 +32,11 @@ std::time_t toTimeT(std::tm value) {
     return std::mktime(&value);
 }
 
-bool sameDateTime(const QDateTime& lhs, const std::tm& rhs) { return lhs == toQDateTime(rhs); }
+bool sameDateTime(const std::chrono::system_clock::time_point& lhs, const std::tm& rhs) {
+    time_t lhsTime = std::chrono::system_clock::to_time_t(lhs);
+    time_t rhsTime = toTimeT(rhs);
+    return std::difftime(lhsTime, rhsTime) == 0.0;
+}
 
 }  // namespace
 
@@ -107,10 +113,9 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
             }
 
             if (FVA_FS_TYPE_IMG == type) {
-                QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(QString::fromStdString(entryPath.string()),
-                                                                        QString::fromStdString(m_fmtctx.exifDateTime));
+                const auto dateTime = fvaGetExifDateTimeOriginalFromFile(entryPath.string(), m_fmtctx.exifDateTime);
 
-                if (!dateTime.isValid()) {
+                if (dateTime == std::chrono::system_clock::time_point{}) {
                     LOG_WARN << "empty image taken time found in:" << entryPath.string().c_str();
                     m_Issues.push_back("FVA_ERROR_NULL_TAKEN_TIME," + entryPath.string() + "," + fileName);
                 } else if (!sameDateTime(dateTime, date)) {
@@ -120,9 +125,8 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
             }
 
             if (FVA_FS_TYPE_VIDEO == type) {
-                QDateTime dateTime = fvaGetExifDateTimeOriginalFromFile(QString::fromStdString(entryPath.string()),
-                                                                        QString::fromStdString(m_fmtctx.exifDateTime));
-                if (!dateTime.isValid()) {
+                const auto dateTime = fvaGetExifDateTimeOriginalFromFile(entryPath.string(), m_fmtctx.exifDateTime);
+                if (dateTime == std::chrono::system_clock::time_point{}) {
                     LOG_WARN << "empty video taken time found in:" << entryPath.string().c_str();
                     // m_Issues.push_back("FVA_ERROR_EMPTY_VIDEO_TIME," + entryPath.string() + "," + fileName);
                 }
@@ -153,7 +157,7 @@ FVA_EXIT_CODE CLTAutoChecks2::execute(const CLTContext& context) {
 
             if ((fileTime < dateStartTime) || (fileTime > dateEndTime)) {
                 LOG_CRIT << "unsupported file found:" << entryPath.string().c_str()
-                         << " data period=" << toQDateTime(dateStart) << ";" << toQDateTime(dateEnd);
+                         << " data period=" << formatTm(dateStart) << ";" << formatTm(dateEnd);
                 m_Issues.push_back("FVA_ERROR_NOT_SUPPORTED_FILE," + entryPath.string() + "," + fileName);
                 if (context.readOnly)
                     continue;

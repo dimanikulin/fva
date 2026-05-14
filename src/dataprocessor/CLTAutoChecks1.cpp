@@ -64,9 +64,9 @@ FVA_EXIT_CODE CLTAutoChecks1::execute(const CLTContext& /*context*/) {
         if (!first) {
             first = true;
             if (FVA_FS_TYPE_VIDEO == type || FVA_FS_TYPE_AUDIO == type) {
-                QString error;
-                QDateTime time = fvaGetVideoTakenTime(QString::fromStdString(path), error, m_fmtctx);
-                if (!time.isValid()) {
+                std::string error;
+                const auto time = fvaGetVideoTakenTime(path, error, m_fmtctx);
+                if (time == std::chrono::system_clock::time_point{}) {
                     const auto writeTime = entry.last_write_time(entryEc);
                     const bool hasLastWriteTime = !entryEc && (writeTime != fs::file_time_type::min());
                     if (m_renameVideoByModifTime == true && hasLastWriteTime) {

@@ -8,35 +8,41 @@
 
 #include "fvacommonexif.h"
 
-#include <QtCore/QFile>
+#include <chrono>
 #include <fstream>
+#include <iomanip>
+#include <sstream>
 #include <vector>
 
 #include "exif.h"
 #include "fvariffparser.h"
 
-QString fvaGetExifMakeAndModelFromFile(const QString& pathToFile) {
-    QFile file(pathToFile);
-    if (file.open(QIODevice::ReadOnly)) {
-        QByteArray data = file.readAll(/*1024*1024*/);
-        easyexif::EXIFInfo info;
-        if (0 == info.parseFrom((unsigned char*)data.data(), data.size())) {
-            return QString(info.Make.c_str()) + info.Model.c_str();
-        }
+std::string fvaGetExifMakeAndModelFromFile(const std::string& pathToFile) {
+    std::ifstream file(pathToFile, std::ios::binary);
+    if (!file.is_open()) return "";
+    std::vector<unsigned char> data((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    easyexif::EXIFInfo info;
+    if (0 == info.parseFrom(data.data(), static_cast<unsigned int>(data.size()))) {
+        return info.Make + info.Model;
     }
     return "";
 }
 
-QDateTime fvaGetExifDateTimeOriginalFromFile(const QString& pathToFile, const QString& exifDateTimeFmt) {
-    QFile file(pathToFile);
-    if (file.open(QIODevice::ReadOnly)) {
-        QByteArray data = file.readAll(/*1024 * 100*/);
-        easyexif::EXIFInfo info;
-        if (0 == info.parseFrom((unsigned char*)data.data(), data.size())) {
-            return QDateTime::fromString(info.DateTimeOriginal.c_str(), exifDateTimeFmt);
+std::chrono::system_clock::time_point fvaGetExifDateTimeOriginalFromFile(const std::string& pathToFile,
+                                                                         const std::string& exifDateTimeFmt) {
+    std::ifstream file(pathToFile, std::ios::binary);
+    if (!file.is_open()) return {};
+    std::vector<unsigned char> data((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    easyexif::EXIFInfo info;
+    if (0 == info.parseFrom(data.data(), static_cast<unsigned int>(data.size()))) {
+        std::tm tm = {};
+        std::istringstream ss(info.DateTimeOriginal);
+        ss >> std::get_time(&tm, exifDateTimeFmt.c_str());
+        if (!ss.fail()) {
+            return std::chrono::system_clock::from_time_t(std::mktime(&tm));
         }
     }
-    return QDateTime();
+    return {};
 }
 bool fvaExifGeoDataPresentInFile(const std::string& pathToFile) {
     std::ifstream file(pathToFile, std::ios::binary);
@@ -49,12 +55,13 @@ bool fvaExifGeoDataPresentInFile(const std::string& pathToFile) {
     }
     return false;
 }
-QDateTime fvaGetVideoTakenTime(const QString& pathToFile, QString& error, const FvaFmtContext& ctx) {
-    QDateTime renameDateTime = fvaGetExifDateTimeOriginalFromFile(pathToFile, QString::fromStdString(ctx.exifDateTime));
-    QString _newName = renameDateTime.toString(QString::fromStdString(ctx.fvaFileName));
-    if (_newName.isEmpty()) {
+std::chrono::system_clock::time_point fvaGetVideoTakenTime(const std::string& pathToFile, std::string& error,
+                                                           const FvaFmtContext& ctx) {
+    std::chrono::system_clock::time_point renameDateTime =
+        fvaGetExifDateTimeOriginalFromFile(pathToFile, ctx.exifDateTime);
+    if (renameDateTime == std::chrono::system_clock::time_point{}) {
         RiffParser riffInfo;
-        QString createdDate;
+        std::string createdDate;
         if (!riffInfo.open(pathToFile, error) || !riffInfo.findTag("IDIT", createdDate) ||
             !riffInfo.convertToDate(createdDate, renameDateTime, ctx))
             return renameDateTime;
