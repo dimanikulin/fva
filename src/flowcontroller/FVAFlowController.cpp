@@ -466,7 +466,7 @@ FVA_EXIT_CODE FVAFlowController::MoveInputDirToOutputDirs(const std::string& inp
                                                           bool removeInput) {
     LOG_DEB << "Enter";
     // get the size of folder list we received
-    uint sizeProcessed = outputDirs.size();
+    unsigned int sizeProcessed = outputDirs.size();
 
     CLTContext context;  // empty so far
     context.dir = inputDir;

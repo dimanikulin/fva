@@ -29,10 +29,10 @@ inline std::string getCurrentTimestamp() {
 #define LOG_CRIT if (1 >= g_logLevel) {} else g_logfile << "[ERR]" << getCurrentTimestamp() << " [" << __FILE__ << "] [" << __LINE__ << "] "
 #define LOG_DEB if (2 >= g_logLevel) {} else g_logfile << "[DBG]" << getCurrentTimestamp() << " [" << __FILE__ << "] [" << __LINE__ << "] "
 
-/*! \
-* global logger \
+/*!
+* global logger 
 */
-#define LOGGER_GLOBAL\
+#define LOGGER_GLOBAL \
 std::ofstream g_logfile;
 
 /*!
@@ -40,13 +40,12 @@ std::ofstream g_logfile;
 */
 int g_logLevel = 2;
 
-#define LOG_INIT(LOG_NAME)\
+#define LOG_INIT(LOG_NAME) \
 std::string logPath; \
 exitCode = cfg.getParamAsString("Common::RootDir", logPath); \
-logPath += LOG_NAME;\
-g_logfile.open(logPath, std::ios::app);\
-\
-uint dLogLevel = 0; \
+logPath += LOG_NAME; \
+g_logfile.open(logPath, std::ios::app); \
+unsigned int dLogLevel = 0; \
 exitCode = cfg.getParamAsUint("Common::LogLevel", dLogLevel); \
 g_logLevel = static_cast<int>(dLogLevel);
 
