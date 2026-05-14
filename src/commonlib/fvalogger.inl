@@ -27,18 +27,17 @@ inline std::string getCurrentTimestamp() {
 
 #define LOG_WARN if (0 >= g_logLevel) {} else g_logfile << "[WRN]" << getCurrentTimestamp() << " [" << __FILE__ << "] [" << __LINE__ << "] "
 #define LOG_CRIT if (1 >= g_logLevel) {} else g_logfile << "[ERR]" << getCurrentTimestamp() << " [" << __FILE__ << "] [" << __LINE__ << "] "
-#define LOG_DEB if (2 >= g_logLevel) {} else g_logfile << "[DBG]" << getCurrentTimestamp() << " [" << __FILE__ << "] [" << __LINE__ << "] ""
+#define LOG_DEB if (2 >= g_logLevel) {} else g_logfile << "[DBG]" << getCurrentTimestamp() << " [" << __FILE__ << "] [" << __LINE__ << "] "
 
-
-#define LOGGER_GLOBAL\
 /*! \
 * global logger \
-*/\
-std::ofstream g_logfile;\
-\
-/*! \
+*/
+#define LOGGER_GLOBAL\
+std::ofstream g_logfile;
+
+/*!
 * global log level (0=warning, 1=critical, 2=debug) \
-*/\
+*/
 int g_logLevel = 2;
 
 #define LOG_INIT(LOG_NAME)\
