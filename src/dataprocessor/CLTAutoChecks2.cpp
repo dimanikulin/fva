@@ -8,8 +8,8 @@
 #include "CLTAutoChecks2.h"
 
 #include <algorithm>
-#include <chrono>
 #include <cctype>
+#include <chrono>
 #include <ctime>
 #include <filesystem>
 #include <iomanip>
