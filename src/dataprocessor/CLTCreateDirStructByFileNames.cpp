@@ -7,10 +7,10 @@
  */
 #include "CLTCreateDirStructByFileNames.h"
 
+#include <algorithm>
 #include <filesystem>
 #include <string>
 #include <vector>
-#include <algorithm>
 
 #include "fva_qt_port_2_stl.h"
 
