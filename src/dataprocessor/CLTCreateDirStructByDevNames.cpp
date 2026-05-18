@@ -53,13 +53,14 @@ FVA_EXIT_CODE CLTCreateDirStructByDeviceName::execute(const CLTContext& /*contex
 
         const std::string fullName = toNativePathString(entry.path());
         if (FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType(suffix)) {
-            QString newDeviceNameQt = fvaGetExifMakeAndModelFromFile(QString::fromStdString(fullName));
+            std::string newDeviceName = fvaGetExifMakeAndModelFromFile(fullName);
 
-            while (newDeviceNameQt.endsWith('\n')) newDeviceNameQt.chop(1);
-            while (newDeviceNameQt.endsWith('\r')) newDeviceNameQt.chop(1);
-            while (newDeviceNameQt.endsWith(QChar('\0'))) newDeviceNameQt.chop(1);
+            while (!newDeviceName.empty() &&
+                   (newDeviceName.back() == '\n' || newDeviceName.back() == '\r' || newDeviceName.back() == '\0')) {
+                newDeviceName.pop_back();
+            }
 
-            const std::string newDeviceName = trim(newDeviceNameQt.toStdString());
+            newDeviceName = trim(newDeviceName);
 
             std::string dirName;
             if (newDeviceName.empty()) {

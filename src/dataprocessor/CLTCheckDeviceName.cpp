@@ -53,8 +53,7 @@ FVA_EXIT_CODE CLTCheckDeviceName::execute(const CLTContext& /*context*/) {
         std::error_code absEc;
         const fs::path absolutePath = fs::absolute(entry.path(), absEc);
         const fs::path reportPath = absEc ? entry.path() : absolutePath;
-        const QString newDeviceNameQt = fvaGetExifMakeAndModelFromFile(QString::fromStdString(entry.path().string()));
-        const std::string newDeviceName = newDeviceNameQt.toStdString();
+        const std::string newDeviceName = fvaGetExifMakeAndModelFromFile(entry.path().string());
 
         if (newDeviceName.empty()) {
             LOG_CRIT << "no device name in picture:" << reportPath.string().c_str();
