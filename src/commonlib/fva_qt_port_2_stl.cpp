@@ -296,3 +296,37 @@ bool addDays(std::tm& value, int days) {
     value = copy;
     return true;
 }
+
+std::chrono::system_clock::time_point fvaLastWriteTime(const std::filesystem::path& filePath) {
+    namespace fs = std::filesystem;
+
+    std::error_code ec;
+    const fs::file_time_type fileTime = fs::last_write_time(filePath, ec);
+    if (ec) return std::chrono::system_clock::time_point{};
+
+    return std::chrono::time_point_cast<std::chrono::system_clock::duration>(
+        fileTime - fs::file_time_type::clock::now() + std::chrono::system_clock::now());
+}
+
+std::chrono::system_clock::time_point fromStdTm(std::tm value) {
+    value.tm_isdst = -1;
+    const std::time_t tt = std::mktime(&value);
+    if (tt == static_cast<std::time_t>(-1)) return std::chrono::system_clock::time_point{};
+    return std::chrono::system_clock::from_time_t(tt);
+}
+
+std::string formatDateTime(const std::chrono::system_clock::time_point& value, const std::string& qtFormat) {
+    if (value == std::chrono::system_clock::time_point{}) return "";
+
+    const std::time_t tt = std::chrono::system_clock::to_time_t(value);
+    std::tm localTm = {};
+#ifdef _WIN32
+    localtime_s(&localTm, &tt);
+#else
+    localtime_r(&tt, &localTm);
+#endif
+
+    std::ostringstream stream;
+    stream << std::put_time(&localTm, qtToStrftimeFormat(qtFormat).c_str());
+    return stream.str();
+}

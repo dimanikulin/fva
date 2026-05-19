@@ -8,7 +8,7 @@
 #ifndef _CLT_RENAME_FILES_H_
 #define _CLT_RENAME_FILES_H_
 
-#include <QtCore/QDateTime>
+#include <chrono>
 #include <filesystem>
 #include <map>
 #include <string>
@@ -32,11 +32,13 @@ public:
     virtual bool supportReadOnly() { return true; }
 
 protected:
-    bool checkIfParentFileExist(const std::filesystem::path& fileToCheck, QDateTime& renameDateTime,
-                                const QDateTime& prevRenameDateTime);
+    bool checkIfParentFileExist(const std::filesystem::path& fileToCheck,
+                                std::chrono::system_clock::time_point& renameDateTime,
+                                const std::chrono::system_clock::time_point& prevRenameDateTime);
 
     void fillRenameDateTimeFromLastModifiedIfValid(const std::filesystem::path& dirPath,
-                                                   const std::filesystem::path& filePath, QDateTime& renameDateTime);
+                                                   const std::filesystem::path& filePath,
+                                                   std::chrono::system_clock::time_point& renameDateTime);
 
 private:
     /*!

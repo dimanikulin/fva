@@ -113,6 +113,28 @@ bool parseDateTime(const std::string& value, const std::string& qtFormat, std::t
 bool addDays(std::tm& value, int days);
 
 /*!
+ * \brief Helper function to get the last write time of a file as a system clock time point
+ * \param filePath The path to the file
+ * \return The last write time of the file as a system clock time point, or an empty time point if an error occurs
+ */
+std::chrono::system_clock::time_point fvaLastWriteTime(const std::filesystem::path& filePath);
+
+/*!
+ * \brief Helper function to convert a tm structure to a system clock time point
+ * \param value The input tm structure representing the date/time
+ * \return The corresponding system clock time point, or an empty time point if the conversion fails
+ */
+std::chrono::system_clock::time_point fromStdTm(std::tm value);
+
+/*!
+ * \brief Helper function to format a system clock time point as a string using a specified Qt format
+ * \param value The input system clock time point to format
+ * \param qtFormat The Qt date/time format string
+ * \return The formatted date/time string, or an empty string if the input time point is empty
+ */
+std::string formatDateTime(const std::chrono::system_clock::time_point& value, const std::string& qtFormat);
+
+/*!
  * \brief A simple implementation of the SHA-1 hashing algorithm
  */
 class Sha1 {
