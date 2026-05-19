@@ -20,7 +20,6 @@
 #include "fva_qt_port_2_stl.h"
 #include "fvacommonexif.h"
 
-
 CLTRenameFiles::CLTRenameFiles(const FvaConfiguration& cfg) {
     FVA_EXIT_CODE res = cfg.getParamAsBoolean("Rename::videoByModifTime", m_renameVideoByModifTime);
     RET_IF_RES_IS_ERROR
@@ -119,8 +118,7 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
                 if (renameDateTime == std::chrono::system_clock::time_point{} && m_renamePicsByModifTime &&
                     lastModified != std::chrono::system_clock::time_point{}) {
                     LOG_WARN << "modification time to use (true == FVA_RENAME_FILES_BY_MODIF_TIME_FOR_EMPTY_EXIF) for:"
-                             << absoluteFilePath
-                             << ", time : " << formatDateTime(lastModified, m_fmtctx.fvaFileName);
+                             << absoluteFilePath << ", time : " << formatDateTime(lastModified, m_fmtctx.fvaFileName);
                     renameDateTime = lastModified;
                 }
             }
@@ -174,8 +172,7 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
         const std::string newPathStr = newPath.string();
         if (context.readOnly) {
             if (m_uniqueFileNames.find(newPathStr) != m_uniqueFileNames.end()) {
-                LOG_CRIT << "not unique future file name:" << newPathStr
-                         << " for file: " << absoluteFilePath;
+                LOG_CRIT << "not unique future file name:" << newPathStr << " for file: " << absoluteFilePath;
                 return FVA_ERROR_NON_UNIQUE_FILE_NAME;
             }
             m_uniqueFileNames[newPathStr] = entryPath.filename().string();
@@ -189,8 +186,7 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
 
         std::error_code existsEc;
         if (fs::exists(newPath, existsEc) && !existsEc) {
-            LOG_WARN << "file already exists:" << newPathStr
-                     << ",old path:" << absoluteFilePath;
+            LOG_WARN << "file already exists:" << newPathStr << ",old path:" << absoluteFilePath;
             const fs::path copyDir = m_dir / "#copy";
             if (!fs::exists(copyDir, existsEc)) {
                 LOG_WARN << "created COPY folder:" << copyDir.string();
@@ -201,8 +197,7 @@ FVA_EXIT_CODE CLTRenameFiles::execute(const CLTContext& context) {
             std::error_code renameEc;
             fs::rename(entryPath, newCopyPath, renameEc);
             if (renameEc) {
-                LOG_CRIT << "can not rename file:" << absoluteFilePath
-                         << " to:" << newCopyPath.string();
+                LOG_CRIT << "can not rename file:" << absoluteFilePath << " to:" << newCopyPath.string();
                 return FVA_ERROR_CANT_RENAME_FILE;
             }
             LOG_DEB << "renamed file:" << absoluteFilePath << " to:" << newCopyPath.string();
