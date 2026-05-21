@@ -13,8 +13,8 @@
 #include <array>
 #include <cstdint>
 #include <filesystem>
-#include <string>
 #include <map>
+#include <string>
 #include <vector>
 
 using DictRow = std::map<std::string, std::string>;
@@ -139,7 +139,6 @@ std::chrono::system_clock::time_point fromStdTm(std::tm value);
  */
 std::string formatDateTime(const std::chrono::system_clock::time_point& value, const std::string& qtFormat);
 
-
 /*!
  * \brief A getter for dictionary rows from global dictionaries map
  * \param dictionaries The global dictionaries map to search
@@ -176,7 +175,8 @@ bool isValidDate(const std::chrono::system_clock::time_point& value);
  * \param next The date/time to compare against the base
  * \return true if 'next' is exactly one day after 'base', false otherwise
  */
-bool isOneDayAfter(const std::chrono::system_clock::time_point& base, const std::chrono::system_clock::time_point& next);
+bool isOneDayAfter(const std::chrono::system_clock::time_point& base,
+                   const std::chrono::system_clock::time_point& next);
 
 /*!
  * \brief Helper function to fill a full name string based on an identifier and a dictionary
@@ -185,11 +185,8 @@ bool isOneDayAfter(const std::chrono::system_clock::time_point& base, const std:
  * \param dictionaries The map of dictionaries to search
  * \param fullName The output string to hold the resulting full name
  */
-void fillNameByOneId(unsigned int ident,
-                     const std::string& dictKey,
-                     const std::map<std::string, std::any>& dictionaries,
-                     std::string& fullName);
-
+void fillNameByOneId(unsigned int ident, const std::string& dictKey,
+                     const std::map<std::string, std::any>& dictionaries, std::string& fullName);
 
 /*!
  * \brief A simple implementation of the SHA-1 hashing algorithm

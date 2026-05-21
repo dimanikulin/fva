@@ -331,7 +331,6 @@ std::string formatDateTime(const std::chrono::system_clock::time_point& value, c
     return stream.str();
 }
 
-
 const DictRows* getDictionaryRows(const std::map<std::string, std::any>& dictionaries, const std::string& key) {
     const auto it = dictionaries.find(key);
     if (it == dictionaries.end()) return nullptr;
@@ -356,7 +355,8 @@ bool isValidDate(const std::chrono::system_clock::time_point& value) {
     return value != std::chrono::system_clock::time_point{};
 }
 
-bool isOneDayAfter(const std::chrono::system_clock::time_point& base, const std::chrono::system_clock::time_point& next) {
+bool isOneDayAfter(const std::chrono::system_clock::time_point& base,
+                   const std::chrono::system_clock::time_point& next) {
     if (!isValidDate(base) || !isValidDate(next)) return false;
 
     const std::time_t baseTime = std::chrono::system_clock::to_time_t(base);
@@ -371,10 +371,8 @@ bool isOneDayAfter(const std::chrono::system_clock::time_point& base, const std:
     return fromStdTm(baseTm) == next;
 }
 
-void fillNameByOneId(unsigned int ident,
-                     const std::string& dictKey,
-                     const std::map<std::string, std::any>& dictionaries,
-                     std::string& fullName) {
+void fillNameByOneId(unsigned int ident, const std::string& dictKey,
+                     const std::map<std::string, std::any>& dictionaries, std::string& fullName) {
     if (ident == 0) return;
 
     const DictRows* rows = getDictionaryRows(dictionaries, dictKey);

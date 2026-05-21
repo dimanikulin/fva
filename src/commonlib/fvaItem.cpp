@@ -6,10 +6,9 @@
 #include <string>
 #include <vector>
 
+#include "fva_qt_port_2_stl.h"
 #include "fvafile.h"
 #include "fvafolder.h"
-#include "fva_qt_port_2_stl.h"
-
 
 fvaItem::fvaItem() {
     isFiltered = true;
