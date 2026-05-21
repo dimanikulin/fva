@@ -330,3 +330,65 @@ std::string formatDateTime(const std::chrono::system_clock::time_point& value, c
     stream << std::put_time(&localTm, qtToStrftimeFormat(qtFormat).c_str());
     return stream.str();
 }
+
+
+const DictRows* getDictionaryRows(const std::map<std::string, std::any>& dictionaries, const std::string& key) {
+    const auto it = dictionaries.find(key);
+    if (it == dictionaries.end()) return nullptr;
+    return std::any_cast<DictRows>(&it->second);
+}
+
+std::string getRowValue(const DictRow& row, const std::string& key) {
+    const auto it = row.find(key);
+    if (it == row.end()) return "";
+    return it->second;
+}
+
+unsigned int toUnsigned(const std::string& value) {
+    try {
+        return value.empty() ? 0U : static_cast<unsigned int>(std::stoul(value));
+    } catch (...) {
+        return 0U;
+    }
+}
+
+bool isValidDate(const std::chrono::system_clock::time_point& value) {
+    return value != std::chrono::system_clock::time_point{};
+}
+
+bool isOneDayAfter(const std::chrono::system_clock::time_point& base, const std::chrono::system_clock::time_point& next) {
+    if (!isValidDate(base) || !isValidDate(next)) return false;
+
+    const std::time_t baseTime = std::chrono::system_clock::to_time_t(base);
+    std::tm baseTm = {};
+#ifdef _WIN32
+    localtime_s(&baseTm, &baseTime);
+#else
+    localtime_r(&baseTime, &baseTm);
+#endif
+    if (!addDays(baseTm, 1)) return false;
+
+    return fromStdTm(baseTm) == next;
+}
+
+void fillNameByOneId(unsigned int ident,
+                     const std::string& dictKey,
+                     const std::map<std::string, std::any>& dictionaries,
+                     std::string& fullName) {
+    if (ident == 0) return;
+
+    const DictRows* rows = getDictionaryRows(dictionaries, dictKey);
+    if (rows == nullptr) return;
+
+    for (const auto& row : *rows) {
+        if (toUnsigned(getRowValue(row, "ID")) != ident) continue;
+
+        const std::string name = getRowValue(row, "name");
+        if (name.empty()) break;
+        if (fullName.empty())
+            fullName = name;
+        else
+            fullName += "\n[" + name + "]";
+        break;
+    }
+}

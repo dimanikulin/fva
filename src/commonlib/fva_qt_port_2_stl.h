@@ -14,6 +14,11 @@
 #include <cstdint>
 #include <filesystem>
 #include <string>
+#include <map>
+#include <vector>
+
+using DictRow = std::map<std::string, std::string>;
+using DictRows = std::vector<DictRow>;
 
 // TODO make Unit tests for these functions and class
 
@@ -133,6 +138,58 @@ std::chrono::system_clock::time_point fromStdTm(std::tm value);
  * \return The formatted date/time string, or an empty string if the input time point is empty
  */
 std::string formatDateTime(const std::chrono::system_clock::time_point& value, const std::string& qtFormat);
+
+
+/*!
+ * \brief A getter for dictionary rows from global dictionaries map
+ * \param dictionaries The global dictionaries map to search
+ * \param key The key of the dictionary to retrieve
+ * \return A pointer to the dictionary rows, or nullptr if the key is not found
+ */
+const DictRows* getDictionaryRows(const std::map<std::string, std::any>& dictionaries, const std::string& key);
+
+/*!
+ * \brief Helper function to get the value of a specific key from a dictionary row
+ * \param row The dictionary row to search
+ * \param key The key to look up in the row
+ * \return The value associated with the key, or an empty string if the key is not found
+ */
+std::string getRowValue(const DictRow& row, const std::string& key);
+
+/*!
+ * \brief Helper function to convert a string to an unsigned integer
+ * \param value The input string to convert
+ * \return The unsigned integer representation of the input string, or 0 if conversion fails
+ */
+unsigned int toUnsigned(const std::string& value);
+
+/*!
+ * \brief Helper function to check if a system clock time point represents a valid date/time
+ * \param value The input system clock time point to check
+ * \return true if the input time point is valid, false otherwise
+ */
+bool isValidDate(const std::chrono::system_clock::time_point& value);
+
+/*!
+ * \brief Helper function to check if one date is exactly one day after another
+ * \param base The base date/time
+ * \param next The date/time to compare against the base
+ * \return true if 'next' is exactly one day after 'base', false otherwise
+ */
+bool isOneDayAfter(const std::chrono::system_clock::time_point& base, const std::chrono::system_clock::time_point& next);
+
+/*!
+ * \brief Helper function to fill a full name string based on an identifier and a dictionary
+ * \param ident The identifier to look up in the dictionary
+ * \param dictKey The key of the dictionary to use for the lookup
+ * \param dictionaries The map of dictionaries to search
+ * \param fullName The output string to hold the resulting full name
+ */
+void fillNameByOneId(unsigned int ident,
+                     const std::string& dictKey,
+                     const std::map<std::string, std::any>& dictionaries,
+                     std::string& fullName);
+
 
 /*!
  * \brief A simple implementation of the SHA-1 hashing algorithm

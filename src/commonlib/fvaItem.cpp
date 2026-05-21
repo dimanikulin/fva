@@ -1,7 +1,15 @@
 #include "fvaItem.h"
 
+#include <algorithm>
+#include <any>
+#include <ctime>
+#include <string>
+#include <vector>
+
 #include "fvafile.h"
 #include "fvafolder.h"
+#include "fva_qt_port_2_stl.h"
+
 
 fvaItem::fvaItem() {
     isFiltered = true;
@@ -21,74 +29,62 @@ fvaItem::~fvaItem() {
 
     if (nullptr != pFvaFile) delete pFvaFile;
 }
-QString fvaItem::getGuiName(const QVariantMap& dictionaries) {
+std::string fvaItem::getGuiName(const std::map<std::string, std::any>& dictionaries) {
     if (type == FVA_FS_TYPE_DIR) {
-        QString desc;
+        std::string desc;
         if (pFvaFolder && pFvaFolder->eventId != 0) {
-            QVariantList vlist = dictionaries["events"].toList();
-            for (auto i = vlist.begin(); i != vlist.end(); ++i) {
-                if (i->toMap()["ID"].toUInt() == pFvaFolder->eventId) {
-                    desc = " - " + i->toMap()["fullName"].toString();
-                    break;
+            const DictRows* events = getDictionaryRows(dictionaries, "events");
+            if (events != nullptr) {
+                for (const auto& row : *events) {
+                    if (toUnsigned(getRowValue(row, "ID")) == pFvaFolder->eventId) {
+                        desc = " - " + getRowValue(row, "fullName");
+                        break;
+                    }
                 }
             }
 
-            if (pFvaFolder && !pFvaFolder->eventReasonPeopleIds.empty()) {
-                QVariantList vlist = dictionaries["people"].toList();
-                for (auto i = vlist.begin(); i != vlist.end(); ++i) {
-                    if ((i->toMap()["ID"].toUInt() == pFvaFolder->eventReasonPeopleIds[0]) &&
-                        pFvaFolder->eventReasonPeopleIds[0]) {
-                        desc += "," + i->toMap()["name"].toString();
-                        break;
+            if (pFvaFolder && !pFvaFolder->eventReasonPeopleIds.empty() && pFvaFolder->eventReasonPeopleIds[0]) {
+                const DictRows* people = getDictionaryRows(dictionaries, "people");
+                if (people != nullptr) {
+                    for (const auto& row : *people) {
+                        if (toUnsigned(getRowValue(row, "ID")) == pFvaFolder->eventReasonPeopleIds[0]) {
+                            desc += "," + getRowValue(row, "name");
+                            break;
+                        }
                     }
                 }
             }
         }
 
-        if (dateTo.isValid()) {
+        if (isValidDate(dateTo)) {
             if (dateFrom == dateTo)  // one year
-                return dateFrom.toString("yyyy") + desc;
-            else if (dateFrom.addDays(1) == dateTo)
-                return dateFrom.toString("yyyy/MM/dd") + desc;
+                return formatDateTime(dateFrom, "yyyy") + desc;
+            else if (isOneDayAfter(dateFrom, dateTo))
+                return formatDateTime(dateFrom, "yyyy/MM/dd") + desc;
             else
-                return dateFrom.toString("yyyy/MM/dd") + dateTo.toString("-yyyy/MM/dd") + desc;
-        } else
-            return dateFrom.toString("yyyy/MM/dd") + desc;
-    } else {
-        return dateFrom.toString("yyyy-MM-dd (hh:mm:ss)");
-    }
-}
-void fillNameByOneId(int ident, const QString& dict, const QVariantMap& dictionaries, QString& fullName) {
-    QVariantList vlist;
-
-    if (ident) {
-        vlist = dictionaries[dict].toList();
-        for (auto i = vlist.begin(); i != vlist.end(); ++i) {
-            if (i->toMap()["ID"].toInt() == ident) {
-                if (fullName.isEmpty())
-                    fullName = i->toMap()["name"].toString();
-                else
-                    fullName += "\n[" + i->toMap()["name"].toString() + "]";
-                break;
-            }
+                return formatDateTime(dateFrom, "yyyy/MM/dd") + formatDateTime(dateTo, "-yyyy/MM/dd") + desc;
+        } else {
+            return formatDateTime(dateFrom, "yyyy/MM/dd") + desc;
         }
+    } else {
+        return formatDateTime(dateFrom, "yyyy-MM-dd (hh:mm:ss)");
     }
 }
 
-QString fvaItem::getGuiFullName(const QVariantMap& dictionaries) {
-    QString fullName;
+std::string fvaItem::getGuiFullName(const std::map<std::string, std::any>& dictionaries) {
+    std::string fullName;
     if (!pFvaFolder && !pFvaFile) return "";
     if (type != FVA_FS_TYPE_DIR && pFvaFile) {
-        if (!pFvaFile->description.empty()) fullName = QString::fromStdString(pFvaFile->description);
+        if (!pFvaFile->description.empty()) fullName = pFvaFile->description;
     }
 
     if (type != FVA_FS_TYPE_DIR && pFvaFile) {
-        if (fullName.isEmpty())
-            fullName = QString::fromStdString(pFvaFile->comment);
+        if (fullName.empty())
+            fullName = pFvaFile->comment;
         else
-            fullName += ", " + QString::fromStdString(pFvaFile->comment);
+            fullName += ", " + pFvaFile->comment;
     } else if (type == FVA_FS_TYPE_DIR && pFvaFolder) {
-        if (fullName.isEmpty())
+        if (fullName.empty())
             fullName = pFvaFolder->tags;
         else
             fullName += ", " + pFvaFolder->tags;
