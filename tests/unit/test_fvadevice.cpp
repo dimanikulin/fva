@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include <string>
+
 #include "fvadevice.h"
 
 // Test case for verifying the initialization of fvaDevice object
@@ -35,7 +37,7 @@ TEST(fvaDeviceTests, DeviceIdTest) {
 TEST(fvaDeviceTests, OwnerNameTest) {
     // Arrange
     fvaDevice device;
-    QString ownerName = "John Doe";
+    std::string ownerName = "John Doe";
 
     // Act
     device.ownerName = ownerName;
@@ -61,7 +63,7 @@ TEST(fvaDeviceTests, OwnerIdTest) {
 TEST(fvaDeviceTests, LinkedNameTest) {
     // Arrange
     fvaDevice device;
-    QString linkedName = "Brand Model";
+    std::string linkedName = "Brand Model";
 
     // Act
     device.linkedName = linkedName;
@@ -74,7 +76,7 @@ TEST(fvaDeviceTests, LinkedNameTest) {
 TEST(fvaDeviceTests, GuiNameTest) {
     // Arrange
     fvaDevice device;
-    QString guiName = "Device Name";
+    std::string guiName = "Device Name";
 
     // Act
     device.guiName = guiName;

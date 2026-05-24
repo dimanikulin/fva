@@ -119,11 +119,11 @@ TEST_F(CLTAutoChecks3Tests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTAutoChecks3::Name();
+    std::string name = CLTAutoChecks3::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTAutoChecks3", name.toStdString());
+    ASSERT_EQ("CLTAutoChecks3", name);
 }
 
 // Test case for supportReadOnly function
