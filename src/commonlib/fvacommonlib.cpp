@@ -21,8 +21,7 @@
 
 bool fvaIsInternalFile(const std::string& fileName) {
     const std::string upperName = fvaStrToUpper(fileName);
-    return upperName == fvaStrToUpper(FVA_BACKGROUND_MUSIC_FILE_NAME) ||
-           upperName == fvaStrToUpper(FVA_DB_NAME);
+    return upperName == fvaStrToUpper(FVA_BACKGROUND_MUSIC_FILE_NAME) || upperName == fvaStrToUpper(FVA_DB_NAME);
 }
 
 bool fvaIsFVAFile(const std::string& extention) { return FVA_FS_TYPE_UNKNOWN != fvaConvertFileExt2FileType(extention); }
@@ -147,13 +146,11 @@ DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const std::string&
     for (char c : devName) {
         if (c != '\0') cleaned += c;
     }
-    while (cleaned.find("  ") != std::string::npos)
-        cleaned.replace(cleaned.find("  "), 2, " ");
+    while (cleaned.find("  ") != std::string::npos) cleaned.replace(cleaned.find("  "), 2, " ");
     if (!cleaned.empty()) {
         std::string cleanedUpper = fvaStrToUpper(trim(cleaned));
         for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it) {
-            if (fvaStrToUpper(it->second.linkedName) == cleanedUpper)
-                result[it->first] = it->second;
+            if (fvaStrToUpper(it->second.linkedName) == cleanedUpper) result[it->first] = it->second;
         }
     }
     deviceName = cleaned;
