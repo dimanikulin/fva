@@ -7,7 +7,8 @@
  */
 #include "fvacommonlib.h"
 
-#include <QtCore/QString>
+#include <algorithm>
+#include <cctype>
 #include <cstdlib>
 #include <ctime>
 #include <filesystem>
@@ -20,8 +21,8 @@
 
 bool fvaIsInternalFile(const std::string& fileName) {
     const std::string upperName = fvaStrToUpper(fileName);
-    return upperName == fvaStrToUpper(FVA_BACKGROUND_MUSIC_FILE_NAME.toStdString()) ||
-           upperName == fvaStrToUpper(FVA_DB_NAME.toStdString());
+    return upperName == fvaStrToUpper(FVA_BACKGROUND_MUSIC_FILE_NAME) ||
+           upperName == fvaStrToUpper(FVA_DB_NAME);
 }
 
 bool fvaIsFVAFile(const std::string& extention) { return FVA_FS_TYPE_UNKNOWN != fvaConvertFileExt2FileType(extention); }
@@ -130,26 +131,32 @@ FVA_EXIT_CODE fvaParseFileName(const std::string& fileName, std::tm& date, const
 }
 
 DEVICE_MAP fvaGetDeviceMapForImg(const DEVICE_MAP& deviceMap, const std::string& pathToFile, std::string& deviceName) {
-    QString qtDeviceName = fvaGetExifMakeAndModelFromFile(QString::fromStdString(pathToFile));
-    deviceName = qtDeviceName.toStdString();
+    std::string devName = fvaGetExifMakeAndModelFromFile(pathToFile);
+    deviceName = devName;
 
     DEVICE_MAP result;
-    if (qtDeviceName.isEmpty()) return DEVICE_MAP();
-    QString fixedDevName = qtDeviceName.toUpper().trimmed();
+    if (devName.empty()) return DEVICE_MAP();
+    std::string fixedDevName = fvaStrToUpper(trim(devName));
     for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it) {
-        QString name = QString::fromStdString(it->second.linkedName).toUpper();
+        std::string name = fvaStrToUpper(it->second.linkedName);
         if (name == fixedDevName) result[it->first] = it->second;
     }
 
-    qtDeviceName = qtDeviceName.remove("  ");
-    qtDeviceName = qtDeviceName.remove(QChar('\0'));
-    if (!qtDeviceName.isEmpty()) {
+    // remove double spaces and null characters
+    std::string cleaned;
+    for (char c : devName) {
+        if (c != '\0') cleaned += c;
+    }
+    while (cleaned.find("  ") != std::string::npos)
+        cleaned.replace(cleaned.find("  "), 2, " ");
+    if (!cleaned.empty()) {
+        std::string cleanedUpper = fvaStrToUpper(trim(cleaned));
         for (auto it = deviceMap.begin(); it != deviceMap.end(); ++it) {
-            if (QString::fromStdString(it->second.linkedName) == qtDeviceName.toUpper().trimmed())
+            if (fvaStrToUpper(it->second.linkedName) == cleanedUpper)
                 result[it->first] = it->second;
         }
     }
-    deviceName = qtDeviceName.toStdString();
+    deviceName = cleaned;
     return result;
 }
 
