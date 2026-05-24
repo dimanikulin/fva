@@ -10,6 +10,7 @@
  * \date  2014-2021
  */
 
+#include <any>
 #include <array>
 #include <cstdint>
 #include <filesystem>
