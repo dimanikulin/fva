@@ -17,8 +17,6 @@ protected:
     void TearDown() override {
         // Clean up any resources used by the tests
     }
-
-
 };
 
 // Test case for CLTAutoChecks1::execute
