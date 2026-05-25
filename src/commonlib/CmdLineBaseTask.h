@@ -15,7 +15,6 @@
 #include "fvacltcontext.h"
 #include "fvacommonlib.h"
 #include "fvaconfiguration.h"
-#include "fvalogger.inl"
 
 /*!
  * \brief keeps base functionality for one command line task (CLT)

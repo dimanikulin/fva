@@ -30,14 +30,10 @@ inline std::string getCurrentTimestamp() {
 #define LOG_DEB if (2 >= g_logLevel) {} else g_logfile << "[DBG]" << getCurrentTimestamp() << " [" << __FILE__ << "] [" << __LINE__ << "] "
 
 /*!
-* global logger 
+* global logger and global log level (0=warning, 1=critical, 2=debug)
 */
 #define LOGGER_GLOBAL \
-std::ofstream g_logfile;
-
-/*!
-* global log level (0=warning, 1=critical, 2=debug) \
-*/
+std::ofstream g_logfile; \
 int g_logLevel = 2;
 
 #define LOG_INIT(LOG_NAME) \
