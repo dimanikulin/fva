@@ -16,6 +16,7 @@
 
 LOGGER_GLOBAL
 
+// TODO to move to commonlib
 namespace {
 std::string stripPrefix(const std::string& value, const std::string& prefix) {
     if (value.rfind(prefix, 0) == 0) {
