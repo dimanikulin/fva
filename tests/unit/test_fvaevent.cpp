@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include <string>
+
 #include "FVAEvent.h"
 
 // Test fixture for fvaEvent tests
@@ -32,7 +34,7 @@ TEST_F(FVAEventTests, DefaultConstructorTest) {
 TEST_F(FVAEventTests, ParameterizedConstructionTest) {
     // Arrange
     int ID = 1;
-    QString name = "Test Event";
+    std::string name = "Test Event";
     unsigned int type = 2;
     unsigned int institution = 3;
 

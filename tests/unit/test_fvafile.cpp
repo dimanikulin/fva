@@ -1,5 +1,8 @@
 #include <gtest/gtest.h>
 
+#include <string>
+#include <vector>
+
 #include "fvaFile.h"
 
 // Test fixture for fvaFile tests
@@ -25,9 +28,9 @@ TEST_F(fvaFileTests, DefaultConstructorTest) {
     EXPECT_EQ(file.deviceId, FVA_UNDEFINED_ID);
     EXPECT_EQ(file.scanerId, FVA_UNDEFINED_ID);
     EXPECT_TRUE(file.peopleIds.empty());
-    EXPECT_TRUE(file.description.isEmpty());
-    EXPECT_TRUE(file.comment.isEmpty());
-    EXPECT_TRUE(file.name.isEmpty());
+    EXPECT_TRUE(file.description.empty());
+    EXPECT_TRUE(file.comment.empty());
+    EXPECT_TRUE(file.name.empty());
     EXPECT_TRUE(file.eventPeopleIds.empty());
 }
 
@@ -39,11 +42,11 @@ TEST_F(fvaFileTests, SetValuesTest) {
     unsigned int placeId = 2;
     unsigned int deviceId = 3;
     unsigned int scanerId = 4;
-    QVector<unsigned int> peopleIds = {5, 6, 7};
-    QString description = "Test description";
-    QString comment = "Test comment";
-    QString name = "Test name";
-    QVector<unsigned int> eventPeopleIds = {8, 9, 10};
+    std::vector<unsigned int> peopleIds = {5, 6, 7};
+    std::string description = "Test description";
+    std::string comment = "Test comment";
+    std::string name = "Test name";
+    std::vector<unsigned int> eventPeopleIds = {8, 9, 10};
 
     // Act
     file.eventId = eventId;
