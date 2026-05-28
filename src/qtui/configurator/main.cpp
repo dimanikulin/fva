@@ -10,7 +10,7 @@
 
 #include "fvacommonui.h"
 #include "fvaconfigurator.h"
-#include "fvalogger.inl"
+#include "fvaqtlogger.inl"
 
 LOGGER_GLOBAL
 

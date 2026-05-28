@@ -11,7 +11,7 @@
 #include "fvacommonlib.h"
 #include "fvacommonui.h"
 #include "fvadictionaryeditor.h"
-#include "fvalogger.inl"
+#include "fvaqtlogger.inl"
 
 LOGGER_GLOBAL
 

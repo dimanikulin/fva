@@ -13,7 +13,7 @@
 #include "fvacommonlib.h"
 #include "fvacommonui.h"
 #include "fvadescriptioneditor.h"
-#include "fvalogger.inl"
+#include "fvaqtlogger.inl"
 
 LOGGER_GLOBAL
 

@@ -10,7 +10,7 @@
 #include <QtCore/QTextCodec>
 
 #include "fvacommonui.h"
-#include "fvalogger.inl"
+#include "fvaqtlogger.inl"
 #include "fvaorganizerwizard.h"
 
 LOGGER_GLOBAL
