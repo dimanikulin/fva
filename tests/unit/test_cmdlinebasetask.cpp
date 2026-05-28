@@ -1,5 +1,8 @@
 #include <gtest/gtest.h>
 
+#include <filesystem>
+#include <fstream>
+
 #include "CmdLineBaseTask.h"
 #include "mocks.h"
 
@@ -77,12 +80,10 @@ TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_WithSubfoldersAndFiles) {
     MockCmdLineBaseTask task;
 
     // Create subfolders and files
-    QDir().mkpath(QString(TEST_DIR) + "/subfolder1");
-    QDir().mkpath(QString(TEST_DIR) + "/subfolder2");
-    QFile file(QString(TEST_DIR) + "/file1.txt");
-    file.open(QIODevice::WriteOnly);
-    QFile file2(QString(TEST_DIR) + "/subfolder1/file2.txt");
-    file2.open(QIODevice::WriteOnly);
+    std::filesystem::create_directories(std::string(TEST_DIR) + "/subfolder1");
+    std::filesystem::create_directories(std::string(TEST_DIR) + "/subfolder2");
+    std::ofstream(std::string(TEST_DIR) + "/file1.txt");
+    std::ofstream(std::string(TEST_DIR) + "/subfolder1/file2.txt");
 
     // Act
     FVA_EXIT_CODE result = task.processFolderRecursivly(TEST_DIR, context);
@@ -97,8 +98,8 @@ TEST_F(CmdLineBaseTaskTests, ProcessFolderRecursivly_SkipInternalFolders) {
     MockCmdLineBaseTask task;
 
     // Create internal folders to skip
-    QDir().mkpath(QString(TEST_DIR) + "/#internal1#");
-    QDir().mkpath(QString(TEST_DIR) + "/#internal2#");
+    std::filesystem::create_directories(std::string(TEST_DIR) + "/#internal1#");
+    std::filesystem::create_directories(std::string(TEST_DIR) + "/#internal2#");
 
     // Act
     FVA_EXIT_CODE result = task.processFolderRecursivly(TEST_DIR, context);

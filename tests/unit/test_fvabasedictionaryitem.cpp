@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include <string>
+
 #include "FVABaseDictionaryItem.h"
 
 // Test fixture for fvaBaseDictionaryItem tests
@@ -22,7 +24,7 @@ TEST_F(FVABaseDictionaryItemTests, DefaultConstructor) {
     // Assert
     EXPECT_EQ(item.ID, 0);
     EXPECT_EQ(item.type, 0);
-    EXPECT_EQ(item.name.toStdString(), "");
+    EXPECT_EQ(item.name, "");
 }
 
 // Test case for parameterized constructor
@@ -30,11 +32,11 @@ TEST_F(FVABaseDictionaryItemTests, ParameterizedConstructor) {
     // Arrange
     int ID = 1;
     int type = 2;
-    QString name = "Test Item";
+    std::string name = "Test Item";
     fvaBaseDictionaryItem item(ID, type, name);
 
     // Assert
     EXPECT_EQ(item.ID, ID);
     EXPECT_EQ(item.type, type);
-    EXPECT_EQ(item.name.toStdString(), name.toStdString());
+    EXPECT_EQ(item.name, name);
 }
