@@ -2,19 +2,18 @@
 
 #include <any>
 #include <chrono>
+#include <iostream>
 #include <map>
 #include <string>
-#include <iostream>
 
 #include "fvaFile.h"
 #include "fvaFolder.h"
 #include "fvaItem.h"
 
-static std::chrono::system_clock::time_point makeDate(int year, int month, int day)
-{
+static std::chrono::system_clock::time_point makeDate(int year, int month, int day) {
     std::tm t{};
     t.tm_year = year - 1900;
-    t.tm_mon  = month - 1;
+    t.tm_mon = month - 1;
     t.tm_mday = day;
     return std::chrono::system_clock::from_time_t(std::mktime(&t));
 }
@@ -41,7 +40,7 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToWithoutFolder) {
     fvaItem item;
     item.type = FVA_FS_TYPE_DIR;
     item.dateFrom = makeDate(2022, 1, 1);
-    item.dateTo   = makeDate(2022, 1, 31);
+    item.dateTo = makeDate(2022, 1, 31);
 
     std::map<std::string, std::any> dictionaries;
 
@@ -73,8 +72,8 @@ TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries) {
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_IMG;
-    item.dateFrom  = makeDate(2022, 1, 1);
-    item.dateTo    = makeDate(2022, 1, 2);
+    item.dateFrom = makeDate(2022, 1, 1);
+    item.dateTo = makeDate(2022, 1, 2);
     item.fsFullPath = "/path/to/file.txt";
     item.isFiltered = false;
     item.pFvaFile = new fvaFile();
@@ -93,8 +92,8 @@ TEST(FvaItemTests, GetGuiName_EmptyDictionaries) {
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom  = makeDate(2022, 1, 1);
-    item.dateTo    = makeDate(2022, 1, 31);
+    item.dateFrom = makeDate(2022, 1, 1);
+    item.dateTo = makeDate(2022, 1, 31);
     item.fsFullPath = "/path/to/folder";
     item.isFiltered = false;
     item.pFvaFolder = new fvaFolder();
