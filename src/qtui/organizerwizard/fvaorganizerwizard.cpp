@@ -17,7 +17,7 @@
 #include "FVAOrganizerPlacePage.h"
 #include "FVAOrganizerStartPage.h"
 #include "fvacommonui.h"
-#include "fvalogger.inl"
+#include "fvaqtlogger.inl"
 
 FVAOrganizerWizard::FVAOrganizerWizard(QWidget *parent) : QWizard(parent) {
     FvaConfiguration cfg;

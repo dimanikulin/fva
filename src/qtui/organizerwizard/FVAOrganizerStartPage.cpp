@@ -14,7 +14,7 @@
 #include <QtCore/QProcess>
 
 #include "fvaconstants.h"
-#include "fvalogger.inl"
+#include "fvaqtlogger.inl"
 
 FVAOrganizerStartPage::FVAOrganizerStartPage() {
     LOG_DEB << "construction";

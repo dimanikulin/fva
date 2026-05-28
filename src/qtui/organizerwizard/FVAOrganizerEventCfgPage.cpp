@@ -16,7 +16,7 @@
 #include <QVBoxLayout>
 
 #include "fvacommonui.h"
-#include "fvalogger.inl"
+#include "fvaqtlogger.inl"
 #include "fvaorganizerwizard.h"
 
 FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void) {

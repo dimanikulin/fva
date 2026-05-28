@@ -24,7 +24,7 @@
 
 #include "fvacommonui.h"
 #include "fvaconfiguration.h"
-#include "fvalogger.inl"
+#include "fvaqtlogger.inl"
 #include "fvaorganizerwizard.h"
 
 FVAOrganizerPlacePage::FVAOrganizerPlacePage(void) {

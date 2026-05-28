@@ -18,7 +18,7 @@
 #include "FVAFlowController.h"
 #include "fvacommoncsv.h"
 #include "fvacommonui.h"
-#include "fvalogger.inl"
+#include "fvaqtlogger.inl"
 #include "fvaorganizerwizard.h"
 
 FVAOrganizerDevicePage::FVAOrganizerDevicePage(void) : deviceId(-1) {

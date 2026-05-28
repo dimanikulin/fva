@@ -15,7 +15,7 @@
 #include <QTextBrowser>
 
 #include "FVAFlowController.h"
-#include "fvalogger.inl"
+#include "fvaqtlogger.inl"
 #include "fvaorganizerwizard.h"
 
 FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void) {

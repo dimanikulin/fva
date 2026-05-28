@@ -13,7 +13,7 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QProcess>
 
-#include "fvalogger.inl"
+#include "fvaqtlogger.inl"
 
 FVAOrganizerOrientPage::FVAOrganizerOrientPage() {
     LOG_DEB << "construction";

@@ -11,7 +11,7 @@
 #include <QVBoxLayout>
 
 #include "fvaconstants.h"
-#include "fvalogger.inl"
+#include "fvaqtlogger.inl"
 
 FVAOrganizerDonePage::FVAOrganizerDonePage(void) {
     LOG_DEB << "construction";
