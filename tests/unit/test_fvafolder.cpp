@@ -21,9 +21,9 @@ TEST_F(fvaFolderTests, DefaultConstructorTest) {
 
     // Assert
     EXPECT_EQ(folder.eventId, 0);
-    EXPECT_TRUE(folder.eventReasonPeopleIds.isEmpty());
-    EXPECT_TRUE(folder.tags.isEmpty());
-    EXPECT_TRUE(folder.linkedFolder.isEmpty());
+    EXPECT_TRUE(folder.eventReasonPeopleIds.empty());
+    EXPECT_TRUE(folder.tags.empty());
+    EXPECT_TRUE(folder.linkedFolder.empty());
 }
 
 // Test case for setting event id
@@ -44,12 +44,12 @@ TEST_F(fvaFolderTests, AddEventReasonPeopleIdsTest) {
     fvaFolder folder;
 
     // Act
-    folder.eventReasonPeopleIds.append(1);
-    folder.eventReasonPeopleIds.append(2);
-    folder.eventReasonPeopleIds.append(3);
+    folder.eventReasonPeopleIds.push_back(1);
+    folder.eventReasonPeopleIds.push_back(2);
+    folder.eventReasonPeopleIds.push_back(3);
 
     // Assert
-    EXPECT_EQ(folder.eventReasonPeopleIds.size(), 3);
+    EXPECT_EQ(folder.eventReasonPeopleIds.size(), 3u);
     EXPECT_EQ(folder.eventReasonPeopleIds[0], 1);
     EXPECT_EQ(folder.eventReasonPeopleIds[1], 2);
     EXPECT_EQ(folder.eventReasonPeopleIds[2], 3);

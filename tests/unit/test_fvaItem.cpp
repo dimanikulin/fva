@@ -1,22 +1,35 @@
 #include <gtest/gtest.h>
 
+#include <any>
+#include <chrono>
+#include <map>
+#include <string>
 #include <iostream>
 
 #include "fvaFile.h"
 #include "fvaFolder.h"
 #include "fvaItem.h"
 
+static std::chrono::system_clock::time_point makeDate(int year, int month, int day)
+{
+    std::tm t{};
+    t.tm_year = year - 1900;
+    t.tm_mon  = month - 1;
+    t.tm_mday = day;
+    return std::chrono::system_clock::from_time_t(std::mktime(&t));
+}
+
 // Test case for FVA_FS_TYPE_FILE
 TEST(FvaItemTests, GetGuiName_File) {
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_IMG;
-    item.dateFrom = QDateTime::fromString("2022/01/01", "yyyy/MM/dd");
+    item.dateFrom = makeDate(2022, 1, 1);
 
-    QVariantMap dictionaries;
+    std::map<std::string, std::any> dictionaries;
 
     // Act
-    QString guiName = item.getGuiName(dictionaries);
+    std::string guiName = item.getGuiName(dictionaries);
 
     // Assert
     EXPECT_EQ(guiName, "2022-01-01 (00:00:00)");
@@ -27,13 +40,13 @@ TEST(FvaItemTests, GetGuiName_Directory_ValidDateToWithoutFolder) {
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDateTime::fromString("2022/01/01", "yyyy/MM/dd");
-    item.dateTo = QDateTime::fromString("2022/01/31", "yyyy/MM/dd");
+    item.dateFrom = makeDate(2022, 1, 1);
+    item.dateTo   = makeDate(2022, 1, 31);
 
-    QVariantMap dictionaries;
+    std::map<std::string, std::any> dictionaries;
 
     // Act
-    QString guiName = item.getGuiName(dictionaries);
+    std::string guiName = item.getGuiName(dictionaries);
 
     // Assert
     EXPECT_EQ(guiName, "2022/01/01-2022/01/31");
@@ -44,12 +57,12 @@ TEST(FvaItemTests, GetGuiName_Directory_WithoutValidDateTo) {
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDateTime::fromString("2022/01/01", "yyyy/MM/dd");
+    item.dateFrom = makeDate(2022, 1, 1);
 
-    QVariantMap dictionaries;
+    std::map<std::string, std::any> dictionaries;
 
     // Act
-    QString guiName = item.getGuiName(dictionaries);
+    std::string guiName = item.getGuiName(dictionaries);
 
     // Assert
     EXPECT_EQ(guiName, "2022/01/01");
@@ -60,19 +73,19 @@ TEST(FvaItemTests, GetGuiFullName_EmptyDictionaries) {
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_IMG;
-    item.dateFrom = QDateTime::fromString("2022/01/01", "yyyy/MM/dd");
-    item.dateTo = QDateTime::fromString("2022/01/02", "yyyy/MM/dd");
+    item.dateFrom  = makeDate(2022, 1, 1);
+    item.dateTo    = makeDate(2022, 1, 2);
     item.fsFullPath = "/path/to/file.txt";
     item.isFiltered = false;
     item.pFvaFile = new fvaFile();
 
-    QVariantMap dictionaries;
+    std::map<std::string, std::any> dictionaries;
 
     // Act
-    QString guiFullName = item.getGuiFullName(dictionaries);
+    std::string guiFullName = item.getGuiFullName(dictionaries);
 
     // Assert
-    ASSERT_STREQ(guiFullName.toStdString().c_str(), "");
+    ASSERT_STREQ(guiFullName.c_str(), "");
 }
 
 // Test case for getGuiName with empty dictionaries
@@ -80,17 +93,17 @@ TEST(FvaItemTests, GetGuiName_EmptyDictionaries) {
     // Arrange
     fvaItem item;
     item.type = FVA_FS_TYPE_DIR;
-    item.dateFrom = QDateTime::fromString("2022/01/01", "yyyy/MM/dd");
-    item.dateTo = QDateTime::fromString("2022/01/31", "yyyy/MM/dd");
+    item.dateFrom  = makeDate(2022, 1, 1);
+    item.dateTo    = makeDate(2022, 1, 31);
     item.fsFullPath = "/path/to/folder";
     item.isFiltered = false;
     item.pFvaFolder = new fvaFolder();
 
-    QVariantMap dictionaries;
+    std::map<std::string, std::any> dictionaries;
 
     // Act
-    QString guiName = item.getGuiName(dictionaries);
+    std::string guiName = item.getGuiName(dictionaries);
 
     // Assert
-    ASSERT_STREQ(guiName.toStdString().c_str(), "2022/01/01-2022/01/31");
+    ASSERT_STREQ(guiName.c_str(), "2022/01/01-2022/01/31");
 }
