@@ -16,6 +16,8 @@
 #include "fvacommonlib.h"
 #include "fvaconfiguration.h"
 
+#include "fvalogger.inl"
+
 /*!
  * \brief keeps base functionality for one command line task (CLT)
  *  Each CLT command is separated in class and files.
