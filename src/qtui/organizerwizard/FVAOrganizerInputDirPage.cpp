@@ -15,8 +15,8 @@
 #include <QTextBrowser>
 
 #include "FVAFlowController.h"
-#include "fvaqtlogger.inl"
 #include "fvaorganizerwizard.h"
+#include "fvaqtlogger.inl"
 
 FVAOrganizerInputDirPage::FVAOrganizerInputDirPage(void) {
     LOG_DEB << "construction";

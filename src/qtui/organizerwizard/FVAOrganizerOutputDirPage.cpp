@@ -16,8 +16,8 @@
 #include "FVAFlowController.h"
 #include "fvacommonui.h"
 #include "fvaconfiguration.h"
-#include "fvaqtlogger.inl"
 #include "fvaorganizerwizard.h"
+#include "fvaqtlogger.inl"
 
 FVAOrganizerOutputDirPage::FVAOrganizerOutputDirPage(void) {
     LOG_DEB << "construction";

@@ -24,8 +24,8 @@
 
 #include "fvacommonui.h"
 #include "fvaconfiguration.h"
-#include "fvaqtlogger.inl"
 #include "fvaorganizerwizard.h"
+#include "fvaqtlogger.inl"
 
 FVAOrganizerPlacePage::FVAOrganizerPlacePage(void) {
     LOG_DEB << "construction";

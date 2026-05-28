@@ -18,8 +18,8 @@
 #include "FVAFlowController.h"
 #include "fvacommoncsv.h"
 #include "fvacommonui.h"
-#include "fvaqtlogger.inl"
 #include "fvaorganizerwizard.h"
+#include "fvaqtlogger.inl"
 
 FVAOrganizerDevicePage::FVAOrganizerDevicePage(void) : deviceId(-1) {
     LOG_DEB << "construction";

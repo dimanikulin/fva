@@ -16,8 +16,8 @@
 #include <QVBoxLayout>
 
 #include "fvacommonui.h"
-#include "fvaqtlogger.inl"
 #include "fvaorganizerwizard.h"
+#include "fvaqtlogger.inl"
 
 FVAOrganizerEventCfgPage::FVAOrganizerEventCfgPage(void) {
     LOG_DEB << "construction";
