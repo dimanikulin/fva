@@ -372,8 +372,7 @@ void FVAViewer::fvaFilterTree(const fvaFilter& filter, fvaItem* fvaitem, const Q
         // 6. filtration by event, desciption or comment
         if ((*idChild)->isFiltered && !filter.text.isEmpty() && ((*idChild)->pFvaFile || (*idChild)->pFvaFolder)) {
             if ((*idChild)->type == FVA_FS_TYPE_DIR && (*idChild)->pFvaFolder) {
-                (*idChild)->isFiltered =
-    (QString::fromStdString((*idChild)->pFvaFolder->tags) == filter.text);
+                (*idChild)->isFiltered = (QString::fromStdString((*idChild)->pFvaFolder->tags) == filter.text);
                 // if (!(*idChild)->isFiltered)
                 // (*idChild)->isFiltered = ((*idChild)->tagsOrComment == filter.text);
             }

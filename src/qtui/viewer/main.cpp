@@ -24,10 +24,7 @@ QtMsgType g_logLevel = QtDebugMsg;
 void msghandler(QtMsgType type, const char *msg) {
     if (type < g_logLevel) return;
 
-    g_logfile << QDateTime::currentDateTime()
-                 .toString(QString::fromStdString(LOG_DT_FORMAT))
-                 .toLatin1()
-                 .data();
+    g_logfile << QDateTime::currentDateTime().toString(QString::fromStdString(LOG_DT_FORMAT)).toLatin1().data();
     switch (type) {
         case QtDebugMsg:
             g_logfile << "[DBG]" << msg << "\n";
