@@ -12,6 +12,9 @@
 #include <QMainWindow>
 #include <QTreeWidget>
 #include <memory>
+#include <map>
+#include <any>
+
 
 #include "FVADescriptionFile.h"
 #include "fvaFilter.h"
@@ -95,7 +98,7 @@ private:  // data
     /*!
      * global dictionaries
      */
-    QVariantMap m_dictionaries;
+    std::map<std::string, std::any> m_dictionaries;
 
     /*!
      * path to dictionaries

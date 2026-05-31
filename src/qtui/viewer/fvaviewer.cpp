@@ -81,10 +81,13 @@ FVAViewer::~FVAViewer() {
 
 void FVAViewer::ShowContextMenu(const QPoint&) { m_ui->dockWidget->show(); }
 void FVAViewer::showItem(QTreeWidgetItem* item) {
-    fvaItem* fvaitem = (fvaItem*)item->data(1, 1).toInt();
+    fvaItem* fvaitem = reinterpret_cast<fvaItem*>(item->data(1, 1).value<quintptr>());
     if (!fvaitem) return;
-    setWindowTitle(fvaitem->getGuiName(m_dictionaries) + " [" + fvaitem->getGuiFullName(m_dictionaries) + "] (" +
-                   fvaitem->fsFullPath + ")");
+    setWindowTitle(QString::fromStdString(
+    fvaitem->getGuiName(m_dictionaries) + " [" +
+    fvaitem->getGuiFullName(m_dictionaries) + "] (" +
+    fvaitem->fsFullPath + ")"));
+
     QFileInfo info(fvaitem->fsFullPath);
     QString suffix = info.suffix().toUpper();
     if (FVA_FS_TYPE_VIDEO == fvaConvertFileExt2FileType(suffix.toStdString()) ||
@@ -97,7 +100,8 @@ void FVAViewer::showItem(QTreeWidgetItem* item) {
         myProcess.start(path, params);
         myProcess.waitForFinished(-1);
     } else if (FVA_FS_TYPE_IMG == fvaConvertFileExt2FileType(suffix.toStdString())) {
-        fvaShowImage(fvaitem->fsFullPath, m_ui->imageLbl, fvaitem->getGuiName(m_dictionaries));
+        fvaShowImage(fvaitem->fsFullPath, m_ui->imageLbl,
+             QString::fromStdString(fvaitem->getGuiName(m_dictionaries)));
     }
 }
 

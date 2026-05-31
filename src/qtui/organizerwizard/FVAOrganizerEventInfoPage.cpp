@@ -140,11 +140,11 @@ void FVAOrganizerEventInfoPage::OnSaveButtonPressed() {
 
 void FVAOrganizerEventInfoPage::OnFvaInputDirButtonPressed() {
     QString path = QDir::toNativeSeparators(((FVAOrganizerWizard *)wizard())->inputFolder());
-    LOG_DEB << "OnFvaInputDirButtonPressed() input dir=" << path;
+    LOG_DEB << "OnFvaInputDirButtonPressed() input dir=" << path.toStdString();
     if (!QDesktopServices::openUrl(QUrl::fromLocalFile(((FVAOrganizerWizard *)wizard())->inputFolder())))
-        LOG_DEB << "OnFvaInputDirButtonPressed() failed to show input dir=" << path;
+        LOG_DEB << "OnFvaInputDirButtonPressed() failed to show input dir=" << path.toStdString();
     else
-        LOG_DEB << "OnFvaInputDirButtonPressed() shows input dir=" << path;
+        LOG_DEB << "OnFvaInputDirButtonPressed() shows input dir=" << path.toStdString();
 }
 
 void FVAOrganizerEventInfoPage::updateChecks(QTreeWidgetItem *item, int column) { fvaUpdateChecks(item, column); }
