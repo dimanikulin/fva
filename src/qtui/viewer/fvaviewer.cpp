@@ -320,82 +320,83 @@ FVADescriptionFile::getColumnIdByName(fvaitem->descTitles,"Description"); if ( -
 
 */
 void FVAViewer::fvaFilterTree(const fvaFilter& filter, fvaItem* fvaitem, const QDateTime& defFilterDataTime) {
-/*    for (auto idChild = fvaitem->children.begin(); idChild != fvaitem->children.end(); ++idChild) {
-        // reset previous filtration result
-        (*idChild)->isFiltered = true;
+    /*    for (auto idChild = fvaitem->children.begin(); idChild != fvaitem->children.end(); ++idChild) {
+            // reset previous filtration result
+            (*idChild)->isFiltered = true;
 
-        // 1. filtration by time
-        if (defFilterDataTime != filter.dateFrom && defFilterDataTime != filter.dateTo) {
-            if ((*idChild)->type == FVA_FS_TYPE_DIR) {
-                if ((*idChild)->dateFrom != (*idChild)->dateTo)
-                    (*idChild)->isFiltered =
-                        ((*idChild)->dateFrom >= filter.dateFrom) && ((*idChild)->dateTo <= filter.dateTo);*/
-                /*qDebug() << "((*idChild)->dateFrom="		<< (*idChild)->dateFrom
-                << "filter.dateFrom="			<< filter.dateFrom
-                << "((*idChild)->dateTo="		<< (*idChild)->dateTo
-                << "filter.dateTo="				<< filter.dateTo;*/
-            /*} else {
-                (*idChild)->isFiltered =
-                    ((*idChild)->dateFrom >= filter.dateFrom) && ((*idChild)->dateFrom <= filter.dateTo);
-            }
-        }
+            // 1. filtration by time
+            if (defFilterDataTime != filter.dateFrom && defFilterDataTime != filter.dateTo) {
+                if ((*idChild)->type == FVA_FS_TYPE_DIR) {
+                    if ((*idChild)->dateFrom != (*idChild)->dateTo)
+                        (*idChild)->isFiltered =
+                            ((*idChild)->dateFrom >= filter.dateFrom) && ((*idChild)->dateTo <= filter.dateTo);*/
+    /*qDebug() << "((*idChild)->dateFrom="		<< (*idChild)->dateFrom
+    << "filter.dateFrom="			<< filter.dateFrom
+    << "((*idChild)->dateTo="		<< (*idChild)->dateTo
+    << "filter.dateTo="				<< filter.dateTo;*/
+    /*} else {
+        (*idChild)->isFiltered =
+            ((*idChild)->dateFrom >= filter.dateFrom) && ((*idChild)->dateFrom <= filter.dateTo);
+    }
+}
 
-        // 2. filtration by device id
-        if ((*idChild)->type != FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.deviceIds.empty()) {
-            if ((*idChild)->pFvaFile)
-                (*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->pFvaFile->deviceId, filter.deviceIds);
-            else
-                (*idChild)->isFiltered = false*/ /*filter.doesIDMatchToFilter(fvaitem->deviceId,filter.deviceIds)*/;
-        /*}*/
-        // 3. filtration by event id
-        //if ((*idChild)->type == FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.eventIds.empty()) {
-        //    if ((*idChild)->pFvaFolder)
-        //        (*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->pFvaFolder->eventId, filter.eventIds);
-        //    else if (fvaitem->type == FVA_FS_TYPE_DIR && fvaitem->pFvaFolder) {
-        //        (*idChild)->isFiltered = filter.doesIDMatchToFilter(fvaitem->pFvaFolder->eventId, filter.eventIds);
-        //    }
-        //}
+// 2. filtration by device id
+if ((*idChild)->type != FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.deviceIds.empty()) {
+    if ((*idChild)->pFvaFile)
+        (*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->pFvaFile->deviceId, filter.deviceIds);
+    else
+        (*idChild)->isFiltered = false*/
+    /*filter.doesIDMatchToFilter(fvaitem->deviceId,filter.deviceIds)*/;
+    /*}*/
+    // 3. filtration by event id
+    // if ((*idChild)->type == FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.eventIds.empty()) {
+    //    if ((*idChild)->pFvaFolder)
+    //        (*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->pFvaFolder->eventId, filter.eventIds);
+    //    else if (fvaitem->type == FVA_FS_TYPE_DIR && fvaitem->pFvaFolder) {
+    //        (*idChild)->isFiltered = filter.doesIDMatchToFilter(fvaitem->pFvaFolder->eventId, filter.eventIds);
+    //    }
+    //}
 
-        // 4. filtration by place ids
-       // if ((*idChild)->type != FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.placeIds.empty()) {
-       //     if ((*idChild)->pFvaFile)
-        //        (*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->pFvaFile->placeId, filter.placeIds);
-        //    else
-        //        (*idChild)->isFiltered = false /*filter.doesIDMatchToFilter(fvaitem->placeId,filter.placeIds)*/;
-        //}
-        // 5. filtration by people ids
-        //if ((*idChild)->type != FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.peopleIds.empty()) {
-        //    if ((*idChild)->pFvaFile)
-        //        (*idChild)->isFiltered = filter.doIDsMatchToFilter((*idChild)->pFvaFile->peopleIds, filter.peopleIds);
-        //    else
-        //        (*idChild)->isFiltered = false /*filter.doIDsMatchToFilter(fvaitem->peopleIds,filter.peopleIds)*/;
-        //}
-        // 6. filtration by event, desciption or comment
-        //if ((*idChild)->isFiltered && !filter.text.isEmpty() && ((*idChild)->pFvaFile || (*idChild)->pFvaFolder)) {
-        //    if ((*idChild)->type == FVA_FS_TYPE_DIR && (*idChild)->pFvaFolder) {
-        //        (*idChild)->isFiltered = (QString::fromStdString((*idChild)->pFvaFolder->tags) == filter.text);
-                // if (!(*idChild)->isFiltered)
-                // (*idChild)->isFiltered = ((*idChild)->tagsOrComment == filter.text);
-        //    }
-        //}
+    // 4. filtration by place ids
+    // if ((*idChild)->type != FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.placeIds.empty()) {
+    //     if ((*idChild)->pFvaFile)
+    //        (*idChild)->isFiltered = filter.doesIDMatchToFilter((*idChild)->pFvaFile->placeId, filter.placeIds);
+    //    else
+    //        (*idChild)->isFiltered = false /*filter.doesIDMatchToFilter(fvaitem->placeId,filter.placeIds)*/;
+    //}
+    // 5. filtration by people ids
+    // if ((*idChild)->type != FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.peopleIds.empty()) {
+    //    if ((*idChild)->pFvaFile)
+    //        (*idChild)->isFiltered = filter.doIDsMatchToFilter((*idChild)->pFvaFile->peopleIds, filter.peopleIds);
+    //    else
+    //        (*idChild)->isFiltered = false /*filter.doIDsMatchToFilter(fvaitem->peopleIds,filter.peopleIds)*/;
+    //}
+    // 6. filtration by event, desciption or comment
+    // if ((*idChild)->isFiltered && !filter.text.isEmpty() && ((*idChild)->pFvaFile || (*idChild)->pFvaFolder)) {
+    //    if ((*idChild)->type == FVA_FS_TYPE_DIR && (*idChild)->pFvaFolder) {
+    //        (*idChild)->isFiltered = (QString::fromStdString((*idChild)->pFvaFolder->tags) == filter.text);
+    // if (!(*idChild)->isFiltered)
+    // (*idChild)->isFiltered = ((*idChild)->tagsOrComment == filter.text);
+    //    }
+    //}
 
-        // 7. filtration by event reason people ids
-        //if ((*idChild)->type == FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.eventReasonPeopleIds.empty()) {
-        //    if ((*idChild)->pFvaFolder)
-        //        (*idChild)->isFiltered = filter.doIDsMatchToFilter((*idChild)->pFvaFolder->eventReasonPeopleIds,
-        //                                                           filter.eventReasonPeopleIds);
-        //    else
-        //        (*idChild)->isFiltered =
-        //            false /*filter.doIDsMatchToFilter(fvaitem->eventReasonPeopleIds,filter.eventReasonPeopleIds)*/;
-        //}
+    // 7. filtration by event reason people ids
+    // if ((*idChild)->type == FVA_FS_TYPE_DIR && (*idChild)->isFiltered && !filter.eventReasonPeopleIds.empty()) {
+    //    if ((*idChild)->pFvaFolder)
+    //        (*idChild)->isFiltered = filter.doIDsMatchToFilter((*idChild)->pFvaFolder->eventReasonPeopleIds,
+    //                                                           filter.eventReasonPeopleIds);
+    //    else
+    //        (*idChild)->isFiltered =
+    //            false /*filter.doIDsMatchToFilter(fvaitem->eventReasonPeopleIds,filter.eventReasonPeopleIds)*/;
+    //}
 
-        /*if ((*idChild)->isFiltered)
-        qDebug() << "filtered name = " << (*idChild)->fsFullPath << " hasDescriptionData=" <<
-        (*idChild)->hasDescriptionData;
-        */
-        /*fvaFilterTree(filter, *idChild, defFilterDataTime);
+    /*if ((*idChild)->isFiltered)
+    qDebug() << "filtered name = " << (*idChild)->fsFullPath << " hasDescriptionData=" <<
+    (*idChild)->hasDescriptionData;
+    */
+    /*fvaFilterTree(filter, *idChild, defFilterDataTime);
 
-        // TODO make dir filtered if any child filtered and wiseversa
-        if ((*idChild)->isFiltered && !fvaitem->isFiltered) fvaitem->isFiltered = true;
-    }*/
+    // TODO make dir filtered if any child filtered and wiseversa
+    if ((*idChild)->isFiltered && !fvaitem->isFiltered) fvaitem->isFiltered = true;
+}*/
 }
