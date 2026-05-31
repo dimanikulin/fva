@@ -11,10 +11,9 @@
 #include <QDialog>
 #include <QMainWindow>
 #include <QTreeWidget>
-#include <memory>
-#include <map>
 #include <any>
-
+#include <map>
+#include <memory>
 
 #include "FVADescriptionFile.h"
 #include "fvaFilter.h"
