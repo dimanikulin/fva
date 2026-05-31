@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
 
     QString rootDir((a.arguments().size() >= 2) ? a.arguments()[1] : QApplication::applicationDirPath());
     QString dictPath((a.arguments().size() >= 3) ? a.arguments()[2]
-                                                 : QApplication::applicationDirPath() + "/" + FVA_DB_NAME);
+                                                 : QApplication::applicationDirPath() + "/" + QString::fromStdString(FVA_DB_NAME));
 
     FVAViewer w(rootDir, dictPath);
     w.show();
