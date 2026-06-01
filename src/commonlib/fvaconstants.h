@@ -55,7 +55,7 @@ const std::string FVA_DB_NAME = "digikam4.db";
 // #define FVA_LANGUAGE_RUS
 
 /*!
- * \brief language to be used TODO to remove
+ * \brief log date-time format
  */
 const std::string LOG_DT_FORMAT = "[yyyy:MM:dd] [hh:mm:ss]";
 
