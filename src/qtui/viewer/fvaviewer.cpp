@@ -103,7 +103,7 @@ void FVAViewer::showItem(QTreeWidgetItem* item) {
 }
 
 void FVAViewer::editFileItem(QTreeWidgetItem* item) {
-    QProcess myProcess(this);
+    /*QProcess myProcess(this);
     myProcess.setProcessChannelMode(QProcess::MergedChannels);
     QStringList params;
     params.append(m_dictionaryPath);
@@ -111,7 +111,7 @@ void FVAViewer::editFileItem(QTreeWidgetItem* item) {
     if (!fvaitem) return;
     params.append(fvaitem->fsFullPath);
     myProcess.start(QCoreApplication::applicationDirPath() + "/FVADescriptionEditor.exe", params);
-    myProcess.waitForFinished(-1);
+    myProcess.waitForFinished(-1);*/
 }
 
 void FVAViewer::filterClicked() {
@@ -148,7 +148,7 @@ void FVAViewer::filterClicked() {
 }
 
 void FVAViewer::populateGUITree(const fvaItem* fvaitem, QTreeWidgetItem* item, int& number, QProgressDialog* progress) {
-    for (auto idChild = fvaitem->children.begin(); idChild != fvaitem->children.end(); ++idChild) {
+ /*   for (auto idChild = fvaitem->children.begin(); idChild != fvaitem->children.end(); ++idChild) {
         if (progress) {
             progress->setValue(number++);
             // progress->setLabelText((*idChild)->getGuiName());
@@ -181,7 +181,7 @@ void FVAViewer::populateGUITree(const fvaItem* fvaitem, QTreeWidgetItem* item, i
             m_ui->treeWidget->addTopLevelItem(treeWidgetItem);
 
         populateGUITree(*idChild, treeWidgetItem, number, progress);
-    }
+    }*/
 }
 /*
 void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& number, QProgressDialog* progress )
