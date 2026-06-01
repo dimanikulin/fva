@@ -1,5 +1,8 @@
 #include <gtest/gtest.h>
 
+#include <filesystem>
+#include <fstream>
+
 #include "CLTCreateDirStructByFileNames.h"
 
 // Test fixture for CLTCreateDirStructByFileNames tests
@@ -19,11 +22,11 @@ TEST_F(CLTCreateDirStructByFileNamesTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTCreateDirStructByFileNames::Name();
+    std::string name = CLTCreateDirStructByFileNames::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTCreateDirStructByFileNames", name.toStdString());
+    ASSERT_EQ("CLTCreateDirStructByFileNames", name);
 }
 
 // Test case for supportReadOnly function
@@ -42,20 +45,19 @@ TEST_F(CLTCreateDirStructByFileNamesTests, SupportReadOnly) {
 // Add more test cases for other member functions as needed
 // Test case for execute function
 TEST_F(CLTCreateDirStructByFileNamesTests, Execute) {
+    namespace fs = std::filesystem;
+
     // Arrange
     CLTCreateDirStructByFileNames cltCreateDirStruct;
     CLTContext context;  // Set up the necessary context for the test
 
     // Create a temporary directory for testing
-    QDir tempDir;
-    QString tempPath = tempDir.tempPath();
-    QString testFolder = tempPath + "/TestFolder";
-    tempDir.mkdir(testFolder);
+    const fs::path testFolder = fs::temp_directory_path() / "TestFolder";
+    fs::create_directories(testFolder);
 
     // Create a test file
-    QString testFilePath = testFolder + "/TestFile.txt";
-    QFile testFile(testFilePath);
-    testFile.open(QIODevice::WriteOnly);
+    const fs::path testFilePath = testFolder / "TestFile.txt";
+    std::ofstream testFile(testFilePath.string());
     testFile.close();
 
     // Act
@@ -67,8 +69,8 @@ TEST_F(CLTCreateDirStructByFileNamesTests, Execute) {
     // Add more assertions to verify the expected behavior and output
 
     // Clean up the temporary directory and file
-    tempDir.remove(testFilePath);
-    tempDir.rmdir(testFolder);
+    fs::remove(testFilePath);
+    fs::remove(testFolder);
 }
 
 // Add more test cases for other scenarios as needed

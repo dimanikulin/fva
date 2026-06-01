@@ -34,11 +34,11 @@ TEST_F(CLTCheckDeviceNameTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTCheckDeviceName::Name();
+    std::string name = CLTCheckDeviceName::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTCheckDeviceName", name.toStdString());
+    ASSERT_EQ("CLTCheckDeviceName", name);
 }
 
 // Test case for supportReadOnly function

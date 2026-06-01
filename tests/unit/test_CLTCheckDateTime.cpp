@@ -34,11 +34,11 @@ TEST_F(CLTCheckDateTimeTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTCheckDateTime::Name();
+    std::string name = CLTCheckDateTime::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTCheckDateTime", name.toStdString());
+    ASSERT_EQ("CLTCheckDateTime", name);
 }
 
 // Test case for supportReadOnly function
@@ -78,7 +78,7 @@ TEST_F(CLTCheckDateTimeTests, Execute_ValidExifDateTime) {
     FvaConfiguration cfg;
     CLTCheckDateTime cltCheckDateTime(cfg);
     CLTContext context;  // Set up the necessary context for the test
-    QString filePath = "path/to/image.jpg";
+    std::string filePath = "path/to/image.jpg";
     // Add the image file to the test directory
 
     // Act
@@ -95,7 +95,7 @@ TEST_F(CLTCheckDateTimeTests, Execute_EmptyExifDateTime) {
     FvaConfiguration cfg;
     CLTCheckDateTime cltCheckDateTime(cfg);
     CLTContext context;  // Set up the necessary context for the test
-    QString filePath = "path/to/image.jpg";
+    std::string filePath = "path/to/image.jpg";
     // Add the image file to the test directory with empty exif Date-Time
 
     // Act

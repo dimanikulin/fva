@@ -34,12 +34,12 @@ TEST_F(CLTCheckFileFormatTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTCheckFileFormat::Name();
+    std::string name = CLTCheckFileFormat::Name();
 
     // Assert
     // Verify the expected name
     // For example:
-    ASSERT_EQ("CLTCheckFileFormat", name.toStdString());
+    ASSERT_EQ("CLTCheckFileFormat", name);
 }
 
 // Test case for supportReadOnly function

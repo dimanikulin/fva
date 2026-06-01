@@ -35,11 +35,11 @@ TEST_F(CLTCSVFvaFileTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTCSVFvaFile::Name();
+    std::string name = CLTCSVFvaFile::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTCSVFvaFile", name.toStdString());
+    ASSERT_EQ("CLTCSVFvaFile", name);
 }
 
 // Test case for supportReadOnly function
