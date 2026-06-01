@@ -148,40 +148,40 @@ void FVAViewer::filterClicked() {
 }
 
 void FVAViewer::populateGUITree(const fvaItem* fvaitem, QTreeWidgetItem* item, int& number, QProgressDialog* progress) {
- /*   for (auto idChild = fvaitem->children.begin(); idChild != fvaitem->children.end(); ++idChild) {
-        if (progress) {
-            progress->setValue(number++);
-            // progress->setLabelText((*idChild)->getGuiName());
-        }
-        if (!(*idChild)->isFiltered) continue;
-        QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
-        treeWidgetItem->setText(0, (*idChild)->getGuiName(m_dictionaries));
+    /*   for (auto idChild = fvaitem->children.begin(); idChild != fvaitem->children.end(); ++idChild) {
+           if (progress) {
+               progress->setValue(number++);
+               // progress->setLabelText((*idChild)->getGuiName());
+           }
+           if (!(*idChild)->isFiltered) continue;
+           QTreeWidgetItem* treeWidgetItem = new QTreeWidgetItem;
+           treeWidgetItem->setText(0, (*idChild)->getGuiName(m_dictionaries));
 
-        // TODO fix error here - cast from 'fvaItem*' to 'int' loses precision [-fpermissive]
-        // treeWidgetItem->setData( 1, 1, (int) *idChild );
+           // TODO fix error here - cast from 'fvaItem*' to 'int' loses precision [-fpermissive]
+           // treeWidgetItem->setData( 1, 1, (int) *idChild );
 
-        if ((*idChild)->type == FVA_FS_TYPE_DIR)
-            treeWidgetItem->setIcon(0, m_folderIcon);
-        else {
-            switch ((*idChild)->type) {
-                case FVA_FS_TYPE_IMG:
-                    treeWidgetItem->setIcon(0, m_photoIcon);
-                    break;
-                case FVA_FS_TYPE_VIDEO:
-                    treeWidgetItem->setIcon(0, m_videoIcon);
-                    break;
-                case FVA_FS_TYPE_AUDIO:
-                    treeWidgetItem->setIcon(0, m_audioIcon);
-                    break;
-            }
-        }
-        if (item)
-            item->addChild(treeWidgetItem);
-        else
-            m_ui->treeWidget->addTopLevelItem(treeWidgetItem);
+           if ((*idChild)->type == FVA_FS_TYPE_DIR)
+               treeWidgetItem->setIcon(0, m_folderIcon);
+           else {
+               switch ((*idChild)->type) {
+                   case FVA_FS_TYPE_IMG:
+                       treeWidgetItem->setIcon(0, m_photoIcon);
+                       break;
+                   case FVA_FS_TYPE_VIDEO:
+                       treeWidgetItem->setIcon(0, m_videoIcon);
+                       break;
+                   case FVA_FS_TYPE_AUDIO:
+                       treeWidgetItem->setIcon(0, m_audioIcon);
+                       break;
+               }
+           }
+           if (item)
+               item->addChild(treeWidgetItem);
+           else
+               m_ui->treeWidget->addTopLevelItem(treeWidgetItem);
 
-        populateGUITree(*idChild, treeWidgetItem, number, progress);
-    }*/
+           populateGUITree(*idChild, treeWidgetItem, number, progress);
+       }*/
 }
 /*
 void FVAViewer::populateFVATree( const QString& folder, fvaItem* fvaitem, int& number, QProgressDialog* progress )
