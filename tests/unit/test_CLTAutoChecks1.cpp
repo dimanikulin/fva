@@ -22,7 +22,7 @@ protected:
 // Test case for CLTAutoChecks1::execute
 TEST_F(CLTAutoChecks1Tests, Execute) {
     // Arrange
-    MockQDir mockDir;
+    // MockQDir mockDir;
     MockCLTContext mockContext;
     FvaConfiguration cfg;
     CLTAutoChecks1 cltAutoChecks1(cfg);
