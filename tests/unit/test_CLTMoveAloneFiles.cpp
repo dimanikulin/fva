@@ -34,11 +34,11 @@ TEST_F(CLTMoveAloneFilesTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTMoveAloneFiles::Name();
+    std::string name = CLTMoveAloneFiles::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTMoveAloneFiles", name.toStdString());
+    ASSERT_EQ("CLTMoveAloneFiles", name);
 }
 
 // Test case for supportReadOnly function

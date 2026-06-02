@@ -19,11 +19,11 @@ TEST_F(CLTMoveInputDir2OutputTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTMoveInputDir2Output::Name();
+    std::string name = CLTMoveInputDir2Output::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTMoveInputDir2Output", name.toStdString());
+    ASSERT_EQ("CLTMoveInputDir2Output", name);
 }
 
 // Test case for supportReadOnly function

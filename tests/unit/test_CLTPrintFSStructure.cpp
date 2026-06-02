@@ -33,11 +33,11 @@ TEST_F(CLTPrintFSStructureTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTPrintFSStructure::Name();
+    std::string name = CLTPrintFSStructure::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTPrintFSStructure", name.toStdString());
+    ASSERT_EQ("CLTPrintFSStructure", name);
 }
 
 // Test case for supportReadOnly function

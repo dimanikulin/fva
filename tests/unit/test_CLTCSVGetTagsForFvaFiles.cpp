@@ -34,11 +34,11 @@ TEST_F(CLTCSVGetTagsForFvaFilesTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTCSVGetTagsForFvaFiles::Name();
+    std::string name = CLTCSVGetTagsForFvaFiles::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTCSVGetTagsForFvaFiles", name.toStdString());
+    ASSERT_EQ("CLTCSVGetTagsForFvaFiles", name);
 }
 
 // Test case for supportReadOnly function

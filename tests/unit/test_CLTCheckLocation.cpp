@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include <fstream>
+
 #include "CLTCheckLocation.h"
 
 // Test fixture for CLTCheckLocation tests
@@ -54,11 +56,11 @@ TEST_F(CLTCheckLocationTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTCheckLocation::Name();
+    std::string name = CLTCheckLocation::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTCheckLocation", name.toStdString());
+    ASSERT_EQ("CLTCheckLocation", name);
 }
 
 // Test case for supportReadOnly function

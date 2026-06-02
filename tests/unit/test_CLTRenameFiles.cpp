@@ -34,11 +34,11 @@ TEST_F(CLTRenameFilesTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTRenameFiles::Name();
+    std::string name = CLTRenameFiles::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTRenameFiles", name.toStdString());
+    ASSERT_EQ("CLTRenameFiles", name);
 }
 
 // Test case for supportReadOnly function

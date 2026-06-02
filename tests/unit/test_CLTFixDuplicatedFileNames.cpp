@@ -1,5 +1,8 @@
 #include <gtest/gtest.h>
 
+#include <filesystem>
+#include <fstream>
+
 #include "CLTFixDuplicatedFileNames.h"
 
 // Test fixture for CLTFixDuplicatedFileNames tests
@@ -19,11 +22,11 @@ TEST_F(CLTFixDuplicatedFileNamesTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTFixDuplicatedFileNames::Name();
+    std::string name = CLTFixDuplicatedFileNames::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTFixDuplicatedFileNames", name.toStdString());
+    ASSERT_EQ("CLTFixDuplicatedFileNames", name);
 }
 
 // Test case for supportReadOnly function
@@ -87,9 +90,8 @@ TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithExistingDestinationFile) {
     // Set up the necessary context data
 
     // Create a file with the same name as the destination file
-    QString destinationFilePath = "/path/to/destination/file.ext";
-    QFile destinationFile(destinationFilePath);
-    destinationFile.open(QIODevice::WriteOnly);
+    std::string destinationFilePath = "./destination_file.ext";
+    std::ofstream destinationFile(destinationFilePath);
     destinationFile.close();
 
     // Act
@@ -102,7 +104,7 @@ TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithExistingDestinationFile) {
     // Add more assertions to verify the expected behavior and output
 
     // Clean up the created file
-    QFile::remove(destinationFilePath);
+    std::filesystem::remove(destinationFilePath);
 }
 
 // Test case for execute function with failed file rename
@@ -115,15 +117,13 @@ TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithFailedFileRename) {
     // Set up the necessary context data
 
     // Create a file to be renamed
-    QString sourceFilePath = "/path/to/source/file.ext";
-    QFile sourceFile(sourceFilePath);
-    sourceFile.open(QIODevice::WriteOnly);
+    std::string sourceFilePath = "./source_file.ext";
+    std::ofstream sourceFile(sourceFilePath);
     sourceFile.close();
 
     // Create a file with the same name as the new file path
-    QString newFilePath = "/path/to/new/file.ext";
-    QFile newFile(newFilePath);
-    newFile.open(QIODevice::WriteOnly);
+    std::string newFilePath = "./new_file.ext";
+    std::ofstream newFile(newFilePath);
     newFile.close();
 
     // Act
@@ -136,6 +136,6 @@ TEST_F(CLTFixDuplicatedFileNamesTests, ExecuteWithFailedFileRename) {
     // Add more assertions to verify the expected behavior and output
 
     // Clean up the created files
-    QFile::remove(sourceFilePath);
-    QFile::remove(newFilePath);
+    std::filesystem::remove(sourceFilePath);
+    std::filesystem::remove(newFilePath);
 }
