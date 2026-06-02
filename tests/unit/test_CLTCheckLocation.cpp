@@ -40,7 +40,8 @@ void createImageFileWithoutExifLocation(const std::string& fileName) {
 // Test case for execute function
 TEST_F(CLTCheckLocationTests, Execute) {
     // Arrange
-    CLTCheckLocation cltCheckLocation;
+    FvaConfiguration cfg;
+    CLTCheckLocation cltCheckLocation(cfg);
     CLTContext context;  // Set up the necessary context for the test
 
     // Act
@@ -66,7 +67,8 @@ TEST_F(CLTCheckLocationTests, Name) {
 // Test case for supportReadOnly function
 TEST_F(CLTCheckLocationTests, SupportReadOnly) {
     // Arrange
-    CLTCheckLocation cltCheckLocation;
+    FvaConfiguration cfg;
+    CLTCheckLocation cltCheckLocation(cfg);
 
     // Act
     bool readOnly = cltCheckLocation.supportReadOnly();
@@ -80,7 +82,8 @@ TEST_F(CLTCheckLocationTests, SupportReadOnly) {
 // Test case for execute function when all image files have exif location
 TEST_F(CLTCheckLocationTests, Execute_AllFilesWithExifLocation) {
     // Arrange
-    CLTCheckLocation cltCheckLocation;
+    FvaConfiguration cfg;
+    CLTCheckLocation cltCheckLocation(cfg);
     CLTContext context;
     context.readOnly = true;
 
@@ -101,7 +104,8 @@ TEST_F(CLTCheckLocationTests, Execute_AllFilesWithExifLocation) {
 // Test case for execute function when some image files don't have exif location
 TEST_F(CLTCheckLocationTests, Execute_SomeFilesWithoutExifLocation) {
     // Arrange
-    CLTCheckLocation cltCheckLocation;
+    FvaConfiguration cfg;
+    CLTCheckLocation cltCheckLocation(cfg);
     CLTContext context;
     context.readOnly = true;
 
@@ -121,7 +125,8 @@ TEST_F(CLTCheckLocationTests, Execute_SomeFilesWithoutExifLocation) {
 // Test case for execute function when all image files don't have exif location
 TEST_F(CLTCheckLocationTests, Execute_AllFilesWithoutExifLocation) {
     // Arrange
-    CLTCheckLocation cltCheckLocation;
+    FvaConfiguration cfg;
+    CLTCheckLocation cltCheckLocation(cfg);
     CLTContext context;
     context.readOnly = false;
 
