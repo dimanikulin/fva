@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include <filesystem>
+
 #include "CLTSetFileAtts.h"
 
 // Test fixture for CLTSetFileAtts tests
@@ -34,11 +36,11 @@ TEST_F(CLTSetFileAttsTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTSetFileAtts::Name();
+    std::string name = CLTSetFileAtts::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTSetFileAtts", name.toStdString());
+    ASSERT_EQ("CLTSetFileAtts", name);
 }
 
 // Test case for supportReadOnly function
@@ -61,7 +63,8 @@ TEST_F(CLTSetFileAttsTests, SetFileAttributes_SupportedFiles) {
     CLTSetFileAtts cltSetFileAtts;
     CLTContext context;
     context.cmdType = CLTSetFileAtts::Name();
-    QDir m_dir;  // Set up the necessary directory for the test
+    std::filesystem::path dirPath;  // Set up the necessary directory for the test
+    (void)dirPath;
     // Add some supported files to the directory
 
     // Act
@@ -79,7 +82,8 @@ TEST_F(CLTSetFileAttsTests, SetFileAttributes_InternalFiles) {
     CLTSetFileAtts cltSetFileAtts;
     CLTContext context;
     context.cmdType = CLTSetFileAtts::Name();
-    QDir m_dir;  // Set up the necessary directory for the test
+    std::filesystem::path dirPath;  // Set up the necessary directory for the test
+    (void)dirPath;
     // Add some internal files to the directory
 
     // Act
@@ -96,7 +100,8 @@ TEST_F(CLTSetFileAttsTests, SetFileAttributes_UnsupportedFiles) {
     // Arrange
     CLTSetFileAtts cltSetFileAtts;
     CLTContext context;
-    QDir m_dir;  // Set up the necessary directory for the test
+    std::filesystem::path dirPath;  // Set up the necessary directory for the test
+    (void)dirPath;
     // Add some unsupported files to the directory
 
     // Act

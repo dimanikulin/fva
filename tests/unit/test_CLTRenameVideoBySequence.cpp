@@ -34,11 +34,11 @@ TEST_F(CLTRenameVideoBySequenceTests, Name) {
     // Arrange
 
     // Act
-    QString name = CLTRenameVideoBySequence::Name();
+    std::string name = CLTRenameVideoBySequence::Name();
 
     // Assert
     // Verify the expected name
-    ASSERT_EQ("CLTRenameVideoBySequence", name.toStdString());
+    ASSERT_EQ("CLTRenameVideoBySequence", name);
 }
 
 // Test case for supportReadOnly function
@@ -67,19 +67,16 @@ TEST_F(CLTRenameVideoBySequenceTests, Constructor) {
 
     // Assert
     // Verify that the m_renameVideoByModifTime member variable is set correctly
-
-    // TODO to uncomment and fix the test
-    // EXPECT_TRUE(renameVideoBySequence.renameVideoByModifTime());
+    EXPECT_TRUE(renameVideoBySequence.renameVideoByModifTime());
 }
 
 // Test case for CLTRenameVideoBySequence constructor with invalid configuration
 TEST_F(CLTRenameVideoBySequenceTests, Constructor_falseRenameVideoByModifTime) {
     // Arrange
     FvaConfiguration cfg;
-    cfg.setParam("Rename::videoByModifTime", true);
+    cfg.setParam("Rename::videoByModifTime", false);
     CLTRenameVideoBySequence renameVideoBySequence(cfg);
 
     // Act & Assert
-    // TODO to check that m_renameVideoByModifTime is false if the parameter is not set or set to false in the
-    // configuration EXPECT_TRUE(renameVideoBySequence.renameVideoByModifTime());
+    EXPECT_FALSE(renameVideoBySequence.renameVideoByModifTime());
 }
