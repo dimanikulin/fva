@@ -1,7 +1,7 @@
-#include "fvalogger.inl"
-#include "mocks.h"
 #include "fvaconfiguration.h"
 #include "fvaexitcodes.h"
+#include "fvalogger.inl"
+#include "mocks.h"
 
 LOGGER_GLOBAL
 
