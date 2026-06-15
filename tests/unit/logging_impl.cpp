@@ -18,5 +18,6 @@ int main() {
     }
 
     LOG_INIT("#logs#/tests.txt")
+    std::cerr << "Unit tests completed." << std::endl;
     return 0;
 }
