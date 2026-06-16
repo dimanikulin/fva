@@ -1,8 +1,9 @@
+#include <iostream>
+
 #include "fvaconfiguration.h"
 #include "fvaexitcodes.h"
 #include "fvalogger.inl"
 #include "mocks.h"
-#include <iostream>
 
 LOGGER_GLOBAL
 
