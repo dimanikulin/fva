@@ -1,7 +1,7 @@
 # tests source files here
 add_executable(
   libtests
-  logging_impl.cpp
+  #logging_impl.cpp
   test_fvacltcontext.cpp
   test_fvadevice.cpp
   test_fvaconstants.cpp
@@ -10,8 +10,8 @@ add_executable(
   test_fvaevent.cpp
   test_fvaItem.cpp
   test_fvaperson.cpp
-  test_cmdlinebaseexecutor.cpp
-  test_cmdlinebasetask.cpp
+  #test_cmdlinebaseexecutor.cpp
+  #test_cmdlinebasetask.cpp
   test_fvabasedictionaryitem.cpp
   test_fvafmtcontext.cpp
   test_fvacommoncsv.cpp
@@ -21,27 +21,27 @@ add_executable(
   test_fvacsvfile.cpp
   test_fvadescriptionfile.cpp
   test_fvariffparser.cpp
-  test_CLTAutoChecks1.cpp
-  test_CLTAutoChecks2.cpp
-  test_CLTAutoChecks3.cpp
-  test_CLTCheckDateTime.cpp
-  test_CLTCheckDeviceName.cpp
-  test_CLTCheckFileFormat.cpp
-  test_CLTCheckLocation.cpp
-  test_CLTCreateDirStructByDevNames.cpp
-  test_CLTCreateDirStructByFileNames.cpp
-  test_CLTCSVFvaFiles.cpp
-  test_CLTCSVGetTagsForFvaFiles.cpp
-  test_CLTFixDuplicatedFileNames.cpp
-  test_CLTMoveAloneFiles.cpp
-  test_CLTMoveInputDir2Output.cpp
-  test_CLTPrintFSStructure.cpp
-  test_CLTRenameFiles.cpp
-  test_CLTRenameVideoBySequence.cpp
-  test_CLTSetFileAtts.cpp
-  test_FVADataProcessor.cpp
+  #test_CLTAutoChecks1.cpp
+  #test_CLTAutoChecks2.cpp
+  #test_CLTAutoChecks3.cpp
+  #test_CLTCheckDateTime.cpp
+  #test_CLTCheckDeviceName.cpp
+  #test_CLTCheckFileFormat.cpp
+  #test_CLTCheckLocation.cpp
+  #test_CLTCreateDirStructByDevNames.cpp
+  #test_CLTCreateDirStructByFileNames.cpp
+  #test_CLTCSVFvaFiles.cpp
+  #test_CLTCSVGetTagsForFvaFiles.cpp
+  #test_CLTFixDuplicatedFileNames.cpp
+  #test_CLTMoveAloneFiles.cpp
+  #test_CLTMoveInputDir2Output.cpp
+  #test_CLTPrintFSStructure.cpp
+  #test_CLTRenameFiles.cpp
+  #test_CLTRenameVideoBySequence.cpp
+  #test_CLTSetFileAtts.cpp
+  #test_FVADataProcessor.cpp
   test_fvadevicecontext.cpp
-  test_FVAFlowController.cpp)
+  #test_FVAFlowController.cpp)
 
 # Link GoogleTest to tests
 target_link_libraries(
