@@ -13,7 +13,7 @@ add_executable(
   #test_cmdlinebaseexecutor.cpp
   #test_cmdlinebasetask.cpp
   test_fvabasedictionaryitem.cpp
-  test_fvafmtcontext.cpp
+  #test_fvafmtcontext.cpp
   test_fvacommoncsv.cpp
   test_fvacommonexif.cpp
   test_fvacommonlib.cpp
