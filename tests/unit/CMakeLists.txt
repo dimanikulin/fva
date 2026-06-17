@@ -41,7 +41,8 @@ add_executable(
   #test_CLTSetFileAtts.cpp
   #test_FVADataProcessor.cpp
   test_fvadevicecontext.cpp
-  #test_FVAFlowController.cpp)
+  #test_FVAFlowController.cpp
+  )
 
 # Link GoogleTest to tests
 target_link_libraries(
