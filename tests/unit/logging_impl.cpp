@@ -1,24 +1,13 @@
 #include <iostream>
 
-#include "fvaconfiguration.h"
-#include "fvaexitcodes.h"
-#include "fvalogger.inl"
+#include "logging_definition.inl"
 #include "mocks.h"
 
 LOGGER_GLOBAL
 
 int main() {
     std::cerr << "Starting unit tests..." << std::endl;
-    FvaConfiguration cfg;
-    std::filesystem::path appDir = std::filesystem::current_path();
-    const std::string cfgPath = (appDir / "fvaParams.csv").string();
-    FVA_EXIT_CODE exitCode = cfg.load(cfgPath);
-    if (exitCode != FVA_NO_ERROR) {
-        std::cerr << "Failed to load configuration from " << cfgPath << ". Error code: " << exitCode << std::endl;
-        return exitCode;
-    }
-
-    LOG_INIT("#logs#/tests.txt")
+    LOG_INIT("tests.txt")
     std::cerr << "Unit tests completed." << std::endl;
     return 0;
 }
