@@ -4,6 +4,8 @@
 #include "FVADataProcessor.h"
 #include "mocks.h"
 
+LOGGER_GLOBAL
+
 // Test fixture for CmdLineBaseExecutor tests
 class CmdLineBaseExecutorTests : public ::testing::Test {
 protected:

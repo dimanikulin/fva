@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
 
 #include "fvacltcontext.h"
+#include "logging_definition.inl"
+
+LOGGER_GLOBAL
 
 // Test case for default constructor
 TEST(CLTContextTests, DefaultConstructor) {
