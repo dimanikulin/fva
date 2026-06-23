@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "fvacltcontext.h"
-#include "logging_definition.inl"
+#include "testloggger.inl"
 
 LOGGER_GLOBAL
 
