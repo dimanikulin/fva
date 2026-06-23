@@ -32,9 +32,11 @@ inline std::string getCurrentTimestamp() {
 /*!
 * global logger and global log level (0=warning, 1=critical, 2=debug)
 */
+#ifndef LOGGER_GLOBAL
 #define LOGGER_GLOBAL \
 std::ofstream g_logfile; \
 int g_logLevel = 2;
+#endif //LOGGER_GLOBAL
 
 #define LOG_INIT(LOG_NAME) \
 g_logfile.open(LOG_NAME, std::ios::app); \
