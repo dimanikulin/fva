@@ -3,6 +3,7 @@
 #include "CmdLineBaseExecutor.h"
 #include "FVADataProcessor.h"
 #include "mocks.h"
+#include "testloggger.inl"
 
 #ifndef LOGGER_GLOBAL
 LOGGER_GLOBAL
