@@ -1,6 +1,7 @@
 # tests source files here
 add_executable(
   libtests
+  testloggger.inl
   test_fvacltcontext.cpp
   test_fvadevice.cpp
   test_fvaconstants.cpp
