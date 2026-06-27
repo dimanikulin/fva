@@ -8,8 +8,7 @@
 
 #ifndef LOGGER_GLOBAL
 LOGGER_GLOBAL
-#endif //LOGGER_GLOBAL
-
+#endif  // LOGGER_GLOBAL
 
 // Test fixture for CmdLineBaseTask tests
 class CmdLineBaseTaskTests : public ::testing::Test {
