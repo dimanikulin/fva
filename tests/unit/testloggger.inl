@@ -17,13 +17,13 @@
 extern std::ofstream g_logfile;
 extern int g_logLevel;
 
-inline std::string getCurrentTimestamp() {
+/*inline std::string getCurrentTimestamp() {
     auto now = std::chrono::system_clock::now();
     auto time = std::chrono::system_clock::to_time_t(now);
     std::ostringstream oss;
     oss << std::put_time(std::localtime(&time), "[%Y:%m:%d] [%H:%M:%S]");
     return oss.str();
-}
+}*/
 
 #define LOG_WARN if (0 >= g_logLevel) {} else g_logfile << "[WRN]" << getCurrentTimestamp() << " [" << __FILE__ << "] [" << __LINE__ << "] "
 #define LOG_CRIT if (1 >= g_logLevel) {} else g_logfile << "[ERR]" << getCurrentTimestamp() << " [" << __FILE__ << "] [" << __LINE__ << "] "
@@ -38,10 +38,11 @@ std::ofstream g_logfile; \
 int g_logLevel = 2;
 #endif //LOGGER_GLOBAL
 
+#ifndef LOG_INIT
 #define LOG_INIT(LOG_NAME) \
 g_logfile.open(LOG_NAME, std::ios::app); \
 unsigned int dLogLevel = 3; \
 g_logLevel = static_cast<int>(dLogLevel);
-
+#endif //LOG_INIT
 
 #endif //TESTLOGGER_H
