@@ -6,8 +6,8 @@
 * \date  2014-2021
 */
 
-#ifndef FVALOGGER_H
-#define FVALOGGER_H
+#ifndef TESTLOGGER_H
+#define TESTLOGGER_H
 
 #include <fstream>
 #include <chrono>
@@ -44,4 +44,4 @@ unsigned int dLogLevel = 3; \
 g_logLevel = static_cast<int>(dLogLevel);
 
 
-#endif //FVALOGGER_H
+#endif //TESTLOGGER_H
