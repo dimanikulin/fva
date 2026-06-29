@@ -32,11 +32,9 @@ extern int g_logLevel;
 /*!
 * global logger and global log level (0=warning, 1=critical, 2=debug)
 */
-#ifndef LOGGER_GLOBAL
-#define LOGGER_GLOBAL \
+#define TEST_LOGGER_GLOBAL \
 std::ofstream g_logfile; \
 int g_logLevel = 2;
-#endif //LOGGER_GLOBAL
 
 #ifndef LOG_INIT
 #define LOG_INIT(LOG_NAME) \
