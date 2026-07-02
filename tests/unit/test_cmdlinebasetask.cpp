@@ -8,7 +8,10 @@
 
 #include "testloggger.inl"
 
+#ifndef TEST_LOGGER_GLOBAL
 TEST_LOGGER_GLOBAL
+#endif  // TEST_LOGGER_GLOBAL
+
 
 // Test fixture for CmdLineBaseTask tests
 class CmdLineBaseTaskTests : public ::testing::Test {

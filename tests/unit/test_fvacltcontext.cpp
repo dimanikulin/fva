@@ -3,7 +3,10 @@
 #include "fvacltcontext.h"
 #include "testloggger.inl"
 
+#ifndef TEST_LOGGER_GLOBAL
 TEST_LOGGER_GLOBAL
+#endif  // TEST_LOGGER_GLOBAL
+
 
 // Test case for default constructor
 TEST(CLTContextTests, DefaultConstructor) {
