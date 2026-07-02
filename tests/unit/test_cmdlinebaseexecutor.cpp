@@ -5,13 +5,7 @@
 #include "mocks.h"
 #include "testloggger.inl"
 
-#ifndef LOGGER_GLOBAL
-LOGGER_GLOBAL
-#endif  // LOGGER_GLOBAL
 TEST_LOGGER_GLOBAL
-/*std::ofstream g_logfile;
-int g_logLevel = 2;
-*/
 
 // Test fixture for CmdLineBaseExecutor tests
 class CmdLineBaseExecutorTests : public ::testing::Test {
