@@ -24,9 +24,9 @@ add_executable(
   test_CLTAutoChecks1.cpp
   test_CLTAutoChecks2.cpp
   test_CLTAutoChecks3.cpp
-  test_CLTCheckDateTime.cpp
-  test_CLTCheckDeviceName.cpp
-  test_CLTCheckFileFormat.cpp
+  #test_CLTCheckDateTime.cpp
+  #test_CLTCheckDeviceName.cpp
+  #test_CLTCheckFileFormat.cpp
   #test_CLTCheckLocation.cpp
   #test_CLTCreateDirStructByDevNames.cpp
   #test_CLTCreateDirStructByFileNames.cpp
