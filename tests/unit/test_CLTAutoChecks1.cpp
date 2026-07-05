@@ -4,6 +4,7 @@
 #include <string>
 
 #include "CLTAutoChecks1.h"
+#include "testloggger.inl"
 
 #ifndef TEST_LOGGER_GLOBAL
 TEST_LOGGER_GLOBAL
