@@ -10,7 +10,6 @@
 TEST_LOGGER_GLOBAL
 #endif  // TEST_LOGGER_GLOBAL
 
-
 class MockCLTContext : public CLTContext {};
 
 // Test fixture for CLTAutoChecks1 tests
