@@ -4,6 +4,10 @@
 
 #include "CLTCheckLocation.h"
 
+#ifndef TEST_LOGGER_GLOBAL
+TEST_LOGGER_GLOBAL
+#endif  // TEST_LOGGER_GLOBAL
+
 // Test fixture for CLTCheckLocation tests
 class CLTCheckLocationTests : public ::testing::Test {
 protected:

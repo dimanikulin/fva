@@ -2,6 +2,10 @@
 
 #include "CLTCheckFileFormat.h"
 
+#ifndef TEST_LOGGER_GLOBAL
+TEST_LOGGER_GLOBAL
+#endif  // TEST_LOGGER_GLOBAL
+
 // Test fixture for CLTCheckFileFormat tests
 class CLTCheckFileFormatTests : public ::testing::Test {
 protected:

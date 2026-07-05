@@ -2,6 +2,10 @@
 
 #include "CLTCheckDateTime.h"
 
+#ifndef TEST_LOGGER_GLOBAL
+TEST_LOGGER_GLOBAL
+#endif  // TEST_LOGGER_GLOBAL
+
 // Test fixture for CLTCheckDateTime tests
 class CLTCheckDateTimeTests : public ::testing::Test {
 protected:

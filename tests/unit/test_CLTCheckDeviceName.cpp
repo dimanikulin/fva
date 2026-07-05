@@ -2,6 +2,11 @@
 
 #include "CLTCheckDeviceName.h"
 
+#ifndef TEST_LOGGER_GLOBAL
+TEST_LOGGER_GLOBAL
+#endif  // TEST_LOGGER_GLOBAL
+
+
 // Test fixture for CLTCheckDeviceName tests
 class CLTCheckDeviceNameTests : public ::testing::Test {
 protected:

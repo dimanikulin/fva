@@ -2,6 +2,10 @@
 
 #include "CLTAutoChecks2.h"
 
+#ifndef TEST_LOGGER_GLOBAL
+TEST_LOGGER_GLOBAL
+#endif  // TEST_LOGGER_GLOBAL
+
 // Test fixture for CLTAutoChecks2 tests
 class CLTAutoChecks2Tests : public ::testing::Test {
 protected:
