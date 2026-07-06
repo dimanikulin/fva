@@ -6,9 +6,7 @@
 #include "CLTAutoChecks1.h"
 #include "testloggger.inl"
 
-#ifndef TEST_LOGGER_GLOBAL
 TEST_LOGGER_GLOBAL
-#endif  // TEST_LOGGER_GLOBAL
 
 class MockCLTContext : public CLTContext {};
 
