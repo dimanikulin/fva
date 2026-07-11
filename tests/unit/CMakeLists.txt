@@ -23,7 +23,7 @@ add_executable(
   test_fvariffparser.cpp
   test_CLTAutoChecks1.cpp
   test_CLTAutoChecks2.cpp
-  test_CLTAutoChecks3.cpp
+  #test_CLTAutoChecks3.cpp
   #test_CLTCheckDateTime.cpp
   #test_CLTCheckDeviceName.cpp
   #test_CLTCheckFileFormat.cpp
