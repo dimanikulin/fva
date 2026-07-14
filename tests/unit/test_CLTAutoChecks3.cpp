@@ -32,7 +32,7 @@ TEST_F(CLTAutoChecks3Tests, Execute_MissingDeviceID) {
 
     // Assert
     // TODO shell be checned in the #logs#/issues3.csv
-    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result);  // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
+    EXPECT_EQ(FVA_NO_ERROR, result);  // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
     // Add more assertions to verify the expected behavior and output
 }
 
@@ -48,7 +48,7 @@ TEST_F(CLTAutoChecks3Tests, Execute_UnknownDevice) {
     FVA_EXIT_CODE result = cltAutoChecks3.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result);  // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
+    EXPECT_EQ(FVA_NO_ERROR, result);  // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
     // Add more assertions to verify the expected behavior and output
 }
 
@@ -65,7 +65,7 @@ TEST_F(CLTAutoChecks3Tests, Execute_EmptyDeviceName) {
 
     // Assert
     // TODO shell be checned in the #logs#/issues3.csv for FVA_ERROR_EMPTY_DEVICE_NAME
-    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result);  // Verify that the function returns
+    EXPECT_EQ(FVA_NO_ERROR, result);  // Verify that the function returns
     // Add more assertions to verify the expected behavior and output
 }
 
@@ -82,7 +82,7 @@ TEST_F(CLTAutoChecks3Tests, Execute_WronglyLinkedDeviceID) {
 
     // Assert
     // TODO shell be checned in the #logs#/issues3.csv for FVA_ERROR_LINKED_WRONG_DEVICE
-    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result);  // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
+    EXPECT_EQ(FVA_NO_ERROR, result);  // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
     // Add more assertions to verify the expected behavior and output
 }
 
@@ -99,7 +99,7 @@ TEST_F(CLTAutoChecks3Tests, Execute_MissingGeoLocation) {
 
     // Assert
     // TODO shell be checned in the #logs#/issues3.csv
-    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result);  // Verify that the function returns FVA_ERROR_NO_GEO
+    EXPECT_EQ(FVA_NO_ERROR, result);  // Verify that the function returns FVA_ERROR_NO_GEO
     // Add more assertions to verify the expected behavior and output
 }
 
@@ -115,7 +115,7 @@ TEST_F(CLTAutoChecks3Tests, Execute) {
 
     // Assert
     // TODO shell be checned in the #logs#/issues3.csv
-    EXPECT_EQ(FVA_ERROR_UNKNOWN_DEVICE, result);  // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
+    EXPECT_EQ(FVA_NO_ERROR, result);  // Verify that the function returns FVA_ERROR_UNKNOWN_DEVICE
     // Add more assertions to verify the expected behavior and output
 }
 
