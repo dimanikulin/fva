@@ -30,7 +30,7 @@ TEST_F(CLTCheckDateTimeTests, Execute) {
     FVA_EXIT_CODE result = task.execute(context);
 
     // Assert
-    EXPECT_EQ(FVA_NO_ERROR, result);  
+    EXPECT_EQ(FVA_NO_ERROR, result);
     // Add more assertions to verify the expected behavior and output
 }
 
