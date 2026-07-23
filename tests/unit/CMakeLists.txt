@@ -27,8 +27,8 @@ add_executable(
   test_CLTCheckDateTime.cpp
   test_CLTCheckDeviceName.cpp
   test_CLTCheckFileFormat.cpp
-  #test_CLTCheckLocation.cpp
-  #test_CLTCreateDirStructByDevNames.cpp
+  test_CLTCheckLocation.cpp
+  test_CLTCreateDirStructByDevNames.cpp
   #test_CLTCreateDirStructByFileNames.cpp
   #test_CLTCSVFvaFiles.cpp
   #test_CLTCSVGetTagsForFvaFiles.cpp
