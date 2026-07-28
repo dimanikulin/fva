@@ -33,9 +33,9 @@ add_executable(
   test_CLTCSVFvaFiles.cpp
   test_CLTCSVGetTagsForFvaFiles.cpp
   test_CLTFixDuplicatedFileNames.cpp
-  #test_CLTMoveAloneFiles.cpp
-  #test_CLTMoveInputDir2Output.cpp
-  #test_CLTPrintFSStructure.cpp
+  test_CLTMoveAloneFiles.cpp
+  test_CLTMoveInputDir2Output.cpp
+  test_CLTPrintFSStructure.cpp
   #test_CLTRenameFiles.cpp
   #test_CLTRenameVideoBySequence.cpp
   #test_CLTSetFileAtts.cpp
