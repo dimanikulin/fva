@@ -31,8 +31,8 @@ add_executable(
   test_CLTCreateDirStructByDevNames.cpp
   test_CLTCreateDirStructByFileNames.cpp
   test_CLTCSVFvaFiles.cpp
-  #test_CLTCSVGetTagsForFvaFiles.cpp
-  #test_CLTFixDuplicatedFileNames.cpp
+  test_CLTCSVGetTagsForFvaFiles.cpp
+  test_CLTFixDuplicatedFileNames.cpp
   #test_CLTMoveAloneFiles.cpp
   #test_CLTMoveInputDir2Output.cpp
   #test_CLTPrintFSStructure.cpp
