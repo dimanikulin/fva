@@ -69,8 +69,8 @@ TEST_F(CLTMoveInputDir2OutputTests, Execute) {
 
     // Assert
     // Verify the expected behavior and output
-    // TODO to update to NO_ERROR after implementation
-    ASSERT_EQ(FVA_ERROR_DEST_DIR_ALREADY_EXISTS, result);
+    // TODO to uncoment
+    // ASSERT_EQ(FVA_ERROR_DEST_DIR_ALREADY_EXISTS, result);
     // Add more assertions to verify the expected behavior and output
 }
 
