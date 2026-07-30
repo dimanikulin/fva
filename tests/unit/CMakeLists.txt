@@ -38,8 +38,8 @@ add_executable(
   test_CLTPrintFSStructure.cpp
   test_CLTRenameFiles.cpp
   test_CLTRenameVideoBySequence.cpp
-  #test_CLTSetFileAtts.cpp
-  #test_FVADataProcessor.cpp
+  test_CLTSetFileAtts.cpp
+  test_FVADataProcessor.cpp
   test_fvadevicecontext.cpp
   #test_FVAFlowController.cpp
   )
