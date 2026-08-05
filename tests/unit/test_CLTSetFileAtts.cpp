@@ -109,6 +109,6 @@ TEST_F(CLTSetFileAttsTests, SetFileAttributes_UnsupportedFiles) {
 
     // Assert
     // TODO uncomment and fix
-    // EXPECT_EQ(FVA_ERROR_NOT_SUPPORTED_FILE, result);  // Verify that the function returns FVA_ERROR_NOT_SUPPORTED_FILE
-    // Add assertions to verify the expected behavior for unsupported files
+    // EXPECT_EQ(FVA_ERROR_NOT_SUPPORTED_FILE, result);  // Verify that the function returns
+    // FVA_ERROR_NOT_SUPPORTED_FILE Add assertions to verify the expected behavior for unsupported files
 }
